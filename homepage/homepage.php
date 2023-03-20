@@ -3,7 +3,7 @@
 declare(strict_types = 1);
 
 $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
-$sql = 'select max(pontos_leitor) from user_common';
+$sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 3';
 
 echo '<h3>Maior Pontuação: </h3>';
 
