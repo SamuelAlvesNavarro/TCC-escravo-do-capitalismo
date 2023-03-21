@@ -42,11 +42,17 @@
                             <td class="bename">#</td>
                             <td class="bepoints">#</td>
                         </tr>
-                        <tr>
-                            <th class="ranknum" scope="row">#</th>
-                            <td class="bename">#</td>
-                            <td class="bepoints">#</td>
-                        </tr>
+                        <?php
+
+                            $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
+                            $sql = 'select pontos_leitor, nome, ranking from user_common order by pontos_leitor desc limit 3';
+
+                            echo '<h3>Maior Pontuação: </h3>';
+
+                            foreach ($pdo->query($sql) as $key => $value) {
+                                    echo '<tr class="table-dark"><th class="rankum">Rank: </th>' . $value['ranking'] . '</th>'. '<td class="bename"> Nome: ' . $value['nome'] . '</td>' . '<td class="bepoints"> Rank: '. $value['pontos_leitor'] . '</td>'. '<tr>';
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>

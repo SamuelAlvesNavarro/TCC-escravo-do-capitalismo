@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin: 0;
     padding: 0;
@@ -36,7 +37,8 @@
 .betitle{
     font-size: 1.5em;
     padding-bottom: 1%;
-}*{
+=======
+*{
     margin: 0;
     padding: 0;
     background-color: white;
@@ -74,4 +76,5 @@
 .betitle{
     font-size: 1.5em;
     padding-bottom: 1%;
+>>>>>>> e3df6e7462221df4a3bab8e315930f1cec236952
 }
