@@ -41,21 +41,19 @@
                             <th>Pontunação</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody><!--
                         <tr class="table-dark">
                             <th class="ranknum" scope="row">#</th>
                             <td class="bename">#</td>
                             <td class="bepoints">#</td>
-                        </tr>
+                        </tr>!-->
                         <?php
 
                             $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
-                            $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 3';
-
-                            echo '<h3>Maiores Pontuações: </h3>';
-
+                            $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
+                            $rank = 1;
                             foreach ($pdo->query($sql) as $key => $value) {
-                                    echo '<tr class="table-dark"><th class="rankum">Rank: </th>' . '</th>'. '<td class="bename"> Nome: ' . $value['nome'] . '</td>' . '<td class="bepoints"> Rank: '. $value['pontos_leitor'] . '</td>'. '<tr>';
+                                echo '<tr class="table-dark"><th class="rankum">Rank: ' . $rank++ . '</th>' . '<td class="bename"> Nome: ' . $value['nome'] . '</td>' . '<td class="bepoints"> Pontuação: '. $value['pontos_leitor'] . '</td>'. '<tr>';
                             }
                         ?>
                     </tbody>
