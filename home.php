@@ -13,11 +13,16 @@
         <div id="sections" class="sections">
             <div id="section" class="section home-section">
                 <div id="frow" class="frow row">
-                    <div class="titleh1 col-6">
+                    <div class="titleh1 col-9">
                         Olá, <strong>esse</strong> é o Histórias Assombrosas
                     </div>
-                    <div class="bt col-2">
+                    <div class="bt col-3">
                         <button type="button" class="btn-acess btn btn-outline-dark btn-lg rounded">Acesso</button>
+                    </div>
+                </div>
+                <div id="srow" class="srow row">
+                    <div class="phrase">
+                        "O site perfeito para a leitura de histórias de terror"
                     </div>
                 </div>
             </div>
