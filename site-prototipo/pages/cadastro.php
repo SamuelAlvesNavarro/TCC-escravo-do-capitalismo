@@ -13,8 +13,10 @@
         <input type="text" id="name" name="name"><br>
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email"><br>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br>
+        <label for="senha">Senha:</label><br>
+        <input type="password" id="senha" name="senha"><br>
+        <label for="apelido">Apelido:</label><br>
+        <input type="text" id="apelido" name="apelido"><br>
     </form>
     <button>Cadastrar</button><br>
 </body>
