@@ -10,54 +10,60 @@
 </head>
 <body>
     <div id="all" class="all">
-        <div id="sections" class="sections">
-            <div id="section" class="section home-section">
-                <div id="frow" class="frow row">
-                    <div class="titleh1 col-9">
-                        Olá, <strong>esse</strong> é o Histórias Assombrosas
-                    </div>
-                    <div class="bt col-3">
-                        <button type="button" class="btn-acess btn btn-outline-dark btn-lg rounded">Acesso</button>
-                    </div>
-                </div>
-                <div id="srow" class="srow row">
-                    <div class="phrase">
-                        "O site perfeito para a leitura de histórias de terror"
-                    </div>
-                </div>
-            </div>
-            <div id="section" class="section exp">
-
+        <div class="menu" id="menu">
+            <div class="menudiv" id="menudiv">
+               <div class="switch-mode"></div>
             </div>
         </div>
-        <div id="bestreaders" class="bestreaders">
-            <div id="bereaders" class="bereaders">
-                <div class="betitle">Os maiores leitores do site</div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>User</th>
-                            <th>Pontunação</th>
-                        </tr>
-                    </thead>
-                    <tbody><!--
-                        <tr class="table-dark">
-                            <th class="ranknum" scope="row">#</th>
-                            <td class="bename">#</td>
-                            <td class="bepoints">#</td>
-                        </tr>!-->
-                        <?php
+        <div id="main" class="main">
+            <!-- <div id="sections" class="sections">
+                <div class="section home-section">
+                    <div id="frow" class="frow row">
+                        <div class="titleh1 col-9">
+                            Olá, <strong>esse</strong> é o Histórias Assombrosas
+                        </div>
+                        <div class="bt col-3">
+                            <button type="button" class="btn-acess btn btn-outline-dark btn-lg rounded">Acesso</button>
+                        </div>
+                    </div>
+                    <div id="srow" class="srow row">
+                        <div class="phrase">
+                            "O site perfeito para a leitura de histórias de terror"
+                        </div>
+                    </div>
+                </div>
+                <div class="section exp">
 
-                            $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
-                            $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
-                            $rank = 1;
-                            foreach ($pdo->query($sql) as $key => $value) {
-                                echo '<tr class="table-dark"><th class="rankum">Rank: ' . $rank++ . '</th>' . '<td class="bename"> Nome: ' . $value['nome'] . '</td>' . '<td class="bepoints"> Pontuação: '. $value['pontos_leitor'] . '</td>'. '<tr>';
-                            }
-                        ?>
-                    </tbody>
-                </table>
+                </div>
+            </div> -->
+            <div id="bestreaders" class="bestreaders">
+                <div id="bereaders" class="bereaders">
+                    <div class="betitle">Os maiores leitores do site</div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>User</th>
+                                <th>Pontunação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
+                                $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
+                                $rank = 1;
+                                foreach ($pdo->query($sql) as $key => $value) {
+
+                                    if($rank % 2 == 0){
+                                        echo '<tr class="table"><th class="rankum">Rank: ' . $rank++ . '</th>' . '<td class="bename"> Nome: ' . $value['nome'] . '</td>' . '<td class="bepoints"> Pontuação: '. $value['pontos_leitor'] . '</td>'. '<tr>';
+                                    }else{
+                                        echo '<tr class="table-dark"><th class="rankum">Rank: ' . $rank++ . '</th>' . '<td class="bename"> Nome: ' . $value['nome'] . '</td>' . '<td class="bepoints"> Pontuação: '. $value['pontos_leitor'] . '</td>'. '<tr>';
+                                    }
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

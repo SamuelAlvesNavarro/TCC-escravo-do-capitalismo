@@ -9,10 +9,26 @@
     src: url(../fonts/theseasons/fontspring-demo-theseasons-bd-webfont.woff2);
 }
 /* Fonts: Spectral */
-.all{
+/* MENU */
+
+.menu{
+    position: fixed;
+    min-height: 70px;
+    width: 100%;
+    background-color: red;
+}
+.menudiv{
+    background-color: red;
+}
+.switch-mode{
+    width: 50px;
+    height: 50px;
+    background-color: aqua;
+}
+/* MAIN */
+.main{
     padding-left: 5%;
     padding-right: 5%;
-    padding-top: 2%;
 }
 .titleh1{
     font-family: theseasons;
