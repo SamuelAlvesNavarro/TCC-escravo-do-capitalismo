@@ -1,1 +1,1 @@
-"# TCC-escravo-do-capitalismo" 
+"# TCC-escravos-do-capitalismo" 
