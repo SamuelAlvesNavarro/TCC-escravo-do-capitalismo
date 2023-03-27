@@ -14,6 +14,6 @@
         <input type="password" id="senha" name="senha"><br>
     </form>
     <button>Entrar</button><br>
-    <a href="page/conta.html"><p>Criar conta</p></a>
+    <a href="cadastro.php"><p>Criar conta</p></a>
 </body>
 </html>

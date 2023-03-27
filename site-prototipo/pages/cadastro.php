@@ -16,7 +16,6 @@
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email"><br>
     </form>
-    <button>Entrar</button><br>
-    <a href="cadastro.php"><p>Criar conta</p></a>
+    <button>Cadastrar</button><br>
 </body>
 </html>
