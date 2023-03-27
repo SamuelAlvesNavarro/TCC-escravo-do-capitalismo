@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão de Formulario</title>
+</head>
+<body>
+    
+    <form name="F_Revisao" method="get" action="revisao45.php">
+
+        <label>Nome:</label><br>
+        <input type="text" name="f_nome" size="30" maxlength="30"><br><br>
+
+        <label>Senha:</label><br>
+        <input type="password" name="f_senha" size="20" maxlength="20"><br><br>
+
+        <label>Sexo:</label><br>
+        <input type="radio" name="f_sexo" value="F" checked="checked">Feminino<br>
+        <input type="radio" name="f_sexo" value="M">Masculino<br><br>
+
+        <label>Esporte:</label><br>
+        <select name="f_esporte">
+            <option value="futebol">Futebol</option>
+            <option value="volei">Volei</option>
+            <option value="basquete">Basquete</option>
+            <option value="lutas">Lutas</option>
+            <option value="">Outros</option>
+        </select><br><br>
+
+        <label>Meios de transportes utilizados no dia-a-dia</label><br>
+        <input type="checkbox" name="f_tcarro" value="1">Carro <br>
+        <input type="checkbox" name="f_tmoto" value="1">Moto <br>
+        <input type="checkbox" name="f_tonibus" value="1">Onibus <br><br>
+
+        <label>Comentario:</label><br>
+        <textarea name="f_coment" cols="50" rows="5"></textarea><br><br>
+
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Limpar">
+
+    </form>
+
+</body>
+</html>
