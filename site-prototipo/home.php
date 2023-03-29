@@ -55,7 +55,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                $pdo = new PDO('mysql:host=localhost;dbname=487836', 'root', '');
+                                $pdo = new PDO('mysql:host=historiasassombradas.orgfree.com;dbname=487836', 'root', '');
                                 $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
                                 $rank = 1;
                                 foreach ($pdo->query($sql) as $key => $value) {
