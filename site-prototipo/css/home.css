@@ -4,31 +4,51 @@
     background-color: white;
     /*color: white;*/
 }
-@font-face {
-    font-family: theseasons;
-    src: url(../fonts/theseasons/fontspring-demo-theseasons-bd-webfont.woff2);
+:root {
+    --text: black;
+    --background: white;
+    color-scheme: light;
+    --box-shadow-color: #948f94;
 }
-/* Fonts: Spectral */
+.dark{
+    color-scheme: dark;
+    --background: black;
+    --text:white;
+    --box-shadow-color: white;
+}
 /* MENU */
 
 .menu{
     position: fixed;
-    min-height: 70px;
+    min-height: 40px;
     width: 100%;
-    background-color: red;
+    background-color: var(--background);
+    box-shadow: 0px 6px 12px 0px var(--box-shadow-color);
 }
 .menudiv{
-    background-color: red;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    background-color: var(--background);
 }
-.switch-mode{
-    width: 50px;
-    height: 50px;
-    background-color: aqua;
+.mens{
+    width: 10%;
+    height: 100%;
+    color: var(--text);
+    padding: 1%;
+    text-align: center;
+    background-color: var(--background);
 }
 /* MAIN */
+html{
+    background-color: var(--background);
+    color: var(--text);
+}
 .main{
     padding-left: 5%;
     padding-right: 5%;
+    background-color: var(--background);
+    color: var(--text);
 }
 .titleh1{
     font-family: theseasons;
