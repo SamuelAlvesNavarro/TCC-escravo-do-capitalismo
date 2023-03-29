@@ -13,7 +13,11 @@
     <div id="all" class="all">
         <div class="menu" id="menu">
             <div class="menudiv" id="menudiv">
-                <i id="mode" class="fa-solid fa-sun"></i>
+                <div class="mens"><i id="mode" class="fa-solid fa-sun"></i></div>
+                <div class="mens">fddfs</div>
+                <div class="mens">ffsdfsd</div>
+                <div class="mens">ffsdf</div>
+                <div class="mens">fssdf</div>
             </div>
         </div>
         <script type="text/javascript" src="js/home.js"></script>
