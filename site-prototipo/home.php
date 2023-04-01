@@ -56,7 +56,7 @@
                         <tbody>
                             <?php
                             echo "PHP NÃO ESTÁ DANDO ERRADO";
-                                $pdo = new PDO('mysql:host=historiasassombradas.orgfree.com;dbname=487836', 'historiasassombradas.orgfree.com', 'samu1122');
+                                $pdo = new PDO('mysql:host=historiasassombradas.orgfree.com;dbname=487836', '487836', '');
                                 $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
                                 $rank = 1;
                                 foreach ($pdo->query($sql) as $key => $value) {
