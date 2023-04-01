@@ -14,10 +14,6 @@
         <input type="password" id="senha" name="senha"><br>
     </form>
     <button>Entrar</button><br>
-<<<<<<< HEAD:site-prototipo/pages/login.html
     <a href="cadastro.html"><p>Criar conta</p></a>
-=======
-    <a href="cadastro.php"><p>Criar conta</p></a>
->>>>>>> 528842b10bbf781eef5edf4b8578d9c297ad7f40:site-prototipo/pages/login.php
 </body>
 </html>
