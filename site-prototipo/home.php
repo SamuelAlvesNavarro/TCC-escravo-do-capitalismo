@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="transi">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,39 +10,62 @@
     <title>Home Page</title>
 </head>
 <body>
-    <div id="all" class="all">
-        <div class="menu" id="menu">
-            <div class="menudiv" id="menudiv">
-                <div class="mens"><i id="mode" class="fa-solid fa-sun"></i></div>
-                <div class="mens">fddfs</div>
-                <div class="mens">ffsdfsd</div>
-                <div class="mens">ffsdf</div>
-                <div class="mens">fssdf</div>
-            </div>
-        </div>
-        <script type="text/javascript" src="js/home.js"></script>
-        <div id="main" class="main">
-            <!-- <div id="sections" class="sections">
-                <div class="section home-section">
-                    <div id="frow" class="frow row">
-                        <div class="titleh1 col-9">
-                            Olá, <strong>esse</strong> é o Histórias Assombrosas
-                        </div>
-                        <div class="bt col-3">
-                            <button type="button" class="btn-acess btn btn-outline-dark btn-lg rounded">Acesso</button>
-                        </div>
-                    </div>
-                    <div id="srow" class="srow row">
-                        <div class="phrase">
-                            "O site perfeito para a leitura de histórias de terror"
-                        </div>
-                    </div>
+    <div id="all" class="all transi">
+        <nav>
+            <ul class="menu transi bc">
+                <li><a href="#exp-sec">Acesso</a></li>
+                <li><i id="mode" class="fa-solid fa-sun transi"></i></li>
+            </ul>
+            <div class="vertmenu">
+                <div class="slidernav transi">
+                    <a href="#home-section"></a>
+                    <a href="#exp-sec"></a>
                 </div>
-                <div class="section exp">
+            </div>
+        </nav>
+        <div id="main" class="main transi bc">
+            <div id="sections" class="sections">
+                <div class="section home-section" id="home-section">
+                    <div class="col1 col">
+                        <div id="frow" class="frow">
+                            <div class="titleh1">
+                                Olá, esse é o Histórias Assombrosas
+                            </div>
+                        </div>
+                        <div id="srow" class="srow">
+                            <div class="phrase">
+                                "O site perfeito para a leitura de histórias de terror"<br>(Donald Trump, 1995)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col2 col">
+                        <div class="it1">ST</div>
+                    </div>
 
+                    <div class="arrowdiv">
+
+                    </div>
+                </div>
+                <div class="section home-section" id="exp-sec">
+                    <div class="col1 col">
+                        <div id="frow" class="frow">
+                            <div class="titleh1">
+                                Olá, esse é o HistóCUsas
+                            </div>
+                        </div>
+                        <div id="srow" class="srow">
+                            <div class="phrase">
+                                "O site perfeito para a leitura de histórias de terror"<br>(Donald Trump, 1995)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col2 col">
+                        <div class="it1">ST</div>
+                    </div>
                 </div>
             </div>
-            <div id="bestreaders" class="bestreaders">
+            <script type="text/javascript" src="js/home.js"></script>
+            <!--<div id="bestreaders" class="bestreaders">
                 <div id="bereaders" class="bereaders">
                     <div class="betitle">Os maiores leitores do site</div>
                     <table class="table">
@@ -55,7 +78,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                $pdo = new PDO('mysql:host=historiasassombradas.orgfree.com;dbname=487836', 'root', '');
+                                $pdo = new PDO('host:localhost;dbname=pi', 'root', '');
                                 $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
                                 $rank = 1;
                                 foreach ($pdo->query($sql) as $key => $value) {
@@ -70,7 +93,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div> -->
+            </div>-->
         </div>
     </div>
 </body>

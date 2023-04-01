@@ -1,4 +1,5 @@
-console.log('foi');
+viewPortHeight = window.innerHeight + "px";
+
 const toggle = document.getElementById("mode");
 const root = document.querySelector(":root");
 
