@@ -20,9 +20,9 @@
                 <div class="mens">fssdf</div>
             </div>
         </div>
-        <script type="text/javascript" src="js/home.js"></script>
+        <script type="text/javascript" src="js/home.js"></script><br>
         <div id="main" class="main">
-            <!-- <div id="sections" class="sections">
+             <div id="sections" class="sections">
                 <div class="section home-section">
                     <div id="frow" class="frow row">
                         <div class="titleh1 col-9">
@@ -55,7 +55,8 @@
                         </thead>
                         <tbody>
                             <?php
-                                $pdo = new PDO('mysql:host=historiasassombradas.orgfree.com;dbname=487836', 'root', '');
+                            echo "PHP NÃO ESTÁ DANDO ERRADO";
+                                $pdo = new PDO('mysql:host=historiasassombradas.orgfree.com;dbname=487836', 'historiasassombradas.orgfree.com', 'samu1122');
                                 $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
                                 $rank = 1;
                                 foreach ($pdo->query($sql) as $key => $value) {
@@ -70,7 +71,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </body>
