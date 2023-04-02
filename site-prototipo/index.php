@@ -11,29 +11,65 @@
 </head>
 <body>
     <div id="all" class="all transi">
-        <nav>
-            <ul class="menu transi bc">
-                <li><a href="#exp-sec">Acesso</a></li>
-                <li><i id="mode" class="fa-solid fa-sun transi"></i></li>
-            </ul>
-            <div class="vertmenu">
-                <div class="slidernav transi">
-                    <a href="#home-section"></a>
-                    <a href="#exp-sec"></a>
-                    <a href="#exp-sec"></a>
-                    <a href="#exp-sec"></a>
-                    <a href="#exp-sec"></a>
-                    <a href="#exp-sec"></a>
+        <nav class="menu">
+            <div class="fpart transi bc">
+                <div id="acess"><a href="#exp-sec">Acesso</a></div>
+                <div class="piece logo-piece">
+                    <div class="logo">
+
+                    </div>
                 </div>
+                <div class="container-slider">
+                    <div class="slidernav transi">
+                        <a id="home-link" href="#home-section" onclick="SwitchColor(1)"></a>
+                        <a id="exp-link" href="#exp-sec" onclick="SwitchColor(2)"></a>
+                        <a id="beh-link" href="#beh-sec" onclick="SwitchColor(3)"></a>
+                        <a id="wys-link" href="#wys-sec" onclick="SwitchColor(4)"></a>
+                        <a id="rank-link" href="#rank-sec" onclick="SwitchColor(5)"></a>
+                        <a id="prem-link" href="#prem-sec" onclick="SwitchColor(6)"></a>
+                        <a id="last-link" href="#last-sec" onclick="SwitchColor(7)"></a>
+                    </div>
+                </div>
+                <div class="piece"><i id="mode" class="fa-solid fa-sun transi"></i></div>
             </div>
         </nav>
         <div id="main" class="main transi bc">
             <div id="sections" class="sections">
                 <div class="section home-section" id="home-section">
+                    <div class="home-col1 col">
+                        <div id="frow" class="home-frow">
+                            <div class="home-titleh1">
+                                Olá, esse é o Histórias Assombrosas
+                            </div>
+                        </div>
+                        <div id="srow" class="home-srow">
+                            <div class="phrase">
+                                "O site perfeito para a leitura de histórias de terror"<br>(Donald Trump, 1995)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home-col2 col">
+                        <div class="it1">ST</div>
+                    </div>
+                </div>
+                <div class="section exp-sec" id="exp-sec">
+                    <div class="exp-col1 col">
+                       
+                    </div>
+                    <div class="exp-col2 col">
+                        No nosso Site, oferecemos.....
+                    </div>
+                </div>
+                <div class="section home-section" id="beh-sec">
+                    <div class="beh-col1 col">
+                        CU & +
+                    </div>
+                </div>
+                <div class="section home-section" id="wys-sec">
                     <div class="col1 col">
                         <div id="frow" class="frow">
                             <div class="titleh1">
-                                Olá, esse é o Histórias Assombrosas
+                                No nosso Site, ooferecemos.....
                             </div>
                         </div>
                         <div id="srow" class="srow">
@@ -45,16 +81,37 @@
                     <div class="col2 col">
                         <div class="it1">ST</div>
                     </div>
-
-                    <div class="arrowdiv">
-
+                </div>
+                <div class="section exp-sec" id="rank-sec">
+                    <div class="exp-col1 col">
+                       
+                    </div>
+                    <div class="exp-col2 col">
+                        No nosso Site, oferecemos.....
                     </div>
                 </div>
-                <div class="section home-section" id="exp-sec">
+                <div class="section home-section" id="prem-sec">
                     <div class="col1 col">
                         <div id="frow" class="frow">
                             <div class="titleh1">
-                                Olá, esse é o HistóCUsas
+                                No nosso Site, ooferecemos.....
+                            </div>
+                        </div>
+                        <div id="srow" class="srow">
+                            <div class="phrase">
+                                "O site perfeito para a leitura de histórias de terror"<br>(Donald Trump, 1995)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col2 col">
+                        <div class="it1">ST</div>
+                    </div>
+                </div>
+                <div class="section home-section" id="last-sec">
+                    <div class="col1 col">
+                        <div id="frow" class="frow">
+                            <div class="titleh1">
+                                No nosso Site, ooferecemos.....
                             </div>
                         </div>
                         <div id="srow" class="srow">

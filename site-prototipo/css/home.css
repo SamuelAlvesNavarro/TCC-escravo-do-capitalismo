@@ -17,7 +17,7 @@
 :root {
     --text: black;
     --background: white;
-    --background-2: rgb(190, 55, 55);
+    --background-2: #dbdbdb;
     --background-menu: white;
     color-scheme: light;
     --box-shadow-color: #948f94;
@@ -28,10 +28,10 @@
 .dark{
     color-scheme: dark;
     --background: #121212;
-    --background-2: #121212;
+    --background-2: #252525;
     --background-menu: #222222;
     --text:white;
-    --box-shadow-color: none;
+    --box-shadow-color: #696869;
     --background-nav: #222222;
 
     --effect-color: rgb(230, 16, 16);
@@ -42,62 +42,92 @@
     width: 20px;
     height: 20px;
 }
+/* ALL */
+.all{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+}
 /* MENU */
-.menu {
+.menu{  
   display: flex;
   z-index: 1000;
-  position: fixed;
-  justify-content: right;
-  align-items: center;
-  width: 100vw;
-  min-height: 10vh;
+  height: 100vh;
+  width: 8vw;
+  flex-direction: column;
   list-style: none;
   background-color: var(--background-menu);
   font-family: 'Raleway', sans-serif;
-  box-shadow: 0px 6px 12px 0px var(--box-shadow-color);
+  box-shadow: 0px 0px 12px 0px var(--box-shadow-color);
 }
-.menu li {
-  width: 8%;
-  height: 100%;
+.fpart{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.piece{
+  position: relative;
+  width: 100%;
+  height: 25vh;
   background-color: inherit;
   text-align: center;
 }
-.menu li a{
+.piece a{
     font-size: 1.2em;
     color: var(--text);
     text-decoration: none;
     transition: all 0.45s;
 }
-.menu li a:hover{
+.piece a:hover{
     color: var(--effect-color);
+}
+.logo{
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    background-color: var(--text);
 }
 #mode{
     color: var(--text);
-    background-color: var(--background-menu);
     font-size: 2em;
     cursor: pointer;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
-.vertmenu{
-    z-index: 10000;
-    width: 4%;
-    height: 100vh;
-    position: fixed;
+.container-slider{
+    position: relative;
+    width: 100%;
+    height: 50vh;
 }
 .slidernav{
     height: 50vh;
-    margin-top: 25vh;
-    width: auto;
-    float: right;
+    width: max-content;
+    padding: 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 15%;
-    border-radius: 15px;
+    box-shadow: 0px 6px 12px 0px var(--box-shadow-color);
+    border-radius: 25px;
     background-color: var(--background-nav);
     opacity: 0.5;
     transition: linear 0.45s;
+    z-index: 1000;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 .slidernav a{
+    padding: 10%;
     height: 20px;
     width: 20px;
     transition: 0.1s linear;
@@ -107,11 +137,33 @@
 .slidernav a:hover{
     background: var(--text);
 }
+#acess{
+    position: absolute;
+    top: 7vh;
+    right: 7vh;
+    width: auto;
+    height: auto;
+    padding: 1.4%;
+    box-shadow: 0px 6px 12px 0px var(--box-shadow-color);
+    transition: all 0.45s;
+    background-color: var(--background-menu);
+    opacity: 0.5;
+}
+#acess a{
+    text-decoration: none;
+    font-size: 1.2em;
+    color: var(--text);
+    transition: all 0.45s;
+}
+#acess a:hover{
+    color: var(--effect-color);
+}
 /* MAIN */
 .main{
     background-color: var(--background);
     color: var(--text);
-    height: 100vh;
+    height: 100vh;    
+    width: 92vw;
     overflow-y: hidden;
     scroll-snap-align: y mandatory;
     scroll-behavior: smooth;
@@ -122,41 +174,67 @@
 }
 .section{
     height: 100vh;
-    padding-top: 20vh;
     transition: linear 0.1s;
 }
 .home-section{
-    padding-left: 5%;
-    padding-right: 5%;
     font-family: 'Raleway', sans-serif;
 }
 .col{
     float: left;
 }
-.col1{
-    width: 70%;
+.home-col1{
+    padding-top: 20vh;
+    width: 65%;
     text-align: right;
 }
-.frow{
+.home-frow{
     width: 80%;
 }
-.titleh1{
+.home-titleh1{
     font-size: 4em;
 }
-.srow{
+.home-srow{
     width: 80%;
     font-size: 1.4em;
     padding-top: 5%;
     text-align: right;
 }
-.col2{
+.home-col2{
     display: flex;
     align-items: center;
     justify-content: center;
     height: inherit;
     font-size: 3em;
-    width: 30%;
+    width: 35%;
 }
 #exp-sec{
     background-color: var(--background-2);
+}
+.exp-col1{
+    width: 30%;
+    height: 100vh;
+    background-image: url(../img/gato.jpg);
+    background-size: cover;
+}
+.exp-col2{
+    height: 100vh;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+    font-size: 3em;
+    width: 70%;
+}
+.beh-col1{
+    width: 100%;
+    font-size: 6em;
+    text-align: center;
+    display: flex;
+}
+
+.selected-link{
+    transform: scale(120%);
+    border-radius: 0% !important;
+    background-color: var(--text);
 }
