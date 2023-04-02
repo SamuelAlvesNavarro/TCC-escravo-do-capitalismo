@@ -8,7 +8,7 @@
     color: var(--text);
 }
 .transi{
-    transition: linear 0.45s;
+    transition: .45s linear;
     transition-property: background-color;
 }
 .bc{
@@ -17,18 +17,24 @@
 :root {
     --text: black;
     --background: white;
+    --background-2: rgb(190, 55, 55);
     --background-menu: white;
     color-scheme: light;
     --box-shadow-color: #948f94;
     --background-nav: #aaaaaa;
+
+    --effect-color: maroon;
 }
 .dark{
     color-scheme: dark;
     --background: #121212;
+    --background-2: #121212;
     --background-menu: #222222;
     --text:white;
     --box-shadow-color: none;
     --background-nav: #222222;
+
+    --effect-color: rgb(230, 16, 16);
 }
 /* SHAPES */
 .circle{
@@ -63,7 +69,7 @@
     transition: all 0.45s;
 }
 .menu li a:hover{
-    color: maroon;
+    color: var(--effect-color);
 }
 #mode{
     color: var(--text);
@@ -88,6 +94,7 @@
     padding: 15%;
     border-radius: 15px;
     background-color: var(--background-nav);
+    opacity: 0.5;
     transition: linear 0.45s;
 }
 .slidernav a{
@@ -149,4 +156,7 @@
     height: inherit;
     font-size: 3em;
     width: 30%;
+}
+#exp-sec{
+    background-color: var(--background-2);
 }
