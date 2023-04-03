@@ -18,6 +18,7 @@
     --text: black;
     --background: white;
     --background-2: #dbdbdb;
+    --background-3: #c2c2c2;
     --background-menu: white;
     color-scheme: light;
     --box-shadow-color: #948f94;
@@ -29,11 +30,11 @@
     color-scheme: dark;
     --background: #121212;
     --background-2: #252525;
+    --background-3: #3f3f3f;
     --background-menu: #222222;
     --text:white;
     --box-shadow-color: #696869;
     --background-nav: #222222;
-
     --effect-color: rgb(230, 16, 16);
 }
 /* SHAPES */
@@ -139,8 +140,8 @@
 }
 #acess{
     position: absolute;
-    top: 7vh;
-    right: 7vh;
+    top: 5vh;
+    right: 5vh;
     width: auto;
     height: auto;
     padding: 1.4%;
@@ -205,7 +206,7 @@
     justify-content: center;
     height: inherit;
     font-size: 3em;
-    width: 35%;
+    width: 30%;
 }
 #exp-sec{
     background-color: var(--background-2);
@@ -235,6 +236,9 @@
 
 .selected-link{
     transform: scale(120%);
-    border-radius: 0% !important;
     background-color: var(--text);
+}
+
+.beh-sec{
+    background-color: var(--background-3);
 }

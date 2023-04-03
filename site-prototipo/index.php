@@ -60,9 +60,9 @@
                         No nosso Site, oferecemos.....
                     </div>
                 </div>
-                <div class="section home-section" id="beh-sec">
+                <div class="section beh-sec home-section" id="beh-sec">
                     <div class="beh-col1 col">
-                        CU & +
+                        coisinhas & +
                     </div>
                 </div>
                 <div class="section home-section" id="wys-sec">
@@ -126,7 +126,7 @@
                 </div>
             </div>
             <script type="text/javascript" src="js/home.js"></script>
-            <!--<div id="bestreaders" class="bestreaders">
+            <div id="bestreaders" class="bestreaders">
                 <div id="bereaders" class="bereaders">
                     <div class="betitle">Os maiores leitores do site</div>
                     <table class="table">
@@ -155,7 +155,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>-->
+            </div>
         </div>
     </div>
 </body>
