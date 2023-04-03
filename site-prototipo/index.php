@@ -13,7 +13,7 @@
     <div id="all" class="all transi">
         <nav class="menu">
             <div class="fpart transi bc">
-                <div id="acess"><a href="#exp-sec">Acesso</a></div>
+                <div id="acess"><a href="pages/acesso.html">Acesso</a></div>
                 <div class="piece logo-piece">
                     <div class="logo">
 
@@ -52,7 +52,7 @@
                         <div class="it1">ST</div>
                     </div>
                 </div>
-                <div class="section exp-sec" id="exp-sec">
+                <div class="section exp-sec" id="exp-sec"> <!-- segunda -->
                     <div class="exp-col1 col">
                        
                     </div>
@@ -60,12 +60,16 @@
                         No nosso Site, oferecemos.....
                     </div>
                 </div>
+<<<<<<< HEAD
+                <div class="section beh-sec home-section" id="beh-sec"> <!-- terceira -->
+=======
                 <div class="section beh-sec home-section" id="beh-sec">
+>>>>>>> e2b790f5b10ccd1c4c34c890618afa7654437346
                     <div class="beh-col1 col">
                         coisinhas & +
                     </div>
                 </div>
-                <div class="section home-section" id="wys-sec">
+                <div class="section home-section" id="wys-sec"> <!--Quarta-->
                     <div class="col1 col">
                         <div id="frow" class="frow">
                             <div class="titleh1">
@@ -82,7 +86,7 @@
                         <div class="it1">ST</div>
                     </div>
                 </div>
-                <div class="section exp-sec" id="rank-sec">
+                <div class="section exp-sec" id="rank-sec"> <!--Quinta-->
                     <div class="exp-col1 col">
                        
                     </div>
@@ -90,7 +94,7 @@
                         No nosso Site, oferecemos.....
                     </div>
                 </div>
-                <div class="section home-section" id="prem-sec">
+                <div class="section home-section" id="prem-sec"><!--Sexta-->
                     <div class="col1 col">
                         <div id="frow" class="frow">
                             <div class="titleh1">
@@ -107,7 +111,7 @@
                         <div class="it1">ST</div>
                     </div>
                 </div>
-                <div class="section home-section" id="last-sec">
+                <div class="section home-section" id="last-sec"> <!--Sétima-->
                     <div class="col1 col">
                         <div id="frow" class="frow">
                             <div class="titleh1">
