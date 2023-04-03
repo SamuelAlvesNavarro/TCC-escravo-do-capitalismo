@@ -1,19 +1,27 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <form name="login" method="post" action="cadastro.php">
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br>
-        <label for="senha">Senha:</label><br>
-        <input type="password" id="senha" name="senha"><br>
-    </form>
-    <button>Entrar</button><br>
-    <a href="cadastro.html"><p>Criar conta</p></a>
-</body>
-</html>
+<?php
+    $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
+    $email = null;
+    $senha = null;
+
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
+
+    $sql = "SELECT * FROM user_common WHERE email = '$email' and senha = '$senha'";
+
+    $prepare = $pdo->prepare($sql);
+    $prepare -> execute();
+    $checkEmailCadastrado = $prepare -> rowCount();
+
+    if(isset($checkEmailCadastrado)){
+        if($checkEmailCadastrado > 0){
+            $num = rand(10000, 900000);
+            $_COOKIE['email'] = $email;
+            setcookie("numLogin", $num);
+            header("Location:central.php?num=$num");
+
+            echo "<a href=central.php>Central<\a>";
+        }
+    }else{
+        echo "Error: login não efetuado";
+    }
+?>

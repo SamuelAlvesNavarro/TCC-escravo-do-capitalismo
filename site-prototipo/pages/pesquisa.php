@@ -13,5 +13,8 @@
     
     <input type="text" name="" id="" class="searchbar">
     <button>Pesquisar</button>
+    <?php
+    echo "<a href=../../php-separado/cadastro/central.php>Volta</a>";
+    ?>
 </body>
 </html>
