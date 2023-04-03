@@ -13,7 +13,7 @@ class Produto
     {
         try {
             $this->connect = new PDO('mysql:host=localhost;dbname=exemplo', 'root', '');
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
             echo $th->getMessage();
             die();
         }
