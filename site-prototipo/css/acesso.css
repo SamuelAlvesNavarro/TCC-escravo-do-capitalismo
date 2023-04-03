@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* ALL */
+.all{
+    background-color: #121212;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    color: aliceblue;
+}
+/* LOGIN */
+.login{
+    width: 30vh;
+    opacity: 0.75;
+    height: auto;
+    margin: 0 auto;
+    padding: 0.9%;
+    border: white solid 0.2px;
+    border-radius: 15px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: .2s linear;
+}
+.login:hover{
+    opacity: 1.1;
+}
+.login-form{
+    border: white solid 0.2px;
+    border-radius: 15px;
+    padding: 20px;
+}
