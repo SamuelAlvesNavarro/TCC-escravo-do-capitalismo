@@ -1,18 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Abel', sans-serif;
 }
 /* ALL */
 .all{
-    background-color: #121212;
+    background-image: linear-gradient(#121212, #333333);
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
+    position: relative;
     color: aliceblue;
 }
 /* LOGIN */
 .login{
-    width: 30vh;
+    width: auto;
     opacity: 0.75;
     height: auto;
     margin: 0 auto;
@@ -32,4 +36,36 @@
     border: white solid 0.2px;
     border-radius: 15px;
     padding: 20px;
+}
+.login-form label{
+    font-size: 2em;
+}
+.login-form input{
+    font-size: 1.2em;
+    width: 10vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    padding: 4%;
+    color: aliceblue;
+    background-color: transparent;
+    border: white solid 0.2px;
+}
+#submit-login{
+    margin: 0 auto;
+}
+
+.container-cadastro{
+    width: 20vw;
+    position: absolute;
+    right: -20vw;
+    transition: .45s linear;
+}
+.container-cadastro-appear{
+    right: 0;
+}
+
+.container-login-disappear{
+    transform: .6s linear;
+    left: -100%;
+    opacity: 0;
 }

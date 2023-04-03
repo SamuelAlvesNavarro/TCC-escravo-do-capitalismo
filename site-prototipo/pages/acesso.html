@@ -9,18 +9,18 @@
 </head>
 <body>
     <div class="all">
-        <div class="container-login">
-            <div class="login">
+        <div class="container-login" id="container-login">
+            <div class="login" id="login">
                 <form class="login-form" name="login" method="post" action="cadastro.php">
                     <label for="email">Email:</label><br>
                     <input type="email" id="email" name="email"><br>
                     <label for="senha">Senha:</label><br>
                     <input type="password" id="senha" name="senha"><br>
-                    <input type="button" value="submit">
+                    <input id="submit-login" type="button" value="submit" onclick="showCadastro()">
                 </form>
             </div>
         </div>
-        <div class="container-cadastro">
+        <div class="container-cadastro" id="container-cadastro">
             <div class="cadastro">
                 <form class="cadastro-form" name="cadastro" method="post" action="cadastro.php">
                     <label for="apelido">Apelido:</label><br>
@@ -38,10 +38,11 @@
                     <label for="confirmarsenha">Confirmar senha:</label><br>
                     <input type="password" name="confirmarsenha" id="confirmarsenha" required><br>
             
-                    <input type="submit" name="cadastrar" value="Cadastrar">
+                    <input type="submit" name="cadastrar" value="Cadastrar" onclick="showCadastro()">
                 </form>
             </div>
         </div>
     </div>
+    <script src="../js/acesso.js"></script>
 </body>
 </html>
