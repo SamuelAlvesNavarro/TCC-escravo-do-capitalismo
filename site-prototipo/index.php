@@ -60,11 +60,7 @@
                         No nosso Site, oferecemos.....
                     </div>
                 </div>
-<<<<<<< HEAD
                 <div class="section beh-sec home-section" id="beh-sec"> <!-- terceira -->
-=======
-                <div class="section beh-sec home-section" id="beh-sec">
->>>>>>> e2b790f5b10ccd1c4c34c890618afa7654437346
                     <div class="beh-col1 col">
                         coisinhas & +
                     </div>
