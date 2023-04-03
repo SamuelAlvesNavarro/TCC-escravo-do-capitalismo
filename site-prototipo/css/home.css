@@ -16,8 +16,13 @@
 }
 :root {
     --text: black;
-    --background: white;
+    --background: white;  
     --background-2: #dbdbdb;
+    --background-3: #c7c7c7;
+    --backgroud-4: #afaeae;
+    --backgroud-5: #918f8f;
+    --background-6: #7a7979;
+    --background-7: #5f5f5f;
     --background-menu: white;
     color-scheme: light;
     --box-shadow-color: #948f94;
@@ -233,6 +238,25 @@
     display: flex;
 }
 
+#beh-sec{
+    background-color: var(--background-3);
+}
+
+#wys-sec{
+    background-color: var(--backgroud-4);
+}
+
+#rank-sec{
+    background-color: var(--backgroud-5);
+}
+
+#prem-sec{
+    background-color: var(--background-6);
+}
+
+#last-sec{
+    background-color: var(--background-7);
+}
 .selected-link{
     transform: scale(120%);
     border-radius: 0% !important;
