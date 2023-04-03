@@ -59,6 +59,8 @@
     position: absolute;
     right: -20vw;
     transition: .45s linear;
+    background-color: rgb(209, 209, 209);
+    height: 100vh;
 }
 .container-cadastro-appear{
     right: 0;
