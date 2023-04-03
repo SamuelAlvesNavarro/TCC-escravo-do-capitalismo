@@ -4,27 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/acesso.css">
     <title>Cadastro</title>
 </head>
 <body>
-    <form name="cadastro" method="post" action="cadastro.php">
-        <label for="apelido">Apelido:</label><br>
-        <input type="text" id="apelido" name="apelido" required><br>
-
-        <label for="name">Nome:</label><br>
-        <input type="text" id="name" name="name" required><br>
-
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br>
-
-        <label for="senha">Senha:</label><br>
-        <input type="password" id="senha" name="senha" required><br>
-
-        <label for="confirmarsenha">Confirmar senha:</label><br>
-        <input type="password" name="confirmarsenha" id="confirmarsenha" required><br>
-
-        <input type="submit" name="cadastrar" value="Cadastrar">
-    </form>
-    <a href="login.html"><p>Já tem conta?</p></a>
+    <div class="all">
+        <div class="container-login">
+            <div class="login">
+                <form class="login-form" name="login" method="post" action="cadastro.php">
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email"><br>
+                    <label for="senha">Senha:</label><br>
+                    <input type="password" id="senha" name="senha"><br>
+                    <input type="button" value="submit">
+                </form>
+            </div>
+        </div>
+        <div class="container-cadastro">
+            <div class="cadastro">
+                <form class="cadastro-form" name="cadastro" method="post" action="cadastro.php">
+                    <label for="apelido">Apelido:</label><br>
+                    <input type="text" id="apelido" name="apelido" required><br>
+            
+                    <label for="name">Nome:</label><br>
+                    <input type="text" id="name" name="name" required><br>
+            
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required><br>
+            
+                    <label for="senha">Senha:</label><br>
+                    <input type="password" id="senha" name="senha" required><br>
+            
+                    <label for="confirmarsenha">Confirmar senha:</label><br>
+                    <input type="password" name="confirmarsenha" id="confirmarsenha" required><br>
+            
+                    <input type="submit" name="cadastrar" value="Cadastrar">
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
