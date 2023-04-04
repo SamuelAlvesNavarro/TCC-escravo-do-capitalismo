@@ -7,7 +7,9 @@
 }
 /* ALL */
 .all{
-    background-image: linear-gradient(#121212, #333333);
+    background: url(../img/fundo-2-login.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
@@ -15,7 +17,8 @@
     color: aliceblue;
 }
 /* LOGIN */
-.login{
+.container-login{
+    transition: 1s linear;
     width: auto;
     opacity: 0.75;
     height: auto;
@@ -24,13 +27,15 @@
     border: white solid 0.2px;
     border-radius: 15px;
     position: absolute;
+    transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+}
+.login{
     transition: .2s linear;
 }
 .login:hover{
-    opacity: 1.1;
+    opacity: 1.4;
 }
 .login-form{
     border: white solid 0.2px;
@@ -55,19 +60,23 @@
 }
 
 .container-cadastro{
-    width: 20vw;
+    width: 40vw;
     position: absolute;
-    right: -20vw;
-    transition: .45s linear;
+    right: -40vw;
+    transition: .9s linear;
     background-color: rgb(209, 209, 209);
     height: 100vh;
 }
+.cadastro{
+    margin-left: 2vw;
+    margin-top: 2vw;
+    font-size: 1.4em;
+    color: black;
+}
 .container-cadastro-appear{
     right: 0;
+    background: rgba(255,255,255,1);
 }
-
 .container-login-disappear{
-    transform: .6s linear;
-    left: -100%;
-    opacity: 0;
+    left: 100vw;
 }
