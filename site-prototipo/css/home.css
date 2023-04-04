@@ -16,7 +16,8 @@
 }
 :root {
     --text: black;
-    --background: white;  
+    --background: white;
+    --background-1: none;  
     --background-2: #7e7d7d;
     --background-3: #646363;
     --backgroud-4: #4d4b4b;
@@ -28,11 +29,13 @@
     --box-shadow-color: #948f94;
     --background-nav: #aaaaaa;
 
+    --title-opacity: 1;
     --effect-color: maroon;
 }
 .dark{
     color-scheme: dark;
     --background: #121212;
+    --background-1: #121212; 
     --background-2: #252525;
     --background-3: #363636;
     --background-4: #4d4b4b;
@@ -41,6 +44,7 @@
     --background-7: white;
     --background-menu: #222222;
     --text:white;
+    --title-opacity: 0.4;
     --box-shadow-color: #696869;
     --background-nav: #222222;
 
@@ -149,6 +153,7 @@
 }
 #acess{
     position: absolute;
+    z-index: 1000;
     top: 7vh;
     right: 7vh;
     width: auto;
@@ -197,8 +202,11 @@
 }
 .home-col1{
     padding-top: 20vh;
-    width: 65%;
+    height: 100vh;
+    width: 100%;
     text-align: right;
+    opacity: var(--title-opacity);
+    background-color: var(--background-1);
 }
 .home-frow{
     width: 80%;
@@ -287,6 +295,5 @@
 
 .selected-link{
     transform: scale(120%);
-    border-radius: 0% !important;
     background-color: var(--text);
 }

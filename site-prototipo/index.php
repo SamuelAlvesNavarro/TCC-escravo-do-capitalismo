@@ -48,9 +48,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="home-col2 col">
-                        <div class="it1">ST</div>
-                    </div>
                 </div>
                 <div class="section exp-sec" id="exp-sec"> <!-- segunda -->
                     <div class="exp-col1 col">
@@ -62,7 +59,7 @@
                 </div>
                 <div class="section beh-sec home-section" id="beh-sec"> <!-- terceira -->
                     <div class="beh-col1 col">
-                        coisinhas & +
+                        CU
                     </div>
                 </div>
                 <div class="section home-section" id="wys-sec"> <!--Quarta-->
