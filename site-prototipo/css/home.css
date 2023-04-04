@@ -44,7 +44,7 @@
     --background-7: white;
     --background-menu: #222222;
     --text:white;
-    --title-opacity: 0.4;
+    --title-opacity: 0.6;
     --box-shadow-color: #696869;
     --background-nav: #222222;
 
@@ -176,7 +176,6 @@
 /* MAIN */
 .main{
     background-color: var(--background);
-    color: var(--text);
     height: 100vh;    
     width: 92vw;
     overflow-y: hidden;
@@ -204,18 +203,19 @@
     padding-top: 20vh;
     height: 100vh;
     width: 100%;
-    text-align: right;
     opacity: var(--title-opacity);
     background-color: var(--background-1);
+    color: white  !important;
 }
 .home-frow{
-    width: 80%;
+    width: 55%;
 }
 .home-titleh1{
     font-size: 4em;
+    text-align: right;
 }
 .home-srow{
-    width: 80%;
+    width: 55%;
     font-size: 1.4em;
     padding-top: 5%;
     text-align: right;

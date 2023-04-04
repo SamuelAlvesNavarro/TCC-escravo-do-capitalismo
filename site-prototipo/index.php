@@ -39,7 +39,7 @@
                     <div class="home-col1 col">
                         <div id="frow" class="home-frow">
                             <div class="home-titleh1">
-                                Olá, esse é o Histórias Assombrosas
+                                Olá, esse é o <br>Histórias <br>Assombrosas
                             </div>
                         </div>
                         <div id="srow" class="home-srow">
