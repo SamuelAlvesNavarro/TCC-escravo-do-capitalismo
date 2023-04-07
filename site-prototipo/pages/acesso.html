@@ -11,11 +11,17 @@
     <div class="all" id="all">
         <div class="container-login" id="container-login">
             <div class="login" id="login">
+                <div class="logo-container">
+                    <div class="logo">
+    
+                    </div>
+                    <button onclick="toBlack()">trocar</button>
+                </div>
                 <form class="login-form" name="login" method="post" action="cadastro.php">
                     <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email"><br>
+                    <input class="input" type="email" id="email" name="email"><br>
                     <label for="senha">Senha:</label><br>
-                    <input type="password" id="senha" name="senha"><br>
+                    <input class="input" type="password" id="senha" name="senha"><br>
                     <input id="submit-login" type="button" value="submit" onclick="showCadastro()">
                 </form>
             </div>

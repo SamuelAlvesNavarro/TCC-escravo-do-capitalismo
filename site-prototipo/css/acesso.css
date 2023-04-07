@@ -25,22 +25,36 @@
     margin: 0 auto;
     padding: 0.9%;
     border: white solid 0.2px;
+    background-color: rgba(39, 39, 39, 0.4);
     border-radius: 15px;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
 }
+.logo-container{
+    width: 100%;
+    height: 10vh;
+}
+.logo{
+    margin: 1.4% auto;
+    width: 10vh;
+    height: 10vh;
+    background-color: aqua;
+    border-radius: 50%;
+}
 .login{
+    padding: 1vw;
+    border: white solid 0.2px;
+    border-radius: 15px;
     transition: .2s linear;
 }
 .login:hover{
     opacity: 1.4;
 }
 .login-form{
-    border: white solid 0.2px;
-    border-radius: 15px;
-    padding: 20px;
+    padding: 3vw;
+    padding-top: 2vw;
 }
 .login-form label{
     font-size: 2em;
@@ -50,10 +64,12 @@
     width: 10vw;
     margin-top: 1vw;
     margin-bottom: 1vw;
-    padding: 4%;
     color: aliceblue;
     background-color: transparent;
     border: white solid 0.2px;
+}
+.input{
+    width: 10vw;
 }
 #submit-login{
     margin: 0 auto;
@@ -62,8 +78,8 @@
 .container-cadastro{
     width: 40vw;
     position: absolute;
-    right: -40vw;
-    transition: .9s linear;
+    left: -40vw;
+    transition: .4s linear;
     background-color: rgb(209, 209, 209);
     height: 100vh;
 }
@@ -74,9 +90,9 @@
     color: black;
 }
 .container-cadastro-appear{
-    right: 0;
+    left: 0;
     background: rgba(255,255,255,1);
 }
 .container-login-disappear{
-    left: 100vw;
+    left: -100vw;
 }

@@ -16,3 +16,6 @@ function showCadastro(){
     div_cadastro.classList.toggle("container-cadastro-appear");
     div_login.classList.toggle("container-login-disappear");
 }
+function toBlack(){
+    div_all.style.backgroundImage = 'linear-gradient(to left, #121212, black)';
+}
