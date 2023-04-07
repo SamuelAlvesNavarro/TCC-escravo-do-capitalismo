@@ -1,6 +1,7 @@
 const div_cadastro = document.getElementById("container-cadastro");
 const div_login = document.getElementById("container-login");
 const div_login_n = document.getElementById("login");
+const form_login = document.getElementById("login-form");
 var email = document.getElementById("input-email");
 var senha = document.getElementById("input-senha");
 const div_all = document.getElementById("all");
@@ -44,3 +45,10 @@ function login_bt(em, se){
         arrow.classList.remove("arrowappear");
     }
 }
+
+div_after.addEventListener("click", () => {
+
+    if(login_submit.classList.contains("filled-login-bt") && arrow.classList.contains("arrowappear")){
+        form_login.submit();
+    }
+})
