@@ -18,12 +18,13 @@
 }
 /* LOGIN */
 .container-login{
-    transition: 1s linear;
+    transition: .4s linear;
+    z-index: 5;
     width: auto;
     opacity: 0.75;
     height: auto;
     margin: 0 auto;
-    padding: 0.9%;
+    padding: 0.6%;
     border: white solid 0.2px;
     background-color: rgba(39, 39, 39, 0.4);
     border-radius: 15px;
@@ -42,39 +43,113 @@
     height: 10vh;
     background-color: aqua;
     border-radius: 50%;
+    background-image: url(../img/funny-cat.jpg);
+    background-position: center;
 }
 .login{
     padding: 1vw;
     border: white solid 0.2px;
     border-radius: 15px;
-    transition: .2s linear;
+    transition: .1s linear;
+    opacity: 0.7;
 }
 .login:hover{
-    opacity: 1.4;
+    opacity: 1;
 }
 .login-form{
     padding: 3vw;
-    padding-top: 2vw;
+    position: relative;
 }
 .login-form label{
-    font-size: 2em;
+    font-size: 1.5em;
+    padding-top: 15vh;
 }
 .login-form input{
     font-size: 1.2em;
-    width: 10vw;
+    width: 18vw;
     margin-top: 1vw;
     margin-bottom: 1vw;
     color: aliceblue;
     background-color: transparent;
-    border: white solid 0.2px;
+    border: none;
+    border-bottom: white solid 0.2px;
 }
-.input{
-    width: 10vw;
+.login-form input:focus{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-bottom: white solid 0.2px;
+}
+.login-form input:required{
+
+}
+.senha-login{
+    min: 8;
+    max: 20;
+}
+.link-new{
+    text-align: center;
+    height: 5vh;
+    margin-bottom: 0;
+}
+.new-user{
+    color: rgb(250, 107, 107);
+    transition: .3s linear;
+    text-decoration: none;
+}
+.new-user:hover{
+    color: rgb(223, 22, 22);
 }
 #submit-login{
-    margin: 0 auto;
+    z-index: 10;
+    text-align: center;
+    padding-right: 0px;
+    background-color: red;
+    width: 100%;
+    height: 8vh;
+    border: rgb(221, 31, 31) solid 1px;
+    transition: all .5s linear;
+    margin: 0;
 }
-
+#submit-login:hover{
+    background-color: red;
+}
+.filled-login-bt{
+    background-color: rgb(126, 33, 33) !important;
+    padding-right: 10vw !important;
+    cursor: pointer;
+}
+.after{
+    margin-top: 1vw;
+    width: 100%;
+    position: relative;
+    height: 8vh;
+}
+.arrowthing{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    bottom: calc(13vh + 1px);
+    z-index: 11;
+    opacity: 1;
+    height: 8vh;
+    list-style: 8vh;
+    background-color: red;
+    width: 0;
+    overflow: hidden;
+    transition: all .5s linear;
+}
+.arrowappear{
+    font-size: 1.6em;
+    text-align: center;
+    width: 30%;
+    cursor: pointer;
+}
+.arrowdisappear{
+    width: 0;
+}
+/* CADASTRO */
 .container-cadastro{
     width: 40vw;
     position: absolute;
@@ -94,5 +169,6 @@
     background: rgba(255,255,255,1);
 }
 .container-login-disappear{
-    left: -100vw;
+    left: 100vw;
+    opacity: 0;
 }

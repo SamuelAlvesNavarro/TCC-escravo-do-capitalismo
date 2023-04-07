@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/acesso.css">
+    <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>Cadastro</title>
 </head>
 <body>
@@ -13,16 +14,23 @@
             <div class="login" id="login">
                 <div class="logo-container">
                     <div class="logo">
-    
+                        
+                        <button onclick="toBlack()">trocar</button>
                     </div>
-                    <button onclick="toBlack()">trocar</button>
                 </div>
                 <form class="login-form" name="login" method="post" action="cadastro.php">
                     <label for="email">Email:</label><br>
-                    <input class="input" type="email" id="email" name="email"><br>
+                    <input id="input-email" class="input" type="email" id="email" name="email" placeholder="Email"><br>
                     <label for="senha">Senha:</label><br>
-                    <input class="input" type="password" id="senha" name="senha"><br>
-                    <input id="submit-login" type="button" value="submit" onclick="showCadastro()">
+                    <input id="input-senha" class="input senha-login" type="password" id="senha" name="senha" placeholder="Senha"><br>
+                    <div class="after" id="after">
+                        <input class="login-submit" id="submit-login" type="button" value="Login">
+                        <div id="arrowthing" class="arrowthing"><i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                    <br><br>
+                    <div class="link-new">
+                        <a class="new-user" href="#" onclick="showCadastro()">Sou novo</a>
+                    </div>
                 </form>
             </div>
         </div>
