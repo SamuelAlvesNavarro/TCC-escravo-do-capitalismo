@@ -36,6 +36,7 @@
 .logo-container{
     width: 100%;
     height: 10vh;
+    margin-top: 2vh;
 }
 .logo{
     margin: 1.4% auto;
