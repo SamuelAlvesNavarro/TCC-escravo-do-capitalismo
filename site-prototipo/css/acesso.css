@@ -116,7 +116,7 @@
 }
 .filled-login-bt{
     background-color: rgb(126, 33, 33) !important;
-    padding-right: 10vw !important;
+    padding-right: 12vw !important;
     cursor: pointer;
 }
 .after{
@@ -141,13 +141,16 @@
     transition: all .5s linear;
 }
 .arrowappear{
-    font-size: 1.6em;
     text-align: center;
     width: 30%;
     cursor: pointer;
 }
 .arrowdisappear{
     width: 0;
+}
+.fa-arrow-right{
+    font-size: 1.6em;
+    margin: auto;
 }
 /* CADASTRO */
 .container-cadastro{
