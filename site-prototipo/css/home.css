@@ -368,5 +368,5 @@ th{
     height: 70vh;
     position: absolute;
     bottom: -70vh;
-    transition: .7s ease-in;
+    transition: 3s cubic-bezier(.07,1.11,.93,-1.01);
 }
