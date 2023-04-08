@@ -109,6 +109,7 @@
     height: 10vh;
     border-radius: 50%;
     background-color: var(--text);
+    background-image: url(../img/funny-cat.jpg);
 }
 #mode{
     color: var(--text);
@@ -195,6 +196,7 @@
     height: 100vh;
     transition: linear 0.1s;
 }
+    /* HOME - SECTION */
 .home-section{
     font-family: 'Raleway', sans-serif;
     background-image: url(../img/fundo.jpg);
@@ -232,6 +234,7 @@
     font-size: 3em;
     width: 35%;
 }
+    /* EXP - SECTION */
 #exp-sec{
     background-color: var(--background-2);
 }
@@ -251,6 +254,7 @@
     font-size: 3em;
     width: 70%;
 }
+
 .beh-col1{
     width: 100%;
     font-size: 6em;
@@ -265,10 +269,27 @@
 #wys-sec{
     background-color: var(--backgroud-4);
 }
+    /* RANK - SECTION */
 
 #rank-sec{
     background-color: var(--backgroud-5);
 }
+.rank-section{
+    display: flex;
+    flex-direction: row;
+}
+.col1-rank{
+    width: 60%;
+}
+.col1-rank-text{
+    font-size: 2em;
+    width: 100%;
+    height: 40vh;
+    margin-top: 30vh;
+}
+.col2-rank{
+    width: 40%;
+}
 
 #prem-sec{
     background-color: var(--background-6);
@@ -277,26 +298,6 @@
 #last-sec{
     background-color: var(--background-7);
 }
-
-/*Dark*/
-
-#beh-sec{
-    background-color: var(--background-3);
-}
-#wys-sec{
-    background-color: var(--background-4);
-}
-#rank-sec{
-    background-color:  var(--background-5);
-}
-#prem-sec{
-    background-color: var(--background-6);
-}
-
-#last-sec{
-    background-color: var(--background-7);
-}
-
 .selected-link{
     transform: scale(120%);
     background-color: var(--text);

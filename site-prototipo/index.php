@@ -79,79 +79,50 @@
                         <div class="it1">ST</div>
                     </div>
                 </div>
-                <div class="section exp-sec" id="rank-sec"> <!--Quinta-->
-                    <div class="exp-col1 col">
-                       
+                <div class="section rank-sec" id="rank-sec"> <!--Quinta-->
+                    <div class="col1-rank">
+                        <div class="col1-rank-text">
+                            Acompanhe o rank do leitores em tempo real
+                        </div>
                     </div>
-                    <div class="exp-col2 col">
-                        No nosso Site, oferecemos.....
+                    <div class="col2-rank">
+                        <div id="bestreaders" class="bestreaders">
+                            <div id="bereaders" class="bereaders">
+                                <div class="betitle"></div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>User</th>
+                                            <th>Pontunação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
+                                            $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
+                                            $rank = 1;
+                                            foreach ($pdo->query($sql) as $key => $value) {
+
+                                                if($rank % 2 == 0){
+                                                    echo '<tr class="table"><th class="rankum">' . $rank++ . '</th>' . '<td class="bename"> ' . $value['nome'] . '</td>' . '<td class="bepoints"> '. $value['pontos_leitor'] . '</td>'. '<tr>';
+                                                }else{
+                                                    echo '<tr class="table-dark"><th class="rankum">' . $rank++ . '</th>' . '<td class="bename"> ' . $value['nome'] . '</td>' . '<td class="bepoints"> '. $value['pontos_leitor'] . '</td>'. '<tr>';
+                                                }
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="section home-section" id="prem-sec"><!--Sexta-->
-                    <div class="col1 col">
-                        <div id="frow" class="frow">
-                            <div class="titleh1">
-                                No nosso Site, ooferecemos.....
-                            </div>
-                        </div>
-                        <div id="srow" class="srow">
-                            <div class="phrase">
-                                "O site perfeito para a leitura de histórias de terror"<br>(Donald Trump, 1995)
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col2 col">
-                        <div class="it1">ST</div>
-                    </div>
                 </div>
                 <div class="section home-section" id="last-sec"> <!--Sétima-->
-                    <div class="col1 col">
-                        <div id="frow" class="frow">
-                            <div class="titleh1">
-                                No nosso Site, ooferecemos.....
-                            </div>
-                        </div>
-                        <div id="srow" class="srow">
-                            <div class="phrase">
-                                "O site perfeito para a leitura de histórias de terror"<br>(Donald Trump, 1995)
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col2 col">
-                        <div class="it1">ST</div>
-                    </div>
                 </div>
             </div>
             <script type="text/javascript" src="js/home.js"></script>
-            <div id="bestreaders" class="bestreaders">
-                <div id="bereaders" class="bereaders">
-                    <div class="betitle">Os maiores leitores do site</div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>User</th>
-                                <th>Pontunação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                $pdo = new PDO('mysql:host=localhost;dbname=id20545858_pi', 'id20545858_samuel', 'S@muel11223344');
-                                $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
-                                $rank = 1;
-                                foreach ($pdo->query($sql) as $key => $value) {
-
-                                    if($rank % 2 == 0){
-                                        echo '<tr class="table"><th class="rankum">Rank: ' . $rank++ . '</th>' . '<td class="bename"> Nome: ' . $value['nome'] . '</td>' . '<td class="bepoints"> Pontuação: '. $value['pontos_leitor'] . '</td>'. '<tr>';
-                                    }else{
-                                        echo '<tr class="table-dark"><th class="rankum">Rank: ' . $rank++ . '</th>' . '<td class="bename"> Nome: ' . $value['nome'] . '</td>' . '<td class="bepoints"> Pontuação: '. $value['pontos_leitor'] . '</td>'. '<tr>';
-                                    }
-                                }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </div>
 </body>
