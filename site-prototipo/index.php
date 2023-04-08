@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/home.css?v=1">
     <title>Home Page</title>
 </head>
 <body>
@@ -82,19 +82,25 @@
                 <div class="section rank-sec" id="rank-sec"> <!--Quinta-->
                     <div class="col1-rank">
                         <div class="col1-rank-text">
-                            Acompanhe o rank do leitores em tempo real
+                            <div class="title-rank-test">
+                                Acompanhe o rank do leitores em tempo real
+                            </div>
+                            <div class="exp-rank-test">
+                                No Histórias Assombrosas, os leitores são incentivados a ler e escrever histórias.
+                                Para isso, criamos um rank que fica exposto no site e é atualizado em tempo real.
+                                Além disso, os leitores recebem prêmios por aparecerem nos rankings.
+                            </div>
                         </div>
                     </div>
                     <div class="col2-rank">
                         <div id="bestreaders" class="bestreaders">
                             <div id="bereaders" class="bereaders">
-                                <div class="betitle"></div>
-                                <table class="table">
+                                <table>
                                     <thead>
                                         <tr>
-                                            <th>Rank</th>
-                                            <th>User</th>
-                                            <th>Pontunação</th>
+                                            <th scope="col">Rank</th>
+                                            <th scope="col">User</th>
+                                            <th scope="col">Pontunação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -104,17 +110,27 @@
                                             $rank = 1;
                                             foreach ($pdo->query($sql) as $key => $value) {
 
-                                                if($rank % 2 == 0){
-                                                    echo '<tr class="table"><th class="rankum">' . $rank++ . '</th>' . '<td class="bename"> ' . $value['nome'] . '</td>' . '<td class="bepoints"> '. $value['pontos_leitor'] . '</td>'. '<tr>';
-                                                }else{
-                                                    echo '<tr class="table-dark"><th class="rankum">' . $rank++ . '</th>' . '<td class="bename"> ' . $value['nome'] . '</td>' . '<td class="bepoints"> '. $value['pontos_leitor'] . '</td>'. '<tr>';
-                                                }
+                                                echo 
+                                                '<tr>
+                                                    <th scope="row">' 
+                                                        .$rank++. 
+                                                    '</th>'. 
+                                                    '<td>' 
+                                                        .$value['nome']. 
+                                                    '</td>'. 
+                                                    '<td> '
+                                                        .$value['pontos_leitor'].
+                                                    '</td>'. 
+                                                '</tr>';
                                             }
                                         ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                    </div>
+                    <div class="col3-rank">
+
                     </div>
                 </div>
                 <div class="section home-section" id="prem-sec"><!--Sexta-->
