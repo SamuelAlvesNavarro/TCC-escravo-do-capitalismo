@@ -2,6 +2,8 @@ viewPortHeight = window.innerHeight + "px";
 
 const toggle = document.getElementById("mode");
 const root = document.querySelector(":root");
+var bt_enter = document.getElementById("bt-enter");
+var img_cat = document.getElementById("img-cat-paw");
 
 var dark = false;
 toggle.addEventListener('click', () => {
@@ -65,3 +67,12 @@ function SwitchColor(numb){
         last.classList.add("selected-link");
     }
 }
+
+bt_enter.addEventListener("mouseenter", () => {
+    console.log("i carai")
+    img_cat.style.bottom = '-20vh';
+})
+bt_enter.addEventListener("mouseout", () => {
+    console.log("i carai")
+    img_cat.style.bottom = '-70vh';
+})

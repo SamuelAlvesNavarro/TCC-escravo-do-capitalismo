@@ -115,6 +115,7 @@
     border-radius: 50%;
     background-color: var(--text);
     background-image: url(../img/funny-cat.jpg);
+    background-position: center;
 }
 #mode{
     color: var(--text);
@@ -294,11 +295,13 @@
 .title-rank-test{
     color: var(--text-2);
     font-size: 3.2em;
+    text-align: left;
 }
 .exp-rank-test{
     color: var(--text-2);
     padding-top: 5vh;
     font-size: 1.3em;
+    text-align: justify;
 }
 .col2-rank{
     position: relative;
@@ -341,10 +344,29 @@ th{
 #prem-sec{
     background-color: var(--background-6);
 }
+/* LAST - SECTION */
 #last-sec{
+    position: relative;
     background-color: var(--background-7);
+    background-image: none;
 }
 .selected-link{
     transform: scale(120%);
     background-color: var(--text);
+}
+#bt-enter{
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10vw;
+    height: 10vw;
+}
+#img-cat-paw{
+    left: 45%;
+    transform: translate(-50%, 0%);
+    height: 70vh;
+    position: absolute;
+    bottom: -70vh;
+    transition: .7s ease-in;
 }

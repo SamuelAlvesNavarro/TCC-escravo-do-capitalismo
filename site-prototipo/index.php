@@ -136,9 +136,13 @@
                 <div class="section home-section" id="prem-sec"><!--Sexta-->
                 </div>
                 <div class="section home-section" id="last-sec"> <!--Sétima-->
+                    <div class="div-bt-enter">
+                        <button id="bt-enter">Participar</button>
+                    </div>
+                    <img id="img-cat-paw" src="img/monster-finger-png.png" alt="">
                 </div>
             </div>
-            <script type="text/javascript" src="js/home.js"></script>
+            <script type="text/javascript" src="js/home.js?v=1"></script>
         </div>
     </div>
 </body>
