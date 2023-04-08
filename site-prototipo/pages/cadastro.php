@@ -11,6 +11,10 @@
         $senha = $_POST["senha"];
         $confirmarsenha = $_POST["confirmarsenha"];
 
+        if($senha != $confirmarsenha){
+            echo "senha não confirmada";
+        }else{
+
             $sql = "SELECT * FROM user_common WHERE email = '$email'";
 
             foreach($pdo->query($sql) as $key => $value){
@@ -47,4 +51,5 @@
                     echo "Usuário cadastrado!";
                 }
             }
+        }
 ?>

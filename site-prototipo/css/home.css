@@ -155,6 +155,7 @@
     background: var(--text);
 }
 #acess{
+    cursor: pointer;
     position: absolute;
     z-index: 1000;
     top: 7vh;

@@ -1,19 +1,20 @@
 <?php
-    session_start();
-
-    if(isset($_SESSION['numLogin'])){
-        $n1 = $_GET['num1'];
-        $n2 = $_SESSION['numLogin'];
+    if(isset($_COOKIE['numLogin'])){
+        $n1 = $_GET['num'];
+        $n2 = $_COOKIE['numLogin'];
         if($n1 != $n2){
-            echo "Login não efetuado";
+            echo "Login não efetuadok";
+            header("Location:acesso.html");
             exit;
         }
     } else {
         echo "Login não efetuado";
         exit;
     }
-
-    session_destroy();
+    
+        $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
+        echo "<h1>O Leo</h1>";
+        echo "<a href=../../site-prototipo/pages/pesquisa.php>Vai</a>";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

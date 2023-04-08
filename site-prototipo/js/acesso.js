@@ -39,7 +39,6 @@ function login_bt(em, se){
     if(se && em && validEmail(em)){
         login_submit.classList.add("filled-login-bt");
         arrow.classList.add("arrowappear");
-        div_login_n.style.opacity = 1;
     }else{
         login_submit.classList.remove("filled-login-bt");
         arrow.classList.remove("arrowappear");
