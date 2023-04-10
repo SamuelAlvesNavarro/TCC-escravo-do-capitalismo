@@ -103,6 +103,7 @@
                                             <th scope="col">Pontunação</th>
                                         </tr>
                                     </thead>
+     
                                     <tbody>
                                         <?php
                                             $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
@@ -141,8 +142,8 @@
                     </div>
                     <img id="img-cat-paw" src="img/monster-finger-png.png" alt="">
                 </div>
+                <script type="text/javascript" src="js/home.js?v=1"></script>
             </div>
-            <script type="text/javascript" src="js/home.js?v=1"></script>
         </div>
     </div>
 </body>
