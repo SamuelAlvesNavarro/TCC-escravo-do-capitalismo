@@ -48,7 +48,7 @@
                 if($prepare->rowCount() == 0){
                     echo $prepare->errorInfo();
                 }else{
-                    echo "Usuário cadastrado!";
+                    header("Location:central.php");
                 }
             }
         }
