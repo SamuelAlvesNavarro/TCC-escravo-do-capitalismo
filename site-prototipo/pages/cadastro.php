@@ -33,7 +33,7 @@
                 foreach ($pdo->query($sql) as $key => $value) {
                     $fk_profile = $value['id_profile'];
                 }
-
+                
                 $sql = "INSERT INTO user_common(fk_id_profile, nome, email, senha, apelido) values(?, ?, ?, ?, ?)";
                 $prepare = $pdo->prepare($sql);
 
@@ -42,11 +42,13 @@
                 $prepare -> bindParam(3, $email);
                 $prepare -> bindParam(4, $senha);
                 $prepare -> bindParam(5, $apelido);
-
+                
                 $prepare->execute();
-
-                if($prepare->rowCount() == 0){
-                    echo $prepare->errorInfo();
+                
+                echo $prepare->rowCount();
+                
+                if($prepare->rowCount() <= 0){
+                    echo "deu erro porra";
                 }else{
                     header("Location:central.php");
                 }
