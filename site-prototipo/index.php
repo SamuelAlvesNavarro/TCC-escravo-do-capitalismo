@@ -105,8 +105,25 @@
                                     </thead>
      
                                     <tbody>
-                                        <?php 
-                                            echo $table;
+                                        <?php
+                                            $pdo = new PDO('mysql:host=localhost;dbname=id20545858_pi', 'id20545858_samuel', 'Agx3((dO5ze*n-]Y');
+                                            $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
+                                            $rank = 1;
+                                            foreach ($pdo->query($sql) as $key => $value) {
+
+                                                echo
+                                                '<tr>
+                                                    <th scope="row">' 
+                                                        .$rank++. 
+                                                    '</th>'. 
+                                                    '<td>' 
+                                                        .$value['nome']. 
+                                                    '</td>'. 
+                                                    '<td> '
+                                                        .$value['pontos_leitor'].
+                                                    '</td>'. 
+                                                '</tr>';
+                                            }
                                         ?>
                                     </tbody>
                                 </table>
@@ -131,24 +148,3 @@
     </div>
 </body>
 </html>
-<?php
-    $table = " ";
-    $pdo = new PDO('mysql:host=localhost;dbname=id20545858_pi', 'id20545858_samuel', 'S@muel112233');
-    $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
-    $rank = 1;
-    foreach ($pdo->query($sql) as $key => $value) {
-
-        $table .=
-        '<tr>
-            <th scope="row">' 
-                .$rank++. 
-            '</th>'. 
-            '<td>' 
-                .$value['nome']. 
-            '</td>'. 
-            '<td> '
-                .$value['pontos_leitor'].
-            '</td>'. 
-        '</tr>';
-    }
-?>
