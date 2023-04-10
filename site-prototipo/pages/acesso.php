@@ -1,10 +1,3 @@
-<?php
-    if(isset($_POST['email'])){
-
-    }else{
-
-    }
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
