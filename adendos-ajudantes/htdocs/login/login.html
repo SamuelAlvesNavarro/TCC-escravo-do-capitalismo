@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public\css\bootstrap.min.css">
+    <title>Locadora veiculos</title>   
+</head>
+<body>
+<script src="public/js/bootstrap.min.js"></script>
+
+<div class="container">
+    <h1 class="page-header">
+        TELA DE LOGIN
+    </h1>
+</div>
+
+<form action="login.php" method="POST" class="form-horizontal">
+
+
+    <div class="form-group ">
+        <label for="inputuser" class="col-sm-2 control-label col-form-label"> USUARIO</label>
+      <div class="col-sm-8">
+        <input type="text" name="usuario" class="form-control" id="inputuser" placeholder="Usuario para login">
+      </div>
+      </div>
+  
+      <div class="form-group ">
+        <label for="inputsenha" class="col-sm-2 control-label col-form-label"> SENHA</label>
+      <div class="col-sm-8">
+        <input type="password" name="senha" class="form-control" id="inputsenha" placeholder="Senha">
+      </div>
+      </div>
+
+      <div class="form-group ">
+        <label for="selectSexo" class="col-sm-2 control-label col-form-label"> TIPO DE USUARIO</label>
+        <div class="col-sm-8">
+        <select name="tipo" class="form-control" id="tipo">
+         <option value="Cliente">Cliente</option> 
+         <option value="Funcionario">Funcionario</option>
+         </select>
+       </div>
+      </div> 
+      <button class="btn btn-primary btn-lg">Login</button><br>
+    
+    
+    <a href="cadastro.html">Não é cadastrado clique aqui</a></center>
+
+</body>
+</html>

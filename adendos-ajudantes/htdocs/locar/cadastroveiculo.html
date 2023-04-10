@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public\css\bootstrap.min.css">
+    <title>Locadora veiculos</title>   
+</head>
+<body>
+<script src="public/js/bootstrap.min.js"></script>
+
+<div class="container">
+    <h1 class="page-header">
+        LOCADORA FREITAS - CADASTRO VEICULO
+    </h1>
+</div>
+
+<form action="inserir_veiculo.php" method="POST" class="form-horizontal">
+
+    <div class="form-group ">
+      <label for="inputModelo" class="col-sm-2 control-label col-form-label"> MODELO</label>
+    <div class="col-sm-8">
+      <input type="text" name="modelo" class="form-control" id="inputModelo" placeholder="Modelo do veículo">
+    </div>
+    </div>
+
+    <div class="form-group ">
+      <label for="inputPlaca" class="col-sm-2 control-label col-form-label"> PLACA</label>
+    <div class="col-sm-8">
+      <input type="text" name="placa" class="form-control" id="inputPlaca" placeholder="Placa do veiculo">
+    </div>
+    </div>
+
+    <div class="form-group ">
+      <label for="inputChassi" class="col-sm-2 control-label col-form-label"> CHASSI</label>
+    <div class="col-sm-8">
+      <input type="text" name="chassi" class="form-control" id="inputChassi" placeholder="Chassi">
+    </div>
+    </div>
+
+    <div class="form-group ">
+      <label for="inputFabricante" class="col-sm-2 control-label col-form-label"> FABRICANTE</label>
+      <div class="col-sm-8">
+        <input type="text" name="fabricante" class="form-control" id="inputFabricante" placeholder="Fabricante do veiculo">
+      </div>
+    </div> 
+
+    <div class="form-group ">
+      <label for="selectAno" class="col-sm-2 control-label col-form-label"> ANO</label>
+      <div class="col-sm-8">
+        <input type="text" name="ano" class="form-control" id="inputAno" placeholder="Ano de fabricação">
+     </div>
+    </div> 
+
+        
+    <div class="form-group ">
+      <label for="inputCor" class="col-sm-2 control-label col-form-label"> COR</label>
+      <div class="col-sm-8">
+        <input type="text" name="cor" class="form-control" id="inputCor" placeholder="Cor principal do veiculo">
+      </div>
+    </div> 
+
+    <div class="form-group ">
+      <label for="inputTipo" class="col-sm-2 control-label col-form-label"> TIPO</label>
+      <div class="col-sm-8">
+        <select name="tipo" class="form-control" id="tipo">
+           <option value="Utilitário">Utilitário</option> 
+           <option value="Passeio">Passeio</option>
+           <option value="Sedan">Sedan</option>
+           <option value="Hatch">Hatch</option>
+           <option value="Crossover" >Crossover</option>
+           </select>
+
+      </div>
+    </div> 
+
+    <div class="form-group ">
+      <label for="inputKm" class="col-sm-2 control-label col-form-label"> KM</label>
+      <div class="col-sm-8">
+        <input type="text" name="km" class="form-control" id="inputKm" placeholder="Kilometragem do veiculo">
+      </div>
+    </div> 
+
+    <div class="form-group ">
+      <label for="inputComb" class="col-sm-2 control-label col-form-label">COMBUSTIVEL</label>
+      <div class="col-sm-8">
+        <input type="text" name="combustivel" class="form-control" id="inputComb" placeholder="Tipo de combustivel">
+      </div>
+    </div> 
+
+    <div class="form-group ">
+      <label for="inputPreco" class="col-sm-2 control-label col-form-label"> PREÇO</label>
+      <div class="col-sm-8">
+        <input type="text" name="preco" class="form-control" id="inputPreco" placeholder="Preco do veículo (Não usar R$)">
+      </div>
+    </div> 
+
+    <div class="form-group ">
+      <label for="inputImagem" class="col-sm-2 control-label col-form-label"> IMAGEM</label>
+      <div class="col-sm-8">
+        <input type="text" name="imagem" class="form-control" id="inputImagem" placeholder="Nome da imagem com extensão .jpg">
+      </div>
+    </div> 
+    
+    <button class="btn btn-primary btn-lg">Cadastrar</button>
+  </form>
+
+</body>
+</html>
