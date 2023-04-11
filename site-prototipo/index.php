@@ -36,15 +36,18 @@
         <div id="main" class="main transi bc">
             <div id="sections" class="sections">
                 <div class="section home-section" id="home-section">
+                    <div id="home-background" class="home-background"></div>
                     <div class="home-col1 col">
-                        <div id="frow" class="home-frow">
-                            <div class="home-titleh1">
-                                Olá, esse é o <br>Histórias <br>Assombrosas
+                        <div class="home-col">
+                            <div id="frow" class="home-frow">
+                                <div class="home-titleh1">
+                                    <span class="hist">Histórias Assombrosas</span>
+                                </div>
                             </div>
-                        </div>
-                        <div id="srow" class="home-srow">
-                            <div class="phrase">
-                                "O site perfeito para a leitura de histórias de terror"<br>(Donald Trump, 1995)
+                            <div id="srow" class="home-srow">
+                                <div class="phrase">
+                                    "O site perfeito para a leitura de histórias de terror"<br>(Donald Trump, 1995)
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -105,7 +108,7 @@
                                     </thead>
      
                                     <tbody>
-                                        <?php
+                                        <!--<?php /*
                                             $pdo = new PDO('mysql:host=localhost;dbname=id20545858_pi', 'id20545858_samuel', 'Agx3((dO5ze*n-]Y');
                                             $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
                                             $rank = 1;
@@ -123,8 +126,8 @@
                                                         .$value['pontos_leitor'].
                                                     '</td>'. 
                                                 '</tr>';
-                                            }
-                                        ?>
+                                            }*/
+                                        ?>-->
                                     </tbody>
                                 </table>
                             </div>
@@ -138,7 +141,7 @@
                 </div>
                 <div class="section home-section" id="last-sec"> <!--Sétima-->
                     <div class="div-bt-enter">
-                        <button id="bt-enter">Participar</button>
+                        <a href="pages/acesso.html?v=1"><button id="bt-enter">Participar</button></a>
                     </div>
                     <img id="img-cat-paw" src="img/monster-finger-png.png" alt="">
                 </div>

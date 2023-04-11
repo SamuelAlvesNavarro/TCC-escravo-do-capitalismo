@@ -17,6 +17,7 @@
     background-color: var(--background);
 }
 :root {
+    color-scheme: light;
     --text: black;
     --text-2: white;
     --background: white;
@@ -29,16 +30,19 @@
     --background-7: #121212;
     --background-menu: white;
     --background-col3: white;
-    color-scheme: light;
     --box-shadow-color: #948f94;
     --box-shadow-color-3: none;
     --background-nav: #aaaaaa;
+    --tv-effect-1:var(--background);
+    --tv-effect-2:#696969;
 
     --title-opacity: 1;
+    --lines-opacity: 0;
     --effect-color: maroon;
 }
 .dark{
     color-scheme: dark;
+    --text:white;
     --text-2: black;
     --background: #121212;
     --background-1: #121212; 
@@ -50,12 +54,14 @@
     --background-7: white;
     --background-menu: #222222;
     --background-col3: #121212;
-    --text:white;
-    --title-opacity: 0.6;
     --box-shadow-color: #696869;
     --box-shadow-color-3: #121212;
     --background-nav: #222222;
+    --tv-effect-1:var(--background);
+    --tv-effect-2:#696969;
 
+    --title-opacity: 0.6;
+    --lines-opacity: 0.2;
     --effect-color: rgb(230, 16, 16);
 }
 /* SHAPES */
@@ -208,29 +214,66 @@
     background-image: url(../img/fundo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.home-background{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    opacity: var(--lines-opacity);
+    z-index: 10;
+    background: linear-gradient(var(--tv-effect-1), 
+    var(--tv-effect-1) 10px, 
+    var(--tv-effect-2) 10px, 
+    var(--tv-effect-2) 15px);
+
+    background-size: 100% 15px;
+    background-repeat: repeat;
+    animation: 15s infinite cubic-bezier(0,1.48,1,-1.45);
+    animation-name: movebackground;
+}
+@keyframes movebackground{
+    from {
+        background-position: 0% 0%;
+    }
+    to{
+        background-position: 0% -100%;
+    }
 }
 .col{
     float: left;
+
+}.home-col{
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 9;
 }
 .home-col1{
-    padding-top: 20vh;
+    padding-top: 40vh;
     height: 100vh;
     width: 100%;
     opacity: var(--title-opacity);
     background-color: var(--background-1);
 }
 .home-frow{
-    width: 55%;
+    width: 90%;
+    float: right;
+}
+.hist{
+    display: block;
+    font-size: 1.5em;
 }
 .home-titleh1{
     font-size: 4em;
-    text-align: right;
+    text-align: left;
 }
 .home-srow{
-    width: 55%;
+    float: right;
+    width: 90%;
     font-size: 1.4em;
-    padding-top: 5%;
-    text-align: right;
 }
 .home-col2{
     display: flex;

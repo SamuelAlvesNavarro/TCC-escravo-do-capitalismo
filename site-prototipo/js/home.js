@@ -4,6 +4,7 @@ const toggle = document.getElementById("mode");
 const root = document.querySelector(":root");
 var bt_enter = document.getElementById("bt-enter");
 var img_cat = document.getElementById("img-cat-paw");
+var home_background = document.getElementById("home-background");
 
 var dark = false;
 toggle.addEventListener('click', () => {
