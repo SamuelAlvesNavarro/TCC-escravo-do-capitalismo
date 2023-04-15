@@ -41,8 +41,6 @@
                 
                 $prepare->execute();
                 
-                echo $prepare->rowCount();
-                
                 if($prepare->rowCount() <= 0){
                     echo "deu erro porra";
                 }else{
