@@ -1,5 +1,5 @@
 <?php
-        $pdo = new PDO('mysql:host=localhost;dbname=id20545858_pi', 'id20545858_samuel', 'Agx3((dO5ze*n-]Y');
+        $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
         $nome = null;
         $email = null;
         $senha = null;
@@ -17,11 +17,7 @@
 
             $sql = "SELECT * FROM user_common WHERE email = '$email'";
 
-            foreach($pdo->query($sql) as $key => $value){
-                $checkEmailExist = $key;
-            }
-
-            if(isset($checkEmailExist)){
+            if($pdo->query($sql)->rowCount() > 0){
                 echo "Error: Email existente!";
             } else{
                 $sql = "INSERT INTO profile(foto) values('0')";
@@ -29,7 +25,7 @@
                 $prepare = $pdo->prepare($sql);
                 $prepare->execute();
 
-                $sql = 'select * from profile';
+                $sql = 'SELECT * FROM profile';
                 foreach ($pdo->query($sql) as $key => $value) {
                     $fk_profile = $value['id_profile'];
                 }
@@ -50,6 +46,8 @@
                 if($prepare->rowCount() <= 0){
                     echo "deu erro porra";
                 }else{
+                    session_start();
+                    $_SESSION['email'] = $email;
                     header("Location:central.php");
                 }
             }
