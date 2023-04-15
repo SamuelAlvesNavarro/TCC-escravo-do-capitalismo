@@ -1,3 +1,4 @@
+<?php Header("Cache-Control: max-age=3000, must-revalidate"); ?>
 <!DOCTYPE html>
 <html lang="pt-br" class="transi">
 <head>
@@ -112,7 +113,7 @@
                                     </thead>
      
                                     <tbody>
-                                        <!--<?php /*
+                                        <?php 
                                             $pdo = new PDO('mysql:host=localhost;dbname=id20545858_pi', 'id20545858_samuel', 'Agx3((dO5ze*n-]Y');
                                             $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
                                             $rank = 1;
@@ -130,8 +131,8 @@
                                                         .$value['pontos_leitor'].
                                                     '</td>'. 
                                                 '</tr>';
-                                            }*/
-                                        ?>-->
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
