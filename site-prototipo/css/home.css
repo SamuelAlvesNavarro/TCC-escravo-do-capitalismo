@@ -38,6 +38,7 @@
 
     --title-opacity: 1;
     --lines-opacity: 0;
+    --lines-opacity-day: 0.2;
     --effect-color: maroon;
 }
 .dark{
@@ -51,7 +52,7 @@
     --background-4: #4d4b4b;
     --background-5: #b1b0b0;
     --background-6: #d6d5d5;
-    --background-7: white;
+    --background-7: #121212;
     --background-menu: #222222;
     --background-col3: #121212;
     --box-shadow-color: #696869;
@@ -62,6 +63,7 @@
 
     --title-opacity: 0.6;
     --lines-opacity: 0.2;
+    --lines-opacity-day: 0;
     --effect-color: rgb(230, 16, 16);
 }
 /* SHAPES */
@@ -235,12 +237,20 @@
     animation-name: movebackground;
 }
 @keyframes movebackground{
-    from {
-        background-position: 0% 0%;
-    }
-    to{
-        background-position: 0% -100%;
-    }
+    from {background-position: 0% 0%;}
+    to {background-position: 0% -100%;}
+}
+.home-background-day{
+    width: 100%;
+    height: 150vh;
+    position: absolute;
+    z-index: 10;
+    opacity: var(--lines-opacity-day);
+    background-color: #121212;
+    transition: 0.9s linear;
+    rotate: -30deg;
+    right: -50vh;
+    bottom: -100vh;
 }
 .col{
     float: left;
@@ -259,7 +269,7 @@
     background-color: var(--background-1);
 }
 .home-frow{
-    width: 90%;
+    width: 95%;
     float: right;
 }
 .hist{
@@ -272,7 +282,7 @@
 }
 .home-srow{
     float: right;
-    width: 90%;
+    width: 95%;
     font-size: 1.4em;
 }
 .home-col2{
@@ -290,34 +300,76 @@
 .exp-col1{
     width: 30%;
     height: 100vh;
-    background-image: url(../img/gato.jpg);
+    position: relative;
+}
+.img-exp-col1{
+    width: 70%;
+    height: 90vh;
+    background-image: url(../img/funny-cat-2.jpg);
     background-size: cover;
+    border-radius: 50% / 23%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .exp-col2{
     height: 100vh;
     text-align: right;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
-    height: inherit;
-    font-size: 3em;
     width: 70%;
 }
-
-.beh-col1{
-    width: 100%;
-    font-size: 6em;
-    text-align: center;
-    display: flex;
+.line1{
+    width: 70%;
+    text-align: left;
+    padding-bottom: 10vh;
+    font-size: 4em;
+}
+.line2{
+    width: 70%;
+    text-align: left;
+    font-size: 1.2em;
 }
 
+    /* BEST STORIES - SECTION */
 #beh-sec{
     background-color: var(--background-3);
 }
+.beh-col1{
+    height: 100vh;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+}
+.beh-col2{
+    width: 40%;
+    height: 100vh;
+    position: relative;
+}
+.img-beh-col2{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/cuie-cobra-boca.png);
+    background-size: cover;
+}
+.line1-beh-sec{
+    width: 80%;
+}
+.line2-beh-sec{
+    width: 80%;
+}
+    /* WRITE YOUR STORIES - SECTION */
 
 #wys-sec{
     background-color: var(--background-4);
 }
+
     /* RANK - SECTION */
 
 #rank-sec{
@@ -384,10 +436,17 @@ th{
     background-color: var(--background-col3);
     box-shadow: 43px 8px 103px 29px var(--box-shadow-color-3);
 }
+
+    /* PREM - SECTION */
+
 #prem-sec{
     background-color: var(--background-6);
+    background-image: url(../img/cuie-arlequina-paiaca.png);
+    background-size: cover;
 }
-/* LAST - SECTION */
+
+    /* LAST - SECTION */
+
 #last-sec{
     position: relative;
     background-color: var(--background-7);
@@ -411,5 +470,5 @@ th{
     height: 70vh;
     position: absolute;
     bottom: -70vh;
-    transition: 2s cubic-bezier(.07,1.11,.93,-1.01);
+    transition: 1.2s cubic-bezier(.07,1.11,.93,-1.01);
 }
