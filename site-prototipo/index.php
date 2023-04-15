@@ -37,6 +37,7 @@
             <div id="sections" class="sections">
                 <div class="section home-section" id="home-section">
                     <div id="home-background" class="home-background"></div>
+                    <div id="home-background-day" class="home-background-day"></div>
                     <div class="home-col1 col">
                         <div class="home-col">
                             <div id="frow" class="home-frow">
@@ -54,33 +55,26 @@
                 </div>
                 <div class="section exp-sec" id="exp-sec"> <!-- segunda -->
                     <div class="exp-col1 col">
-                       
+                       <div class="img-exp-col1">
+
+                       </div>
                     </div>
                     <div class="exp-col2 col">
-                        No nosso Site, oferecemos.....
+                        <div class="line1-exp-sec line1">
+                            O que é o Histórias Assombrosas?
+                        </div>
+                        <div class="line2-exp-sec line2">
+                            O Histórias Assombrosas é um site dedicado à postagem e interação com histórias de terror.
+                        </div>
                     </div>
                 </div>
-                <div class="section beh-sec home-section" id="beh-sec"> <!-- terceira -->
+                <div class="section beh-sec" id="beh-sec"> <!-- terceira -->
                     <div class="beh-col1 col">
-                        CU
+                        
                     </div>
                 </div>
-                <div class="section home-section" id="wys-sec"> <!--Quarta-->
-                    <div class="col1 col">
-                        <div id="frow" class="frow">
-                            <div class="titleh1">
-                                No nosso Site, ooferecemos.....
-                            </div>
-                        </div>
-                        <div id="srow" class="srow">
-                            <div class="phrase">
-                                "O site perfeito para a leitura de histórias de terror"<br>(Donald Trump, 1995)
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col2 col">
-                        <div class="it1">ST</div>
-                    </div>
+                <div class="section wys-sec" id="wys-sec"> <!--Quarta-->
+                    
                 </div>
                 <div class="section rank-sec" id="rank-sec"> <!--Quinta-->
                     <div class="col1-rank">
@@ -137,7 +131,7 @@
 
                     </div>
                 </div>
-                <div class="section home-section" id="prem-sec"><!--Sexta-->
+                <div class="section" id="prem-sec"><!--Sexta-->
                 </div>
                 <div class="section home-section" id="last-sec"> <!--Sétima-->
                     <div class="div-bt-enter">
