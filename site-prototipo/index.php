@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/home.css?v=1">
+    <link rel="stylesheet" href="css/bt.css?v=1"></link>
     <title>Home Page</title>
 </head>
 <body>
     <div id="all" class="all transi">
-        <nav class="menu">
+        <nav class="menu" id="menu">
             <div class="fpart transi bc">
                 <div id="acess"><a href="pages/acesso.html">Acesso</a></div>
                 <div class="piece logo-piece">
@@ -70,11 +71,20 @@
                 </div>
                 <div class="section beh-sec" id="beh-sec"> <!-- terceira -->
                     <div class="beh-col1 col">
-                        
+                        <div class="line1-beh-sec line1">
+                            Temos as melhores histórias
+                        </div>
+                        <div class="line2-beh-sec line2">
+                            As histórias postadas pelos usuários são originais e chequadas, visando que apenas as melhores cheguem aos nossos assíduos leitores.
+                        </div>
+                    </div>
+                    <div class="beh-col2 col">
+                       <div class="img-beh-col2">
+
+                       </div>
                     </div>
                 </div>
                 <div class="section wys-sec" id="wys-sec"> <!--Quarta-->
-                    
                 </div>
                 <div class="section rank-sec" id="rank-sec"> <!--Quinta-->
                     <div class="col1-rank">
@@ -131,11 +141,18 @@
 
                     </div>
                 </div>
-                <div class="section" id="prem-sec"><!--Sexta-->
+                <div class="section home-section" id="prem-sec"><!--Sexta-->
                 </div>
                 <div class="section home-section" id="last-sec"> <!--Sétima-->
+
+                    <a id="goback" href="" class="">
+                        <div  class="goback" onclick="SwitchColor(0)">
+                            <i class="fa-solid fa-arrow-up"></i>
+                        </div>
+                    </a>
+
                     <div class="div-bt-enter">
-                        <a href="pages/acesso.html?v=1"><button id="bt-enter">Participar</button></a>
+                    <a href="pages/acesso.html?v=1"><button id="bt-enter" class='glowing-btn'><span class='glowing-txt'>PARTICIPAR</span></button></a>
                     </div>
                     <img id="img-cat-paw" src="img/monster-finger-png.png" alt="">
                 </div>

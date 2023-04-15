@@ -1,6 +1,7 @@
 /* IMPORTS */
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import url('https://fonts.google.com/specimen/Playfair+Display');
+
 /* CSS */
 *{
     margin: 0;
@@ -40,6 +41,8 @@
     --lines-opacity: 0;
     --lines-opacity-day: 0.2;
     --effect-color: maroon;
+    --glow-color: maroon;
+    --glow-color-text: rgb(224, 26, 26);
 }
 .dark{
     color-scheme: dark;
@@ -65,6 +68,8 @@
     --lines-opacity: 0.2;
     --lines-opacity-day: 0;
     --effect-color: rgb(230, 16, 16);
+    --glow-color: maroon;
+    --glow-color-text: rgb(224, 26, 26);
 }
 /* SHAPES */
 .circle{
@@ -89,6 +94,8 @@
   background-color: var(--background-menu);
   font-family: 'Raleway', sans-serif;
   box-shadow: 0px 0px 12px 0px var(--box-shadow-color);
+  margin-left: 0;
+  transition: margin-left .1s linear;
 }
 .fpart{
     width: 100%;
@@ -457,12 +464,12 @@ th{
     background-color: var(--text);
 }
 #bt-enter{
+    width: auto;
+    height: auto;
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 10vw;
-    height: 10vw;
 }
 #img-cat-paw{
     left: 45%;
@@ -471,4 +478,31 @@ th{
     position: absolute;
     bottom: -70vh;
     transition: 1.2s cubic-bezier(.07,1.11,.93,-1.01);
+}
+.goback{
+    width: 40%;
+    position: absolute;
+    top: 15vh;
+    font-size: 2em;
+    left: 50%;
+    color: maroon;
+    animation: updown 2s infinite;
+}
+@keyframes updown {
+    0%{
+        top: 15vh;
+    }
+    50%{
+        top: 10vh;
+    }
+    100%{
+        top: 15vh;
+    }
+}
+.sumiracesso{
+    top: -50vh !important;
+}
+.sumirmenu{
+    margin-left: -8vw;
+    box-shadow: none;
 }
