@@ -244,8 +244,12 @@
     animation-name: movebackground;
 }
 @keyframes movebackground{
-    from {background-position: 0% 0%;}
-    to {background-position: 0% -100%;}
+    from {
+        background-position: 0% 0%;
+    }
+    to {
+        background-position: 0% -100%;
+    }
 }
 .home-background-day{
     width: 100%;

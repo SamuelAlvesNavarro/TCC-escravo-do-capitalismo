@@ -15,7 +15,7 @@
         </div>
         <div class="container-login" id="container-login">
             <div class="login" id="login">
-                <div class="logo-container">
+                <div class="logo-container" style="padding-bottom: 2vh;">
                     <div class="logo">
                         <button onclick="toBlack()">trocar</button>
                     </div>
@@ -36,33 +36,35 @@
                 </form>
             </div>
         </div>
+        
         <div class="container-cadastro" id="container-cadastro">
-            <div class="logo-container">
+            <div class="logo-container" style="padding-bottom: 5vh;">
                 <div class="logo">
                 </div>
             </div>
             <div class="cadastro">
-                <form class="cadastro-form" name="cadastro" method="post" action="cadastro.php">
+                <form class="cadastro-form" name="cadastro" method="post" action="cadastro.php" style="background: transparent;">
                     <label class="signup-label" for="apelido">Apelido:</label><br>
-                    <input class="input-text" type="text" id="apelido" name="apelido" required><br>
+                    <input id="signup-apelido" class="input-text" type="text" id="apelido" name="apelido" required><br>
             
                     <label class="signup-label" for="name">Nome:</label><br>
-                    <input class="input-text" type="text" id="name" name="name" required><br>
+                    <input id="signup-nome" class="input-text" type="text" id="name" name="name" required><br>
             
                     <label class="signup-label" for="email">Email:</label><br>
-                    <input class="input-text" type="email" id="email" name="email" required><br>
+                    <input id="signup-email" class="input-text" type="email" id="email" name="email" required><br>
             
                     <label class="signup-label" for="senha">Senha:</label><br>
-                    <input class="input-text" type="password" id="senha" name="senha" required><br>
+                    <input id="signup-senha" class="input-text" type="password" id="senha" name="senha" required><br>
             
                     <label class="signup-label" for="confirmarsenha">Confirmar senha:</label><br>
-                    <input class="input-text" type="password" name="confirmarsenha" id="confirmarsenha" required><br>
+                    <input id="signup-confsenha" class="input-text" type="password" name="confirmarsenha" id="confirmarsenha" required><br>
                     
+                    <a href="#" class="toLoginbt" onclick="showCadastro()">Já possuo conta</a>
+
                     <div class="div-cadastro-submit">
-                        <input class="submit-cadastro-bt" type="submit" name="cadastrar" value="Cadastrar">
+                        <input id="submit-cadastro-bt" class="submit-cadastro-bt" type="submit" name="cadastrar" value="Cadastrar">
                     </div>
                 </form>
-                <a href="#" class="toLoginbt" onclick="showCadastro()">Já possuo conta</a>
             </div>
         </div>
     </div>

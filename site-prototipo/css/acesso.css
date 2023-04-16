@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Abel', sans-serif;
+    overflow: hidden;
 }
 /* ALL */
 .all{
@@ -170,21 +171,24 @@
     margin: auto;
 }
 /* CADASTRO */
+
 .container-cadastro{
-    width: 40vw;
+    width: 35vw;
     position: absolute;
-    left: -40vw;
+    left: -35vw;
     transition: .4s linear;
-    background-color: rgb(209, 209, 209);
+    background: transparent;
+    background-image: url(../svg/background-cadastro.png);
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 100vh;
 }
 .cadastro{
     margin-left: 2vw;
-    margin-top: 2vw;
+    margin-top: 5vh;
     font-size: 1.4em;
     color: black;
 }
-
 .input-text{
     height: 4vh;
     width: 60%;
@@ -207,15 +211,29 @@
     padding: 1vh;
     font-size: 1.1em;
     margin: 3vh auto;
+    transition: .2s linear;
+    opacity: 0.6;
+    background-color: maroon;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    scale: 100%;
+}
+.submit-cadastro-bt:hover{
+    opacity: 1;
+}
+.sumir-submit-cadastro-bt{
+    opacity: 0;
+    scale: 0%;
 }
 .toLoginbt{
     display: block;
     margin-top: 3vh;
+    font-size: 0.8em;
 }
 /* ANIMATIONS */
 .container-cadastro-appear{
     left: 0;
-    background: rgba(255,255,255,1);
 }
 .container-login-disappear{
     left: 100vw;
