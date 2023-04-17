@@ -1,5 +1,5 @@
 viewPortHeight = window.innerHeight + "px";
-
+console.log("cu")
 const toggle = document.getElementById("mode");
 const root = document.querySelector(":root");
 var bt_enter = document.getElementById("bt-enter");
@@ -16,11 +16,11 @@ toggle.addEventListener('click', () => {
 
     if(dark){
         toggle.classList.remove('fa-moon');
-        toggle.classList.add('fa-sun');
+        toggle.classList.add('fa-sun-bright');
         dark = false;
     }else{
         dark = true;
-        toggle.classList.remove('fa-sun');
+        toggle.classList.remove('fa-sun-bright');
         toggle.classList.add('fa-moon');
     }
 })
