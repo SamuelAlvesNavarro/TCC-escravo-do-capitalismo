@@ -46,6 +46,11 @@ function showCadastro(){
     email.value = "";
     senha.value = "";
     login_bt(email.value, senha.value);
+    up_apelido.value = "";
+    up_nome.value = "";
+    up_email.value = "";
+    up_senha.value = "";
+    up_confsenha.value = "";
 }
 function changebt(){
     if(up_apelido.value != "" && up_nome.value != "" && up_email.value != "" && up_senha.value != "" && up_confsenha.value != ""){
