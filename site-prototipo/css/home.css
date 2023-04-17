@@ -259,7 +259,7 @@
     opacity: var(--lines-opacity-day);
     background-color: #121212;
     transition: 0.9s linear;
-    rotate: -30deg;
+    transform: rotate(-30deg);
     right: -50vh;
     bottom: -100vh;
 }
