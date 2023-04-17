@@ -1,4 +1,4 @@
-<?php Header("Cache-Control: max-age=3000, must-revalidate"); ?>
+<?php header("Cache-Control: max-age=3000, must-revalidate"); ?>
 <!DOCTYPE html>
 <html lang="pt-br" class="transi">
 <head>
@@ -32,7 +32,7 @@
                         <a id="last-link" href="#last-sec" onclick="SwitchColor(7)"></a>
                     </div>
                 </div>
-                <div class="piece"><i id="mode" class="fa-solid fa-sun transi"></i></div>
+                <div class="piece"><i id="mode" class="fa-solid fa-sun-bright transi"></i></div>
             </div>
         </nav>
         <div id="main" class="main transi bc">
@@ -113,7 +113,7 @@
                                     </thead>
      
                                     <tbody>
-                                        <?php 
+                                        <?php
                                             $pdo = new PDO('mysql:host=localhost;dbname=id20545858_pi', 'id20545858_samuel', 'Agx3((dO5ze*n-]Y');
                                             $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
                                             $rank = 1;
