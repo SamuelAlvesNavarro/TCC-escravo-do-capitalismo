@@ -21,15 +21,40 @@
 
                     </div>
                 </div>
-                <div class="container-slider">
-                    <div class="slidernav transi">
-                        <a id="home-link" href="#home-section" onclick="SwitchColor(1)"></a>
-                        <a id="exp-link" href="#exp-sec" onclick="SwitchColor(2)"></a>
-                        <a id="beh-link" href="#beh-sec" onclick="SwitchColor(3)"></a>
-                        <a id="wys-link" href="#wys-sec" onclick="SwitchColor(4)"></a>
-                        <a id="rank-link" href="#rank-sec" onclick="SwitchColor(5)"></a>
-                        <a id="prem-link" href="#prem-sec" onclick="SwitchColor(6)"></a>
-                        <a id="last-link" href="#last-sec" onclick="SwitchColor(7)"></a>
+                <div class="container-links">
+                    <div id="home-link-expl" class="home-link-expl link-expl">
+                        Início da Página
+                    </div>
+                    <div id="exp-link-expl" class="exp-link-expl link-expl">
+                        O que é o Histórias Assombrosas?
+                    </div>
+                    <div id="beh-link-expl" class="home-link-expl link-expl">
+                        Temos as melhores histórias!
+                    </div>
+                    <div id="wys-link-expl" class="exp-link-expl link-expl">
+                        Escreva suas histórias
+                    </div>
+                    <div id="rank-link-expl" class="home-link-expl link-expl">
+                        Rank ao vivo
+                    </div>
+                    <div id="prem-link-expl" class="exp-link-expl link-expl">
+                        Prêmios para os leitores
+                    </div>
+                    <div id="last-link-expl" class="home-link-expl link-expl">
+                        ...
+                    </div>
+                </div>
+                <div class="container-link-exp-menu">
+                    <div class="container-slider">
+                        <div class="slidernav transi">
+                            <a id="home-link" onmouseenter="showexpl(1)" onmouseleave="showexpl(0)" href="#home-section" onclick="SwitchColor(1)"></a>
+                            <a id="exp-link" onmouseenter="showexpl(2)" onmouseleave="showexpl(0)"href="#exp-sec" onclick="SwitchColor(2)"></a>
+                            <a id="beh-link" onmouseenter="showexpl(3)" onmouseleave="showexpl(0)" href="#beh-sec" onclick="SwitchColor(3)"></a>
+                            <a id="wys-link" onmouseenter="showexpl(4)" onmouseleave="showexpl(0)" href="#wys-sec" onclick="SwitchColor(4)"></a>
+                            <a id="rank-link" onmouseenter="showexpl(5)" onmouseleave="showexpl(0)" href="#rank-sec" onclick="SwitchColor(5)"></a>
+                            <a id="prem-link" onmouseenter="showexpl(6)" onmouseleave="showexpl(0)" href="#prem-sec" onclick="SwitchColor(6)"></a>
+                            <a id="last-link" onmouseenter="showexpl(7)" onmouseleave="showexpl(0)" href="#last-sec" onclick="SwitchColor(7)"></a>
+                        </div>
                     </div>
                 </div>
                 <div class="piece"><i id="mode" class="far fa-sun transi"></i></div>
@@ -113,7 +138,7 @@
                                     </thead>
      
                                     <tbody>
-                                        <!--<?/*
+                                        <?
                                             $pdo = new PDO('mysql:host=localhost;dbname=id20545858_pi', 'id20545858_samuel', 'Agx3((dO5ze*n-]Y');
                                             $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
                                             $rank = 1;
@@ -131,8 +156,8 @@
                                                         .$value['pontos_leitor'].
                                                     '</td>'. 
                                                 '</tr>';
-                                            }*/
-                                        ?>-->
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

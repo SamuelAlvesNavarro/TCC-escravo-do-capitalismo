@@ -1,5 +1,4 @@
 viewPortHeight = window.innerHeight + "px";
-console.log("cu")
 const toggle = document.getElementById("mode");
 const root = document.querySelector(":root");
 var bt_enter = document.getElementById("bt-enter");
@@ -38,6 +37,34 @@ const wys = document.getElementById("wys-link");
 const rank = document.getElementById("rank-link");
 const prem = document.getElementById("prem-link");
 const last = document.getElementById("last-link");
+
+// expls
+
+const homeexpl = document.getElementById("home-link-expl");
+const expexpl = document.getElementById("exp-link-expl");
+const behexpl = document.getElementById("beh-link-expl");
+const wysexpl = document.getElementById("wys-link-expl");
+const rankexpl = document.getElementById("rank-link-expl");
+const premexpl = document.getElementById("prem-link-expl");
+const lastexpl = document.getElementById("last-link-expl");
+
+function showexpl(numb){
+    homeexpl.classList.remove("link-expl-appear");
+    expexpl.classList.remove("link-expl-appear")
+    behexpl.classList.remove("link-expl-appear")
+    wysexpl.classList.remove("link-expl-appear")
+    rankexpl.classList.remove("link-expl-appear")
+    premexpl.classList.remove("link-expl-appear")
+    lastexpl.classList.remove("link-expl-appear")
+
+    if(numb == 1)homeexpl.classList.add("link-expl-appear");
+    if(numb == 2)expexpl.classList.add("link-expl-appear");
+    if(numb == 3)behexpl.classList.add("link-expl-appear");
+    if(numb == 4)wysexpl.classList.add("link-expl-appear");
+    if(numb == 5)rankexpl.classList.add("link-expl-appear");
+    if(numb == 6)premexpl.classList.add("link-expl-appear");
+    if(numb == 7)lastexpl.classList.add("link-expl-appear");
+}
 
 previous = 1;
 numb = 1;
@@ -99,6 +126,8 @@ function SwitchColor(numbi){
         main.style.width = '100%';
     }
 }
+
+SwitchColor(1);
 
 bt_enter.addEventListener("mouseenter", () => {
     img_cat.style.bottom = '-20vh';
