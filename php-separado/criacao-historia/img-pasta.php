@@ -1,6 +1,6 @@
 <?php
     $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
-
+    $titulo = $_POST['titulo'];
     class Upload{
 
 		private $name; //name do input que o usuário colocará a imagem
@@ -23,7 +23,8 @@
 
         $objImagem = new Upload;
         //chama o método que faz o upload da imagem
-        $objImagem->uploadImagem("imagem","img-story/","terror");
+        $objImagem->uploadImagem("imagem","img-story/","$titulo". "1");
+        $objImagem->uploadImagem("imagem2","img-story/","$titulo" . "2");
         session_start();
         header("Location:exibir.php");
 ?>
