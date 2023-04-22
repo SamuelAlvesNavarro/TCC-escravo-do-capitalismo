@@ -10,7 +10,7 @@ class contaBancaria
     public $saldo = 10000.00;
 }
 
-$conta = new contaBancaria();
+$conta = new contaBancaria(123, "Samuel Alves", 3547, 111, 1000);
 
 var_dump($conta->saldo);
 
