@@ -57,7 +57,10 @@
                 </div>
                 <div class="page-pics-inputs">
                     <div class="page-pics-input">
-                        <input type="file" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo">
+                        <input type="file" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false"
+        ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();"  
+        ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"  
+        ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();">
                     </div>
                 </div>
             </div>
