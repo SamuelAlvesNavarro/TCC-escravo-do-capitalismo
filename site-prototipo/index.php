@@ -138,7 +138,7 @@
                                     </thead>
      
                                     <tbody>
-                                        <?
+                                        <?php
                                             $pdo = new PDO('mysql:host=localhost;dbname=id20545858_pi', 'id20545858_samuel', 'Agx3((dO5ze*n-]Y');
                                             $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
                                             $rank = 1;
