@@ -17,7 +17,7 @@
         </div>
         
         <form method="post" action="img-pasta.php" enctype="multipart/form-data">
-            <input type="file" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo" name="imagem"><br>
+            <input type="file" name="imagem" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo"><br>
             <input type="submit" value="Enviar">
         </form>
 
