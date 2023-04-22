@@ -19,7 +19,12 @@
             <div class="page-all story-page">
                 <div class="page-title">
                     <h1>História</h1>
-                    <div class="page-expl"></div>
+                    <div class="page-expl">
+                        <ul>
+                            <li>Escreva aqui sua história;</li>
+                            <li>Lembre-se da página de conclusão. Se não que sua página de história passe do limite de linhas, use-as sabeamente</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="page-content">
                     <textarea name="story" id="conteudo-historia" cols="30" rows="20"></textarea>
@@ -30,8 +35,8 @@
                     <h1>Fotos</h1>
                     <div class="page-expl">
                         <ul>
-                            <li>Limite de 10 imagens</li>
-                            <li>Só serão aceitos os formatos: jpg, jpeg e png</li>
+                            <li>Limite de 10 imagens;</li>
+                            <li>Só serão aceitos os formatos: jpg, jpeg e png.</li>
                         </ul>
                     </div>
                 </div>
@@ -41,20 +46,17 @@
                     </div>
                 </div>
             </div>
-            <div class="page-all story-page">
+            <div class="page-all ref-page">
                 <div class="page-title">
-                    <h1>História</h1>
+                    <h1>Referências</h1>
+                    <div class="page-expl">
+                        <ul>
+                            <li>Os links <strong>serão</strong> revisados, cuidado com o conteúdo sendo linkado.</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="page-content">
-                    <textarea name="story" id="conteudo-historia" cols="30" rows="20"></textarea>
-                </div>
-            </div>
-            <div class="page-all story-page">
-                <div class="page-title">
-                    <h1>História</h1>
-                </div>
-                <div class="page-content">
-                    <textarea name="story" id="conteudo-historia" cols="30" rows="20"></textarea>
+                    <input type="url" name="link-reference" id="">
                 </div>
             </div>
         </div>

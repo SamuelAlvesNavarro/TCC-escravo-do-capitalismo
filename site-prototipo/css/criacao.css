@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Poltawski+Nowy&family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Playfair+Display:ital@1&family=Poltawski+Nowy&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -99,6 +101,12 @@ body{
 }
 .pics-page{
     border-top: solid 1vh rgb(240, 9, 171);
+}
+.ref-page{
+    border-top: solid 1vh green;
+}
+.ref-page input{
+    width: 100%;
 }
 @media (width <= 600px) {
     .story{

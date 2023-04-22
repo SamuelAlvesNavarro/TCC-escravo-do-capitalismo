@@ -35,6 +35,7 @@
         <br>
         Aqui fica o rank, ent façam o bagui direito
     </div>
+    <a href="criacao.php">Ir para a criação de histórias</a>
     <br><br>
     <input type="text" name="" id="busca">
     <input type="button" value="Buscar por nome" class="bpnom">
