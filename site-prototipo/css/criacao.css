@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Poltawski+Nowy&family=Raleway&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+body{
+    background: #121212;
+    color: white;
+}
+.all{
+    width: 98vw;
+    margin: 1vw auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: .5vw;
+}
+.section{
+    background-color: #212121;
+    border-radius: 10px;
+}
+.title{
+    flex-grow: 1;
+    height: 10vh;
+    line-height: 10vh;
+    font-family: 'Poltawski Nowy';
+    text-align: center;
+}
+.story-title{
+    flex-grow: 2;
+    width: 60%;
+    height: 10vh;
+}
+.story-title input{
+    width: 96%;
+    margin: 2%;
+}
+.story{
+    flex-grow: 0;
+    width: 70%;
+    height: auto;
+}
+.warnings{
+    flex-grow: 1;
+    width: 20%;
+    padding: 2vw;
+    align-self: flex-start;
+    height: auto;
+    font-family: 'Poltawski Nowy';
+}
+.warnings h1{
+    margin-bottom: 2vh;
+}
+.warnings ul{
+    margin-left: 1vw;
+    text-align: justify;
+}
+.warnings ul ol{
+    margin: 1vw;
+    margin-left: 3vw;
+}
+.subref{
+    margin-left: 2vw;
+}
+.page-all{
+    width: 92%;
+    margin: 2%;
+    padding: 2%;
+    background-color: #353535;
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    font-family: 'Poltawski Nowy';
+}
+.page-title{
+    margin-bottom: 3%;
+}
+.page-title h1{
+    margin-bottom: 1%;
+}
+.page-title ul{
+    margin-left: 2%;
+}
+.page-all textarea{
+    width: 100%;
+    height: max-content;
+    max-height: 5vh;
+    transition: .2s linear;
+    overflow: hidden;
+}
+.page-all textarea:active, .page-all textarea:hover{
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+.story-page{
+    border-top: solid 1vh red;
+}
+.pics-page{
+    border-top: solid 1vh rgb(240, 9, 171);
+}
+@media (width <= 600px) {
+    .story{
+        width: 100%;
+    }
+}
