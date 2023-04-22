@@ -22,7 +22,7 @@
                     <div class="page-expl">
                         <ul>
                             <li>Escreva aqui sua história;</li>
-                            <li>Lembre-se da página de conclusão. Se não que sua página de história passe do limite de linhas, use-as sabeamente</li>
+                            <li>Lembre-se da página de conclusão. Se não quer que sua página de história passe do limite de linhas, use-as sabeamente</li>
                         </ul>
                     </div>
                 </div>
