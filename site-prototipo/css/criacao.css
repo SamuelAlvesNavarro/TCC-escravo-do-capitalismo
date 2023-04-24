@@ -87,13 +87,12 @@ body{
 }
 .page-all textarea{
     width: 100%;
-    height: max-content;
-    max-height: 5vh;
+    height: 3vh;
     transition: .2s linear;
     overflow: hidden;
 }
-.page-all textarea:active, .page-all textarea:hover{
-    max-height: 50vh;
+.page-all textarea:active, .page-all textarea:hover, .page-all textarea:focus{
+    height: 70vh;
     overflow-y: scroll;
 }
 .story-page{

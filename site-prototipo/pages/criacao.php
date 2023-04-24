@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -28,7 +27,7 @@
                     </div>
                 </div>
                 <div class="page-content">
-                    <textarea name="story" id="conteudo-historia" cols="30" rows="20"></textarea>
+                    <textarea name="story" id="conteudo-historia" rows="1" cols="30" maxlength="12000"></textarea>
                 </div>
             </div>
             <div class="page-all pics-page">
@@ -81,9 +80,14 @@
                     <li>Desrespeitar a categoria da página</li>
                     <div class="subref">Pode causar possivel rejeição da história</div>
                     <li>Declarar autoria de uma história que não o pertence</li>
-                    <div class="subref">Pode causar possivel rejeição da história</div>
+                    <div class="subref">Causará rejeição da história</div>
                 </ol>
             </ul>
+        </div>
+        <div class="upload section">
+            <button id="upload" class="upload">
+                Mandar para Revisão
+            </button>
         </div>
     </div>
 </body>
