@@ -19,7 +19,6 @@
         <form method="post" action="img-pasta.php" enctype="multipart/form-data">
             <input type="text" name="titulo" id=""><br>
             <input type="file" name="imagem" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo"><br>
-            <input type="file" name="imagem2" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo"><br>
             <input type="submit" value="Enviar">
         </form>
 

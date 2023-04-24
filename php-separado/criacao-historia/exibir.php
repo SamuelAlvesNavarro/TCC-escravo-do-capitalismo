@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="img-story/terror1" alt="">
-    <img src="img-story/terror2" alt="">
+    <img src="img-story/terror" alt="">
 </body>
 </html>
