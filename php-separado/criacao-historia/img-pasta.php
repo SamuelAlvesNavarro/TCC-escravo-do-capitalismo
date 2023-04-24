@@ -12,22 +12,22 @@
             move_uploaded_file($name['tmp_name'], $upload_arquivo);
 
     }
-    
-    /*if(preg_match('/[!@#$%^&*(),.?":{}|<>]/', $senha) || preg_match('/[áàãâéêíóôõúüç]/', $senha) || preg_match('/\s/', $senha)){
-        
-    }*/
-
-    /*$titulo = trim($titulo, "k");
-
-    echo $titulo;
-
-    $str = "Hire freelance developer";
-    echo trim($str, "Hir");*/
     $titulo = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", '/[!@#$%^&*(),.?":{}|<>\s]/'),explode(" ","a A e E i I o O u U n N"),$titulo);
-    echo $titulo;
 
-    for($x = 1; $x < 11; $x++){
-        uploadImagem("imagem".$x,"img-story/","$titulo".$x);
+    function gerarnomepasta($titulo){
+        if(is_dir("img-story/$titulo")){
+            $titulo .= '1';
+            gerarnomepasta($titulo);
+        }else{
+            mkdir('img-story/' . $titulo, 0777, false);
+            callupload($titulo);
+        }
+    }
+    function callupload($titulo){
+        for($x = 1; $x < 11; $x++){
+            uploadImagem("imagem".$x,"img-story/$titulo/","$titulo"."-img-".$x);
+        }
     }
 
+    $titulo = gerarnomepasta($titulo);
 ?>
