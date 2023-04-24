@@ -16,4 +16,8 @@
     for($x = 0; $x < 10; $x++){
         uploadImagem("imagem".$x+1,"img-story/","$titulo".$x+1);
     }
+
+    if(preg_match('/[!@#$%^&*(),.?":{}|<>]/', $senha) || preg_match('/[áàãâéêíóôõúüç]/', $senha) || preg_match('/\s/', $senha)){
+        $validaSenha = false;
+    }
 ?>
