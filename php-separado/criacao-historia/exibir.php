@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="img-story/terror" alt="">
+    <img src="img-story/mario5" style="background-color: black;" alt="">
 </body>
 </html>

@@ -13,5 +13,7 @@
 
     }
     
-    uploadImagem("imagem","img-story/","$titulo"."1");
+    for($x = 0; $x < 10; $x++){
+        uploadImagem("imagem".$x+1,"img-story/","$titulo".$x+1);
+    }
 ?>
