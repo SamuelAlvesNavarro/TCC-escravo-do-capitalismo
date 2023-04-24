@@ -18,7 +18,6 @@
         
         <form method="post" action="img-pasta.php" enctype="multipart/form-data">
             <input type="text" name="titulo" id=""><br>
-            <input type="file" name="imagem0" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo"><br>
             <input type="file" name="imagem1" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo"><br>
             <input type="file" name="imagem2" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo"><br>
             <input type="file" name="imagem3" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo"><br>
@@ -28,6 +27,7 @@
             <input type="file" name="imagem7" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo"><br>
             <input type="file" name="imagem8" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo"><br>
             <input type="file" name="imagem9" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo"><br>
+            <input type="file" name="imagem10" accept=".jpg, .jpeg, .png" id="" value="Enviar Arquivo"><br>
             <input type="submit" value="Enviar">
         </form>
 

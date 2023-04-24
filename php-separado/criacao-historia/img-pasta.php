@@ -1,6 +1,6 @@
 <?php
     $titulo = $_POST['titulo'];
-
+    settype($titulo, "string");
     function uploadImagem($name_imagem,$pasta_destino,$nome_principal){
 
             //Capturando os dados, e armazenando em variáveis locais, e variáveis de classe
@@ -13,11 +13,21 @@
 
     }
     
-    for($x = 0; $x < 10; $x++){
-        uploadImagem("imagem".$x+1,"img-story/","$titulo".$x+1);
+    /*if(preg_match('/[!@#$%^&*(),.?":{}|<>]/', $senha) || preg_match('/[áàãâéêíóôõúüç]/', $senha) || preg_match('/\s/', $senha)){
+        
+    }*/
+
+    /*$titulo = trim($titulo, "k");
+
+    echo $titulo;
+
+    $str = "Hire freelance developer";
+    echo trim($str, "Hir");*/
+    $titulo = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", '/[!@#$%^&*(),.?":{}|<>\s]/'),explode(" ","a A e E i I o O u U n N"),$titulo);
+    echo $titulo;
+
+    for($x = 1; $x < 11; $x++){
+        uploadImagem("imagem".$x,"img-story/","$titulo".$x);
     }
 
-    if(preg_match('/[!@#$%^&*(),.?":{}|<>]/', $senha) || preg_match('/[áàãâéêíóôõúüç]/', $senha) || preg_match('/\s/', $senha)){
-        $validaSenha = false;
-    }
 ?>
