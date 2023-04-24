@@ -5,6 +5,7 @@
     images($titulo);
     
     function images($titulo){
+
         function uploadImagem($name_imagem,$pasta_destino,$nome_principal){
 
             //Capturando os dados, e armazenando em variáveis locais, e variáveis de classe
@@ -17,10 +18,14 @@
 
         }
 
-        function gerarnomepasta($titulo){
+        function gerarnomepasta($titulo, $num){
             if(is_dir("img-story/$titulo")){
-                $titulo .= '1';
-                gerarnomepasta($titulo);
+                if($num == 0) $titulo .= '(0)';
+
+                $nump = $num + 1;
+                $titulo = str_replace("($num)", "($nump)", $titulo);
+
+                gerarnomepasta($titulo, $nump);
             }else{
                 mkdir('img-story/' . $titulo, 0777, false);
                 callupload($titulo);
@@ -32,6 +37,6 @@
             }
         }
 
-        $titulo = gerarnomepasta($titulo);
+        $titulo = gerarnomepasta($titulo, 0);
     }
 ?>
