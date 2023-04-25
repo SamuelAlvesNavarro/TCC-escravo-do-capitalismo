@@ -1,6 +1,17 @@
 <?php
     function images($titulo){
 
+        function is_dir_empty($dir) {
+            if (!is_readable($dir)) return null; 
+            return (count(scandir($dir)) == 2);
+        }
+
+        function checkfolder($path){
+            if(is_dir_empty($path)){
+                rmdir($path);
+            }
+        }
+
         function uploadImagem($name_imagem,$pasta_destino,$nome_principal){
 
             //Capturando os dados, e armazenando em variáveis locais, e variáveis de classe
@@ -10,7 +21,6 @@
 
             $upload_arquivo = $pasta_destino.$nome_substituto;
             move_uploaded_file($name['tmp_name'], $upload_arquivo);
-
         }
 
         function gerarnomepasta($titulo, $num){
@@ -31,6 +41,7 @@
             for($x = 1; $x < 11; $x++){
                 uploadImagem("imagem".$x,"../img-story/$titulo/","$titulo"."-img-".$x);
             }
+            checkfolder("../img-story/$titulo/");
         }
 
         $titulo = gerarnomepasta($titulo, 0);
@@ -43,11 +54,18 @@
             header("Location:error.php");
             return false;
         } 
+        return true;
+    }
+    function tituloreplacestuff($titulo){
+        preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", '/[!@#$%^&*(),.?":{}|<>\s]/'),explode(" ","a A e E i I o O u U n N"),$titulo);
     }
 
     $titulo = $_POST['titulo'];
 
-    if(checktitulo($titulo)) $titulo = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", '/[!@#$%^&*(),.?":{}|<>\s]/'),explode(" ","a A e E i I o O u U n N"),$titulo);
+    if(checktitulo($titulo)){
+        $titulo = tituloreplacestuff($titulo);
+    } 
+    
     if(checktitulo($titulo)){
         images($titulo);
     }
