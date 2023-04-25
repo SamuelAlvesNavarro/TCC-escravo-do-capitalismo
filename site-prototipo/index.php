@@ -139,7 +139,7 @@
      
                                     <tbody>
                                         <?php
-                                            $pdo = new PDO('mysql:host=localhost;dbname=id20545858_pi', 'id20545858_samuel', 'Agx3((dO5ze*n-]Y');
+                                            require "pages/includes/conexao.php";
                                             $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
                                             $rank = 1;
                                             foreach ($pdo->query($sql) as $key => $value) {
