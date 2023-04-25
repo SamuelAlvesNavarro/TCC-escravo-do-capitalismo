@@ -39,8 +39,10 @@
     }
 
     function checktitulo($titulo){
-        if($titulo = "") return false;
-        
+        if($titulo == "cu"){
+            header("Location:error.php");
+            return false;
+        } 
     }
 
     $titulo = $_POST['titulo'];
