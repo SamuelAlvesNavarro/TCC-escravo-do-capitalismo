@@ -8,7 +8,6 @@
 
         function uploadImagem($name_imagem,$pasta_destino,$nome_principal){
 
-            //Capturando os dados, e armazenando em variáveis locais, e variáveis de classe
             $name = $_FILES[$name_imagem];
 
             $nome_substituto = $nome_principal;
@@ -36,7 +35,6 @@
                 uploadImagem("imagem".$x,"img-story/$titulo/","$titulo"."-img-".$x);
             }
         }
-
         $titulo = gerarnomepasta($titulo, 0);
     }
 ?>
