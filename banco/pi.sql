@@ -1,599 +1,312 @@
--- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Win64 (AMD64)
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: pi
--- ------------------------------------------------------
--- Server version	10.4.24-MariaDB
+-- Host: 127.0.0.1:3307
+-- Tempo de geração: 25-Abr-2023 às 17:21
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.0.13
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `answer`
+-- Banco de dados: `pi`
 --
 
-DROP TABLE IF EXISTS `answer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `answer`
+--
+
 CREATE TABLE `answer` (
-  `id_answer` int(11) NOT NULL AUTO_INCREMENT,
+  `id_answer` int(11) NOT NULL,
   `fk_id_question` int(11) NOT NULL,
   `text` varchar(30) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id_answer`),
-  KEY `fk_id_question` (`fk_id_question`),
-  CONSTRAINT `answer_ibfk_1` FOREIGN KEY (`fk_id_question`) REFERENCES `question` (`id_question`) ON DELETE CASCADE ON UPDATE CASCADE
+  `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `answer`
+-- Estrutura da tabela `avaliable`
 --
 
-LOCK TABLES `answer` WRITE;
-/*!40000 ALTER TABLE `answer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `answer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `avaliable`
---
-
-DROP TABLE IF EXISTS `avaliable`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `avaliable` (
   `fk_id_profile` int(11) NOT NULL,
-  `fk_id_gadget` int(11) NOT NULL,
-  PRIMARY KEY (`fk_id_profile`,`fk_id_gadget`),
-  KEY `fk_id_gadget` (`fk_id_gadget`),
-  CONSTRAINT `avaliable_ibfk_1` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `avaliable_ibfk_2` FOREIGN KEY (`fk_id_gadget`) REFERENCES `gadget` (`id_gadget`) ON DELETE CASCADE ON UPDATE CASCADE
+  `fk_id_gadget` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `avaliable`
+-- Estrutura da tabela `comment`
 --
 
-LOCK TABLES `avaliable` WRITE;
-/*!40000 ALTER TABLE `avaliable` DISABLE KEYS */;
-/*!40000 ALTER TABLE `avaliable` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `comment`
---
-
-DROP TABLE IF EXISTS `comment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comment` (
-  `id_comment` int(11) NOT NULL AUTO_INCREMENT,
+  `id_comment` int(11) NOT NULL,
   `fk_id_story` int(11) NOT NULL,
   `fk_id_profile` int(11) NOT NULL,
-  `text` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_comment`),
-  KEY `fk_id_story` (`fk_id_story`),
-  KEY `fk_id_profile` (`fk_id_profile`),
-  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`fk_id_story`) REFERENCES `story` (`id_story`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE
+  `text` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `comment`
+-- Estrutura da tabela `compra`
 --
 
-LOCK TABLES `comment` WRITE;
-/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `compra`
---
-
-DROP TABLE IF EXISTS `compra`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `compra` (
   `fk_id_profile` int(11) NOT NULL,
   `fk_id_gadget` int(11) NOT NULL,
-  `data` date NOT NULL,
-  PRIMARY KEY (`fk_id_profile`,`fk_id_gadget`),
-  KEY `fk_id_gadget` (`fk_id_gadget`),
-  CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`fk_id_gadget`) REFERENCES `gadget` (`id_gadget`),
-  CONSTRAINT `compra_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE
+  `data` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `compra`
+-- Estrutura da tabela `data`
 --
 
-LOCK TABLES `compra` WRITE;
-/*!40000 ALTER TABLE `compra` DISABLE KEYS */;
-/*!40000 ALTER TABLE `compra` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `data`
---
-
-DROP TABLE IF EXISTS `data`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `data` (
-  `id_data` int(11) NOT NULL AUTO_INCREMENT,
+  `id_data` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
-  `texto` longtext NOT NULL,
-  PRIMARY KEY (`id_data`),
-  KEY `fk_id_page` (`fk_id_page`),
-  CONSTRAINT `data_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE
+  `texto` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `data`
+-- Estrutura da tabela `gadget`
 --
 
-LOCK TABLES `data` WRITE;
-/*!40000 ALTER TABLE `data` DISABLE KEYS */;
-/*!40000 ALTER TABLE `data` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `gadget`
---
-
-DROP TABLE IF EXISTS `gadget`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gadget` (
-  `id_gadget` int(11) NOT NULL AUTO_INCREMENT,
+  `id_gadget` int(11) NOT NULL,
   `type` int(11) NOT NULL,
   `preco` int(11) NOT NULL,
-  `assos_rank` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_gadget`),
-  KEY `assos_rank` (`assos_rank`),
-  CONSTRAINT `gadget_ibfk_1` FOREIGN KEY (`assos_rank`) REFERENCES `rank` (`id_ranking`) ON DELETE CASCADE ON UPDATE CASCADE
+  `assos_rank` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `gadget`
+-- Estrutura da tabela `history`
 --
 
-LOCK TABLES `gadget` WRITE;
-/*!40000 ALTER TABLE `gadget` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gadget` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `history`
---
-
-DROP TABLE IF EXISTS `history`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `history` (
-  `id_history` int(11) NOT NULL AUTO_INCREMENT,
+  `id_history` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
-  `texto` longtext NOT NULL,
-  PRIMARY KEY (`id_history`),
-  KEY `fk_id_page` (`fk_id_page`),
-  CONSTRAINT `history_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE
+  `texto` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `history`
+-- Extraindo dados da tabela `history`
 --
 
-LOCK TABLES `history` WRITE;
-/*!40000 ALTER TABLE `history` DISABLE KEYS */;
-/*!40000 ALTER TABLE `history` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `history` (`id_history`, `fk_id_page`, `texto`) VALUES
+(1, 1, 'lixo');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `images`
+-- Estrutura da tabela `images`
 --
 
-DROP TABLE IF EXISTS `images`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `images` (
-  `id_image` int(11) NOT NULL AUTO_INCREMENT,
+  `id_image` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
-  `path` longtext NOT NULL,
-  PRIMARY KEY (`id_image`),
-  KEY `fk_id_page` (`fk_id_page`),
-  CONSTRAINT `images_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE
+  `path` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `images`
+-- Extraindo dados da tabela `images`
 --
 
-LOCK TABLES `images` WRITE;
-/*!40000 ALTER TABLE `images` DISABLE KEYS */;
-/*!40000 ALTER TABLE `images` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `images` (`id_image`, `fk_id_page`, `path`) VALUES
+(1, 2, '../img-story/titulo/titulo-img-1');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `instance`
+-- Estrutura da tabela `like_comment`
 --
 
-DROP TABLE IF EXISTS `instance`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `instance` (
-  `id_instance` int(11) NOT NULL AUTO_INCREMENT,
-  `fk_id_page` int(11) NOT NULL,
-  `texto` longtext NOT NULL,
-  PRIMARY KEY (`id_instance`),
-  KEY `fk_id_page` (`fk_id_page`),
-  CONSTRAINT `instance_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `instance`
---
-
-LOCK TABLES `instance` WRITE;
-/*!40000 ALTER TABLE `instance` DISABLE KEYS */;
-/*!40000 ALTER TABLE `instance` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `like_comment`
---
-
-DROP TABLE IF EXISTS `like_comment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `like_comment` (
   `fk_id_profile` int(11) NOT NULL,
-  `fk_id_comment` int(11) NOT NULL,
-  PRIMARY KEY (`fk_id_comment`,`fk_id_profile`),
-  KEY `fk_id_profile` (`fk_id_profile`),
-  CONSTRAINT `like_comment_ibfk_1` FOREIGN KEY (`fk_id_comment`) REFERENCES `comment` (`id_comment`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `like_comment_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE
+  `fk_id_comment` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `like_comment`
+-- Estrutura da tabela `page`
 --
 
-LOCK TABLES `like_comment` WRITE;
-/*!40000 ALTER TABLE `like_comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `like_comment` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `page`
---
-
-DROP TABLE IF EXISTS `page`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `page` (
-  `id_page` int(11) NOT NULL AUTO_INCREMENT,
+  `id_page` int(11) NOT NULL,
   `fk_id_story` int(11) NOT NULL,
   `type` int(11) NOT NULL,
-  `order_p` int(11) NOT NULL,
-  PRIMARY KEY (`id_page`),
-  KEY `fk_id_story` (`fk_id_story`),
-  CONSTRAINT `page_ibfk_1` FOREIGN KEY (`fk_id_story`) REFERENCES `story` (`id_story`) ON DELETE CASCADE ON UPDATE CASCADE
+  `order_p` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `page`
+-- Extraindo dados da tabela `page`
 --
 
-LOCK TABLES `page` WRITE;
-/*!40000 ALTER TABLE `page` DISABLE KEYS */;
-/*!40000 ALTER TABLE `page` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `page` (`id_page`, `fk_id_story`, `type`, `order_p`) VALUES
+(1, 1, 0, 0),
+(2, 1, 1, 1);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `paths`
+-- Estrutura da tabela `profile`
 --
 
-DROP TABLE IF EXISTS `paths`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `paths` (
-  `id_path` int(11) NOT NULL AUTO_INCREMENT,
-  `fk_id_page` int(11) NOT NULL,
-  `path` longtext NOT NULL,
-  PRIMARY KEY (`id_path`),
-  KEY `fk_id_page` (`fk_id_page`),
-  CONSTRAINT `paths_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `paths`
---
-
-LOCK TABLES `paths` WRITE;
-/*!40000 ALTER TABLE `paths` DISABLE KEYS */;
-/*!40000 ALTER TABLE `paths` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `profile`
---
-
-DROP TABLE IF EXISTS `profile`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `profile` (
-  `id_profile` int(11) NOT NULL AUTO_INCREMENT,
+  `id_profile` int(11) NOT NULL,
   `foto` int(11) NOT NULL DEFAULT 0,
   `fundoFoto` int(11) NOT NULL DEFAULT 0,
   `bordaFoto` int(11) NOT NULL DEFAULT 0,
-  `fundoPerfil` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id_profile`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `profile`
---
-
-LOCK TABLES `profile` WRITE;
-/*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-INSERT INTO `profile` VALUES (1,0,0,0,0);
-/*!40000 ALTER TABLE `profile` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `question`
---
-
-DROP TABLE IF EXISTS `question`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `question` (
-  `id_question` int(11) NOT NULL AUTO_INCREMENT,
-  `fk_id_story` int(11) NOT NULL,
-  `quest_itself` varchar(40) NOT NULL,
-  PRIMARY KEY (`id_question`),
-  KEY `fk_id_story` (`fk_id_story`),
-  CONSTRAINT `question_ibfk_1` FOREIGN KEY (`fk_id_story`) REFERENCES `story` (`id_story`) ON DELETE CASCADE ON UPDATE CASCADE
+  `fundoPerfil` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `question`
+-- Extraindo dados da tabela `profile`
 --
 
-LOCK TABLES `question` WRITE;
-/*!40000 ALTER TABLE `question` DISABLE KEYS */;
-/*!40000 ALTER TABLE `question` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `profile` (`id_profile`, `foto`, `fundoFoto`, `bordaFoto`, `fundoPerfil`) VALUES
+(1, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `question_user`
+-- Estrutura da tabela `question`
 --
 
-DROP TABLE IF EXISTS `question_user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `question` (
+  `id_question` int(11) NOT NULL,
+  `fk_id_story` int(11) NOT NULL,
+  `quest_itself` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `question_user`
+--
+
 CREATE TABLE `question_user` (
   `fk_id_question` int(11) NOT NULL,
-  `fk_id_profile` int(11) NOT NULL,
-  PRIMARY KEY (`fk_id_question`,`fk_id_profile`),
-  KEY `fk_id_profile` (`fk_id_profile`),
-  CONSTRAINT `question_user_ibfk_1` FOREIGN KEY (`fk_id_question`) REFERENCES `question` (`id_question`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `question_user_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE
+  `fk_id_profile` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `question_user`
+-- Estrutura da tabela `rank`
 --
 
-LOCK TABLES `question_user` WRITE;
-/*!40000 ALTER TABLE `question_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `question_user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `rank`
---
-
-DROP TABLE IF EXISTS `rank`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rank` (
-  `id_ranking` int(11) NOT NULL AUTO_INCREMENT,
+  `id_ranking` int(11) NOT NULL,
   `minPontos` int(11) NOT NULL,
   `img` int(11) NOT NULL,
-  `maxPontos` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_ranking`)
+  `maxPontos` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `rank`
+-- Estrutura da tabela `reference`
 --
 
-LOCK TABLES `rank` WRITE;
-/*!40000 ALTER TABLE `rank` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rank` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `reference`
---
-
-DROP TABLE IF EXISTS `reference`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reference` (
-  `id_reference` int(11) NOT NULL AUTO_INCREMENT,
+  `id_reference` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
   `path` longtext NOT NULL,
-  PRIMARY KEY (`id_reference`),
-  KEY `fk_id_page` (`fk_id_page`),
-  CONSTRAINT `reference_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE
+  `explanation` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `reference`
+-- Estrutura da tabela `report_comment`
 --
 
-LOCK TABLES `reference` WRITE;
-/*!40000 ALTER TABLE `reference` DISABLE KEYS */;
-/*!40000 ALTER TABLE `reference` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `report_comment`
---
-
-DROP TABLE IF EXISTS `report_comment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `report_comment` (
-  `id_report` int(11) NOT NULL AUTO_INCREMENT,
+  `id_report` int(11) NOT NULL,
   `fk_id_reported` int(11) NOT NULL,
   `fk_id_reporter` int(11) NOT NULL,
   `fk_id_comment` int(11) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
-  `code` int(11) NOT NULL,
-  PRIMARY KEY (`id_report`),
-  KEY `fk_id_reported` (`fk_id_reported`),
-  KEY `fk_id_reporter` (`fk_id_reporter`),
-  KEY `fk_id_comment` (`fk_id_comment`),
-  CONSTRAINT `report_comment_ibfk_1` FOREIGN KEY (`fk_id_reported`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `report_comment_ibfk_2` FOREIGN KEY (`fk_id_reporter`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `report_comment_ibfk_3` FOREIGN KEY (`fk_id_comment`) REFERENCES `comment` (`id_comment`) ON DELETE CASCADE ON UPDATE CASCADE
+  `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `report_comment`
+-- Estrutura da tabela `report_profile`
 --
 
-LOCK TABLES `report_comment` WRITE;
-/*!40000 ALTER TABLE `report_comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `report_comment` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `report_profile`
---
-
-DROP TABLE IF EXISTS `report_profile`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `report_profile` (
-  `id_report` int(11) NOT NULL AUTO_INCREMENT,
+  `id_report` int(11) NOT NULL,
   `fk_id_reported` int(11) NOT NULL,
   `fk_id_reporter` int(11) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
-  `code` int(11) NOT NULL,
-  PRIMARY KEY (`id_report`),
-  KEY `fk_id_reported` (`fk_id_reported`),
-  KEY `fk_id_reporter` (`fk_id_reporter`),
-  CONSTRAINT `report_profile_ibfk_1` FOREIGN KEY (`fk_id_reported`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `report_profile_ibfk_2` FOREIGN KEY (`fk_id_reporter`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE
+  `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `report_profile`
+-- Estrutura da tabela `score`
 --
 
-LOCK TABLES `report_profile` WRITE;
-/*!40000 ALTER TABLE `report_profile` DISABLE KEYS */;
-/*!40000 ALTER TABLE `report_profile` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `score`
---
-
-DROP TABLE IF EXISTS `score`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `score` (
-  `id_score` int(11) NOT NULL AUTO_INCREMENT,
+  `id_score` int(11) NOT NULL,
   `fk_id_profile` int(11) NOT NULL,
   `fk_id_story` int(11) NOT NULL,
-  `nota` double NOT NULL,
-  PRIMARY KEY (`id_score`),
-  KEY `fk_id_profile` (`fk_id_profile`),
-  KEY `fk_id_story` (`fk_id_story`),
-  CONSTRAINT `score_ibfk_1` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `score_ibfk_2` FOREIGN KEY (`fk_id_story`) REFERENCES `story` (`id_story`) ON DELETE CASCADE ON UPDATE CASCADE
+  `nota` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `score`
+-- Estrutura da tabela `story`
 --
 
-LOCK TABLES `score` WRITE;
-/*!40000 ALTER TABLE `score` DISABLE KEYS */;
-/*!40000 ALTER TABLE `score` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `story`
---
-
-DROP TABLE IF EXISTS `story`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `story` (
-  `id_story` int(11) NOT NULL AUTO_INCREMENT,
+  `id_story` int(11) NOT NULL,
   `font` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `classificacao` double NOT NULL DEFAULT 0,
   `status` int(11) NOT NULL DEFAULT 0,
-  `fk_id_profile` int(11) NOT NULL,
-  PRIMARY KEY (`id_story`),
-  KEY `fk_id_profile` (`fk_id_profile`),
-  CONSTRAINT `story_ibfk_1` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE
+  `fk_id_profile` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `story`
+-- Extraindo dados da tabela `story`
 --
 
-LOCK TABLES `story` WRITE;
-/*!40000 ALTER TABLE `story` DISABLE KEYS */;
-/*!40000 ALTER TABLE `story` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `story` (`id_story`, `font`, `nome`, `classificacao`, `status`, `fk_id_profile`) VALUES
+(1, 0, 'Jack, o Estripador', 0, 1, 1);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `user_common`
+-- Estrutura da tabela `user_common`
 --
 
-DROP TABLE IF EXISTS `user_common`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_common` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
   `fk_id_profile` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `email` varchar(30) NOT NULL,
@@ -601,57 +314,391 @@ CREATE TABLE `user_common` (
   `apelido` varchar(15) NOT NULL,
   `pontos_leitor` int(11) NOT NULL DEFAULT 0,
   `ranking` int(11) NOT NULL DEFAULT 0,
-  `moedas` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id_user`),
-  KEY `fk_id_profile` (`fk_id_profile`),
-  CONSTRAINT `user_common_ibfk_1` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`),
-  CONSTRAINT `user_common_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user_common`
---
-
-LOCK TABLES `user_common` WRITE;
-/*!40000 ALTER TABLE `user_common` DISABLE KEYS */;
-INSERT INTO `user_common` VALUES (1,1,'adds','adasfd','asdfa','asdfa',0,0,0),(2,1,'samu','asda@gma','sada','asd',100,0,0),(3,1,'leo','asda','43','123/',300,0,0),(4,1,'lari','qw','eqwe','we',700,0,0),(5,1,'alguem','asasd','sdasd','asdas',100,0,0),(6,1,'davi','asda','sad','asdad',300,0,0);
-/*!40000 ALTER TABLE `user_common` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `victim`
---
-
-DROP TABLE IF EXISTS `victim`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `victim` (
-  `id_victim` int(11) NOT NULL AUTO_INCREMENT,
-  `fk_id_page` int(11) NOT NULL,
-  `texto` longtext NOT NULL,
-  PRIMARY KEY (`id_victim`),
-  KEY `fk_id_page` (`fk_id_page`),
-  CONSTRAINT `victim_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE
+  `moedas` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `victim`
+-- Extraindo dados da tabela `user_common`
 --
 
-LOCK TABLES `victim` WRITE;
-/*!40000 ALTER TABLE `victim` DISABLE KEYS */;
-/*!40000 ALTER TABLE `victim` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `ranking`, `moedas`) VALUES
+(1, 1, 'adds', 'adasfd', 'asdfa', 'asdfa', 0, 0, 0),
+(2, 1, 'samu', 'asda@gma', 'sada', 'asd', 100, 0, 0),
+(3, 1, 'leo', 'asda', '43', '123/', 300, 0, 0),
+(4, 1, 'lari', 'qw', 'eqwe', 'we', 700, 0, 0),
+(5, 1, 'alguem', 'asasd', 'sdasd', 'asdas', 100, 0, 0),
+(6, 1, 'davi', 'asda', 'sad', 'asdad', 300, 0, 0);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela `answer`
+--
+ALTER TABLE `answer`
+  ADD PRIMARY KEY (`id_answer`),
+  ADD KEY `fk_id_question` (`fk_id_question`);
+
+--
+-- Índices para tabela `avaliable`
+--
+ALTER TABLE `avaliable`
+  ADD PRIMARY KEY (`fk_id_profile`,`fk_id_gadget`),
+  ADD KEY `fk_id_gadget` (`fk_id_gadget`);
+
+--
+-- Índices para tabela `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id_comment`),
+  ADD KEY `fk_id_story` (`fk_id_story`),
+  ADD KEY `fk_id_profile` (`fk_id_profile`);
+
+--
+-- Índices para tabela `compra`
+--
+ALTER TABLE `compra`
+  ADD PRIMARY KEY (`fk_id_profile`,`fk_id_gadget`),
+  ADD KEY `fk_id_gadget` (`fk_id_gadget`);
+
+--
+-- Índices para tabela `data`
+--
+ALTER TABLE `data`
+  ADD PRIMARY KEY (`id_data`),
+  ADD KEY `fk_id_page` (`fk_id_page`);
+
+--
+-- Índices para tabela `gadget`
+--
+ALTER TABLE `gadget`
+  ADD PRIMARY KEY (`id_gadget`),
+  ADD KEY `assos_rank` (`assos_rank`);
+
+--
+-- Índices para tabela `history`
+--
+ALTER TABLE `history`
+  ADD PRIMARY KEY (`id_history`),
+  ADD KEY `fk_id_page` (`fk_id_page`);
+
+--
+-- Índices para tabela `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id_image`),
+  ADD KEY `fk_id_page` (`fk_id_page`);
+
+--
+-- Índices para tabela `like_comment`
+--
+ALTER TABLE `like_comment`
+  ADD PRIMARY KEY (`fk_id_comment`,`fk_id_profile`),
+  ADD KEY `fk_id_profile` (`fk_id_profile`);
+
+--
+-- Índices para tabela `page`
+--
+ALTER TABLE `page`
+  ADD PRIMARY KEY (`id_page`),
+  ADD KEY `fk_id_story` (`fk_id_story`);
+
+--
+-- Índices para tabela `profile`
+--
+ALTER TABLE `profile`
+  ADD PRIMARY KEY (`id_profile`);
+
+--
+-- Índices para tabela `question`
+--
+ALTER TABLE `question`
+  ADD PRIMARY KEY (`id_question`),
+  ADD KEY `fk_id_story` (`fk_id_story`);
+
+--
+-- Índices para tabela `question_user`
+--
+ALTER TABLE `question_user`
+  ADD PRIMARY KEY (`fk_id_question`,`fk_id_profile`),
+  ADD KEY `fk_id_profile` (`fk_id_profile`);
+
+--
+-- Índices para tabela `rank`
+--
+ALTER TABLE `rank`
+  ADD PRIMARY KEY (`id_ranking`);
+
+--
+-- Índices para tabela `reference`
+--
+ALTER TABLE `reference`
+  ADD PRIMARY KEY (`id_reference`),
+  ADD KEY `fk_id_page` (`fk_id_page`);
+
+--
+-- Índices para tabela `report_comment`
+--
+ALTER TABLE `report_comment`
+  ADD PRIMARY KEY (`id_report`),
+  ADD KEY `fk_id_reported` (`fk_id_reported`),
+  ADD KEY `fk_id_reporter` (`fk_id_reporter`),
+  ADD KEY `fk_id_comment` (`fk_id_comment`);
+
+--
+-- Índices para tabela `report_profile`
+--
+ALTER TABLE `report_profile`
+  ADD PRIMARY KEY (`id_report`),
+  ADD KEY `fk_id_reported` (`fk_id_reported`),
+  ADD KEY `fk_id_reporter` (`fk_id_reporter`);
+
+--
+-- Índices para tabela `score`
+--
+ALTER TABLE `score`
+  ADD PRIMARY KEY (`id_score`),
+  ADD KEY `fk_id_profile` (`fk_id_profile`),
+  ADD KEY `fk_id_story` (`fk_id_story`);
+
+--
+-- Índices para tabela `story`
+--
+ALTER TABLE `story`
+  ADD PRIMARY KEY (`id_story`),
+  ADD KEY `fk_id_profile` (`fk_id_profile`);
+
+--
+-- Índices para tabela `user_common`
+--
+ALTER TABLE `user_common`
+  ADD PRIMARY KEY (`id_user`),
+  ADD KEY `fk_id_profile` (`fk_id_profile`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `answer`
+--
+ALTER TABLE `answer`
+  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `data`
+--
+ALTER TABLE `data`
+  MODIFY `id_data` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `gadget`
+--
+ALTER TABLE `gadget`
+  MODIFY `id_gadget` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `history`
+--
+ALTER TABLE `history`
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `images`
+--
+ALTER TABLE `images`
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `page`
+--
+ALTER TABLE `page`
+  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `profile`
+--
+ALTER TABLE `profile`
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `question`
+--
+ALTER TABLE `question`
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `rank`
+--
+ALTER TABLE `rank`
+  MODIFY `id_ranking` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `reference`
+--
+ALTER TABLE `reference`
+  MODIFY `id_reference` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `report_comment`
+--
+ALTER TABLE `report_comment`
+  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `report_profile`
+--
+ALTER TABLE `report_profile`
+  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `score`
+--
+ALTER TABLE `score`
+  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `story`
+--
+ALTER TABLE `story`
+  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `user_common`
+--
+ALTER TABLE `user_common`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `answer`
+--
+ALTER TABLE `answer`
+  ADD CONSTRAINT `answer_ibfk_1` FOREIGN KEY (`fk_id_question`) REFERENCES `question` (`id_question`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `avaliable`
+--
+ALTER TABLE `avaliable`
+  ADD CONSTRAINT `avaliable_ibfk_1` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `avaliable_ibfk_2` FOREIGN KEY (`fk_id_gadget`) REFERENCES `gadget` (`id_gadget`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`fk_id_story`) REFERENCES `story` (`id_story`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `compra`
+--
+ALTER TABLE `compra`
+  ADD CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`fk_id_gadget`) REFERENCES `gadget` (`id_gadget`),
+  ADD CONSTRAINT `compra_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `data`
+--
+ALTER TABLE `data`
+  ADD CONSTRAINT `data_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `gadget`
+--
+ALTER TABLE `gadget`
+  ADD CONSTRAINT `gadget_ibfk_1` FOREIGN KEY (`assos_rank`) REFERENCES `rank` (`id_ranking`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `history`
+--
+ALTER TABLE `history`
+  ADD CONSTRAINT `history_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `images`
+--
+ALTER TABLE `images`
+  ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `like_comment`
+--
+ALTER TABLE `like_comment`
+  ADD CONSTRAINT `like_comment_ibfk_1` FOREIGN KEY (`fk_id_comment`) REFERENCES `comment` (`id_comment`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `like_comment_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `page`
+--
+ALTER TABLE `page`
+  ADD CONSTRAINT `page_ibfk_1` FOREIGN KEY (`fk_id_story`) REFERENCES `story` (`id_story`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `question`
+--
+ALTER TABLE `question`
+  ADD CONSTRAINT `question_ibfk_1` FOREIGN KEY (`fk_id_story`) REFERENCES `story` (`id_story`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `question_user`
+--
+ALTER TABLE `question_user`
+  ADD CONSTRAINT `question_user_ibfk_1` FOREIGN KEY (`fk_id_question`) REFERENCES `question` (`id_question`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `question_user_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `reference`
+--
+ALTER TABLE `reference`
+  ADD CONSTRAINT `reference_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `report_comment`
+--
+ALTER TABLE `report_comment`
+  ADD CONSTRAINT `report_comment_ibfk_1` FOREIGN KEY (`fk_id_reported`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `report_comment_ibfk_2` FOREIGN KEY (`fk_id_reporter`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `report_comment_ibfk_3` FOREIGN KEY (`fk_id_comment`) REFERENCES `comment` (`id_comment`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `report_profile`
+--
+ALTER TABLE `report_profile`
+  ADD CONSTRAINT `report_profile_ibfk_1` FOREIGN KEY (`fk_id_reported`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `report_profile_ibfk_2` FOREIGN KEY (`fk_id_reporter`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `score`
+--
+ALTER TABLE `score`
+  ADD CONSTRAINT `score_ibfk_1` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `score_ibfk_2` FOREIGN KEY (`fk_id_story`) REFERENCES `story` (`id_story`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `story`
+--
+ALTER TABLE `story`
+  ADD CONSTRAINT `story_ibfk_1` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `user_common`
+--
+ALTER TABLE `user_common`
+  ADD CONSTRAINT `user_common_ibfk_1` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`),
+  ADD CONSTRAINT `user_common_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2023-03-21 10:55:06
