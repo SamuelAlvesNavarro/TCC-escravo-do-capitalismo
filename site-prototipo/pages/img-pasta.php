@@ -1,10 +1,4 @@
 <?php
-    $titulo = $_POST['titulo'];
-
-    $titulo = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", '/[!@#$%^&*(),.?":{}|<>\s]/'),explode(" ","a A e E i I o O u U n N"),$titulo);
-
-    images($titulo);
-    
     function images($titulo){
 
         function uploadImagem($name_imagem,$pasta_destino,$nome_principal){
@@ -32,6 +26,7 @@
                 callupload($titulo);
             }
         }
+
         function callupload($titulo){
             for($x = 1; $x < 11; $x++){
                 uploadImagem("imagem".$x,"../img-story/$titulo/","$titulo"."-img-".$x);
@@ -41,5 +36,17 @@
         $titulo = gerarnomepasta($titulo, 0);
 
         header("Location:criacao.php");
+    }
+
+    function checktitulo($titulo){
+        if($titulo = "") return false;
+        
+    }
+
+    $titulo = $_POST['titulo'];
+
+    if(checktitulo($titulo)) $titulo = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", '/[!@#$%^&*(),.?":{}|<>\s]/'),explode(" ","a A e E i I o O u U n N"),$titulo);
+    if(checktitulo($titulo)){
+        images($titulo);
     }
 ?>

@@ -107,6 +107,20 @@ body{
 .ref-page input{
     width: 100%;
 }
+.uploads{
+    height: auto;
+    flex-grow: 1;
+    width: 100%;
+    padding: 2vw;
+    align-self: flex-start;
+    height: auto;
+    font-family: 'Poltawski Nowy';
+}
+#upload{
+    height: 70px;
+    width: 70px;
+    margin: 0 auto;
+}
 @media (width <= 600px) {
     .story{
         width: 100%;

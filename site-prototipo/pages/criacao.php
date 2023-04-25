@@ -14,7 +14,7 @@
             <h1>Página de Criação de Histórias</h1>
         </div>
         <div class="story-title section">
-            <input type="text" name="titulo" id="title-story" placeholder="Título">
+            <input type="text" name="titulo" id="title-story" required placeholder="Título">
         </div>
         <div class="story section">
             <div class="page-all story-page">
@@ -69,6 +69,19 @@
                     <input type="url" name="link-reference" id="">
                 </div>
             </div>
+            <div class="page-all ref-page">
+                <div class="page-title">
+                    <h1>Referências</h1>
+                    <div class="page-expl">
+                        <ul>
+                            <li>Os links <strong>serão</strong> revisados, cuidado com o conteúdo sendo linkado.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <input type="url" name="link-reference" id="">
+                </div>
+            </div>
         </div>
         <div class="warnings section">
             <h1>Avisos e Regras</h1>
@@ -91,10 +104,8 @@
                 </ol>
             </ul>
         </div>
-        <div class="upload section">
-            <button id="upload" class="upload" onclick="submit()">
-                Mandar para Revisão
-            </button>
+        <div class="uploads">
+            <input type="submit" value="Mandar para Revisão">
         </div>
     </div>
 </form>
