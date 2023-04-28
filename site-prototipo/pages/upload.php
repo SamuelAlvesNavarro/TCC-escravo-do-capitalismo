@@ -9,7 +9,9 @@
         for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["size"] <= 500000 /*&& count($_FILES['imagem'.$x]['slaaaaa']) == 1*/){
                 continue;
-            }else break;
+            }else{
+                header("Location:error.php");
+            }
         }
         for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["error"] == 0){
