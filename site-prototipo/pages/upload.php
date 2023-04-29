@@ -78,8 +78,8 @@
 
         /* EM SI */
 
-        $id_page = 0;
-        
+        $id_page = -1;
+
         $page = "INSERT INTO page values(NULL, '$id_story', '1', '1')";
         foreach ($pdo->query($page) as $key => $value) {
             $id_page = $value['id_page'];
@@ -92,7 +92,9 @@
         } 
         
         if(checktitulo($titulo)){
-            images($titulo, $id_page);
+            if($id_page != -1){
+                images($titulo, $id_page);
+            }
         }
     }
 
