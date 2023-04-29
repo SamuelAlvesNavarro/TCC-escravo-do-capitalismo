@@ -116,9 +116,13 @@
         $perfil = $value['fk_id_profile'];
     }
 
-    uploadHistoria($titulo, $historia, $pdo, $perfil);
+    function referencia($id_page, $referencia){
 
-    function uploadHistoria($titulo, $historia, $pdo, $perfil){
+    }
+
+    uploadHistoria($titulo, $historia, $pdo, $perfil, $id_page, $referencia);
+
+    function uploadHistoria($titulo, $historia, $pdo, $perfil, $id_page, $referencia){
 
         // inserindo story
         $id_story = -1;
@@ -130,11 +134,16 @@
             $id_story = $value['id_story'];
             echo "$id_story /n";
         }
+        $history = "INSERT INTO history values(NULL, '$id_page', '$historia')";
+        $prepare = $pdo->prepare($history);
+        $prepare->execute();
 
         if($id_story != -1){
             // func da história
             checkimages($titulo, $id_story, $pdo);
             // func da ref
+            referencia($id_page, $referencia);
         }
     }
+
 ?>
