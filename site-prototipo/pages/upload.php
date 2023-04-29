@@ -3,21 +3,35 @@
 
     /* IMAGES */
 
-    function checkimages($titulo, $id_story, $pdo){
+    function checkimages($titulo, $id_story, $pdo, $id_page){
         for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["size"] <= 500000 /*&& count($_FILES['imagem'.$x]['slaaaaa']) == 1*/){
                 continue;
             }else break;
         }
         for($x = 1; $x < 11; $x++){
-            if(empty($_FILES["imagem".$x]["error"])){
-                uploadImagemCompleto($titulo, $id_story, $pdo);
+            if($_FILES["imagem".$x]["error"] == 0){
+                echo "o que ta acontecendo";
+                uploadImagemCompleto($titulo, $id_story, $pdo, $id_page);
                 break;
             }
         }
     
     }
-    function uploadImagemCompleto($titulo, $id_story, $pdo){
+
+    function page($pdo, $id_story){
+        $page = "INSERT INTO page values(NULL, $id_story, '1', '1')";
+        $prepare = $pdo->prepare($page);
+        $prepare->execute();
+        $page = "SELECT id_page from page where fk_id_story = $id_story and type = 1";
+        foreach ($pdo->query($page) as $key => $value) {
+            $id_page = $value['id_page'];
+            echo "-------->$id_page<------";
+        }
+
+    }
+
+    function uploadImagemCompleto($titulo, $id_story, $pdo, $id_page){
 
         function images($titulo, $id_page){
 
@@ -83,14 +97,7 @@
 
         $id_page = -1;
 
-        $page = "INSERT INTO page values(NULL, $id_story, '1', '1')";
-        $prepare = $pdo->prepare($page);
-        $prepare->execute();
-        $page = "SELECT id_page from page where fk_id_story = $id_story and type = 1";
-        foreach ($pdo->query($page) as $key => $value) {
-            $id_page = $value['id_page'];
-            echo "-------->$id_page<------";
-        }
+        page($pdo, $id_story);
 
         if(checktitulo($titulo)){
             $titulo = tituloreplacestuff($titulo);
@@ -102,6 +109,7 @@
             }
         }
     }
+
 
     /* IN ITSELF */
     
@@ -117,12 +125,12 @@
     }
 
     function referencia($id_page, $referencia){
-
+    
     }
 
     uploadHistoria($titulo, $pdo, $perfil, $referencia);
 
-    function uploadHistoria($titulo, $pdo, $perfil){
+    function uploadHistoria($titulo, $pdo, $perfil, $id_page){
 
         // inserindo story
         $id_story = -1;
@@ -132,22 +140,19 @@
         $story = "SELECT id_story FROM story WHERE fk_id_profile = '$perfil' and nome = '$titulo'";
         foreach ($pdo->query($story) as $key => $value) {
             $id_story = $value['id_story'];
-            echo "$id_story /n";
         }
 
         if($id_story != -1){
             // func da história
-            checkimages($titulo, $id_story, $pdo);
+            checkimages($titulo, $id_story, $pdo, $id_page);
             // func da ref
         }
     }
 
     function history($id_page, $historia, $pdo){
-        $history = "INSERT INTO history values(NULL, '$id_page', '$historia')";
+        $history = "INSERT INTO history(fk_id_page, texto) values('$id_page', '$historia')";
         $prepare = $pdo->prepare($history);
         $prepare->execute();
     }
-
-    history($id_page, $historia, $pdo);
 
 ?>
