@@ -103,6 +103,7 @@
     $titulo = $_POST['titulo'];
     $historia = $_POST['story'];
     $referencia = $_POST['link-reference'];
+    $email = 'asda@gma';
     $perfil = 1;
     $id_story = 0;
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
