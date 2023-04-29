@@ -1,3 +1,6 @@
+<?php
+    //require "includes/online.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
