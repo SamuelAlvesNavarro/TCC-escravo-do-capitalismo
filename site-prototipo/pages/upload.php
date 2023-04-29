@@ -1,6 +1,6 @@
 <?php
     $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
-
+    $GLOBALS[$pdo] = $pdo;
     /* IMAGES */
 
     function checkimages($titulo, $id_story, $pdo){
@@ -35,7 +35,7 @@
                 // insert into images values(NULL, $id_page, $upload_arquivo);
                 $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
 
-                $page = "insert into images values(NULL, $id_page, '$upload_arquivo')";
+                $page = "INSERT INTO images values(NULL, $id_page, '$upload_arquivo')";
                 $prepare = $pdo->prepare($page);
                 $prepare->execute();
                 
