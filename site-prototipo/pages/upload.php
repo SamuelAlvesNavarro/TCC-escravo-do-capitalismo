@@ -1,24 +1,5 @@
 <?php
-
-    $titulo = $_POST['titulo'];
-    $id_story = 0;
-   
-    checkimages($titulo, $id_story);
-
-    function checkimages($titulo, $id_story){
-        for($x = 1; $x < 11; $x++){
-            if($_FILES["imagem".$x]["size"] <= 500000 /*&& count($_FILES['imagem'.$x]['slaaaaa']) == 1*/){
-                continue;
-            }else break;
-        }
-        for($x = 1; $x < 11; $x++){
-            if($_FILES["imagem".$x]["error"] == 0){
-                uploadImagemCompleto($titulo, $id_story);
-                break;
-            }
-        }
-        header("Location:error.php");
-    }
+    $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
 
     function uploadImagemCompleto($titulo, $id_story){
 
