@@ -1,18 +1,20 @@
 <?php
     $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
+    $historia = $_POST['story'];
 
     /* IMAGES */
 
-    function checkimages($titulo, $id_story, $pdo, $id_page){
+    function checkimages($titulo, $id_story, $pdo, $id_page, $historia){
         for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["size"] <= 500000 /*&& count($_FILES['imagem'.$x]['slaaaaa']) == 1*/){
                 continue;
             }else break;
         }
         for($x = 1; $x < 11; $x++){
+            echo "o que ta acontecendo<br>";
             if($_FILES["imagem".$x]["error"] == 0){
-                echo "o que ta acontecendo";
-                uploadImagemCompleto($titulo, $id_story, $pdo, $id_page);
+                echo "$x<br>";
+                uploadImagemCompleto($titulo, $id_story, $pdo, $id_page, $historia);
             }
         }
     
@@ -25,17 +27,17 @@
         $page = "SELECT id_page from page where fk_id_story = $id_story and type = 1";
         foreach ($pdo->query($page) as $key => $value) {
             $id_page = $value['id_page'];
-            echo "-------->$id_page<------";
+            echo "<br>-------->$id_page<------<br>";
             return $id_page;
         }
 
     }
 
-    function uploadImagemCompleto($titulo, $id_story, $pdo, $id_page){
+    function uploadImagemCompleto($titulo, $id_story, $pdo, $id_page, $historia){
 
         function images($titulo, $id_page){
 
-            function uploadImagem($name_imagem,$pasta_destino,$nome_principal,$id_page){
+            function uploadImagem($name_imagem,$pasta_destino,$nome_principal,$id_page, $historia){
 
                 //Capturando os dados, e armazenando em variáveis locais, e variáveis de classe
                 $name = $_FILES[$name_imagem];
@@ -98,6 +100,7 @@
         $id_page = -1;
 
         $id_page = page($pdo, $id_story);
+        history($id_page, $historia, $pdo);
 
         if(checktitulo($titulo)){
             $titulo = tituloreplacestuff($titulo);
@@ -114,7 +117,6 @@
     /* IN ITSELF */
     
     $titulo = $_POST['titulo'];
-    $historia = $_POST['story'];
     $referencia = $_POST['link-reference'];
     $email = 'asda@gma';
     $perfil = 1;
@@ -144,7 +146,7 @@
 
         if($id_story != -1){
             // func da história
-            checkimages($titulo, $id_story, $pdo, $id_page);
+            checkimages($titulo, $id_story, $pdo, $id_page, $historia);
             // func da ref
         }
     }
@@ -154,6 +156,5 @@
         $prepare = $pdo->prepare($history);
         $prepare->execute();
     }
-    history($id_page, $historia, $pdo);
 
 ?>
