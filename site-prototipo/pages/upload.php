@@ -26,7 +26,7 @@
 
         function images($titulo, $id_page){
 
-            function uploadImagem($name_imagem,$pasta_destino,$nome_principal){
+            function uploadImagem($name_imagem,$pasta_destino,$nome_principal,$id_page){
 
                 //Capturando os dados, e armazenando em variáveis locais, e variáveis de classe
                 $name = $_FILES[$name_imagem];
@@ -35,6 +35,7 @@
 
                 $upload_arquivo = $pasta_destino.$nome_substituto;
                 move_uploaded_file($name['tmp_name'], $upload_arquivo);
+                //salvar endereço no banco com $id_page
                 
             }
 
