@@ -78,6 +78,8 @@
 
         /* EM SI */
 
+        $id_page = 0;
+        
         $page = "INSERT INTO page values(NULL, '$id_story', '1', '1')";
         foreach ($pdo->query($page) as $key => $value) {
             $id_page = $value['id_page'];
