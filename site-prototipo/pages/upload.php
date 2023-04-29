@@ -13,7 +13,6 @@
             if($_FILES["imagem".$x]["error"] == 0){
                 echo "o que ta acontecendo";
                 uploadImagemCompleto($titulo, $id_story, $pdo, $id_page);
-                break;
             }
         }
     
@@ -154,5 +153,6 @@
         $prepare = $pdo->prepare($history);
         $prepare->execute();
     }
+    history($id_page, $historia, $pdo);
 
 ?>
