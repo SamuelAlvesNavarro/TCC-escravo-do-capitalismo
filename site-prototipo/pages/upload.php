@@ -1,6 +1,6 @@
 <?php
     $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
-    $GLOBALS[$pdo] = $pdo;
+
     /* IMAGES */
 
     function checkimages($titulo, $id_story, $pdo){
@@ -120,9 +120,9 @@
 
     }
 
-    uploadHistoria($titulo, $historia, $pdo, $perfil, $id_page, $referencia);
+    uploadHistoria($titulo, $pdo, $perfil, $referencia);
 
-    function uploadHistoria($titulo, $pdo, $perfil, $id_page, $referencia){
+    function uploadHistoria($titulo, $pdo, $perfil){
 
         // inserindo story
         $id_story = -1;
@@ -139,7 +139,6 @@
             // func da história
             checkimages($titulo, $id_story, $pdo);
             // func da ref
-            referencia($id_page, $referencia);
         }
     }
 
