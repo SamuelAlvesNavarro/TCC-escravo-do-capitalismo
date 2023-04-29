@@ -26,6 +26,7 @@
         foreach ($pdo->query($page) as $key => $value) {
             $id_page = $value['id_page'];
             echo "-------->$id_page<------";
+            return $id_page;
         }
 
     }
@@ -96,7 +97,7 @@
 
         $id_page = -1;
 
-        page($pdo, $id_story);
+        $id_page = page($pdo, $id_story);
 
         if(checktitulo($titulo)){
             $titulo = tituloreplacestuff($titulo);
