@@ -116,13 +116,6 @@
         $prepare = $pdo->prepare($story);
         $prepare->execute();
 
-        // inserindo page
-        for($x = 0; $x < 3; $x++){
-            $page = "INSERT INTO page values(NULL, '$id_story', '$x', '$x')";
-            $prepare = $pdo->prepare($page);
-            $prepare->execute();
-        }
-
         checkimages($titulo, $id_story);
 
     }
