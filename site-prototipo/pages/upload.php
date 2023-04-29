@@ -1,6 +1,23 @@
 <?php
     $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
 
+    /* IMAGES */
+
+    function checkimages($titulo, $id_story){
+        for($x = 1; $x < 11; $x++){
+            if($_FILES["imagem".$x]["size"] <= 500000 /*&& count($_FILES['imagem'.$x]['slaaaaa']) == 1*/){
+                continue;
+            }else break;
+        }
+        for($x = 1; $x < 11; $x++){
+            if($_FILES["imagem".$x]["error"] == 0){
+                uploadImagemCompleto($titulo, $id_story);
+                break;
+            }
+        }
+        header("Location:error.php");
+    }
+
     function uploadImagemCompleto($titulo, $id_story){
 
         function images($titulo, $id_page){
@@ -79,6 +96,8 @@
         }
     }
 
+    /* IN ITSELF */
+    
     $titulo = $_POST['titulo'];
     $historia = $_POST['story'];
     $referencia = $_POST['link-reference'];
@@ -91,7 +110,7 @@
 
     function uploadHistoria($titulo, $historia, $pdo, $perfil){
         // inserindo story
-        $story = "INSERT INTO story(font, nome, classificacao, status, fk_id_profile) values(0, '$titulo', NULL, 0, '$perfil')";
+        $story = "INSERT INTO story values(NULL, 0, '$titulo', NULL, 0, '$perfil')";
         foreach ($pdo->query($story) as $key => $value) {
             $id_story = $value['id_story'];
         }
@@ -100,7 +119,7 @@
 
         // inserindo page
         for($x = 0; $x < 3; $x++){
-            $page = "INSERT INTO page(fk_id_story, type, order_p) values('$id_story', '$x', '$x')";
+            $page = "INSERT INTO page values(NULL, '$id_story', '$x', '$x')";
             $prepare = $pdo->prepare($page);
             $prepare->execute();
         }
@@ -109,19 +128,5 @@
 
     checkimages($titulo, $id_story);
 
-    function checkimages($titulo, $id_story){
-        for($x = 1; $x < 11; $x++){
-            if($_FILES["imagem".$x]["size"] <= 500000 /*&& count($_FILES['imagem'.$x]['slaaaaa']) == 1*/){
-                continue;
-            }else break;
-        }
-        for($x = 1; $x < 11; $x++){
-            if($_FILES["imagem".$x]["error"] == 0){
-                uploadImagemCompleto($titulo, $id_story);
-                break;
-            }
-        }
-        header("Location:error.php");
-    }
 
 ?>
