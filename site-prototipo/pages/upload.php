@@ -86,7 +86,7 @@
         $page = "INSERT INTO page values(NULL, $id_story, '1', '1')";
         $prepare = $pdo->prepare($page);
         $prepare->execute();
-        $page = "SELECT id_page from page where fk_id_story = $id_story";
+        $page = "SELECT id_page from page where fk_id_story = $id_story and type = 1";
         foreach ($pdo->query($page) as $key => $value) {
             $id_page = $value['id_page'];
             echo "-------->$id_page<------";
