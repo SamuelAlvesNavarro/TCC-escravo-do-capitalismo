@@ -17,7 +17,6 @@
         }
         header("Location:error.php");
     }
-
     function uploadImagemCompleto($titulo, $id_story){
 
         function images($titulo, $id_page){
@@ -79,13 +78,12 @@
 
         /* EM SI */
 
-
-        /* Criação page de img e puxar o id: 
-            insert into page values (NULL, $id_story, 1, 1)
-            id_page => select id_page from page where fk_id_story = $id_story and type = 1
-        */
-
-        $id_page = 0;
+        $page = "INSERT INTO page values(NULL, '$id_story', '1', '1')";
+        foreach ($pdo->query($page) as $key => $value) {
+            $id_page = $value['id_page'];
+        }
+        $prepare = $pdo->prepare($page);
+        $prepare->execute();
 
         if(checktitulo($titulo)){
             $titulo = tituloreplacestuff($titulo);
@@ -109,6 +107,7 @@
     }
 
     function uploadHistoria($titulo, $historia, $pdo, $perfil){
+
         // inserindo story
         $story = "INSERT INTO story values(NULL, 0, '$titulo', NULL, 0, '$perfil')";
         foreach ($pdo->query($story) as $key => $value) {
@@ -124,9 +123,7 @@
             $prepare->execute();
         }
 
+        checkimages($titulo, $id_story);
+
     }
-
-    checkimages($titulo, $id_story);
-
-
 ?>
