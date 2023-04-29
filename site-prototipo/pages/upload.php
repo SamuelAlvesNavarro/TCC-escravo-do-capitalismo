@@ -2,6 +2,24 @@
     $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
     $historia = $_POST['story'];
 
+    /* CREATE STORY */
+
+    function uploadHistoria($titulo, $pdo, $perfil){
+        $id_story = -1;
+        $story = "INSERT INTO story values(NULL, 0, '$titulo', 0, 1, '$perfil')";
+        $prepare = $pdo->prepare($story);
+        $prepare->execute();
+        $story2 = "SELECT id_story FROM story WHERE fk_id_profile = '$perfil' and nome = '$titulo'";
+        foreach ($pdo->query($story2) as $key => $value) {
+            $id_story = $value['id_story'];
+        }
+        if($id_story != -1){
+            return $id_story;
+        }else{
+            return -1;
+        }
+    }
+
     /* PAGES */
 
     function Createpage($pdo, $id_story, $type){
@@ -46,7 +64,7 @@
             function uploadImagem($name_imagem,$pasta_destino,$nome_principal,$id_page){
 
                 $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
-                
+
                 $name = $_FILES[$name_imagem];
 
                 $upload_arquivo = $pasta_destino.$nome_principal;
@@ -130,25 +148,12 @@
 
     if($perfil == -1)header("Location: error.php");
 
-    uploadHistoria($titulo, $pdo, $perfil);
+    $id_story = uploadHistoria($titulo, $pdo, $perfil);
 
-    function uploadHistoria($titulo, $pdo, $perfil){
-
-        // inserindo story
-        $id_story = -1;
-        $story = "INSERT INTO story values(NULL, 0, '$titulo', 0, 1, '$perfil')";
-        $prepare = $pdo->prepare($story);
-        $prepare->execute();
-        $story2 = "SELECT id_story FROM story WHERE fk_id_profile = '$perfil' and nome = '$titulo'";
-        foreach ($pdo->query($story2) as $key => $value) {
-            $id_story = $value['id_story'];
-        }
-
-        if($id_story != -1){
-            // func da história
-            checkimages($titulo, $id_story, $pdo);
-            // func da ref
-        }
+    if($id_story != -1){
+        // func da história
+        checkimages($titulo, $id_story, $pdo);
+        // func da ref
     }
 
     function history($id_page, $historia, $pdo){
