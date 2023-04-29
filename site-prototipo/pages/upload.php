@@ -10,7 +10,7 @@
             }else break;
         }
         for($x = 1; $x < 11; $x++){
-            if($_FILES["imagem".$x]["error"] == 0){
+            if(empty($_FILES["imagem".$x]["error"])){
                 uploadImagemCompleto($titulo, $id_story, $pdo);
                 break;
             }
@@ -147,5 +147,7 @@
         $prepare = $pdo->prepare($history);
         $prepare->execute();
     }
+
+    history($id_page, $historia, $pdo);
 
 ?>
