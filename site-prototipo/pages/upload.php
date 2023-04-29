@@ -25,7 +25,6 @@
         $page = "SELECT id_page from page where fk_id_story = $id_story and type = 1";
         foreach ($pdo->query($page) as $key => $value) {
             $id_page = $value['id_page'];
-            echo "-------->$id_page<------";
             return $id_page;
         }
 
