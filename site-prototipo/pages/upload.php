@@ -1,13 +1,30 @@
 <?php
-    //require "includes/conexao.php";
-    //require "includes/online.php";
-    $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
+
+    $titulo = $_POST['titulo'];
+    $id_story = 0;
+   
+    checkimages($titulo, $id_story);
+
+    function checkimages($titulo, $id_story){
+        for($x = 1; $x < 11; $x++){
+            if($_FILES["imagem".$x]["size"] <= 500000 /*&& count($_FILES['imagem'.$x]['slaaaaa']) == 1*/){
+                continue;
+            }else break;
+        }
+        for($x = 1; $x < 11; $x++){
+            if($_FILES["imagem".$x]["error"] == 0){
+                uploadImagemCompleto($titulo, $id_story);
+                break;
+            }
+        }
+        header("Location:error.php");
+    }
 
     function uploadImagemCompleto($titulo, $id_story){
 
         function images($titulo, $id_page){
 
-            function uploadImagem($name_imagem,$pasta_destino,$nome_principal){
+            function uploadImagem($name_imagem,$pasta_destino,$nome_principal,$id_page){
 
                 //Capturando os dados, e armazenando em variáveis locais, e variáveis de classe
                 $name = $_FILES[$name_imagem];
@@ -16,6 +33,7 @@
 
                 $upload_arquivo = $pasta_destino.$nome_substituto;
                 move_uploaded_file($name['tmp_name'], $upload_arquivo);
+                //salvar endereço no banco com $id_page
                 
             }
 
