@@ -122,7 +122,7 @@
 
     uploadHistoria($titulo, $historia, $pdo, $perfil, $id_page, $referencia);
 
-    function uploadHistoria($titulo, $historia, $pdo, $perfil, $id_page, $referencia){
+    function uploadHistoria($titulo, $pdo, $perfil, $id_page, $referencia){
 
         // inserindo story
         $id_story = -1;
@@ -134,9 +134,6 @@
             $id_story = $value['id_story'];
             echo "$id_story /n";
         }
-        $history = "INSERT INTO history values(NULL, '$id_page', '$historia')";
-        $prepare = $pdo->prepare($history);
-        $prepare->execute();
 
         if($id_story != -1){
             // func da história
@@ -144,6 +141,12 @@
             // func da ref
             referencia($id_page, $referencia);
         }
+    }
+
+    function history($id_page, $historia, $pdo){
+        $history = "INSERT INTO history values(NULL, '$id_page', '$historia')";
+        $prepare = $pdo->prepare($history);
+        $prepare->execute();
     }
 
 ?>
