@@ -2,58 +2,58 @@
     $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
     $historia = $_POST['story'];
 
-    /* IMAGES */
+    /* PAGES */
 
-    function checkimages($titulo, $id_story, $pdo, $id_page, $historia){
-        for($x = 1; $x < 11; $x++){
-            if($_FILES["imagem".$x]["size"] <= 500000 /*&& count($_FILES['imagem'.$x]['slaaaaa']) == 1*/){
-                continue;
-            }else break;
-        }
-        for($x = 1; $x < 11; $x++){
-            echo "o que ta acontecendo<br>";
-            if($_FILES["imagem".$x]["error"] == 0){
-                echo "$x<br>";
-                uploadImagemCompleto($titulo, $id_story, $pdo, $id_page, $historia);
-            }
-        }
-    
-    }
-
-    function page($pdo, $id_story){
-        $page = "INSERT INTO page values(NULL, $id_story, '1', '1')";
+    function Createpage($pdo, $id_story, $type){
+        $page = "INSERT INTO page values(NULL, $id_story, $type, $type)";
         $prepare = $pdo->prepare($page);
         $prepare->execute();
-        $page = "SELECT id_page from page where fk_id_story = $id_story and type = 1";
+    }
+    function RetornarIdPage($pdo, $id_story, $type){
+        $page = "SELECT id_page from page where fk_id_story = $id_story and type = $type";
         foreach ($pdo->query($page) as $key => $value) {
             $id_page = $value['id_page'];
             return $id_page;
         }
-
     }
 
-    function uploadImagemCompleto($titulo, $id_story, $pdo, $id_page, $historia){
+    /* IMAGES */
+
+    function checkimages($titulo, $id_story, $pdo){
+        $error = 0;
+        for($x = 1; $x < 11; $x++){
+            if($_FILES["imagem".$x]["size"] <= 500000 /*&& count($_FILES['imagem'.$x]['slaaaaa']) == 1*/){
+                continue;
+            }else{
+                $error++;
+                break;
+            }
+        }
+        for($x = 1; $x < 11; $x++){
+            if($_FILES["imagem".$x]["error"] == 0){
+                uploadImagemCompleto($titulo, $id_story, $pdo);
+            }else{
+                $error++;
+                break;
+            }
+        }
+        if($error != 0) header("Location: error.php");
+    }
+    function uploadImagemCompleto($titulo, $id_story, $pdo){
 
         function images($titulo, $id_page){
 
-            function uploadImagem($name_imagem,$pasta_destino,$nome_principal,$id_page, $historia){
+            function uploadImagem($name_imagem,$pasta_destino,$nome_principal,$id_page){
 
-                //Capturando os dados, e armazenando em variáveis locais, e variáveis de classe
+                $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
+                
                 $name = $_FILES[$name_imagem];
 
-                $nome_substituto = $nome_principal;
-
-                $upload_arquivo = $pasta_destino.$nome_substituto;
+                $upload_arquivo = $pasta_destino.$nome_principal;
                 move_uploaded_file($name['tmp_name'], $upload_arquivo);
-
-                //salvar endereço no banco com $id_page
-                // insert into images values(NULL, $id_page, $upload_arquivo);
-                $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
-
                 $page = "INSERT INTO images values(NULL, $id_page, '$upload_arquivo')";
                 $prepare = $pdo->prepare($page);
                 $prepare->execute();
-                
             }
 
             function gerarnomepasta($titulo, $num, $id_page){
@@ -73,8 +73,9 @@
             function callupload($titulo, $id_page){
 
                 for($x = 1; $x < 11; $x++){
-
-                    uploadImagem("imagem".$x,"../img-story/$titulo/","$titulo"."-img-".$x, $id_page);
+                    if($_FILES["imagem".$x]["error"] == 0){
+                        uploadImagem("imagem".$x,"../img-story/$titulo/","$titulo"."-img-".$x, $id_page);
+                    }
                 }
             
             }
@@ -98,8 +99,10 @@
 
         $id_page = -1;
 
-        $id_page = page($pdo, $id_story);
-        history($id_page, $historia, $pdo);
+        Createpage($pdo, $id_story, 1);
+        $id_page = RetornarIdPage($pdo, $id_story, 1);
+
+        echo $id_page;
 
         if(checktitulo($titulo)){
             $titulo = tituloreplacestuff($titulo);
@@ -118,34 +121,32 @@
     $titulo = $_POST['titulo'];
     $referencia = $_POST['link-reference'];
     $email = 'asda@gma';
-    $perfil = 1;
+    $perfil = -1;
     $id_story = 0;
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
     foreach($pdo->query($sql) as $key => $value){
         $perfil = $value['fk_id_profile'];
     }
 
-    function referencia($id_page, $referencia){
-    
-    }
+    if($perfil == -1)header("Location: error.php");
 
-    uploadHistoria($titulo, $pdo, $perfil, $referencia);
+    uploadHistoria($titulo, $pdo, $perfil);
 
-    function uploadHistoria($titulo, $pdo, $perfil, $id_page){
+    function uploadHistoria($titulo, $pdo, $perfil){
 
         // inserindo story
         $id_story = -1;
-        $story = "INSERT INTO story values(NULL, 0, '$titulo', 1, 0, '$perfil')";
+        $story = "INSERT INTO story values(NULL, 0, '$titulo', 0, 1, '$perfil')";
         $prepare = $pdo->prepare($story);
         $prepare->execute();
-        $story = "SELECT id_story FROM story WHERE fk_id_profile = '$perfil' and nome = '$titulo'";
-        foreach ($pdo->query($story) as $key => $value) {
+        $story2 = "SELECT id_story FROM story WHERE fk_id_profile = '$perfil' and nome = '$titulo'";
+        foreach ($pdo->query($story2) as $key => $value) {
             $id_story = $value['id_story'];
         }
 
         if($id_story != -1){
             // func da história
-            checkimages($titulo, $id_story, $pdo, $id_page, $historia);
+            checkimages($titulo, $id_story, $pdo);
             // func da ref
         }
     }
