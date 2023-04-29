@@ -1,26 +1,5 @@
 <?php
-
-    $titulo = $_POST['titulo'];
-    $id_story = 0;
-   
-    checkimages($titulo, $id_story);
-
-    function checkimages($titulo, $id_story){
-        for($x = 1; $x < 11; $x++){
-            if($_FILES["imagem".$x]["size"] <= 500000 /*&& count($_FILES['imagem'.$x]['slaaaaa']) == 1*/){
-                continue;
-            }else{
-                header("Location:error.php");
-            }
-        }
-        for($x = 1; $x < 11; $x++){
-            if($_FILES["imagem".$x]["error"] == 0){
-                uploadImagemCompleto($titulo, $id_story);
-                break;
-            }
-        }
-        header("Location:error.php");
-    }
+    $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
 
     function uploadImagemCompleto($titulo, $id_story){
 
@@ -98,6 +77,51 @@
         if(checktitulo($titulo)){
             images($titulo, $id_page);
         }
+    }
+
+    $titulo = $_POST['titulo'];
+    $historia = $_POST['story'];
+    $referencia = $_POST['link-reference'];
+    $perfil = 1;
+    $id_story = 0;
+    $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
+    foreach($pdo->query($sql) as $key => $value){
+        $perfil = $value['fk_id_profile'];
+    }
+
+    function uploadHistoria($titulo, $historia, $pdo, $perfil){
+        // inserindo story
+        $story = "INSERT INTO story(font, nome, classificacao, status, fk_id_profile) values(0, '$titulo', NULL, 0, '$perfil')";
+        foreach ($pdo->query($story) as $key => $value) {
+            $id_story = $value['id_story'];
+        }
+        $prepare = $pdo->prepare($story);
+        $prepare->execute();
+
+        // inserindo page
+        for($x = 0; $x < 3; $x++){
+            $page = "INSERT INTO page(fk_id_story, type, order_p) values('$id_story', '$x', '$x')";
+            $prepare = $pdo->prepare($page);
+            $prepare->execute();
+        }
+
+    }
+
+    checkimages($titulo, $id_story);
+
+    function checkimages($titulo, $id_story){
+        for($x = 1; $x < 11; $x++){
+            if($_FILES["imagem".$x]["size"] <= 500000 /*&& count($_FILES['imagem'.$x]['slaaaaa']) == 1*/){
+                continue;
+            }else break;
+        }
+        for($x = 1; $x < 11; $x++){
+            if($_FILES["imagem".$x]["error"] == 0){
+                uploadImagemCompleto($titulo, $id_story);
+                break;
+            }
+        }
+        header("Location:error.php");
     }
 
 ?>
