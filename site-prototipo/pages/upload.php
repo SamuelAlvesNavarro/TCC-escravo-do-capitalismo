@@ -116,7 +116,9 @@
         $prepare = $pdo->prepare($story);
         $prepare->execute();
 
+        // func da história
         checkimages($titulo, $id_story);
+        // func da ref
 
     }
 ?>
