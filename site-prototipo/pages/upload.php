@@ -35,7 +35,9 @@
 
                 $upload_arquivo = $pasta_destino.$nome_substituto;
                 move_uploaded_file($name['tmp_name'], $upload_arquivo);
+
                 //salvar endereço no banco com $id_page
+                // insert into images values(NULL, $id_page, $upload_arquivo);
                 
             }
 
