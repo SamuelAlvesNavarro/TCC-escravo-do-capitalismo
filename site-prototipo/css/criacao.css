@@ -1,6 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Poltawski+Nowy&family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Playfair+Display:ital@1&family=Poltawski+Nowy&display=swap');
 
+/* ZA COLORS */
+
+.za-colors{
+    background-color: #121212;
+    background-color: #1e1e1e;
+    background-color: #222222;
+    background-color: #242424;
+    background-color: #272727;
+    background-color: #2c2c2c;
+    background-color: #2d2d2d;
+    background-color: #333333;
+    background-color: #343434;
+    background-color: #383838;
+}
 *{
     padding: 0;
     margin: 0;
@@ -10,17 +24,40 @@ body{
     background: #121212;
     color: white;
 }
+.toogle{
+    position: relative;
+    width: 5vw;
+    height: 10vh;
+    font-family: 'Poltawski Nowy';
+    text-align: center;
+    transition: .2s linear;
+    cursor: pointer;
+    color: white;
+}
+.toogle:hover{
+    margin-top: -1vh;
+    border-radius: 0;
+    background-color: white;
+    color: #121212;
+}
+.toogle i{
+    line-height: 10vh;
+    font-size: 30px;
+}
 .all{
-    width: 98vw;
+    width: 96vw;
     margin: 1vw auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: left;
-    gap: .5vw;
+    gap: 2vw;
 }
 .section{
-    background-color: #212121;
+    background-color: #1e1e1e;
+    -webkit-box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
     border-radius: 10px;
 }
 .title{
@@ -32,8 +69,8 @@ body{
 }
 .story-title{
     flex-grow: 2;
-    width: 60%;
     height: 10vh;
+    line-height: 10vh;
 }
 .story-title input{
     width: 96%;
@@ -70,11 +107,14 @@ body{
     width: 92%;
     margin: 2%;
     padding: 2%;
-    background-color: #353535;
     border-radius: 10px;
     border-top-right-radius: 0;
     border-top-left-radius: 0;
     font-family: 'Poltawski Nowy';
+    background-color: #272727;
+    -webkit-box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
 }
 .page-title{
     margin-bottom: 3%;
@@ -120,6 +160,57 @@ body{
     height: 70px;
     width: 70px;
     margin: 0 auto;
+}
+/* INPUT FILE */
+
+input, button{
+    height: 5vh;
+    line-height: 5vh;
+    border: none;
+    outline: none;
+}
+.page-pics-input{
+    width: calc(100%-1vw);
+    height: auto;
+    background-color: #272727;
+    color: white;
+    font-weight: 400;
+}
+.input-file-unit{
+    padding: .5vw;
+    border: 2px solid #2d2d2d;
+    line-height: 5vh;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.input-file-unit i{
+    line-height: 5vh;
+    margin-right: .5vw;
+}
+.input-file-unit button{
+    width: 20%;
+    height: calc(5vh + 1vw);
+    cursor: pointer;
+    position: absolute;
+    background-color: #2d2d2d;
+    right: 0;
+    top: 0;
+}
+.bt-input-img:hover{
+    background-color: #121212;
+    color:rgb(240, 9, 171);
+}
+.input-file-unit:hover{
+    background-color: #353535;
+    color:rgb(240, 9, 171);
+}
+.input-file{
+    display: none;
+}
+.imagem-label{
+    cursor: pointer;
 }
 @media (width <= 600px) {
     .story{
