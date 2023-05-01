@@ -35,28 +35,34 @@
 
         }
     }
+    /* HISTORY */
+
+    function history($historia, $id_story, $pdo){
+        Createpage($pdo, $id_story, 0);
+        $id_page = RetornarIdPage($pdo, $id_story, 0);
+        $history = "INSERT INTO history values(NULL, '$id_page', '$historia')";
+        $prepare = $pdo->prepare($history);
+        $prepare->execute();
+    }
 
     /* IMAGES */
 
-    function checkimages($titulo, $id_story, $pdo){
-        $error = 0;
+    function checkimagesAf($titulo, $id_story, $pdo){
         for($x = 1; $x < 11; $x++){
-            if($_FILES["imagem".$x]["size"] <= 500000 /*&& count($_FILES['imagem'.$x]['slaaaaa']) == 1*/){
+            if($_FILES["imagem".$x]["size"] <= 500000){
                 continue;
             }else{
-                $error++;
-                break;
+                header("Location: error.php");
             }
         }
+        // if($error > 0) header("Location: error.php");
         for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["error"] == 0){
                 uploadImagemCompleto($titulo, $id_story, $pdo);
-            }else{
-                $error++;
-                break;
+                return true;
             }
         }
-        if($error != 0) header("Location: error.php");
+        header("Location: error.php");
     }
     function uploadImagemCompleto($titulo, $id_story, $pdo){
 
@@ -70,7 +76,10 @@
 
                 $upload_arquivo = $pasta_destino.$nome_principal;
                 move_uploaded_file($name['tmp_name'], $upload_arquivo);
-                $page = "INSERT INTO images values(NULL, $id_page, '$upload_arquivo')";
+
+                echo "caralhooo ------------> $id_page";
+
+                $page = "INSERT INTO images values(NULL, '$id_page', '$upload_arquivo')";
                 $prepare = $pdo->prepare($page);
                 $prepare->execute();
             }
@@ -121,7 +130,7 @@
         Createpage($pdo, $id_story, 1);
         $id_page = RetornarIdPage($pdo, $id_story, 1);
 
-        echo $id_page;
+        echo "$id_page <---- page ! story-----> $id_story";
 
         if(checktitulo($titulo)){
             $titulo = tituloreplacestuff($titulo);
@@ -134,12 +143,21 @@
         }
     }
 
+    /* REFERENCES */
+
+    function referencia($referencia, $id_story, $expl, $pdo){
+        Createpage($pdo, $id_story, 2);
+        $id_page = RetornarIdPage($pdo, $id_story, 2);
+        $reference = "INSERT INTO reference values(NULL, '$id_page', '$referencia', '$expl')";
+        $prepare = $pdo->prepare($reference);
+        $prepare->execute();
+    }
 
     /* IN ITSELF */
     
     $titulo = $_POST['titulo'];
     $referencia = $_POST['link-reference'];
-    $email = 'samu@gmail.com';
+    $email = 'asda@gma';
     $perfil = -1;
     $id_story = 0;
     $historia = $_POST['story'];
@@ -149,33 +167,13 @@
     }
 
     if($perfil == -1)header("Location: error.php");
-    // coletando id_story e criando Historia
-    $id_story = uploadHistoria($titulo, $pdo, $perfil);
+    else{
+        $id_story = uploadHistoria($titulo, $pdo, $perfil);
 
-    $id_page = RetornarIdPage($pdo, $id_story, 1);
-    echo $id_page;
-
-    if($id_story != -1){
-        // func da história
-        //history($id_page, $historia, $pdo);
-        // func da img
-        checkimages($titulo, $id_story, $pdo);
-        // func da ref
-        referencia($id_page, $referencia, $pdo);
+        if($id_story != -1){
+            history($historia, $id_story, $pdo);
+            checkimagesAf($titulo, $id_story, $pdo);
+            referencia($referencia, $id_story, 'bla bla bla', $pdo);
+        }
     }
-
-    function history($id_page, $historia, $pdo){
-
-        $history = "INSERT INTO history values(NULL, '$id_page', '$historia')";
-        $prepare = $pdo->prepare($history);
-        $prepare->execute();
-    }
-
-    function referencia($id_page, $referencia, $pdo){
-
-        $reference = "INSERT INTO reference values(NULL, '$id_page', '$referencia')";
-        $prepare = $pdo->prepare($reference);
-        $prepare->execute();
-    }
-
 ?>

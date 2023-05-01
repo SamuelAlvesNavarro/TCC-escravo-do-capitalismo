@@ -234,7 +234,7 @@ input, button{
     color:rgb(240, 9, 171);
 }
 .input-file{
-    display: none;
+    display: block;
 }
 .imagem-label{
     cursor: pointer;
