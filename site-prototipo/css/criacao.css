@@ -162,25 +162,32 @@ body{
     align-self: flex-start;
     height: auto;
     font-family: 'Poltawski Nowy';
-    width: calc(100% - 4vw);
+    width: calc(100% - 2vw);
 }
 #upload{
     height: 6vh;
     width: 60%;
     margin: 0 auto;
-    padding: 1vw;
+    display: block;
+    cursor: pointer;
 }
 /* PREVIEW */
 .preview{
     height: auto;
     flex-grow: 1;
-    width: calc(100% - 4vw);
-    padding: 2vw;
+    padding: 1vw;
     align-self: flex-start;
     height: auto;
     font-family: 'Poltawski Nowy';
+    width: calc(100% - 2vw);
 }
-
+#preview-bt{
+    height: 6vh;
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+}
 /* INPUT FILE */
 
 input, button{

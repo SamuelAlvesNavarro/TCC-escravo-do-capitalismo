@@ -7,7 +7,10 @@ function inputimgchangeval(num){
     if(num < 0){
         num *= -1;
         inputLchange = eval("inputimgLabel"+num);
+        inputIchange = eval("inputimg"+num);
         inputLchange.innerHTML = "Imagem " + num;
+        console.log(inputIchange.files[0]);
+        inputIchange.files = 0;
     }
 }
 

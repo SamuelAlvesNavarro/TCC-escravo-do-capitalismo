@@ -130,7 +130,7 @@
                 </ul>
             </div>
             <div class="preview section">
-                <input type="button" value="Preview">
+                <input id="preview-bt" type="button" value="Preview">
             </div>
             <div class="uploads section">
                 <input id="upload" type="submit" value="Mandar para Revisão">
