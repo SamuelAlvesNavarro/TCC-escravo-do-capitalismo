@@ -55,7 +55,6 @@
                 header("Location: error.php");
             }
         }
-        // if($error > 0) header("Location: error.php");
         for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["error"] == 0){
                 uploadImagemCompleto($titulo, $id_story, $pdo);
