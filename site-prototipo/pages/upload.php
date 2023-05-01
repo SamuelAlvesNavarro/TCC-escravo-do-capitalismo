@@ -32,6 +32,7 @@
         foreach ($pdo->query($page) as $key => $value) {
             $id_page = $value['id_page'];
             return $id_page;
+
         }
     }
 
@@ -138,27 +139,42 @@
     
     $titulo = $_POST['titulo'];
     $referencia = $_POST['link-reference'];
-    $email = 'asda@gma';
+    $email = 'samu@gmail.com';
     $perfil = -1;
     $id_story = 0;
+    $historia = $_POST['story'];
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
     foreach($pdo->query($sql) as $key => $value){
         $perfil = $value['fk_id_profile'];
     }
 
     if($perfil == -1)header("Location: error.php");
-
+    // coletando id_story e criando Historia
     $id_story = uploadHistoria($titulo, $pdo, $perfil);
+
+    $id_page = RetornarIdPage($pdo, $id_story, 1);
+    echo $id_page;
 
     if($id_story != -1){
         // func da história
+        //history($id_page, $historia, $pdo);
+        // func da img
         checkimages($titulo, $id_story, $pdo);
         // func da ref
+        referencia($id_page, $referencia, $pdo);
     }
 
     function history($id_page, $historia, $pdo){
-        $history = "INSERT INTO history(fk_id_page, texto) values('$id_page', '$historia')";
+
+        $history = "INSERT INTO history values(NULL, '$id_page', '$historia')";
         $prepare = $pdo->prepare($history);
+        $prepare->execute();
+    }
+
+    function referencia($id_page, $referencia, $pdo){
+
+        $reference = "INSERT INTO reference values(NULL, '$id_page', '$referencia')";
+        $prepare = $pdo->prepare($reference);
         $prepare->execute();
     }
 
