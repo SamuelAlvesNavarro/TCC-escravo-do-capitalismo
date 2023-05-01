@@ -14,17 +14,17 @@
 <body>
 <form id="form-criacao" method="post" action="upload.php" enctype="multipart/form-data">
     <div class="all">
+        <a href="central.php"><div class="toogle section">
+            <i class="fa-solid fa-arrow-left"></i>
+        </div></a>
         <div class="title section">
             <h1>Criação de Histórias</h1>
         </div>
         <div class="story-title section">
             <input type="text" name="titulo" id="title-story" required placeholder="Título">
         </div>
-        <a href="central.php"><div class="toogle section">
-            <i class="fa-solid fa-arrow-left"></i>
-        </div></a>
         <div class="story section">
-            <div class="page-all story-page">
+            <div class="page-all story-page section">
                 <div class="page-title">
                     <h1>História</h1>
                     <div class="page-expl">
@@ -35,10 +35,10 @@
                     </div>
                 </div>
                 <div class="page-content">
-                    <textarea name="story" id="conteudo-historia" rows="1" cols="30" maxlength="12000"></textarea>
+                    <textarea name="story" id="conteudo-historia" rows="1" cols="30" maxlength="12000" required></textarea>
                 </div>
             </div>
-            <div class="page-all pics-page">
+            <div class="page-all pics-page section">
                 <div class="page-title">
                     <h1>Fotos</h1>
                     <div class="page-expl">
@@ -107,29 +107,34 @@
                 </div>
             </div>
         </div>
-        <div class="warnings section">
-            <h1>Avisos e Regras</h1>
-            <ul>
-                <li>Se não pretende escrever em uma página, deixe-a vazia.</li>
-                <li>Nem todas as páginas são opcionais, algumas são obrigatórias. São obrigatórias as seguintes páginas: </li>
-                <ol>
-                    <li>História</li>
-                    <li>Referências</li>
-                    <div class="subref">Se a história for de sua autoria, escreva "De minha autoria" na página de referências</div>
-                </ol>
-                <li>Cuidado, todo o conteúdo fora das linhas especificadas aparecerá em uma página separada</li>
-                <li>Não tente burlar as regras da postagem, isso não passará despercebido. <br>Evite:</li>
-                <ol>
-                    <li>Adicionar a mesma imagem mais de uma vez</li>
-                    <li>Desrespeitar a categoria da página</li>
-                    <div class="subref">Pode causar rejeição da história</div>
-                    <li>Declarar autoria de uma história que não o pertence</li>
-                    <div class="subref">Causará rejeição da história</div>
-                </ol>
-            </ul>
-        </div>
-        <div class="uploads">
-            <input type="submit" value="Mandar para Revisão">
+        <div class="col2">
+            <div class="warnings section">
+                <h1>Avisos e Regras</h1>
+                <ul>
+                    <li>Se não pretende escrever em uma página, deixe-a vazia.</li>
+                    <li>Nem todas as páginas são opcionais, algumas são obrigatórias. São obrigatórias as seguintes páginas: </li>
+                    <ol>
+                        <li>História</li>
+                        <li>Referências</li>
+                        <div class="subref">Se a história for de sua autoria, escreva "De minha autoria" na página de referências</div>
+                    </ol>
+                    <li>Cuidado, todo o conteúdo fora das linhas especificadas aparecerá em uma página separada</li>
+                    <li>Não tente burlar as regras da postagem, isso não passará despercebido. <br>Evite:</li>
+                    <ol>
+                        <li>Adicionar a mesma imagem mais de uma vez</li>
+                        <li>Desrespeitar a categoria da página</li>
+                        <div class="subref">Pode causar rejeição da história</div>
+                        <li>Declarar autoria de uma história que não o pertence</li>
+                        <div class="subref">Causará rejeição da história</div>
+                    </ol>
+                </ul>
+            </div>
+            <div class="preview section">
+                <input type="button" value="Preview">
+            </div>
+            <div class="uploads section">
+                <input id="upload" type="submit" value="Mandar para Revisão">
+            </div>
         </div>
     </div>
     <script src="../js/criacao.js"></script>
