@@ -14,7 +14,7 @@ function inputimgchangeval(num){
     }
 }
 var previewl = document.getElementById("preview-div");
-var i = true;
+var i = false;
 function preview(){
     if(i){
         previewl.style.display = "block";
@@ -24,6 +24,7 @@ function preview(){
         i = true;
     }
 }
+preview();
 
 var inputimg1 = document.getElementById("imagem1");
 var inputimg2 = document.getElementById("imagem2"); 

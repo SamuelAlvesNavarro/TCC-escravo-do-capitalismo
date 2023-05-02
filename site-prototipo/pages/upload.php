@@ -1,5 +1,5 @@
 <?php
-    $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
+    require 'includes/conexao.php';
     $historia = $_POST['story'];
 
     /* CREATE STORY */
@@ -22,12 +22,14 @@
 
     /* PAGES */
 
-    function Createpage($pdo, $id_story, $type){
+    function Createpage($id_story, $type){
+        global $pdo;
         $page = "INSERT INTO page values(NULL, $id_story, $type, $type)";
         $prepare = $pdo->prepare($page);
         $prepare->execute();
     }
-    function RetornarIdPage($pdo, $id_story, $type){
+    function RetornarIdPage($id_story, $type){
+        global $pdo;
         $page = "SELECT id_page from page where fk_id_story = $id_story and type = $type";
         foreach ($pdo->query($page) as $key => $value) {
             $id_page = $value['id_page'];
@@ -38,8 +40,8 @@
     /* HISTORY */
 
     function history($historia, $id_story, $pdo){
-        Createpage($pdo, $id_story, 0);
-        $id_page = RetornarIdPage($pdo, $id_story, 0);
+        Createpage($id_story, 0);
+        $id_page = RetornarIdPage($id_story, 0);
         $history = "INSERT INTO history values(NULL, '$id_page', '$historia')";
         $prepare = $pdo->prepare($history);
         $prepare->execute();
@@ -47,30 +49,29 @@
 
     /* IMAGES */
 
-    function checkimagesAf($titulo, $id_story, $pdo){
-        for($x = 1; $x < 11; $x++){
+    function checkimagesAf($titulo, $id_story){
+        /*for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["size"] <= 500000){
                 continue;
             }else{
                 header("Location: error.php");
             }
-        }
+        }*/
         for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["error"] == 0){
-                uploadImagemCompleto($titulo, $id_story, $pdo);
+                uploadImagemCompleto($titulo, $id_story);
                 return true;
             }
         }
         header("Location: error.php");
     }
-    function uploadImagemCompleto($titulo, $id_story, $pdo){
+    function uploadImagemCompleto($titulo, $id_story){
 
         function images($titulo, $id_page){
 
             function uploadImagem($name_imagem,$pasta_destino,$nome_principal,$id_page){
 
-                $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
-
+                global $pdo;
                 $name = $_FILES[$name_imagem];
 
                 $upload_arquivo = $pasta_destino.$nome_principal;
@@ -123,11 +124,11 @@
         }
 
         /* EM SI */
-
+        global $pdo;
         $id_page = -1;
 
-        Createpage($pdo, $id_story, 1);
-        $id_page = RetornarIdPage($pdo, $id_story, 1);
+        Createpage($id_story, 1);
+        $id_page = RetornarIdPage($id_story, 1);
 
         echo "$id_page <---- page ! story-----> $id_story";
 
@@ -145,11 +146,12 @@
     /* REFERENCES */
 
     function referencia($referencia, $id_story, $expl, $pdo){
-        Createpage($pdo, $id_story, 2);
-        $id_page = RetornarIdPage($pdo, $id_story, 2);
+        Createpage($id_story, 2);
+        $id_page = RetornarIdPage($id_story, 2);
         $reference = "INSERT INTO reference values(NULL, '$id_page', '$referencia', '$expl')";
         $prepare = $pdo->prepare($reference);
         $prepare->execute();
+        header("Location: criacao.php");
     }
 
     /* IN ITSELF */
@@ -171,7 +173,7 @@
 
         if($id_story != -1){
             history($historia, $id_story, $pdo);
-            checkimagesAf($titulo, $id_story, $pdo);
+            checkimagesAf($titulo, $id_story);
             referencia($referencia, $id_story, 'bla bla bla', $pdo);
         }
     }
