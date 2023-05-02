@@ -13,6 +13,17 @@ function inputimgchangeval(num){
         inputIchange.value = null;
     }
 }
+var previewl = document.getElementById("preview-div");
+var i = true;
+function preview(){
+    if(i){
+        previewl.style.display = "block";
+        i = false;
+    }else{
+        previewl.style.display = "none";
+        i = true;
+    }
+}
 
 var inputimg1 = document.getElementById("imagem1");
 var inputimg2 = document.getElementById("imagem2"); 

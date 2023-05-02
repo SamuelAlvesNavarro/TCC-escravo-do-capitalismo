@@ -130,14 +130,15 @@
                 </ul>
             </div>
             <div class="preview section">
-                <input id="preview-bt" type="button" value="Preview">
+                <input id="preview-bt" onclick="preview()" type="button" value="Preview">
             </div>
             <div class="uploads section">
                 <input id="upload" type="submit" value="Mandar para Revisão">
             </div>
         </div>
     </div>
-    <script src="../js/criacao.js"></script>
 </form>
+<div id="preview-div" onclick="preview()" class="preview-div"></div>
+<script src="../js/criacao.js"></script>
 </body>
 </html>
