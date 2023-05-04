@@ -1,5 +1,6 @@
 <?php
     require "includes/conexao.php";
+<<<<<<< HEAD
     function isOnline(){
         session_start();
           if(isset($_SESSION['email'])){
@@ -12,6 +13,9 @@
         header("Location:acesso.html");
         exit;
      }
+=======
+    require "includes/online.php";
+>>>>>>> edf8338933d71cdb8cac83ee07b6382772a5d3d1
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
