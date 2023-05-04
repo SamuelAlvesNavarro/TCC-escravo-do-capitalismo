@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-    require "includes/conexao.php";
-=======
     require 'includes/conexao.php';
->>>>>>> edf8338933d71cdb8cac83ee07b6382772a5d3d1
     $historia = $_POST['story'];
 
     /* CREATE STORY */
