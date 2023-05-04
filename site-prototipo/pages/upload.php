@@ -1,5 +1,5 @@
 <?php
-    $pdo = new PDO('mysql:host=localhost;dbname=pi', 'root', '');
+    require "includes/conexao.php";
     $historia = $_POST['story'];
 
     /* CREATE STORY */
