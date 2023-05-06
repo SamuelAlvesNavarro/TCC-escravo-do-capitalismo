@@ -1,6 +1,6 @@
-"# TCC-escravos-do-capitalismo" 
+# TCC-escravos-do-capitalismo
 
-Link localhost -> localhost/TCC-escravo-do-capitalismo/
+**_Link localhost_** -> localhost/TCC-escravo-do-capitalismo/
 
 https://historiasassombradas.000webhostapp.com/ - link do site
 
