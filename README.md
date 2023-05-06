@@ -1,4 +1,4 @@
-"# TCC-escravos-do-capitalismo" 
+* "# TCC-escravos-do-capitalismo" 
 
 Link localhost -> localhost/TCC-escravo-do-capitalismo/
 
