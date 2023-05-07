@@ -103,6 +103,10 @@ body{
     width: 70%;
     height: auto;
 }
+.story > h1{
+    padding: 2%;
+    font-family: 'Poltawski Nowy';
+}
 .col2{
     display: flex;
     flex-direction: column;

@@ -26,6 +26,8 @@
     </div>
     <a href="criacao.php">Ir para a criação de histórias</a>
     <br><br>
+    <a href="story.php">história</a>
+    <br><br>
     <input type="text" name="" id="busca">
     <input type="button" value="Buscar por nome" class="bpnom">
 </body>

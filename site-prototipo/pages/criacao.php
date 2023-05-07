@@ -1,5 +1,6 @@
 <?php
-    //require "includes/online.php";
+    require "includes/conexao.php";
+    require "includes/online.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -9,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>Criação de Histórias</title>
-    <link rel="stylesheet" href="../css/criacao.css">
+    <link rel="stylesheet" href="../css/criacao.css?v=1">
 </head>
 <body>
 <form id="form-criacao" method="post" action="upload.php" enctype="multipart/form-data">
@@ -24,6 +25,7 @@
             <input type="text" name="titulo" id="title-story" required placeholder="Título">
         </div>
         <div class="story section">
+            <h1>Páginas</h1>
             <div class="page-all story-page section">
                 <div class="page-title">
                     <h1>História</h1>
