@@ -53,7 +53,7 @@
                 <div class="page-pics-inputs">
                     <div class="page-pics-input">
                         <div class="input-file-unit">
-                            <i class="fa-solid fa-image"></i><label class="imagem-label" id="imagem1-label" for="imagem1">Imagem 1</label><input class="input-file" type="file" id="imagem1" name="imagem1" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                            <i class="fa-solid fa-image"></i><label class="imagem-label" id="imagem1-label" for="imagem1">Imagem 1</label><input multiple class="input-file" type="file" id="imagem1" name="imagem1" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
                             <button id="bt-first" type="button" class="bt-input-img" onclick="inputimgchangeval(-1)">Remover</button>
                         </div>
                         <div class="input-file-unit">
