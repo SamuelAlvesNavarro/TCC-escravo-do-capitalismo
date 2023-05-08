@@ -1,6 +1,7 @@
 <?php
     require 'includes/conexao.php';
     $historia = $_POST['story'];
+    global $pdo;
 
     /* CREATE STORY */
 
@@ -51,14 +52,14 @@
 
     function checkimagesAf($titulo, $id_story){
         for($x = 1; $x < 11; $x++){
-            if($_FILES["imagem".$x]["size"] <= 500000){
+            if($_FILES["imagem".$x]["size"] <= 500000){//500000
                 continue;
             }else{
                 header("Location: error.php");
             }
         }
         for($x = 1; $x < 11; $x++){
-            if($_FILES["imagem".$x]["error"] == 0){
+            if($_FILES["imagem".$x]["error"] <= 1){
                 uploadImagemCompleto($titulo, $id_story);
                 return true;
             }
@@ -158,7 +159,7 @@
     
     $titulo = $_POST['titulo'];
     $referencia = $_POST['link-reference'];
-    $email = 'asda@gma';
+    $email = $_SEESION['email'];
     $perfil = -1;
     $id_story = 0;
     $historia = $_POST['story'];
