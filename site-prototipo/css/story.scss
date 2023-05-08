@@ -99,7 +99,7 @@ body{
 
   .befremoveBook{
     background-color: var(--background-story);
-    scale: 500%;
+    transform: scale(500%);
     opacity: 0;
     color: white;
   }
@@ -406,7 +406,7 @@ body{
 
 /* MEDIA QUERIES */
 
-@media (width <= 700px){
+@media (max-width: 700px){
     .story-all-container{
         padding-left: 0;
         padding-right: 0;

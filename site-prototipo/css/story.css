@@ -52,7 +52,7 @@ body {
   transition: 0.45s linear;
 }
 
-/* BOOK */
+/* BOOK 
 .container {
   z-index: 1;
   background-color: var(--background-story);
@@ -85,7 +85,7 @@ body {
 
 .befremoveBook {
   background-color: var(--background-story);
-  scale: 500%;
+  transform: scale(500%);
   opacity: 0;
   color: white;
 }
@@ -194,13 +194,14 @@ body {
   background: var(--background-story);
 }
 
+*/
 /* ALL */
 .all {
   transition: 0.5s linear;
   background-color: var(--background-story);
   flex-direction: row;
   position: relative;
-  display: none;
+  /*display: none;*/
 }
 
 .story-all-container {
@@ -378,7 +379,7 @@ body {
   }
 }
 /* MEDIA QUERIES */
-@media (width <= 700px) {
+@media (max-width: 700px){
   .story-all-container {
     padding-left: 0;
     padding-right: 0;

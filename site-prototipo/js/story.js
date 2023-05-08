@@ -58,13 +58,13 @@ function openforEvent(){
         book.classList.remove("rotateBook");
         book.style.color = "transparent";
         book_container.classList.add("befremoveBook");
-        document.body.style.overflowY = 'hidden';
+        /*document.body.style.overflowY = 'hidden';*/
         setTimeout(showBody, 1500);
     })
 }
 function showBody(){
     book_container.style.display = 'none';
-    document.body.style.overflowY = 'scroll';
+    /*document.body.style.overflowY = 'scroll';*/
     setTimeout(showElements, 100);
 }
 function showElements(){
