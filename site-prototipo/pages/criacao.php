@@ -1,6 +1,15 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        for($x = 1; $x >= 10; $x++){
+            $img = $_FILE['imagem'.$x];
+            if($img > 1){
+                header('Location:error.php');
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

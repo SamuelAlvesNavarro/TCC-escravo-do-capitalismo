@@ -50,13 +50,13 @@
     /* IMAGES */
 
     function checkimagesAf($titulo, $id_story){
-        /*for($x = 1; $x < 11; $x++){
+        for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["size"] <= 500000){
                 continue;
             }else{
                 header("Location: error.php");
             }
-        }*/
+        }
         for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["error"] == 0){
                 uploadImagemCompleto($titulo, $id_story);
