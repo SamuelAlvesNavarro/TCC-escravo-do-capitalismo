@@ -1,5 +1,7 @@
 <?php
     require 'includes/conexao.php';
+    require 'includes/online.php';
+    $email = $_SESSION['email'];
     $historia = $_POST['story'];
     global $pdo;
 
@@ -149,7 +151,7 @@
     function referencia($referencia, $id_story, $expl, $pdo){
         Createpage($id_story, 2);
         $id_page = RetornarIdPage($id_story, 2);
-        $reference = "INSERT INTO reference values(NULL, '$id_page', '$referencia', '$expl')";
+        $reference = "INSERT INTO reference values(NULL, '$id_page', '$referencia')";
         $prepare = $pdo->prepare($reference);
         $prepare->execute();
         header("Location: criacao.php");
@@ -159,7 +161,6 @@
     
     $titulo = $_POST['titulo'];
     $referencia = $_POST['link-reference'];
-    $email = $_SEESION['email'];
     $perfil = -1;
     $id_story = 0;
     $historia = $_POST['story'];
@@ -167,7 +168,6 @@
     foreach($pdo->query($sql) as $key => $value){
         $perfil = $value['fk_id_profile'];
     }
-
     if($perfil == -1)header("Location: error.php");
     else{
         $id_story = uploadHistoria($titulo, $pdo, $perfil);
