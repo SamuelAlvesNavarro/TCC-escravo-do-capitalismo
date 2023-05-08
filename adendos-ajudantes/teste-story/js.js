@@ -29,12 +29,23 @@ function switchTheme(){
 
         upF += n;
 
+        var x = 10;
+
         if(upF < 0) upF = slides.length-1;
         if(upF > slides.length-1) upF = 0;
 
         for(i = 0; i < slides.length; i++){
-            if(i == upF) slides[i].style.zIndex = 1;
-            else slides[i].style.zIndex = 0;
+            if(i == upF){
+                slides[i].style.zIndex = 1;
+                slides[i].style.transform = 'rotate(0deg)';
+                slides[i].classList.remove("behindSheet");
+            } 
+            else{
+                var num = parseInt(Math.random() * (2*x)) - x;
+                slides[i].style.zIndex = 0;
+                slides[i].style.transform = 'rotate('+num+'deg)';
+                slides[i].classList.add("behindSheet");
+            } 
         }
     }
 
