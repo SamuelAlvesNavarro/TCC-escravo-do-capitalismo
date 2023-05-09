@@ -15,15 +15,34 @@
     Lembrete: complicou / da central já vai vir um texto, ent a página já vai estar recebendo algo para pesquisar, mas a barra de pesquisa (da página) tem que funcionar.<br><br>
     <br><br><br>TODAS AS PÁGINAS DEPOIS DO LOGIN TEM QUE VER SE O USUÁRIO ENTRANDO ESTÁ LOGADO. SE A PÁGINA N TEM DADOS DA PESSOA, TEM QUE MANDAR ELA DEVOLTA PARA O LOGIN. <br><br><br>
     <hr>
-    
-    <input type="text" name="" id="" class="searchbar">
-    <button>Pesquisar</button>
+    <form method="POST" action="pesquisa.php">
+        <input type="text" name="busca" id="" class="searchbar">
+        <button>Pesquisar</button>
+    </form>
+    <a href=../../php-separado/cadastro/central.php>Volta</a>;
     <?php
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $sql = "SELECT titulo FROM story WHERE titulo = %'$pesquisa'% limit 5";
-           
+            $titulos = array();
+            $i = 0;
+            $pesquisa = $_POST['busca'];
+            $sql = "SELECT * FROM story";
+
+            foreach($pdo->query($sql) as $key => $value){
+                $titulos[$i][0] = $value["nome"];
+                echo "<a href='story.php'>". $value['nome'] ."</a><br>";
+                $sim = similar_text($titulos[$i][0], $pesquisa, $perc);
+                $titulos[$i][1] = $perc;
+                $i++;
+            }
+
+            $sorting = $titulos;
+
+            for($i = 0; $i < sizeof($titulos); $i++){
+                echo "<br>".sizeof($titulos)."<br>";
+
+                
+            }
         }
-            echo "<a href=../../php-separado/cadastro/central.php>Volta</a>";
     ?>
 </body>
 </html>

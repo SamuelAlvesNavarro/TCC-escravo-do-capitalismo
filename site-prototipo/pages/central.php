@@ -30,7 +30,7 @@
     <br><br>
     <form method="POST" action="pesquisa.php">
         <input type="text" name="busca" id="busca">
-        <input type="button" value="Buscar por nome" class="bpnom">
+        <input type="submit" value="Buscar por nome" class="bpnom">
     </form>
 </body>
 </html>
