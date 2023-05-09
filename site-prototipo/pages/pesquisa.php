@@ -19,7 +19,8 @@
         <input type="text" name="busca" id="" class="searchbar">
         <button>Pesquisar</button>
     </form>
-    <a href=../../php-separado/cadastro/central.php>Volta</a>;
+    <a style="margin: 2vw;" href=../../php-separado/cadastro/central.php>Volta</a>
+    <br><br>
     <?php
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $titulos = array();
@@ -29,20 +30,36 @@
 
             foreach($pdo->query($sql) as $key => $value){
                 $titulos[$i][0] = $value["nome"];
-                echo "<a href='story.php'>". $value['nome'] ."</a><br>";
                 $sim = similar_text($titulos[$i][0], $pesquisa, $perc);
                 $titulos[$i][1] = $perc;
+                $titulos[$i][2] = $value["id_story"];
                 $i++;
             }
 
-            $sorting = $titulos;
+            $key_values = array_column($titulos, 1); 
+            array_multisort($key_values, SORT_DESC, $titulos);
 
-            for($i = 0; $i < sizeof($titulos); $i++){
-                echo "<br>".sizeof($titulos)."<br>";
+            if($titulos[0][1] == 0){ // if TRUE ---> Não houve correspondência no banco
+                echo "<hr><br><br> Não há resultados. Conteúdos Relacionados: <br><br>";
 
-                
-            }
+                for($i = 0; $i < sizeof($titulos); $i++){
+
+                    echo "<a href='story.php'>". $titulos[$i][0] ."</a><br>";
+                }  
+
+            }else{
+
+                for($i = 0; $i < sizeof($titulos); $i++){
+                    echo "<a href='story.php'>". $titulos[$i][0] ."</a><br>";
+                }  
+            }   
         }
     ?>
+<div class="hide">
+
+    <form action="story.php">
+        <input type="number" name="id_story" id="">
+    </form>
+</div>
 </body>
 </html>
