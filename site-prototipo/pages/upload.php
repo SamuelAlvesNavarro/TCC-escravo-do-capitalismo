@@ -52,10 +52,17 @@
 
     /* IMAGES */
 
-    function checkimagesAf($titulo, $id_story){
+    function checkimagesBef($titulo, $id_story){
         for($x = 1; $x < 11; $x++){
             if(count($_FILES['imagem'.$x]) > 1){
                 header('Location:error.php');
+                exit;
+            }
+        }
+        for($x = 1; $x < 11; $x++){
+            $extensao = pathinfo($_FILES['imagem'.$x]['name'], PATHINFO_EXTENSION);
+            if($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != ''){
+                header("Location: error.php");
                 exit;
             }
         }
@@ -68,11 +75,12 @@
         }
         for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["error"] <= 1){
-                uploadImagemCompleto($titulo, $id_story);
-                return true;
+                continue;
+            }else{
+                return false;
             }
         }
-        header("Location: error.php");
+        return true;
     }
     function uploadImagemCompleto($titulo, $id_story){
 
@@ -167,24 +175,24 @@
     
     $titulo = $_POST['titulo'];
     $referencia = $_POST['link-reference'];
-    $perfil = -1;
+    $perfil = 0; // colocar -1 dps
     $id_story = 0;
     $historia = $_POST['story'];
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
     foreach($pdo->query($sql) as $key => $value){
         $perfil = $value['fk_id_profile'];
     }
-    history($historia, $id_story, $pdo);
-    checkimagesAf($titulo, $id_story);
-    referencia($referencia, $id_story, 'bla bla bla', $pdo);
+
     if($perfil == -1)header("Location: error.php");
     else{
         $id_story = uploadHistoria($titulo, $pdo, $perfil);
 
         if($id_story != -1){
-            history($historia, $id_story, $pdo);
-            checkimagesAf($titulo, $id_story);
-            referencia($referencia, $id_story, 'bla bla bla', $pdo);
+            if(checkimagesBef($titulo, $id_story)){
+                history($historia, $id_story, $pdo);
+                uploadImagemCompleto($titulo, $id_story);
+                referencia($referencia, $id_story, 'bla bla bla', $pdo);
+            }
         }
     }
 ?>
