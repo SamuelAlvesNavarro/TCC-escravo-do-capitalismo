@@ -21,10 +21,14 @@ function switchTheme(){
 
    
     var slider = document.querySelector('.slider');
-    var slides = slider.children;
+    var slides = document.getElementsByClassName('slide');
 
     var upF = 3;
 
+    function setHeight(n){
+        console.log(slider.offsetHeight + " to " + n);
+        slider.style.height = n;
+    }
     function putUp(n){
 
         upF += n;
@@ -39,6 +43,7 @@ function switchTheme(){
                 slides[i].style.zIndex = 1;
                 slides[i].style.transform = 'rotate(0deg)';
                 slides[i].classList.remove("behindSheet");
+                setHeight(slides[i].offsetHeight);
             } 
             else{
                 var num = parseInt(Math.random() * (2*x)) - x;
@@ -71,4 +76,5 @@ function checkStuff(n){
     writings[n].classList.toggle("appear");
     exp_min[n].classList.toggle("fa-minimize");
     exp_min[n].classList.toggle("fa-expand");
+    setHeight(slides[n].offsetHeight);
 }
