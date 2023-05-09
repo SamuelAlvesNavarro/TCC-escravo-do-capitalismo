@@ -54,19 +54,10 @@
 
     function checkimagesBef($titulo, $id_story){
         for($x = 1; $x < 11; $x++){
-            if(count($_FILES['imagem'.$x]) > 1){
-                header('Location:error.php');
-                exit;
-            }
-        }
-        for($x = 1; $x < 11; $x++){
             $extensao = pathinfo($_FILES['imagem'.$x]['name'], PATHINFO_EXTENSION);
-            if($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != ''){
+            if($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != null){
                 header("Location: error.php");
-                exit;
             }
-        }
-        for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["size"] <= 500000){//500000
                 continue;
             }else{
@@ -75,6 +66,8 @@
         }
         for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["error"] <= 1){
+                continue;
+            }else if($_FILES["imagem".$x]["size"] <= 0){
                 continue;
             }else{
                 return false;
@@ -93,8 +86,6 @@
 
                 $upload_arquivo = $pasta_destino.$nome_principal;
                 move_uploaded_file($name['tmp_name'], $upload_arquivo);
-
-                echo "caralhooo ------------> $id_page";
 
                 $page = "INSERT INTO images values(NULL, '$id_page', '$upload_arquivo')";
                 $prepare = $pdo->prepare($page);
@@ -185,10 +176,13 @@
 
     if($perfil == -1)header("Location: error.php");
     else{
-        $id_story = uploadHistoria($titulo, $pdo, $perfil);
 
-        if($id_story != -1){
-            if(checkimagesBef($titulo, $id_story)){
+        if(checkimagesBef($titulo, $id_story))
+        {
+            
+            $id_story = uploadHistoria($titulo, $pdo, $perfil);
+
+            if($id_story != -1){
                 history($historia, $id_story, $pdo);
                 uploadImagemCompleto($titulo, $id_story);
                 referencia($referencia, $id_story, 'bla bla bla', $pdo);
