@@ -54,6 +54,12 @@
 
     function checkimagesAf($titulo, $id_story){
         for($x = 1; $x < 11; $x++){
+            if(count($_FILES['imagem'.$x]) > 1){
+                header('Location:error.php');
+                exit;
+            }
+        }
+        for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["size"] <= 500000){//500000
                 continue;
             }else{
@@ -168,16 +174,10 @@
     foreach($pdo->query($sql) as $key => $value){
         $perfil = $value['fk_id_profile'];
     }
-    for($x = 1; $x < 11; $x++){
-        if(count($_FILES['imagem'.$x]) > 2){
-            header('Location:error.php');
-            exit;
-        }
-    }
     history($historia, $id_story, $pdo);
     checkimagesAf($titulo, $id_story);
     referencia($referencia, $id_story, 'bla bla bla', $pdo);
-    /*if($perfil == -1)header("Location: error.php");
+    if($perfil == -1)header("Location: error.php");
     else{
         $id_story = uploadHistoria($titulo, $pdo, $perfil);
 
@@ -186,5 +186,5 @@
             checkimagesAf($titulo, $id_story);
             referencia($referencia, $id_story, 'bla bla bla', $pdo);
         }
-    }*/
+    }
 ?>
