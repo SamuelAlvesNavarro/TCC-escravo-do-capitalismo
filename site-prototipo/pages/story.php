@@ -1,6 +1,8 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
+
+    echo $_POST['input_1'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

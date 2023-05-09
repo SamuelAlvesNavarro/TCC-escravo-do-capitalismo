@@ -43,23 +43,40 @@
                 echo "<hr><br><br> Não há resultados. Conteúdos Relacionados: <br><br>";
 
                 for($i = 0; $i < sizeof($titulos); $i++){
-
-                    echo "<a href='story.php'>". $titulos[$i][0] ."</a><br>";
+                    $id_story = $titulos[$i][2];
+                    echo "<a href='#' onclick='story(".$titulos[$i][2].")'>". $titulos[$i][0] ."</a><br>";
                 }  
 
             }else{
 
                 for($i = 0; $i < sizeof($titulos); $i++){
-                    echo "<a href='story.php'>". $titulos[$i][0] ."</a><br>";
+                    echo "<a href='#' onclick='story(".$titulos[$i][2].")'>". $titulos[$i][0] ."</a><br>";
                 }  
             }   
         }
     ?>
-<div class="hide">
+<div id="hidden_form_container" style="display:none;"></div>
 
-    <form action="story.php">
-        <input type="number" name="id_story" id="">
-    </form>
-</div>
+<script>
+    function story(n) {
+        var theForm, newInput1;
+        // Start by creating a <form>
+        theForm = document.createElement('form');
+        theForm.action = 'story.php';
+        theForm.method = 'post';
+        // Next create the <input>s in the form and give them names and values
+        newInput1 = document.createElement('input');
+        newInput1.type = 'hidden';
+        newInput1.name = 'input_1';
+        newInput1.value = n;
+        // Now put everything together...
+        theForm.appendChild(newInput1);
+        // ...and it to the DOM...
+        document.getElementById('hidden_form_container').appendChild(theForm);
+        // ...and submit it
+        theForm.submit();
+    }
+</script>
+
 </body>
 </html>
