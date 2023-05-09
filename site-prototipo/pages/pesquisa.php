@@ -1,6 +1,7 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
+    $pesquisa = $_POST['busca'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,7 +19,11 @@
     <input type="text" name="" id="" class="searchbar">
     <button>Pesquisar</button>
     <?php
-    echo "<a href=../../php-separado/cadastro/central.php>Volta</a>";
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $sql = "SELECT titulo FROM story WHERE titulo = %'$pesquisa'% limit 5";
+           
+        }
+            echo "<a href=../../php-separado/cadastro/central.php>Volta</a>";
     ?>
 </body>
 </html>
