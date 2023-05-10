@@ -166,7 +166,7 @@
     
     $titulo = $_POST['titulo'];
     $referencia = $_POST['link-reference'];
-    $perfil = 0; // colocar -1 dps
+    $perfil = -1;
     $id_story = 0;
     $historia = $_POST['story'];
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
