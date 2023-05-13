@@ -70,10 +70,12 @@
             $extensao = pathinfo($_FILES['imagem'.$x]['name'], PATHINFO_EXTENSION);
             if($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != ''){
                 header("Location: error.php");
+                echo "Extensao";
                 return false;
             }
             if($_FILES["imagem".$x]["size"] > 500000){//500000
                 header("Location: error.php");
+                echo "Tamanho";
                 return false;
             }
         }
@@ -142,6 +144,7 @@
         function checktitulo($titulo){ 
             if($titulo == "cu"){
                 header("Location:error.php");
+                echo "Titulo";
                 return false;
             } 
             return true;
@@ -202,7 +205,6 @@
     foreach($pdo->query($sql) as $key => $value){
         $perfil = $value['fk_id_profile'];
     }
-
     if($perfil == -1)header("Location: error.php");
     else{
 

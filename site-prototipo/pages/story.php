@@ -100,7 +100,11 @@
                             <div class="text" spellcheck="false">
                                 <!-- AQUI VÃO AS IMAGENS -->
                                 <?php
-
+                                    $id_page = RetornarIdPage($id_story, 1);
+                                    $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
+                                    foreach ($pdo->query($sql) as $key => $value) {
+                                        echo "<img src='". $value['path'] ."'>";
+                                    }
                                 ?>
                             </div>
                         </div>
@@ -123,6 +127,13 @@
                         <div class="lines">
                             <div class="text" spellcheck="false">
                                 <!-- AQUI VÃO AS REFERENCIAS -->
+                                <?php
+                                    $id_page = RetornarIdPage($id_story, 2);
+                                    $sql = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
+                                    foreach ($pdo->query($sql) as $key => $value) {
+                                        echo "<p>". $value['path'] ."</p>";
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
