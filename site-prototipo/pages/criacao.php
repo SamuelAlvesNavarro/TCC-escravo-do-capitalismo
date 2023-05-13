@@ -31,7 +31,7 @@
                     <h1>História</h1>
                     <div class="page-expl">
                         <ul>
-                            <li>Escreva aqui sua história;</li>
+                            <li>Limite de 12000 caracteres;</li>
                             <li>Lembre-se da página de conclusão. Se não quer que sua página de história passe do limite de linhas, use-as sabiamente.</li>
                         </ul>
                     </div>

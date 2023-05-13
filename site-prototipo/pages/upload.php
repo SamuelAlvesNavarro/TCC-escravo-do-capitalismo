@@ -1,26 +1,29 @@
 <?php
     require 'includes/conexao.php';
     require 'includes/online.php';
-    $email = $_SESSION['email'];
-    $historia = $_POST['story'];
     global $pdo;
+
+    $email = $_SESSION['email'];
+
+    $array = explode("\r\n", $_POST['story']);
+    $historia = array_unique($array);
+    $historia = implode("<br>", $historia);
 
     /* CREATE STORY */
 
-    function uploadHistoria($titulo, $pdo, $perfil){
+    function uploadHistoria($titulo, $perfil){
+        global $pdo;
         $id_story = -1;
         $story = "INSERT INTO story values(NULL, 0, '$titulo', 0, 1, '$perfil')";
         $prepare = $pdo->prepare($story);
         $prepare->execute();
-        $story2 = "SELECT id_story FROM story WHERE fk_id_profile = '$perfil' and nome = '$titulo'";
-        foreach ($pdo->query($story2) as $key => $value) {
-            $id_story = $value['id_story'];
+
+        $story2 = "select max(id_story) from story as id_story where fk_id_profile = '$perfil' and nome = '$titulo'";
+        foreach ($pdo->query($story2) as $key => $value){
+            $id_story = $value['max(id_story)'];
+            echo $id_story;
         }
-        if($id_story != -1){
-            return $id_story;
-        }else{
-            return -1;
-        }
+        return $id_story;
     }
 
     /* PAGES */
@@ -40,9 +43,11 @@
 
         }
     }
+    
     /* HISTORY */
 
-    function history($historia, $id_story, $pdo){
+    function history($historia, $id_story){
+        global $pdo;
         Createpage($id_story, 0);
         $id_page = RetornarIdPage($id_story, 0);
         $history = "INSERT INTO history values(NULL, '$id_page', '$historia')";
@@ -52,26 +57,33 @@
 
     /* IMAGES */
 
-    function checkimagesBef($titulo, $id_story){
+    function checkimagesBef(){
         for($x = 1; $x < 11; $x++){
             $extensao = pathinfo($_FILES['imagem'.$x]['name'], PATHINFO_EXTENSION);
-            if($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != null){
+            if($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != ''){
                 header("Location: error.php");
+                return false;
             }
-            if($_FILES["imagem".$x]["size"] <= 500000){//500000
-                continue;
-            }else{
+            if($_FILES["imagem".$x]["size"] > 500000){//500000
                 header("Location: error.php");
+                return false;
             }
         }
+        return true;
+    }
+    function checkimagesAf(){
+        $empty = 0;
         for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["error"] <= 1){
                 continue;
-            }else if($_FILES["imagem".$x]["size"] <= 0){
-                continue;
+            }else if($_FILES["imagem".$x]["size"] == 0){
+                $empty++;
             }else{
                 return false;
             }
+        }
+        if($empty == 10){
+            return false;
         }
         return true;
     }
@@ -128,6 +140,8 @@
         }
         function tituloreplacestuff($titulo){
             preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", '/[!@#$%^&*(),.?":{}|<>\s]/'),explode(" ","a A e E i I o O u U n N"),$titulo);
+            preg_replace(" ", "-",$titulo);
+            echo $titulo;
             return $titulo;
         }
 
@@ -137,8 +151,6 @@
 
         Createpage($id_story, 1);
         $id_page = RetornarIdPage($id_story, 1);
-
-        echo "$id_page <---- page ! story-----> $id_story";
 
         if(checktitulo($titulo)){
             $titulo = tituloreplacestuff($titulo);
@@ -153,7 +165,17 @@
 
     /* REFERENCES */
 
-    function referencia($referencia, $id_story, $expl, $pdo){
+    function checkreferenceAf(){
+        $referencia = $_POST['link-reference'];
+        if($referencia != ''){
+            return true;
+        }else{
+            header("Location: criacao.php");
+            return false;
+        }
+    }
+    function referencia($referencia, $id_story, $expl){
+        global $pdo;
         Createpage($id_story, 2);
         $id_page = RetornarIdPage($id_story, 2);
         $reference = "INSERT INTO reference values(NULL, '$id_page', '$referencia')";
@@ -177,16 +199,16 @@
     if($perfil == -1)header("Location: error.php");
     else{
 
-        if(checkimagesBef($titulo, $id_story))
+        if(checkimagesBef())
         {
-            
-            $id_story = uploadHistoria($titulo, $pdo, $perfil);
+            $id_story = uploadHistoria($titulo, $perfil);
 
             if($id_story != -1){
-                history($historia, $id_story, $pdo);
-                uploadImagemCompleto($titulo, $id_story);
-                referencia($referencia, $id_story, 'bla bla bla', $pdo);
+                history($historia, $id_story);
+                if(checkimagesAf())uploadImagemCompleto($titulo, $id_story);
+                if(checkreferenceAf())referencia($referencia, $id_story, 'bla bla bla');
             }
         }
     }
+
 ?>
