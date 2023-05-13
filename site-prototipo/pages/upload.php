@@ -72,7 +72,7 @@
                 header("Location: error.php");
                 return false;
             }
-            if($_FILES["imagem".$x]["size"] < 500000){//500000
+            if($_FILES["imagem".$x]["size"] > 500000){//500000
                 header("Location: error.php");
                 return false;
             }
