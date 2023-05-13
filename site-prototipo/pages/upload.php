@@ -13,6 +13,9 @@
 
     $historia = array_unique($array);
     $historia = implode("",$array);
+    $remove = array("*1 ", " /*1", "*2 ", " /*2", "*3 ", " /*3", "*4 ", " /*4", "*5 ", " /*5", "*6 ", " /*6", "** ", " /**", "*-* ", " /*-*");
+    $add = array("<h1>", "</h1>", "<h2>", "</h2>", "<h3>", "</h3>", "<h4>", "</h4>", "<h5>", "</h5>", "<h6>", "</h6>", "<strong>", "</strong>", "<u>", "</u>");
+    $historia = str_replace($remove, $add, $historia);
     echo $historia;
 
     /* CREATE STORY */
@@ -214,5 +217,4 @@
             }
         }
     }
-
 ?>

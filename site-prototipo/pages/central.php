@@ -26,8 +26,6 @@
     </div>
     <a href="criacao.php">Ir para a criação de histórias</a>
     <br><br>
-    <a href="story.php">história</a>
-    <br><br>
     <form method="get" action="pesquisa.php">
         <input type="text" name="busca" id="busca">
         <input type="submit" value="Buscar por nome" class="bpnom">
