@@ -33,7 +33,7 @@
 </head>
 <body>
     <div class="all transi" id="all">
-        <div class="sideBar">
+        <div id="sideBar" class="sideBar">
             <div class="container">
                 <div id="goBack" onclick="putUp(-1)" class="goBack pointer">
                     <i class="fa-solid fa-arrow-left"></i>
@@ -83,67 +83,139 @@
                     </div>
                 </div>
             </div>
-            <div class="page slide">
-                <div class="history">
-                    <div class="writing">
-                        <div id="title-container" class="story-title-container">
-                            <div class="story-title transi">
-                                <h1 class="transi">Imagens</h1>
+            <?php
+            $id_page = RetornarIdPage($id_story, 1);
+            $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
+
+            $prepare = $pdo->prepare($sql);
+            $prepare -> execute();
+
+            if($prepare -> rowCount() > 0){
+                echo '
+                <div class="page slide">
+                    <div>
+                        <div class="writing images-page">
+                            <div id="title-container" class="story-title-container">
+                                <div class="story-title transi">
+                                    <h1 class="transi">Imagens</h1>
+                                </div>
+                                <div onclick = "checkStuff(1)" class="bt-open-close">
+                                    <div class="bt">
+                                        <i style="font-size: 30px;" class="exp-min fa-solid fa-expand"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <div onclick = "checkStuff(1)" class="bt-open-close">
-                                <div class="bt">
-                                    <i style="font-size: 30px;" class="exp-min fa-solid fa-expand"></i>
+                            <div class="images" spellcheck="false">';
+                                    
+                                    foreach ($pdo->query($sql) as $key => $value) {
+                                        echo "<img src='". $value['path'] ."'><br><br>";
+                                    }
+                                echo 
+                            '</div>
+                        </div>
+                    </div>
+                </div>';
+            }
+            ?>
+            <?php
+                $id_page = RetornarIdPage($id_story, 2);
+                $sql = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
+                $prepare = $pdo->prepare($sql);
+                $prepare -> execute();
+
+                if($prepare -> rowCount() > 0){
+                    echo'
+                        <div class="page slide">
+                            <div>
+                                <div class="writing reference-writing">
+                                    <div id="title-container" class="story-title-container">
+                                        <div class="story-title transi">
+                                            <h1 class="transi">Referências</h1>
+                                        </div>
+                                        <div onclick = "checkStuff(2)" class="bt-open-close">
+                                            <div class="bt">
+                                                <i style="font-size: 30px;" class="exp-min fa-solid fa-expand"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lines">
+                                        <div class="text" spellcheck="false"> ';
+                    
+                                        
+                                        foreach ($pdo->query($sql) as $key => $value) {
+                                            echo "<a href ='". $value['path'] ."'>". $value['path'] ."</a>";
+                                        }
+                                                
+                                        echo' 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="lines">
-                            <div class="text" spellcheck="false">
-                                <!-- AQUI VÃO AS IMAGENS -->
-                                <?php
-                                    $id_page = RetornarIdPage($id_story, 1);
-                                    $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
-                                    foreach ($pdo->query($sql) as $key => $value) {
-                                        echo "<img src='". $value['path'] ."'>";
-                                    }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="page slide">
-                <div class="history">
-                    <div class="writing">
-                        <div id="title-container" class="story-title-container">
-                            <div class="story-title transi">
-                                <h1 class="transi">Referências</h1>
-                            </div>
-                            <div onclick = "checkStuff(2)" class="bt-open-close">
-                                <div class="bt">
-                                    <i style="font-size: 30px;" class="exp-min fa-solid fa-expand"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="lines">
-                            <div class="text" spellcheck="false">
-                                <!-- AQUI VÃO AS REFERENCIAS -->
-                                <?php
-                                    $id_page = RetornarIdPage($id_story, 2);
-                                    $sql = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
-                                    foreach ($pdo->query($sql) as $key => $value) {
-                                        echo "<p>". $value['path'] ."</p>";
-                                    }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    ';
+                }
+            ?>
         </div>
         <div class="main">
             <div class="interaction-container">
-                <div class="question-container"></div>
-                <div class="rating-container"></div>
+                <div class="answered">
+                    <h1>Você já respondeu essa pergunta!</h1>          
+                </div>
+                <div class="unanswered" style="display:none">
+                    <div class="question-container">
+                        <div class="question">
+                            <!-- aqui tem que vir a pergunta -->
+                            A pergunta é: qual cu foi comido por Peter Pan?
+                        </div>
+                        <div class="options">
+                            <div class="col1-op op-col">
+                                <div class="option">
+                                option 1
+                                </div>
+                                <div class="option">
+                                    option 2
+                                </div>
+                            </div>
+                            <div class="col2-op op-col">
+                                <div class="option">
+                                    option 4
+                                </div>
+                                <div class="option">
+                                    option 3
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="rating-container">
+                        <div class="noAnswer" style="display:block;">
+                            <div class="things-container-noAnswer">
+                                <div class="rating-part">
+                                    <h1>Você ainda não respondeu à pergunta</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right" style="display:none">
+                            <div class="things-container" style="background-color: #1f4921;">
+                                <div class="rating-part">
+                                    <h1>Você Acertou</h1>
+                                </div>
+                                <div class="rating-part rating-container-input">
+                                    <form id="form-container" action="" method="post">
+                                        <input type="number" name="rating" id="rating-input" max="5" min="1" placeholder="Dê uma nota à história!"><br>
+                                        <input type="submit" value="Enviar" id="rating-input-submit">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrong" style="display:none">
+                            <div class="things-container" style="background-color: rgb(87, 17, 17);">
+                                <div class="rating-part">
+                                    <h1>Você Errou</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

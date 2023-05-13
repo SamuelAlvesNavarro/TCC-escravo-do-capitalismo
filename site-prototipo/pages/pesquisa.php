@@ -2,7 +2,7 @@
     require "includes/conexao.php";
     require "includes/online.php";
     $pesquisa = '';
-    $pesquisa = $_GET['busca'];
+    if(isset($_GET['busca']))$pesquisa = $_GET['busca'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -26,34 +26,63 @@
         if($_SERVER["REQUEST_METHOD"] == "GET"){
             $titulos = array();
             $i = 0;
-            $pesquisa = $_GET['busca'];
-            $sql = "SELECT * FROM story";
+            if(isset($_GET['busca'])){
 
-            foreach($pdo->query($sql) as $key => $value){
-                $titulos[$i][0] = $value["nome"];
-                $sim = similar_text($titulos[$i][0], $pesquisa, $perc);
-                $titulos[$i][1] = $perc;
-                $titulos[$i][2] = $value["id_story"];
-                $i++;
-            }
+                $pesquisa = $_GET['busca'];
+                $sql = "SELECT * FROM story";
 
-            $key_values = array_column($titulos, 1); 
-            array_multisort($key_values, SORT_DESC, $titulos);
+                foreach($pdo->query($sql) as $key => $value){
+                    $titulos[$i][0] = $value["nome"];
+                    $sim = similar_text($titulos[$i][0], $pesquisa, $perc);
+                    $titulos[$i][1] = $perc;
+                    $titulos[$i][2] = $value["id_story"];
+                    $i++;
+                }
 
-            if($titulos[0][1] == 0){ // if TRUE ---> Não houve correspondência no banco
-                echo "<hr><br><br> Não há resultados. Conteúdos Relacionados: <br><br>";
+                $key_values = array_column($titulos, 1); 
+                array_multisort($key_values, SORT_DESC, $titulos);
 
-                for($i = 0; $i < sizeof($titulos); $i++){
-                    $id_story = $titulos[$i][2];
-                    echo "<a href='#' onclick='story(".$titulos[$i][2].")'>". $titulos[$i][0] ."</a><br>";
-                }  
+                if($titulos[0][1] == 0){ // if TRUE ---> Não houve correspondência no banco
+                    echo "<hr><br><br> Não há resultados para essa pesquisa, tente novamente considerando que a pesquisa diferencia letras maiúsculas e minúsculas. Conteúdos Relacionados: <br><br>";
+
+                    for($i = 0; $i < sizeof($titulos); $i++){
+                        $id_story = $titulos[$i][2];
+                        echo "<a href='#' onclick='story(".$titulos[$i][2].")'>". $titulos[$i][0] ."</a><br>";
+                    }  
+
+                }else{
+
+                    for($i = 0; $i < sizeof($titulos); $i++){
+                        echo "<a href='#' onclick='story(".$titulos[$i][2].")'>". $titulos[$i][0] ."</a><br>";
+                    }  
+                } 
 
             }else{
 
-                for($i = 0; $i < sizeof($titulos); $i++){
-                    echo "<a href='#' onclick='story(".$titulos[$i][2].")'>". $titulos[$i][0] ."</a><br>";
-                }  
-            }   
+                $pesquisa = "";
+                $sql = "SELECT * FROM story";
+
+                foreach($pdo->query($sql) as $key => $value){
+                    $titulos[$i][0] = $value["nome"];
+                    $sim = similar_text($titulos[$i][0], $pesquisa, $perc);
+                    $titulos[$i][1] = $perc;
+                    $titulos[$i][2] = $value["id_story"];
+                    $i++;
+                }
+
+                $key_values = array_column($titulos, 1); 
+                array_multisort($key_values, SORT_DESC, $titulos);
+
+                if($titulos[0][1] == 0){ // if TRUE ---> Não houve correspondência no banco
+                    echo "<hr><br><br> Não há resultados para essa pesquisa, tente novamente considerando que a pesquisa diferencia letras maiúsculas e minúsculas. Conteúdos Relacionados: <br><br>";
+
+                    for($i = 0; $i < sizeof($titulos); $i++){
+                        $id_story = $titulos[$i][2];
+                        echo "<a href='#' onclick='story(".$titulos[$i][2].")'>". $titulos[$i][0] ."</a><br>";
+                    }  
+
+                }
+            } 
         }
     ?>
 <div id="hidden_form_container" style="display:none;"></div>
@@ -61,20 +90,15 @@
 <script>
     function story(n) {
         var theForm, newInput1;
-        // Start by creating a <form>
         theForm = document.createElement('form');
         theForm.action = 'story.php';
         theForm.method = 'post';
-        // Next create the <input>s in the form and give them names and values
         newInput1 = document.createElement('input');
         newInput1.type = 'hidden';
         newInput1.name = 'input_1';
         newInput1.value = n;
-        // Now put everything together...
         theForm.appendChild(newInput1);
-        // ...and it to the DOM...
         document.getElementById('hidden_form_container').appendChild(theForm);
-        // ...and submit it
         theForm.submit();
     }
 </script>

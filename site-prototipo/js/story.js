@@ -23,6 +23,12 @@ function switchTheme(){
     var slider = document.getElementById('slider');
     var slides = document.getElementsByClassName('slide');
 
+    if(slides.length == 1){
+        var sideBar = document.getElementById("sideBar");
+        sideBar.style.display = "none";
+    }
+
+    var trial = 0;
     var upF = 3;
 
     function setHeight(z){
@@ -30,6 +36,14 @@ function switchTheme(){
     }
     function putUp(n){
 
+        if(slides.length == 1 && trial > 0){
+            
+            console.log("Não há outras páginas para carregar");
+            return;
+        }
+
+        trial++;
+        
         upF += n;
 
         var x = 10;

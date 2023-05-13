@@ -16,18 +16,18 @@
     $remove = array("*1 ", " /*1", "*2 ", " /*2", "*3 ", " /*3", "*4 ", " /*4", "*5 ", " /*5", "*6 ", " /*6", "** ", " /**", "*-* ", " /*-*");
     $add = array("<h1>", "</h1>", "<h2>", "</h2>", "<h3>", "</h3>", "<h4>", "</h4>", "<h5>", "</h5>", "<h6>", "</h6>", "<strong>", "</strong>", "<u>", "</u>");
     $historia = str_replace($remove, $add, $historia);
-    echo $historia;
 
     /* CREATE STORY */
 
     function uploadHistoria($titulo, $perfil){
         global $pdo;
         $id_story = -1;
-        $story = "INSERT INTO story values(NULL, 0, '$titulo', 0, 1, '$perfil')";
+        $story = "INSERT INTO story values(NULL, 0, '$titulo', 0, 1, $perfil)";
         $prepare = $pdo->prepare($story);
         $prepare->execute();
 
-        $story2 = "select max(id_story) from story where fk_id_profile = '$perfil' and nome = '$titulo'";
+        $story2 = "select max(id_story) from story where fk_id_profile = $perfil";
+        echo $story2;
         foreach ($pdo->query($story2) as $key => $value){
             $id_story = $value['max(id_story)'];
         }
@@ -58,7 +58,7 @@
         global $pdo;
         Createpage($id_story, 0);
         $id_page = RetornarIdPage($id_story, 0);
-        $history = "INSERT INTO history values(NULL, '$id_page', '".$historia."')";
+        $history = "INSERT INTO history values(NULL, '$id_page', '$historia')";
         $prepare = $pdo->prepare($history);
         $prepare->execute();
     }
@@ -151,7 +151,7 @@
         }
         function tituloreplacestuff($titulo){
             preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", '/[!@#$%^&*(),.?":{}|<>\s]/'),explode(" ","a A e E i I o O u U n N"),$titulo);
-            preg_replace(" ", "-",$titulo);
+            //preg_replace(" ", "-",$titulo);
             echo $titulo;
             return $titulo;
         }
@@ -212,7 +212,7 @@
         {
             $id_story = uploadHistoria($titulo, $perfil);
 
-            if($id_story != -1){
+            if($id_story != -1 && $id_story != ''){
                 history($historia, $id_story);
                 if(checkimagesAf())uploadImagemCompleto($titulo, $id_story);
                 if(checkreferenceAf())referencia($referencia, $id_story, 'bla bla bla');

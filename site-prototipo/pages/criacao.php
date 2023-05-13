@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="page-content">
-                    <textarea name="story" id="conteudo-historia" rows="1" cols="30" maxlength="12000" required></textarea>
+                    <textarea name="story" id="conteudo-historia" rows="1" cols="30" max="12000" required></textarea>
                 </div>
             </div>
             <div class="page-all pics-page section">

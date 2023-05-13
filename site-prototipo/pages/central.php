@@ -21,8 +21,7 @@
         <option value="" class="mel">Histórias -</option>
     </select>
     <div class="rank" id="rank">
-        <br>
-        Aqui fica o rank, ent façam o bagui direito
+        
     </div>
     <a href="criacao.php">Ir para a criação de histórias</a>
     <br><br>

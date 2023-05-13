@@ -32,6 +32,7 @@
   --star-bc: #121212;
   --paper-color: #f0f0f0;
   --paper-line-color: steelblue;
+  --background-option: white
 }
 
 .dark {
@@ -43,6 +44,7 @@
   --star-bc: black;
   --paper-color: #f0f0f0;
   --paper-line-color: steelblue;
+  --background-option: #272727;
 }
 
 body {
@@ -100,6 +102,12 @@ body {
   transition: 0.4s linear;
   color: #121212;
 }
+.images-page{
+  border-top: 20px solid rgb(0, 38, 255);
+}
+.reference-writing{
+  border-top: 20px solid rgb(0, 255, 21);
+}
 .bt-open-close {
   position: absolute;
   top: 20px;
@@ -125,6 +133,21 @@ body {
 }
 .text pre{
   font-family: "Indie Flower";
+  white-space: break-spaces;
+}
+.text pre h1,.text pre h2,.text pre h3,.text pre h4,.text pre h5,.text pre h6{
+  display: inline;
+}
+.images{
+  margin-top:20px;
+  line-height: 25px;
+  width: 98%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5vh;
+  row-gap: 2vh;
 }
 /* STORY TITLE */
 .story-title {
@@ -203,25 +226,161 @@ body {
 /* MAIN */
 .main {
   width: 100%;
-  height: 300vh;
+  padding-bottom: 200px;
   background-color: var(--background-page);
 }
 .interaction-container{
-  width: 90%;
+  width: 94%;
   margin: 0 auto;
+}
+.answered{
+  width: 100%;
+  height: 300px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Indie Flower";
+  flex-direction: column;
+}
+.unanswered{
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
+  font-family: "Indie Flower";
 }
 .question-container{
   width: 70%;
-  height: 500px;
-  background-color: red;
+}
+.question{
+  width: 100%;
+  font-size: 30px;
+  padding: 2vw;
+  padding-top: 5vh;
+  padding-left: 0;
+}
+.options{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 7%;
+}
+.op-col{
+  width: 45%;
+}
+.option{
+  background-color: var(--background-option);
+  width: 100%;
+  padding: 3vh;
+  margin-top: 3vh;
+  cursor: pointer;
+  transition: .45s linear;
+  border-radius: 30px;
+  -webkit-box-shadow: 4px 10px 26px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 10px 26px -4px rgba(0,0,0,0.75);
+  box-shadow: 4px 10px 26px -4px rgba(0,0,0,0.75);
+}
+.option:hover{
+  background-color: rgb(87, 17, 17);
+  color: white;
+}
+.rating-container{
+  width: 30%;
+  margin-top: 5vh;
+}
+.things-container{
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 20px;
+  -webkit-box-shadow: 4px 10px 26px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 10px 26px -4px rgba(0,0,0,0.75);
+  box-shadow: 4px 10px 26px -4px rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.rating-part{
+  width: auto;
+}
+#rating-input{
+  outline: none;
+  border: none;
+  height: 50px;
+  background-color: transparent;
+  border-bottom: white 5px solid;
+  line-height: 50px;
+  width: 100%;
+  font-size: 16px;
+}
+#rating-input-submit{
+  width: 200px;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  height: 70px;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  background-color: #00ff0d;
+}
+.wrong{
+  height: 100%;
+}
+.noAnswer{
+  height: 100%;
+  text-align: center;
+}
+.things-container-noAnswer{
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 /* MEDIA QUERIES */
+@media (max-width: 900px){
+  .question-container{
+    width: 100%;
+  }
+  .rating-container{
+    width: 100%;
+  }
+  .things-container{
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .interaction-container{
+    flex-direction: column;
+  }
+  #rating-input-submit{
+    width: 50vw;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+}
 @media (max-width: 700px){
   .story-all-container {
     width: 100vw;
     grid-template-columns: 0 100% 0;
+  }
+}
+@media (max-width: 500px){
+  .options{
+    flex-direction: column;
+    gap: 0%;
+  }
+  .op-col{
+    width: 100%;
   }
 }
 

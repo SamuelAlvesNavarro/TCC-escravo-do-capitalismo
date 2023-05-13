@@ -174,10 +174,10 @@ body{
     border-top: solid 1vh red;
 }
 .pics-page{
-    border-top: solid 1vh rgb(240, 9, 171);
+    border-top: solid 1vh rgb(0, 38, 255);
 }
 .ref-page{
-    border-top: solid 1vh green;
+    border-top: solid 1vh rgb(0, 255, 21);
 }
 .ref-page input{
     width: 100%;
@@ -258,7 +258,7 @@ input, button{
 }
 .input-file-unit:hover{
     background-color: #2d2d2d;
-    color:rgb(240, 9, 171);
+    color:rgb(0, 38, 255);
 }
 .input-file{
     display: none;
