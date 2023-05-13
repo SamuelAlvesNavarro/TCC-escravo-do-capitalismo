@@ -82,7 +82,7 @@ body {
 }
 .behindSheet{
   transform: scale(20%);
-  opacity: .4;
+  opacity: .3;
 }
 /* PAPER */
 .page {
