@@ -8,9 +8,15 @@
         foreach ($pdo->query($page) as $key => $value) {
             $id_page = $value['id_page'];
             return $id_page;
-
         }
     }
+    
+    $id_story=$_POST['input_1'];
+    $story = "SELECT * from story where id_story = $id_story";
+    foreach ($pdo->query($story) as $key => $value) {
+        $titulo = $value['nome'];
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -40,7 +46,11 @@
                     <div class="writing">
                         <div id="title-container" class="story-title-container">
                             <div class="story-title transi">
-                                <h1 class="transi">Título</h1>
+                                <h1 class="transi">
+                                    <?php
+                                        echo $titulo;
+                                    ?>
+                                </h1>
                             </div>
                             <div onclick = "checkStuff(0)" class="bt-open-close">
                                 <div class="bt">
@@ -58,8 +68,13 @@
                         </div>
                         <div class="lines">
                             <div class="text"> <!-- contenteditable -->
-                                You can edit this text: <br><br>
-                                Cupcake ipsum dolor sit amet liquorice fruitcake. Candy canes jelly beans sweet roll cupcake lollipop. Powder carrot cake toffee brownie. Marshmallow sweet roll donut. Chocolate cake apple pie candy canes tiramisu dragée wafer. Croissant cookie lemon drops tiramisu jelly-o donut. Sweet gummi bears ice cream.
+                                <?php
+                                    $id_page = RetornarIdPage($id_story, 0);
+                                    $sql = "select texto from history where fk_id_page='$id_page'";
+                                    foreach ($pdo->query($sql) as $key => $value) {
+                                        echo $value["texto"];
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -80,14 +95,7 @@
                         </div>
                         <div class="lines">
                             <div class="text" spellcheck="false">
-                                <?php
-                                    $id_story=$_POST['input_1'];
-                                    $id_page = RetornarIdPage($id_story, 0);
-                                    $sql = "select texto from history where fk_id_page='$id_page'";
-                                    foreach ($pdo->query($sql) as $key => $value) {
-                                        echo $value["texto"];
-                                    }
-                                ?>
+                                
                             </div>
                         </div>
                     </div>
