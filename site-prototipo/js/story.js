@@ -53,7 +53,6 @@ function switchTheme(){
         }
     }
 
-    putUp(1);
 
     var stars = document.getElementById("full-stars")
 
@@ -78,3 +77,6 @@ function checkStuff(n){
     exp_min[n].classList.toggle("fa-expand");
     setHeight(slides[n].offsetHeight);
 }
+
+switchTheme();
+putUp(1);
