@@ -99,6 +99,9 @@
                         <div class="lines">
                             <div class="text" spellcheck="false">
                                 <!-- AQUI VÃO AS IMAGENS -->
+                                <?php
+
+                                ?>
                             </div>
                         </div>
                     </div>
