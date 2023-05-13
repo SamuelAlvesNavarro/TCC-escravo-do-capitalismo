@@ -16,7 +16,7 @@
         $number++;
         echo "<input type='radio' name='resp' id='resp' value='". $value['status'] ."'>$number) ". $value['text'] . "<br>";
     }
-    echo "<input type='submit' value='Enviar'><br>";
+    echo "<input type='submit' value='Enviar' onclick='". $value['status'] ."'><br>";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $resp = $_POST['resp'];
