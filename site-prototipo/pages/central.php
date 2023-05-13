@@ -28,7 +28,7 @@
     <br><br>
     <a href="story.php">história</a>
     <br><br>
-    <form method="POST" action="pesquisa.php">
+    <form method="get" action="pesquisa.php">
         <input type="text" name="busca" id="busca">
         <input type="submit" value="Buscar por nome" class="bpnom">
     </form>

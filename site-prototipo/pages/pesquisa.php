@@ -1,7 +1,8 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
-    $pesquisa = $_POST['busca'];
+    $pesquisa = '';
+    $pesquisa = $_GET['busca'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,17 +16,17 @@
     Lembrete: complicou / da central já vai vir um texto, ent a página já vai estar recebendo algo para pesquisar, mas a barra de pesquisa (da página) tem que funcionar.<br><br>
     <br><br><br>TODAS AS PÁGINAS DEPOIS DO LOGIN TEM QUE VER SE O USUÁRIO ENTRANDO ESTÁ LOGADO. SE A PÁGINA N TEM DADOS DA PESSOA, TEM QUE MANDAR ELA DEVOLTA PARA O LOGIN. <br><br><br>
     <hr>
-    <form method="POST" action="pesquisa.php">
+    <form method="get" action="pesquisa.php">
         <input type="text" name="busca" id="" class="searchbar">
         <button>Pesquisar</button>
     </form>
     <a style="margin: 2vw;" href='central.php'>Volta</a>
     <br><br>
     <?php
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if($_SERVER["REQUEST_METHOD"] == "GET"){
             $titulos = array();
             $i = 0;
-            $pesquisa = $_POST['busca'];
+            $pesquisa = $_GET['busca'];
             $sql = "SELECT * FROM story";
 
             foreach($pdo->query($sql) as $key => $value){

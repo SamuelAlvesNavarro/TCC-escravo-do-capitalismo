@@ -5,9 +5,15 @@
 
     $email = $_SESSION['email'];
 
-    $array = explode("\r\n", $_POST['story']);
+    $array = explode("\n", $_POST['story']);
+
+    /*for($i = 0; $i < sizeof($array); $i++){
+        $array[$i] = $array[$i]."<br>";
+    }*/
+
     $historia = array_unique($array);
-    $historia = implode("<br>", $historia);
+    $historia = implode("",$array);
+    echo $historia;
 
     /* CREATE STORY */
 
@@ -18,10 +24,9 @@
         $prepare = $pdo->prepare($story);
         $prepare->execute();
 
-        $story2 = "select max(id_story) from story as id_story where fk_id_profile = '$perfil' and nome = '$titulo'";
+        $story2 = "select max(id_story) from story where fk_id_profile = '$perfil' and nome = '$titulo'";
         foreach ($pdo->query($story2) as $key => $value){
             $id_story = $value['max(id_story)'];
-            echo $id_story;
         }
         return $id_story;
     }
@@ -50,7 +55,7 @@
         global $pdo;
         Createpage($id_story, 0);
         $id_page = RetornarIdPage($id_story, 0);
-        $history = "INSERT INTO history values(NULL, '$id_page', '$historia')";
+        $history = "INSERT INTO history values(NULL, '$id_page', '".$historia."')";
         $prepare = $pdo->prepare($history);
         $prepare->execute();
     }
@@ -170,7 +175,7 @@
         if($referencia != ''){
             return true;
         }else{
-            header("Location: criacao.php");
+            //header("Location: criacao.php");
             return false;
         }
     }
@@ -181,7 +186,7 @@
         $reference = "INSERT INTO reference values(NULL, '$id_page', '$referencia')";
         $prepare = $pdo->prepare($reference);
         $prepare->execute();
-        header("Location: criacao.php");
+        //header("Location: criacao.php");
     }
 
     /* IN ITSELF */
@@ -190,7 +195,6 @@
     $referencia = $_POST['link-reference'];
     $perfil = -1;
     $id_story = 0;
-    $historia = $_POST['story'];
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
     foreach($pdo->query($sql) as $key => $value){
         $perfil = $value['fk_id_profile'];

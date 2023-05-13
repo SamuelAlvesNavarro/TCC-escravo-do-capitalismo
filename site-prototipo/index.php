@@ -1,4 +1,4 @@
-<?php header("Cache-Control: max-age=3000, must-revalidate"); ?>
+<?php Header("Cache-Control: max-age=3000, must-revalidate"); ?>
 <!DOCTYPE html>
 <html lang="pt-br" class="transi">
 <head>

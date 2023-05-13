@@ -78,6 +78,7 @@ body {
     grid-column: 2;
     grid-row: 1;
     transition: .1s linear;
+    height: fit-content;
 }
 .behindSheet{
   transform: scale(20%);
@@ -114,10 +115,12 @@ body {
 }
 .text {
   line-height: 25px;
-  font-family: "Indie Flower";
   overflow: hidden;
   outline: none;
   text-align: justify;
+}
+.text pre{
+  font-family: "Indie Flower";
 }
 /* STORY TITLE */
 .story-title {

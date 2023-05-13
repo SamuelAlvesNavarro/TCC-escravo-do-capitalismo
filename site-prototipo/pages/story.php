@@ -26,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>História</title>
-    <link rel="stylesheet" href="../css/story.css?v=1">
+    <link rel="stylesheet" href="../css/story.css?v=1.01">
 </head>
 <body>
     <div class="all transi" id="all">
@@ -72,7 +72,7 @@
                                     $id_page = RetornarIdPage($id_story, 0);
                                     $sql = "select texto from history where fk_id_page='$id_page'";
                                     foreach ($pdo->query($sql) as $key => $value) {
-                                        echo $value["texto"];
+                                        echo "<pre style='font-family: 'Indie Flower''>".$value["texto"]."</pre>";
                                     }
                                 ?>
                             </div>
@@ -149,5 +149,5 @@
         </div>
     </div>
 </body>
-<script src="../js/story.js?v=1"></script>
+<script src="../js/story.js?v=1.01"></script>
 </html>

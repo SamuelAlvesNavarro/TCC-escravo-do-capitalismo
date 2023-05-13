@@ -20,14 +20,13 @@ function switchTheme(){
 
 
    
-    var slider = document.querySelector('.slider');
+    var slider = document.getElementById('slider');
     var slides = document.getElementsByClassName('slide');
 
     var upF = 3;
 
-    function setHeight(n){
-        console.log(slider.offsetHeight + " to " + n);
-        slider.style.height = n;
+    function setHeight(z){
+        slider.style.height = z + 100 + 'px';
     }
     function putUp(n){
 
@@ -72,6 +71,7 @@ var texts = document.getElementsByClassName("text");
 var exp_min = document.getElementsByClassName("exp-min");
 
 var i = 0;
+
 function checkStuff(n){
     writings[n].classList.toggle("appear");
     exp_min[n].classList.toggle("fa-minimize");
