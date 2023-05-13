@@ -19,7 +19,7 @@
         <input type="text" name="busca" id="" class="searchbar">
         <button>Pesquisar</button>
     </form>
-    <a style="margin: 2vw;" href=../../php-separado/cadastro/central.php>Volta</a>
+    <a style="margin: 2vw;" href='central.php'>Volta</a>
     <br><br>
     <?php
         if($_SERVER["REQUEST_METHOD"] == "POST"){

@@ -18,56 +18,63 @@ function switchTheme(){
     }
 }
 
-var stars = document.getElementById("full-stars")
 
-var qP = 4.20  // <-------- MUDAR A QUANTIDADE DE ESTRELAS 
+   
+    var slider = document.querySelector('.slider');
+    var slides = document.getElementsByClassName('slide');
 
-stars.style.width = calcStar(qP) + "%";     
+    var upF = 3;
 
-function calcStar(points){
-    return (100*points)/5
-}
+    function setHeight(n){
+        console.log(slider.offsetHeight + " to " + n);
+        slider.style.height = n;
+    }
+    function putUp(n){
 
-function rotateBook(){
-    book.classList.add("rotateBook");
-}
-setTimeout(rotateBook, 1000);
+        upF += n;
 
-var title_container = document.getElementById("title-container");
-var book = document.getElementById("book");
-var book_container = document.getElementById("containerBook");
-var all = document.getElementById("all");
-var readmores = document.getElementsByClassName("readmore");
+        var x = 10;
+
+        if(upF < 0) upF = slides.length-1;
+        if(upF > slides.length-1) upF = 0;
+
+        for(i = 0; i < slides.length; i++){
+            if(i == upF){
+                slides[i].style.zIndex = 1;
+                slides[i].style.transform = 'rotate(0deg)';
+                slides[i].classList.remove("behindSheet");
+                setHeight(slides[i].offsetHeight);
+            } 
+            else{
+                var num = parseInt(Math.random() * (2*x)) - x;
+                slides[i].style.zIndex = 0;
+                slides[i].style.transform = 'rotate('+num+'deg)';
+                slides[i].classList.add("behindSheet");
+            } 
+        }
+    }
+
+    putUp(1);
+
+    var stars = document.getElementById("full-stars")
+
+    var qP = 4.20  // <-------- MUDAR A QUANTIDADE DE ESTRELAS 
+    
+    stars.style.width = calcStar(qP) + "%";     
+    
+    function calcStar(points){
+        return (100*points)/5
+    }
+
+
 var writings = document.getElementsByClassName("writing");
 var texts = document.getElementsByClassName("text");
 var exp_min = document.getElementsByClassName("exp-min");
-
-setTimeout(openforEvent, 2000);
 
 var i = 0;
 function checkStuff(n){
     writings[n].classList.toggle("appear");
     exp_min[n].classList.toggle("fa-minimize");
     exp_min[n].classList.toggle("fa-expand");
-}
-function changeNumbers(n){
-    i = n;
-}
-function openforEvent(){
-    book.addEventListener("click", () => {
-        book.classList.remove("rotateBook");
-        book.style.color = "transparent";
-        book_container.classList.add("befremoveBook");
-        /*document.body.style.overflowY = 'hidden';*/
-        setTimeout(showBody, 1500);
-    })
-}
-function showBody(){
-    book_container.style.display = 'none';
-    /*document.body.style.overflowY = 'scroll';*/
-    setTimeout(showElements, 100);
-}
-function showElements(){
-    title_container.style.display = 'block';
-    all.style.display = "block";
+    setHeight(slides[n].offsetHeight);
 }
