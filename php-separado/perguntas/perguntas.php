@@ -17,10 +17,6 @@
         $fk_id_question = $value['id_question'];
     }
 
-    $sql = "INSERT INTO question_user VALUES('$fk_id_question', '$perfil')";
-    $prepare = $pdo->prepare($sql);
-    $prepare->execute();
-
     
     switch($certa){
         case 'a':
