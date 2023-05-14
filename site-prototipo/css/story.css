@@ -185,7 +185,7 @@ body {
   top: 0;
   white-space: nowrap;
   overflow: hidden;
-  color: #e0e413;
+  color: gold;
 }
 
 .empty-stars:before, #full-stars:before {

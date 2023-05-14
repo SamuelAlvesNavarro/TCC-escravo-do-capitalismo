@@ -195,6 +195,55 @@
         //header("Location: criacao.php");
     }
 
+    /* QUESTION */
+
+    function storeQuestion($id_story, $perfil){
+
+        global $pdo;
+        $questao = $_POST['question'];
+        $a = $_POST['a'];
+        $b = $_POST['b'];
+        $c = $_POST['c'];
+        $d = $_POST['d'];
+        $certa = $_POST['certa'];
+        $sql = "INSERT INTO question VALUES(NULL, '$id_story','$questao')";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        $proc = "SELECT id_question FROM question WHERE fk_id_story = '$id_story'";
+        foreach($pdo->query($proc) as $key => $value){
+            $fk_id_question = $value['id_question'];
+        }
+
+        $ar = 0;
+        $br = 0;
+        $cr = 0;
+        $dr = 0;
+
+        if($certa == 'a') $ar = 1;
+        if($certa == 'b') $br = 1;
+        if($certa == 'c') $cr = 1;
+        if($certa == 'd') $dr = 1;
+            
+        $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$a', $ar)";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$b', $br)";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$c', $cr)";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$d', $dr)";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        header("Location: criacao.php");
+    }
+
     /* IN ITSELF */
     
     $titulo = $_POST['titulo'];
@@ -205,6 +254,7 @@
     foreach($pdo->query($sql) as $key => $value){
         $perfil = $value['fk_id_profile'];
     }
+
     if($perfil == -1)header("Location: error.php");
     else{
 
@@ -216,6 +266,7 @@
                 history($historia, $id_story);
                 if(checkimagesAf())uploadImagemCompleto($titulo, $id_story);
                 if(checkreferenceAf())referencia($referencia, $id_story, 'bla bla bla');
+                storeQuestion($id_story, $perfil);
             }
         }
     }

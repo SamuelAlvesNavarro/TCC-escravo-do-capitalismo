@@ -108,6 +108,19 @@
                     <input type="url" name="link-reference" id="">
                 </div>
             </div>
+            <div class="page-all ref-page">
+                <div class="page-title">
+                    <h1>Pergunta</h1>
+                </div>
+                <div class="page-content"> <!-- Pergunta -->
+                    <input type="text" name="question" placeholder="Pergunta aos leitores" id="" required><br><br>
+                    <label for="a">A:</label><input type="text" name="a" placeholder="alternativa" required><br><br>
+                    <label for="b">B:</label><input type="text" name="b" placeholder="alternativa" required><br><br>
+                    <label for="c">C:</label><input type="text" name="c" placeholder="alternativa" required><br><br>
+                    <label for="d">D:</label><input type="text" name="d" placeholder="alternativa" required><br><br>
+                    <input type="text" name="certa" placeholder="informe a alternativa correta" required>
+                </div>
+            </div>
         </div>
         <div class="col2">
             <div class="warnings section">

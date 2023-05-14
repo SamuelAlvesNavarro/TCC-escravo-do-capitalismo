@@ -45,6 +45,10 @@
                 $prepare = $pdo->prepare($add);
                 $prepare->execute();
 
+                $question_user = "INSERT INTO question_user VALUES('$id_question', '$perfil')";
+                $prepare = $pdo->prepare($question_user);
+                $prepare->execute();
+
             }else{
                 echo "Que pena, você errou!";
                 $moedas += -50;
@@ -52,10 +56,6 @@
                 $prepare = $pdo->prepare($add);
                 $prepare->execute();
             }
-
-            $question_user = "INSERT INTO question_user VALUES('$id_question', '$perfil')";
-            $prepare = $pdo->prepare($question_user);
-            $prepare->execute();
         }else{
             echo "Já respondeu, kkkkkk capa";
         }

@@ -17,78 +17,31 @@
         $fk_id_question = $value['id_question'];
     }
 
-    
-    switch($certa){
-        case 'a':
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$a', 1)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
+    $ar = 0;
+    $br = 0;
+    $cr = 0;
+    $dr = 0;
 
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$b', 0)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
+    if($certa == 'a') $ar = 1;
+    if($certa == 'b') $br = 1;
+    if($certa == 'c') $cr = 1;
+    if($certa == 'd') $dr = 1;
+        
+    $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$a', $ar)";
+    $prepare = $pdo->prepare($sql);
+    $prepare->execute();
 
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$c', 0)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
+    $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$b', $br)";
+    $prepare = $pdo->prepare($sql);
+    $prepare->execute();
 
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$d', 0)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
+    $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$c', $cr)";
+    $prepare = $pdo->prepare($sql);
+    $prepare->execute();
 
-        break;
-        case 'b':
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$b', 1)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$a', 0)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$c', 0)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$d', 0)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-        break;
-        case 'c':
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$c', 1)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$b', 0)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$a', 0)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$d', 0)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-        break;
-        case 'd':
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$d', 1)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$b', 0)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$c', 0)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-
-            $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$a', 0)";
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-        break;
-    }
+    $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$d', $dr)";
+    $prepare = $pdo->prepare($sql);
+    $prepare->execute();
 
 
     echo "<a href='responder.php'>Responda</a>";

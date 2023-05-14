@@ -92,7 +92,7 @@
         var theForm, newInput1;
         theForm = document.createElement('form');
         theForm.action = 'story.php';
-        theForm.method = 'post';
+        theForm.method = 'get';
         newInput1 = document.createElement('input');
         newInput1.type = 'hidden';
         newInput1.name = 'input_1';

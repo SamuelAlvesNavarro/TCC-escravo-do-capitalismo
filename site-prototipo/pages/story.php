@@ -10,16 +10,89 @@
             return $id_page;
         }
     }
-    if(isset($_POST['input_1'])){
-        $id_story = $_POST['input_1'];
+    if(isset($_GET['input_1'])){
+        $id_story = $_GET['input_1'];
         $story = "SELECT * from story where id_story = $id_story";
         foreach ($pdo->query($story) as $key => $value) {
             $titulo = $value['nome'];
+            $rating = $value['rating'];
         }
     }else{
         header("Location: error.php");
     }
 
+    $showAnswered = 0;
+    $showQuestion = 0;
+    $showRight = "none;";
+    $showWrong = "none;";
+    $showNo = "none;";
+
+    /* QUESTION */
+
+    $question = "SELECT * FROM question WHERE fk_id_story = '$id_story'";
+    foreach($pdo->query($question) as $key => $value){
+        $questionText = $value['quest_itself'];
+        $id_question = $value['id_question'];
+    }
+
+    /* CHECK QUESTION TO SHOW */
+
+    $email = $_SESSION['email'];
+    $perfil = -1;
+    $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
+    foreach($pdo->query($sql) as $key => $value){
+        $perfil = $value['fk_id_profile'];
+    }
+
+    $check = "SELECT * FROM question_user WHERE fk_id_profile = $perfil and fk_id_question = $id_question";
+    $prepare = $pdo->prepare($check);
+    $prepare->execute();
+
+    if($prepare->rowCount() > 0){
+
+        $showRight = "block;";
+
+    }else{
+
+        /* CHECK ERROR */
+
+        $check = "SELECT * FROM error_user WHERE fk_id_profile = $perfil and fk_id_story = $id_story";
+        $prepare = $pdo->prepare($check);
+        $prepare->execute();
+
+        if($prepare->rowCount() > 0){
+            $showWrong = "block;";
+        }
+
+    }
+
+    if($showWrong == "block;" || $showRight == "block;") $showNo = "none;";
+    else $showNo = "block;";
+    
+    /* SCORE STUFF */
+
+    $check = "SELECT * FROM score WHERE fk_id_profile = $perfil and fk_id_story = $id_story";
+    $prepare = $pdo->prepare($check);
+    $prepare->execute();
+
+    if($prepare->rowCount() == 0){
+        $showQuestion = "flex;";
+        $showAnswered = "none;";
+    }else{
+        $showQuestion = "none;";
+        $showAnswered = "block;";
+    }
+
+    /* ANSWERS */
+
+    $i = 0;
+    $answers = array();
+    $answer = "SELECT * FROM answer WHERE fk_id_question = '$id_question'";
+    foreach($pdo->query($answer) as $key => $value){
+        $answers[$i] = $value['text'];
+        $numbers[$i] = $value['status'];
+        $i++;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -157,67 +230,117 @@
         </div>
         <div class="main">
             <div class="interaction-container">
-                <div class="answered" style="display:none;">
-                    <h1>Você já respondeu essa pergunta!</h1>          
-                </div>
-                <div class="unanswered" style="display:flex;">
-                    <div class="question-container">
-                        <div class="question">
-                            <!-- aqui tem que vir a pergunta -->
-                            A pergunta é: qual cu foi comido por Peter Pan?
-                        </div>
-                        <div class="options">
-                            <div class="col1-op op-col">
-                                <div class="option">
-                                option 1
+                <?php 
+                    if($showAnswered == "block;"){
+                        echo 
+                        '<div class="answered">
+                            <h1>Você já respondeu essa pergunta! Obrigado pela avalicação!</h1>          
+                        </div>';
+                    }
+                ?>
+                <?php 
+                    if($showQuestion == "flex;"){
+                        echo '<div class="unanswered">
+                            <div class="question-container">
+                                <div class="question">
+                                    <!-- aqui tem que vir a pergunta -->
+                                    A pergunta é: <?php echo $questionText; ?>
                                 </div>
-                                <div class="option">
-                                    option 2
+                                <form id="question-form" method="post">
+                                    <div class="options">
+                                        <div class="col1-op op-col">
+                                            <div class="option" onclick="answerForm('.$numbers[0].')">
+                                                '.$answers[0].'
+                                            </div>
+                                            <div class="option" onclick="answerForm('.$numbers[1].')">
+                                                '.$answers[1].'
+                                            </div>
+                                        </div>
+                                        <div class="col2-op op-col">
+                                            <div class="option" onclick="answerForm('.$numbers[2].')">
+                                                '.$answers[2].'
+                                            </div>
+                                            <div class="option" onclick="answerForm('.$numbers[3].')">
+                                                '.$answers[3].'
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="id_story" value="'.$id_story.'"><br>
+                                        <input type="hidden" name="id_question" value="'.$id_question.'"><br>
+                                    </div>
+                                </form>
+                            </div>  
+                            <div class="rating-container">
+                                <div id="noAnswer" class="noAnswer" style="display:'.$showNo.'">
+                                    <div class="things-container-noAnswer">
+                                        <div class="rating-part">
+                                            <h1>Você ainda não respondeu à pergunta</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="right" class="right" style="display:'.$showRight.'">
+                                    <div class="things-container" style="background-color: #1f4921;">
+                                        <div class="rating-part">
+                                            <h1>Você Acertou</h1>
+                                        </div>
+                                        <div class="rating-part rating-container-input">
+                                            <form id="form-container" action="score.php" method="post">
+                                                <input type="number" name="rating" id="rating-input" max="5" min="1" placeholder="Dê uma nota à história!"><br>
+                                                <input type="hidden" name="id_story" value="'.$id_story.'"><br>
+                                                <input type="hidden" name="id_question" value="'.$id_question.'"><br>
+                                                <input type="submit" value="Enviar" id="rating-input-submit">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="wrong" class="wrong" style="display:'.$showWrong.'">
+                                    <div class="things-container" style="background-color: rgb(87, 17, 17);">
+                                        <div class="rating-part">
+                                            <h1>Você Errou</h1>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col2-op op-col">
-                                <div class="option">
-                                    option 4
-                                </div>
-                                <div class="option">
-                                    option 3
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                    <div class="rating-container">
-                        <div class="noAnswer" style="display:none;">
-                            <div class="things-container-noAnswer">
-                                <div class="rating-part">
-                                    <h1>Você ainda não respondeu à pergunta</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right" style="display:block;">
-                            <div class="things-container" style="background-color: #1f4921;">
-                                <div class="rating-part">
-                                    <h1>Você Acertou</h1>
-                                </div>
-                                <div class="rating-part rating-container-input">
-                                    <form id="form-container" action="" method="post">
-                                        <input type="number" name="rating" id="rating-input" max="5" min="1" placeholder="Dê uma nota à história!"><br>
-                                        <input type="submit" value="Enviar" id="rating-input-submit">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="wrong" style="display:none;">
-                            <div class="things-container" style="background-color: rgb(87, 17, 17);">
-                                <div class="rating-part">
-                                    <h1>Você Errou</h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div>';
+                    }
+                ?>
             </div>
         </div>
     </div>
 </body>
+<script>
+    <?php 
+        if($showRight == "none;"){
+            echo '
+            function answerForm(n){
+
+                var question_form = document.getElementById("question-form");
+                newInput1 = document.createElement("input");
+                newInput1.type = "hidden";
+                newInput1.name = "number";
+                newInput1.value = n;
+                question_form.appendChild(newInput1);
+                question_form.submit();
+
+                if(n == 0){
+                    question_form.action = "erro.php";
+                    question_form.submit();
+                }else{
+                    question_form.action = "acerto.php";
+                    question_form.submit();
+                }
+            } ';
+        }
+    ?>
+        var stars = document.getElementById("full-stars")
+
+        var qP = <?php echo $rating ?>;
+
+        stars.style.width = calcStar(qP) + "%";     
+        
+        function calcStar(points){
+            return (100*points)/5;
+        }
+    
+</script>
 <script src="../js/story.js?v=1.01"></script>
 </html>

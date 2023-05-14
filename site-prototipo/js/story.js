@@ -68,17 +68,6 @@ function switchTheme(){
     }
 
 
-    var stars = document.getElementById("full-stars")
-
-    var qP = 4.20  // <-------- MUDAR A QUANTIDADE DE ESTRELAS 
-    
-    stars.style.width = calcStar(qP) + "%";     
-    
-    function calcStar(points){
-        return (100*points)/5
-    }
-
-
 var writings = document.getElementsByClassName("writing");
 var texts = document.getElementsByClassName("text");
 var exp_min = document.getElementsByClassName("exp-min");

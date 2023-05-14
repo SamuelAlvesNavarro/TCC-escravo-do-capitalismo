@@ -15,6 +15,7 @@ delete from images;
 delete from reference;
 delete from user_common;
 delete from profile;
+delete from question;
 
 alter table page AUTO_INCREMENT = 0;
 alter table story AUTO_INCREMENT = 0;
@@ -23,5 +24,6 @@ alter table reference AUTO_INCREMENT = 0;
 alter table images AUTO_INCREMENT = 0;
 alter table user_common AUTO_INCREMENT = 0;
 alter table profile AUTO_INCREMENT = 0;
+alter table question AUTO_INCREMENT = 0;
 
 
