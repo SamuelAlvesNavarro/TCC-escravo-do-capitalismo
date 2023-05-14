@@ -116,8 +116,7 @@
                     </div>
                 </div>';
             }
-            ?>
-            <?php
+            
                 $id_page = RetornarIdPage($id_story, 2);
                 $sql = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
                 $prepare = $pdo->prepare($sql);
@@ -158,10 +157,10 @@
         </div>
         <div class="main">
             <div class="interaction-container">
-                <div class="answered">
+                <div class="answered" style="display:none;">
                     <h1>Você já respondeu essa pergunta!</h1>          
                 </div>
-                <div class="unanswered" style="display:none">
+                <div class="unanswered" style="display:flex;">
                     <div class="question-container">
                         <div class="question">
                             <!-- aqui tem que vir a pergunta -->
@@ -187,14 +186,14 @@
                         </div>
                     </div>  
                     <div class="rating-container">
-                        <div class="noAnswer" style="display:block;">
+                        <div class="noAnswer" style="display:none;">
                             <div class="things-container-noAnswer">
                                 <div class="rating-part">
                                     <h1>Você ainda não respondeu à pergunta</h1>
                                 </div>
                             </div>
                         </div>
-                        <div class="right" style="display:none">
+                        <div class="right" style="display:block;">
                             <div class="things-container" style="background-color: #1f4921;">
                                 <div class="rating-part">
                                     <h1>Você Acertou</h1>
@@ -207,7 +206,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="wrong" style="display:none">
+                        <div class="wrong" style="display:none;">
                             <div class="things-container" style="background-color: rgb(87, 17, 17);">
                                 <div class="rating-part">
                                     <h1>Você Errou</h1>

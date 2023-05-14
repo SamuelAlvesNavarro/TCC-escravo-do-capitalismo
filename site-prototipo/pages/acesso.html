@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/acesso.css">
+    <link rel="stylesheet" href="../css/acesso.css?v=1.01">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>Cadastro</title>
 </head>
 <body>
     <div class="all" id="all">
+        <div class="background">
+            <div class="child-background"></div>
+            <div class="child-background"></div>
+            <div class="child-background"></div>
+            <div class="child-background"></div>
+            <div class="child-background"></div>
+            <div class="child-background"></div>
+            <div class="child-background"></div>
+            <div class="child-background"></div>
+            <div class="child-background"></div>
+            <div class="child-background"></div>
+        </div>
         <div class="homebt">
             <a href="../index.php"><button>Home Page</button></a>
         </div>
@@ -17,14 +29,14 @@
             <div class="login" id="login">
                 <div class="logo-container" style="padding-bottom: 2vh;">
                     <div class="logo">
-                        <button onclick="toBlack()">trocar</button>
+                        
                     </div>
                 </div>
                 <form autocomplete="off" class="login-form" id="login-form" name="login" method="post" action="login.php">
                     <label for="email">Email:</label><br>
                     <input id="input-email" autocomplete="false" class="input" type="email" id="email" name="email" placeholder="Email"><br>
                     <label for="senha">Senha:</label><br>
-                    <input id="input-senha" autocomplete="false" class="input senha-login" type="password" id="senha" name="senha" placeholder="Senha"><br>
+                    <input id="input-senha" minlength="8" maxlength="20" autocomplete="false" class="input senha-login" type="password" id="senha" name="senha" placeholder="Senha"><br>
                     <div class="after" id="after">
                         <input class="login-submit" id="submit-login" type="button" value="Login">
                         <div id="arrowthing" class="arrowthing"><i class="fa-solid fa-arrow-right"></i></div>
@@ -36,7 +48,6 @@
                 </form>
             </div>
         </div>
-        
         <div class="container-cadastro" id="container-cadastro">
             <div class="logo-container" style="padding-bottom: 5vh;">
                 <div class="logo">
@@ -68,6 +79,6 @@
             </div>
         </div>
     </div>
-    <script src="../js/acesso.js"></script>
+    <script src="../js/acesso.js?v=1.01"></script>
 </body>
 </html>

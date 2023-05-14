@@ -17,15 +17,6 @@ const up_email = document.getElementById("signup-email");
 const up_senha = document.getElementById("signup-senha");
 const up_confsenha = document.getElementById("signup-confsenha");
 
-/* RANDOM IMAGES */
-
-var whichimg = parseInt(Math.random() * 10);
-
-whichimg = whichimg+1;
-linkimg = "../img/"+whichimg+".jpg";
-var linkimg = 'url('+linkimg+')';
-div_all.style.backgroundImage = linkimg;
-
 /* FUNCTIONS */
 
 function validEmail(email){
@@ -62,9 +53,6 @@ function changebt(){
 changebt();
 /* LOGIN */
 
-function toBlack(){
-    div_all.style.backgroundImage = 'linear-gradient(to left, rgb(66, 63, 63), black)';
-}
 senha.addEventListener('change', () => {login_bt(email.value, senha.value)});
 email.addEventListener('change', () => {login_bt(email.value, senha.value)});
 

@@ -1,240 +1,439 @@
-@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Abel", sans-serif;
+  overflow: hidden;
+}
 
-*{
-    margin: 0;
-    padding: 0;
-    font-family: 'Abel', sans-serif;
-    overflow: hidden;
+/* MIXIN */
+@keyframes elements {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  to {
+    top: 100vh;
+    opacity: 0;
+    transform: rotate(45deg);
+  }
+}
+@keyframes elementsUp {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  to {
+    bottom: 100vh;
+    opacity: 0;
+    transform: rotate(45deg);
+  }
 }
 /* ALL */
-.all{
-    background: url(../img/fundo-2-login.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-    color: aliceblue;
+.all {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  position: absolute;
+  color: aliceblue;
+  background: transparent;
+  background-image: linear-gradient(black, #121212, black);
 }
+
+/* BACKGROUND */
+.child-background {
+  position: absolute;
+}
+
+.child-background:nth-child(1) {
+  width: 50px;
+  height: 50px;
+  left: 100px;
+  border: rgb(182, 199, 199) solid 5px;
+  border-radius: 20px;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elements;
+}
+
+.child-background:nth-child(2) {
+  width: 30px;
+  height: 30px;
+  left: 200px;
+  border: rgb(43, 44, 44) solid 5px;
+  border-radius: 0;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elementsUp;
+}
+
+.child-background:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  left: 300px;
+  border: rgb(80, 85, 85) solid 5px;
+  border-radius: 20px;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elements;
+}
+
+.child-background:nth-child(4) {
+  width: 20px;
+  height: 20px;
+  left: 400px;
+  border: rgb(153, 61, 61) solid 5px;
+  border-radius: 5px;
+  animation-duration: 50s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elementsUp;
+}
+
+.child-background:nth-child(5) {
+  width: 200px;
+  height: 200px;
+  left: 500px;
+  border: rgb(177, 28, 28) solid 5px;
+  border-radius: 30%;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elements;
+}
+
+.child-background:nth-child(6) {
+  width: 100px;
+  height: 100px;
+  left: 700px;
+  border: rgb(51, 19, 15) solid 5px;
+  border-radius: 20px;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elementsUp;
+}
+
+.child-background:nth-child(7) {
+  width: 70px;
+  height: 70px;
+  left: 800px;
+  border: rgb(170, 27, 27) solid 5px;
+  border-radius: 10px;
+  animation-duration: 60s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elements;
+}
+
+.child-background:nth-child(8) {
+  width: 90px;
+  height: 90px;
+  left: 900px;
+  border: rgb(241, 233, 232) solid 5px;
+  border-radius: 50px;
+  animation-duration: 9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elementsUp;
+}
+
+.child-background:nth-child(9) {
+  width: 100px;
+  height: 100px;
+  left: 1000px;
+  border: rgb(78, 73, 73) solid 5px;
+  border-radius: 10px;
+  animation-duration: 38s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elements;
+}
+
+.child-background:nth-child(10) {
+  width: 40px;
+  height: 40px;
+  left: 1100px;
+  border: rgb(56, 48, 47) solid 5px;
+  border-radius: 0;
+  animation-duration: 54s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elementsUp;
+}
+
 /* HOME PAGE BUTTON */
-.homebt{
-    position: absolute;
-    top: 3vw;
-    right: 3vw;
+.homebt {
+  position: absolute;
+  top: 3vw;
+  right: 3vw;
 }
-.homebt a button{
-    padding: 1.2vw;
-    font-size: 1.1em;
-    box-shadow: 0px 6px 12px 0px rgb(143, 142, 142);
-    border: none;
-    background-color: transparent;
-    color: white;
-    cursor: pointer;
-    opacity: 0.7;
+
+.homebt a button {
+  padding: 1.2vw;
+  font-size: 1.1em;
+  box-shadow: 0px 6px 12px 0px rgb(143, 142, 142);
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  opacity: 0.7;
 }
+
 /* LOGIN */
-.container-login{
-    transition: .4s linear;
-    z-index: 5;
-    width: auto;
-    opacity: 0.75;
-    height: auto;
-    margin: 0 auto;
-    padding: 0.6%;
-    border: white solid 0.2px;
-    background-color: rgba(39, 39, 39, 0.4);
-    border-radius: 15px;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
+.container-login {
+  transition: 0.4s linear;
+  z-index: 5;
+  width: auto;
+  opacity: 0.75;
+  height: auto;
+  margin: 0 auto;
+  padding: 0.6%;
+  border: white solid 0.2px;
+  background-color: rgba(39, 39, 39, 0.4);
+  border-radius: 15px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  min-width: 300px;
+  top: 50%;
 }
-.logo-container{
-    width: 100%;
-    height: 10vh;
-    margin-top: 2vh;
-}
-.logo{
-    margin: 1.4% auto;
-    width: 10vh;
-    height: 10vh;
-    background-color: aqua;
-    border-radius: 50%;
-    background-image: url(../img/funny-cat.jpg);
-    background-position: center;
-}
-.login{
-    padding: 1vw;
-    border: white solid 0.2px;
-    border-radius: 15px;
-    transition: .1s linear;
-    opacity: 0.7;
-}
-.login:hover{
-    opacity: 1;
-}
-.login-form{
-    padding: 3vw;
-    position: relative;
-}
-.login-form label{
-    font-size: 1.5em;
-}
-.login-form input{
-    font-size: 1.2em;
-    width: 18vw;
-    margin-top: 1vw;
-    margin-bottom: 1vw;
-    color: aliceblue;
-    background-color: transparent;
-    border: none;
-    border-bottom: white solid 0.2px;
-}
-.login-form input:focus{
-    background-color: transparent;
-    outline: none;
-    border: none;
-    border-bottom: white solid 0.2px;
-}
-.login-form input:required{
 
+.logo-container {
+  width: 100%;
+  height: 10vh;
+  margin-top: 2vh;
 }
-.senha-login{
-    min: 8;
-    max: 20;
+
+.logo {
+  margin: 1.4% auto;
+  width: 10vh;
+  height: 10vh;
+  background-color: aqua;
+  border-radius: 50%;
+  background-image: url(../img/funny-cat.jpg);
+  background-position: center;
 }
-.link-new{
-    text-align: center;
-    height: 5vh;
-    margin-bottom: 0;
+
+.login {
+  padding: 1vw;
+  border: white solid 0.2px;
+  border-radius: 15px;
+  transition: 0.1s linear;
+  opacity: 1;
 }
-.new-user{
-    color: rgb(250, 107, 107);
-    transition: .3s linear;
-    text-decoration: none;
+
+.login-form {
+  padding: 3vw;
+  position: relative;
 }
-.new-user:hover{
-    color: rgb(223, 22, 22);
+
+.login-form label {
+  font-size: 1.5em;
 }
-#submit-login{
-    z-index: 10;
-    text-align: center;
-    padding-right: 0px;
-    background-color: red;
-    width: 100%;
-    height: 8vh;
-    border: rgb(221, 31, 31) solid 1px;
-    transition: all .2s linear;
-    margin: 0;
+
+.login-form input {
+  font-size: 1.2em;
+  width: 18vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  color: aliceblue;
+  background-color: transparent;
+  border: none;
+  border-bottom: white solid 0.2px;
 }
-#submit-login:hover{
-    background-color: red;
+
+.login-form input:focus {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: white solid 0.2px;
 }
-.filled-login-bt{
-    background-color: rgb(126, 33, 33) !important;
-    padding-right: 12vw !important;
-    cursor: pointer;
+
+.link-new {
+  text-align: center;
+  height: 5vh;
+  margin-bottom: 0;
 }
-.after{
-    margin-top: 1vw;
-    width: 100%;
-    position: relative;
-    height: 8vh;
+
+.new-user {
+  color: rgb(250, 107, 107);
+  transition: 0.3s linear;
+  text-decoration: none;
 }
-.arrowthing{
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    bottom: calc(13vh + 1px);
-    z-index: 11;
-    opacity: 1;
-    height: 8vh;
-    list-style: 8vh;
-    background-color: red;
-    width: 0;
-    overflow: hidden;
-    transition: all .2s linear;
+
+.new-user:hover {
+  color: rgb(223, 22, 22);
 }
-.arrowappear{
-    text-align: center;
-    width: 30%;
-    cursor: pointer;
+
+#submit-login {
+  z-index: 10;
+  text-align: center;
+  padding-right: 0px;
+  background-color: red;
+  width: 100%;
+  height: 8vh;
+  border: rgb(221, 31, 31) solid 1px;
+  transition: all 0.2s linear;
+  margin: 0;
 }
-.arrowdisappear{
-    width: 0;
+
+#submit-login:hover {
+  background-color: red;
 }
-.fa-arrow-right{
-    font-size: 1.4em;
-    margin: auto;
+
+.filled-login-bt {
+  background-color: rgb(126, 33, 33) !important;
+  padding-right: 12vw !important;
+  cursor: pointer;
 }
+
+.after {
+  margin-top: 1vw;
+  width: 100%;
+  position: relative;
+  height: 8vh;
+}
+
+.arrowthing {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  bottom: calc(13vh + 1px);
+  z-index: 11;
+  opacity: 1;
+  height: 8vh;
+  list-style: 8vh;
+  background-color: red;
+  width: 0;
+  overflow: hidden;
+  transition: all 0.2s linear;
+}
+
+.arrowappear {
+  text-align: center;
+  width: 30%;
+  cursor: pointer;
+}
+
+.arrowdisappear {
+  width: 0;
+}
+
+.fa-arrow-right {
+  font-size: 1.4em;
+  margin: auto;
+}
+
 /* CADASTRO */
+.container-cadastro {
+  width: 40vw;
+  position: absolute;
+  left: -40vw;
+  transition: 0.4s linear;
+  background: transparent;
+  background-image: url(../svg/background-cadastro.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  min-width: 300px;
+}
 
-.container-cadastro{
-    width: 35vw;
-    position: absolute;
-    left: -35vw;
-    transition: .4s linear;
-    background: transparent;
-    background-image: url(../svg/background-cadastro.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
+.cadastro {
+  margin-left: 2vw;
+  margin-top: 5vh;
+  font-size: 1.4em;
+  color: black;
 }
-.cadastro{
-    margin-left: 2vw;
-    margin-top: 5vh;
-    font-size: 1.4em;
-    color: black;
+
+.input-text {
+  height: 4vh;
+  width: 60%;
+  border: none;
+  border-bottom: 0.2px solid black;
+  transition: 0.2s linear all;
+  margin-bottom: 2vh;
 }
-.input-text{
-    height: 4vh;
-    width: 60%;
-    border: none;
-    border-bottom: .2px solid black;
-    transition: .2s linear all;
-    margin-bottom: 2vh;
+
+.input-text:focus {
+  width: 70%;
+  height: 8vh;
+  outline: none;
+  border: none;
+  border-bottom: 0.2px solid black;
+  margin-bottom: 4vh;
+  font-size: 1em;
 }
-.input-text:focus{
-    width: 70%;
-    height: 8vh;
-    outline: none;
-    border: none;
-    border-bottom: .2px solid black;
-    margin-bottom: 4vh;
-    font-size: 1em;
+
+.submit-cadastro-bt {
+  width: 15vw;
+  padding: 1vh;
+  font-size: 1.1em;
+  margin: 3vh auto;
+  transition: 0.2s linear;
+  opacity: 0.6;
+  background-color: maroon;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  scale: 100%;
 }
-.submit-cadastro-bt{
-    width: 15vw;
-    padding: 1vh;
-    font-size: 1.1em;
-    margin: 3vh auto;
-    transition: .2s linear;
-    opacity: 0.6;
-    background-color: maroon;
-    border: none;
-    border-radius: 20px;
-    color: white;
-    scale: 100%;
+
+.submit-cadastro-bt:hover {
+  opacity: 1;
 }
-.submit-cadastro-bt:hover{
-    opacity: 1;
+
+.sumir-submit-cadastro-bt {
+  opacity: 0;
+  scale: 0%;
 }
-.sumir-submit-cadastro-bt{
-    opacity: 0;
-    scale: 0%;
+
+.toLoginbt {
+  display: block;
+  margin-top: 3vh;
+  font-size: 0.8em;
 }
-.toLoginbt{
-    display: block;
-    margin-top: 3vh;
-    font-size: 0.8em;
-}
+
 /* ANIMATIONS */
-.container-cadastro-appear{
-    left: 0;
+.container-cadastro-appear {
+  left: 0 !important;
 }
-.container-login-disappear{
-    left: 100vw;
-    opacity: 0;
+
+.container-login-disappear {
+  left: 100vw;
+  opacity: 0;
 }
+
+/* MEDIA QUERY */
+@media (max-width: 900px) {
+  .container-cadastro {
+    left: -500px;
+    width: 500px;
+    background-image: none;
+    background: white;
+  }
+  .child-background {
+    display: none;
+  }
+}
+@media (max-width: 400px) {
+  .container-cadastro {
+    left: -100vw;
+    width: 100vw;
+    background-image: none;
+    background: white;
+  }
+  .child-background {
+    display: none;
+  }
+}/*# sourceMappingURL=acesso.css.map */
