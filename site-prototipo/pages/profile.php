@@ -2,6 +2,7 @@
     require "includes/conexao.php";
     require "includes/online.php";
 
+    $perfildono = -1;
     $perfildono = $_GET['profile'];
     $sql = "SELECT * FROM user_common WHERE fk_id_profile = '$perfildono'";
     foreach($pdo->query($sql) as $key => $value){
@@ -11,6 +12,13 @@
         $apelido = $value['apelido'];
         $pontos_leitor = $value['pontos_leitor'];
         $moedas = $value['moedas'];
+    }
+
+    $perfilEntrando = -1;
+    $email = $_SESSION['email'];
+    $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
+    foreach($pdo->query($sql) as $key => $value){
+        $perfilEntrando = $value['fk_id_profile'];
     }
 ?>
 <!DOCTYPE html>
@@ -29,11 +37,31 @@
         <br>
 
         <?php
-            echo "<form>";
+        if($perfildono == $perfilEntrando){
+            echo "<form method='post' action='editar_usuario.php'>";
 
+            echo "<label>Apelido:</label>";
+            echo "<input type='text' name='apelido' value='". $apelido ."' required><br>";
             
+            echo "<label>Nome:</label>";
+            echo "<input type='text' name='nome' value='". $nome ."' required><br>"; 
+
+            echo "<label>Email:</label>";
+            echo "<input type='email' name='email' value='". $email ."' required><br>"; 
+
+            echo "<label>Senha:</label>";
+            echo "<input type='password' name='senha' value='". $senha ."' required><br>"; 
+
+            echo "<label>Pontos de Leitor:</label>";
+            echo "<input type='number' name='pontos_leitor' value='". $pontos_leitor ."' readonly><br>"; 
+
+            echo "<label>Moedas:</label>";
+            echo "<input type='number' name='moedas' value='". $moedas ."' readonly><br>";
+            
+            echo "<input type='submit' value='Enviar'>";
 
             echo "</form>";
+        }
         ?>
 
         <div class="data">
@@ -42,7 +70,16 @@
     </div>
     <div class="histprof">
         <br>
-        NESSA PARTE, TEM QUE MOSTAR TODAS AS HISTÓRIAS LIGADAS A ESSE PERFIL <strong>COM LINK</strong>
+
+        <?php
+            //NESSA PARTE, TEM QUE MOSTAR TODAS AS HISTÓRIAS LIGADAS A ESSE PERFIL <strong>COM LINK</strong>
+            $sql = "SELECT * FROM story WHERE fk_id_profile = '$perfildono'";
+            foreach($pdo->query($sql) as $key => $value){
+                echo "<a href='story.php?input_1=$id_story'>". $value['titulo'] ."</a>";
+            }
+
+        ?>
+
     </div>
 </body>
 </html>
