@@ -266,7 +266,58 @@ input, button{
 .imagem-label{
     cursor: pointer;
 }
-@media (width <= 600px) {
+
+/* QUESTION */
+
+.question-container{
+    width: 96%;
+    padding: 2%;
+    border-radius: 10px;
+    font-family: 'Poltawski Nowy';
+    background-color: #1e1e1e;
+    -webkit-box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+}
+.question-content{
+    width: 100%;
+}
+.question-content input{
+    width: 100%;
+}
+.question-content .input-label{
+    width: 100%;
+}
+.input-label input{
+    width: 90%;
+    height: 50px;
+}
+.input-label{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.input-label .label{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: red;
+    width: 5%;
+}
+.input-label .radio{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 5%;
+}
+.radio input{
+    width: 30px;
+}
+.page-title-alt h3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+@media (max-width <= 1200px) {
     .story{
         width: 100%;
     }
