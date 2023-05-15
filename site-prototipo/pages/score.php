@@ -33,6 +33,10 @@
         }
 
         $rating = $_POST['rating'];
+
+        if($rating > 5) $rating = 5;
+        if($rating < 0) $rating = 0;
+
         $sql = "INSERT INTO score VALUES(NULL, $perfil, $id_story, $rating)";
         $prepare = $pdo->prepare($sql);
         $prepare->execute();

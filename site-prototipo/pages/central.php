@@ -14,7 +14,9 @@
     Lembrete: entrar na central significa que a pessoa já logou, logo, de alguma maneira, os dados da pessoa já tem que "estar aqui" <br><br>
     <br><br><br>TODAS AS PÁGINAS DEPOIS DO LOGIN TEM QUE VER SE O USUÁRIO ENTRANDO ESTÁ LOGADO. SE A PÁGINA N TEM DADOS DA PESSOA, TEM QUE MANDAR ELA DEVOLTA PARA O LOGIN. <br><br><br>
     <hr>
-    <input type="button" value="entrar perfil" class="entrarprf"><br><br>
+
+    <a href="profile.php"><button>Entar no Perfil</button></a><br><br>
+
     <label for="" class="tipor">Buscas</label>
     <select name="" id="" class="tirank">
         <option value="" class="mel">Histórias +</option>

@@ -237,14 +237,11 @@
                             <h1>Você já respondeu essa pergunta! Obrigado pela avalicação!</h1>          
                         </div>';
                     }
-                ?>
-                <?php 
                     if($showQuestion == "flex;"){
                         echo '<div class="unanswered">
                             <div class="question-container">
                                 <div class="question">
-                                    <!-- aqui tem que vir a pergunta -->
-                                    A pergunta é: <?php echo $questionText; ?>
+                                   '.$questionText.'
                                 </div>
                                 <form id="question-form" method="post">
                                     <div class="options">
