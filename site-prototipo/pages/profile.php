@@ -75,7 +75,7 @@
             //NESSA PARTE, TEM QUE MOSTAR TODAS AS HISTÓRIAS LIGADAS A ESSE PERFIL <strong>COM LINK</strong>
             $sql = "SELECT * FROM story WHERE fk_id_profile = '$perfildono'";
             foreach($pdo->query($sql) as $key => $value){
-                echo "<a href='story.php?input_1=$id_story'>". $value['titulo'] ."</a>";
+                echo "<a href='story.php?input_1=".$value['id_story']."'>". $value['nome'] ."</a><br>";
             }
 
         ?>
