@@ -1,6 +1,17 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
+
+    $perfil = -1;
+    $email = $_SESSION['email'];
+
+    $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
+    foreach($pdo->query($sql) as $key => $value){
+        $perfil = $value['fk_id_profile'];
+    }
+
+    if($perfil == -1 || !isset($perfil)) header("Location: error.php");
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,7 +26,7 @@
     <br><br><br>TODAS AS PÁGINAS DEPOIS DO LOGIN TEM QUE VER SE O USUÁRIO ENTRANDO ESTÁ LOGADO. SE A PÁGINA N TEM DADOS DA PESSOA, TEM QUE MANDAR ELA DEVOLTA PARA O LOGIN. <br><br><br>
     <hr>
 
-    <a href="profile.php"><button>Entar no Perfil</button></a><br><br>
+    <a href="profile.php?profile=<?php echo $perfil?>"><button>Entar no Perfil</button></a><br><br>
 
     <label for="" class="tipor">Buscas</label>
     <select name="" id="" class="tirank">

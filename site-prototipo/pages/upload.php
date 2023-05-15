@@ -27,7 +27,6 @@
         $prepare->execute();
 
         $story2 = "select max(id_story) from story where fk_id_profile = $perfil";
-        echo $story2;
         foreach ($pdo->query($story2) as $key => $value){
             $id_story = $value['max(id_story)'];
         }
@@ -144,14 +143,14 @@
         function checktitulo($titulo){ 
             if($titulo == "cu"){
                 header("Location:error.php");
-                echo "Titulo";
                 return false;
             } 
             return true;
         }
         function tituloreplacestuff($titulo){
-            preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", '/[!@#$%^&*(),.?":{}|<>\s]/'),explode(" ","a A e E i I o O u U n N"),$titulo);
-            //preg_replace(" ", "-",$titulo);
+            $titulo = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", '/[!@#$%^&*(),.?":{}|<>\s]/'),explode(" ","a A e E i I o O u U n N"),$titulo);
+            $titulo = str_replace(" ", "-", $titulo);
+            $titulo = preg_replace('/[^A-Za-z0-9\-]/', '', $titulo);
             echo $titulo;
             return $titulo;
         }
@@ -241,7 +240,7 @@
         $prepare = $pdo->prepare($sql);
         $prepare->execute();
 
-        header("Location: criacao.php");
+        // header("Location: criacao.php");
     }
 
     /* IN ITSELF */
