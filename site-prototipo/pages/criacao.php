@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>Criação de Histórias</title>
-    <link rel="stylesheet" href="../css/criacao.css?v=1">
+    <link rel="stylesheet" href="../css/criacao.css?v=1.01">
 </head>
 <body>
 <form id="form-criacao" method="post" action="upload.php" enctype="multipart/form-data">
@@ -108,19 +108,6 @@
                     <input type="url" name="link-reference" id="">
                 </div>
             </div>
-            <div class="page-all ref-page">
-                <div class="page-title">
-                    <h1>Pergunta</h1>
-                </div>
-                <div class="page-content"> <!-- Pergunta -->
-                    <input type="text" name="question" placeholder="Pergunta aos leitores" id="" required><br><br>
-                    <label for="a">A:</label><input type="text" name="a" placeholder="alternativa" required><br><br>
-                    <label for="b">B:</label><input type="text" name="b" placeholder="alternativa" required><br><br>
-                    <label for="c">C:</label><input type="text" name="c" placeholder="alternativa" required><br><br>
-                    <label for="d">D:</label><input type="text" name="d" placeholder="alternativa" required><br><br>
-                    <input type="text" name="certa" placeholder="informe a alternativa correta" required>
-                </div>
-            </div>
         </div>
         <div class="col2">
             <div class="warnings section">
@@ -151,9 +138,57 @@
                 <input id="upload" type="submit" value="Mandar para Revisão">
             </div>
         </div>
+        <div class="question-container">
+            <div class="page-title">
+                <h1>Pergunta aos Leitores</h1>
+            </div>
+            <div class="question-content">
+                <input type="text" name="question" placeholder="Pergunta aos leitores" id="" required><br><br>
+                <div class="page-title-alt page-title">
+                    <h3 style="float:left">Alternativas</h3>
+                    <h3 style="float:right">Correta</h3>
+                </div>
+                <div class="input-label">
+                    <div class="label">
+                        A
+                    </div>
+                    <input type="text" name="a" placeholder="alternativa" required>
+                    <div class="radio">
+                        <input type="radio" id="certa" name="certa" value="a">
+                    </div>
+                </div>
+                <div class="input-label">
+                    <div class="label">
+                        B
+                    </div>
+                    <input type="text" name="b" placeholder="alternativa" required>
+                    <div class="radio">
+                        <input type="radio" id="certa" name="certa" value="b">
+                    </div>
+                </div>
+                <div class="input-label">
+                    <div class="label">
+                        C
+                    </div>
+                    <input type="text" name="c" placeholder="alternativa" required>
+                    <div class="radio">
+                        <input type="radio" id="certa" name="certa" value="c">
+                    </div>
+                </div>
+                <div class="input-label">
+                    <div class="label">
+                        D
+                    </div>
+                    <input type="text" name="d" placeholder="alternativa" required>
+                    <div class="radio">
+                        <input type="radio" id="certa" name="certa" value="d">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </form>
 <div id="preview-div" onclick="preview()" class="preview-div"></div>
-<script src="../js/criacao.js"></script>
+<script src="../js/criacao.js?v=1.01"></script>
 </body>
 </html>
