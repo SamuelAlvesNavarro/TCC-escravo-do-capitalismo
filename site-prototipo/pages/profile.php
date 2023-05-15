@@ -1,6 +1,17 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
+
+    $perfildono = $_GET['profile'];
+    $sql = "SELECT * FROM user_common WHERE fk_id_profile = '$perfildono'";
+    foreach($pdo->query($sql) as $key => $value){
+        $nome = $value['nome'];
+        $email = $value['email'];
+        $senha = $value['senha'];
+        $apelido = $value['apelido'];
+        $pontos_leitor = $value['pontos_leitor'];
+        $moedas = $value['moedas'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,7 +27,14 @@
     <hr>
     <div class="privdata" id="privdata">
         <br>
-        ISSO TEM QUE ESTAR INVISÍVEL SE A PESSOA ENTRANDO N FOR O DONO DO PERFIL
+
+        <?php
+            echo "<form>";
+
+            
+
+            echo "</form>";
+        ?>
 
         <div class="data">
             Nessa parte deem echo em todos os dados
