@@ -1,6 +1,7 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
+    include "includes/returnUserId.php";
 
     $perfil = -1;
     $email = $_SESSION['email'];
@@ -11,6 +12,8 @@
     }
 
     if($perfil == -1 || !isset($perfil)) header("Location: error.php");
+
+    echo returnProfileId();
     
 ?>
 <!DOCTYPE html>
