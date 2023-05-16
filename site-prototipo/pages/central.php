@@ -40,7 +40,26 @@
     <br><br>
     <form method="get" action="pesquisa.php">
         <input type="text" name="busca" id="busca">
-        <input type="submit" value="Buscar por nome" class="bpnom">
+        <input type="submit" value="Buscar por nome" class="bpnom"><br><br>
     </form>
+
+    <?php
+        //php da chamada da história e o link para ela
+        echo "Histórias mais bem avaliadas<br>";
+        $showStory = "SELECT * FROM story ORDER BY rating DESC LIMIT 5";
+        foreach($pdo->query($showStory) as $key => $value){
+            $id_story = $value['id_story'];
+            $nome = $value['nome'];
+            echo "<a href='story.php?input_1=". $id_story ."'>$nome</a><br>";
+        }
+        echo "<br>";
+        echo "Histórias mais velhas<br>";
+        $showStory = "SELECT * FROM story ORDER BY id_story DESC LIMIT 5";
+        foreach($pdo->query($showStory) as $key => $value){
+            $id_story = $value['id_story'];
+            $nome = $value['nome'];
+            echo "<a href='story.php?input_1=". $id_story ."'>$nome</a><br>";
+        }
+    ?>
 </body>
 </html>
