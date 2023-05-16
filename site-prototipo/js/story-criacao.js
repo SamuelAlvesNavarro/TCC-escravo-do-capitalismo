@@ -26,28 +26,17 @@ function showPreview(){
     trial = 0;
     upF = 3;
 
-    /*
-    var output = document.getElementById("output");
-    var inputimg = document.getElementsByClassName("input-file");
-    let imagesArray = []
     
-    for(f = 0; f < 10; f++){
-        imagesArray.push(inputimg[f].value)
-    }
-
-    displayImages()
-
-    function displayImages(){
-        for(g = 0; g < 10; g++){
-            output.innerHTML += `<div class="image">
-                <img src="${URL.createObjectURL(imagesArray[g])}">
-              </div>`
+    var output = document.getElementsByClassName("output");
+    var inputimg = document.getElementsByClassName("input-file");
+    
+    for(i = 0; i < 10; i++){
+        const [file] = inputimg[i].files
+        if (file) {
+            output[i].src = URL.createObjectURL(file)
         }
     }
-
-    FIX !!!!!
-    */
-
+    
     var story_text = document.getElementById("story-text");
 
     if(document.getElementById("conteudo-historia").value != ""){

@@ -255,7 +255,15 @@
                         </div>
                     </div>
                     <div id="images-text" class="images" spellcheck="false">
-                        <div id="output"></div>
+                        <img src="" alt="" class="output">
+                        <img src="" alt="" class="output">
+                        <img src="" alt="" class="output">
+                        <img src="" alt="" class="output">
+                        <img src="" alt="" class="output">
+                        <img src="" alt="" class="output"><img src="" alt="" class="output">
+                        <img src="" alt="" class="output">
+                        <img src="" alt="" class="output">
+                        <img src="" alt="" class="output">
                     </div>
                 </div>
             </div>
