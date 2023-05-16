@@ -15,7 +15,7 @@
     $prepare = $pdo->prepare($sql);
     $prepare->execute();
 
-    header("Location:central.php");
+    header("Location:acesso.html");
 
 
 ?>
