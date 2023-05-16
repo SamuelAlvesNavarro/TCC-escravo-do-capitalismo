@@ -11,7 +11,7 @@
     $senha = $_POST['senha'];
     $apelido = $_POST['apelido'];
 
-    $sql = "UPDATE user_common SET nome = '$nome', email = '$email', senha = '$senha', apelido = '$apelido' WHERE fk_id_profile = '$perfil'";
+    $sql = "UPDATE user_common SET nome = '$nome', email = '$emailTroca', senha = '$senha', apelido = '$apelido' WHERE fk_id_profile = '$perfil'";
     $prepare = $pdo->prepare($sql);
     $prepare->execute();
 
