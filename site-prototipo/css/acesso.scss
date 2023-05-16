@@ -67,16 +67,16 @@
 .child-background{
     position: absolute;
 }
-.child-background:nth-child(1){@include animationDown(50px, 50px, 100px, rgb(182, 199, 199), 20px, 20s);}
-.child-background:nth-child(2){@include animationUp(30px, 30px, 200px, rgb(43, 44, 44), 0, 10s);}
-.child-background:nth-child(3){@include animationDown(100px, 100px, 300px, rgb(80, 85, 85), 20px, 30s);}
-.child-background:nth-child(4){@include animationUp(20px, 20px, 400px, rgb(153, 61, 61), 5px, 50s);}
-.child-background:nth-child(5){@include animationDown(200px, 200px, 500px, rgb(177, 28, 28), 30%, 15s);}
-.child-background:nth-child(6){@include animationUp(100px, 100px, 700px, rgb(51, 19, 15), 20px, 10s);}
-.child-background:nth-child(7){@include animationDown(70px, 70px, 800px, rgb(170, 27, 27), 10px, 60s);}
-.child-background:nth-child(8){@include animationUp(90px, 90px, 900px, rgb(241, 233, 232), 50px, 9s);}
-.child-background:nth-child(9){@include animationDown(100px, 100px, 1000px, rgb(78, 73, 73), 10px, 38s);}
-.child-background:nth-child(10){@include animationUp(40px, 40px, 1100px, rgb(56, 48, 47), 0, 54s);}
+.child-background:nth-child(1){@include animationDown(50px, 50px, 10vw, rgb(182, 199, 199), 20px, 20s);}
+.child-background:nth-child(2){@include animationUp(30px, 30px, 20vw, rgb(43, 44, 44), 0, 10s);}
+.child-background:nth-child(3){@include animationDown(100px, 100px, 30vw, rgb(80, 85, 85), 20px, 30s);}
+.child-background:nth-child(4){@include animationUp(20px, 20px, 40vw, rgb(153, 61, 61), 5px, 50s);}
+.child-background:nth-child(5){@include animationDown(200px, 200px, 50vw, rgb(177, 28, 28), 30%, 15s);}
+.child-background:nth-child(6){@include animationUp(100px, 100px, 60vw, rgb(51, 19, 15), 20px, 10s);}
+.child-background:nth-child(7){@include animationDown(70px, 70px, 70vw, rgb(170, 27, 27), 10px, 60s);}
+.child-background:nth-child(8){@include animationUp(90px, 90px, 80vw, rgb(241, 233, 232), 50px, 9s);}
+.child-background:nth-child(9){@include animationDown(100px, 100px, 90vw, rgb(78, 73, 73), 10px, 38s);}
+.child-background:nth-child(10){@include animationUp(40px, 40px, 5vw, rgb(56, 48, 47), 0, 54s);}
 /* HOME PAGE BUTTON */
 .homebt{
     position: absolute;
@@ -108,7 +108,7 @@
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
-    min-width: 300px;
+    min-width: 400px;
     top: 50%;
 }
 .logo-container{
@@ -141,7 +141,7 @@
 }
 .login-form input{
     font-size: 1.2em;
-    width: 18vw;
+    width: 20vw;
     margin-top: 1vw;
     margin-bottom: 1vw;
     color: aliceblue;
@@ -291,6 +291,11 @@
     opacity: 0;
 }
 /* MEDIA QUERY */
+@media (max-width: 1100px) {
+    .login-form input{
+        width: 100%;
+    }
+}
 @media (max-width: 900px) {
     .container-cadastro{
         left: -500px;
