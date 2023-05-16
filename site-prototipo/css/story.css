@@ -76,7 +76,7 @@ body {
     overflow: hidden;
 }
 .slide{
-    width: 100%;
+    width: 100% !important;
     grid-column: 2;
     grid-row: 1;
     transition: .1s linear;
