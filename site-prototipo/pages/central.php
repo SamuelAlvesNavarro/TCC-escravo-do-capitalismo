@@ -5,16 +5,8 @@
 
     $perfil = -1;
     $email = $_SESSION['email'];
-
-    $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
-    foreach($pdo->query($sql) as $key => $value){
-        $perfil = $value['fk_id_profile'];
-    }
-
-    if($perfil == -1 || !isset($perfil)) header("Location: error.php");
-
-    echo returnProfileId();
-    
+    $perfil = returnProfileId($email);
+    if($perfil == -1 || !isset($perfil)) header("Location: error.php");    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
