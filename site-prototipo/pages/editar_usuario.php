@@ -7,7 +7,7 @@
         $perfil = $value['fk_id_profile'];
     }
     $nome = $_POST['nome'];
-    $email = $_POST['email'];
+    $emailTroca = $_POST['email'];
     $senha = $_POST['senha'];
     $apelido = $_POST['apelido'];
 
