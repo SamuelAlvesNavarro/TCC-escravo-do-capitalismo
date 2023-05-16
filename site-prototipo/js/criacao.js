@@ -13,18 +13,6 @@ function inputimgchangeval(num){
         inputIchange.value = null;
     }
 }
-var previewl = document.getElementById("preview-div");
-var i = false;
-function preview(){
-    if(i){
-        previewl.style.display = "block";
-        i = false;
-    }else{
-        previewl.style.display = "none";
-        i = true;
-    }
-}
-preview();
 
 var inputimg1 = document.getElementById("imagem1");
 var inputimg2 = document.getElementById("imagem2"); 
@@ -58,17 +46,6 @@ inputimg7.addEventListener("change", () => inputimgchangeval(7));
 inputimg8.addEventListener("change", () => inputimgchangeval(8));
 inputimg9.addEventListener("change", () => inputimgchangeval(9));
 inputimg10.addEventListener("change", () => inputimgchangeval(10));
-
-inputimgchangeval(-1)
-inputimgchangeval(-2)
-inputimgchangeval(-3)
-inputimgchangeval(-4)
-inputimgchangeval(-5)
-inputimgchangeval(-6)
-inputimgchangeval(-7)
-inputimgchangeval(-8)
-inputimgchangeval(-9)
-inputimgchangeval(-10)
 
 
 

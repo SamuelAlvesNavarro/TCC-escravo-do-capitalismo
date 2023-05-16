@@ -14,10 +14,10 @@
     <meta http-equiv="expires" content="0" />
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
-
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>Criação de Histórias</title>
     <link rel="stylesheet" href="../css/criacao.css?v=1.01">
+    <link rel="stylesheet" href="../css/story-criacao.css?v=1.01">
 </head>
 <body>
 <form id="form-criacao" method="post" action="upload.php" enctype="multipart/form-data" autocomplete="off">
@@ -138,7 +138,7 @@
                     </ol>
                 </ul>
             </div>
-            <div class="preview section">
+            <div class="section">
                 <input id="preview-bt" onclick="preview()" type="button" value="Preview">
             </div>
             <div class="uploads section">
@@ -195,8 +195,8 @@
         </div>
     </div>
 </form>
-<div id="preview-div" onclick="preview()" class="preview-div">
-    <div class="all transi" id="all">
+<div id="preview-div" class="preview">
+    <div class="preview-all transi" id="all">
         <div id="sideBar" class="sideBar">
             <div class="container">
                 <div id="goBack" onclick="putUp(-1)" class="goBack pointer">
@@ -213,10 +213,8 @@
                     <div class="writing">
                         <div id="title-container" class="story-title-container">
                             <div class="story-title transi">
-                                <h1 class="transi">
-                                    <?php
-                                        echo $titulo;
-                                    ?>
+                                <h1 id="title-h1" class="transi">
+                                    Título
                                 </h1>
                             </div>
                             <div onclick = "checkStuff(0)" class="bt-open-close">
@@ -235,168 +233,86 @@
                         </div>
                         <div class="lines">
                             <div class="text"> <!-- contenteditable -->
+                                <pre id="story-text" style="font-family: 'Indie Flowe';">
+                                    
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page slide">
+                <div class="writing images-page">
+                    <div id="title-container" class="story-title-container">
+                        <div class="story-title transi">
+                            <h1 class="transi">Imagens</h1>
+                        </div>
+                        <div onclick="checkStuff(1)" class="bt-open-close">
+                            <div class="bt">
                                 
+                                <i style="font-size: 30px;" class="exp-min fa-solid fa-expand"></i>
                             </div>
                         </div>
+                    </div>
+                    <div id="images-text" class="images" spellcheck="false">
+                        <div id="output"></div>
                     </div>
                 </div>
             </div>
             <div class="page slide">
-                <div>
-                    <div class="writing images-page">
-                        <div id="title-container" class="story-title-container">
-                            <div class="story-title transi">
-                                <h1 class="transi">Imagens</h1>
-                            </div>
-                            <div onclick = "checkStuff(1)" class="bt-open-close">
-                                <div class="bt">
-                                    <i style="font-size: 30px;" class="exp-min fa-solid fa-expand"></i>
-                                </div>
-                            </div>
+                <div class="writing reference-writing">
+                    <div id="title-container" class="story-title-container">
+                        <div class="story-title transi">
+                            <h1 class="transi">Referências</h1>
                         </div>
-                        <div class="images" spellcheck="false">';
-        
+                        <div onclick = "checkStuff(2)" class="bt-open-close">
+                            <div class="bt">
+                                <i style="font-size: 30px;" class="exp-min fa-solid fa-expand"></i>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="lines">
+                        <div class="text" spellcheck="false">
     
-            <div class="page slide">
-                <div>
-                    <div class="writing reference-writing">
-                        <div id="title-container" class="story-title-container">
-                            <div class="story-title transi">
-                                <h1 class="transi">Referências</h1>
-                            </div>
-                            <div onclick = "checkStuff(2)" class="bt-open-close">
-                                <div class="bt">
-                                    <i style="font-size: 30px;" class="exp-min fa-solid fa-expand"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="lines">
-                            <div class="text" spellcheck="false"> ';
-        
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-      
         </div>
         <div class="main">
             <div class="interaction-container">
-                <?php 
-                    if($showAnswered == "block;"){
-                        echo 
-                        '<div class="answered">
-                            <h1>Você já respondeu essa pergunta! Obrigado pela avalicação!</h1>          
-                        </div>';
-                    }
-                    if($showQuestion == "flex;"){
-                        echo '<div class="unanswered">
-                            <div class="question-container">
-                                <div class="question">
-                                   '.$questionText.'
-                                </div>
-                                <form id="question-form" method="post">
-                                    <div class="options">
-                                        <div class="col1-op op-col">
-                                            <div class="option" onclick="answerForm('.$numbers[0].')">
-                                                '.$answers[0].'
-                                            </div>
-                                            <div class="option" onclick="answerForm('.$numbers[1].')">
-                                                '.$answers[1].'
-                                            </div>
-                                        </div>
-                                        <div class="col2-op op-col">
-                                            <div class="option" onclick="answerForm('.$numbers[2].')">
-                                                '.$answers[2].'
-                                            </div>
-                                            <div class="option" onclick="answerForm('.$numbers[3].')">
-                                                '.$answers[3].'
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="id_story" value="'.$id_story.'"><br>
-                                        <input type="hidden" name="id_question" value="'.$id_question.'"><br>
+                <div class="unanswered">
+                    <div class="question-container">
+                        <div class="question">
+
+                        </div>
+                        <form id="question-form" method="post">
+                            <div class="options">
+                                <div class="col1-op op-col">
+                                    <div class="option">
+                                 
                                     </div>
-                                </form>
-                            </div>  
-                            <div class="rating-container">
-                                <div id="noAnswer" class="noAnswer" style="display:'.$showNo.'">
-                                    <div class="things-container-noAnswer">
-                                        <div class="rating-part">
-                                            <h1>Você ainda não respondeu à pergunta</h1>
-                                        </div>
+                                    <div class="option">
+                                     
                                     </div>
                                 </div>
-                                <div id="right" class="right" style="display:'.$showRight.'">
-                                    <div class="things-container" style="background-color: #1f4921;">
-                                        <div class="rating-part">
-                                            <h1>Você Acertou</h1>
-                                        </div>
-                                        <div class="rating-part rating-container-input">
-                                            <form id="form-container" action="score.php" method="post">
-                                                <input type="number" name="rating" id="rating-input" max="5" min="1" placeholder="Dê uma nota à história!"><br>
-                                                <input type="hidden" name="id_story" value="'.$id_story.'"><br>
-                                                <input type="hidden" name="id_question" value="'.$id_question.'"><br>
-                                                <input type="submit" value="Enviar" id="rating-input-submit">
-                                            </form>
-                                        </div>
+                                <div class="col2-op op-col">
+                                    <div class="option">
+                                       
                                     </div>
-                                </div>
-                                <div id="wrong" class="wrong" style="display:'.$showWrong.'">
-                                    <div class="things-container" style="background-color: rgb(87, 17, 17);">
-                                        <div class="rating-part">
-                                            <h1>Você Errou</h1>
-                                        </div>
+                                    <div class="option">
+                                   
                                     </div>
                                 </div>
                             </div>
-                        </div>';
-                    }
-                ?>
+                        </form>
+                    </div>  
+                </div>
             </div>
         </div>
     </div>
-</body>
-<script>
-    <?php 
-        if($showRight == "none;"){
-            echo '
-            function answerForm(n){
-
-                var question_form = document.getElementById("question-form");
-                newInput1 = document.createElement("input");
-                newInput1.type = "hidden";
-                newInput1.name = "number";
-                newInput1.value = n;
-                question_form.appendChild(newInput1);
-                question_form.submit();
-
-                if(n == 0){
-                    question_form.action = "erro.php";
-                    question_form.submit();
-                }else{
-                    question_form.action = "acerto.php";
-                    question_form.submit();
-                }
-            } ';
-        }
-    ?>
-        var stars = document.getElementById("full-stars")
-
-        var qP = <?php echo $rating ?>;
-
-        stars.style.width = calcStar(qP) + "%";     
-        
-        function calcStar(points){
-            return (100*points)/5;
-        }
-    
-</script>
-<script src="../js/story.js?v=1.01"></script>
-</html>
 </div>
 <script src="../js/criacao.js?v=1.01"></script>
+<script src="../js/story-criacao.js?v=1.01"></script>
 </body>
 </html>
