@@ -11,7 +11,6 @@
     $senha = $_POST['senha'];
     $apelido = $_POST['apelido'];
 
-<<<<<<< HEAD
 
     $checkEmail = "SELECT * FROM user_common WHERE email = '$emailTroca'";
     foreach($pdo->query($checkEmail) as $key => $value){
@@ -25,8 +24,6 @@
         }
     }
 
-=======
->>>>>>> 2cdc95c002881a8d867c24e9f9ebd7d296e737ba
     $sql = "UPDATE user_common SET nome = '$nome', email = '$emailTroca', senha = '$senha', apelido = '$apelido' WHERE fk_id_profile = '$perfil'";
     $prepare = $pdo->prepare($sql);
     $prepare->execute();
