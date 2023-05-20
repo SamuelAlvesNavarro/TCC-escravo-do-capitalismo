@@ -85,12 +85,26 @@
 
     /* ANSWERS */
 
+    $r = (rand(0,10));
+    $sure = (rand(0,10));
     $i = 0;
     $answers = array();
     $answer = "SELECT * FROM answer WHERE fk_id_question = '$id_question'";
     foreach($pdo->query($answer) as $key => $value){
         $answers[$i] = $value['text'];
+
         $numbers[$i] = $value['status'];
+
+        if($numbers[$i] != 1){
+
+            $numbers[$i] = (rand(0,10));
+
+            if($numbers[$i] == $r) $numbers[$i]++;
+
+        }else{
+            $numbers[$i] = $r;
+        }
+        
         $i++;
     }
 ?>
@@ -246,18 +260,18 @@
                                 <form id="question-form" method="post">
                                     <div class="options">
                                         <div class="col1-op op-col">
-                                            <div class="option" onclick="answerForm('.$numbers[0].')">
+                                            <div class="option" onclick="answerForm(0)">
                                                 '.$answers[0].'
                                             </div>
-                                            <div class="option" onclick="answerForm('.$numbers[1].')">
+                                            <div class="option" onclick="answerForm(1)">
                                                 '.$answers[1].'
                                             </div>
                                         </div>
                                         <div class="col2-op op-col">
-                                            <div class="option" onclick="answerForm('.$numbers[2].')">
+                                            <div class="option" onclick="answerForm(2)">
                                                 '.$answers[2].'
                                             </div>
-                                            <div class="option" onclick="answerForm('.$numbers[3].')">
+                                            <div class="option" onclick="answerForm(3)">
                                                 '.$answers[3].'
                                             </div>
                                         </div>
@@ -310,21 +324,19 @@
             echo '
             function answerForm(n){
 
+                var options = document.getElementsByClassName("option");
                 var question_form = document.getElementById("question-form");
                 newInput1 = document.createElement("input");
                 newInput1.type = "hidden";
                 newInput1.name = "number";
-                newInput1.value = n;
+                newInput1.value = options[n].innerText;
                 question_form.appendChild(newInput1);
+
+
+                question_form.action = "resposta.php";
                 question_form.submit();
 
-                if(n == 0){
-                    question_form.action = "erro.php";
-                    question_form.submit();
-                }else{
-                    question_form.action = "acerto.php";
-                    question_form.submit();
-                }
+                
             } ';
         }
     ?>
