@@ -7,20 +7,6 @@
 }
 
 /* MIXIN */
-@-webkit-keyframes elements {
-  from {
-    top: 0;
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.7;
-  }
-  to {
-    top: 100vh;
-    opacity: 0;
-    transform: rotate(45deg);
-  }
-}
 @keyframes elements {
   from {
     top: 0;
@@ -31,20 +17,6 @@
   }
   to {
     top: 100vh;
-    opacity: 0;
-    transform: rotate(45deg);
-  }
-}
-@-webkit-keyframes elementsUp {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.7;
-  }
-  to {
-    bottom: 100vh;
     opacity: 0;
     transform: rotate(45deg);
   }
@@ -85,14 +57,10 @@
   left: 10vw;
   border: rgb(182, 199, 199) solid 5px;
   border-radius: 20px;
-  -webkit-animation-duration: 20s;
-          animation-duration: 20s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-name: elements;
-          animation-name: elements;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elements;
 }
 
 .child-background:nth-child(2) {
@@ -101,14 +69,10 @@
   left: 20vw;
   border: rgb(43, 44, 44) solid 5px;
   border-radius: 0;
-  -webkit-animation-duration: 10s;
-          animation-duration: 10s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-name: elementsUp;
-          animation-name: elementsUp;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elementsUp;
 }
 
 .child-background:nth-child(3) {
@@ -117,14 +81,10 @@
   left: 30vw;
   border: rgb(80, 85, 85) solid 5px;
   border-radius: 20px;
-  -webkit-animation-duration: 30s;
-          animation-duration: 30s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-name: elements;
-          animation-name: elements;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elements;
 }
 
 .child-background:nth-child(4) {
@@ -133,14 +93,10 @@
   left: 40vw;
   border: rgb(153, 61, 61) solid 5px;
   border-radius: 5px;
-  -webkit-animation-duration: 50s;
-          animation-duration: 50s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-name: elementsUp;
-          animation-name: elementsUp;
+  animation-duration: 50s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elementsUp;
 }
 
 .child-background:nth-child(5) {
@@ -149,14 +105,10 @@
   left: 50vw;
   border: rgb(177, 28, 28) solid 5px;
   border-radius: 30%;
-  -webkit-animation-duration: 15s;
-          animation-duration: 15s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-name: elements;
-          animation-name: elements;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elements;
 }
 
 .child-background:nth-child(6) {
@@ -165,14 +117,10 @@
   left: 60vw;
   border: rgb(51, 19, 15) solid 5px;
   border-radius: 20px;
-  -webkit-animation-duration: 10s;
-          animation-duration: 10s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-name: elementsUp;
-          animation-name: elementsUp;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elementsUp;
 }
 
 .child-background:nth-child(7) {
@@ -181,14 +129,10 @@
   left: 70vw;
   border: rgb(170, 27, 27) solid 5px;
   border-radius: 10px;
-  -webkit-animation-duration: 60s;
-          animation-duration: 60s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-name: elements;
-          animation-name: elements;
+  animation-duration: 60s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elements;
 }
 
 .child-background:nth-child(8) {
@@ -197,14 +141,10 @@
   left: 80vw;
   border: rgb(241, 233, 232) solid 5px;
   border-radius: 50px;
-  -webkit-animation-duration: 9s;
-          animation-duration: 9s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-name: elementsUp;
-          animation-name: elementsUp;
+  animation-duration: 9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elementsUp;
 }
 
 .child-background:nth-child(9) {
@@ -213,14 +153,10 @@
   left: 90vw;
   border: rgb(78, 73, 73) solid 5px;
   border-radius: 10px;
-  -webkit-animation-duration: 38s;
-          animation-duration: 38s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-name: elements;
-          animation-name: elements;
+  animation-duration: 38s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elements;
 }
 
 .child-background:nth-child(10) {
@@ -229,14 +165,10 @@
   left: 5vw;
   border: rgb(56, 48, 47) solid 5px;
   border-radius: 0;
-  -webkit-animation-duration: 54s;
-          animation-duration: 54s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-name: elementsUp;
-          animation-name: elementsUp;
+  animation-duration: 54s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: elementsUp;
 }
 
 /* HOME PAGE BUTTON */

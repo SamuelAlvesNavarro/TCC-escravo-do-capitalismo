@@ -1,6 +1,7 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
+    require "includes/returnUser.php";
     $email = $_SESSION['email'];
     $perfil = returnProfileId($email);
     $nome = $_POST['nome'];

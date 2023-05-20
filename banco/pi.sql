@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Maio-2023 às 02:38
+-- Tempo de geração: 20-Maio-2023 às 12:50
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -90,6 +90,18 @@ CREATE TABLE `data` (
   `id_data` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
   `texto` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `error`
+--
+
+CREATE TABLE `error` (
+  `id_error` int(11) NOT NULL,
+  `cod_error` varchar(5) NOT NULL,
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -218,7 +230,8 @@ CREATE TABLE `profile` (
 INSERT INTO `profile` (`id_profile`, `foto`, `fundoFoto`, `bordaFoto`, `fundoPerfil`) VALUES
 (1, 0, 0, 0, 0),
 (2, 0, 0, 0, 0),
-(3, 0, 0, 0, 0);
+(3, 0, 0, 0, 0),
+(4, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -257,7 +270,8 @@ CREATE TABLE `question_user` (
 INSERT INTO `question_user` (`fk_id_question`, `fk_id_profile`) VALUES
 (2, 1),
 (2, 2),
-(2, 3);
+(2, 3),
+(2, 4);
 
 -- --------------------------------------------------------
 
@@ -340,7 +354,8 @@ CREATE TABLE `score` (
 INSERT INTO `score` (`id_score`, `fk_id_profile`, `fk_id_story`, `nota`) VALUES
 (9, 1, 2, 5),
 (10, 2, 2, 1),
-(11, 3, 2, 5);
+(11, 3, 2, 5),
+(12, 4, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -363,7 +378,7 @@ CREATE TABLE `story` (
 
 INSERT INTO `story` (`id_story`, `font`, `nome`, `rating`, `status`, `fk_id_profile`) VALUES
 (1, 0, 'Peter Pan', 0, 1, 1),
-(2, 0, 'Historia Teste', 3.66667, 1, 1);
+(2, 0, 'Historia Teste', 4, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -388,9 +403,10 @@ CREATE TABLE `user_common` (
 --
 
 INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `ranking`, `moedas`) VALUES
-(1, 1, 'Davi Carvalho de Souza', 'davi.ana919@gmail.com', '1234', 'Davi C', 700, 0, -590),
+(1, 1, 'Davi Carvalho de Souza', 'davi.ana999@gmail.com', '1234', 'Davi C', 700, 0, -590),
 (2, 2, 'Davi Carvalho de Souza', 'davi.ana111@gmail.com', '1234', 'Davi', 100, 0, 20),
-(3, 3, 'Davi Carvalho de Souza', 'davi.ana997@gmail.com', '1234', 'Dada', 100, 0, 20);
+(3, 3, 'Davi Carvalho de Souza', 'davi.ana997@gmail.com', '1234', 'Dada', 100, 0, 20),
+(4, 4, 'Davi', 'davi.ana949@gmail.com', '123', 'Davi', 100, 0, 20);
 
 --
 -- Índices para tabelas despejadas
@@ -431,6 +447,12 @@ ALTER TABLE `compra`
 ALTER TABLE `data`
   ADD PRIMARY KEY (`id_data`),
   ADD KEY `fk_id_page` (`fk_id_page`);
+
+--
+-- Índices para tabela `error`
+--
+ALTER TABLE `error`
+  ADD PRIMARY KEY (`id_error`);
 
 --
 -- Índices para tabela `error_user`
@@ -571,6 +593,12 @@ ALTER TABLE `data`
   MODIFY `id_data` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `error`
+--
+ALTER TABLE `error`
+  MODIFY `id_error` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `error_user`
 --
 ALTER TABLE `error_user`
@@ -604,7 +632,7 @@ ALTER TABLE `page`
 -- AUTO_INCREMENT de tabela `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `question`
@@ -640,7 +668,7 @@ ALTER TABLE `report_profile`
 -- AUTO_INCREMENT de tabela `score`
 --
 ALTER TABLE `score`
-  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `story`
@@ -652,7 +680,7 @@ ALTER TABLE `story`
 -- AUTO_INCREMENT de tabela `user_common`
 --
 ALTER TABLE `user_common`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para despejos de tabelas
