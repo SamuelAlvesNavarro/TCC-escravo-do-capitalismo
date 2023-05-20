@@ -305,7 +305,6 @@
     </div>
 </body>
 <script>
-    alert(<?php echo $perfil; ?>)
     <?php 
         if($showRight == "none;"){
             echo '
