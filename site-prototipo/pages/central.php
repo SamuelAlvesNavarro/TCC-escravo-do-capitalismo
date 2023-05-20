@@ -1,7 +1,7 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
-    include "includes/returnUserId.php";
+    include "includes/returnUser.php";
 
     $perfil = -1;
     $email = $_SESSION['email'];
