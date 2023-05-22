@@ -26,7 +26,5 @@
     $prepare = $pdo->prepare($sql);
     $prepare->execute();
 
-    header("Location:acesso.html");
-
-
+    require "includes/closing_session.php";
 ?>

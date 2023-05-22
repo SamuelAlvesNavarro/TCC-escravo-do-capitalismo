@@ -49,7 +49,7 @@
                 $prepare->execute();
 
                 header("Location: story.php?input_1=".$id_story);
-
+                $_SESSION['tipo'] = 1;
             }else{
                 header("Location: error.php"); //erro -> já respondeu a questão e tentou chamar a página de acerto para farmar pontos
             }
@@ -73,12 +73,13 @@
             $prepare = $pdo->prepare($add);
             $prepare->execute();
 
-            echo $resp."<br>";
-            echo $rig;
+            $_SESSION['tipo'] = 0;
+            session_destroy();
             header("Location: story.php?input_1=".$id_story);
         }
 
     }else{
+        session_destroy();
         header("Location: error.php");
     }
 ?>

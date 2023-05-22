@@ -21,6 +21,10 @@
         header("Location: error.php");
     }
 
+
+    $n_type = $_SESSION['tipo'];
+    session_destroy();
+
     $showAnswered = 0;
     $showQuestion = 0;
     $showRight = "none;";
