@@ -23,8 +23,8 @@
 
 
     
-    if(isset($_SESSION['tipo'])){
-        $n_type = $_SESSION['tipo'];
+    if(isset($_SESSION['story'])){
+        $n_type = $_SESSION['story'];
     }
 
     $showAnswered = 0;
@@ -129,14 +129,14 @@
     <div class="notifications">
         <div id="alertWr" class="alert hide">
             <span class="fa-solid fa-circle-xmark n_icon"></span>
-            <span class="msg">-25<i class="fa-solid fa-coins"></i></span>
+            <div class="msg">-25<i class="fa-solid fa-coins"></i></div>
             <div class="close-btn" onclick="callOutNotification(0)">
                 <span class="fas fa-times"></span>
             </div>
         </div>
         <div id="alertRi" class="alert hide">
             <span class="fa-solid fa-check n_icon"></span>
-            <span class="msg">+100<i class="fa-solid fa-book"></i>+25<i class="fa-solid fa-coins"></i></span>
+            <div class="msg">+100<i class="fa-solid fa-book"></i><br>+25<i class="fa-solid fa-coins"></i></div>
             <div class="close-btn" onclick="callOutNotification(1)">
             <span class="fas fa-times"></span>
             </div>
@@ -362,7 +362,7 @@
                 
             } ';
         }
-        if(isset($_SESSION['tipo']) && $_SESSION['tipo'] != -1){
+        if(isset($_SESSION['story']) && $_SESSION['story'] != -1){
             echo '
             var alerts = document.getElementsByClassName("alert");
 
@@ -378,7 +378,7 @@
 
             callNotification('.$n_type.')
             ';
-            $_SESSION['tipo'] = -1;
+            $_SESSION['story'] = -1;
         }
     ?>
 

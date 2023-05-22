@@ -48,7 +48,7 @@
                 $prepare = $pdo->prepare($question_user);
                 $prepare->execute();
 
-                $_SESSION['tipo'] = 1;
+                $_SESSION['story'] = 1;
                 header("Location: story.php?input_1=".$id_story);
             }else{
                 header("Location: error.php"); //erro -> já respondeu a questão e tentou chamar a página de acerto para farmar pontos
@@ -73,7 +73,7 @@
             $prepare = $pdo->prepare($add);
             $prepare->execute();
 
-            $_SESSION['tipo'] = 0;
+            $_SESSION['story'] = 0;
             header("Location: story.php?input_1=".$id_story);
         }
 
