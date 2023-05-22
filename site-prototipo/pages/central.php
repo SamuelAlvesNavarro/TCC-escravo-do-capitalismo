@@ -56,5 +56,6 @@
             echo "<a href='story.php?input_1=". $id_story ."'>$nome</a><br>";
         }
     ?>
+    <a href="loja.php"><button>Loja</button></a>
 </body>
 </html>
