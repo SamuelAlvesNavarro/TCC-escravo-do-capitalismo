@@ -1,3 +1,6 @@
+<?php
+    require "includes/closing_session.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
