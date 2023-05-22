@@ -1,10 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  user-select: none;
-  box-sizing: border-box;
-}
 .alert{
   padding: 20px 40px;
   min-width: 420px;
@@ -17,6 +11,7 @@
   z-index: 100000;
   pointer-events: none;
   font-family: 'Poppins', sans-serif;
+  color: black;
 }
 #alertWr{
     background: #ff9b9b; 

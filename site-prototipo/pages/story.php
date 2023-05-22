@@ -22,8 +22,10 @@
     }
 
 
-    $n_type = $_SESSION['tipo'];
-    session_destroy();
+    
+    if(isset($_SESSION['tipo'])){
+        $n_type = $_SESSION['tipo'];
+    }
 
     $showAnswered = 0;
     $showQuestion = 0;
@@ -121,8 +123,25 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>História</title>
     <link rel="stylesheet" href="../css/story.css?v=1.01">
+    <link rel="stylesheet" href="../css/notification.css">
 </head>
 <body>
+    <div class="notifications">
+        <div id="alertWr" class="alert hide">
+            <span class="fa-solid fa-circle-xmark n_icon"></span>
+            <span class="msg">-25<i class="fa-solid fa-coins"></i></span>
+            <div class="close-btn" onclick="callOutNotification(0)">
+                <span class="fas fa-times"></span>
+            </div>
+        </div>
+        <div id="alertRi" class="alert hide">
+            <span class="fa-solid fa-check n_icon"></span>
+            <span class="msg">+100<i class="fa-solid fa-book"></i>+25<i class="fa-solid fa-coins"></i></span>
+            <div class="close-btn" onclick="callOutNotification(1)">
+            <span class="fas fa-times"></span>
+            </div>
+        </div>
+    </div>
     <div class="all transi" id="all">
         <div id="sideBar" class="sideBar">
             <div class="container">
@@ -343,7 +362,26 @@
                 
             } ';
         }
+        if(isset($_SESSION['tipo']) && $_SESSION['tipo'] != -1){
+            echo '
+            var alerts = document.getElementsByClassName("alert");
+
+            function callNotification(n){
+                alerts[n].classList.remove("hide");
+                alerts[n].classList.add("showAlert");
+                alerts[n].classList.add("show");
+            } 
+            function callOutNotification(w){
+                alerts[w].classList.remove("show");
+                alerts[w].classList.add("hide");
+            }
+
+            callNotification('.$n_type.')
+            ';
+            $_SESSION['tipo'] = -1;
+        }
     ?>
+
         var stars = document.getElementById("full-stars")
 
         var qP = <?php echo $rating ?>;
