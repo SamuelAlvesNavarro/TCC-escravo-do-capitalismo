@@ -1,7 +1,6 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
-    session_cache_expire(720);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
