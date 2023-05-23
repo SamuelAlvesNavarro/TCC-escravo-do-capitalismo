@@ -28,18 +28,20 @@
     <?php
         echo "<h1>Backgrouds</h1>";
 
+        echo "<form method='post' action='compra.php'>";
             $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 1";
             foreach($pdo->query($gadget) as $key => $value){
                 $item = $value['in_it'];
                 $preco = $value['preco'];
+                $id = $value['id_gadget'];
                 echo "<div style='$item'></div>";
                 echo "$preco";
                 echo "
-                    <form method='post' action='compra.php'>
-                        <input type='submit' value='Comprar'>
-                    </form>
+                    <input type='number' name='gadget' style='overflow: hidden;' hidden value='$id'> 
+                <input type='submit' value='Comprar'>
                 ";
             }
+            echo "</form>";
     ?>
     
     <h1>Foto</h1>
