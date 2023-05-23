@@ -68,12 +68,12 @@
         for($x = 1; $x < 11; $x++){
             $extensao = pathinfo($_FILES['imagem'.$x]['name'], PATHINFO_EXTENSION);
             if($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != ''){
-                header("Location: error.php");
+                header("Location: error.php?erro=7");
                 echo "Extensao";
                 return false;
             }
             if($_FILES["imagem".$x]["size"] > 500000){//500000
-                header("Location: error.php");
+                header("Location: error.php?erro=6");
                 echo "Tamanho";
                 return false;
             }
