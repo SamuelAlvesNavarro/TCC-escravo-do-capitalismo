@@ -57,5 +57,6 @@
         }
     ?>
     <a href="loja.php"><button>Loja</button></a>
+    <a href="includes/closing_session.php"><button>Sair</button></a>
 </body>
 </html>
