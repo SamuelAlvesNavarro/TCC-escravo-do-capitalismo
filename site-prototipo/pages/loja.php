@@ -41,17 +41,22 @@
                 ";
             }
     ?>
+    
+    <h1>Foto</h1>
 
     <?php
-        echo "<h1>Foto</h1>";
-
-            $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 0";
-            foreach($pdo->query($gadget) as $key => $value){
-                $item = $value['in_it'];
-                $preco = $value['preco'];
-                echo "<div style='$item'></div>";
-                echo "$preco";
-            }
+        $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 0";
+        foreach($pdo->query($gadget) as $key => $value){
+            $item = $value['in_it'];
+            $preco = $value['preco'];
+            echo "<div style='$item'></div>";
+            echo "$preco";
+            echo "
+                <form method='post' action='compra.php'>
+                    <input type='submit' value='Comprar'>
+                </form>
+            ";
+        }
     ?>
 </body>
 </html>
