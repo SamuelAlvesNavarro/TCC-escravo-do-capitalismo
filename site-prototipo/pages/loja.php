@@ -1,6 +1,8 @@
 <?php
     require "includes/conexao.php";
     require "includes/returnUser.php";
+    $compra = null;
+    $compra = $_SESSION['loja'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -37,7 +39,8 @@
                 echo "<div style='$item'></div>";
                 echo "$preco";
                 echo "
-                    <input type='number' name='gadget' style='overflow: hidden;' hidden value='$id'> 
+                    <input type='number' name='gadget' style='overflow: hidden;' hidden value='$id'>
+                    <input type='number' name='gadget' style='overflow: hidden;' value='$preco'> 
                 <input type='submit' value='Comprar'>
                 ";
             }
@@ -56,7 +59,8 @@
                 echo "<div style='$item'></div>";
                 echo "$preco";
                 echo "
-                    <input type='number' name='gadget' style='overflow: hidden;' value='$id'> 
+                    <input type='number' name='gadget' style='overflow: hidden;' value='$id'>
+                    <input type='number' name='gadget' style='overflow: hidden;' value='$preco'> 
                 <input type='submit' value='Comprar'>
                 ";
             }
