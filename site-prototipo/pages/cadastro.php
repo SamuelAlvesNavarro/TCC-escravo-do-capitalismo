@@ -42,7 +42,7 @@
                 $prepare->execute();
                 
                 if($prepare->rowCount() <= 0){
-                    echo "deu erro porra";
+                    header("Location: error.php?erro=3");
                 }else{
                     session_start();
                     $_SESSION['email'] = $email;
