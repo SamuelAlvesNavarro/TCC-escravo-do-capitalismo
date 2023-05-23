@@ -23,7 +23,7 @@
 <form id="form-criacao" method="post" action="upload.php" enctype="multipart/form-data" autocomplete="off">
     <div class="all">
         <a href="central.php"><div class="toogle section">
-            <i class="fa-solid fa-arrow-left"></i>
+            <i class="fa-solid fa-chevron-left"></i>
         </div></a>
         <div class="title section">
             <h1>Criação de Histórias</h1>
@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div class="page-content">
-                    <input type="url" name="link-reference" id="">
+                    <input id="reference-in" type="url" name="link-reference" id="">
                 </div>
             </div>
         </div>
@@ -150,7 +150,7 @@
                 <h1>Pergunta aos Leitores</h1>
             </div>
             <div class="question-content">
-                <input type="text" name="question" placeholder="Pergunta aos leitores" id="" required><br><br>
+                <input type="text" name="question" placeholder="Pergunta aos leitores" id="q-p" required><br><br>
                 <div class="page-title-alt page-title">
                     <h3 style="float:left">Alternativas</h3>
                     <h3 style="float:right">Correta</h3>
@@ -159,7 +159,7 @@
                     <div class="label">
                         A
                     </div>
-                    <input type="text" name="a" placeholder="alternativa" required>
+                    <input class="input-alt" type="text" name="a" placeholder="alternativa" required>
                     <div class="radio">
                         <input type="radio" id="certa" name="certa" value="a" required>
                     </div>
@@ -168,7 +168,7 @@
                     <div class="label">
                         B
                     </div>
-                    <input type="text" name="b" placeholder="alternativa" required>
+                    <input class="input-alt" type="text" name="b" placeholder="alternativa" required>
                     <div class="radio">
                         <input type="radio" id="certa" name="certa" value="b" required>
                     </div>
@@ -177,7 +177,7 @@
                     <div class="label">
                         C
                     </div>
-                    <input type="text" name="c" placeholder="alternativa" required>
+                    <input class="input-alt" type="text" name="c" placeholder="alternativa" required>
                     <div class="radio">
                         <input type="radio" id="certa" name="certa" value="c" required>
                     </div>
@@ -186,7 +186,7 @@
                     <div class="label">
                         D
                     </div>
-                    <input type="text" name="d" placeholder="alternativa" required>
+                    <input class="input-alt" type="text" name="d" placeholder="alternativa" required>
                     <div class="radio">
                         <input type="radio" id="certa" name="certa" value="d" required>
                     </div>
@@ -197,13 +197,16 @@
 </form>
 <div id="preview-div" class="preview">
     <div class="preview-all transi" id="all">
+        <div class="leave-bt" onclick="preview()">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
         <div id="sideBar" class="sideBar">
             <div class="container">
                 <div id="goBack" onclick="putUp(-1)" class="goBack pointer">
-                    <i class="fa-solid fa-arrow-left"></i>
+                    <i class="fa-solid fa-chevron-left"></i>
                 </div>
                 <div style = "right: 0;" id="goFoward" onclick="putUp(1)" class="goFoward pointer">
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i class="fa-solid fa-chevron-right"></i>
                 </div>
             </div>
         </div>
@@ -280,7 +283,7 @@
                         </div>
                     </div>
                     <div class="lines">
-                        <div class="text" spellcheck="false">
+                        <div id="reference-text" class="text" spellcheck="false">
     
                         </div>
                     </div>
@@ -291,8 +294,8 @@
             <div class="interaction-container">
                 <div class="unanswered">
                     <div class="question-container">
-                        <div class="question">
-
+                        <div id="question-preview" class="question">
+                            
                         </div>
                         <form id="question-form" method="post">
                             <div class="options">

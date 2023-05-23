@@ -27,9 +27,9 @@
     </style>
 </head>
 <body>
-    <?php
-        echo "<h1>Backgrouds</h1>";
+    <h1>Backgrouds</h1>
 
+    <?php
         echo "<form method='post' action='compra.php'>";
             $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 1";
             foreach($pdo->query($gadget) as $key => $value){
@@ -46,8 +46,11 @@
             }
             echo "</form>";
     ?>
+    
+    <h1>Foto</h1>
 
     <?php
+<<<<<<< HEAD
         echo "<h1>Foto</h1>";
 
         echo "<form method='post' action='compra.php'>";
@@ -65,6 +68,20 @@
                 ";
             }
             echo "</form>";
+=======
+        $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 0";
+        foreach($pdo->query($gadget) as $key => $value){
+            $item = $value['in_it'];
+            $preco = $value['preco'];
+            echo "<div style='$item'></div>";
+            echo "$preco";
+            echo "
+                <form method='post' action='compra.php'>
+                    <input type='submit' value='Comprar'>
+                </form>
+            ";
+        }
+>>>>>>> 84cdb6c91f1c8abbe30e944bd74cacada01ae8ca
     ?>
 </body>
 </html>

@@ -46,6 +46,28 @@ function showPreview(){
         story_text.innerHTML = "<h4>História</h4>";
     } 
 
+    var reference_text = document.getElementById("reference-text");
+
+    if(document.getElementById("reference-in").value != ""){
+        reference_text.innerHTML = document.getElementById("reference-in").value;
+    } 
+    else{
+        reference_text.innerHTML = "<h4>Referência</h4>";
+    }
+
+    var alts = document.getElementsByClassName("input-alt");
+    var options = document.getElementsByClassName("option");
+
+    for(u = 0; u < 4; u++){
+        if(alts[u].value != "") options[u].innerText = alts[u].value;
+        else options[u].innerText = "Alternativa " + (u+1);
+    }
+
+    var question_pr = document.getElementById("question-preview");
+
+    if(document.getElementById("q-p").value != "") question_pr.innerText = document.getElementById("q-p").value;
+    else question_pr.innerText = "Questão?";
+
     putUp(1);
 }
 function setHeight(z){
