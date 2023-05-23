@@ -146,10 +146,10 @@
         <div id="sideBar" class="sideBar">
             <div class="container">
                 <div id="goBack" onclick="putUp(-1)" class="goBack pointer">
-                    <i class="fa-solid fa-arrow-left"></i>
+                    <i class="fa-solid fa-chevron-left"></i>
                 </div>
                 <div style = "right: 0;" id="goFoward" onclick="putUp(1)" class="goFoward pointer">
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i class="fa-solid fa-chevron-right"></i>
                 </div>
             </div>
         </div>

@@ -25,9 +25,9 @@
     </style>
 </head>
 <body>
-    <?php
-        echo "<h1>Backgrouds</h1>";
+    <h1>Backgrouds</h1>
 
+    <?php
         echo "<form method='post' action='compra.php'>";
             $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 1";
             foreach($pdo->query($gadget) as $key => $value){
