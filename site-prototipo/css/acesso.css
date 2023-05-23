@@ -18,7 +18,6 @@
   to {
     top: 100vh;
     opacity: 0;
-    transform: rotate(45deg);
   }
 }
 @keyframes elementsUp {
@@ -32,7 +31,6 @@
   to {
     bottom: 100vh;
     opacity: 0;
-    transform: rotate(45deg);
   }
 }
 /* ALL */
@@ -52,11 +50,8 @@
 }
 
 .child-background:nth-child(1) {
-  width: 50px;
-  height: 50px;
+  font-size: 100px;
   left: 10vw;
-  border: rgb(182, 199, 199) solid 5px;
-  border-radius: 20px;
   animation-duration: 20s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -64,10 +59,8 @@
 }
 
 .child-background:nth-child(2) {
-  width: 30px;
-  height: 30px;
+  font-size: 30px;
   left: 20vw;
-  border: rgb(43, 44, 44) solid 5px;
   border-radius: 0;
   animation-duration: 10s;
   animation-timing-function: linear;
@@ -76,10 +69,8 @@
 }
 
 .child-background:nth-child(3) {
-  width: 100px;
-  height: 100px;
+  font-size: 300px;
   left: 30vw;
-  border: rgb(80, 85, 85) solid 5px;
   border-radius: 20px;
   animation-duration: 30s;
   animation-timing-function: linear;
@@ -88,11 +79,8 @@
 }
 
 .child-background:nth-child(4) {
-  width: 20px;
-  height: 20px;
+  font-size: 100px;
   left: 40vw;
-  border: rgb(153, 61, 61) solid 5px;
-  border-radius: 5px;
   animation-duration: 50s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -100,11 +88,8 @@
 }
 
 .child-background:nth-child(5) {
-  width: 200px;
-  height: 200px;
+  font-size: 200px;
   left: 50vw;
-  border: rgb(177, 28, 28) solid 5px;
-  border-radius: 30%;
   animation-duration: 15s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -112,11 +97,8 @@
 }
 
 .child-background:nth-child(6) {
-  width: 100px;
-  height: 100px;
+  font-size: 100px;
   left: 60vw;
-  border: rgb(51, 19, 15) solid 5px;
-  border-radius: 20px;
   animation-duration: 10s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -124,11 +106,8 @@
 }
 
 .child-background:nth-child(7) {
-  width: 70px;
-  height: 70px;
+  font-size: 70px;
   left: 70vw;
-  border: rgb(170, 27, 27) solid 5px;
-  border-radius: 10px;
   animation-duration: 60s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -136,11 +115,8 @@
 }
 
 .child-background:nth-child(8) {
-  width: 90px;
-  height: 90px;
+  font-size: 90px;
   left: 80vw;
-  border: rgb(241, 233, 232) solid 5px;
-  border-radius: 50px;
   animation-duration: 9s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -148,11 +124,8 @@
 }
 
 .child-background:nth-child(9) {
-  width: 100px;
-  height: 100px;
+  font-size: 100px;
   left: 90vw;
-  border: rgb(78, 73, 73) solid 5px;
-  border-radius: 10px;
   animation-duration: 38s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -160,11 +133,8 @@
 }
 
 .child-background:nth-child(10) {
-  width: 40px;
-  height: 40px;
+  font-size: 40px;
   left: 5vw;
-  border: rgb(56, 48, 47) solid 5px;
-  border-radius: 0;
   animation-duration: 54s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
