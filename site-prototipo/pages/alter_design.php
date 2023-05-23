@@ -21,5 +21,7 @@
         $user = "UPDATE profile SET fundoFoto = '$visual' WHERE = fk_id_perfil = '$perfil'";
     }
 
+    $prepare = $pdo->prepare($user);
+    $prepare->execute();
     
 ?>
