@@ -61,8 +61,9 @@
                 echo "<div style='$item'></div>";
                 echo "$preco";
                 echo "
-                    <input type='number' name='gadget' style='overflow: hidden;' value='$id'>
-                    <input type='number' name='gadget' style='overflow: hidden;' value='$preco'> 
+                    <input type='hidden'
+                     name='gadget' style='overflow: hidden;' value='$id'>
+                    <input type='hidden' name='gadget' style='overflow: hidden;' value='$preco'> 
                 <input type='submit' value='Comprar'>
                 ";
             }
@@ -74,11 +75,7 @@
             $preco = $value['preco'];
             echo "<div style='$item'></div>";
             echo "$preco";
-            echo "
-                <form method='post' action='compra.php'>
-                    <input type='submit' value='Comprar'>
-                </form>
-            ";
+            
         }
     ?>
 </body>
