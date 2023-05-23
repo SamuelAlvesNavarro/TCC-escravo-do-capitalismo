@@ -12,13 +12,13 @@
         $confirmarsenha = $_POST["confirmarsenha"];
 
         if($senha != $confirmarsenha){
-            echo "senha não confirmada";
+            header("Location: error.php?erro=2");
         }else{
 
             $sql = "SELECT * FROM user_common WHERE email = '$email'";
 
             if($pdo->query($sql)->rowCount() > 0){
-                echo "Error: Email existente!";
+                header("Location: error.php?erro=1");
             } else{
                 $sql = "INSERT INTO profile(foto) values('0')";
                 
