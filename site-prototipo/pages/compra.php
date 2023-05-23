@@ -19,7 +19,7 @@
         $prepare->execute();
 
         $compra = $moedas - $preco;
-        $realizaCompra = "UPDATE user_common SET moedas = '$moedas'";
+        $realizaCompra = "UPDATE user_common SET moedas = '$compra' WHERE fk_id_profile = '$perfil'";
         $prepare = $pdo->prepare($realizaCompra);
         $prepare->execute();
 
