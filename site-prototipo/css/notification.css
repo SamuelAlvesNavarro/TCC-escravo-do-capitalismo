@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+.alert{
+  padding: 20px 40px;
+  min-width: 250px;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: 0;
+  z-index: 100000;
+  pointer-events: none;
+  font-family: 'Poppins', sans-serif;
+  color: black;
+}
+#alertWr{
+    background: #ff9b9b; 
+    border-left: 8px solid #ff2002;
+}
+#alertRi{
+    background: #9eff9b; 
+    border-left: 8px solid #02ff02;
+}
+.alert.showAlert{
+  opacity: 1;
+  pointer-events: auto;
+}
+.alert.show{
+  animation: show_slide 1s ease forwards;
+}
+@keyframes show_slide {
+  0%{
+    transform: translateX(100%);
+  }
+  40%{
+    transform: translateX(-10%);
+  }
+  80%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-10px);
+  }
+}
+.alert.hide{
+  animation: hide_slide 1s ease forwards;
+}
+@keyframes hide_slide {
+  0%{
+    transform: translateX(-10px);
+  }
+  40%{
+    transform: translateX(0%);
+  }
+  80%{
+    transform: translateX(-10%);
+  }
+  100%{
+    transform: translateX(100%);
+  }
+}
+.n_icon{
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+}
+#alertWr .n_icon{
+    color: #ce0000;
+}
+#alertRi .n_icon{
+    color: #11ce00;
+}
+.alert .msg{
+  padding: 0 20px;
+  font-size: 18px;
+}
+#alertWr .alert .msg{
+    color: #ce0000;
+}
+#alertRi .alert .msg{
+    color: #11ce00;
+}
+.alert .close-btn{
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px 18px;
+  cursor: pointer;
+}
+#alertWr .close-btn{
+    background: #ff8480;
+}
+#alertRi .close-btn{
+    background: #8bff80;
+}
+#alertWr .alert .close-btn:hover{
+  background: #f83838;
+}
+#alertRi .alert .close-btn:hover{
+  background: #3af529;
+}
+.alert .close-btn .fas{
+  font-size: 22px;
+  line-height: 40px;
+}
+#alertWr .alert .close-btn .fas{
+    color: #ce0000;
+}
+#alertRi .alert .close-btn .fas{
+    color: #00ce00;
+}

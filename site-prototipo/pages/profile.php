@@ -1,7 +1,8 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
-
+    session_cache_expire(720);
+    
     $perfildono = -1;
     $perfildono = $_GET['profile'];
     $sql = "SELECT * FROM user_common WHERE fk_id_profile = '$perfildono'";
@@ -21,6 +22,9 @@
     }
 
     $perfilEntrando = -1;
+
+   
+
     $email = $_SESSION['email'];
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
     foreach($pdo->query($sql) as $key => $value){
@@ -29,10 +33,17 @@
 
     if($perfildono == -1 || $perfilEntrando == -1) header("Location: error.php");
 
-    if($fundo == 0)$fundo = "background-color: rgb(0, 0, 0);";
-    if($fundo == 1)$fundo = "background-image: url(../profile-gadgets/bc-profile/red.jpg);";
-
-    if($foto == 0)$foto = "background-image: url(../profile-gadgets/pc-profile/new-user.jpg);";
+    $sql = "SELECT in_it FROM gadget WHERE id_gadget = $foto and type = 0";
+    foreach($pdo->query($sql) as $key => $value){
+        $foto = $value['in_it'];
+    }
+    $sql = "SELECT in_it FROM gadget WHERE id_gadget = $fundo and type = 1";
+    foreach($pdo->query($sql) as $key => $value){
+        $fundo = $value['in_it'];
+    }
+    
+    if($foto == 0 || !isset($foto))$foto = "background-image: url(../profile-gadgets/pc-profile/new-user.jpg);";
+    if($fundo == 0 || !isset($fundo))$fundo = "background-color: rgb(0,0,0);";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -40,7 +51,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/profile.css?v=1.01">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>Perfil</title>
 </head>

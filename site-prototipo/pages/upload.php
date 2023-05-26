@@ -7,10 +7,6 @@
 
     $array = explode("\n", $_POST['story']);
 
-    /*for($i = 0; $i < sizeof($array); $i++){
-        $array[$i] = $array[$i]."<br>";
-    }*/
-
     $historia = array_unique($array);
     $historia = implode("",$array);
     $remove = array("*1 ", " /*1", "*2 ", " /*2", "*3 ", " /*3", "*4 ", " /*4", "*5 ", " /*5", "*6 ", " /*6", "** ", " /**", "*-* ", " /*-*");
@@ -68,13 +64,11 @@
         for($x = 1; $x < 11; $x++){
             $extensao = pathinfo($_FILES['imagem'.$x]['name'], PATHINFO_EXTENSION);
             if($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != ''){
-                header("Location: error.php");
-                echo "Extensao";
+                header("Location: error.php?erro=8");
                 return false;
             }
             if($_FILES["imagem".$x]["size"] > 500000){//500000
-                header("Location: error.php");
-                echo "Tamanho";
+                header("Location: error.php?erro=6");
                 return false;
             }
         }
@@ -241,7 +235,7 @@
         $prepare = $pdo->prepare($sql);
         $prepare->execute();
 
-        // header("Location: criacao.php");
+        header("Location: criacao.php");
     }
 
     /* IN ITSELF */

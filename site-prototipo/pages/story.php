@@ -21,6 +21,12 @@
         header("Location: error.php");
     }
 
+
+    
+    if(isset($_SESSION['story'])){
+        $n_type = $_SESSION['story'];
+    }
+
     $showAnswered = 0;
     $showQuestion = 0;
     $showRight = "none;";
@@ -85,12 +91,26 @@
 
     /* ANSWERS */
 
+    $r = (rand(0,10));
+    $sure = (rand(0,10));
     $i = 0;
     $answers = array();
     $answer = "SELECT * FROM answer WHERE fk_id_question = '$id_question'";
     foreach($pdo->query($answer) as $key => $value){
         $answers[$i] = $value['text'];
+
         $numbers[$i] = $value['status'];
+
+        if($numbers[$i] != 1){
+
+            $numbers[$i] = (rand(0,10));
+
+            if($numbers[$i] == $r) $numbers[$i]++;
+
+        }else{
+            $numbers[$i] = $r;
+        }
+        
         $i++;
     }
 ?>
@@ -103,16 +123,33 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>História</title>
     <link rel="stylesheet" href="../css/story.css?v=1.01">
+    <link rel="stylesheet" href="../css/notification.css">
 </head>
 <body>
+    <div class="notifications">
+        <div id="alertWr" class="alert hide">
+            <span class="fa-solid fa-circle-xmark n_icon"></span>
+            <div class="msg">-25<i class="fa-solid fa-coins"></i></div>
+            <div class="close-btn" onclick="callOutNotification(0)">
+                <span class="fas fa-times"></span>
+            </div>
+        </div>
+        <div id="alertRi" class="alert hide">
+            <span class="fa-solid fa-check n_icon"></span>
+            <div class="msg">+100<i class="fa-solid fa-book"></i><br>+25<i class="fa-solid fa-coins"></i></div>
+            <div class="close-btn" onclick="callOutNotification(1)">
+            <span class="fas fa-times"></span>
+            </div>
+        </div>
+    </div>
     <div class="all transi" id="all">
         <div id="sideBar" class="sideBar">
             <div class="container">
                 <div id="goBack" onclick="putUp(-1)" class="goBack pointer">
-                    <i class="fa-solid fa-arrow-left"></i>
+                    <i class="fa-solid fa-chevron-left"></i>
                 </div>
                 <div style = "right: 0;" id="goFoward" onclick="putUp(1)" class="goFoward pointer">
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i class="fa-solid fa-chevron-right"></i>
                 </div>
             </div>
         </div>
@@ -246,18 +283,18 @@
                                 <form id="question-form" method="post">
                                     <div class="options">
                                         <div class="col1-op op-col">
-                                            <div class="option" onclick="answerForm('.$numbers[0].')">
+                                            <div class="option" onclick="answerForm(0)">
                                                 '.$answers[0].'
                                             </div>
-                                            <div class="option" onclick="answerForm('.$numbers[1].')">
+                                            <div class="option" onclick="answerForm(1)">
                                                 '.$answers[1].'
                                             </div>
                                         </div>
                                         <div class="col2-op op-col">
-                                            <div class="option" onclick="answerForm('.$numbers[2].')">
+                                            <div class="option" onclick="answerForm(2)">
                                                 '.$answers[2].'
                                             </div>
-                                            <div class="option" onclick="answerForm('.$numbers[3].')">
+                                            <div class="option" onclick="answerForm(3)">
                                                 '.$answers[3].'
                                             </div>
                                         </div>
@@ -310,24 +347,41 @@
             echo '
             function answerForm(n){
 
+                var options = document.getElementsByClassName("option");
                 var question_form = document.getElementById("question-form");
                 newInput1 = document.createElement("input");
                 newInput1.type = "hidden";
                 newInput1.name = "number";
-                newInput1.value = n;
+                newInput1.value = options[n].innerText;
                 question_form.appendChild(newInput1);
+
+
+                question_form.action = "resposta.php";
                 question_form.submit();
 
-                if(n == 0){
-                    question_form.action = "erro.php";
-                    question_form.submit();
-                }else{
-                    question_form.action = "acerto.php";
-                    question_form.submit();
-                }
+                
             } ';
         }
+        if(isset($_SESSION['story']) && $_SESSION['story'] != -1){
+            echo '
+            var alerts = document.getElementsByClassName("alert");
+
+            function callNotification(n){
+                alerts[n].classList.remove("hide");
+                alerts[n].classList.add("showAlert");
+                alerts[n].classList.add("show");
+            } 
+            function callOutNotification(w){
+                alerts[w].classList.remove("show");
+                alerts[w].classList.add("hide");
+            }
+
+            callNotification('.$n_type.')
+            ';
+            $_SESSION['story'] = -1;
+        }
     ?>
+
         var stars = document.getElementById("full-stars")
 
         var qP = <?php echo $rating ?>;
