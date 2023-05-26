@@ -63,7 +63,6 @@
                 echo "
                     <input type='hidden'
                      name='gadget' style='overflow: hidden;' value='$id'>
-                    <input type='hidden' name='gadget' style='overflow: hidden;' value='$preco'> 
                 <input type='submit' value='Comprar'>
                 ";
             }
