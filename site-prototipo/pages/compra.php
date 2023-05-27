@@ -1,8 +1,27 @@
 <?php
     require "includes/conexao.php";
-    require "includes/returnUser.php";
+    require "includes/online.php";
+    include "includes/returnUser.php";
+
+    $email = $_SESSION['email'];
+    $perfil = returnProfileId($email);
 
     $gadget =  $_POST['gadget'];
+    if($gadget == 0 || !isset($gadget))header("Location: error.php");
+
+    $moedas = "SELECT * FROM gadget WHERE id_gadget = '$gadget'";
+    foreach($pdo->query($moedas) as $key => $value){
+        $status = $value['g_status'];
+        $preco = $value['preco'];
+    }
+    if($status != 1)header("Location: error.php");
+
+    $check = "SELECT * FROM compra WHERE fk_id_gadget = '$gadget' and fk_id_profile = '$perfil'";
+    $prepare = $pdo->prepare($check);
+    $prepare->execute();
+
+    $rows = $prepare->rowCount();
+    if($rows != 0)header("Location: error.php");
 
     $moedas = "SELECT * FROM user_common WHERE fk_id_profile = '$perfil'";
     foreach($pdo->query($moedas) as $key => $value){
@@ -14,7 +33,7 @@
     } else{
         
         //compra realizada
-        $compra_user = "INSERT INTO compra VALUES('$perfil', '$gadget')";
+        $compra_user = "INSERT INTO compra VALUES('$perfil', '$gadget', '')";
         $prepare = $pdo->prepare($compra_user);
         $prepare->execute();
 
