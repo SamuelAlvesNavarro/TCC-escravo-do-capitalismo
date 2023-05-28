@@ -1,6 +1,6 @@
 <?php
     $cod_erro = $_GET("erro");
-
+    echo $cod_erro;
     // resumo, vc vai ter que colocar em todos os links de página de erro (no final), isso: ?erro=(codigo que vc escolher)
     // os códigos 4,7,13,42,666 é reservado
 ?>
@@ -15,6 +15,6 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1 class="text-danger">ERROR: 404</h1>
+    
 </body>
 </html>
