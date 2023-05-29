@@ -129,7 +129,7 @@
     <div class="notifications">
         <div id="alertWr" class="alert hide">
             <span class="fa-solid fa-circle-xmark n_icon"></span>
-            <div class="msg">-25<i class="fa-solid fa-coins"></i></div>
+            <div class="msg">-50<i class="fa-solid fa-coins"></i></div>
             <div class="close-btn" onclick="callOutNotification(0)">
                 <span class="fas fa-times"></span>
             </div>
