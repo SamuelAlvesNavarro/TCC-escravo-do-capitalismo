@@ -1,10 +1,16 @@
 <?php
     require 'includes/conexao.php';
 
-    $cod_erro = $_GET("erro");
+    $erro = $_GET['erro']; 
+    $sql = "SELECT * FROM error WHERE cod_error='$erro'";
+    foreach($pdo->query($sql) as $key => $value){
+        $id_error = $value['id_error'];
+        $cod_error = $value['cod_error'];
+        $desc = $value['description'];
+    }
 
     // resumo, vc vai ter que colocar em todos os links de página de erro (no final), isso: ?erro=(codigo que vc escolher)
-    // os códigos 4,7,13,42,666 é reservado
+    // os códigos 4,7,13,42,666 é reservado 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,6 +23,13 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1 class="text-danger">ERROR: 404</h1>
+    <?php
+    echo "
+    <h1 class='text-danger'>ERROR: ". $value['cod_error'] ."</h1>
+
+    <div class='desc-erro'>
+     ". $value['description'] ."
+    </div>"
+    ?>
 </body>
 </html>
