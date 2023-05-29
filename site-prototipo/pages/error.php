@@ -1,4 +1,6 @@
 <?php
+    require 'includes/conexao.php';
+
     $cod_erro = $_GET("erro");
 
     // resumo, vc vai ter que colocar em todos os links de página de erro (no final), isso: ?erro=(codigo que vc escolher)
