@@ -1,8 +1,8 @@
 <?php
-<<<<<<< HEAD
+
     $cod_erro = $_GET("erro");
     echo $cod_erro;
-=======
+
     require 'includes/conexao.php';
 
     $erro = $_GET['erro']; 
@@ -13,7 +13,6 @@
         $desc = $value['description'];
     }
 
->>>>>>> 3e65cd61472a92d54d35a63de8c29e1646c6033e
     // resumo, vc vai ter que colocar em todos os links de página de erro (no final), isso: ?erro=(codigo que vc escolher)
     // os códigos 4,7,13,42,666 é reservado 
 ?>
@@ -28,9 +27,7 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<<<<<<< HEAD
-    
-=======
+
     <?php
     echo "
     <h1 class='text-danger'>ERROR: ". $value['cod_error'] ."</h1>
@@ -39,6 +36,5 @@
      ". $value['description'] ."
     </div>"
     ?>
->>>>>>> 3e65cd61472a92d54d35a63de8c29e1646c6033e
 </body>
 </html>
