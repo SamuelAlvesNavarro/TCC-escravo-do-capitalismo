@@ -22,7 +22,7 @@
 }
 
 :root {
-  --all-bc: #ffffff;
+  --all-bc: 255,255,255;
   --sheet-bc: #ffffff;
   --color: black;
   --link-bc: #ffffff;
@@ -34,7 +34,7 @@
 }
 
 .dark {
-  --all-bc: #121212;
+  --all-bc: 0,0,0;
   --sheet-bc: #121212;
   --color: white;
   --link-bc: #2c2c2c;
@@ -52,7 +52,6 @@
   height: auto;
   padding-top: 0;
   color: var(--color);
-  background-color: var(--all-bc);
   font-family: "Roboto", sans-serif;
 }
 
@@ -270,6 +269,14 @@ label {
 }
 
 @media (min-width: 1100px) {
+  body{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .all{
+    background: rgba(var(--all-bc), 0.9) !important;
+  }
   .header{
     position: relative;
     height: 100%;
@@ -279,6 +286,7 @@ label {
     width: 100%;
     min-height: calc(150vh - 20px);
     border-radius: 20px;
+    background-image: none !important;
   }
   .picture {
     position: fixed;
@@ -296,6 +304,11 @@ label {
     width: 70%;
     top: 150px;
     right: 0px;
+  }
+}
+@media (max-width: 1100px) {
+  .all{
+    background: var(--all-bc) !important;
   }
 }
 @media (max-width: 900px) {

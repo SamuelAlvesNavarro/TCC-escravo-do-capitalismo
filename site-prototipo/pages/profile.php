@@ -54,11 +54,11 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>Perfil</title>
 </head>
-<body>
+<body style='<?php echo $fundo ?>'>
     <div class="deco">
         <!-- deco -->
     </div>
-    <div class="all">
+    <div class="all" >
         <div class="header">
             <div class="picture-container" style='<?php echo $fundo ?>'>
                 <div class="picture" style='<?php echo $foto ?>'>
