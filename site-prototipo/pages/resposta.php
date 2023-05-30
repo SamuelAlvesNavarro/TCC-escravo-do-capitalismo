@@ -25,33 +25,64 @@
 
         if($resp == $rig){
 
-            $check = "SELECT * FROM question_user WHERE fk_id_profile = $perfil and fk_id_question = $id_question";
-            $prepare = $pdo->prepare($check);
-            $prepare->execute();
-
-            if($prepare->rowCount() == 0){
-
-                $pontos_leitor += 100;
-                $moedas += 20;
-
-                /* PONTOS DE LEITOR */
-                $add = "UPDATE user_common SET pontos_leitor = '$pontos_leitor' WHERE fk_id_profile = '$perfil'";
-                $prepare = $pdo->prepare($add);
+            if($moedas < 0){
+                $check = "SELECT * FROM question_user WHERE fk_id_profile = $perfil and fk_id_question = $id_question";
+                $prepare = $pdo->prepare($check);
                 $prepare->execute();
 
-                /* MOEDAS */
-                $add = "UPDATE user_common SET moedas = '$moedas' WHERE fk_id_profile = '$perfil'";
-                $prepare = $pdo->prepare($add);
-                $prepare->execute();
+                if($prepare->rowCount() == 0){
 
-                $question_user = "INSERT INTO question_user VALUES('$id_question', '$perfil')";
-                $prepare = $pdo->prepare($question_user);
-                $prepare->execute();
+                    $pontos_leitor += 0;
+                    $moedas += 25;
 
-                $_SESSION['story'] = 1;
-                header("Location: story.php?input_1=".$id_story);
+                    /* PONTOS DE LEITOR */
+                    $add = "UPDATE user_common SET pontos_leitor = '$pontos_leitor' WHERE fk_id_profile = '$perfil'";
+                    $prepare = $pdo->prepare($add);
+                    $prepare->execute();
+
+                    /* MOEDAS */
+                    $add = "UPDATE user_common SET moedas = '$moedas' WHERE fk_id_profile = '$perfil'";
+                    $prepare = $pdo->prepare($add);
+                    $prepare->execute();
+
+                    $question_user = "INSERT INTO question_user VALUES('$id_question', '$perfil')";
+                    $prepare = $pdo->prepare($question_user);
+                    $prepare->execute();
+
+                    $_SESSION['story'] = 1;
+                    header("Location: story.php?input_1=".$id_story);
+                }else{
+                    header("Location: error.php"); //erro -> já respondeu a questão e tentou chamar a página de acerto para farmar pontos
+                }
             }else{
-                header("Location: error.php"); //erro -> já respondeu a questão e tentou chamar a página de acerto para farmar pontos
+                $check = "SELECT * FROM question_user WHERE fk_id_profile = $perfil and fk_id_question = $id_question";
+                $prepare = $pdo->prepare($check);
+                $prepare->execute();
+
+                if($prepare->rowCount() == 0){
+
+                    $pontos_leitor += 100;
+                    $moedas += 25;
+
+                    /* PONTOS DE LEITOR */
+                    $add = "UPDATE user_common SET pontos_leitor = '$pontos_leitor' WHERE fk_id_profile = '$perfil'";
+                    $prepare = $pdo->prepare($add);
+                    $prepare->execute();
+
+                    /* MOEDAS */
+                    $add = "UPDATE user_common SET moedas = '$moedas' WHERE fk_id_profile = '$perfil'";
+                    $prepare = $pdo->prepare($add);
+                    $prepare->execute();
+
+                    $question_user = "INSERT INTO question_user VALUES('$id_question', '$perfil')";
+                    $prepare = $pdo->prepare($question_user);
+                    $prepare->execute();
+
+                    $_SESSION['story'] = 1;
+                    header("Location: story.php?input_1=".$id_story);
+                }else{
+                    header("Location: error.php"); //erro -> já respondeu a questão e tentou chamar a página de acerto para farmar pontos
+                }
             }
 
         }else{

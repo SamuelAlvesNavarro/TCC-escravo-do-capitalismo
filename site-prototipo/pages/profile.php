@@ -54,11 +54,11 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>Perfil</title>
 </head>
-<body>
+<body style='<?php echo $fundo ?>'>
     <div class="deco">
         <!-- deco -->
     </div>
-    <div class="all">
+    <div class="all" >
         <div class="header">
             <div class="picture-container" style='<?php echo $fundo ?>'>
                 <div class="picture" style='<?php echo $foto ?>'>
@@ -72,6 +72,7 @@
                 echo '<div class="slider-controller" id="slider-controller">
                 <div class="radio" onclick="switchSheet(0)"></div>
                 <div class="radio" onclick="switchSheet(1)"></div>
+                <div class="radio" onclick="switchSheet(2)"></div>
                 </div>';
             }
         ?>
@@ -122,6 +123,7 @@
                     <div class="privdata" id="privdata">
                         <?php
                         if($perfildono == $perfilEntrando){
+                            echo "<div id='hidden_form_container' style='display:none;'></div>";
                             echo "<form method='post' action='editar_usuario.php'>";
 
                             echo "<label>Apelido:</label>";
@@ -141,6 +143,70 @@
                             echo "</form>";
                         }
                         ?>
+                    </div>
+                </div>
+                <div class="sheet">
+                    <div class="title">
+                        <h1>Edição de Perfil</h1>
+                        <h3>Clique e troque</h3>
+                    </div>
+                    <div class="privdata profE" id="privdata">
+                        <div class="title subp">
+                            <h2>Fotos</h2>
+                        </div>
+                        <div class="fotos editP">
+                            <?php
+                                if($perfildono == $perfilEntrando){
+                                    $perfil = $perfildono;
+                                    $gadget = "SELECT * FROM gadget WHERE type = 0";
+                                    foreach($pdo->query($gadget) as $key => $value){
+                                        $item = $value['in_it'];
+                                        $preco = $value['preco'];
+                                        $code = $value['id_gadget'];
+
+                                        $check = "SELECT * FROM compra WHERE fk_id_gadget = '$code' and fk_id_profile = '$perfil'";
+                                        $prepare = $pdo->prepare($check);
+                                        $prepare->execute();
+
+                                        $rows = $prepare->rowCount();
+
+                                        if($rows == 1){
+                                            echo "<div class='card  reveal' onclick='switchP(".$code.")'>
+                                                <div class='card-pic' id=".$code." style='$item' value='$preco'></div>
+                                            </div>";
+                                        } 
+                                    }
+                                }
+                            ?>
+                        </div>
+                        <div class="title subp">
+                            <h2>Fundos</h2>
+                        </div>
+                        <div class="fundos editP">
+                            <?php
+                                if($perfildono == $perfilEntrando){
+                                    $perfil = $perfildono;
+                                    $gadget = "SELECT * FROM gadget WHERE type = 1";
+                                    foreach($pdo->query($gadget) as $key => $value){
+                                        $item = $value['in_it'];
+                                        $preco = $value['preco'];
+                                        $code = $value['id_gadget'];
+
+                                        $check = "SELECT * FROM compra WHERE fk_id_gadget = '$code' and fk_id_profile = '$perfil'";
+                                        $prepare = $pdo->prepare($check);
+                                        $prepare->execute();
+
+                                        $rows = $prepare->rowCount();
+
+                                        if($rows == 1){
+                                            echo "<div class='card  reveal' onclick='switchP(".$code.")'>
+                                                <div class='card-pic' id=".$code." style='$item' value='$preco'></div>
+                                            </div>";
+                                        } 
+                                    }
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -167,6 +233,19 @@
                 }
             }
         } 
+        function switchP(n) {
+            var theForm, newInput1;
+            theForm = document.createElement("form");
+            theForm.action = "alter_design.php";
+            theForm.method = "post";
+            newInput1 = document.createElement("input");
+            newInput1.type = "hidden";
+            newInput1.name = "gadget";
+            newInput1.value = n;
+            theForm.appendChild(newInput1);
+            document.getElementById("hidden_form_container").appendChild(theForm);
+            theForm.submit();
+        }
 
         switchSheet(0);
 

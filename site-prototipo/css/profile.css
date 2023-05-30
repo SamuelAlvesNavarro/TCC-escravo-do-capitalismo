@@ -22,7 +22,7 @@
 }
 
 :root {
-  --all-bc: #ffffff;
+  --all-bc: 255,255,255;
   --sheet-bc: #ffffff;
   --color: black;
   --link-bc: #ffffff;
@@ -30,10 +30,11 @@
   --link-color-hover: rgb(255, 247, 247);
   --ball-color: #121212;
   --ball-color-active: #ff0909;
+  --card-bc: white;
 }
 
 .dark {
-  --all-bc: #121212;
+  --all-bc: 0,0,0;
   --sheet-bc: #121212;
   --color: white;
   --link-bc: #2c2c2c;
@@ -41,6 +42,7 @@
   --link-color-hover: red;
   --ball-color: #ffffff;
   --ball-color-active: #ff0909;
+  --card-bc: #272727;
 }
 
 /* ALL */
@@ -50,7 +52,6 @@
   height: auto;
   padding-top: 0;
   color: var(--color);
-  background-color: var(--all-bc);
   font-family: "Roboto", sans-serif;
 }
 
@@ -233,6 +234,83 @@ label {
   background-color: var(--ball-color-active);
 }
 
+/* EDIÇÃO DE PERFIL */
+
+.profE{
+  display: flex;
+  flex-direction: column;
+}
+.editP{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.card {
+  background: var(--card-bc);
+  box-shadow: 0px 11px 21px -5px rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  cursor: pointer;
+}
+
+.card-pic {
+  width: 100px;
+  height: 100px;
+  background-position: center;
+}
+
+.price {
+  margin-top: 20px;
+  font-size: 20px;
+}
+.subp{
+  padding: 30px;
+}
+
+@media (min-width: 1100px) {
+  body{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .all{
+    background: rgba(var(--all-bc), 0.9) !important;
+  }
+  .header{
+    position: relative;
+    height: 100%;
+    min-height: 150vh;
+  }
+  .picture-container {
+    width: 100%;
+    min-height: calc(150vh - 20px);
+    border-radius: 20px;
+    background-image: none !important;
+  }
+  .picture {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    left: 200px;
+  }
+  .main{
+    padding-top: 10px;
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: absolute;
+    background-color: var(--all-bc);
+    width: 70%;
+    top: 150px;
+    right: 0px;
+  }
+}
+@media (max-width: 1100px) {
+  .all{
+    background: var(--all-bc) !important;
+  }
+}
 @media (max-width: 900px) {
   .container {
     flex-direction: column;

@@ -117,10 +117,9 @@
         document.getElementById('buy-gadget').value = ImgId;
         document.getElementById('priceConf').innerText = document.getElementById(id_price).innerText;
       }
-      // Get the <span> element that closes the modal
+      
       var span = document.getElementsByClassName("close")[0];
 
-      // When the user clicks on <span> (x), close the modal
       span.onclick = function() {
         var modalImg = document.getElementById("img-compra");
         modal.style.display = "none";

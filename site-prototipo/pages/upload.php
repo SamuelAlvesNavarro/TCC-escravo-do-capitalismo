@@ -136,7 +136,7 @@
 
         function checktitulo($titulo){ 
             if($titulo == "cu"){
-                header("Location:error.php");
+                header("Location:error.php?erro=5");
                 return false;
             } 
             return true;
