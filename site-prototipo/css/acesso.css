@@ -50,7 +50,7 @@
 }
 
 .child-background:nth-child(1) {
-  font-size: 50px;
+  font-size: 200px;
   left: 10vw;
   color: rgb(182, 199, 199);
   animation-duration: 20s;
@@ -103,7 +103,7 @@
   font-size: 100px;
   left: 60vw;
   color: rgb(201, 135, 135);
-  animation-duration: 10s;
+  animation-duration: 15s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-name: elementsUp;

@@ -23,6 +23,7 @@
 
 :root {
   --all-bc: 255,255,255;
+  --all-bc-color: #ffffff;
   --sheet-bc: #ffffff;
   --color: black;
   --link-bc: #ffffff;
@@ -35,6 +36,7 @@
 
 .dark {
   --all-bc: 0,0,0;
+  --all-bc-color: #121212;
   --sheet-bc: #121212;
   --color: white;
   --link-bc: #2c2c2c;
@@ -277,38 +279,32 @@ label {
   .all{
     background: rgba(var(--all-bc), 0.9) !important;
   }
-  .header{
-    position: relative;
-    height: 100%;
-    min-height: 150vh;
-  }
   .picture-container {
-    width: 100%;
-    min-height: calc(150vh - 20px);
-    border-radius: 20px;
+    height: 0;
     background-image: none !important;
   }
   .picture {
     position: fixed;
     width: 200px;
     height: 200px;
-    left: 200px;
+    right: 0px;
   }
   .main{
     padding-top: 10px;
     border-radius: 20px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    position: absolute;
     background-color: var(--all-bc);
+    opacity: 0.8 !important;
     width: 70%;
-    top: 150px;
+    top: 0px;
+    height: 100%;
     right: 0px;
   }
 }
 @media (max-width: 1100px) {
   .all{
-    background: var(--all-bc) !important;
+    background: var(--all-bc-color) !important;
   }
 }
 @media (max-width: 900px) {
