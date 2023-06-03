@@ -122,10 +122,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>História</title>
+    <link rel="stylesheet" href="../css/menu.css?v=1.01">
     <link rel="stylesheet" href="../css/story.css?v=1.01">
     <link rel="stylesheet" href="../css/notification.css">
 </head>
 <body>
+    <div id="all-menu" class="all-menu disappear">
+        <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
+            <i class="fa-sharp fa-solid fa-chevron-down" style="color: black !important"></i>
+        </div>
+        <div id="menu" class="menu off">
+            <div class="lamp">
+                <div class="wire">
+                    
+                </div>
+                <i onclick="switchMenu()" class="fa-solid fa-lightbulb"></i>
+            </div>
+            <div class="lamp-area">
+            </div> 
+            <div class="content">
+                <ul>
+                    <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
+                    <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
+                    <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
+                    <li><a href="criacao.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
+                    <div class="search">
+                        <form action="pesquisa.php" method="get">
+                            <div class="search-box">
+                                <button class="btn-search"><i class="fas fa-search"></i></button>
+                                <input type="text" name="busca" class="input-search" placeholder="Pesquisar história........">
+                            </div>
+                        </form>
+                    </div>
+                </ul>
+                <!--<img src="https://clipart-library.com/images/rcLoyAzKi.png" alt="" srcset="">-->
+            </div>
+        </div>
+    </div>
     <div class="notifications">
         <div id="alertWr" class="alert hide">
             <span class="fa-solid fa-circle-xmark n_icon"></span>
@@ -394,4 +427,5 @@
     
 </script>
 <script src="../js/story.js?v=1.01"></script>
+<script src="../js/menu.js?v=1.01"></script>
 </html>

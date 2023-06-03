@@ -14,9 +14,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/menu.css">
     <title>Central</title>
 </head>
-<body>
+<body id="body" class="">
+    <div id="all-menu" class="all-menu disappear">
+        <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
+            <i class="fa-sharp fa-solid fa-chevron-down"></i>
+        </div>
+        <div id="menu" class="menu off">
+            <div class="lamp">
+                <div class="wire">
+                    
+                </div>
+                <i onclick="switchMenu()" class="fa-solid fa-lightbulb"></i>
+            </div>
+            <div class="lamp-area">
+            </div> 
+            <div class="content">
+                <ul>
+                    <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
+                    <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
+                    <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
+                    <li><a href="criacao.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
+                    <div class="search">
+                        <form action="pesquisa.php" method="get">
+                            <div class="search-box">
+                                <button class="btn-search"><i class="fas fa-search"></i></button>
+                                <input type="text" name="busca" class="input-search" placeholder="Pesquisar história........">
+                            </div>
+                        </form>
+                    </div>
+                </ul>
+                <!--<img src="https://clipart-library.com/images/rcLoyAzKi.png" alt="" srcset="">-->
+            </div>
+        </div>
+    </div>
     Lembrete: entrar na central significa que a pessoa já logou, logo, de alguma maneira, os dados da pessoa já tem que "estar aqui" <br><br>
     <br><br><br>TODAS AS PÁGINAS DEPOIS DO LOGIN TEM QUE VER SE O USUÁRIO ENTRANDO ESTÁ LOGADO. SE A PÁGINA N TEM DADOS DA PESSOA, TEM QUE MANDAR ELA DEVOLTA PARA O LOGIN. <br><br><br>
     <hr>
@@ -58,5 +92,24 @@
     ?>
     <a href="loja.php"><button>Loja</button></a>
     <a href="includes/closing_session.php"><button>Sair</button></a>
+    <script>
+        var body = document.getElementById("body");
+        var menu = document.getElementById("menu");
+        var all_menu = document.getElementById("all-menu");
+        var chevron = document.getElementById("chevron-menu");
+
+        function switchMenu(){
+            menu.classList.toggle("on");
+            menu.classList.toggle("off");
+        }
+        function menu_appear(){
+            body.classList.toggle("menuOn");
+            all_menu.classList.toggle("disappear");
+            menu.classList.remove("on");
+            menu.classList.remove("off");
+            menu.classList.add("off");
+            chevron.classList.toggle("chevron-phases");
+        }
+    </script>
 </body>
 </html>
