@@ -6,6 +6,8 @@ https://historiasassombradas.000webhostapp.com/ - link do site
 
 https://www.devmedia.com.br/upload-de-imagens-em-php-e-mysql/10041 - meu link
 
+https://www.tabnews.com.br/juannfeijo/como-fazer-um-sistema-de-likes - sistema de like em comentários
+
 ZERAR O BANCO 
 
 delete from page;
