@@ -5,18 +5,18 @@
     padding: 0;
 }
 .menuOn{
-    height: 100vh;
     overflow-y: hidden;
+    height: 100vh;
 }
 .all_menu{
     height: 100vh;
-    position: absolute;
+    position: fixed;
     width: 100%;
     z-index: 100000;
-    transition: .4s linear;
+    transition: .8s linear;
 }
 .disappear{
-    display: none;
+    height: 0;
     overflow: hidden;
 }
 .menu{
@@ -71,23 +71,26 @@
     }
 }
 @keyframes on-off-wire {
+    30%{
+        background: linear-gradient(to top, rgb(100, 100, 100), black);
+    }
     40%{
-        background-color: rgb(54, 54, 54);
+        background: linear-gradient(to top, rgb(54, 54, 54), black);
     }
     45%{
-        background-color: rgb(54, 54, 54);
+        background: linear-gradient(to top, rgb(54, 54, 54), black);
     }
     49%{
-        background-color: white;
+        background: linear-gradient(to top, white, black);
     }
     50%{
-        background-color: black;
+        background: black;
     }
     58%{
-        background-color: black;
+        background: black;
     }
     60%{
-        background-color: white;
+        background: linear-gradient(to top, white, black);
     }
 }
 @keyframes blinkb {
@@ -154,6 +157,8 @@
     animation: none;
     background: none;
     box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     position: relative;
 }
  .content ul li a{
@@ -237,6 +242,7 @@
 /* LAMP */
 .lamp{
     position: absolute;
+    transition: .4s linear;
     top: 0;
     left: 50%;
     z-index: 100;
@@ -257,7 +263,7 @@
 }
 .wire{
     width: 1px;
-    background-color: rgb(255, 255, 255);
+    background: linear-gradient(to top, white, black);
     height: 40vh;
     margin: auto;
     animation: on-off-wire;
@@ -265,6 +271,7 @@
     animation-iteration-count: infinite;
 }
 .on .wire{
+    background: linear-gradient(to top, white 70%, black);
     box-shadow: 0px 6px 20px 1px rgba(0,0,0,1);
     -webkit-box-shadow: 0px 6px 20px 1px rgba(0,0,0,1);
     -moz-box-shadow: 0px 6px 20px 1px rgba(0,0,0,1);
@@ -287,6 +294,9 @@
     border-bottom-right-radius: 30px;
     font-size: 40px;
 }
+#chevron-menu{
+    color: black !important;
+}
 .chevron-phases{
    display: none;
 }
@@ -297,10 +307,10 @@
 -moz-box-shadow: 5px 0px 78px -16px rgba(0,0,0,1) inset;
     }
     .content{
-        padding-top: 126px;
+        padding-top: 82px;
     }
     .on .content{
-        top: 126px;
+        top: 82px;
     }
     .content ul li{
         text-align: left !important;
@@ -312,7 +322,10 @@
         font-size: 40px;
     }
     .content ul{
-        width: 90%;
+        width: 80%;
+    }
+    .search-box{
+        margin-top: 0;
     }
     .lamp{
         left: 70%;

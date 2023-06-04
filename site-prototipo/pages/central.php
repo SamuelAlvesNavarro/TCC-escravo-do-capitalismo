@@ -19,19 +19,19 @@
     <link rel="stylesheet" href="../css/menu.css">
     <title>Central</title>
 </head>
-<body id="body" class="">
-    <div id="all-menu" class="all-menu disappear">
+<body>
+    <div id="all-menu" class="all_menu disappear">
         <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
-            <i class="fa-sharp fa-solid fa-chevron-down"></i>
+            <i class="fa-sharp fa-solid fa-xmark"></i>
         </div>
         <div id="menu" class="menu off">
             <div class="lamp">
                 <div class="wire">
                     
                 </div>
-                <i onclick="switchMenu()" class="fa-solid fa-lightbulb"></i>
+                <i onclick="switchMenu(1)" class="fa-solid fa-lightbulb"></i>
             </div>
-            <div class="lamp-area">
+            <div class="lamp-area" onclick="switchMenu(2)">
             </div> 
             <div class="content">
                 <ul>
@@ -43,7 +43,7 @@
                         <form action="pesquisa.php" method="get">
                             <div class="search-box">
                                 <button class="btn-search"><i class="fas fa-search"></i></button>
-                                <input type="text" name="busca" class="input-search" placeholder="Pesquisar história........">
+                                <input required type="text" name="busca" class="input-search" placeholder="Pesquisar história........">
                             </div>
                         </form>
                     </div>
@@ -93,24 +93,7 @@
     ?>
     <a href="loja.php"><button>Loja</button></a>
     <a href="includes/closing_session.php"><button>Sair</button></a>
-    <script>
-        var body = document.getElementById("body");
-        var menu = document.getElementById("menu");
-        var all_menu = document.getElementById("all-menu");
-        var chevron = document.getElementById("chevron-menu");
-
-        function switchMenu(){
-            menu.classList.toggle("on");
-            menu.classList.toggle("off");
-        }
-        function menu_appear(){
-            body.classList.toggle("menuOn");
-            all_menu.classList.toggle("disappear");
-            menu.classList.remove("on");
-            menu.classList.remove("off");
-            menu.classList.add("off");
-            chevron.classList.toggle("chevron-phases");
-        }
-    </script>
+    <button onclick="menu_appear()">Menu</button>
+    <script src="../js/menu.js"></script>
 </body>
 </html>

@@ -128,18 +128,18 @@
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
 </head>
 <body>
-    <div id="all-menu" class="all-menu disappear">
+<div id="all-menu" class="all_menu disappear">
         <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
-            <i class="fa-sharp fa-solid fa-chevron-down" style="color: black !important"></i>
+            <i class="fa-sharp fa-solid fa-xmark"></i>
         </div>
         <div id="menu" class="menu off">
             <div class="lamp">
                 <div class="wire">
                     
                 </div>
-                <i onclick="switchMenu()" class="fa-solid fa-lightbulb"></i>
+                <i onclick="switchMenu(1)" class="fa-solid fa-lightbulb"></i>
             </div>
-            <div class="lamp-area">
+            <div class="lamp-area" onclick="switchMenu(2)">
             </div> 
             <div class="content">
                 <ul>
@@ -151,28 +151,12 @@
                         <form action="pesquisa.php" method="get">
                             <div class="search-box">
                                 <button class="btn-search"><i class="fas fa-search"></i></button>
-                                <input type="text" name="busca" class="input-search" placeholder="Pesquisar história........">
+                                <input required type="text" name="busca" class="input-search" placeholder="Pesquisar história........">
                             </div>
                         </form>
                     </div>
                 </ul>
                 <!--<img src="https://clipart-library.com/images/rcLoyAzKi.png" alt="" srcset="">-->
-            </div>
-        </div>
-    </div>
-    <div class="notifications">
-        <div id="alertWr" class="alert hide">
-            <span class="fa-solid fa-circle-xmark n_icon"></span>
-            <div class="msg">-50<i class="fa-solid fa-coins"></i></div>
-            <div class="close-btn" onclick="callOutNotification(0)">
-                <span class="fas fa-times"></span>
-            </div>
-        </div>
-        <div id="alertRi" class="alert hide">
-            <span class="fa-solid fa-check n_icon"></span>
-            <div class="msg">+100<i class="fa-solid fa-book"></i><br>+25<i class="fa-solid fa-coins"></i></div>
-            <div class="close-btn" onclick="callOutNotification(1)">
-            <span class="fas fa-times"></span>
             </div>
         </div>
     </div>
