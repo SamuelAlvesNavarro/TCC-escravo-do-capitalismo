@@ -125,6 +125,7 @@
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
     <link rel="stylesheet" href="../css/story.css?v=1.01">
     <link rel="stylesheet" href="../css/notification.css">
+    <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
 </head>
 <body>
     <div id="all-menu" class="all-menu disappear">

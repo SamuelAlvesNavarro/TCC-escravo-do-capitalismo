@@ -15,6 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/menu.css">
     <title>Central</title>
 </head>
