@@ -27,10 +27,10 @@
 
     <?php
     echo "
-    <h1 class='text-danger'>ERROR: ". $value['cod_error'] ."</h1>
+    <h1 class='text-danger'>ERROR: ". $id_error ."</h1>
 
     <div class='desc-erro'>
-     ". $value['description'] ."
+     ". $desc ."
     </div>"
     ?>
 </body>
