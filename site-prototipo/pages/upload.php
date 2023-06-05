@@ -64,11 +64,11 @@
         for($x = 1; $x < 11; $x++){
             $extensao = pathinfo($_FILES['imagem'.$x]['name'], PATHINFO_EXTENSION);
             if($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != ''){
-                header("Location: error.php?erro=8");
+                header("Location: error.php?erro=15");
                 return false;
             }
             if($_FILES["imagem".$x]["size"] > 500000){//500000
-                header("Location: error.php?erro=6");
+                header("Location: error.php?erro=16");
                 return false;
             }
         }
@@ -136,7 +136,7 @@
 
         function checktitulo($titulo){ 
             if($titulo == "cu"){
-                header("Location:error.php?erro=5");
+                header("Location:error.php?erro=17");
                 return false;
             } 
             return true;
@@ -249,7 +249,7 @@
         $perfil = $value['fk_id_profile'];
     }
 
-    if($perfil == -1)header("Location: error.php");
+    if($perfil == -1)header("Location: error.php?erro=10");
     else{
 
         if(checkimagesBef())
