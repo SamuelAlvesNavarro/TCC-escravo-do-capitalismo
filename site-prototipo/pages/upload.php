@@ -125,7 +125,8 @@
 
                 for($x = 1; $x < 11; $x++){
                     if($_FILES["imagem".$x]["error"] == 0){
-                        uploadImagem("imagem".$x,"../img-story/$titulo/","$titulo"."-img-".$x, $id_page);
+                        $extensao = pathinfo($_FILES['imagem'.$x]['name'], PATHINFO_EXTENSION);
+                        uploadImagem("imagem".$x,"../img-story/$titulo/","$titulo"."-img-".$x.$extensao, $id_page);
                     }
                 }
             
