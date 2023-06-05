@@ -18,7 +18,7 @@
             $rating = $value['rating'];
         }
     }else{
-        header("Location: error.php");
+        header("Location: error.php?erro=14");
     }
 
 

@@ -52,7 +52,7 @@
                     $_SESSION['story'] = 1;
                     header("Location: story.php?input_1=".$id_story);
                 }else{
-                    header("Location: error.php"); //erro -> já respondeu a questão e tentou chamar a página de acerto para farmar pontos
+                    header("Location: error.php?erro=11"); //erro -> já respondeu a questão e tentou chamar a página de acerto para farmar pontos
                 }
             }else{
                 $check = "SELECT * FROM question_user WHERE fk_id_profile = $perfil and fk_id_question = $id_question";
@@ -81,7 +81,7 @@
                     $_SESSION['story'] = 1;
                     header("Location: story.php?input_1=".$id_story);
                 }else{
-                    header("Location: error.php"); //erro -> já respondeu a questão e tentou chamar a página de acerto para farmar pontos
+                    header("Location: error.php?erro=11"); //erro -> já respondeu a questão e tentou chamar a página de acerto para farmar pontos
                 }
             }
 
@@ -109,6 +109,6 @@
         }
 
     }else{
-        header("Location: error.php");
+        header("Location: error.php?erro=12");
     }
 ?>

@@ -30,7 +30,7 @@
         $perfilEntrando = $value['fk_id_profile'];
     }
 
-    if($perfildono == -1 || $perfilEntrando == -1) header("Location: error.php");
+    if($perfildono == -1 || $perfilEntrando == -1) header("Location: error.php?erro=10");
 
     $sql = "SELECT in_it FROM gadget WHERE id_gadget = $foto and type = 0";
     foreach($pdo->query($sql) as $key => $value){
