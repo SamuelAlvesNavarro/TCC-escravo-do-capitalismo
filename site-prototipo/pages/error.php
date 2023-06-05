@@ -1,8 +1,4 @@
-<?php
-
-    $cod_erro = $_GET("erro");
-    echo $cod_erro;
-
+<?php   
     require 'includes/conexao.php';
 
     $erro = $_GET['erro']; 
