@@ -7,21 +7,21 @@
     $perfil = returnProfileId($email);
 
     $gadget =  $_POST['gadget'];
-    if($gadget == 0 || !isset($gadget))header("Location: error.php");
+    if($gadget == 0 || !isset($gadget))header("Location: error.php?erro=6");
 
     $moedas = "SELECT * FROM gadget WHERE id_gadget = '$gadget'";
     foreach($pdo->query($moedas) as $key => $value){
         $status = $value['g_status'];
         $preco = $value['preco'];
     }
-    if($status != 1)header("Location: error.php");
+    if($status != 1)header("Location: error.php?erro=8");
 
     $check = "SELECT * FROM compra WHERE fk_id_gadget = '$gadget' and fk_id_profile = '$perfil'";
     $prepare = $pdo->prepare($check);
     $prepare->execute();
 
     $rows = $prepare->rowCount();
-    if($rows != 0)header("Location: error.php");
+    if($rows != 0)header("Location: error.php?erro=9");
 
     $moedas = "SELECT * FROM user_common WHERE fk_id_profile = '$perfil'";
     foreach($pdo->query($moedas) as $key => $value){

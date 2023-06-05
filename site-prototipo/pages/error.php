@@ -1,8 +1,4 @@
-<?php
-
-    $cod_erro = $_GET("erro");
-    echo $cod_erro;
-
+<?php   
     require 'includes/conexao.php';
 
     $erro = $_GET['erro']; 
@@ -31,10 +27,10 @@
 
     <?php
     echo "
-    <h1 class='text-danger'>ERROR: ". $value['cod_error'] ."</h1>
+    <h1 class='text-danger'>ERROR: ". $id_error ."</h1>
 
     <div class='desc-erro'>
-     ". $value['description'] ."
+     ". $desc ."
     </div>"
     ?>
 </body>
