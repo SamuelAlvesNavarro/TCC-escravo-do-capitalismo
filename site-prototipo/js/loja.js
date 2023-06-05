@@ -30,6 +30,5 @@ function reveal(){
 }
 
 function acentral(){
-    console.log("aaa")
     window.location="central.php";
 }
