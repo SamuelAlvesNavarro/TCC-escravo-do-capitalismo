@@ -84,9 +84,6 @@
                 </div>
             </div>
         </div>
-        <div id="big-one" class="banner-title">
-            <h1>Histórias Assombrosas<h1>
-        </div>
     </div>
 
     <div class="rest">
