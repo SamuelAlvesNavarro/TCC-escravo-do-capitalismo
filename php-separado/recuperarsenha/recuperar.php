@@ -12,7 +12,7 @@
             $password = $value['senha'];
             $apelido = $value['apelido'];
         }
-        $url = "https://script.google.com/macros/s/AKfycbyyK6zGK6Z6GapHt-l3fiWxCQGWT5lYT9SZZ-TVJLSKK6kL2I2LDIRyiKgRtbWzWL62mg/exec";
+        $url = "https://script.google.com/macros/s/AKfycby6LrnuCEJ7cVJdk3Z3qhsUyemzRO93J7zg9Qvx4qI/dev";
             $ch = curl_init($url);
             curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,
@@ -25,7 +25,7 @@
             ]);
             $result = curl_exec($ch);
             echo $result;
-            /*header("Location: acesso.html");*/
+            //header("Location: acesso.html");
             
     }else{
         header("Location:error.php?error=15");
