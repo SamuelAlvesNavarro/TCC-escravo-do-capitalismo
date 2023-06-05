@@ -18,6 +18,7 @@
             <input type="submit" value="SEND" name="submit">            
         </form>
         <?php
+
         if(isset($_POST['submit'])){
             $url = "https://script.google.com/macros/s/AKfycbyyK6zGK6Z6GapHt-l3fiWxCQGWT5lYT9SZZ-TVJLSKK6kL2I2LDIRyiKgRtbWzWL62mg/exec";
             $ch = curl_init($url);
