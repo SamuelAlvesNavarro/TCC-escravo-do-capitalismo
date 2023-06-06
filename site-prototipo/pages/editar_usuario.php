@@ -12,7 +12,7 @@
 
     $checkEmail = "SELECT * FROM user_common WHERE email = '$emailTroca'";
     foreach($pdo->query($checkEmail) as $key => $value){
-        echo $check = $value['email'];
+        $check = $value['email'];
     }
 
     if($emailTroca != $email){

@@ -2,7 +2,9 @@
     padding: 0;
     margin: 0;
 }
-
+body{
+    scroll-behavior: smooth;
+}
 /* ZA COLORS */
 
 .za-colors{
@@ -24,6 +26,8 @@
     --svg-fill: rgba(0,0,0,0.4);
     --color: #121212;
     --shadow-int: 0.7;
+
+    --main-color: rgb(231, 231, 231);
 }
 .dark {
     color-scheme: dark;
@@ -31,6 +35,8 @@
     --svg-fill: rgba(255, 255, 255, 0.767);
     --color: white;
     --shadow-int: 1;
+
+    --main-color: #222222;
 }
 .header-all{
     overflow: hidden;
@@ -98,16 +104,64 @@
     cursor: pointer;
     transition: .5s linear;
 }
-.user-op{
+.fa-sun{
     transition: .5s linear;
+}
+.fa-sun:hover{
+    color: rgb(255, 123, 0);
+    transform: rotate(360deg);
+}
+.fa-moon{
+    transition: .5s linear;
+}
+.fa-moon:hover{
+    color: rgb(0, 119, 255);
+    transform: rotate(360deg);
+}
+.user-op{
+    width: 50px;
+    height: 50px;
+    border: var(--color) 5px solid;
+    border-radius: 50%;
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s linear;
+}
+.user-op a{
+    transition: .2s linear;
     color: var(--color);
+}
+.user-op:hover{
+    border: red solid 5px;
+    border-radius: 0;
+}
+.user-op a:hover{
+    color: red;
+}
+.pencil-op{
     font-size: 30px;
     position: absolute;
     top: 0;
     right: -10px;
     cursor: pointer;
+    transition: .4s linear;
+}
+.pencil-op a{
+    transition: .5s linear;
+    color: var(--color);
+}
+.pencil-op:hover{
+    transform: rotate(360deg);
 }
 .banner-title{
+    text-align: center;
     transition: 1s linear;
     font-family: 'Poppins', serif;
     position: absolute;
@@ -116,4 +170,73 @@
     font-size: 40px;
     letter-spacing: 5px;
     transform: translate(-50%, -50%);
+}
+
+.to-main{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    animation: to-main-ani;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    cursor: pointer;
+    color: var(--color);
+    font-size: 50px;
+    transition: .5s linear;
+    z-index: 10;
+}
+@keyframes to-main-ani {
+    50%{
+        bottom: 50px;
+    }
+    100%{
+        bottom: 10px;
+    }
+}
+
+.search{
+    height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    border-radius: 30px;
+    border: 0px solid transparent;
+    transition: .2s linear;
+}
+.search-bar{
+    width: calc(100% - 80px);
+    height: 50px;
+    text-align: left;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    color: #121212;
+    font-size: 20px;
+    font-family: 'Poppins', serif;
+    padding-left: 20px;
+}
+.bt-search{
+    width: 80px;
+    height: 50px;
+    text-align: center;
+    border: none;
+    background-color: black;
+    border-left: 3px solid black;
+    color: white;
+    line-height: 50px;
+}
+.central-menu:hover .search, .has-value{
+    width: 100%;
+    height: 50px;
+    border: 2px solid var(--color);
+}
+/* MAIN */
+
+.main{
+    height: 100vh;
+    width: 100%;
+    background: var(--main-color);
 }

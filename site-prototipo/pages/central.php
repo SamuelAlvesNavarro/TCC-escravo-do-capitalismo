@@ -6,7 +6,11 @@
     $perfil = -1;
     $email = $_SESSION['email'];
     $perfil = returnProfileId($email);
-    if($perfil == -1 || !isset($perfil)) header("Location: error.php");    
+    if($perfil == -1 || !isset($perfil)){
+        header("Location: error.php");  
+        exit;
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -72,10 +76,21 @@
                     </div>
                 </div>
                 <div class="user-op">
-                    <i class="fa-solid fa-user"></i>
+                    <a href="profile.php?profile=<?php echo $perfil?>"><i class="fa-solid fa-user"></i></a>
+                </div>
+                <div class="pencil-op">
+                    <a href="criacao.php"><i class="fa-solid fa-pencil"></i></a>
                 </div>
                 <div class="banner-title">
-                    <h1>Histórias Assombrosas<h1>
+                    <h1>Histórias Assombrosas</h1>
+                    
+                    <form action="pesquisa.php" method="get">
+                        <div id="search-div" class="search">
+                            <input id="search-input" class="search-bar" type="text" name="busca" id="" placeholder="Pesquise e encontre......">
+                            <button class="bt-search"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
             <div class="to to-search">
@@ -83,51 +98,57 @@
                     <h2>Pesquisa</h2>
                 </div>
             </div>
+            <div class="to-main" onclick="anchor('main')">
+                <div class="leave-bt">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
         </div>
     </div>
+    <div id="main" class="main">
 
-    <div class="rest">
-        <a href="profile.php?profile=<?php echo $perfil?>"><button>Entar no Perfil</button></a><br><br>
+        <div class="rest">
 
-        <label for="" class="tipor">Buscas</label>
-        <select name="" id="" class="tirank">
-            <option value="" class="mel">Histórias +</option>
-            <option value="" class="mel">Histórias -</option>
-        </select>
-        <div class="rank" id="rank">
-            
+            <label for="" class="tipor">Buscas</label>
+            <select name="" id="" class="tirank">
+                <option value="" class="mel">Histórias +</option>
+                <option value="" class="mel">Histórias -</option>
+            </select>
+            <div class="rank" id="rank">
+                
+            </div>
+            <a href="criacao.php">Ir para a criação de histórias</a>
+            <br><br>
+            <form method="get" action="pesquisa.php">
+                <input type="text" name="busca" id="busca">
+                <input type="submit" value="Buscar por nome" class="bpnom"><br><br>
+            </form>
+
         </div>
-        <a href="criacao.php">Ir para a criação de histórias</a>
-        <br><br>
-        <form method="get" action="pesquisa.php">
-            <input type="text" name="busca" id="busca">
-            <input type="submit" value="Buscar por nome" class="bpnom"><br><br>
-        </form>
-    </div>
-    
+        <?php
+            //php da chamada da história e o link para ela
+            echo "Histórias mais bem avaliadas<br>";
+            $showStory = "SELECT * FROM story ORDER BY rating DESC LIMIT 5";
+            foreach($pdo->query($showStory) as $key => $value){
+                $id_story = $value['id_story'];
+                $nome = $value['nome'];
+                echo "<a href='story.php?input_1=". $id_story ."'>$nome</a><br>";
+            }
+            echo "<br>";
+            echo "Histórias mais velhas<br>";
+            $showStory = "SELECT * FROM story ORDER BY id_story DESC LIMIT 5";
+            foreach($pdo->query($showStory) as $key => $value){
+                $id_story = $value['id_story'];
+                $nome = $value['nome'];
+                echo "<a href='story.php?input_1=". $id_story ."'>$nome</a><br>";
+            }
+        ?>
 
-    <?php
-        //php da chamada da história e o link para ela
-        echo "Histórias mais bem avaliadas<br>";
-        $showStory = "SELECT * FROM story ORDER BY rating DESC LIMIT 5";
-        foreach($pdo->query($showStory) as $key => $value){
-            $id_story = $value['id_story'];
-            $nome = $value['nome'];
-            echo "<a href='story.php?input_1=". $id_story ."'>$nome</a><br>";
-        }
-        echo "<br>";
-        echo "Histórias mais velhas<br>";
-        $showStory = "SELECT * FROM story ORDER BY id_story DESC LIMIT 5";
-        foreach($pdo->query($showStory) as $key => $value){
-            $id_story = $value['id_story'];
-            $nome = $value['nome'];
-            echo "<a href='story.php?input_1=". $id_story ."'>$nome</a><br>";
-        }
-    ?>
-    <a href="loja.php"><button>Loja</button></a>
-    <a href="includes/closing_session.php"><button>Sair</button></a>
-    <button onclick="menu_appear()">Menu</button>
-    <script src="../js/menu.js"></script>
-    <script src="../js/central.js"></script>
+        <a href="leave.php"><button>Sair</button></a>
+        <button onclick="menu_appear()">Menu</button>
+    </div>
+
+    <script src="../js/menu.js?v=1.01"></script>
+    <script src="../js/central.js?v=1.01"></script>
 </body>
 </html>

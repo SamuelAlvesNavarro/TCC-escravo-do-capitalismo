@@ -128,36 +128,51 @@
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
 </head>
 <body>
-<div id="all-menu" class="all_menu disappear">
-        <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
-            <i class="fa-sharp fa-solid fa-xmark"></i>
-        </div>
-        <div id="menu" class="menu off">
-            <div class="lamp">
-                <div class="wire">
-                    
-                </div>
-                <i onclick="switchMenu(1)" class="fa-solid fa-lightbulb"></i>
+    <div id="all-menu" class="all_menu disappear">
+            <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
+                <i class="fa-sharp fa-solid fa-xmark"></i>
             </div>
-            <div class="lamp-area" onclick="switchMenu(2)">
-            </div> 
-            <div class="content">
-                <ul>
-                    <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
-                    <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
-                    <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
-                    <li><a href="criacao.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
-                    <div class="search">
-                        <form action="pesquisa.php" method="get">
-                            <div class="search-box">
-                                <button class="btn-search"><i class="fas fa-search"></i></button>
-                                <input required type="text" name="busca" class="input-search" placeholder="Pesquisar história........">
-                            </div>
-                        </form>
+            <div id="menu" class="menu off">
+                <div class="lamp">
+                    <div class="wire">
+                        
                     </div>
-                </ul>
-                <!--<img src="https://clipart-library.com/images/rcLoyAzKi.png" alt="" srcset="">-->
+                    <i onclick="switchMenu(1)" class="fa-solid fa-lightbulb"></i>
+                </div>
+                <div class="lamp-area" onclick="switchMenu(2)">
+                </div> 
+                <div class="content">
+                    <ul>
+                        <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
+                        <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
+                        <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
+                        <li><a href="criacao.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
+                        <div class="search">
+                            <form action="pesquisa.php" method="get">
+                                <div class="search-box">
+                                    <button class="btn-search"><i class="fas fa-search"></i></button>
+                                    <input required type="text" name="busca" class="input-search" placeholder="Pesquisar história........">
+                                </div>
+                            </form>
+                        </div>
+                    </ul>
+                    <!--<img src="https://clipart-library.com/images/rcLoyAzKi.png" alt="" srcset="">-->
+                </div>
             </div>
+        </div>
+    </div>
+    <div id="alertWr" class="alert hide">
+        <span class="fa-solid fa-circle-xmark n_icon"></span>
+        <span class="msg">Você errou: -25<i class='fa-solid fa-coins'></i></span>
+        <div class="close-btn" onclick="callOutNotification(0)">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+    <div id="alertRi" class="alert hide">
+        <span class="fa-solid fa-check n_icon"></span>
+        <span class="msg">Você acertou: +25<i class='fa-solid fa-coins'></i> +100<i class="fa-solid fa-book"></i></span>
+        <div class="close-btn" onclick="callOutNotification(1)">
+            <span class="fas fa-times"></span>
         </div>
     </div>
     <div class="all transi" id="all">
