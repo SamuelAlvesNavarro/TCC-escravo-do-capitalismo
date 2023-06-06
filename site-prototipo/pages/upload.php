@@ -3,6 +3,8 @@
     require 'includes/online.php';
     global $pdo;
 
+    /* FILTRAR CÓDIGO HTML E PHP */
+
     function contemTagsHTML($string){
         $padrao = '/<[^>]*>/'; // Encontra as tags HTML
         
@@ -14,13 +16,40 @@
         }
     }
 
+    function filtrarPHP($string) {
+        $padrao = '/<\?php|<\?=|<\?/';
+        
+        if (preg_match($padrao, $string)) {
+            return true; // A string contém código PHP
+        } else {
+            return false; // A string não contém código PHP
+        }
+    }
+
+    function vazio($var){
+        if(empty($var)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     $email = $_SESSION['email'];
     $array = explode("\n", $_POST['story']);
     $historia = array_unique($array);
     $historia = implode("",$array);
 
-    if(contemTagsHTML($historia)){
+    //Filtros da história
+    if(contemTagsHTML($historia) || contemTagsHTML($titulo)){
         header("Location: error.php");
+        exit;
+    }
+    if(filtrarPHP($historia) || filtrarPHP($titulo)){
+        header("Location: error.php");
+        exit;
+    }
+    if(filter_var($historia, FILTER_CALLBACK, array('options' => 'vazio'))){
+        header("Location: criacao.php");
         exit;
     }
 
@@ -256,7 +285,7 @@
     }
 
     /* IN ITSELF */
-    
+
     $titulo = $_POST['titulo'];
     $referencia = $_POST['link-reference'];
     $perfil = -1;
@@ -266,6 +295,45 @@
         $perfil = $value['fk_id_profile'];
     }
 
+    //Se vazio campo do titulo
+    if(filter_var($titulo, FILTER_CALLBACK, array('options' => 'vazio'))){
+        header("Location: criacao.php");
+        exit;
+    }
+
+    //Se vazio algum campo da pergunta
+    $questao = $_POST['question'];
+    $a = $_POST['a'];
+    $b = $_POST['b'];
+    $c = $_POST['c'];
+    $d = $_POST['d'];
+    $certa = $_POST['certa'];
+    if(filter_var($questao, FILTER_CALLBACK, array('options' => 'vazio'))){
+        header("Location: criacao.php");
+        exit;
+    }
+    if(filter_var($a, FILTER_CALLBACK, array('options' => 'vazio'))){
+        header("Location: criacao.php");
+        exit;
+    }
+    if(filter_var($b, FILTER_CALLBACK, array('options' => 'vazio'))){
+        header("Location: criacao.php");
+        exit;
+    }
+    if(filter_var($c, FILTER_CALLBACK, array('options' => 'vazio'))){
+        header("Location: criacao.php");
+        exit;
+    }
+    if(filter_var($d, FILTER_CALLBACK, array('options' => 'vazio'))){
+        header("Location: criacao.php");
+        exit;
+    }
+    if(filter_var($certa, FILTER_CALLBACK, array('options' => 'vazio'))){
+        header("Location: criacao.php");
+        exit;
+    }
+
+    //Upload da história
     if($perfil == -1)header("Location: error.php?erro=10");
     else{
 
