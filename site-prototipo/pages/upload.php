@@ -39,6 +39,7 @@
     $historia = array_unique($array);
     $historia = implode("",$array);
 
+    //Filtros da história
     if(contemTagsHTML($historia) || contemTagsHTML($titulo)){
         header("Location: error.php");
         exit;
@@ -332,6 +333,7 @@
         exit;
     }
 
+    //Upload da história
     if($perfil == -1)header("Location: error.php?erro=10");
     else{
 
