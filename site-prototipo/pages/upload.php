@@ -4,12 +4,12 @@
     global $pdo;
 
     function contemTagsHTML($string){
-        $padrao = '/<[^>]*>/'; // Expressão regular para encontrar tags HTML
+        $padrao = '/<[^>]*>/'; // Encontra as tags HTML
         
         if(preg_match($padrao, $string)) {
-            return true; // A string contém tags HTML
+            return true; // A string contém HTML
         } else {
-            return false; // A string não contém tags HTML
+            return false; // A string não contém HTML
         }
     }
 
