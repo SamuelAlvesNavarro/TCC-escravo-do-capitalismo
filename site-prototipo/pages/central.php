@@ -117,7 +117,7 @@
         }
         echo "<br>";
         echo "Histórias mais velhas<br>";
-        $showStory = "SELECT * FROM story ORDER BY id_story DESC LIMIT 5";
+        $showStory = "SELECT * FROM story ORDER BY id_story ASC LIMIT 5";
         foreach($pdo->query($showStory) as $key => $value){
             $id_story = $value['id_story'];
             $nome = $value['nome'];

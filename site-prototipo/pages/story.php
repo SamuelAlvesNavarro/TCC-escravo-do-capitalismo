@@ -203,7 +203,8 @@
                                     $id_page = RetornarIdPage($id_story, 0);
                                     $sql = "select texto from history where fk_id_page='$id_page'";
                                     foreach ($pdo->query($sql) as $key => $value) {
-                                        echo "<pre style='font-family: 'Indie Flower''>".$value["texto"]."</pre>";
+                                        $text = stripslashes($value["texto"]);
+                                        echo "<pre style='font-family: 'Indie Flower''>".$text."</pre>";
                                     }
                                 ?>
                             </div>
