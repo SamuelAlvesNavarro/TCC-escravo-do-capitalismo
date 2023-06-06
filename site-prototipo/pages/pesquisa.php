@@ -27,81 +27,95 @@
         <div class="search-bar-container">
             <form method="get" action="pesquisa.php">
                 <div class="bar">
-                    <input type="text" name="busca" id="" class="searchbar">
-                    <button>Pesquisar</button>
+                    <div class="search">
+                        <input type="text" name="busca" id="" class="searchbar" placeholder="Pesquisar por histórias">
+                        <button>Pesquisar</button>
+                    </div>
                 </div>
             </form>
         </div>
-        
-        <a style="margin: 2vw;" href='central.php'>Volta</a>
-        <?php
-            if($_SERVER["REQUEST_METHOD"] == "GET"){
-                $titulos = array();
-                $i = 0;
+        <div class="results">
+            <div class="title-r">
+                <h1>Resultados<h1>
+            </div>
+            <div class="no-res">
+                <h4>Não há resultados para essa pesquisa, tente novamente considerando que a pesquisa diferencia letras maiúsculas e minúsculas. Conteúdos Relacionados: </h4>
+                <div class="result" onclick='story("x")'>
+                    <a href='#'>x</a>
+                </div>
+            </div>
+            <a style="margin: 2vw;" href='central.php'>Volta</a>
+            <?php
+                if($_SERVER["REQUEST_METHOD"] == "GET"){
+                    $titulos = array();
+                    $i = 0;
 
-                if(isset($_GET['busca']) && $_GET['busca'] != ""){
+                    if(isset($_GET['busca']) && $_GET['busca'] != ""){
 
-                    $pesquisa = $_GET['busca'];
-                    $sql = "SELECT * FROM story";
+                        $pesquisa = $_GET['busca'];
+                        $sql = "SELECT * FROM story";
 
-                    foreach($pdo->query($sql) as $key => $value){
-                        $titulos[$i][0] = $value["nome"];
-                        $sim = similar_text($titulos[$i][0], $pesquisa, $perc);
-                        $titulos[$i][1] = $perc;
-                        $titulos[$i][2] = $value["id_story"];
-                        $i++;
-                    }
+                        foreach($pdo->query($sql) as $key => $value){
+                            $titulos[$i][0] = $value["nome"];
+                            $sim = similar_text($titulos[$i][0], $pesquisa, $perc);
+                            $titulos[$i][1] = $perc;
+                            $titulos[$i][2] = $value["id_story"];
+                            $i++;
+                        }
 
-                    $key_values = array_column($titulos, 1); 
-                    array_multisort($key_values, SORT_DESC, $titulos);
+                        $key_values = array_column($titulos, 1); 
+                        array_multisort($key_values, SORT_DESC, $titulos);
 
-                    if($titulos[0][1] == 0){ // if TRUE ---> Não houve correspondência no banco
-                        echo "<hr><br><br> Não há resultados para essa pesquisa, tente novamente considerando que a pesquisa diferencia letras maiúsculas e minúsculas. Conteúdos Relacionados: <br><br>";
+                        if($titulos[0][1] == 0){ // if TRUE ---> Não houve correspondência no banco
 
-                        for($i = 0; $i < sizeof($titulos); $i++){
-                            $id_story = $titulos[$i][2];
-                            echo "<a href='#' onclick='story(".$titulos[$i][2].")'>". $titulos[$i][0] ."</a><br>";
-                        }  
 
-                    }else{
+                            echo "Não há resultados para essa pesquisa, tente novamente considerando que a pesquisa diferencia letras maiúsculas e minúsculas. Conteúdos Relacionados: ";
 
-                        for($i = 0; $i < sizeof($titulos); $i++){
-                            echo "<a href='#' onclick='story(".$titulos[$i][2].")'>". $titulos[$i][0] ."</a><br>";
-                        }  
-                    } 
-
-                }else if($_GET['busca'] != ""){
-
-                    $pesquisa = "";
-                    $sql = "SELECT * FROM story";
-
-                    foreach($pdo->query($sql) as $key => $value){
-                        $titulos[$i][0] = $value["nome"];
-                        $sim = similar_text($titulos[$i][0], $pesquisa, $perc);
-                        $titulos[$i][1] = $perc;
-                        $titulos[$i][2] = $value["id_story"];
-                        $i++;
-                    }
-
-                    $key_values = array_column($titulos, 1); 
-                    array_multisort($key_values, SORT_DESC, $titulos);
-
-                    if(isset($titulos[0][1])){
-                        if($titulos[0][1] == 0){
-                            echo "<hr><br><br> Não há resultados para essa pesquisa, tente novamente considerando que a pesquisa diferencia letras maiúsculas e minúsculas. Conteúdos Relacionados: <br><br>";
-        
                             for($i = 0; $i < sizeof($titulos); $i++){
                                 $id_story = $titulos[$i][2];
                                 echo "<a href='#' onclick='story(".$titulos[$i][2].")'>". $titulos[$i][0] ."</a><br>";
                             }  
-        
+
+                        }else{
+
+                            for($i = 0; $i < sizeof($titulos); $i++){
+                                echo "<a href='#' onclick='story(".$titulos[$i][2].")'>". $titulos[$i][0] ."</a><br>";
+                            }  
+                        } 
+
+                    }else if($_GET['busca'] != ""){
+
+                        $pesquisa = "";
+                        $sql = "SELECT * FROM story";
+
+                        foreach($pdo->query($sql) as $key => $value){
+                            $titulos[$i][0] = $value["nome"];
+                            $sim = similar_text($titulos[$i][0], $pesquisa, $perc);
+                            $titulos[$i][1] = $perc;
+                            $titulos[$i][2] = $value["id_story"];
+                            $i++;
                         }
+
+                        $key_values = array_column($titulos, 1); 
+                        array_multisort($key_values, SORT_DESC, $titulos);
+
+                        if(isset($titulos[0][1])){
+                            if($titulos[0][1] == 0){
+                                echo "<hr><br><br> Não há resultados para essa pesquisa, tente novamente considerando que a pesquisa diferencia letras maiúsculas e minúsculas. Conteúdos Relacionados: <br><br>";
+            
+                                for($i = 0; $i < sizeof($titulos); $i++){
+                                    $id_story = $titulos[$i][2];
+                                    echo "<a href='#' onclick='story(".$titulos[$i][2].")'>". $titulos[$i][0] ."</a><br>";
+                                }  
+            
+                            }
+                        }
+                    }else{
+                        echo "Sua pesquisa está vazia! Tente novamente";
                     }
-                }else{
-                    echo "Sua pesquisa está vazia! Tente novamente";
                 }
-            }
-        ?>
+            ?>
+        </div>
     </div>
 <div id="hidden_form_container" style="display:none;"></div>
 
