@@ -1,0 +1,459 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    scroll-behavior: smooth;
+  }
+  
+  /* ZA COLORS */
+  .za-colors {
+    background-color: #121212;
+    background-color: #1e1e1e;
+    background-color: #222222;
+    background-color: #242424;
+    background-color: #272727;
+    background-color: #2c2c2c;
+    background-color: #2d2d2d;
+    background-color: #333333;
+    background-color: #343434;
+    background-color: #383838;
+  }
+  
+  :root {
+    color-scheme: light;
+    --banner-color: white;
+    --svg-fill: rgba(0,0,0,0.4);
+    --color: #121212;
+    --shadow-int: 0.7;
+    --main-color: rgb(250, 196, 196);
+
+
+
+    --moon-show: none;
+    --sun-show: block;
+  }
+  
+  .dark {
+    color-scheme: dark;
+    --banner-color: #121212;
+    --svg-fill: rgba(255, 255, 255, 0.767);
+    --color: white;
+    --shadow-int: 1;
+    --main-color: black;
+
+
+
+    --moon-show: block;
+    --sun-show: none;
+  }
+  
+  .header-all {
+    overflow: hidden;
+    transition: 0.5s linear;
+    background-color: var(--banner-color);
+  }
+  
+  .header {
+    position: relative;
+    transition: 0.5s linear;
+    background-color: transparent;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+  }
+  
+  .to {
+    color: var(--color);
+    font-family: "Poppins", serif;
+    width: 3%;
+    overflow: hidden;
+    height: 100vh;
+    transition: 0.5s linear;
+    transition: box-shadow 0.1s linear;
+    display: flex;
+    justify-content: center;
+    box-shadow: none;
+    cursor: pointer;
+  }
+  
+  .to-store {
+    writing-mode: vertical-lr;
+  }
+  
+  .to-store:hover {
+    box-shadow: inset 28px 0px 19px -7px rgba(0, 0, 0, var(--shadow-int));
+  }
+  
+  .central-menu {
+    position: relative;
+    width: 94%;
+    height: 90vh;
+    margin-top: 5vh;
+    z-index: 1;
+  }
+  
+  .header svg {
+    transition: 0.5s linear;
+    width: 50px;
+    height: 50px;
+    fill: var(--svg-fill);
+    border: 5px solid var(--svg-fill);
+  }
+  
+  .logo-pic {
+    position: absolute;
+    left: -10px;
+  }
+  
+  .mode-switch {
+    color: var(--color);
+    font-size: 30px;
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    cursor: pointer;
+    transition: 0.5s linear;
+  }
+  
+  .fa-sun {
+    transition: 0.5s linear;
+  }
+  
+  .fa-sun:hover {
+    color: rgb(255, 123, 0);
+    transform: rotate(360deg);
+  }
+  
+  .fa-moon {
+    transition: 0.5s linear;
+  }
+  
+  .fa-moon:hover {
+    color: rgb(0, 119, 255);
+    transform: rotate(360deg);
+  }
+  
+  .user-op {
+    width: 50px;
+    height: 50px;
+    border: var(--color) 5px solid;
+    border-radius: 50%;
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s linear;
+    overflow: hidden;
+  }
+  
+  .pcpic {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s linear;
+    color: var(--color);
+  }
+  
+  .user-op:hover {
+    border: red solid 5px;
+    border-radius: 0;
+  }
+  
+  .pencil-op {
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    right: -10px;
+    cursor: pointer;
+    transition: 0.4s linear;
+  }
+  
+  .pencil-op a {
+    transition: 0.5s linear;
+    color: var(--color);
+  }
+  
+  .pencil-op:hover {
+    transform: rotate(360deg);
+  }
+  
+  .banner-title {
+    text-align: center;
+    transition: 1s linear;
+    font-family: "Poppins", serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 40px;
+    letter-spacing: 5px;
+    transform: translate(-50%, -50%);
+  }
+  
+  .to-main {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    animation: to-main-ani;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    cursor: pointer;
+    color: var(--color);
+    font-size: 50px;
+    transition: 0.5s linear;
+    z-index: 10;
+  }
+  
+  @keyframes to-main-ani {
+    50% {
+      bottom: 50px;
+    }
+    100% {
+      bottom: 10px;
+    }
+  }
+  .search {
+    height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    border-radius: 30px;
+    border: 0px solid transparent;
+    transition: 0.2s linear;
+  }
+  
+  .search-bar {
+    width: calc(100% - 80px);
+    height: 50px;
+    text-align: left;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    color: #121212;
+    font-size: 20px;
+    font-family: "Poppins", serif;
+    padding-left: 20px;
+  }
+  
+  .bt-search {
+    width: 80px;
+    height: 50px;
+    text-align: center;
+    border: none;
+    background-color: black;
+    border-left: 3px solid black;
+    color: white;
+    line-height: 50px;
+  }
+  
+  .has-value {
+    width: 100%;
+    height: 50px;
+    border: 2px solid var(--color);
+  }
+  
+  /* MAIN */
+  .main {
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background: var(--main-color);
+    transition: 0.5s linear;
+  }
+  
+  .deco {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    min-height: 100vh;
+  }
+  
+  .deco .bat {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    fill: red;
+    z-index: 1;
+    top: 100%;
+    transition: .5s linear;
+    transform: rotate(45deg);
+    display: var(--moon-show);
+    animation-iteration-count: infinite;
+  }
+  .deco .day-an{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    fill: red;
+    z-index: 1;
+    top: 100%;
+    transition: .5s linear;
+    transform: rotate(45deg);
+    display: var(--sun-show);
+    animation-iteration-count: infinite;
+  }
+  .moon{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    transform: rotate(0deg);
+    left: 10%;
+    display: var(--moon-show);
+    top: 10% !important;
+  }
+  .bat1{
+      left: 0%;
+      animation: up-down1;
+      animation-duration: 5s;
+      animation-delay: 2s !important;
+  }
+  .bat2{
+      left: -10%;
+      animation: up-down2;
+      animation-duration: 6s;
+      animation-delay: 1s !important;
+  }
+  .bat3{
+      left: -20%;
+      animation: up-down3;
+      animation-duration: 9s;
+      animation-delay: 1s !important;
+  }
+  .bat4{
+      left: -30%;
+      animation: up-down4;
+      animation-duration: 14s;
+      animation-delay: 1s !important;
+  }
+  .bat5{
+      left: -40%;
+      animation: up-down5;
+      animation-duration: 3s;
+      animation-delay: 1s !important;
+  }
+  .bat6{
+    left: 10%;
+    animation: up-down6;
+    animation-duration: 3s;
+    animation-delay: 1s !important;
+}
+.bat7{
+    left: 20%;
+    animation: up-down7;
+    animation-duration: 30s;
+    animation-delay: 1s !important;
+}
+.bat8{
+    left: 30%;
+    animation: up-down8;
+    animation-duration: 5s;
+    animation-delay: 1s !important;
+}
+.bat9{
+    left: 40%;
+    animation: up-down9;
+    animation-duration: 7s;
+    animation-delay: 1s !important;
+}
+.bat10{
+    left: 50%;
+    animation: up-down10;
+    animation-duration: 4s;
+    animation-delay: 1s !important;
+}
+
+  
+  .main-over {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    min-height: calc(100vh - 20px);
+    top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .presentation {
+    height: -moz-max-content;
+    height: max-content;
+    width: 100%;
+    padding: 10px;
+  }
+  
+@keyframes up-down1 {
+    to {
+        left: 100%;
+        top: -50px;
+    }
+}
+@keyframes up-down2 {
+    to {
+        left: 90%;
+        top: -50px;
+    }
+}
+@keyframes up-down3 {
+    to {
+        left: 80%;
+        top: -50px;
+    }
+}
+@keyframes up-down4 {
+    to {
+        left: 70%;
+        top: -50px;
+    }
+}
+@keyframes up-down5 {
+    to {
+        left: 60%;
+        top: -50px;
+    }
+}
+@keyframes up-down6 {
+    to {
+        left: 110%;
+        top: -50px;
+    }
+}
+@keyframes up-down7 {
+    to {
+        left: 120%;
+        top: -50px;
+    }
+}
+@keyframes up-down8 {
+    to {
+        left: 130%;
+        top: -50px;
+    }
+}
+@keyframes up-down9 {
+    to {
+        left: 140%;
+        top: -50px;
+    }
+}
+@keyframes up-down10 {
+    to {
+        left: 150%;
+        top: -50px;
+    }
+}
+
