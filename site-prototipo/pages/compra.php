@@ -33,7 +33,7 @@
     } else{
         
         //compra realizada
-        $compra_user = "INSERT INTO compra VALUES('$perfil', '$gadget', '')";
+        $compra_user = "INSERT INTO compra VALUES('$perfil', '$gadget', '".date('y-m-d')."')";
         $prepare = $pdo->prepare($compra_user);
         $prepare->execute();
 

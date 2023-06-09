@@ -191,6 +191,13 @@
     width: calc(100% - 50px);
     outline: none;
 }
+.search-menu input{
+    width: calc(100% - 50px);
+    outline: none;
+}
+.input-search:autofill{
+    background: transparent !important;
+}
 .search-box{
     margin-top: 42px;
     margin-left: 0;
@@ -200,14 +207,18 @@
     font-family: 'Playfair Display', serif;
   }
   .input-search{
+    width: calc(100% - 80px);
     border-style: none;
     padding: 10px;
     font-size: 28px;
     letter-spacing: 2px;
     transition: all .5s ease-in-out;
-    background-color: transparent;
+    background-color: transparent !important;
     padding-right: 40px;
     color:#000000;
+  }
+  #search-thing{
+    background: transparent !important;
   }
   .input-search::placeholder{
     color:#121212;

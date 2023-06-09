@@ -63,7 +63,7 @@
                     <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
                     <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
                     <li><a href="criacao.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
-                    <div class="search">
+                    <div class="search-menu">
                         <form action="pesquisa.php" method="get">
                             <div class="search-box">
                                 <button class="btn-search"><i class="fas fa-search"></i></button>
