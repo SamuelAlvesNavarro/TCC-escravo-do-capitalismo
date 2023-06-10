@@ -110,6 +110,10 @@ body {
   z-index: 1;
 }
 
+.mode {
+  cursor: pointer;
+}
+
 .header svg, .historito {
   transition: 0.5s linear;
   width: 50px;
