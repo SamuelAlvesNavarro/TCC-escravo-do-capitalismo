@@ -107,6 +107,9 @@ body {
 .images-page{
   border-top: 20px solid rgb(0, 38, 255);
 }
+.images-page img{
+  max-width: 300px;
+}
 .reference-writing{
   border-top: 20px solid rgb(0, 255, 21);
 }
@@ -235,6 +238,7 @@ body {
   width: 100%;
   padding-bottom: 200px;
   background-color: var(--background-page);
+  font-family: "Poppins" !important;
 }
 .interaction-container{
   width: 94%;
@@ -246,14 +250,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Indie Flower";
   flex-direction: column;
 }
 .unanswered{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  font-family: "Indie Flower";
 }
 .question-container{
   width: 70%;
