@@ -48,31 +48,24 @@ function anchor(anchor){
 
 
 var results = document.getElementsByClassName("results");
-
-var ageRank = document.getElementById("ageRank");
-var ageValue = ageRank.value;
-
-ageValue.addEventListener("change", () => {
-    var value_age = ageRank.value;
-    if(value_age = "inv"){
-        results[0].style.flexDirection = "column-reverse";
-    }
-    if(value_age = "dir"){
-        results[0].style.flexDirection = "column";
-    }
-})
-
 var bestRank = document.getElementById("bestRank");
-var bestValue = bestRank.value;
+var ageRank = document.getElementById("ageRank");
 
-bestValue.addEventListener("change", () => {
-    var value_age = bestRank .value;
-    if(value_age = "inv"){
-        results[1].style.flexDirection = "column-reverse";
-    }
-    if(value_age = "dir"){
-        results[1].style.flexDirection = "column";
-    }
-})
+ageRank.addEventListener("change", () => {ranks(0)})
+bestRank.addEventListener("change", () => {ranks(1)})
 
+function ranks(n){
+
+    if(n == 0) var spin = "ageRankA";
+    if(n == 1) var spin = "bestRankA";
+    
+    var spinA = document.getElementsByClassName(spin);
+
+    for(var i = 0; i < spinA.length; i++){
+        spinA[i].style.order = spinA[i].style.order * -1;
+    }
+}
+
+//ranks(0);
+//ranks(1);
 setTimeout(showInput, 500);

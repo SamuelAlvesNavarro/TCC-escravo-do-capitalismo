@@ -7,6 +7,10 @@
     if(isset($_GET['busca']))$pesquisa = $_GET['busca'];
 
     $perfil = returnProfileId($_SESSION['email']);
+
+    if($pesquisa = "novo"){
+        $pesquisa = "#";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

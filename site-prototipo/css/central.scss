@@ -63,6 +63,15 @@
     padding: 0 20px 0 20px;
     justify-content: space-between;
     display: none;
+    background-color: var(--section-color);
+    transition: .5s linear;
+  }
+  .header-phone a{
+    transition: .5s linear;
+    color: var(--color);
+  }
+  .search-phone{
+    font-size: 35px;
   }
   .fa-bars{
     cursor: pointer;
@@ -398,12 +407,16 @@
     cursor: pointer;
   }
   .results{
+    position: relative;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     gap: 5px;
+    max-height: 220px;
   }
 
   .results a{
+    min-width: 0;
     background-image: linear-gradient(
       to right,
       #54b3d6,
@@ -521,5 +534,10 @@
 @media (max-width: 700px) {
   .name{
     padding-right: 0 !important;
+  }
+}
+@media (max-width: 300px) {
+  .search-phone{
+    display: none;
   }
 }

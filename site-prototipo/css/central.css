@@ -57,6 +57,17 @@ body {
   padding: 0 20px 0 20px;
   justify-content: space-between;
   display: none;
+  background-color: var(--section-color);
+  transition: 0.5s linear;
+}
+
+.header-phone a {
+  transition: 0.5s linear;
+  color: var(--color);
+}
+
+.search-phone {
+  font-size: 35px;
 }
 
 .fa-bars {
@@ -403,12 +414,16 @@ body {
 }
 
 .results {
+  position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   gap: 5px;
+  max-height: 220px;
 }
 
 .results a {
+  min-width: 0;
   background-image: linear-gradient(to right, #54b3d6, #54b3d6 50%, var(--color) 50%);
   font-size: 20px;
   background-size: 200% 100%;
@@ -527,5 +542,10 @@ body {
 @media (max-width: 700px) {
   .name {
     padding-right: 0 !important;
+  }
+}
+@media (max-width: 300px) {
+  .search-phone {
+    display: none;
   }
 }/*# sourceMappingURL=central.css.map */
