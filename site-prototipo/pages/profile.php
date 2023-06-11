@@ -6,6 +6,7 @@
     $perfildono = $_GET['profile'];
     $sql = "SELECT * FROM user_common WHERE fk_id_profile = '$perfildono'";
     foreach($pdo->query($sql) as $key => $value){
+        $id_dono = $value['id_user'];
         $nome = $value['nome'];
         $email = $value['email'];
         $senha = $value['senha'];
@@ -22,7 +23,21 @@
 
     $perfilEntrando = -1;
 
-   
+    /* GET RANK */
+
+    $sql = "SELECT * FROM user_common order by pontos_leitor DESC";
+    $rank = 1;
+
+    foreach($pdo->query($sql) as $key => $value){
+        if($value["id_user"] == $id_dono){
+            break;
+        }
+        $rank++;
+    }
+
+    if($rank < 4) $to_show_rank = "prem";
+    else $to_show_rank = "norm";
+    /* RANK STOP */
 
     $email = $_SESSION['email'];
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
@@ -51,6 +66,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/profile.css?v=1.01">
+    <link rel="stylesheet" href="../css/menu.css?v=1.01">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <title>Perfil</title>
@@ -59,7 +75,7 @@
     <div class="deco">
         <!-- deco -->
     </div>
-    <div class="all" >
+    <div class="all">
         <div class="header">
             <div class="picture-container" style='<?php echo $fundo ?>'>
                 <div class="picture" style='<?php echo $foto ?>'>
@@ -88,6 +104,7 @@
                             <div class="points">
                                 <?php echo "<span class='pointsh4'>$moedas</span>"; ?><i class="fa-solid fa-coins"></i>
                             </div>
+                            <?php echo "<div class='rank ".$to_show_rank."'>".$rank."º</div>"; ?>
                         </div>
                         <div class="histprof">
                             <div class="title">

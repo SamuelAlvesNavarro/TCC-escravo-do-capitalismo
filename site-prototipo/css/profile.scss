@@ -22,7 +22,7 @@
 }
 
 :root {
-  --all-bc: 255,255,255;
+  --all-bc: rgba(255,255,255,0.9);
   --all-bc-color: #ffffff;
   --sheet-bc: #ffffff;
   --color: black;
@@ -35,7 +35,7 @@
 }
 
 .dark {
-  --all-bc: 0,0,0;
+  --all-bc: rgba(18,18,18,1);
   --all-bc-color: #121212;
   --sheet-bc: #121212;
   --color: white;
@@ -80,9 +80,9 @@
   height: 75px;
   border-radius: 50%;
   position: absolute;
-  left: 50%;
+  right: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(50%, -50%);
   border: 1px var(--all-bc) solid;
   background-repeat: no-repeat;
   background-position: center;
@@ -184,6 +184,51 @@ a {
   line-height: 50px;
 }
 
+.rank{
+  padding: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  font-weight: 600;
+}
+.norm{
+  font-size: 40px;
+}
+.prem{
+  animation: premLe 15s;
+  animation-iteration-count: infinite;
+  font-size: 100px;
+  text-shadow: 2px 2px 9px #ffffff;
+}
+@keyframes premLe{
+  10%{
+    color: red;
+  }
+  20%{
+    color: blue;
+  }
+  30%{
+    color: rgb(16, 236, 16);
+  }
+  50%{
+    color: rgb(241, 7, 46);
+  }
+  60%{
+    color: yellow
+  }
+  70%{
+    color: rgb(253, 25, 253);
+  }
+  80%{
+    color: rgb(0, 255, 242);
+  }
+  90%{
+    color: gold;
+  }
+  to{
+    color: rgb(255, 255, 255);
+  }
+}
 /* EDIÇÃO DE DADOS */
 h3 {
   margin-top: 10px;
@@ -276,31 +321,43 @@ label {
     background-size: cover;
     background-repeat: no-repeat;
   }
-  .all{
-    background: rgba(var(--all-bc), 0.9) !important;
+  .header{
+    height: 0;
+    min-height: 0;
+    padding: 0;
   }
   .picture-container {
-    height: 0;
-    display: none;
     background-image: none !important;
+    z-index: 0;
   }
   .picture {
     position: fixed;
     width: 200px;
     height: 200px;
-    right: 0px;
+    top: 50px;
+    right: 30%;
+    transform: translate(150%, 0%);
   }
   .main{
+    z-index: 1;
     padding-top: 10px;
-    border-radius: 20px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
     background-color: var(--all-bc);
-    opacity: 0.8 !important;
+    opacity: 0.95 !important;
     width: 70%;
     top: 0px;
     height: 100%;
     right: 0px;
+  }
+}
+@media (max-width: 1100px) {
+  body{
+    background-image: none !important;
+  }
+  .all{
+    background-color: var(--all-bc) !important;
+  }
+  .rank{
+    padding: 10px !important;
   }
 }
 @media (max-width: 900px) {
