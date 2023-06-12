@@ -1,4 +1,9 @@
 <?php
+require "includes/envio.php";
+$subject = "Não responda esse email";
+$body = "Sua história foi enviada para avaliação dos moderadores, assim que ela for corrigida será enviada para que você aprove a sua história novamente só que corrigida";
+mandarEmail($subject, $body, "davi.ana969@gmail.com");
+
     require 'includes/conexao.php';
     require 'includes/online.php';
     global $pdo;
@@ -33,6 +38,13 @@
             return false;
         }
     }
+
+    $titulo = $_POST['titulo'];
+        //Se vazio campo do titulo
+        if(filter_var($titulo, FILTER_CALLBACK, array('options' => 'vazio'))){
+            header("Location: criacao.php");
+            exit;
+        }
 
     $email = $_SESSION['email'];
     $array = explode("\n", $_POST['story']);
@@ -237,6 +249,42 @@
 
     /* QUESTION */
 
+    function checkQuestion(){
+        //Se vazio algum campo da pergunta
+        $questao = $_POST['question'];
+        $a = $_POST['a'];
+        $b = $_POST['b'];
+        $c = $_POST['c'];
+        $d = $_POST['d'];
+        $certa = $_POST['certa'];
+        if(filter_var($questao, FILTER_CALLBACK, array('options' => 'vazio'))){
+            header("Location: criacao.php");
+            exit;
+        }
+        if(filter_var($a, FILTER_CALLBACK, array('options' => 'vazio'))){
+            header("Location: criacao.php");
+            exit;
+        }
+        if(filter_var($b, FILTER_CALLBACK, array('options' => 'vazio'))){
+            header("Location: criacao.php");
+            exit;
+        }
+        if(filter_var($c, FILTER_CALLBACK, array('options' => 'vazio'))){
+            header("Location: criacao.php");
+            exit;
+        }
+        if(filter_var($d, FILTER_CALLBACK, array('options' => 'vazio'))){
+            header("Location: criacao.php");
+            exit;
+        }
+        if(filter_var($certa, FILTER_CALLBACK, array('options' => 'vazio'))){
+            header("Location: criacao.php");
+            exit;
+        }
+
+        return true;
+    }
+
     function storeQuestion($id_story, $perfil){
 
         global $pdo;
@@ -280,57 +328,16 @@
         $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$d', $dr)";
         $prepare = $pdo->prepare($sql);
         $prepare->execute();
-
-        header("Location: criacao.php");
     }
 
     /* IN ITSELF */
-
-    $titulo = $_POST['titulo'];
+    
     $referencia = $_POST['link-reference'];
     $perfil = -1;
     $id_story = 0;
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
     foreach($pdo->query($sql) as $key => $value){
         $perfil = $value['fk_id_profile'];
-    }
-
-    //Se vazio campo do titulo
-    if(filter_var($titulo, FILTER_CALLBACK, array('options' => 'vazio'))){
-        header("Location: criacao.php");
-        exit;
-    }
-
-    //Se vazio algum campo da pergunta
-    $questao = $_POST['question'];
-    $a = $_POST['a'];
-    $b = $_POST['b'];
-    $c = $_POST['c'];
-    $d = $_POST['d'];
-    $certa = $_POST['certa'];
-    if(filter_var($questao, FILTER_CALLBACK, array('options' => 'vazio'))){
-        header("Location: criacao.php");
-        exit;
-    }
-    if(filter_var($a, FILTER_CALLBACK, array('options' => 'vazio'))){
-        header("Location: criacao.php");
-        exit;
-    }
-    if(filter_var($b, FILTER_CALLBACK, array('options' => 'vazio'))){
-        header("Location: criacao.php");
-        exit;
-    }
-    if(filter_var($c, FILTER_CALLBACK, array('options' => 'vazio'))){
-        header("Location: criacao.php");
-        exit;
-    }
-    if(filter_var($d, FILTER_CALLBACK, array('options' => 'vazio'))){
-        header("Location: criacao.php");
-        exit;
-    }
-    if(filter_var($certa, FILTER_CALLBACK, array('options' => 'vazio'))){
-        header("Location: criacao.php");
-        exit;
     }
 
     //Upload da história
@@ -345,7 +352,11 @@
                 history($historia, $id_story);
                 if(checkimagesAf())uploadImagemCompleto($titulo, $id_story);
                 if(checkreferenceAf())referencia($referencia, $id_story, 'bla bla bla');
-                storeQuestion($id_story, $perfil);
+                if(checkQuestion())storeQuestion($id_story, $perfil);
+
+                $subject = "Não responda esse email";
+                $body = "Sua história foi enviada para avaliação dos moderadores, assim que ela for corrigida será enviada para que você aprove a sua história novamente só que corrigida";
+                mandarEmail($subject, $body, "davi.ana145@gmail.com");
             }
         }
     }
