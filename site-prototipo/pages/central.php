@@ -146,7 +146,7 @@
                     <h2>Olá, <?php echo $apelido?></h2>
                 </div>
                 <div class="section bhis">
-                    <h1>Melhores Histórias</h1>
+                    <h1>Histórias</h1>
                     <div class="selects">
                         <div class="col1 sel-col">
                             <select name="" id="ageRank" class="ageRank select">
@@ -156,7 +156,7 @@
                             <div class="results-age results">
                                 <?php
                                     $i = 1;
-                                    $showStory = "SELECT * FROM story ORDER BY id_story DESC";
+                                    $showStory = "SELECT * FROM story where status = 3 ORDER BY id_story DESC";
                                     foreach($pdo->query($showStory) as $key => $value){
                                         $id_story = $value['id_story'];
                                         $nome = $value['nome'];
@@ -174,7 +174,7 @@
                             <div class="results-best results">
                                 <?php
                                     $i = 1;
-                                    $showStory = "SELECT * FROM story ORDER BY rating DESC";
+                                    $showStory = "SELECT * FROM story where status = 3 ORDER BY rating DESC";
                                     foreach($pdo->query($showStory) as $key => $value){
                                         $id_story = $value['id_story'];
                                         $nome = $value['nome'];

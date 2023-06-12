@@ -12,10 +12,17 @@
     }
     if(isset($_GET['input_1'])){
         $id_story = $_GET['input_1'];
-        $story = "SELECT * from story where id_story = $id_story";
+        $story = "SELECT * from story where id_story = $id_story and status = 3";
+        $prepare = $pdo->prepare($story);
+        $prepare->execute();
+
+        if($prepare->rowCount() == 0)header("Location: error.php");
+
         foreach ($pdo->query($story) as $key => $value) {
-            $titulo = $value['nome'];
-            $rating = $value['rating'];
+
+            
+                $titulo = $value['nome'];
+                $rating = $value['rating'];
         }
     }else{
         header("Location: error.php?erro=14");
