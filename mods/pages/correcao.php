@@ -1,8 +1,6 @@
 <?php
     include "includes/conexao.php";
 
-    $sql = "select id_story from story where status = 1";
-
 
 ?>
 <!DOCTYPE html>
@@ -33,7 +31,7 @@
         function corrigir(n){
             var theForm, newInput1;
             theForm = document.createElement('form');
-            theForm.action = 'emCorrecao.php';
+            theForm.action = 'programaticos/emCorrecao.php';
             theForm.method = 'post';
             newInput1 = document.createElement('input');
             newInput1.type = 'hidden';

@@ -1,5 +1,5 @@
 <?php 
-    include "includes/conexao.php";
+    include "../includes/conexao.php";
 
     $story = $_POST['id_story'];
 
@@ -7,5 +7,5 @@
     $prepare = $pdo->prepare($sql);
     $prepare->execute();
 
-    header("Location: corrigir.php?story=".$story);
+    header("Location: ../corrigir.php?story=".$story);
 ?>

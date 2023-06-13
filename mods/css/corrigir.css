@@ -2,12 +2,28 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: "Poppins" !important;
 }
 body{
     background-color: #121212;
+    color: white;
     padding: 50px;
-    font-family: "Poppins";
 }
 .img-story{
     max-width: 300px;
+}
+
+.text-area-story{
+    background-color: #353535;
+    border: none;
+    border-top: 5px solid red;
+    color: white;
+    width: 50%;
+    outline: none;
+    height: 100vh;
+}
+.to-show{
+    border: white 1px portrait;
+    width: calc(50% - 20px);
+    padding-left: 10px;
 }
