@@ -3,10 +3,11 @@
     require "includes/online.php";
     require "includes/returnUser.php";
     $text = $_POST['text'];
-    $perfil = returnProfileId($email);
-    $id_story = $_POST['story'];
+    $profile = returnProfileId($email);
+    $fk_id_profile = $_POST['profile'];
+    $code = $_POST['escolha'];
 
-    $denucia = "INSERT INTO report_story VALUES(NULL, )";
+    $denucia = "INSERT INTO report_profile VALUES(NULL, $fk_id_profile, $profile, $text, $code, 0)";
     $prepare = $pdo->prepare($denuncia);
     $prepare->execute();
     
