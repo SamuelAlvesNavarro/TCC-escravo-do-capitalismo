@@ -27,3 +27,18 @@ body{
     width: calc(50% - 20px);
     padding-left: 10px;
 }
+.input-title{
+    background-color: #353535;
+    color: white;
+    border: none;
+    outline: none;
+}
+pre{
+    line-break: anywhere;
+}
+pre h1, pre h2, pre h3, pre h4, pre h5, pre h6{
+    display: inline;
+}
+.table{
+    margin-top: 40px !important;
+}
