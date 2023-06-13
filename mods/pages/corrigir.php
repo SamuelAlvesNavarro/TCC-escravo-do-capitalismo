@@ -27,30 +27,24 @@
             $prepare -> execute();
 
             if($prepare -> rowCount() > 0){
-                echo '
-                <div class="page slide">
-                    <div>
-                        <div class="writing images-page">
-                            <div id="title-container" class="story-title-container">
-                                <div class="story-title transi">
-                                    <h1 class="transi">Imagens</h1>
-                                </div>
-                                <div onclick = "checkStuff(1)" class="bt-open-close">
-                                    <div class="bt">
-                                        <i style="font-size: 30px;" class="exp-min fa-solid fa-expand"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="images" spellcheck="false">';
                                     
-                                    foreach ($pdo->query($sql) as $key => $value) {
-                                        echo "<img src='../../site-prototipo/pages/". $value['path'] ."'><br><br>";
-                                    }
-                                echo 
-                            '</div>
-                        </div>
-                    </div>
-                </div>';
+                foreach ($pdo->query($sql) as $key => $value) {
+                    echo "<img class='img-story' src='../../site-prototipo/pages/". $value['path'] ."'><br><br>";
+                }
+                            
             }
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Corrigir</title>
+</head>
+<body>
+    
+</body>
+</html>
