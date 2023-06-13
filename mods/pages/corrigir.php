@@ -91,7 +91,7 @@
                                                 <img class='img-story' src='../../site-prototipo/pages/". $value['path'] ."'>
                                             </td>
                                             <td>
-                                                <button class='btn btn-danger' onclick='deleteImg(". $value['id_image'] .",".$id_story.")'>Deletar</button>
+                                                <button type='button' class='btn btn-danger' onclick='deleteImg(". $value['id_image'] .",".$id_story.")'>Deletar</button>
                                             </td>
                                           </tr>";
                                 }
@@ -132,7 +132,7 @@
                                                 ". $value['path'] ."
                                             </td>
                                             <td>
-                                                <button class='btn btn-danger' onclick='deleteRef(". $value['id_reference'] .",".$id_story.")'>Deletar</button>
+                                                <button type='button' class='btn btn-danger' onclick='deleteRef(". $value['id_reference'] .",".$id_story.")'>Deletar</button>
                                             </td>
                                           </tr>";
                                 }
@@ -160,9 +160,9 @@
 
             var theForm = document.getElementById("hidden_form_container")
             
-            if(n == 0) theForm.action = 'programaticos/deixarCorrecao.php';
+            if(n == 0) theForm.action = 'programaticos/deixar_correcao.php';
             if(n == 1) theForm.action = 'programaticos/corrigido.php';
-            if(n == 2) theForm.action = 'programaticos/deletar.php';
+            if(n == 2) theForm.action = 'programaticos/deletar_historia.php';
 
             newInput1 = document.createElement('input');
             newInput1.type = 'hidden';
@@ -189,6 +189,7 @@
             newInput2.value = id;
             imgForm.appendChild(newInput1);
             imgForm.appendChild(newInput2);
+
             imgForm.submit();
 
         }

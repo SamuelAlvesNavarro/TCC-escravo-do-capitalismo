@@ -1,4 +1,6 @@
 <?php
+    require "../includes/conexao.php";
+
     $text = $_POST['story'];
     $title = $_POST['nome'];
     $id_story = $_POST['id_story'];
@@ -11,10 +13,9 @@
     $page = "SELECT id_page from page where fk_id_story = $id_story and type = 0";
     foreach ($pdo->query($page) as $key => $value){
         $id_page = $value['id_page'];
-        return $id_page;
     }
 
-    $sql = "SELECT * FROM page WHERE fk_id_page = '$id_page'";
+    $sql = "SELECT * FROM history WHERE fk_id_page = '$id_page'";
     foreach($pdo->query($sql) as $key => $value){
         $id_history = $value['id_history'];
     }
@@ -27,5 +28,5 @@
     $prepare = $pdo->prepare($status);
     $prepare->execute();
 
-    header("Location:../correcao.php");
+    header("Location: ../correcao.php");
 ?>
