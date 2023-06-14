@@ -38,8 +38,6 @@
         rmdir($caminho);
 
     }else{
-        
-        echo "cuuuu";
 
         $path = "SELECT path FROM images WHERE id_image = '$img'";
         foreach($pdo->query($path) as $key => $value){
