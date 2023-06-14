@@ -93,8 +93,4 @@
         // Coletando id_page
     }
 
-    $sql = "SELECT * FROM page WHERE fk_id_story = '$id_story'";
-    foreach($pdo->query($sql) as $key => $value){
-        $id_page[$key] = $value['id_page'];
-    }
 ?>
