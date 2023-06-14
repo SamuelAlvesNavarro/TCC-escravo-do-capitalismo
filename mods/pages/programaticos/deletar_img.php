@@ -21,8 +21,12 @@
             $caminho = $value['path'];
         } 
         
-        $del = "DELETE FROM images WHERE id_image = '$img'";
-        $prepare = $pdo->prepare($del);
+        $delImg = "DELETE FROM images WHERE id_image = '$img'";
+        $prepare = $pdo->prepare($delImg);
+        $prepare->execute();
+
+        $delPage = "DELETE FROM page WHERE id_page = '$id_page' and type = 1";
+        $prepare = $pdo->prepare($delPage);
         $prepare->execute();
 
         $destroy_img = '../../../site-prototipo/pages/'.$caminho;
