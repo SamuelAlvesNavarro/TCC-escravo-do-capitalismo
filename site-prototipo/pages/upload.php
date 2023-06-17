@@ -233,7 +233,7 @@ mandarEmail($subject, $body, "davi.ana969@gmail.com");
         if($referencia != ''){
             return true;
         }else{
-            //header("Location: criacao.php");
+            header("Location: criacao.php");
             return false;
         }
     }
@@ -244,7 +244,7 @@ mandarEmail($subject, $body, "davi.ana969@gmail.com");
         $reference = "INSERT INTO reference values(NULL, '$id_page', '$referencia')";
         $prepare = $pdo->prepare($reference);
         $prepare->execute();
-        //header("Location: criacao.php");
+        header("Location: criacao.php");
     }
 
     /* QUESTION */
@@ -353,10 +353,6 @@ mandarEmail($subject, $body, "davi.ana969@gmail.com");
                 if(checkimagesAf())uploadImagemCompleto($titulo, $id_story);
                 if(checkreferenceAf())referencia($referencia, $id_story, 'bla bla bla');
                 if(checkQuestion())storeQuestion($id_story, $perfil);
-
-                $subject = "Não responda esse email";
-                $body = "Sua história foi enviada para avaliação dos moderadores, assim que ela for corrigida será enviada para que você aprove a sua história novamente só que corrigida";
-                mandarEmail($subject, $body, "davi.ana145@gmail.com");
             }
         }
     }

@@ -1,6 +1,5 @@
 <?php
     function isOnline(){
-      session_cache_expire(3);
         session_start();
           if(isset($_SESSION['email'])){
               return true;
