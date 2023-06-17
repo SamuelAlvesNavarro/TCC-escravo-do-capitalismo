@@ -19,7 +19,7 @@
     <div>
         <?php
 
-        $historiasPostadas = "SELECT * FROM story WHERE fk_id_profile";
+        $historiasPostadas = "SELECT * FROM story WHERE fk_id_profile = ";
 
         ?>
     </div>
