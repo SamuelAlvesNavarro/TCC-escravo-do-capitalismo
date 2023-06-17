@@ -43,7 +43,7 @@
                     <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
                     <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
                     <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
-                    <li><a href="criacao.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
+                    <li><a href="writerHub.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
                     <div class="search-menu">
                         <form action="pesquisa.php" method="get">
                             <div class="search-box">
@@ -94,7 +94,14 @@
                     if(isset($_GET['busca']) && $_GET['busca'] != ""){
 
                         $pesquisa = $_GET['busca'];
-                        $sql = "SELECT * FROM story order by id_story desc";
+                        $sql = "SELECT * FROM story where status = 3 order by id_story desc ";
+                        $prepare = $pdo->prepare($sql);
+                        $prepare->execute();
+
+                        if($prepare->rowCount() == 0){
+                            echo "<div class='no-res-title'>Não há resultados.</div>";
+                            exit;
+                        }
 
                         foreach($pdo->query($sql) as $key => $value){
                             $titulos[$i][0] = $value["nome"];

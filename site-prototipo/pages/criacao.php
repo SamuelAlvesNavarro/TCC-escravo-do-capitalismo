@@ -24,7 +24,7 @@
 <body>
 <form id="form-criacao" method="post" action="upload.php" enctype="multipart/form-data" autocomplete="off">
     <div class="all">
-        <a href="central.php"><div class="toogle section">
+        <a href="writerHub.php"><div class="toogle section">
             <i class="fa-solid fa-chevron-left"></i>
         </div></a>
         <div class="title section">

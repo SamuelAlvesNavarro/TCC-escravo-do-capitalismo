@@ -73,7 +73,7 @@
                     <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
                     <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
                     <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
-                    <li><a href="criacao.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
+                    <li><a href="writerHub.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
                     <div class="search-menu">
                         <form action="pesquisa.php" method="get">
                             <div class="search-box">
@@ -118,7 +118,7 @@
                     </a>
                 </div>
                 <div class="pencil-op">
-                    <a href="criacao.php"><i class="fa-solid fa-pencil"></i></a>
+                    <a href="writerHub.php"><i class="fa-solid fa-pencil"></i></a>
                 </div>
                 <div class="banner-title">
                     <h1>Histórias Assombrosas</h1>
@@ -203,7 +203,7 @@
                 </div>
             </div>
             <div class="rank section">
-                <h1>Top usuários</h1>
+                <h1>Top Leitores</h1>
                 <div class="ranks-container">
                     <div class="top top1">
                         <div class="line-div ld1">
