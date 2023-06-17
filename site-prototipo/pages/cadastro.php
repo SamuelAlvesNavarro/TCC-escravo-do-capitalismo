@@ -45,6 +45,7 @@
                     header("Location: error.php?erro=3");
                 }else{
                     session_start();
+                    session_cache_expire(720);
                     $_SESSION['email'] = $email;
                     header("Location:central.php");
                 }
