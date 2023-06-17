@@ -63,7 +63,6 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="" alt="">
     <?php
         echo "<h1>$title</h1>";
     ?>
@@ -86,16 +85,18 @@
         }
     ?>
     <form method="post" action="check_story.php">
-        <button type="submit" name="button">Aprovar</button>
+        <button type="submit" name="button" value="<?php echo $id_story; ?>">Aprovar</button>
     </form>
 
     <?php
         if(isset($_POST['button'])){
+            echo $id_story = $_POST['button'];
             $status = "UPDATE story SET status = 3 WHERE id_story = '$id_story'";
             $prepare = $pdo->prepare($status);
             $prepare->execute();
+            echo $prepare->rowCount();
 
-            header("Location:historias-postadas.php");
+            //header("Location:historias-postadas.php");
         }
     ?>
 </body>
