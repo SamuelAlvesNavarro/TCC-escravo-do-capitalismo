@@ -175,7 +175,7 @@
                         <div class="fotos editP">
                             <?php
                                 if($perfildono == $perfilEntrando){
-                                    $perfil = $perfildono;
+                                    $perfil = $perfilEntrando;
                                     $gadget = "SELECT * FROM gadget WHERE type = 0";
                                     foreach($pdo->query($gadget) as $key => $value){
                                         $item = $value['in_it'];
@@ -203,7 +203,7 @@
                         <div class="fundos editP">
                             <?php
                                 if($perfildono == $perfilEntrando){
-                                    $perfil = $perfildono;
+                                    $perfil = $perfilEntrando;
                                     $gadget = "SELECT * FROM gadget WHERE type = 1";
                                     foreach($pdo->query($gadget) as $key => $value){
                                         $item = $value['in_it'];

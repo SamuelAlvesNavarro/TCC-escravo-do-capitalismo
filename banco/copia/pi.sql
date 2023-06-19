@@ -335,21 +335,6 @@ CREATE TABLE `report_profile` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `report_story`
---
-
-CREATE TABLE `report_story` (
-  `id_report` int(11) NOT NULL,
-  `fk_id_reported_story` int(11) NOT NULL,
-  `fk_id_reporter` int(11) NOT NULL,
-  `reason` varchar(50) DEFAULT NULL,
-  `code` int(11) NOT NULL,
-  `status_report` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `score`
 --
 
@@ -683,7 +668,7 @@ ALTER TABLE `comment`
 -- Limitadores para a tabela `compra`
 --
 ALTER TABLE `compra`
-  ADD CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`fk_id_gadget`) REFERENCES `gadget` (`id_gadget`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`fk_id_gadget`) REFERENCES `gadget` (`id_gadget`),
   ADD CONSTRAINT `compra_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -752,12 +737,6 @@ ALTER TABLE `report_profile`
   ADD CONSTRAINT `report_profile_ibfk_1` FOREIGN KEY (`fk_id_reported`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `report_profile_ibfk_2` FOREIGN KEY (`fk_id_reporter`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
 
--- Limitadores para a tabela `report_story`
---
-ALTER TABLE `report_story`
-  ADD CONSTRAINT `report_story_ibfk_1` FOREIGN KEY (`fk_id_reported_story`) REFERENCES `story` (`id_story`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `report_story_ibfk_2` FOREIGN KEY (`fk_id_reporter`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
-
 --
 -- Limitadores para a tabela `score`
 --
@@ -775,7 +754,7 @@ ALTER TABLE `story`
 -- Limitadores para a tabela `user_common`
 --
 ALTER TABLE `user_common`
-  ADD CONSTRAINT `user_common_ibfk_1` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_common_ibfk_1` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`),
   ADD CONSTRAINT `user_common_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 

@@ -153,7 +153,7 @@
                         <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
                         <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
                         <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
-                        <li><a href="criacao.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
+                        <li><a href="writerHub.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
                         <div class="search">
                             <form action="pesquisa.php" method="get">
                                 <div class="search-box">

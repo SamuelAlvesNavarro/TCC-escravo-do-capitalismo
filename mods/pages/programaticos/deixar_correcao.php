@@ -28,5 +28,27 @@
     $prepare = $pdo->prepare($status);
     $prepare->execute();
 
-    header("Location: ../correcao.php");
+
+    /* QUESTÃO */
+
+    $questao = $_POST['pergunta'];
+    $sql = "UPDATE question SET quest_itself = '$questao' WHERE fk_id_story = $id_story";
+    $prepare = $pdo->prepare($sql);
+    $prepare->execute();
+
+    $sql = "SELECT * FROM question WHERE fk_id_story = '$id_story'";
+    foreach($pdo->query($sql) as $key => $value){
+        $id_question = $value['id_question'];
+    }
+
+    $sql = "select * from answer where fk_id_question = ".$id_question;
+    $i = 1;
+    foreach($pdo->query($sql) as $key => $value){
+        $sql = "UPDATE answer SET text = '".$_POST['rep'.$i.'']."', status = '".$_POST['status_a_'.$i.'']."' where id_answer = ".$value['id_answer']." ";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+        $i++;
+    }
+
+   header("Location: ../correcao.php");
 ?>

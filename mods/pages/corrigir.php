@@ -144,6 +144,48 @@
                 </div>
             </div>
         </div>
+        <?php
+            $sql = "select * from question where fk_id_story = ".$id_story;
+            foreach ($pdo->query($sql) as $key => $value) {
+               $question = $value['quest_itself'];
+               $id_question = $value['id_question'];
+            }
+        ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Pergunta</h1><br>
+                    <input type="text" name="pergunta" id="" value="<?php echo $question; ?>">
+                </div>
+                <br>
+                <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th>Alternativa</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $i = 1;
+                                $answer = "SELECT * FROM answer WHERE fk_id_question = '$id_question'";
+                                foreach($pdo->query($answer) as $key => $value){
+                                    echo "
+                                    
+                                        <tr>
+                                            <td><input type='text' name='rep".$i."' value=".$value['text'].">
+                                            <td><input type='number' min='0' max='1' name='status_a_".$i."' value=".$value['status'].">
+                                        </tr>
+                                    
+                                    
+                                    ";
+                                    $i++;
+                                }
+                            ?>
+                        </tbody>
+                </table>
+            </div>
+        </div>
     </form>
     <form id="img_form" method="post"></form>
 
