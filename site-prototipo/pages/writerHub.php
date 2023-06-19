@@ -246,7 +246,7 @@
     function deleteH(n){
         var theForm, newInput1;
         theForm = document.createElement('form');
-        theForm.action = 'deletarH.php';
+        theForm.action = 'deletar_historia.php';
         theForm.method = 'post';
         newInput1 = document.createElement('input');
         newInput1.type = 'hidden';

@@ -1,28 +1,24 @@
 <?php
-    require "../includes/conexao.php";
-    global $pdo;
+    require "includes/conexao.php";
 
-    $id_story = $_POST['id_story'];
+    $id_story = $_POST['story'];
+    $img = $_POST['id_img'];
 
-    function delHistory($id_story, $pdo){
-
-        // Coletando id_page
-        $sql = "SELECT * FROM page WHERE fk_id_story = '$id_story' and type = 0";
-        foreach($pdo->query($sql) as $key => $value){
-            $id_page = $value['id_page'];
-        }
-        // Coletando id_page
-
-    }
-    function delImage($id_story, $pdo){
-
+    function returnIdPage($id_story){
+        global $pdo;
         // Coletando id_page
         $sql = "SELECT * FROM page WHERE fk_id_story = '$id_story' and type = 1";
         foreach($pdo->query($sql) as $key => $value){
             $id_page = $value['id_page'];
+            return $id_page;
         }
         // Coletando id_page
+    }
 
+    function delImage($id_story){
+        global $pdo;
+
+        $id_page = returnIdPage($id_story);
         // CONTANDO QUANTAS IMAGENS DA HISTÓRIA RESTAM
         $count = "SELECT COUNT(*) as numb FROM images WHERE fk_id_page = '$id_page'";
         foreach ($pdo->query($count) as $key => $value){
@@ -35,7 +31,7 @@
             $img[$key] = $value['id_image'];
         }
 
-        //APAGANDO CADA UMA IMAGEM POR VEZ
+        //APAGANDO CADA DAS IMAGENS POR VEZ
             for($i = 0; $i < $num; $i++){            
                 $img = $img[$i];
 
@@ -54,13 +50,13 @@
                     $prepare = $pdo->prepare($delPage);
                     $prepare->execute();
 
-                    $destroy_img = '../../../site-prototipo/pages/'.$caminho;
+                    $destroy_img = $caminho;
                     unlink($destroy_img);
 
                     $caminho_parts = explode("/", $caminho);
                     unset($caminho_parts[3]);
                     $caminho = implode("/", $caminho_parts);
-                    $caminho = '../../../site-prototipo/pages/'.$caminho;
+                    $caminho = $caminho;
 
                     echo $caminho;
                     
@@ -83,14 +79,22 @@
                 }
         }
     }
-    function delReference($id_story, $pdo){
-    
-        // Coletando id_page
-        $sql = "SELECT * FROM page WHERE fk_id_story = '$id_story' and type = 2";
-        foreach($pdo->query($sql) as $key => $value){
-            $id_page = $value['id_page'];
-        }
-        // Coletando id_page
+
+    $id_page = returnIdPage($id_story);
+    $images = "SELECT * FROM images WHERE fk_id_page = '$id_page'";
+    $count = "SELECT COUNT(*) as numb FROM images WHERE fk_id_page = '$id_page'";
+    foreach ($pdo->query($count) as $key => $value){
+        $num = $value['numb'];
     }
+
+    for($i = 0; $i < $num; $i++){
+        delImage($id_story);
+    }
+
+    $delStory = "DELETE FROM story WHERE id_story = '$id_story'";
+    $prepare = $pdo->prepare($delStory);
+    $prepare->execute();
+
+    header("Location: writerHub.php");
 
 ?>
