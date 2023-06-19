@@ -91,7 +91,7 @@
         </div>
         <div class="container">
             <section class="bcs">
-                <h1>Fundos de Perfil</h1>
+                <h1 style="color:white;">Fundos de Perfil</h1>
                 <div class="itens">
                     <?php
                         $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 1";
