@@ -20,6 +20,36 @@
   --card-bc: #181717;
 }
 
+.nav{
+  height: 60px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.go-back{
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 30px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: -13px 10px 65px -5px black;
+}
+.go-menu{
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 30px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: -13px 10px 65px -5px black;
+}
+.logo-pic svg{
+  width: 50px;
+  height: 50px;
+  border: 5px black solid;
+}
 .bc-letters {
   width: 100%;
   min-height: 100vh;
@@ -88,11 +118,11 @@
 }
 
 .bcs {
-  background-color: #ccc5b9;
+  background-color: #045cff;
 }
 
 .pc {
-  background-color: #403d39;
+  background-color: white;
 }
 
 .container {

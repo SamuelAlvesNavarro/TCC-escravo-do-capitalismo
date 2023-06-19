@@ -53,6 +53,20 @@
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/central.css">
     <title>Central</title>
+    <style>
+        .deco{
+            z-index: 1000;
+            position: fixed;
+            bottom: -60px;
+            left: 10px;
+        }
+        .historito-svg{
+            font-size: 150px;
+            color: black;
+            opacity: 1;
+            border: none;
+        }
+    </style>
 </head>
 <body>
     <div id="all-menu" class="all_menu disappear">
