@@ -1,7 +1,7 @@
 <?php
-    require "includes/conexao.php";
     require "includes/online.php";
     require "includes/returnUser.php";
+    
     $email = $_SESSION['email'];
     $perfil = returnProfileId($email);
     $nome = $_POST['nome'];
@@ -10,6 +10,7 @@
     $apelido = $_POST['apelido'];
 
 
+    $check = '';
     $checkEmail = "SELECT * FROM user_common WHERE email = '$emailTroca'";
     foreach($pdo->query($checkEmail) as $key => $value){
         $check = $value['email'];
@@ -26,5 +27,5 @@
     $prepare = $pdo->prepare($sql);
     $prepare->execute();
 
-    require "includes/closing_session.php";
+    header("Location: includes/closing_session.php");
 ?>

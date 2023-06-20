@@ -29,22 +29,23 @@
         <div class="container-login" id="container-login">
             <div class="login" id="login">
                 <div class="logo-container" style="padding-bottom: 2vh;">
-                    <div class="logo">
-                        
+                    <div class="divzinha">
+                        <div class="historias-span">Histórias</div>
+                    </div>
+                    <div class="divzinha">
+                        <div id="assombrosas-span" class="assombrosas-span no-as">Assombrosas</div>
                     </div>
                 </div>
                 <form autocomplete="off" class="login-form" id="login-form" name="login" method="post" action="login.php">
-                    <label for="email">Email:</label><br>
                     <input id="input-email" autocomplete="false" class="input" type="email" id="email" name="email" placeholder="Email"><br>
-                    <label for="senha">Senha:</label><br>
                     <input id="input-senha" minlength="8" maxlength="20" autocomplete="false" class="input senha-login" type="password" id="senha" name="senha" placeholder="Senha"><br>
                     <div class="after" id="after">
                         <input class="login-submit" id="submit-login" type="button" value="Login">
-                        <div id="arrowthing" class="arrowthing"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div id="arrowthing" class="arrowthing"><i class="fa-solid fa-chevron-right"></i></div>
                     </div>
                     <br><br>
                     <div class="link-new">
-                        <a class="new-user" href="#" onclick="showCadastro()">Sou novo</a>
+                        Ainda não tem conta? <a class="new-user" href="#" onclick="showCadastro()">Sou novo</a>
                     </div>
                 </form>
             </div>
@@ -80,6 +81,14 @@
             </div>
         </div>
     </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="../js/acesso.js?v=1.01"></script>
+    <script>
+        function typingAni(){
+            $("#assombrosas-span").removeClass("no-as");
+        }
+        setTimeout(typingAni, 1500);
+    </script>
 </body>
 </html>
