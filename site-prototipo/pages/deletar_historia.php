@@ -1,7 +1,7 @@
 <?php
-    require "../includes/conexao.php";
+    require "includes/conexao.php";
 
-    $id_story = $_POST['id_story'];
+    $id_story = $_POST['story'];
     $img = $_POST['id_img'];
 
     function returnIdPage($id_story){
@@ -50,13 +50,13 @@
                     $prepare = $pdo->prepare($delPage);
                     $prepare->execute();
 
-                    $destroy_img = '../../../site-prototipo/pages/'.$caminho;
+                    $destroy_img = $caminho;
                     unlink($destroy_img);
 
                     $caminho_parts = explode("/", $caminho);
                     unset($caminho_parts[3]);
                     $caminho = implode("/", $caminho_parts);
-                    $caminho = '../../../site-prototipo/pages/'.$caminho;
+                    $caminho = $caminho;
 
                     echo $caminho;
                     
@@ -95,6 +95,6 @@
     $prepare = $pdo->prepare($delStory);
     $prepare->execute();
 
-    header("Location:../correcao.php");
+    header("Location: writerHub.php");
 
 ?>

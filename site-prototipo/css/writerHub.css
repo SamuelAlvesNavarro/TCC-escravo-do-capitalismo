@@ -22,6 +22,7 @@ color-scheme: light;
 --color: black;
 --body-bc: #121212;
 --nav: white;
+--table-bc: white;
 }
 
 .dark {
@@ -29,6 +30,7 @@ color-scheme: dark;
 --color: white;
 --body-bc: #282E43;
 --nav: #0F143C;
+--table-bc: #282E43;
 }
 
 body{
@@ -196,11 +198,53 @@ body{
     background-color: rgb(231, 58, 14);
   }
   
+
+  .table{
+    margin: 20px auto;
+    border-radius: 15px;
+    width: 80%;
+    padding: 10px;
+    text-align: left;
+    font-size: 20px;
+    box-shadow: rgba(0, 0, 0, 0.466) 0px 7px 19px 0px;
+    background-color: var(--table-bc);
+    overflow-x: hidden;
+  }
+  tr, td, th{
+    padding: 5px;
+    border: 1px solid black;
+ }
+  .table button{
+    width:auto;
+    padding: 10px;
+    border: none;
+    color: white;
+  }
+  .del{
+   background-color: rgb(165, 53, 53);
+  }
+  .keep{
+    background-color: rgb(41, 114, 41);
+  }
+
+@media (max-width: 800px) {
+    .main{
+      flex-direction: column;
+    }
+    .main_section{
+      flex-grow: 1;
+    }
+}
 @media (max-width: 500px) {
     .action:hover{
         height: auto;
     }
     .go-back{
         display: none;
+    }
+    .table{
+      width: 100%;
+      margin: 0;
+      max-width: 100%;
     }
 }

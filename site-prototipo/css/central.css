@@ -30,6 +30,7 @@ body {
   --main-color: white;
   --main-over-color: #272727;
   --section-color: white;
+  --select-color: rgb(0, 119, 255);
   --moon-show: none;
   --sun-show: block;
 }
@@ -43,6 +44,7 @@ body {
   --main-color: #282E43;
   --main-over-color: #282E43;
   --section-color: #0F143C;
+  --select-color: #282E43;
   --moon-show: block;
   --sun-show: none;
 }
@@ -409,7 +411,7 @@ body {
   border: none;
   border-radius: 15px;
   padding: 15px;
-  background-color: var(--main-over-color);
+  background-color: var(--select-color);
   cursor: pointer;
 }
 

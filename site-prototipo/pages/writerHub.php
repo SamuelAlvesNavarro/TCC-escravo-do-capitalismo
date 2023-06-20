@@ -148,6 +148,39 @@
             </div>
             <div class="main_section big-section">
                 <div class="rank">
+                    <h1>Controle de Histórias</h1>
+                    <div class="ta">
+                        <table class="table table-dark">
+                            <thead>
+                                <tr>
+                                    <th>História</th>
+                                    <th>Manter com o Historito</th>
+                                    <th>Deletar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $answer = "SELECT * FROM story WHERE fk_id_profile = '$perfil' and status = 3";
+                                    foreach($pdo->query($answer) as $key => $value){
+                                        echo "
+                                        
+                                            <tr>
+                                                <td>".$value['nome']."</td>
+                                                <td><button class='keep' onclick='keep(".$value['id_story'].")'>Manter</button></td>
+                                                <td><button class='del' onclick='deleteH(".$value['id_story'].")'>Deletar</button></td>
+                                            </tr>
+                                        
+                                        
+                                        ";
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="main_section big-section">
+                <div class="rank">
                     <h1>Top Escritores</h1>
                     <div class="ranks-container">
                         <div class="top top1">
@@ -188,6 +221,32 @@
         var theForm, newInput1;
         theForm = document.createElement('form');
         theForm.action = 'aprovacao.php';
+        theForm.method = 'post';
+        newInput1 = document.createElement('input');
+        newInput1.type = 'hidden';
+        newInput1.name = 'story';
+        newInput1.value = n;
+        theForm.appendChild(newInput1);
+        document.getElementById('hidden_form_container').appendChild(theForm);
+        theForm.submit();
+    }
+    function keep(n){
+        var theForm, newInput1;
+        theForm = document.createElement('form');
+        theForm.action = 'manterH.php';
+        theForm.method = 'post';
+        newInput1 = document.createElement('input');
+        newInput1.type = 'hidden';
+        newInput1.name = 'story';
+        newInput1.value = n;
+        theForm.appendChild(newInput1);
+        document.getElementById('hidden_form_container').appendChild(theForm);
+        theForm.submit();
+    }
+    function deleteH(n){
+        var theForm, newInput1;
+        theForm = document.createElement('form');
+        theForm.action = 'deletar_historia.php';
         theForm.method = 'post';
         newInput1 = document.createElement('input');
         newInput1.type = 'hidden';
