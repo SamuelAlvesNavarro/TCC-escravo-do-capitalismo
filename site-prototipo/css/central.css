@@ -361,6 +361,7 @@ body {
 .events {
   animation: bc-events 12s linear;
   animation-iteration-count: infinite;
+  flex-grow: 1;
 }
 
 @keyframes bc-events {
@@ -423,7 +424,9 @@ body {
   gap: 5px;
   max-height: 220px;
 }
-
+.bhis{
+  flex-grow: 1;
+}
 .results a {
   min-width: 0;
   background-image: linear-gradient(to right, #54b3d6, #54b3d6 50%, var(--color) 50%);

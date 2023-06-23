@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -101,7 +102,7 @@
 
 .child-background:nth-child(6) {
   font-size: 100px;
-  left: 60vw;
+  left: 61vw;
   color: rgb(201, 135, 135);
   animation-duration: 15s;
   animation-timing-function: linear;
@@ -157,6 +158,7 @@
 }
 
 .homebt a button {
+  font-family: "Roboto Mono", sans-serif;
   padding: 1.2vw;
   font-size: 1.1em;
   box-shadow: 0px 6px 12px 0px rgb(143, 142, 142);
@@ -172,13 +174,9 @@
   transition: 0.4s linear;
   z-index: 5;
   width: auto;
-  opacity: 0.75;
   height: auto;
   margin: 0 auto;
   padding: 0.6%;
-  border: white solid 0.2px;
-  background-color: rgba(39, 39, 39, 0.4);
-  border-radius: 15px;
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
@@ -188,30 +186,58 @@
 
 .logo-container {
   width: 100%;
-  height: 10vh;
-  margin-top: 2vh;
+  height: auto;
+  padding: 50px 0;
+  margin-bottom: 30px;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-.logo {
-  margin: 1.4% auto;
-  width: 10vh;
-  height: 10vh;
-  background-color: aqua;
-  border-radius: 50%;
-  background-image: url(../img/funny-cat.jpg);
-  background-position: center;
+.logo-container div{
+  font-family: "Roboto Mono", sans-serif;
+}
+.historias-span{
+  width: 9ch;
+  height: 60px;
+  animation: typing 1s linear, blink .5s linear 0s 2 alternate;
+  white-space: normal;
+  line-break: anywhere;
+  overflow: hidden;
+  font-size: 50px;
+}
+.no-as{
+  display: none;
+}
+.assombrosas-span{
+  width: 11ch;
+  animation: typing 1s linear, blink .5s linear 0s 2 alternate;
+  height: 50px;
+  white-space: normal;
+  line-break: anywhere;
+  overflow: hidden;
+  font-size: 40px;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-right: 3px solid white;
+  }
 }
 
 .login {
-  padding: 1vw;
-  border: white solid 0.2px;
-  border-radius: 15px;
+  padding: 10px;
   transition: 0.1s linear;
   opacity: 1;
 }
 
 .login-form {
-  padding: 3vw;
+  padding: 30px;
   position: relative;
 }
 
@@ -221,17 +247,18 @@
 
 .login-form input {
   font-size: 1.2em;
-  width: 100%;
-  margin-top: 1vw;
-  margin-bottom: 1vw;
-  color: aliceblue;
-  background-color: transparent;
+  width: calc(100% - 20px);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #000000;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
   border: none;
   border-bottom: white solid 0.2px;
 }
 
 .login-form input:focus {
-  background-color: transparent;
   outline: none;
   border: none;
   border-bottom: white solid 0.2px;
@@ -254,23 +281,27 @@
 }
 
 #submit-login {
+  font-family: "Roboto Mono", sans-serif;
   z-index: 10;
+  padding: 0;
   text-align: center;
   padding-right: 0px;
-  background-color: red;
+  background-color: rgb(10, 52, 14);
   width: 100%;
   height: 8vh;
-  border: rgb(221, 31, 31) solid 1px;
+  border: none;
+  color: white;
   transition: all 0.2s linear;
   margin: 0;
 }
 
 #submit-login:hover {
-  background-color: red;
+  border: rgb(31, 167, 49) solid 1px;
+  background-color: rgb(31, 167, 49);
 }
 
 .filled-login-bt {
-  background-color: rgb(126, 33, 33) !important;
+  background-color: rgb(10, 52, 14) !important;
   padding-right: 12vw !important;
   cursor: pointer;
 }
@@ -291,8 +322,10 @@
   z-index: 11;
   opacity: 1;
   height: 8vh;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
   list-style: 8vh;
-  background-color: red;
+  background-color: rgb(31, 167, 49);
   width: 0;
   overflow: hidden;
   transition: all 0.2s linear;
@@ -308,7 +341,7 @@
   width: 0;
 }
 
-.fa-arrow-right {
+.fa-chevron-right {
   font-size: 1.4em;
   margin: auto;
 }
@@ -410,6 +443,9 @@
   }
 }
 @media (max-width: 400px) {
+  .login-form {
+    padding: 0;
+  }
   .container-cadastro {
     left: -100vw;
     width: 100vw;

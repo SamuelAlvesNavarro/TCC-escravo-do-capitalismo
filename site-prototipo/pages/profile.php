@@ -25,7 +25,7 @@
 
     /* GET RANK */
 
-    $sql = "SELECT * FROM user_common order by pontos_leitor DESC";
+    $sql = "SELECT * FROM user_common order by pontos_leitor DESC limit 3";
     $rank = 1;
 
     foreach($pdo->query($sql) as $key => $value){

@@ -20,10 +20,12 @@
     }
 
     $topUsers = array();
+    $topIds = array();
     $i =  0;
-    $sql = "SELECT apelido FROM user_common order by pontos_leitor Limit 3";
+    $sql = "SELECT * FROM user_common order by pontos_leitor desc Limit 3";
     foreach($pdo->query($sql) as $key => $value){
         $topUsers[$i] = $value['apelido'];
+        $topIds[$i] = $value['id_user'];
         $i++;
     }
 
@@ -219,20 +221,20 @@
             <div class="rank section">
                 <h1>Top Leitores</h1>
                 <div class="ranks-container">
-                    <div class="top top1">
-                        <div class="line-div ld1">
+                    <div class="top top1 ld1">
+                        <div class="line-div ">
                             <div class="line line1"></div>
                         </div>
                         <div class="name name1">
-                            <?php echo $topUsers[0];?>
+                            <a class="name1" href="profile.php?profile=<?php echo $topIds[0]; ?>"><?php echo $topUsers[0];?></a>
                         </div>
                     </div>
-                    <div class="top top1">
-                        <div class="line-div ld2">
+                    <div class="top top1 ld2">
+                        <div class="line-div ">
                             <div class="line line2"></div>
                         </div>
                         <div class="name name2">
-                            <?php echo $topUsers[1];?>
+                            <a class="name2" href="profile.php?profile=<?php echo $topIds[1]; ?>"><?php echo $topUsers[1];?></a>
                         </div>
                     </div>
                     <div class="top top1 ld3">
@@ -240,7 +242,7 @@
                             <div class="line line3"></div>
                         </div>
                         <div class="name name3">
-                            <?php echo $topUsers[2];?>
+                            <a class="name3" href="profile.php?profile=<?php echo $topIds[2]; ?>"><?php echo $topUsers[2];?></a>
                         </div>
                     </div>
                 </div>
