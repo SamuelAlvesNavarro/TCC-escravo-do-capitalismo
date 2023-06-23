@@ -19,9 +19,8 @@
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_POSTFIELDS => http_build_query([
                 "recipient" => $_POST['email'],
-                "subject"   => "Não responda esse email",
-                "body"      => "Olá $apelido, não sabemos se é você tentando recuperar a senha da sua conta. Se não for, logue no site e mude sua senha, visando segurança. Se for você, aqui está: $password
-                De todo o modo recomendamos que você troque sua senha"
+                "subject"   => "Não responda esse email - por HISTORITO",
+                "body"      => "Olá $apelido, não sabemos se é você tentando recuperar a senha da sua conta. Se não for, logue no site e mude sua senha, visando segurança. Se for você, aqui está: $password. De todo o modo recomendamos que você troque sua senha"
             ])
             ]);
             $result = curl_exec($ch);

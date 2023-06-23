@@ -1,12 +1,13 @@
 <?php
-require "includes/envio.php";
-$subject = "Não responda esse email";
-$body = "Sua história foi enviada para avaliação dos moderadores, assim que ela for corrigida será enviada para que você aprove a sua história novamente só que corrigida";
-mandarEmail($subject, $body, "davi.ana969@gmail.com");
-
     require 'includes/conexao.php';
     require 'includes/online.php';
     global $pdo;
+
+    require "includes/envio.php";
+    $subject = "Não responda esse email";
+    $body = "Sua história foi enviada para avaliação dos moderadores, assim que ela for corrigida será enviada para que você aprove a sua história novamente só que corrigida";
+    mandarEmail($subject, $body, $_SESSION['email']);
+
 
     /* FILTRAR CÓDIGO HTML E PHP */
 
