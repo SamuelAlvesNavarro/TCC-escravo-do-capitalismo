@@ -113,7 +113,7 @@
                             <div class="content">
                                 <?php
                                     $i = 0;
-                                    $sql = "SELECT * FROM story WHERE fk_id_profile = '$perfildono'";
+                                    $sql = "SELECT * FROM story WHERE fk_id_profile = '$perfildono' AND status = 3";
                                     foreach($pdo->query($sql) as $key => $value){
                                         $i++;
                                         echo "

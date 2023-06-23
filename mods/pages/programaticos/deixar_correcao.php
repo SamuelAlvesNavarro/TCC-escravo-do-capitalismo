@@ -20,6 +20,7 @@
         $id_history = $value['id_history'];
     }
 
+    $text = addslashes($text);
     $sql = "UPDATE history SET texto = '$text' WHERE id_history = '$id_history'";
     $prepare = $pdo->prepare($sql);
     $prepare->execute();
