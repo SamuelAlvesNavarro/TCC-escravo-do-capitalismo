@@ -1,8 +1,13 @@
 <?php
     require "../includes/conexao.php";
+    require "corrigido.php";
 
     $img = $_POST['id_img'];
     $id_story = $_POST['id_story'];
+    $text = $_POST['story'];
+    $title = $_POST['nome'];
+
+    saveStory($text, $title, $id_story, 1);
 
     $page = "SELECT id_page from page where fk_id_story = $id_story and type = 1";
     foreach ($pdo->query($page) as $key => $value){
@@ -36,8 +41,6 @@
         unset($caminho_parts[3]);
         $caminho = implode("/", $caminho_parts);
         $caminho = '../../../site-prototipo/pages/'.$caminho;
-
-        echo $caminho;
         
         rmdir($caminho);
 

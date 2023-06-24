@@ -246,6 +246,19 @@
         document.getElementById('hidden_form_container').appendChild(theForm);
         theForm.submit();
     }
+    function rejeitar(n){
+        var theForm, newInput1;
+        theForm = document.createElement('form');
+        theForm.action = 'deletar_historia.php';
+        theForm.method = 'post';
+        newInput1 = document.createElement('input');
+        newInput1.type = 'hidden';
+        newInput1.name = 'story';
+        newInput1.value = n;
+        theForm.appendChild(newInput1);
+        document.getElementById('hidden_form_container').appendChild(theForm);
+        theForm.submit();
+    }
 </script>
 </body>
 </html>

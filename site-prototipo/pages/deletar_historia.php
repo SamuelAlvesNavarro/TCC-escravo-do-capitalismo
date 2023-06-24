@@ -2,7 +2,6 @@
     require "includes/conexao.php";
 
     $id_story = $_POST['story'];
-    $img = $_POST['id_img'];
 
     function returnIdPage($id_story){
         global $pdo;
