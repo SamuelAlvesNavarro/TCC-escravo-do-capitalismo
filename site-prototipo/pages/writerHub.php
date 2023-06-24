@@ -146,20 +146,28 @@
                     ?>
                 </ul>
             </div>
-            <div class="main_section big-section">
-                <div class="rank">
-                    <h1>Controle de Histórias</h1>
-                    <div class="ta">
-                        <table class="table table-dark">
-                            <thead>
-                                <tr>
-                                    <th>História</th>
-                                    <th>Manter com o Historito</th>
-                                    <th>Deletar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
+            <?php
+                $answer = "SELECT * FROM story WHERE fk_id_profile = '$perfil' and status = 3";
+                $prepare = $pdo->prepare($answer);
+                $prepare->execute();
+
+                if($prepare->rowCount() > 0){
+                    echo '<div class="main_section big-section">
+                    <div class="rank">
+                        <h1>Controle de Histórias</h1>
+                        <div class="ta">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>História</th>
+                                        <th>Manter com o Historito</th>
+                                        <th>Deletar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+           
+            
+                         
                                     $answer = "SELECT * FROM story WHERE fk_id_profile = '$perfil' and status = 3";
                                     foreach($pdo->query($answer) as $key => $value){
                                         echo "
@@ -173,12 +181,16 @@
                                         
                                         ";
                                     }
-                                ?>
-                            </tbody>
+                              
+                            echo'</tbody>
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> ';
+
+                                }
+            
+            ?>
             <div class="main_section big-section">
                 <div class="rank">
                     <h1>Top Escritores</h1>

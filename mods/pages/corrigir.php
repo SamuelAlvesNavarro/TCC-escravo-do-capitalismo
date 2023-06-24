@@ -42,9 +42,9 @@
             <div class="row">
                 <div class="col-6" style="padding-left: 0"><h1>Correção de História</h1></div>
                 <div class="col-6 pull-right">
-                    <button onclick="send(0, <?php echo $id_story; ?>)" type="button" class="btn btn-primary">Deixar correção</button>
-                    <button onclick="send(1, <?php echo $id_story; ?>)" type="button" class="btn btn-success">Corrigido</button>
-                    <button onclick="send(2, <?php echo $id_story; ?>)" type="button" class="btn btn-danger">Deletar</button>
+                    <button onclick="send(0, <?php echo $id_story; ?>, 0)" type="button" class="btn btn-primary">Deixar correção</button>
+                    <button onclick="send(1, <?php echo $id_story; ?>, 0)" type="button" class="btn btn-success">Corrigido</button>
+                    <button onclick="send(2, <?php echo $id_story; ?>, 0)" type="button" class="btn btn-danger">Deletar</button>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
                                                 <img class='img-story' src='../../site-prototipo/pages/". $value['path'] ."'>
                                             </td>
                                             <td>
-                                                <button type='button' class='btn btn-danger' onclick='deleteImg(". $value['id_image'] .",".$id_story.")'>Deletar</button>
+                                                <button type='button' class='btn btn-danger' onclick='send(4, ".$id_story.", ". $value['id_image'] .")'>Deletar</button>
                                             </td>
                                           </tr>";
                                 }
@@ -132,7 +132,7 @@
                                                 ". $value['path'] ."
                                             </td>
                                             <td>
-                                                <button type='button' class='btn btn-danger' onclick='deleteRef(". $value['id_reference'] .",".$id_story.")'>Deletar</button>
+                                                <button type='button' class='btn btn-danger' onclick='send(5, ".$id_story.", ". $value['id_reference'] .")'>Deletar</button>
                                             </td>
                                           </tr>";
                                 }
@@ -188,6 +188,7 @@
         </div>
     </form>
     <form id="img_form" method="post"></form>
+    <form id="ref_form" method="post"></form>
 
     <script>
 
@@ -198,13 +199,31 @@
             preH.innerHTML = textarea.value;
         })
 
-        function send(n, id){
+        function send(type, id, n){
 
             var theForm = document.getElementById("hidden_form_container")
             
-            if(n == 0) theForm.action = 'programaticos/deixar_correcao.php';
-            if(n == 1) theForm.action = 'programaticos/corrigido.php';
-            if(n == 2) theForm.action = 'programaticos/deletar_historia.php';
+            if(type == 0) theForm.action = 'programaticos/deixar_correcao.php';
+            if(type == 1) theForm.action = 'programaticos/corrigido.php';
+            if(type == 2) theForm.action = 'programaticos/deletar_historia.php';
+
+            if(type == 4){
+                theForm.action = 'programaticos/deletar_img.php';
+                newInput2 = document.createElement('input');
+                newInput2.type = 'hidden';
+                newInput2.name = 'id_img';
+                newInput2.value = n;
+                theForm.appendChild(newInput2);
+            }
+
+            if(type == 5){
+                theForm.action = 'programaticos/deletar_ref.php';
+                newInput2 = document.createElement('input');
+                newInput2.type = 'hidden';
+                newInput2.name = 'id_ref';
+                newInput2.value = n;
+                theForm.appendChild(newInput2);
+            }
 
             newInput1 = document.createElement('input');
             newInput1.type = 'hidden';
@@ -214,28 +233,6 @@
             theForm.submit();
 
         }
-
-        function deleteImg(n, id){
-
-            var imgForm = document.getElementById("img_form")
-
-            imgForm.action = 'programaticos/deletar_img.php';
-
-            newInput1 = document.createElement('input');
-            newInput1.type = 'hidden';
-            newInput1.name = 'id_img';
-            newInput1.value = n;
-            newInput2 = document.createElement('input');
-            newInput2.type = 'hidden';
-            newInput2.name = 'id_story';
-            newInput2.value = id;
-            imgForm.appendChild(newInput1);
-            imgForm.appendChild(newInput2);
-
-            imgForm.submit();
-
-        }
-
     </script> 
 </body>
 </html>

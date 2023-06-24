@@ -68,7 +68,7 @@
     </div>
     <div class="all">
         <div class="section main-s">
-            <div class="content">
+            <div class="content-in">
                 <div class="title">
                     <h1>Loja</h1>
                 </div>

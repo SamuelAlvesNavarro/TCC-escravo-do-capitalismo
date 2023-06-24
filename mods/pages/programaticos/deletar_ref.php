@@ -1,9 +1,10 @@
 <?php
     require "../includes/conexao.php";
 
+    $ref = $_POST['id_ref'];
+    $id_story = $_POST['id_story'];
     $text = $_POST['story'];
     $title = $_POST['nome'];
-    $id_story = $_POST['id_story'];
 
     function saveStory($text, $title, $id_story, $st){
 
@@ -55,7 +56,12 @@
         
     }
 
-    saveStory($text, $title, $id_story, 2);
+    saveStory($text, $title, $id_story, 1);
 
-    header("Location: ../correcao.php");
+    $del = "DELETE FROM reference WHERE id_reference = '$ref'";
+    $prepare = $pdo->prepare($del);
+    $prepare->execute();
+
+
+    //header("Location:../corrigir.php?story=".$id_story);
 ?>
