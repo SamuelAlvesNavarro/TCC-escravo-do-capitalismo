@@ -33,6 +33,7 @@
     /* QUESTÃO */
 
     $questao = $_POST['pergunta'];
+    $questao = addslashes($questao);
     $sql = "UPDATE question SET quest_itself = '$questao' WHERE fk_id_story = $id_story";
     $prepare = $pdo->prepare($sql);
     $prepare->execute();
