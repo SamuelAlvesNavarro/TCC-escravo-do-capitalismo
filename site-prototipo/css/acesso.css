@@ -198,7 +198,7 @@
   font-family: "Roboto Mono", sans-serif;
 }
 .historias-span{
-  width: 9ch;
+  width: 10ch;
   height: 60px;
   animation: typing 1s linear, blink .5s linear 0s 2 alternate;
   white-space: normal;

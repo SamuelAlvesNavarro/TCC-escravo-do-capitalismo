@@ -170,7 +170,7 @@
     </div>
     <div id="alertWr" class="alert hide">
         <span class="fa-solid fa-circle-xmark n_icon"></span>
-        <span class="msg">Você errou: -25<i class='fa-solid fa-coins'></i></span>
+        <span class="msg">Você errou: -50<i class='fa-solid fa-coins'></i></span>
         <div class="close-btn" onclick="callOutNotification(0)">
             <span class="fas fa-times"></span>
         </div>
