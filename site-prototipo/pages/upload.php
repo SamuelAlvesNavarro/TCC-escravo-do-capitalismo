@@ -285,11 +285,22 @@
 
         global $pdo;
         $questao = $_POST['question'];
+        $questao = addslashes($questao);
         $a = $_POST['a'];
+        $a = addslashes($a);
+
         $b = $_POST['b'];
+        $b = addslashes($b);
+
         $c = $_POST['c'];
+        $c = addslashes($c);
+
         $d = $_POST['d'];
+        $d = addslashes($d);
+
         $certa = $_POST['certa'];
+        $certa = addslashes($certa);
+        
         $sql = "INSERT INTO question VALUES(NULL, '$id_story','$questao')";
         $prepare = $pdo->prepare($sql);
         $prepare->execute();
