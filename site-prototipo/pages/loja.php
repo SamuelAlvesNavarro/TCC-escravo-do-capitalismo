@@ -73,7 +73,7 @@
                     <h1>Loja</h1>
                 </div>
                 <div class="phrase">
-                    <strong>"Comprar preenche os vazios da alma"</strong>
+                    <strong>"Comprar preenche o vazio da alma"</strong>
                 </div>
                 <div class="to-places">
                     <div class="bt-fotos bt-to-div">
@@ -113,6 +113,7 @@
                         <div class="items-div">
                             <?php
                                 $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 0";
+                                $z = 0;
                                 foreach($pdo->query($gadget) as $key => $value){
                                     $item = $value['in_it'];
                                     $preco = $value['preco'];
@@ -125,7 +126,8 @@
                                     $rows = $prepare->rowCount();
         
                                     if($rows == 0){
-                                            echo "<div  class='item' onclick='show_item(0, $code)'>'
+                                        $z++;
+                                            echo "<div  class='item' onclick='show_item(0, $code)'>
                                             <div class='img' id='$code' style='$item'>
 
                                             </div>
@@ -135,6 +137,9 @@
                                             </div>
                                         </div>";
                                     } 
+                                }
+                                if($z == 0){
+                                    echo "<h3>Você já comprou todos os itens dessa sessão da loja. Parabéns!</h3>";
                                 }
                             ?>
                         </div>
@@ -166,6 +171,7 @@
                         <div class="items-div">
                             <?php
                                 $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 1";
+                                $i = 0;
                                 foreach($pdo->query($gadget) as $key => $value){
                                     $item = $value['in_it'];
                                     $preco = $value['preco'];
@@ -178,7 +184,8 @@
                                     $rows = $prepare->rowCount();
         
                                     if($rows == 0){
-                                        echo "<div  class='item' onclick='show_item(1, $code)'>'
+                                        $i++;
+                                        echo "<div  class='item' onclick='show_item(1, $code)'>
                                             <div class='img' id='$code' style='$item'>
 
                                             </div>
@@ -187,7 +194,10 @@
                                                 $preco<i class='fa-solid fa-coins'></i>
                                             </div>
                                         </div>";
-                                    } 
+                                    }
+                                }
+                                if($i == 0){
+                                    echo "<h3>Você já comprou todos os itens dessa sessão da loja. Parabéns!</h3>";
                                 }
                             ?>
                         </div>

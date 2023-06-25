@@ -34,7 +34,7 @@
 
                 $subject = "Não responda esse email";
                 $body = "Olá $apelido, não sabemos se é você tentando recuperar a senha da sua conta. Se não for, logue no site e mude sua senha, visando segurança. Se for você, aqui está: $password
-                De todo o modo recomendamos que você troque sua senha";
+                De todo o modo, recomendamos que você troque sua senha";
                 $email = $_POST['email'];
 
                 require "includes/envio.php";

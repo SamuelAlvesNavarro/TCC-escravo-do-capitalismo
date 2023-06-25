@@ -3,11 +3,6 @@
     require 'includes/online.php';
     global $pdo;
 
-    require "includes/envio.php";
-    $subject = "Não responda esse email";
-    $body = "Sua história foi enviada para avaliação dos moderadores, assim que ela for corrigida será enviada para que você aprove a sua história novamente só que corrigida";
-    mandarEmail($subject, $body, $_SESSION['email']);
-
 
     /* FILTRAR CÓDIGO HTML E PHP */
 
@@ -329,8 +324,19 @@
         $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$d', $dr)";
         $prepare = $pdo->prepare($sql);
         $prepare->execute();
+
+        finishingTouches();
     }
 
+    function finishingTouches(){
+
+        require "includes/envio.php";
+        $subject = "Não responda esse email";
+        $body = "Sua história foi enviada para a correção dos moderadores. Assim que ela for corrigida (e possivelmente editada), ela será enviada para que você a aprove. Para saber se sua história foi corrigida, vá para a àrea dos escritores, na aba de aprovação. Sua história deverá estar lá dentro de alguns dias. Caso não encontre sua história na aba de aprovação, é possível que ela tenha sido rejeitada.";
+        mandarEmail($subject, $body, $_SESSION['email']);
+
+        header("Location: writerHub.php");
+    }
     /* IN ITSELF */
     
     $referencia = $_POST['link-reference'];
