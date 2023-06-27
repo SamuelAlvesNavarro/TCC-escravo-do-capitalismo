@@ -156,7 +156,7 @@
                 </div>
                 <div class="store">
                     <div class="display-items">
-                        <div class="all-display-items">
+                        <div class="all-display-items bc-display">
                             <div class="img-display"></div>
                             <div class="price-display">
                                 0

@@ -4,6 +4,12 @@
     
     $perfildono = -1;
     $perfildono = $_GET['profile'];
+
+    if($perfildono == 0){
+        header("Location: central.php");
+        exit;
+    }
+
     $sql = "SELECT * FROM user_common WHERE fk_id_profile = '$perfildono'";
     foreach($pdo->query($sql) as $key => $value){
         $id_dono = $value['id_user'];

@@ -495,17 +495,24 @@ body {
   padding-right: 20%;
   padding-left: 10px;
 }
-
+.name1a{
+  color: gold;
+}
 .name2 {
   color: silver;
   padding-right: 40%;
   padding-left: 10px;
 }
-
+.name2a{
+  color: silver;
+}
 .name3 {
   color: rgb(231, 58, 14);
   padding-right: 60%;
   padding-left: 10px;
+}
+.name3a{
+  color: rgb(231, 58, 14);
 }
 
 .line {

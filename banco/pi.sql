@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 27-Jun-2023 às 03:10
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.1.12
+-- Host: 127.0.0.1:3307
+-- Tempo de geração: 27-Jun-2023 às 13:38
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,21 +32,7 @@ CREATE TABLE `answer` (
   `fk_id_question` int(11) NOT NULL,
   `text` varchar(30) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `answer`
---
-
-INSERT INTO `answer` (`id_answer`, `fk_id_question`, `text`, `status`) VALUES
-(25, 1, 'ddddddd', 1),
-(26, 1, 'dddddddddd', 0),
-(27, 1, 'dddddddd', 0),
-(28, 1, 'ddddddddddd', 0),
-(29, 2, 'aaaaaaa', 1),
-(30, 2, 'aaaaaa', 0),
-(31, 2, 'aaaaaaaaaa', 0),
-(32, 2, 'aaaaaaaaaa', 0);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -59,7 +45,7 @@ CREATE TABLE `comment` (
   `fk_id_story` int(11) NOT NULL,
   `fk_id_profile` int(11) NOT NULL,
   `text` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -71,18 +57,7 @@ CREATE TABLE `compra` (
   `fk_id_profile` int(11) NOT NULL,
   `fk_id_gadget` int(11) NOT NULL,
   `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `compra`
---
-
-INSERT INTO `compra` (`fk_id_profile`, `fk_id_gadget`, `data`) VALUES
-(1, 2, '0000-00-00'),
-(1, 21, '0000-00-00'),
-(2, 1, '0000-00-00'),
-(2, 2, '0000-00-00'),
-(5, 5, '2023-06-08');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -94,7 +69,7 @@ CREATE TABLE `error` (
   `id_error` int(11) NOT NULL,
   `cod_error` varchar(5) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `error`
@@ -131,7 +106,7 @@ CREATE TABLE `error_user` (
   `id_error` int(11) NOT NULL,
   `fk_id_profile` int(11) DEFAULT NULL,
   `fk_id_story` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -145,37 +120,24 @@ CREATE TABLE `gadget` (
   `preco` int(11) NOT NULL,
   `g_status` int(11) NOT NULL DEFAULT 1,
   `in_it` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `gadget`
 --
 
 INSERT INTO `gadget` (`id_gadget`, `type`, `preco`, `g_status`, `in_it`) VALUES
-(1, 1, 125, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(2, 0, 125, 1, 'background-image: url(../profile-gadgets/pc-profile/unicorn.jpg);'),
-(3, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(4, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(5, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(6, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(7, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(8, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(9, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(10, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(11, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(12, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(13, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(14, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(15, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(16, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(17, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(18, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(19, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(20, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(21, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(22, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(23, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
-(24, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);');
+(1, 0, 125, 1, 'background-image: url(../profile-gadgets/pc-profile/unicorn.jpg);'),
+(2, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
+(25, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/bonoro.jpg);'),
+(26, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/cucapkke.jpg);'),
+(27, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/taylor.jpg);'),
+(28, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/wise-tree.jpg);'),
+(29, 0, 10, 1, 'background-image: url(../profile-gadgets/pc-profile/murilinho.jpg);'),
+(30, 1, 15, 1, 'background-image: url(../profile-gadgets/bc-profile/cassio.jpg);'),
+(31, 1, 9999, 1, 'background-image: url(../profile-gadgets/bc-profile/slay-lacre.jpg);'),
+(32, 1, 700, 1, 'background-image: url(../profile-gadgets/bc-profile/nicki.jpg);'),
+(33, 1, 69, 1, 'background-image: url(../profile-gadgets/bc-profile/ariana.jpg);');
 
 -- --------------------------------------------------------
 
@@ -187,15 +149,7 @@ CREATE TABLE `history` (
   `id_history` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
   `texto` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `history`
---
-
-INSERT INTO `history` (`id_history`, `fk_id_page`, `texto`) VALUES
-(1, 1, 'fffffffffffffffffffffffffffffffffff'),
-(2, 2, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -207,14 +161,7 @@ CREATE TABLE `images` (
   `id_image` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
   `path` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `images`
---
-
-INSERT INTO `images` (`id_image`, `fk_id_page`, `path`) VALUES
-(1, 3, '../img-story/aaaaaaaaaaaaa/aaaaaaaaaaaaa-img-9');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -225,7 +172,7 @@ INSERT INTO `images` (`id_image`, `fk_id_page`, `path`) VALUES
 CREATE TABLE `like_comment` (
   `fk_id_profile` int(11) NOT NULL,
   `fk_id_comment` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -238,16 +185,7 @@ CREATE TABLE `page` (
   `fk_id_story` int(11) NOT NULL,
   `type` int(11) NOT NULL,
   `order_p` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `page`
---
-
-INSERT INTO `page` (`id_page`, `fk_id_story`, `type`, `order_p`) VALUES
-(1, 1, 0, 0),
-(2, 2, 0, 0),
-(3, 2, 1, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -261,18 +199,15 @@ CREATE TABLE `profile` (
   `fundoFoto` int(11) NOT NULL DEFAULT 0,
   `bordaFoto` int(11) NOT NULL DEFAULT 0,
   `fundoPerfil` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `profile`
 --
 
 INSERT INTO `profile` (`id_profile`, `foto`, `fundoFoto`, `bordaFoto`, `fundoPerfil`) VALUES
-(1, 2, 0, 0, 21),
-(2, 0, 0, 0, 1),
-(3, 0, 0, 0, 0),
-(4, 0, 0, 0, 0),
-(5, 0, 0, 0, 5);
+(6, 0, 0, 0, 0),
+(7, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -284,15 +219,7 @@ CREATE TABLE `question` (
   `id_question` int(11) NOT NULL,
   `fk_id_story` int(11) NOT NULL,
   `quest_itself` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `question`
---
-
-INSERT INTO `question` (`id_question`, `fk_id_story`, `quest_itself`) VALUES
-(1, 1, 'ddddddddddddddd?'),
-(2, 2, 'aaaaaa');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -303,16 +230,7 @@ INSERT INTO `question` (`id_question`, `fk_id_story`, `quest_itself`) VALUES
 CREATE TABLE `question_user` (
   `fk_id_question` int(11) NOT NULL,
   `fk_id_profile` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `question_user`
---
-
-INSERT INTO `question_user` (`fk_id_question`, `fk_id_profile`) VALUES
-(1, 2),
-(2, 1),
-(2, 2);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -324,7 +242,7 @@ CREATE TABLE `reference` (
   `id_reference` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
   `path` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -340,7 +258,7 @@ CREATE TABLE `report_comment` (
   `reason` varchar(50) DEFAULT NULL,
   `code` int(11) NOT NULL,
   `status_report` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -355,7 +273,7 @@ CREATE TABLE `report_profile` (
   `reason` varchar(50) DEFAULT NULL,
   `code` int(11) NOT NULL,
   `status_report` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -370,7 +288,7 @@ CREATE TABLE `report_story` (
   `reason` varchar(50) DEFAULT NULL,
   `code` int(11) NOT NULL,
   `status_report` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -383,16 +301,7 @@ CREATE TABLE `score` (
   `fk_id_profile` int(11) NOT NULL,
   `fk_id_story` int(11) NOT NULL,
   `nota` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `score`
---
-
-INSERT INTO `score` (`id_score`, `fk_id_profile`, `fk_id_story`, `nota`) VALUES
-(21, 1, 2, 4),
-(22, 2, 1, 4),
-(23, 2, 2, 5);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -407,15 +316,17 @@ CREATE TABLE `story` (
   `rating` float NOT NULL DEFAULT 0,
   `status` int(11) NOT NULL DEFAULT 0,
   `fk_id_profile` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `story`
 --
 
 INSERT INTO `story` (`id_story`, `font`, `nome`, `rating`, `status`, `fk_id_profile`) VALUES
-(1, 0, 'cufff', 4, 1, 1),
-(2, 0, 'aaaaaaaaaaaaa', 4.5, 1, 1);
+(4, 0, 'Dummy 1', 0, 3, 7),
+(5, 0, 'Dummy 2', 0, 3, 7),
+(6, 0, 'Dummy 3', 0, 3, 7),
+(7, 0, 'Dummy 4', 0, 3, 7);
 
 -- --------------------------------------------------------
 
@@ -433,18 +344,14 @@ CREATE TABLE `user_common` (
   `pontos_leitor` int(11) NOT NULL DEFAULT 0,
   `ranking` int(11) NOT NULL DEFAULT 0,
   `moedas` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `user_common`
 --
 
 INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `ranking`, `moedas`) VALUES
-(1, 1, 'Davi', 'davi888@gmail.com', '123', 'Davi', 100, 0, 1875),
-(2, 2, 'Davi Carvalho de Souza', 'davi.ana888@gmail.com', '123', 'z', 200, 0, 200),
-(3, 3, 'x', 'x@gmail.com', '12', 'x', 0, 0, 0),
-(4, 4, 'Davi Carvalho de Souza', 'davi.ana969@gmail.com', '11', 'd', 0, 0, 0),
-(5, 5, 'Davi Carvalho de Souza', 'davi.ana145@gmail.com', '1234', 'Davi', 0, 0, 1500);
+(6, 6, 'Murilo Lacre', 'murilo@gmail.com', '123', 'Murilinho', 0, 0, 0);
 
 --
 -- Índices para tabelas despejadas
@@ -626,7 +533,7 @@ ALTER TABLE `error_user`
 -- AUTO_INCREMENT de tabela `gadget`
 --
 ALTER TABLE `gadget`
-  MODIFY `id_gadget` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_gadget` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de tabela `history`
@@ -650,7 +557,7 @@ ALTER TABLE `page`
 -- AUTO_INCREMENT de tabela `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `question`
@@ -686,13 +593,13 @@ ALTER TABLE `score`
 -- AUTO_INCREMENT de tabela `story`
 --
 ALTER TABLE `story`
-  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `user_common`
 --
 ALTER TABLE `user_common`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para despejos de tabelas
