@@ -1,11 +1,13 @@
 /* IMPORTS */
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import url('https://fonts.google.com/specimen/Playfair+Display');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
 /* CSS */
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Poppins';
 }
 .transi{
     transition: .45s linear;
@@ -17,6 +19,20 @@
 .bc{
     background-color: var(--background);
 }
+/* ZA COLORS */
+.za-colors {
+    background-color: #121212;
+    background-color: #1e1e1e;
+    background-color: #222222;
+    background-color: #242424;
+    background-color: #272727;
+    background-color: #2c2c2c;
+    background-color: #2d2d2d;
+    background-color: #333333;
+    background-color: #343434;
+    background-color: #383838;
+  }
+  
 :root {
     color-scheme: light;
     --text: black;
@@ -26,7 +42,7 @@
     --background-2: #adadad;
     --background-3: #929292;
     --background-4: #4d4b4b;
-    --background-5: #363636;
+    --background-5: #303030;
     --background-6: #252525;
     --background-7: #121212;
     --background-menu: white;
@@ -51,7 +67,7 @@
     --background: #121212;
     --background-1: #121212; 
     --background-2: #252525;
-    --background-3: #363636;
+    --background-3: #302f2f;
     --background-4: #4d4b4b;
     --background-5: #b1b0b0;
     --background-6: #d6d5d5;
@@ -125,12 +141,12 @@
     top: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    width: 10vh;
-    height: 10vh;
-    border-radius: 50%;
-    background-color: var(--text);
-    background-image: url(../img/funny-cat.jpg);
-    background-position: center;
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--text);
+}
+.logo svg{
+    fill: var(--text);
 }
 #mode{
     color: var(--text);
@@ -347,20 +363,23 @@
 .exp-col1{
     width: 30%;
     height: 100vh;
+    overflow: hidden;
     position: relative;
-}
-.img-exp-col1{
-    width: 70%;
-    height: 90vh;
-    background-image: url(../img/funny-cat-2.jpg);
+    background-image: url(../img/the-ritual.jpg);
     background-size: cover;
-    border-radius: 50% / 23%;
+    background-position: center;
+    padding: 0;
+}
+.blur{
+    width: 100%;
+    height: 100vh;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-box-shadow: inset -35px 0px 20px 15px var(--background-2);
+    -moz-box-shadow: inset -35px 0px 20px 15px var(--background-2);
+    box-shadow: inset -35px 0px 20px 15px var(--background-2);
 }
 .exp-col2{
+    padding: 0;
     height: 100vh;
     text-align: right;
     display: flex;
@@ -373,12 +392,13 @@
     width: 70%;
     text-align: left;
     padding-bottom: 10vh;
-    font-size: 4em;
+    font-weight: 600;
+    font-size: 50px;
 }
 .line2{
     width: 70%;
     text-align: left;
-    font-size: 1.2em;
+    font-size: 20px;
 }
 
     /* BEST STORIES - SECTION */
@@ -438,6 +458,7 @@
     color: var(--text-2);
     font-size: 3.2em;
     text-align: left;
+    font-weight: 600;
 }
 .exp-rank-test{
     color: var(--text-2);
@@ -487,9 +508,7 @@ th{
     /* PREM - SECTION */
 
 #prem-sec{
-    background-color: var(--background-6);
-    background-image: url(../img/cuie-arlequina-paiaca.png);
-    background-size: cover;
+    background: var(--background-6);
 }
 
     /* LAST - SECTION */
