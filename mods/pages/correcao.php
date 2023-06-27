@@ -17,7 +17,7 @@
     <h3>Antes de corrigir uma história, <strong>ATUALIZE A PÁGINA</strong></h3>
     <ul>
         <?php 
-            $pCorrigir = "SELECT * FROM story where status = 1 ORDER BY rating asc";
+            $pCorrigir = "SELECT * FROM story where status = 1 ORDER BY id_story asc";
             foreach($pdo->query($pCorrigir) as $key => $value){
                 $id_story = $value['id_story'];
                 $nome = $value['nome'];
@@ -29,7 +29,7 @@
     <h3>Não era para ter nada aqui. Cliquem em deixar correção antes de sair</h3>
     <ul>
         <?php 
-            $pCorrigir = "SELECT * FROM story where status = 3 ORDER BY rating asc";
+            $pCorrigir = "SELECT * FROM story where status = 5 ORDER BY id_story asc";
             foreach($pdo->query($pCorrigir) as $key => $value){
                 $id_story = $value['id_story'];
                 $nome = $value['nome'];

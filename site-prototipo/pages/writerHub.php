@@ -160,7 +160,7 @@
                                 <thead>
                                     <tr>
                                         <th>História</th>
-                                        <th>Manter com o Historito</th>
+                                        <th>SECRET</th>
                                         <th>Deletar</th>
                                     </tr>
                                 </thead>
@@ -174,7 +174,7 @@
                                         
                                             <tr>
                                                 <td>".$value['nome']."</td>
-                                                <td><button class='keep' onclick='keep(".$value['id_story'].")'>Manter</button></td>
+                                                <td><button class='keep' onclick='keep(".$value['id_story'].")'>SECRET</button></td>
                                                 <td><button class='del' onclick='deleteH(".$value['id_story'].")'>Deletar</button></td>
                                             </tr>
                                         

@@ -107,6 +107,8 @@
                             $titulos[$i][0] = $value["nome"];
                             $sim = similar_text($titulos[$i][0], $pesquisa, $perc);
                             $titulos[$i][1] = $perc;
+
+
                             $titulos[$i][2] = $value["id_story"];
                             
                             $sql = "SELECT id_page FROM page where type = 0 and fk_id_story = ".$titulos[$i][2];
@@ -135,7 +137,7 @@
 
                                 if($i == 10)break;
 
-                                $check = "SELECT * FROM question_user WHERE fk_id_profile = $perfil and fk_id_question = ".$titulos[$i][2];
+                                $check = "SELECT * FROM question_user, question, story WHERE question_user.fk_id_profile = $perfil and story.id_story = question.fk_id_story and question.id_question = question_user.fk_id_question and story.id_story = ".$titulos[$i][2];
                                 $prepare = $pdo->prepare($check);
                                 $prepare->execute();
 
@@ -157,6 +159,19 @@
                                 else{
 
                                     $titulos[$i][4] = "<i class='fa-solid fa-check readqm read'></i>";
+
+                                    $check = "SELECT * FROM score WHERE fk_id_story = ".$titulos[$i][2]." and fk_id_profile = ".$perfil;
+                                    $prepare = $pdo->prepare($check);
+                                    $prepare->execute();
+
+                                    if($prepare->rowCount() == 0){
+
+                                        $titulos[$i][4] = "<i class='fa-solid fa-check readqm read'></i>";
+                                        
+                                    }
+                                    else{
+                                        $titulos[$i][4] = "<i class='fa-solid readqm fa-star'></i>";
+                                    }
                                 }
 
                                 echo "<div class='action' onclick='story(".$titulos[$i][2].")'><h3>". $titulos[$i][0] ."</h3><p>".$titulos[$i][3]."...</p>".$titulos[$i][4]."</div>";
@@ -169,7 +184,7 @@
                                 if($titulos[$i][1] == 0) break;
                                 if($i == 10)break;
 
-                                $check = "SELECT * FROM question_user WHERE fk_id_profile = $perfil and fk_id_question = ".$titulos[$i][2];
+                                $check = "SELECT * FROM question_user, question, story WHERE question_user.fk_id_profile = $perfil and story.id_story = question.fk_id_story and question.id_question = question_user.fk_id_question and story.id_story = ".$titulos[$i][2];
                                 $prepare = $pdo->prepare($check);
                                 $prepare->execute();
 
@@ -191,6 +206,19 @@
                                 else{
 
                                     $titulos[$i][4] = "<i class='fa-solid fa-check readqm read'></i>";
+
+                                    $check = "SELECT * FROM score WHERE fk_id_story = ".$titulos[$i][2]." and fk_id_profile = ".$perfil;
+                                    $prepare = $pdo->prepare($check);
+                                    $prepare->execute();
+
+                                    if($prepare->rowCount() == 0){
+
+                                        $titulos[$i][4] = "<i class='fa-solid fa-check readqm read'></i>";
+                                        
+                                    }
+                                    else{
+                                        $titulos[$i][4] = "<i class='fa-solid readqm fa-star'></i>";
+                                    }
                                 }
 
                                 echo "<div class='action' onclick='story(".$titulos[$i][2].")'><h3>". $titulos[$i][0] ."</h3><p>".$titulos[$i][3]."...</p>".$titulos[$i][4]."</div>";
