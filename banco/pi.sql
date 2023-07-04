@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 27-Jun-2023 às 13:38
+-- Tempo de geração: 04-Jul-2023 às 16:57
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.0.13
 
@@ -33,6 +33,16 @@ CREATE TABLE `answer` (
   `text` varchar(30) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `answer`
+--
+
+INSERT INTO `answer` (`id_answer`, `fk_id_question`, `text`, `status`) VALUES
+(37, 4, 'fsdsdfdfd', 0),
+(38, 4, 'dsdfdf', 0),
+(39, 4, 'dsfsdfdsfdf', 0),
+(40, 4, 'dfssdfdsfdsfdfdsf', 1);
 
 -- --------------------------------------------------------
 
@@ -77,24 +87,25 @@ CREATE TABLE `error` (
 
 INSERT INTO `error` (`id_error`, `cod_error`, `description`) VALUES
 (1, '1', 'Email já cadastrado no site'),
-(2, '2', 'Senhas diferente'),
-(3, '3', 'Processo falhou'),
+(2, '1', 'Senhas diferente'),
+(3, '4', 'Processo falhou'),
 (4, '4', 'Reservado'),
-(5, '5', 'Você não está logado'),
-(6, '6', 'Item não existe'),
-(7, '7', 'Reservado'),
-(8, '8', 'Sei la(Página de compra)'),
-(9, '9', 'Item já foi comprado'),
-(10, '10', 'Perfil inválido'),
-(11, '11', 'Você já respondeu essa pergunta'),
-(12, '12', 'Sei la(Página de resposta)'),
-(13, '13', 'Reservado'),
-(14, '14', 'Nenhuma história foi selecionada'),
-(15, '15', 'Extensão inválida'),
-(16, '16', 'Tamanho da imagem ultrapassou de 5 MB'),
-(17, '17', 'Título ofensivo'),
-(42, '42', 'Reservado'),
-(666, '666', 'Reservado');
+(6, '3', 'Item não existe'),
+(7, '4', 'Reservado'),
+(8, '4', 'Sei la(Página de compra)'),
+(9, '3', 'Item já foi comprado'),
+(10, '3', 'Perfil inválido'),
+(11, '3', 'Você já respondeu essa pergunta'),
+(12, '4', 'Sei la(Página de resposta)'),
+(13, '4', 'Reservado'),
+(14, '2', 'Nenhuma história foi selecionada'),
+(15, '2', 'Extensão inválida'),
+(16, '1', 'Tamanho da imagem ultrapassou de 5 MB'),
+(17, '2', 'Título ofensivo'),
+(18, '3', 'Você tentou acessar uma história que não é sua. Isso é proibido e passível de banimento. O Historito não gostou da sua atitude e enviou uma notificação das suas atividades para o moderador.'),
+(42, '4', 'Reservado'),
+(666, '4', 'Reservado'),
+(667, '0', 'Você entrou na página de erro sem um erro. Por favor, não o faça novamente. Só acesse essa página quando necessário.');
 
 -- --------------------------------------------------------
 
@@ -151,6 +162,13 @@ CREATE TABLE `history` (
   `texto` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `history`
+--
+
+INSERT INTO `history` (`id_history`, `fk_id_page`, `texto`) VALUES
+(4, 5, 'sdfdsdfdfsdffds');
+
 -- --------------------------------------------------------
 
 --
@@ -187,6 +205,13 @@ CREATE TABLE `page` (
   `order_p` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `page`
+--
+
+INSERT INTO `page` (`id_page`, `fk_id_story`, `type`, `order_p`) VALUES
+(5, 9, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -207,7 +232,9 @@ CREATE TABLE `profile` (
 
 INSERT INTO `profile` (`id_profile`, `foto`, `fundoFoto`, `bordaFoto`, `fundoPerfil`) VALUES
 (6, 0, 0, 0, 0),
-(7, 0, 0, 0, 0);
+(7, 0, 0, 0, 0),
+(8, 0, 0, 0, 0),
+(666, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -220,6 +247,13 @@ CREATE TABLE `question` (
   `fk_id_story` int(11) NOT NULL,
   `quest_itself` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `question`
+--
+
+INSERT INTO `question` (`id_question`, `fk_id_story`, `quest_itself`) VALUES
+(4, 9, 'fsfddsfdfs');
 
 -- --------------------------------------------------------
 
@@ -275,6 +309,17 @@ CREATE TABLE `report_profile` (
   `status_report` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `report_profile`
+--
+
+INSERT INTO `report_profile` (`id_report`, `fk_id_reported`, `fk_id_reporter`, `reason`, `code`, `status_report`) VALUES
+(31, 8, 666, 'AUTO - aos esgotos: 04/07/23 04:49:03 - 6 - BAN', 1, 0),
+(32, 8, 666, 'AUTO - aos esgotos: 04/07/23 04:49:48 - 6 - BAN', 1, 0),
+(33, 8, 666, 'AUTO - aos esgotos: 04/07/23 04:51:19 - 14 - OBS', 1, 0),
+(34, 8, 666, 'AUTO - aos esgotos: 04/07/23 04:53:21 - 10 - BAN', 1, 0),
+(35, 8, 666, 'AUTO - aos esgotos: 04/07/23 04:53:55 - 10 - BAN', 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -326,7 +371,8 @@ INSERT INTO `story` (`id_story`, `font`, `nome`, `rating`, `status`, `fk_id_prof
 (4, 0, 'Dummy 1', 0, 3, 7),
 (5, 0, 'Dummy 2', 0, 3, 7),
 (6, 0, 'Dummy 3', 0, 3, 7),
-(7, 0, 'Dummy 4', 0, 3, 7);
+(7, 0, 'Dummy 4', 0, 3, 7),
+(9, 0, 'vamos fazer um teste', 0, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -351,7 +397,8 @@ CREATE TABLE `user_common` (
 --
 
 INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `ranking`, `moedas`) VALUES
-(6, 6, 'Murilo Lacre', 'murilo@gmail.com', '123', 'Murilinho', 0, 0, 0);
+(6, 6, 'Murilo Lacre', 'murilo@gmail.com', '123', 'Murilinho', 0, 0, 0),
+(7, 8, 'dssdfdsgfggkhsdf', 'khbfdbhkdsf@gmail.com', '123', 'svfdhksdfjvbhdf', 0, 0, 0);
 
 --
 -- Índices para tabelas despejadas
@@ -509,7 +556,7 @@ ALTER TABLE `user_common`
 -- AUTO_INCREMENT de tabela `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de tabela `comment`
@@ -521,7 +568,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT de tabela `error`
 --
 ALTER TABLE `error`
-  MODIFY `id_error` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
+  MODIFY `id_error` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=669;
 
 --
 -- AUTO_INCREMENT de tabela `error_user`
@@ -539,7 +586,7 @@ ALTER TABLE `gadget`
 -- AUTO_INCREMENT de tabela `history`
 --
 ALTER TABLE `history`
-  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `images`
@@ -551,19 +598,19 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT de tabela `page`
 --
 ALTER TABLE `page`
-  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
 
 --
 -- AUTO_INCREMENT de tabela `question`
 --
 ALTER TABLE `question`
-  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `reference`
@@ -581,7 +628,7 @@ ALTER TABLE `report_comment`
 -- AUTO_INCREMENT de tabela `report_profile`
 --
 ALTER TABLE `report_profile`
-  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de tabela `score`
@@ -593,13 +640,13 @@ ALTER TABLE `score`
 -- AUTO_INCREMENT de tabela `story`
 --
 ALTER TABLE `story`
-  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `user_common`
 --
 ALTER TABLE `user_common`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restrições para despejos de tabelas
