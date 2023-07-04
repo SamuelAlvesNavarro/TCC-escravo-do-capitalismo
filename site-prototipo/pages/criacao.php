@@ -31,7 +31,7 @@
             <h1>Criação de Histórias</h1>
         </div>
         <div class="story-title section">
-            <input type="text" name="titulo" id="title-story" required placeholder="Título">
+            <input type="text" name="titulo" max="40" id="title-story" required placeholder="Título">
         </div>
         <div class="story section">
             <h1>Páginas</h1>

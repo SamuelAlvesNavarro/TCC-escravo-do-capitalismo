@@ -312,7 +312,7 @@ CREATE TABLE `score` (
 CREATE TABLE `story` (
   `id_story` int(11) NOT NULL,
   `font` int(11) NOT NULL,
-  `nome` varchar(20) NOT NULL,
+  `nome` varchar(40) NOT NULL,
   `rating` float NOT NULL DEFAULT 0,
   `status` int(11) NOT NULL DEFAULT 0,
   `fk_id_profile` int(11) NOT NULL
