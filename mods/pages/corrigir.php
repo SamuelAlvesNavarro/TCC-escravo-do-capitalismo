@@ -1,5 +1,6 @@
 <?php
     require "includes/conexao.php"; 
+    include "includes/online.php";
 
     function RetornarIdPage($id_story, $type){
         global $pdo;
