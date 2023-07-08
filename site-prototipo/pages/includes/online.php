@@ -1,6 +1,6 @@
 <?php
     function isOnline(){
-        session_start();
+        require "criasession.php";
           if(isset($_SESSION['email'])){
               return true;
             }

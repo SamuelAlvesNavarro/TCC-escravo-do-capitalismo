@@ -44,8 +44,7 @@
                 if($prepare->rowCount() <= 0){
                     header("Location: error.php?erro=3");
                 }else{
-                    session_cache_expire(720);
-                    session_start();
+                    require "includes/criasession.php";
                     $_SESSION['email'] = $email;
                     header("Location:central.php");
                 }
