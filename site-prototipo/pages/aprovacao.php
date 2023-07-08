@@ -1,6 +1,6 @@
 <?php
     require "includes/report_profile.php";
-
+    
     function RetornarIdPage($id_story, $type){
         global $pdo;
         $page = "SELECT id_page from page where fk_id_story = $id_story and type = $type";
@@ -25,8 +25,7 @@
     $prepare->execute();
     
     if($prepare->rowCount() != 1){
-        generateReport($perfil, 1, "AUTO - aos esgotos: ".date("d/m/y h:i:s")." - inserção - BAN", 1);
-        header("Location: leave.php");
+        header("Location: error.php?erro=18");
         exit;
     }
 

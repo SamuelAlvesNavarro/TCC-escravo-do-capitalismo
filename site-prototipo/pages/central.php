@@ -29,6 +29,10 @@
         $i++;
     }
 
+    for($z = 0; $z < 3; $z++){
+        if(!isset($topUsers[$z])) $topUsers[$z] = "Ninguém";
+        if(!isset($topIds[$z])) $topIds[$z] = 0;
+    }
     
     /* PEGANDO AS COISAS DO PERFIL */
     
@@ -226,7 +230,7 @@
                             <div class="line line1"></div>
                         </div>
                         <div class="name name1">
-                            <a class="name1" href="profile.php?profile=<?php echo $topIds[0]; ?>"><?php echo $topUsers[0];?></a>
+                            <a class="name1a" href="profile.php?profile=<?php echo $topIds[0]; ?>"><?php echo $topUsers[0];?></a>
                         </div>
                     </div>
                     <div class="top top1 ld2">
@@ -234,7 +238,7 @@
                             <div class="line line2"></div>
                         </div>
                         <div class="name name2">
-                            <a class="name2" href="profile.php?profile=<?php echo $topIds[1]; ?>"><?php echo $topUsers[1];?></a>
+                            <a class="name2a" href="profile.php?profile=<?php echo $topIds[1]; ?>"><?php echo $topUsers[1];?></a>
                         </div>
                     </div>
                     <div class="top top1 ld3">
@@ -242,7 +246,7 @@
                             <div class="line line3"></div>
                         </div>
                         <div class="name name3">
-                            <a class="name3" href="profile.php?profile=<?php echo $topIds[2]; ?>"><?php echo $topUsers[2];?></a>
+                            <a class="name3a" href="profile.php?profile=<?php echo $topIds[2]; ?>"><?php echo $topUsers[2];?></a>
                         </div>
                     </div>
                 </div>

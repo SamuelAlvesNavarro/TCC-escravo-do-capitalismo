@@ -128,12 +128,3 @@ function SwitchColor(numbi){
 }
 
 SwitchColor(1);
-
-bt_enter.addEventListener("mouseenter", () => {
-    img_cat.style.bottom = '-20vh';
-    goback.style.display = "none";
-})
-bt_enter.addEventListener("mouseout", () => {
-    img_cat.style.bottom = '-70vh';
-    goback.style.display = "block";
-})

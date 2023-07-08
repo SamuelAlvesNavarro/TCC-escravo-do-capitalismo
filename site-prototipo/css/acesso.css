@@ -198,10 +198,11 @@
   font-family: "Roboto Mono", sans-serif;
 }
 .historias-span{
+  text-align: center;
   width: 10ch;
   height: 60px;
   animation: typing 1s linear, blink .5s linear 0s 2 alternate;
-  white-space: normal;
+  white-space: break-spaces;
   line-break: anywhere;
   overflow: hidden;
   font-size: 50px;
@@ -210,10 +211,11 @@
   display: none;
 }
 .assombrosas-span{
+  text-align: center;
   width: 11ch;
   animation: typing 1s linear, blink .5s linear 0s 2 alternate;
   height: 50px;
-  white-space: normal;
+  white-space: break-spaces;
   line-break: anywhere;
   overflow: hidden;
   font-size: 40px;
@@ -428,7 +430,7 @@
 /* MEDIA QUERY */
 @media (max-width: 1100px) {
   .login-form input {
-    width: 100%;
+    /* kssnsjk */
   }
 }
 @media (max-width: 900px) {
@@ -444,6 +446,7 @@
 }
 @media (max-width: 400px) {
   .login-form {
+    width: 100%;
     padding: 0;
   }
   .container-cadastro {

@@ -130,9 +130,19 @@ body svg{
     box-shadow: rgba(0, 0, 0, 0.486) 0px 7px 29px 0px;
     cursor: pointer;
 }
-
-
-
+.to-bt:hover{
+    animation-name: pulse-bt;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+@keyframes pulse-bt {
+    50%{
+        transform: scale(1.05);
+    }
+    to{
+        transform: scale(1);
+    }
+}
 
 /* stores */
 
@@ -248,15 +258,18 @@ body svg{
     -webkit-box-shadow: -1px 2px 13px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 2px 13px 2px rgba(0,0,0,0.75);
 }
+.bc-display{
+    width: 350px;
+}
 .img-display{
-    width: 250px;
+    width: 100%;
     height: 250px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .price-display{
-    width: 230px;
+    width: calc(100% - 20px);
     padding: 10px;
     background-color: #92806b;
     font-size: 30px;
@@ -267,7 +280,7 @@ body svg{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 230px;
+    width: calc(100% - 20px);
     padding: 10px;
     background-color: #92806b;
 }

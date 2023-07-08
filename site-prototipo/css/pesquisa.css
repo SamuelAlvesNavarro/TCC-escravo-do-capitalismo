@@ -134,6 +134,9 @@
 .read{
     color: rgb(21, 243, 32);
 }
+.fa-star{
+    color: #dede44;
+}
 @media (max-width: 800px) {
     .res{
         width: 100%;

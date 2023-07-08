@@ -56,8 +56,6 @@
                     unset($caminho_parts[3]);
                     $caminho = implode("/", $caminho_parts);
                     $caminho = $caminho;
-
-                    echo $caminho;
                     
                     rmdir($caminho);
 

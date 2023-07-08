@@ -17,6 +17,7 @@
         $_SESSION['email'] = $email;
         header("Location:esgotos.php");
         session_destroy();
+
     }else{
         echo "Error: login não efetuado";
     }
