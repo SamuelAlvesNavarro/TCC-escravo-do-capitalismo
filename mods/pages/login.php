@@ -15,7 +15,7 @@
     if($prepare -> rowCount() > 0){
         session_start();
         $_SESSION['email'] = $email;
-        header("Location:central.php");
+        header("Location: esgotos.php");
     }else{
         echo "Error: login não efetuado";
     }
