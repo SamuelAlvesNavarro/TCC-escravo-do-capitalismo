@@ -13,7 +13,7 @@
     $prepare -> execute();
 
     if($prepare -> rowCount() > 0){
-        session_start();
+        require "includes/criasession.php";
         $_SESSION['email'] = $email;
         header("Location:esgotos.php");
         session_destroy();

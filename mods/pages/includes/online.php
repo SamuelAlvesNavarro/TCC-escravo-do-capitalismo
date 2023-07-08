@@ -1,7 +1,7 @@
 <?php
     function isOnline(){
       session_cache_expire(720);
-        session_start();
+        include "criasession.php";
           if(isset($_SESSION['email'])){
               return true;
             }
