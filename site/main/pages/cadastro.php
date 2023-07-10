@@ -62,7 +62,7 @@
 
         $sql = "SELECT count(*) FROM ban WHERE user_email = '$email'";
         if($pdo->query($sql)->rowCount() > 0){
-            header("Location:error.php?erro=18");
+            header("Location:error.php?erro=19");
             exit;
         }
     }
