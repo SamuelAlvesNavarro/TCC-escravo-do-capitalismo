@@ -16,7 +16,6 @@
         require "includes/criasession.php";
         $_SESSION['email'] = $email;
         header("Location:esgotos.php");
-        session_destroy();
 
     }else{
         echo "Error: login não efetuado";
