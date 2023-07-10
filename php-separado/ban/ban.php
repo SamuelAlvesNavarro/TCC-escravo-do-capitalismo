@@ -13,7 +13,12 @@
     $prepare->execute();
 
     //deletando usuário banido e tudo ligado a ele
-    $delete = "DELETE FROM user_common WHERE $emailUser";
+    $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$emailUser'";
+    foreach($pdo->query($sql) as $key => $value){
+        $id = $value['fk_id_profile'];
+    }
+
+    $delete = "DELETE FROM perfil WHERE id_profile = '$id'";
     $prepare = $pdo->prepare($delete);
     $prepare->execute();
 
