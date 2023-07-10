@@ -1,5 +1,6 @@
 <?php
         require "includes/conexao.php";
+
         $nome = null;
         $email = null;
         $senha = null;
@@ -10,6 +11,9 @@
         $email = $_POST["email"];
         $senha = $_POST["senha"];
         $confirmarsenha = $_POST["confirmarsenha"];
+
+        checkBan($email);
+
 
         if($senha != $confirmarsenha){
             header("Location: error.php?erro=2");
@@ -50,4 +54,15 @@
                 }
             }
         }
+
+    function checkBan($email){
+        global $pdo;
+
+        $sql = "SELECT emailBan FROM ban WHERE emailBan = '$email'";
+        if($pdo->query($sql)->rowCount() > 0){
+            header("Location:error.php?erro=18");
+            exit;
+        }
+    }
+
 ?>
