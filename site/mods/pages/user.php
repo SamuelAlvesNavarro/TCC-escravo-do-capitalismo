@@ -43,12 +43,6 @@
     else $to_show_rank = "norm";
     /* RANK STOP */
 
-    $email = $_SESSION['email'];
-    $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
-    foreach($pdo->query($sql) as $key => $value){
-        $perfilEntrando = $value['fk_id_profile'];
-    }
-
     $sql = "SELECT in_it FROM gadget WHERE id_gadget = $foto and type = 0";
     foreach($pdo->query($sql) as $key => $value){
         $foto = $value['in_it'];
@@ -78,10 +72,8 @@
     </div>
     <div class="main2">
         <form action="programaticos/ban.php" method="post">
+            <input type="hidden" name="emailUser" value="<?php echo $email ?>">
             <input type="submit" class="op ban" value="Banir">
-        </form>
-        <form action="programaticos/updateUser.php" method="post">
-            <input type="submit" class="op save g" value="Salvar">
         </form>
     </div>
 </body>
