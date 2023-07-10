@@ -56,9 +56,10 @@
         }
 
     function checkBan($email){
+        
         global $pdo;
 
-        $sql = "SELECT emailBan FROM ban WHERE emailBan = '$email'";
+        $sql = "SELECT count(*) FROM ban WHERE user_email = '$email'";
         if($pdo->query($sql)->rowCount() > 0){
             header("Location:error.php?erro=18");
             exit;
