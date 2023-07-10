@@ -17,7 +17,7 @@
             <a href="correcao.php"><li>Centro de Correção de Histórias</li></a>
             <li>Centro de Controle de Histórias</li>
             <li>Centro de Controle de Denúncias</li>
-            <li>Centro de Controle de Usuários</li>
+            <a href="user_center.php"><li>Centro de Controle de Usuários</li></a>
         </ul>
     </div>
 </body>
