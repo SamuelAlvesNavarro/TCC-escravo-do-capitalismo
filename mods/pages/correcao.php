@@ -1,6 +1,6 @@
 <?php
     include "includes/conexao.php";
-
+    include "includes/online.php";
 
 ?>
 <!DOCTYPE html>
