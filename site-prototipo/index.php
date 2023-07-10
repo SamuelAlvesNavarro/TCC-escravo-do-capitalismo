@@ -1,6 +1,8 @@
 <?php 
     Header("Cache-Control: max-age=3000, must-revalidate");
-    require "pages/includes/closing_session.php";
+    include "pages/includes/criasession.php";
+    session_unset();
+    session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" class="transi">
