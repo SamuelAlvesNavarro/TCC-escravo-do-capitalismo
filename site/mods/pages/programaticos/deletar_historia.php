@@ -50,13 +50,13 @@
                     $prepare = $pdo->prepare($delPage);
                     $prepare->execute();
 
-                    $destroy_img = '../../../site-prototipo/pages/'.$caminho;
+                    $destroy_img = '../../../main/pages/'.$caminho;
                     unlink($destroy_img);
 
                     $caminho_parts = explode("/", $caminho);
                     unset($caminho_parts[3]);
                     $caminho = implode("/", $caminho_parts);
-                    $caminho = '../../../site-prototipo/pages/'.$caminho;
+                    $caminho = '../../../main/pages/'.$caminho;
 
                     echo $caminho;
                     
