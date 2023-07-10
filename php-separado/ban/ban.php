@@ -22,4 +22,5 @@
     $prepare = $pdo->prepare($delete);
     $prepare->execute();
 
+    header("Location:user_center.php");
 ?>

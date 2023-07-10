@@ -13,6 +13,7 @@
         $confirmarsenha = $_POST["confirmarsenha"];
 
         checkBan($email);
+        checkMod($email);
 
 
         if($senha != $confirmarsenha){
@@ -62,6 +63,16 @@
         $sql = "SELECT count(*) FROM ban WHERE user_email = '$email'";
         if($pdo->query($sql)->rowCount() > 0){
             header("Location:error.php?erro=18");
+            exit;
+        }
+    }
+
+    function checkMod($email){
+        global $pdo;
+
+        $sql = "SELECT email FROM mods WHERE email = '$email'";
+        if($pdo->query($sql)->rowCount() > 0){
+            header("Location:error.php?erro=19");
             exit;
         }
     }
