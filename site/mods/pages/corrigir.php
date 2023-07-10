@@ -89,7 +89,7 @@
                                 foreach ($pdo->query($sql) as $key => $value) {
                                     echo "<tr>
                                             <td>
-                                                <img class='img-story' src='../../site-prototipo/pages/". $value['path'] ."'>
+                                                <img class='img-story' src='../../main/pages/". $value['path'] ."'>
                                             </td>
                                             <td>
                                                 <button type='button' class='btn btn-danger' onclick='send(4, ".$id_story.", ". $value['id_image'] .")'>Deletar</button>

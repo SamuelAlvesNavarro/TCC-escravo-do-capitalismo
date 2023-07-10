@@ -1,6 +1,6 @@
 <?php
-    //require "includes/online.php";
-    //require "includes/conexao.php";
+    require "includes/online.php";
+    require "includes/conexao.php";
 
     $emailMod = $_SESSION['email'];
     $emailUser = $_POST['emailUser'];
