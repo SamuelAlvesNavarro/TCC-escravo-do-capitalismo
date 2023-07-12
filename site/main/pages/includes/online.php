@@ -8,7 +8,7 @@
      }
 
      if(!isOnline()){
-        header("Location:acesso.html");
+        header("Location: acesso.html");
         exit;
      }
 ?>

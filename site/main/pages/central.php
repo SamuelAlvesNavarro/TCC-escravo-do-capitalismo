@@ -7,7 +7,7 @@
     $email = $_SESSION['email'];
     $perfil = returnProfileId($email);
     if($perfil == -1 || !isset($perfil)){
-        header("Location: error.php");  
+        header("Location: acesso.html");  
         exit;
     }
     

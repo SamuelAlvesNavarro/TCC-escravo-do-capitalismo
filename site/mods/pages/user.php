@@ -63,12 +63,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/profile.css">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <title>Perfil</title>
+    <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
+    <style>
+        .to-center{
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            right: 50px;
+            font-size: 30px;
+            background: #121212;
+            z-index: 1000;
+        }
+        .to-center a{
+            color: white;
+        }
+    </style>
 </head>
 <body style='<?php echo $fundo ?>'>
+    <div class="to-center">
+        <a href="esgotos.php"><i class="fa-solid fa-home"></i></a>
+    </div>
     <div class="main">
-        <div class="fc foto" style='<?php echo $foto ?>'></div>
+        <div class="fc foto" style='<?php echo $foto ?>; margin-bottom: 30px;'></div>
+        <ul class="list-group">
+            <li class="list-group-item"><?php echo $id_dono ?></li>
+            <li class="list-group-item"><?php echo $nome ?></li>
+            <li class="list-group-item"><?php echo $apelido ?></li>
+            <li class="list-group-item"><?php echo $email ?></li>
+            <li class="list-group-item"><?php echo $senha ?></li>
+            <li class="list-group-item"><?php echo $pontos_leitor ?> <i class="fa-solid fa-book"></i></li>
+            <li class="list-group-item"><?php echo $moedas ?> <i class="fa-solid fa-coins"></i></li>
+        </ul>
     </div>
     <div class="main2">
         <form action="programaticos/ban.php" method="post">

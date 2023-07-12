@@ -23,18 +23,18 @@
         $desc = "Esse erro não existe. Por favor, tenha cuidado ao editar o link de uma página";
     }
 
-    $perfil = -1;
-    $email = $_SESSION['email'];
-    $perfil = returnProfileId($email);
-    if($perfil == -1 || !isset($perfil)){
-        header("Location: error.php");  
-        exit;
-    }
-
     if($cod_error == 0 || $cod_error == 4)$to_show = "e0";
     if($cod_error == 1)$to_show = "e1";
 
     if($cod_error == 2){
+
+        $perfil = -1;
+        $email = $_SESSION['email'];
+        $perfil = returnProfileId($email);
+        if($perfil == -1 || !isset($perfil)){
+            header("Location: central.php");  
+            exit;
+        }
 
         $to_show = "e2";
         generateReport($perfil, 666, "AUTO - aos esgotos: ".date("d/m/y h:i:s")." - $id_error - OBS", 1);
@@ -42,6 +42,14 @@
     if($cod_error == 3){
 
         $to_show = "e3";
+        $perfil = -1;
+        $email = $_SESSION['email'];
+        $perfil = returnProfileId($email);
+        if($perfil == -1 || !isset($perfil)){
+            header("Location: central.php");  
+            exit;
+        }
+
         generateReport($perfil, 666, "AUTO - aos esgotos: ".date("d/m/y h:i:s")." - $id_error - BAN", 1);
     }
     // resumo, vc vai ter que colocar em todos os links de página de erro (no final), isso: ?erro=(codigo que vc escolher)

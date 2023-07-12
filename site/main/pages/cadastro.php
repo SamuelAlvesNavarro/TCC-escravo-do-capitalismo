@@ -12,9 +12,14 @@
         $senha = $_POST["senha"];
         $confirmarsenha = $_POST["confirmarsenha"];
 
-        checkBan($email);
-        checkMod($email);
-
+        if(checkBan($email, $pdo)){
+            header("Location: error.php?erro=19");
+            exit;
+        }
+        if(checkMod($email, $pdo)){
+            header("Location: error.php?erro=19");
+            exit;
+        }
 
         if($senha != $confirmarsenha){
             header("Location: error.php?erro=2");
@@ -30,9 +35,9 @@
                 $prepare = $pdo->prepare($sql);
                 $prepare->execute();
 
-                $sql = 'SELECT * FROM profile';
+                $sql = 'SELECT max(id_profile) as prof FROM profile';
                 foreach ($pdo->query($sql) as $key => $value) {
-                    $fk_profile = $value['id_profile'];
+                    $fk_profile = $value['prof'];
                 }
                 
                 $sql = "INSERT INTO user_common(fk_id_profile, nome, email, senha, apelido) values(?, ?, ?, ?, ?)";
@@ -56,24 +61,29 @@
             }
         }
 
-    function checkBan($email){
-        
-        global $pdo;
+    function checkBan($email, $pdo){
 
-        $sql = "SELECT count(*) FROM ban WHERE user_email = '$email'";
-        if($pdo->query($sql)->rowCount() > 0){
-            header("Location:error.php?erro=19");
-            exit;
+        $sql = "SELECT * FROM ban WHERE user_email = '$email'";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        if($prepare->rowCount() > 0){
+            return true;
+        }else{
+            return false;
         }
     }
 
-    function checkMod($email){
-        global $pdo;
+    function checkMod($email, $pdo){
 
         $sql = "SELECT email FROM mods WHERE email = '$email'";
-        if($pdo->query($sql)->rowCount() > 0){
-            header("Location:error.php?erro=19");
-            exit;
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        if($prepare->rowCount() > 0){
+            return true;
+        }else{
+            return false;
         }
     }
 
