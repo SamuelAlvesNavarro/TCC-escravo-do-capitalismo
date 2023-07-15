@@ -35,15 +35,28 @@
                 <tbody>
                     <?php
                         foreach ($pdo->query($sql) as $key => $value) {
+
+                            if($value['fk_id_reporter'] != 666){
+                                $x = "<td><a href='user.php?profile=". $value['fk_id_reporter']."'><button class='btn btn-danger'>Investigar</button></a></td>";
+                            }else{
+                                $x = "<td>Historito</td>";
+                            }
+
+                            if($value['fk_id_reported'] != 666){
+                                $y = "<td><a href='user.php?profile=". $value['fk_id_reported']."'><button class='btn btn-danger'>Investigar</button></a></td>";
+                            }else{
+                                $y = "<td>Historito</td>";
+                            }
+
                             echo "<tr scope='row'>";
                             echo "<td>".$value['id_report']."</td>";
                             echo "<td>".$value['fk_id_reported']."</td>";
                             echo "<td>".$value['fk_id_reporter']."</td>";
                             echo "<td>".$value['reason']."</td>";
                             echo "<td>".$value['code']."</td>";
-                            echo "<td><a href='altera_agenda.php?id_ag=". $value['id_agenda'] ."'><button class='btn btn-primary'>Mudar</button></a></td>";
-                            echo "<td><a href='excluir_agenda.php?id_ag=". $value['id_agenda'] ."'><button class='btn btn-danger'>Excluir</button></a></td>";
-                            echo "<td><a href='excluir_agenda.php?id_ag=". $value['id_agenda'] ."'><button class='btn btn-danger'>Excluir</button></a></td>";
+                            echo "$y";
+                            echo "$x";
+                            echo "<td><a href='resolvido?id_report=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
                             echo "</tr>";
                         }
                     ?>
