@@ -1,6 +1,7 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
+    require "includes/values.php";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -32,8 +33,8 @@
 
                 if($prepare->rowCount() == 0){
 
-                    $pontos_leitor += 0;
-                    $moedas += 25;
+                    $pontos_leitor += $ganhoDePontosLeitor;
+                    $moedas += $ganhoDeMoedas;
 
                     /* PONTOS DE LEITOR */
                     $add = "UPDATE user_common SET pontos_leitor = '$pontos_leitor' WHERE fk_id_profile = '$perfil'";
@@ -61,8 +62,8 @@
 
                 if($prepare->rowCount() == 0){
 
-                    $pontos_leitor += 100;
-                    $moedas += 25;
+                    $pontos_leitor += $ganhoDePontosLeitor;
+                    $moedas += $ganhoDeMoedas;
 
                     /* PONTOS DE LEITOR */
                     $add = "UPDATE user_common SET pontos_leitor = '$pontos_leitor' WHERE fk_id_profile = '$perfil'";
@@ -99,7 +100,7 @@
 
             }
 
-            $moedas += -50;
+            $moedas += $perdaDeMoedas;
             $add = "UPDATE user_common SET moedas = $moedas WHERE fk_id_profile = $perfil";
             $prepare = $pdo->prepare($add);
             $prepare->execute();

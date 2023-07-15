@@ -17,8 +17,10 @@ function switchmode(){
         toggle[1].classList.add('fa-sun');
         toggle[1].classList.add('far');
         dark = false;
+        setTheme("light");
     }else{
         dark = true;
+        setTheme("dark");
         toggle[0].classList.remove('fa-sun');
         toggle[0].classList.remove('far');
         toggle[0].classList.add('fa-moon');
@@ -27,6 +29,16 @@ function switchmode(){
         toggle[1].classList.remove('far');
         toggle[1].classList.add('fa-moon');
         toggle[1].classList.add('fa-solid');
+    }
+}
+function setTheme(theme){
+    localStorage.setItem("Theme", JSON.stringify(theme));
+}
+function getTheme(){
+    let theme = JSON.parse(localStorage.getItem("Theme"));
+
+    if(theme == "dark"){
+        switchmode();
     }
 }
 
@@ -69,3 +81,4 @@ function ranks(n){
 //ranks(0);
 //ranks(1);
 setTimeout(showInput, 500);
+getTheme();

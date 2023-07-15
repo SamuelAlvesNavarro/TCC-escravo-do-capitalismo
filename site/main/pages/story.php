@@ -1,6 +1,7 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
+    require "includes/values.php";
 
     function RetornarIdPage($id_story, $type){
         global $pdo;
@@ -129,11 +130,14 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>História</title>
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
-    <link rel="stylesheet" href="../css/story.css?v=1.01">
+    <link rel="stylesheet" href="../css/story.css?v=1.0123">
     <link rel="stylesheet" href="../css/notification.css">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
 </head>
 <body>
+    <div class="acess-menu" onclick="menu_appear()">
+        <i class="fa-solid fa-bars fa-acess"></i>
+    </div>
     <div id="all-menu" class="all_menu disappear">
             <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
                 <i class="fa-sharp fa-solid fa-xmark"></i>
@@ -169,14 +173,14 @@
     </div>
     <div id="alertWr" class="alert hide">
         <span class="fa-solid fa-circle-xmark n_icon"></span>
-        <span class="msg">Você errou: -50<i class='fa-solid fa-coins'></i></span>
+        <span class="msg">Você errou: <?php echo $perdaDeMoedas;?><i class='fa-solid fa-coins'></i></span>
         <div class="close-btn" onclick="callOutNotification(0)">
             <span class="fas fa-times"></span>
         </div>
     </div>
     <div id="alertRi" class="alert hide">
         <span class="fa-solid fa-check n_icon"></span>
-        <span class="msg">Você acertou: +25<i class='fa-solid fa-coins'></i> +100<i class="fa-solid fa-book"></i></span>
+        <span class="msg">Você acertou: +<?php echo $ganhoDeMoedas;?><i class='fa-solid fa-coins'></i> +<?php echo $ganhoDePontosLeitor;?><i class="fa-solid fa-book"></i></span>
         <div class="close-btn" onclick="callOutNotification(1)">
             <span class="fas fa-times"></span>
         </div>
