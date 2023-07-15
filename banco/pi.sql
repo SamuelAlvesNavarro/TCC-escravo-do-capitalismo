@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Jul-2023 às 14:45
+-- Tempo de geração: 15-Jul-2023 às 19:22
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -39,10 +39,33 @@ CREATE TABLE `answer` (
 --
 
 INSERT INTO `answer` (`id_answer`, `fk_id_question`, `text`, `status`) VALUES
-(37, 4, 'fsdsdfdfd', 0),
-(38, 4, 'dsdfdf', 0),
-(39, 4, 'dsfsdfdsfdf', 0),
-(40, 4, 'dfssdfdsfdsfdfdsf', 1);
+(41, 5, '1233333', 0),
+(42, 5, '333333', 1),
+(43, 5, '33333333', 0),
+(44, 5, '333333', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `ban`
+--
+
+CREATE TABLE `ban` (
+  `id_ban` int(11) NOT NULL,
+  `user_email` varchar(255) NOT NULL,
+  `date_ban` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `ban`
+--
+
+INSERT INTO `ban` (`id_ban`, `user_email`, `date_ban`) VALUES
+(1, 'murilo@gmail.com', '2023-07-10'),
+(2, 'murilo@gmail.com', '2023-07-10'),
+(3, 'khbfdbhkdsf@gmail.com', '2023-07-10'),
+(4, 'davi.ana142@gmail.com', '2023-07-12'),
+(5, 'murilo2@gmail.com', '2023-07-12');
 
 -- --------------------------------------------------------
 
@@ -103,6 +126,7 @@ INSERT INTO `error` (`id_error`, `cod_error`, `description`) VALUES
 (16, '1', 'Tamanho da imagem ultrapassou de 5 MB'),
 (17, '2', 'Título ofensivo'),
 (18, '3', 'Você tentou acessar uma história que não é sua. Isso é proibido e passível de banimento. O Historito não gostou da sua atitude e enviou uma notificação das suas atividades para o moderador.'),
+(19, '1', 'Esse email é inválido'),
 (42, '4', 'Reservado'),
 (666, '4', 'Reservado'),
 (667, '0', 'Você entrou na página de erro sem um erro. Por favor, não o faça novamente. Só acesse essa página quando necessário.');
@@ -118,6 +142,13 @@ CREATE TABLE `error_user` (
   `fk_id_profile` int(11) DEFAULT NULL,
   `fk_id_story` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `error_user`
+--
+
+INSERT INTO `error_user` (`id_error`, `fk_id_profile`, `fk_id_story`) VALUES
+(8, 668, 10);
 
 -- --------------------------------------------------------
 
@@ -167,7 +198,7 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`id_history`, `fk_id_page`, `texto`) VALUES
-(4, 5, 'sdfdsdfdfsdffds');
+(5, 6, 'era uma evz um craiancpoajkfajsldajlsdfdjladfdadh\r\n\r\n\r\n    <h1> djkjdbdsbjsdglbgfjlbjgfjbgfd </h1>');
 
 -- --------------------------------------------------------
 
@@ -180,6 +211,13 @@ CREATE TABLE `images` (
   `fk_id_page` int(11) NOT NULL,
   `path` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `images`
+--
+
+INSERT INTO `images` (`id_image`, `fk_id_page`, `path`) VALUES
+(2, 7, '../img-story/TEstezao/TEstezao-img-7.jpeg');
 
 -- --------------------------------------------------------
 
@@ -230,7 +268,8 @@ CREATE TABLE `page` (
 --
 
 INSERT INTO `page` (`id_page`, `fk_id_story`, `type`, `order_p`) VALUES
-(5, 9, 0, 0);
+(6, 10, 0, 0),
+(7, 10, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -251,10 +290,10 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id_profile`, `foto`, `fundoFoto`, `bordaFoto`, `fundoPerfil`) VALUES
-(6, 0, 0, 0, 0),
 (7, 0, 0, 0, 0),
-(8, 0, 0, 0, 0),
-(666, 0, 0, 0, 0);
+(666, 0, 0, 0, 0),
+(668, 0, 0, 0, 0),
+(669, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -273,7 +312,7 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`id_question`, `fk_id_story`, `quest_itself`) VALUES
-(4, 9, 'fsfddsfdfs');
+(5, 10, 'Davi Carvalho de Souza????');
 
 -- --------------------------------------------------------
 
@@ -285,6 +324,13 @@ CREATE TABLE `question_user` (
   `fk_id_question` int(11) NOT NULL,
   `fk_id_profile` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `question_user`
+--
+
+INSERT INTO `question_user` (`fk_id_question`, `fk_id_profile`) VALUES
+(5, 668);
 
 -- --------------------------------------------------------
 
@@ -325,20 +371,15 @@ CREATE TABLE `report_profile` (
   `fk_id_reported` int(11) NOT NULL,
   `fk_id_reporter` int(11) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
-  `code` int(11) NOT NULL,
-  `status_report` int(11) NOT NULL DEFAULT 0
+  `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `report_profile`
 --
 
-INSERT INTO `report_profile` (`id_report`, `fk_id_reported`, `fk_id_reporter`, `reason`, `code`, `status_report`) VALUES
-(31, 8, 666, 'AUTO - aos esgotos: 04/07/23 04:49:03 - 6 - BAN', 1, 0),
-(32, 8, 666, 'AUTO - aos esgotos: 04/07/23 04:49:48 - 6 - BAN', 1, 0),
-(33, 8, 666, 'AUTO - aos esgotos: 04/07/23 04:51:19 - 14 - OBS', 1, 0),
-(34, 8, 666, 'AUTO - aos esgotos: 04/07/23 04:53:21 - 10 - BAN', 1, 0),
-(35, 8, 666, 'AUTO - aos esgotos: 04/07/23 04:53:55 - 10 - BAN', 1, 0);
+INSERT INTO `report_profile` (`id_report`, `fk_id_reported`, `fk_id_reporter`, `reason`, `code`) VALUES
+(36, 668, 666, 'AUTO - aos esgotos: 12/07/23 06:32:22 - 18 - BAN', 1);
 
 -- --------------------------------------------------------
 
@@ -368,6 +409,13 @@ CREATE TABLE `score` (
   `nota` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `score`
+--
+
+INSERT INTO `score` (`id_score`, `fk_id_profile`, `fk_id_story`, `nota`) VALUES
+(24, 668, 10, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -392,7 +440,7 @@ INSERT INTO `story` (`id_story`, `font`, `nome`, `rating`, `status`, `fk_id_prof
 (5, 0, 'Dummy 2', 0, 3, 7),
 (6, 0, 'Dummy 3', 0, 3, 7),
 (7, 0, 'Dummy 4', 0, 3, 7),
-(9, 0, 'vamos fazer um teste', 0, 1, 8);
+(10, 0, 'TEstezao', 4, 3, 668);
 
 -- --------------------------------------------------------
 
@@ -417,8 +465,8 @@ CREATE TABLE `user_common` (
 --
 
 INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `ranking`, `moedas`) VALUES
-(6, 6, 'Murilo Lacre', 'murilo@gmail.com', '123', 'Murilinho', 0, 0, 0),
-(7, 8, 'dssdfdsgfggkhsdf', 'khbfdbhkdsf@gmail.com', '123', 'svfdhksdfjvbhdf', 0, 0, 0);
+(9, 668, 'Davi Carvalho de Souza', 'davi.ana1@gmail.com', '123', 'Dada', 300, 0, 49950075),
+(10, 669, 'Davi Carvalho de Souza', 'davi.ana15@gmail.com', '123', 'Dada', 0, 0, 0);
 
 --
 -- Índices para tabelas despejadas
@@ -430,6 +478,12 @@ INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`,
 ALTER TABLE `answer`
   ADD PRIMARY KEY (`id_answer`),
   ADD KEY `fk_id_question` (`fk_id_question`);
+
+--
+-- Índices para tabela `ban`
+--
+ALTER TABLE `ban`
+  ADD PRIMARY KEY (`id_ban`);
 
 --
 -- Índices para tabela `comment`
@@ -582,7 +636,13 @@ ALTER TABLE `user_common`
 -- AUTO_INCREMENT de tabela `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT de tabela `ban`
+--
+ALTER TABLE `ban`
+  MODIFY `id_ban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `comment`
@@ -594,13 +654,13 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT de tabela `error`
 --
 ALTER TABLE `error`
-  MODIFY `id_error` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=669;
+  MODIFY `id_error` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=670;
 
 --
 -- AUTO_INCREMENT de tabela `error_user`
 --
 ALTER TABLE `error_user`
-  MODIFY `id_error` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_error` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `gadget`
@@ -612,13 +672,13 @@ ALTER TABLE `gadget`
 -- AUTO_INCREMENT de tabela `history`
 --
 ALTER TABLE `history`
-  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `mods`
@@ -630,19 +690,19 @@ ALTER TABLE `mods`
 -- AUTO_INCREMENT de tabela `page`
 --
 ALTER TABLE `page`
-  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=671;
 
 --
 -- AUTO_INCREMENT de tabela `question`
 --
 ALTER TABLE `question`
-  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `reference`
@@ -660,25 +720,25 @@ ALTER TABLE `report_comment`
 -- AUTO_INCREMENT de tabela `report_profile`
 --
 ALTER TABLE `report_profile`
-  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de tabela `score`
 --
 ALTER TABLE `score`
-  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `story`
 --
 ALTER TABLE `story`
-  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `user_common`
 --
 ALTER TABLE `user_common`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restrições para despejos de tabelas
