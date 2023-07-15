@@ -27,7 +27,7 @@
         }
     </style>
 </head>
-<body>
+<body data-bs-theme="dark">
     <div class="to-center">
         <a href="esgotos.php"><i class="fa-solid fa-home"></i></a>
     </div>
