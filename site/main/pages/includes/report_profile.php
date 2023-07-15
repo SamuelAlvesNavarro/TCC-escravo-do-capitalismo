@@ -14,7 +14,7 @@
     function generateReport($reportado, $reportando, $text, $code){
 
         global $pdo;
-        $denuncia = "INSERT INTO report_profile VALUES(NULL, $reportado, $reportando, '$text', $code, 0)";
+        $denuncia = "INSERT INTO report_profile VALUES(NULL, $reportado, $reportando, '$text', $code)";
         $prepare = $pdo->prepare($denuncia);
         $prepare->execute();
         

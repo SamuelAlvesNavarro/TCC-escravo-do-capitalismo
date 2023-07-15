@@ -35,6 +35,10 @@
                 <tbody>
                     <?php
                         foreach ($pdo->query($sql) as $key => $value) {
+                            
+                            if($value['code'] == 1) $cd = "Em Aberto";
+                            if($value['code'] == 2) $cd = "Automática";
+                            if($value['code'] == 3) $cd = "Resolvido";
 
                             if($value['fk_id_reporter'] != 666){
                                 $x = "<td><a href='user.php?profile=". $value['fk_id_reporter']."'><button class='btn btn-danger'>Investigar</button></a></td>";
@@ -53,7 +57,7 @@
                             echo "<td>".$value['fk_id_reported']."</td>";
                             echo "<td>".$value['fk_id_reporter']."</td>";
                             echo "<td>".$value['reason']."</td>";
-                            echo "<td>".$value['code']."</td>";
+                            echo "<td>".$cd."</td>";
                             echo "$y";
                             echo "$x";
                             echo "<td><a href='resolvido?id_report=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";

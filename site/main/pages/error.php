@@ -37,7 +37,7 @@
         }
 
         $to_show = "e2";
-        generateReport($perfil, 666, "AUTO - aos esgotos: ".date("d/m/y h:i:s")." - $id_error - OBS", 1);
+        generateReport($perfil, 666, "AUTO - aos esgotos: ".date("d/m/y h:i:s")." - $id_error - OBS", 2);
     }
     if($cod_error == 3){
 
