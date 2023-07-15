@@ -1,6 +1,8 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
+
+    $css = rand(0, 1000000);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,9 +19,9 @@
     
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>Criação de Histórias</title>
-    <link rel="stylesheet" href="../css/criacao.css?v=1.01">
+    <link rel="stylesheet" href="../css/story-criacao.css">
+    <link rel="stylesheet" href="../css/criacao.css?v=1.0<?php echo $css;?>">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../css/story-criacao.css?v=1.01">
 </head>
 <body>
 <form id="form-criacao" method="post" action="upload.php" enctype="multipart/form-data" autocomplete="off">
@@ -62,7 +64,7 @@
                 <div class="page-pics-inputs">
                     <div class="page-pics-input">
                         <div class="input-file-unit">
-                            <i class="fa-solid fa-image"></i><label class="imagem-label" id="imagem1-label" for="imagem1">Imagem 1</label><input multiple class="input-file" type="file" id="imagem1" name="imagem1" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                            <i class="fa-solid fa-image"></i><label class="imagem-label" id="imagem1-label" for="imagem1">Imagem 1</label><input class="input-file" type="file" id="imagem1" name="imagem1" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
                             <button id="bt-first" type="button" class="bt-input-img" onclick="inputimgchangeval(-1)">Remover</button>
                         </div>
                         <div class="input-file-unit">
@@ -140,10 +142,10 @@
                     </ol>
                 </ul>
             </div>
-            <div class="section">
+            <div class="section prev">
                 <input id="preview-bt" onclick="preview()" type="button" value="Preview">
             </div>
-            <div class="uploads section">
+            <div class="uploads section prev">
                 <input id="upload" type="submit" value="Mandar para Revisão">
             </div>
         </div>

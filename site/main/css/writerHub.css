@@ -94,7 +94,6 @@ body{
 .main_section{
     width: 40%;
     flex-grow: 1;
-    min-height: calc(100vh-40px);
     background-color: var(--nav);
     transition: .5s linear;
     border-radius: 15px;
@@ -226,16 +225,23 @@ body{
   .keep{
     background-color: rgb(41, 114, 41);
   }
-
+  .spin-pls{
+    display: none;
+    text-align: center;
+  }
 @media (max-width: 800px) {
     .main{
       flex-direction: column;
+      align-items: center;
     }
     .main_section{
-      flex-grow: 1;
+      width: 100%;
     }
 }
 @media (max-width: 500px) {
+    .main_section{
+      width: 90%;
+    }
     .action:hover{
         height: auto;
     }
@@ -247,4 +253,12 @@ body{
       margin: 0;
       max-width: 100%;
     }
+}
+@media (max-width: 400px) {
+  .ta{
+    display: none;
+  }
+  .spin-pls{
+    display: block;
+  }
 }

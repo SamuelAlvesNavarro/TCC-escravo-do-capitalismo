@@ -39,7 +39,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/writerHub.css">
+    <link rel="stylesheet" href="../css/writerHub.css?v=1">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <title>Área do escritor</title>
 </head>
@@ -155,6 +155,7 @@
                     echo '<div class="main_section big-section">
                     <div class="rank">
                         <h1>Controle de Histórias</h1>
+                        <h4 class="spin-pls">Vire seu aparelho na horizontal</h4>
                         <div class="ta">
                             <table class="table table-dark">
                                 <thead>
@@ -225,7 +226,7 @@
         </div>
     </div>
 <script src="../js/menu.js"></script>
-<script src="../js/writerHub.js"></script>
+<script src="../js/writerHub.js?v=1"></script>
 <div id="hidden_form_container" style="display:none;"></div>
 
 <script>

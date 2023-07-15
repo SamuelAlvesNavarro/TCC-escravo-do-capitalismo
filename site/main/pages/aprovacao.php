@@ -11,7 +11,7 @@
     }
 
     $id_story = $_POST['story'];
-
+    if(!isset($_POST['story']))header("Location: central.php");
     $perfil = -1;
     $email = $_SESSION['email'];
     $perfil = returnProfileId($email);
