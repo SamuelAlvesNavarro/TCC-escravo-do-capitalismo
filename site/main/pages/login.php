@@ -15,8 +15,8 @@
     if($prepare -> rowCount() > 0){
         require "includes/criasession.php";
         $_SESSION['email'] = $email;
-        header("Location:central.php");
+        header("Location: central.php");
     }else{
-        echo "Error: login não efetuado";
+        header("Location: acesso.html");
     }
 ?>

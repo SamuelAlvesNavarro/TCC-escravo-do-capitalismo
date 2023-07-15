@@ -1,3 +1,6 @@
 <?php
-    include "includes/closing_session.php";
+    require 'includes/online.php';
+    session_unset();
+    session_destroy();
+    header("Location: acesso.html");
 ?>

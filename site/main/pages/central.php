@@ -25,7 +25,7 @@
     $sql = "SELECT * FROM user_common order by pontos_leitor desc Limit 3";
     foreach($pdo->query($sql) as $key => $value){
         $topUsers[$i] = $value['apelido'];
-        $topIds[$i] = $value['id_user'];
+        $topIds[$i] = $value['fk_id_profile'];
         $i++;
     }
 
@@ -54,6 +54,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/menu.css">
@@ -150,11 +153,6 @@
                         </div>
                     </form>
 
-                </div>
-            </div>
-            <div class="to-main" onclick="anchor('main')">
-                <div class="leave-bt">
-                    <i class="fa-solid fa-chevron-down"></i>
                 </div>
             </div>
         </div>
@@ -254,7 +252,7 @@
         </div>
     </div>
 
-    <script src="../js/menu.js?v=1.01"></script>
-    <script src="../js/central.js?v=1.01"></script>
+    <script src="../js/menu.js?version=1.01"></script>
+    <script src="../js/central.js?version=1.02"></script>
 </body>
 </html>
