@@ -34,7 +34,6 @@
     }
 
     $showAnswered = 0;
-    $showQuestion = 0;
     $showRight = "none;";
     $showWrong = "none;";
     $showNo = "none;";
@@ -56,21 +55,12 @@
         $perfil = $value['fk_id_profile'];
     }
 
-    $check = "SELECT * FROM question_user WHERE fk_id_profile = $perfil and fk_id_question = $id_question";
-    $prepare = $pdo->prepare($check);
-    $prepare->execute();
 
     if($prepare->rowCount() > 0){
 
         $showRight = "block;";
 
     }else{
-
-        /* CHECK ERROR */
-
-        $check = "SELECT * FROM error_user WHERE fk_id_profile = $perfil and fk_id_story = $id_story";
-        $prepare = $pdo->prepare($check);
-        $prepare->execute();
 
         if($prepare->rowCount() > 0){
             $showWrong = "block;";
@@ -119,6 +109,15 @@
         
         $i++;
     }
+
+
+    /* QUARENTENA */
+    echo '
+        <form method="post" action="programaticos/quarentena.php">
+            <input type="hidden" name="id_story" value="'.$id_story.'"><br>
+            <button>Quarentena</button>
+        </form>
+    ';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -131,7 +130,6 @@
     <link rel="stylesheet" href="../../main/css/menu.css?v=1.01">
     <link rel="stylesheet" href="../../main/css/story.css?v=1.01">
     <link rel="stylesheet" href="../../main/css/notification.css">
-    <link rel="shortcut icon" href="../../main/svg/logo.svg" type="image/x-icon">
 </head>
 <body>
     <div id="all-menu" class="all_menu disappear">
@@ -165,20 +163,6 @@
                     <!--<img src="https://clipart-library.com/images/rcLoyAzKi.png" alt="" srcset="">-->
                 </div>
             </div>
-        </div>
-    </div>
-    <div id="alertWr" class="alert hide">
-        <span class="fa-solid fa-circle-xmark n_icon"></span>
-        <span class="msg">Você errou: -50<i class='fa-solid fa-coins'></i></span>
-        <div class="close-btn" onclick="callOutNotification(0)">
-            <span class="fas fa-times"></span>
-        </div>
-    </div>
-    <div id="alertRi" class="alert hide">
-        <span class="fa-solid fa-check n_icon"></span>
-        <span class="msg">Você acertou: +25<i class='fa-solid fa-coins'></i> +100<i class="fa-solid fa-book"></i></span>
-        <div class="close-btn" onclick="callOutNotification(1)">
-            <span class="fas fa-times"></span>
         </div>
     </div>
     <div class="all transi" id="all">
@@ -308,19 +292,11 @@
         <div class="main">
             <div class="interaction-container">
                 <?php 
-                    if($showAnswered == "block;"){
-                        echo 
-                        '<div class="answered">
-                            <h1>Você já respondeu essa pergunta! Obrigado pela avalicação!</h1>          
-                        </div>';
-                    }
-                    if($showQuestion == "flex;"){
                         echo '<div class="unanswered">
                             <div class="question-container">
                                 <div class="question">
                                    '.$questionText.'
                                 </div>
-                                <form id="question-form" method="post">
                                     <div class="options">
                                         <div class="col1-op op-col">
                                             <div class="option" onclick="answerForm(0)">
@@ -338,44 +314,9 @@
                                                 '.$answers[3].'
                                             </div>
                                         </div>
-                                        <input type="hidden" name="id_story" value="'.$id_story.'"><br>
-                                        <input type="hidden" name="id_question" value="'.$id_question.'"><br>
                                     </div>
-                                </form>
                             </div>  
-                            <div class="rating-container">
-                                <div id="noAnswer" class="noAnswer" style="display:'.$showNo.'">
-                                    <div class="things-container-noAnswer">
-                                        <div class="rating-part">
-                                            <h1>Você ainda não respondeu à pergunta</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="right" class="right" style="display:'.$showRight.'">
-                                    <div class="things-container" style="background-color: #1f4921;">
-                                        <div class="rating-part">
-                                            <h1>Você Acertou</h1>
-                                        </div>
-                                        <div class="rating-part rating-container-input">
-                                            <form id="form-container" action="score.php" method="post">
-                                                <input type="number" name="rating" id="rating-input" max="5" min="1" placeholder="Dê uma nota à história!"><br>
-                                                <input type="hidden" name="id_story" value="'.$id_story.'"><br>
-                                                <input type="hidden" name="id_question" value="'.$id_question.'"><br>
-                                                <input type="submit" value="Enviar" id="rating-input-submit">
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="wrong" class="wrong" style="display:'.$showWrong.'">
-                                    <div class="things-container" style="background-color: rgb(87, 17, 17);">
-                                        <div class="rating-part">
-                                            <h1>Você Errou</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>';
-                    }
                 ?>
             </div>
         </div>
@@ -433,6 +374,6 @@
         }
     
 </script>
-<script src="../js/story.js?v=1.01"></script>
-<script src="../js/menu.js?v=1.01"></script>
+<script src="../../main/js/story.js?v=1.01"></script>
+<script src="../../main/js/menu.js?v=1.01"></script>
 </html>
