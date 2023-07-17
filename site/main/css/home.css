@@ -565,3 +565,19 @@ th{
     margin-left: -8vw;
     box-shadow: none;
 }
+
+
+
+@media (max-width: 1200px) {
+    .all{
+        display: block;
+    }
+    .menu{
+        display: none;
+    }
+    .main{
+        height: auto;    
+        width: 100% !important;
+        margin-left: 0;
+    }
+}

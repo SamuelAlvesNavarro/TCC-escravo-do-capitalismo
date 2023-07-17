@@ -17,12 +17,7 @@
         );
 
         $result = curl_exec($ch);
-        echo $result;
-        if($result){
-            echo "Mensagem enviada para seu gmail. Cheque seu Spam, pois o email pode ter caído lá<br>";
-            echo "Volte para o acesso para <a href='acesso.html'>logar</a> novamente com sua senha";
-        }else{
-            header("Location: error.php?error=18");
-        }
+
+        return $result;
     }
 ?>
