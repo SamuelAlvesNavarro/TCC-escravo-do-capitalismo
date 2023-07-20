@@ -1,0 +1,26 @@
+<?php
+    require "includes/online.php";
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="cadastro-mod.php">
+        <label for="">Nome:</label>
+        <input type="text" name="name">
+
+        <label for="">Email:</label>
+        <input type="email" name="email">
+
+        <label for="">Senha:</label>
+        <input type="password" name="senha">
+
+        <input type="button">
+    </form>
+</body>
+</html>

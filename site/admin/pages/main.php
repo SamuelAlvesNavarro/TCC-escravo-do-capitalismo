@@ -11,6 +11,9 @@
     <title>Central - Admin</title>
 </head>
 <body>
-    
+    <ul>
+        <a href="gadgets.php"><li>Centro de Controle de Gadgets</li></a>
+        <a href="cadastrar-mod.php"><li>Cadastro de Moderadores</li></a>
+    </ul>
 </body>
 </html>

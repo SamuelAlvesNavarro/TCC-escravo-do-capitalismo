@@ -7,7 +7,7 @@
     $email = $_POST["email"];
     $senha = $_POST["senha"];
 
-    $sql = "SELECT * FROM mods WHERE email = '$email' and senha = '$senha'";
+    $sql = "SELECT * FROM admin WHERE email = '$email' and senha = '$senha'";
 
     $prepare = $pdo->prepare($sql);
     $prepare -> execute();
