@@ -20,7 +20,7 @@
         <label for="">Senha:</label>
         <input type="password" name="senha">
 
-        <input type="button">
+        <input type="submit" value="Enviar">
     </form>
 </body>
 </html>
