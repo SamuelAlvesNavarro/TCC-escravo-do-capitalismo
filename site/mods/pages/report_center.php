@@ -92,7 +92,7 @@
                 <?php
                     require "includes/conexao.php";
 
-                    $sql = "SELECT * FROM report_profile where code != 2";
+                    $sql = "SELECT * FROM report_story where code != 2";
                 ?>
             <!--<a href="index.php" class="p-2 col-2"><button type="button" class="btn-close" disabled aria-label="Close"></button></a>-->
         
@@ -100,27 +100,28 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Código</th>
-                        <th scope="col">Código do denunciado</th>
+                        <th scope="col">Código da história denunciada</th>
                         <th scope="col">Código do denunciador</th>
                         <th scope="col">Razão</th>
                         <th scope="col">Código</th>
-                        <th scope="col">Perfil do Denunciado</th>
-                        <th scope="col">Perfil do Denunciador</th>
                         <th scope="col">Resolvido</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                         foreach ($pdo->query($sql) as $key => $value) {
+                            
+                            if($value['code'] == 1) $cd = "Em Aberto";
+                            if($value['code'] == 2) $cd = "Automática";
+                            if($value['code'] == 3) $cd = "Resolvido";
+
                             echo "<tr scope='row'>";
-                            echo "<td>".$row['id_report']."</td>";
-                            echo "<td>".$row['fk_id_reported']."</td>";
-                            echo "<td>".$row['fk_id_reporter']."</td>";
-                            echo "<td>".$row['reason']."</td>";
-                            echo "<td>".$row['code']."</td>";
-                            echo "<td><a href='altera_agenda.php?id_ag=". $row['id_agenda'] ."'><button class='btn btn-primary'>Mudar</button></a></td>";
-                            echo "<td><a href='excluir_agenda.php?id_ag=". $row['id_agenda'] ."'><button class='btn btn-danger'>Excluir</button></a></td>";
-                            echo "<td><a href='excluir_agenda.php?id_ag=". $row['id_agenda'] ."'><button class='btn btn-danger'>Excluir</button></a></td>";
+                            echo "<td>".$value['id_report']."</td>";
+                            echo "<td><a href='mod-story.php?input_1=".$value['fk_id_reported_story']."'>História</a></td>";
+                            echo "<td>".$value['fk_id_reporter']."</td>";
+                            echo "<td>".$value['reason']."</td>";
+                            echo "<td>".$cd."</td>";
+                            echo "<td><a href='resolvido?id_report=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
                             echo "</tr>";
                         }
                     ?>

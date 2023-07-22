@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15-Jul-2023 às 19:22
+-- Tempo de geração: 22-Jul-2023 às 18:24
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -91,6 +91,14 @@ CREATE TABLE `compra` (
   `fk_id_gadget` int(11) NOT NULL,
   `data` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `compra`
+--
+
+INSERT INTO `compra` (`fk_id_profile`, `fk_id_gadget`, `data`) VALUES
+(668, 26, '2023-07-15'),
+(668, 33, '2023-07-15');
 
 -- --------------------------------------------------------
 
@@ -292,8 +300,9 @@ CREATE TABLE `profile` (
 INSERT INTO `profile` (`id_profile`, `foto`, `fundoFoto`, `bordaFoto`, `fundoPerfil`) VALUES
 (7, 0, 0, 0, 0),
 (666, 0, 0, 0, 0),
-(668, 0, 0, 0, 0),
-(669, 0, 0, 0, 0);
+(668, 26, 0, 0, 33),
+(669, 0, 0, 0, 0),
+(671, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -357,6 +366,7 @@ CREATE TABLE `report_comment` (
   `fk_id_comment` int(11) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
   `code` int(11) NOT NULL,
+  `status_report` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -392,7 +402,15 @@ CREATE TABLE `report_story` (
   `fk_id_reporter` int(11) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
   `code` int(11) NOT NULL,
+  `status_report` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `report_story`
+--
+
+INSERT INTO `report_story` (`id_report`, `fk_id_reported_story`, `fk_id_reporter`, `reason`, `code`, `status_report`) VALUES
+(0, 10, 666, '1212', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -438,7 +456,7 @@ INSERT INTO `story` (`id_story`, `font`, `nome`, `rating`, `status`, `fk_id_prof
 (5, 0, 'Dummy 2', 0, 3, 7),
 (6, 0, 'Dummy 3', 0, 3, 7),
 (7, 0, 'Dummy 4', 0, 3, 7),
-(10, 0, 'TEstezao', 4, 3, 668);
+(10, 0, 'TEstezao', 4, 4, 668);
 
 -- --------------------------------------------------------
 
@@ -463,8 +481,9 @@ CREATE TABLE `user_common` (
 --
 
 INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `ranking`, `moedas`) VALUES
-(9, 668, 'Davi Carvalho de Souza', 'davi.ana1@gmail.com', '123', 'Dada', 300, 0, 49950075),
-(10, 669, 'Davi Carvalho de Souza', 'davi.ana15@gmail.com', '123', 'Dada', 0, 0, 0);
+(9, 668, 'Davi Carvalho de Souza', 'davi.ana1@gmail.com', '123', 'Dada', 300, 0, 49949981),
+(10, 669, 'Davi Carvalho de Souza', 'davi.ana15@gmail.com', '123', 'Dada', 0, 0, 0),
+(12, 671, 'Davi Carvalho de Souza', 'davi.ana969@gmail.com', '1234', 'Davi', 0, 0, 0);
 
 --
 -- Índices para tabelas despejadas
@@ -694,7 +713,7 @@ ALTER TABLE `page`
 -- AUTO_INCREMENT de tabela `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=671;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=672;
 
 --
 -- AUTO_INCREMENT de tabela `question`
@@ -721,12 +740,6 @@ ALTER TABLE `report_profile`
   MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT de tabela `report_story`
---
-ALTER TABLE `report_story`
-  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `score`
 --
 ALTER TABLE `score`
@@ -742,7 +755,7 @@ ALTER TABLE `story`
 -- AUTO_INCREMENT de tabela `user_common`
 --
 ALTER TABLE `user_common`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restrições para despejos de tabelas
@@ -818,6 +831,28 @@ ALTER TABLE `question_user`
 --
 ALTER TABLE `reference`
   ADD CONSTRAINT `reference_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `report_comment`
+--
+ALTER TABLE `report_comment`
+  ADD CONSTRAINT `report_comment_ibfk_1` FOREIGN KEY (`fk_id_reported`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `report_comment_ibfk_2` FOREIGN KEY (`fk_id_reporter`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `report_comment_ibfk_3` FOREIGN KEY (`fk_id_comment`) REFERENCES `comment` (`id_comment`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `report_profile`
+--
+ALTER TABLE `report_profile`
+  ADD CONSTRAINT `report_profile_ibfk_1` FOREIGN KEY (`fk_id_reported`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `report_profile_ibfk_2` FOREIGN KEY (`fk_id_reporter`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `report_story`
+--
+ALTER TABLE `report_story`
+  ADD CONSTRAINT `report_story_ibfk_1` FOREIGN KEY (`fk_id_reported_story`) REFERENCES `story` (`id_story`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `report_story_ibfk_2` FOREIGN KEY (`fk_id_reporter`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `score`

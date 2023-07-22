@@ -33,7 +33,7 @@
         <h1 class="center">Caminhos</h1>
         <ul>
             <a href="correcao.php"><li>Centro de Correção de Histórias</li></a>
-            <li>Centro de Controle de Histórias</li>
+            <a href="story-center.php"><li>Centro de Controle de Histórias</li></a>
             <a href="report_center.php"><li>Centro de Controle de Denúncias</li></a>
             <a href="user_center.php"><li>Centro de Controle de Usuários</li></a>
         </ul>

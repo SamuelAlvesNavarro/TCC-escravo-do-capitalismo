@@ -12,7 +12,7 @@
     }
     if(isset($_GET['input_1'])){
         $id_story = $_GET['input_1'];
-        $story = "SELECT * from story where id_story = $id_story and status = 3";
+        $story = "SELECT * from story where id_story = $id_story";
         $prepare = $pdo->prepare($story);
         $prepare->execute();
 

@@ -1,14 +1,16 @@
 <?php
-    require "includes/conexao.php";
-    require "includes/online.php";
+    include "includes/conexao.php";
+    include "includes/online.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>Controle de Usuários</title>
+    <title>Correção Geral</title>
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <style>
         body{
@@ -32,19 +34,17 @@
     <div class="to-center">
         <a href="esgotos.php"><i class="fa-solid fa-home"></i></a>
     </div>
-    <h1>Relação dos Usuários</h1>
-    <ul class="list-group">
-
-        <?php
-            $sql = "select user_common.nome as nome, profile.id_profile as id_prof from user_common, profile where user_common.fk_id_profile = profile.id_profile";
-            foreach ($pdo->query($sql) as $key => $value) {
+    <h1>Quarentena (status = 4)</h1>
+    <h3>Histórias retiradas do ar mas <strong>ATUALIZE A PÁGINA</strong></h3>
+    <ul>
+        <?php 
+            $pCorrigir = "SELECT * FROM story where status = 4 ORDER BY id_story asc";
+            foreach($pdo->query($pCorrigir) as $key => $value){
+                $id_story = $value['id_story'];
                 $nome = $value['nome'];
-                $profile = $value['id_prof'];
-
-                echo '<a href="user.php?profile='.$profile.'"><li class="list-group-item">('.$profile.') '.$nome.'</li></a>';
+                echo "<li><a href='quarentena.php?story=". $id_story ."'>$nome</a></li><br>";
             }
         ?>
-
     </ul>
 </body>
 </html>

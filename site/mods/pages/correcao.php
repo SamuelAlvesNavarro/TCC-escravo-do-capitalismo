@@ -13,6 +13,9 @@
     <title>Correção Geral</title>
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <style>
+        body{
+            padding: 20px;
+        }
         .to-center{
             padding: 20px;
             position: fixed;
