@@ -28,6 +28,11 @@
         .to-center a{
             color: white;
         }
+        li a{
+            color: yellow !important;
+            cursor: pointer;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body data-bs-theme="dark">

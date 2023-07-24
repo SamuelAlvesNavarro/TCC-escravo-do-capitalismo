@@ -365,8 +365,7 @@ CREATE TABLE `report_comment` (
   `fk_id_reporter` int(11) NOT NULL,
   `fk_id_comment` int(11) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
-  `code` int(11) NOT NULL,
-  `status_report` int(11) NOT NULL DEFAULT 0
+  `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -401,16 +400,15 @@ CREATE TABLE `report_story` (
   `fk_id_reported_story` int(11) NOT NULL,
   `fk_id_reporter` int(11) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
-  `code` int(11) NOT NULL,
-  `status_report` int(11) NOT NULL DEFAULT 0
+  `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `report_story`
 --
 
-INSERT INTO `report_story` (`id_report`, `fk_id_reported_story`, `fk_id_reporter`, `reason`, `code`, `status_report`) VALUES
-(0, 10, 666, '1212', 1, 0);
+INSERT INTO `report_story` (`id_report`, `fk_id_reported_story`, `fk_id_reporter`, `reason`, `code`) VALUES
+(0, 10, 666, '1212', 1);
 
 -- --------------------------------------------------------
 
@@ -619,6 +617,7 @@ ALTER TABLE `report_profile`
 -- Índices para tabela `report_story`
 --
 ALTER TABLE `report_story`
+  ADD PRIMARY KEY (`id_report`),
   ADD KEY `report_story_ibfk_1` (`fk_id_reported_story`),
   ADD KEY `report_story_ibfk_2` (`fk_id_reporter`);
 
@@ -740,6 +739,12 @@ ALTER TABLE `report_profile`
   MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
+-- AUTO_INCREMENT de tabela `report_story`
+--
+ALTER TABLE `report_story`
+  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `score`
 --
 ALTER TABLE `score`
@@ -831,28 +836,6 @@ ALTER TABLE `question_user`
 --
 ALTER TABLE `reference`
   ADD CONSTRAINT `reference_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `report_comment`
---
-ALTER TABLE `report_comment`
-  ADD CONSTRAINT `report_comment_ibfk_1` FOREIGN KEY (`fk_id_reported`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `report_comment_ibfk_2` FOREIGN KEY (`fk_id_reporter`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `report_comment_ibfk_3` FOREIGN KEY (`fk_id_comment`) REFERENCES `comment` (`id_comment`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `report_profile`
---
-ALTER TABLE `report_profile`
-  ADD CONSTRAINT `report_profile_ibfk_1` FOREIGN KEY (`fk_id_reported`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `report_profile_ibfk_2` FOREIGN KEY (`fk_id_reporter`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `report_story`
---
-ALTER TABLE `report_story`
-  ADD CONSTRAINT `report_story_ibfk_1` FOREIGN KEY (`fk_id_reported_story`) REFERENCES `story` (`id_story`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `report_story_ibfk_2` FOREIGN KEY (`fk_id_reporter`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `score`

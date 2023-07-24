@@ -28,6 +28,11 @@
         .to-center a{
             color: white;
         }
+        li a{
+            color: yellow !important;
+            cursor: pointer;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body data-bs-theme="dark">
@@ -46,8 +51,8 @@
             }
         ?>
     </ul>
-    <h1>Deixados durante correção (status = 5)</h1>
-    <h3>Não era para ter nada aqui. Cliquem em deixar correção antes de sair</h3>
+    <br><br>
+    <h1>Deixados durante correção ou em correção (status = 5)</h1>
     <ul>
         <?php 
             $pCorrigir = "SELECT * FROM story where status = 5 ORDER BY id_story asc";

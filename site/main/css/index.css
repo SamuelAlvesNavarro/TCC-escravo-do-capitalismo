@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+}
+@font-face {
+    font-family: scary;
+    src: url(../fonts/another_danger/Another\ Danger\ -\ Demo.otf);
+}
+@font-face {
+    font-family: apercu-bold;
+    src: url(../fonts/apercu-pro-cufonfonts/apercu_bold_pro.otf);
+}
+:root {
+    color-scheme: light;
+    --glow-color: maroon;
+    --glow-color-text: rgb(224, 26, 26);
+}
+body{
+    background-color: #121212;
+}
+.nav{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #121212;
+}
+.logo{
+    width: 50px;
+    height: 50px;
+    border: 5px solid white;
+}
+.logo svg{
+    fill: white;
+}
+.links{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    color: white;
+    gap: 20px;
+}
+.link{
+    font-family: "Poppins";
+    font-size: 20px;
+    cursor: pointer;
+}
+/* BANNER */
+
+.banner{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-banner{
+    width: 90%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.skull{
+    position: relative;
+}
+.cover{
+    width: 30vw;
+    height: 30vw;
+    background-color: rgb(179, 14, 8);
+    border-radius: 46% 54% 70% 30% / 30% 54% 46% 70% ;
+    animation: coveranni;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    min-width: 170px;
+    min-height: 170px;
+}
+@keyframes coveranni {
+    50%{
+        border-radius: 63% 37% 33% 67% / 73% 24% 76% 27%;
+        background-color: maroon;
+    }
+    to{
+        border-radius: 46% 54% 70% 30% / 30% 54% 46% 70% ;
+    }
+}
+.skull svg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35vw;
+    height: 35vw;
+    min-width: 200px;
+    min-height: 200px;
+    fill: white;
+}
+.text{
+    position: relative;
+    text-align: right;
+    width: 45vw;
+    color: white;
+    font-family: "Poppins";
+}
+.text h1{
+    font-size: 100px;
+    font-family: scary;
+    color:rgb(179, 14, 8); 
+}
+.big{
+    font-size: 140px;
+}
+.text h1::before{
+    content: '';
+    position: absolute;
+    left: 70%;
+    top: 10px;
+    width: 10px;
+    height: 30px;
+    transform: rotate(60deg);
+    background-color: rgb(179, 14, 8);
+}
+
+
+/* MAIN */
+
+.main{
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding-top: 100px;
+    text-align: center;
+    color: black;
+}
+.main::after{
+    content: '';
+    z-index: -1;
+    background-color: white;
+    position: absolute;
+    inset: 0;
+    transform: skewY(5deg);
+    box-shadow: 10px 10px 40px 0px rgba(255,255,255,0.75);
+-webkit-box-shadow: 10px 10px 40px 0px rgba(255,255,255,0.75);
+-moz-box-shadow: 10px 10px 40px 0px rgba(255,255,255,0.75);
+}
+.title h1{
+    font-weight: 600;
+    font-size: 50px;
+    font-family: apercu-bold;
+}
+.sections{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding-bottom: 100px;
+}
+.section{
+    min-height: 50vh;
+    padding: 40px;
+    gap: 100px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+}
+.action{
+    width: 350px;
+    position: relative;
+    text-align: left;
+}
+.image{
+    height: 300px;
+    width: 300px;
+}
+.image1{
+    background-image: url(../svg/bat2.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgb(248, 21, 13);
+    border-radius: 37% 63% 24% 76% / 11% 69% 31% 89% ;
+}
+.p{
+    margin-top: 20px;
+    font-size: 20px;
+}
+.try-link{
+    color: black;
+    border-bottom: 2px solid black;
+}
+.try-link:hover{
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid black;
+}
+.image2{
+    background-image: url(../svg/spider.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgb(179, 14, 8);
+    border-radius: 63% 37% 70% 30% / 25% 65% 35% 75% ;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+.image3{
+    background-image: url(../svg/scorpion.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgb(248, 21, 13);
+    border-radius: 37% 63% 67% 33% / 34% 69% 31% 66%   ;
+}
+.image4{
+
+    background-color: maroon;
+    border-radius: 94% 6% 93% 7% / 13% 93% 7% 87% ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+table, th, td {
+    font-family: apercu-bold;
+    color: white;
+    border: 1px solid white;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 5px;
+  }
+
+  .image5{
+    background-image: url(../svg/mosquito.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgb(179, 14, 8);
+    border-radius: 14% 86% 93% 7% / 84% 81% 19% 16%  ;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+.footer{
+    margin-top: 120px;
+    min-height: 100vh;
+    background: linear-gradient(#121212, black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 900px) {
+    .section{
+        flex-direction: column;
+    }
+    .inv{
+        flex-direction: column-reverse;
+    }
+    .glowing-btn::before{
+        display: none;
+    }
+    .text h1{
+        font-size: 80px;
+    }
+    .big{
+        font-size: 100px;
+    }
+}
+@media (max-width: 600px) {
+    .linkA{
+        display: none;
+    }
+    .footer{
+        display: none;
+    }
+    .title h1{
+        font-size: 40px;
+    }
+    .banner{
+        display: none;
+    }
+    .image{
+        width: 200px;
+        height: 200px;
+    }
+    .action{
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+    }
+    .dif{
+        display: block;
+    }
+    .action h1{
+        font-size: 30px;
+    }
+    table{
+        display: none;
+    }
+    .image4{
+        background-image: url(../svg/bee.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    }
+}

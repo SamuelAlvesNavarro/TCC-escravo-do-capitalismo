@@ -315,10 +315,7 @@
     right: -50vh;
     bottom: -100vh;
 }
-.col{
-    float: left;
-
-}.home-col{
+.home-col{
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
@@ -359,6 +356,8 @@
     /* EXP - SECTION */
 #exp-sec{
     background-color: var(--background-2);
+    display: flex;
+    flex-direction: row;
 }
 .exp-col1{
     width: 30%;
@@ -381,23 +380,19 @@
 .exp-col2{
     padding: 0;
     height: 100vh;
-    text-align: right;
     display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
     width: 70%;
 }
 .line1{
-    width: 70%;
-    text-align: left;
-    padding-bottom: 10vh;
+    width: 100%;
+    padding-bottom: 20px;
     font-weight: 600;
     font-size: 50px;
 }
 .line2{
-    width: 70%;
-    text-align: left;
+    width: 50%;
     font-size: 20px;
 }
 
@@ -568,7 +563,7 @@ th{
 
 
 
-@media (max-width: 1200px) {
+@media (max-width: 800px) {
     .all{
         display: block;
     }
@@ -579,5 +574,68 @@ th{
         height: auto;    
         width: 100% !important;
         margin-left: 0;
+    }
+    .home-background-day{
+        display: none;
+    }
+    .sections{
+        height: auto;
+    }
+    .section{
+        padding-bottom: 20px;
+    }
+    .home-titleh1{
+        font-size: 50px;
+        text-align: center;
+    }
+    .home-col1{
+        width: auto;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .home-col{
+       position: relative;
+       transform: translate(0);
+    }
+    .home-frow {
+        width: 100%;
+        text-align: center;
+    }
+    .home-srow {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    #exp-sec {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        overflow: hidden;
+    }
+    .exp-col1{
+        width: 50%;
+    }
+    .exp-col2 {
+        text-align: center;
+        align-items: center;
+        padding-top: 30px;
+    }
+    .line2{
+        width: 90%;
+    }
+    .blur{
+        -webkit-box-shadow: inset -2px 0px 20px 15px var(--background-2);
+        -moz-box-shadow: inset -2px 0px 20px 15px var(--background-2);
+        box-shadow: inset -2px 0px 20px 15px var(--background-2);
+    }
+}
+@media (max-width: 300px) {
+    .line2{
+        width: 250px;
     }
 }

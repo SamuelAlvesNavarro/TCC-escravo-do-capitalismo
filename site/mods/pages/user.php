@@ -168,7 +168,7 @@
                 <?php
                     require "includes/conexao.php";
 
-                    $sql = "SELECT * FROM report_story where code != 2";
+                    $sql = "SELECT * FROM report_story where fk_id_reporter = $perfildono";
                 ?>
             <!--<a href="index.php" class="p-2 col-2"><button type="button" class="btn-close" disabled aria-label="Close"></button></a>-->
         
