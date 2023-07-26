@@ -18,6 +18,23 @@
 }
 body{
     background-color: #121212;
+    animation-name: body-color;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes body-color {
+    47%{
+        background-color: #121212;
+    }
+    48%{
+        background-color: rgb(253, 211, 238);
+    }
+    50%{
+        background-color: rgb(253, 211, 238);
+    }
+    51%{
+        background-color: #121212;
+    }
 }
 .nav{
     position: fixed;
@@ -51,6 +68,12 @@ body{
     font-size: 20px;
     cursor: pointer;
 }
+.button-acess{
+    padding: 15px;
+    color: white;
+    background-color: maroon;
+    border-radius: 30px;
+}
 /* BANNER */
 
 .banner{
@@ -74,19 +97,30 @@ body{
     height: 30vw;
     background-color: rgb(179, 14, 8);
     border-radius: 46% 54% 70% 30% / 30% 54% 46% 70% ;
-    animation: coveranni;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
+    animation: coveranni 10s infinite, cover-color 5s infinite;
     min-width: 170px;
     min-height: 170px;
 }
 @keyframes coveranni {
     50%{
         border-radius: 63% 37% 33% 67% / 73% 24% 76% 27%;
-        background-color: maroon;
     }
     to{
         border-radius: 46% 54% 70% 30% / 30% 54% 46% 70% ;
+    }
+}
+@keyframes cover-color{
+    47%{
+        background-color: maroon;
+    }
+    48%{
+        background-color: white;
+    }
+    50%{
+        background-color: white;
+    }
+    51%{
+        background-color: maroon;
     }
 }
 .skull svg{
@@ -99,6 +133,24 @@ body{
     min-width: 200px;
     min-height: 200px;
     fill: white;
+    animation-name: skull-color;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes skull-color{
+
+    47%{
+        fill: white;
+    }
+    48%{
+        fill: #0011ff;
+    }
+    50%{
+        fill: #0011ff;
+    }
+    51%{
+        fill: white;
+    }
 }
 .text{
     position: relative;
@@ -111,6 +163,23 @@ body{
     font-size: 100px;
     font-family: scary;
     color:rgb(179, 14, 8); 
+    animation-name: h1-color;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes h1-color{
+    47%{
+       color: rgb(179, 14, 8);
+    }
+    48%{
+        color: #0011ff;
+    }
+    50%{
+        color: #0011ff;
+    }
+    51%{
+        color: rgb(179, 14, 8);
+    }
 }
 .big{
     font-size: 140px;
@@ -118,12 +187,29 @@ body{
 .text h1::before{
     content: '';
     position: absolute;
-    left: 70%;
+    right: 150px;
     top: 10px;
     width: 10px;
     height: 30px;
     transform: rotate(60deg);
     background-color: rgb(179, 14, 8);
+    animation-name: accent-color;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes accent-color{
+    47%{
+       background-color: rgb(179, 14, 8);
+    }
+    48%{
+        background-color: #0011ff;
+    }
+    50%{
+        background-color: #0011ff;
+    }
+    51%{
+        background-color: rgb(179, 14, 8);
+    }
 }
 
 
@@ -278,6 +364,10 @@ table, th, td {
     }
     .big{
         font-size: 100px;
+    }
+    .text h1::before{
+        top: -10px;
+        right: 120px;
     }
 }
 @media (max-width: 600px) {
