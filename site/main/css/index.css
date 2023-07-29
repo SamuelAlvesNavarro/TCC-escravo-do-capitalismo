@@ -314,8 +314,8 @@ table, th, td {
     }
     .image4{
         background-image: url(../svg/bee.svg);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 }
