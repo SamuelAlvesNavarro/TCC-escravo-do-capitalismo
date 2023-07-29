@@ -163,7 +163,7 @@
                     <div class="label">
                         A
                     </div>
-                    <input class="input-alt" type="text" name="a" placeholder="alternativa" required>
+                    <input class="input-alt" type="text" name="a" placeholder="alternativa" maxlength="50" required>
                     <div class="radio">
                         <input type="radio" id="certa" name="certa" value="a" required>
                     </div>
@@ -172,7 +172,7 @@
                     <div class="label">
                         B
                     </div>
-                    <input class="input-alt" type="text" name="b" placeholder="alternativa" required>
+                    <input class="input-alt" type="text" name="b" placeholder="alternativa" maxlength="50" required>
                     <div class="radio">
                         <input type="radio" id="certa" name="certa" value="b" required>
                     </div>
@@ -181,7 +181,7 @@
                     <div class="label">
                         C
                     </div>
-                    <input class="input-alt" type="text" name="c" placeholder="alternativa" required>
+                    <input class="input-alt" type="text" name="c" placeholder="alternativa" maxlength="50" required>
                     <div class="radio">
                         <input type="radio" id="certa" name="certa" value="c" required>
                     </div>
@@ -190,7 +190,7 @@
                     <div class="label">
                         D
                     </div>
-                    <input class="input-alt" type="text" name="d" placeholder="alternativa" required>
+                    <input class="input-alt" type="text" name="d" placeholder="alternativa" maxlength="50" required>
                     <div class="radio">
                         <input type="radio" id="certa" name="certa" value="d" required>
                     </div>
