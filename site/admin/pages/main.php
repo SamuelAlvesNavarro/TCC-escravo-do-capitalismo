@@ -19,7 +19,8 @@
 <body data-bs-theme="dark">
     <ul>
         <a href="gadgets.php"><li>Centro de Controle de Gadgets</li></a>
-        <a href="cadastrar-mod.php"><li>Cadastro de Moderadores</li></a>
+        <a href="cadastrar-mod.php"><li>Cadastrar Moderadores</li></a>
+        <a href="delete-mod.php"><li>Deletar Moderadores</li></a>
     </ul>
 </body>
 </html>
