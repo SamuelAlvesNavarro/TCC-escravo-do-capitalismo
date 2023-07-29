@@ -27,9 +27,10 @@
             <div class="links">
                 <div class="link">
                     <div class="bt-acess">
-                        <a href="acesso.html">
+                        <a href="pages/acesso.html">
                             <button class="button-acess">
-                                Acesso
+                                <div class="acess-text">Acesso</div>
+                                <div class="acess-icon"><i class="fa-solid fa-right-to-bracket"></i></div>
                             </button>
                         </a>
                     </div>
@@ -43,9 +44,7 @@
                    
                 </div>
                 <div class="skull">
-                <div class="cover">
-                    
-                </div>
+                    <div class="cover"></div>
 
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="944.000000pt" height="1280.000000pt" viewBox="0 0 944.000000 1280.000000"
@@ -2371,7 +2370,7 @@ l-21 20 1 -29z"/>
                 </div>
                 <div class="section inv">
                     <div class="action">
-                        <div class="image image4">
+                        <div class="image4">
                             <table>
                                     <thead>
                                         <tr>

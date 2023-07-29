@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/acesso.css?v=1.01">
+    <link rel="stylesheet" href="../css/acesso.css?v=1.012">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
-    <title>Cadastro</title>
+    <title>Acesso</title>
 </head>
 <body>
     <div class="all" id="all">
+        <div id="not" class="notification">
+            <div class="container">
+                <div class="message pd">
+                    <div id="msg"></div>
+                </div>
+                <div class="cut pd" onclick="cancelNotif()">
+                    <div class="icon">
+                        <i class="fa-solid fa-chevron-up"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="background">
             <div class="child-background"><i class="fa-solid fa-ghost"></i></div>
             <div class="child-background"><i class="fa-solid fa-spider"></i></div>
@@ -54,14 +66,6 @@
             </div>
         </div>
         <div class="container-cadastro" id="container-cadastro">
-            <!--<div class="logo-container" style="padding-bottom: 2vh;">
-                <div class="divzinha">
-                    <div class="historias-span" style="color: black;">Histórias</div>
-                </div>
-                <div class="divzinha">
-                    <div id="assombrosas-span" style="color: black;" class="assombrosas-span no-as">Assombrosas</div>
-                </div>
-            </div>-->
             <div class="cadastro">
                 <form class="cadastro-form" name="cadastro" method="post" action="cadastro.php" style="background: transparent;">
                     <label class="signup-label" for="apelido">Apelido:</label><br>
@@ -96,6 +100,38 @@
             $("#assombrosas-span").removeClass("no-as");
         }
         setTimeout(typingAni, 1200);
+
+
+        /* ACESSO NOTIF */
+
+        var not = document.getElementById("not");
+
+        function deleteItem(notType){
+            localStorage.removeItem(notType);
+        }
+        function setNotif(notType){
+            localStorage.setItem("AcessoNotificacao", JSON.stringify(notType));
+        }
+        function getNotif(){
+            let type = JSON.parse(localStorage.getItem("AcessoNotificacao"));
+
+            console.log(JSON.parse(localStorage.getItem("AcessoNotificacao")));
+            
+            if(type == "errado"){
+                callNotif("Algo deu errado. Tente novamente!");
+                deleteItem("AcessoNotificacao");
+            }
+        }
+        function callNotif(message){
+            var msg = document.getElementById("msg")
+            msg.innerText = message;
+            not.classList.add("appear");
+        }
+        function cancelNotif(){
+            not.classList.remove("appear");
+        }
+
+        getNotif();
     </script>
 </body>
 </html>

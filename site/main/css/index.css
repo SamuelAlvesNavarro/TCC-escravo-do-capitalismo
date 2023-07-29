@@ -18,33 +18,17 @@
 }
 body{
     background-color: #121212;
-    animation-name: body-color;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-}
-@keyframes body-color {
-    47%{
-        background-color: #121212;
-    }
-    48%{
-        background-color: rgb(253, 211, 238);
-    }
-    50%{
-        background-color: rgb(253, 211, 238);
-    }
-    51%{
-        background-color: #121212;
-    }
 }
 .nav{
     position: fixed;
     z-index: 2;
     width: 100%;
-    padding: 20px;
+    padding: 15px;
     padding-left: 50px;
     padding-right: 50px;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     background-color: #121212;
 }
@@ -71,8 +55,20 @@ body{
 .button-acess{
     padding: 15px;
     color: white;
-    background-color: maroon;
-    border-radius: 30px;
+    background: linear-gradient(to right, maroon, rgb(179, 14, 8));
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    font-style: normal;
+    transition: .2s linear;
+}
+.button-acess:hover{
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.75);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.75);
+}
+.acess-icon{
+    display: none;
 }
 /* BANNER */
 
@@ -308,13 +304,9 @@ body{
     background-color: rgb(248, 21, 13);
     border-radius: 37% 63% 67% 33% / 34% 69% 31% 66%   ;
 }
-.image4{
-
+table{
     background-color: maroon;
-    border-radius: 94% 6% 93% 7% / 13% 93% 7% 87% ;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transform: skew(-5deg);
 }
 table, th, td {
     font-family: apercu-bold;
@@ -323,7 +315,7 @@ table, th, td {
     border-collapse: collapse;
   }
   th, td {
-    padding: 5px;
+    padding: 15px;
   }
 
   .image5{
@@ -370,7 +362,34 @@ table, th, td {
         right: 120px;
     }
 }
+@media (max-width: 800px) {
+    .main-banner{
+        justify-content: center;
+    }
+    .text{
+        width: 100%;
+        text-align: center;
+    }
+    .text h1::before{
+        right: 45%;
+    }
+    .skull{
+        display: none;
+    }
+}
 @media (max-width: 600px) {
+    .nav{
+        padding: 15px;
+    }
+    .main{
+        background-color: #ffffff;
+    }
+    .main::after{
+        display: none;
+    }
+    .sections{
+        padding-top: 50px;
+    }
     .linkA{
         display: none;
     }
@@ -382,6 +401,9 @@ table, th, td {
     }
     .banner{
         display: none;
+    }
+    .section{
+        padding: 20px;
     }
     .image{
         width: 200px;
@@ -398,14 +420,35 @@ table, th, td {
     }
     .action h1{
         font-size: 30px;
+        text-align: center;
+    }
+    p{
+        text-align: center;
     }
     table{
         display: none;
     }
     .image4{
+
+        background-color: maroon;
+        border-radius: 94% 6% 93% 7% / 13% 93% 7% 87% ;
+    }
+    .image4{
+        width: 200px;
+        height: 200px;
         background-image: url(../svg/bee.svg);
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
+    }
+    .button-acess{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .acess-text{
+        display: none;
+    }
+    .acess-icon{
+        display: block;
     }
 }
