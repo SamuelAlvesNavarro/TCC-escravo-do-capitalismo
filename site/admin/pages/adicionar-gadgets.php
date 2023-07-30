@@ -14,13 +14,13 @@
 <body>
     <form action="gadgets-upload.php" method="post" enctype="multipart/form-data">
         <label for="">Gadget:</label>
-        <input type="file" name="image"><br>
+        <input type="file" name="image" required><br>
         <label for="">Nome do Gadget:</label>
-        <input type="text" name="name" id=""><br>
+        <input type="text" name="name" id="" required><br>
         <label for="">Preço: </label>
-        <input type="number" name="preco" id=""><br>
+        <input type="number" name="preco" id="" required><br>
         <label for="">Tipo: </label>
-        <input type="number" name="type" id=""><br>
+        <input type="number" name="type" id="" required><br>
         <button>Enviar</button>
     </form>
 </body>

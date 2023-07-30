@@ -6,29 +6,28 @@
     $preco = $_POST['preco'];
     $type = $_POST['type'];
     
-    $name_image = str_replace(" ", "", $name);
-    $name_image = $_FILES[$name_image];
     $extensao = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 
+    $name_image = str_replace(" ", "", $name);
+    //MAIN
     if($type == 0){
         $path = "background-image: url(../profile-gadgets/pc-profile/$name_image.$extensao";
-        //main
-        move_uploaded_file($name_image['tmp_name'], "../../main/profile-gadgets/pc-profile/");
+        move_uploaded_file($_FILES['image']['tmp_name'], "../../main/profile-gadgets/pc-profile/$name_image.$extensao");
 
         //mod
-        move_uploaded_file($name_image['tmp_name'], "../../mods/profile-gadgets/pc-profile/");
+        copy("../../main/profile-gadgets/pc-profile/$name_image.$extensao", "../../mods/profile-gadgets/pc-profile/$name_image.$extensao");
     }else{
         $path = "background-image: url(../profile-gadgets/bc-profile/$name_image.$extensao";
-        //main
-        move_uploaded_file($name_image['tmp_name'], "../../main/profile-gadgets/bc-profile/");
+        move_uploaded_file($_FILES['image']['tmp_name'], "../../main/profile-gadgets/bc-profile/$name_image.$extensao");
 
         //mod
-        move_uploaded_file($name_image['tmp_name'], "../../mods/profile-gadgets/bc-profile/");
+        copy("../../main/profile-gadgets/bc-profile/$name_image.$extensao", "../../mods/profile-gadgets/bc-profile/$name_image.$extensao");
     }
 
-    $image = "INSERT INTO gadgets values(NULL, '$type', '$preco', 1, '$path')";
+    $image = "INSERT INTO gadget values(NULL, '$type', '$preco', 1, '$path')";
     $prepare = $pdo->prepare($image);
     $prepare->execute();
+
 
     header("Location:gadgets.php");
 ?>
