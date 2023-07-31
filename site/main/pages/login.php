@@ -12,6 +12,15 @@
     $prepare = $pdo->prepare($sql);
     $prepare -> execute();
 
+    if($prepare -> rowCount() > 0){
+        require "includes/criasession.php";
+        $_SESSION['email'] = $email;
+        header("Location: central.php");
+    }else{
+        echo "<script>setNotif('errado');</script>";
+    }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
