@@ -169,8 +169,7 @@ body {
 }
 /* STORY TITLE */
 .story-title {
-  width: -moz-max-content;
-  width: max-content;
+  width: 100%;
   transition: 0.6s linear;
   font-family: "Indie Flower";
 }
@@ -180,13 +179,12 @@ body {
 }
 
 #title-container {
-  height: 13vh;
+  height: auto;
 }
 
 .story-title > h1 {
   color: #121212;
-  width: -moz-max-content;
-  width: max-content;
+  line-break: anywhere;
 }
 
 .ratings {

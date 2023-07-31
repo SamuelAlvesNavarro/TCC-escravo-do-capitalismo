@@ -130,8 +130,8 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>História</title>
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
-    <link rel="stylesheet" href="../css/story.css?v=1.01">
-    <link rel="stylesheet" href="../css/notification.css">
+    <link rel="stylesheet" href="../css/story.css?v=1.0233434">
+    <link rel="stylesheet" href="../css/notification.css?v=11352">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
 </head>
 <body>
@@ -207,6 +207,7 @@
                                         echo $titulo;
                                     ?>
                                 </h1>
+                                <h2>KKKKKKK</h2>
                             </div>
                             <div onclick = "checkStuff(0)" class="bt-open-close">
                                 <div class="bt">
