@@ -162,19 +162,24 @@ body{
     animation-name: h1-color;
     animation-duration: 5s;
     animation-iteration-count: infinite;
+    text-shadow: 5px 1px 2px rgb(88, 2, 2);
 }
 @keyframes h1-color{
     47%{
        color: rgb(179, 14, 8);
+       text-shadow: 5px 1px 2px rgb(88, 2, 2);
     }
     48%{
         color: #0011ff;
+        text-shadow: 15px 1px 2px #030b7e;
     }
     50%{
         color: #0011ff;
+        text-shadow: 15px 1px 2px #030b7e;
     }
     51%{
         color: rgb(179, 14, 8);
+        text-shadow: 5px 1px 2px rgb(88, 2, 2);
     }
 }
 .big{
