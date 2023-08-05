@@ -10,6 +10,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centro de Controle de Gadgets</title>
+    <style>
+        .foto{
+            border: 2px solid black;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .fundo{
+            border: none;
+            width: 200px;
+            height: 200px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
 </head>
 <body>
 
@@ -37,7 +54,7 @@
                             .$value['id_gadget']. 
                         '</td>'.
 
-                        '<td scope="row"><div style="'.$value['in_it'].'"></div></td>'.
+                        '<td scope="row"><div class="foto" style="'.$value['in_it'].'"></div></td>'.
 
                         '<td scope="row">'
                             .$value['preco'].
@@ -74,7 +91,7 @@
                             .$value['id_gadget']. 
                         '</td>'.
 
-                        '<td scope="row"><div style="'.$value['in_it'].'"></div></td>'.
+                        '<td scope="row"><div class="fundo" style="'.$value['in_it'].'"></div></td>'.
 
                         '<td scope="row">'
                             .$value['preco'].
@@ -88,7 +105,7 @@
         </tbody>
     </table>
 
-        <h2>Fotos de perfil - DESATIVADOS</h2>
+        <h2>Fotos de perfil - DESATIVADAS</h2>
 
     <table>
     <thead>
@@ -111,14 +128,14 @@
                         .$value['id_gadget']. 
                     '</td>'.
 
-                    '<td scope="row"><div style="'.$value['in_it'].'"></div></td>'.
+                    '<td scope="row"><div class="foto" style="'.$value['in_it'].'"></div></td>'.
 
                     '<td scope="row">'
                         .$value['preco'].
                     '</td>'.
 
                     '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button>Alterar</button></a></td>'.
-                    '<td scope="row"><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button>Desativar</button></a></td>'.
+                    '<td scope="row"><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button>Reativar</button></a></td>'.
                 '</tr>';
             }
         ?>
@@ -149,7 +166,7 @@
                         .$value['id_gadget']. 
                     '</td>'.
 
-                    '<td scope="row"><div style="'.$value['in_it'].'"></div></td>'.
+                    '<td scope="row"><div class="fundo" style="'.$value['in_it'].'"></div></td>'.
 
                     '<td scope="row">'
                         .$value['preco'].
