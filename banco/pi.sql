@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Jul-2023 às 23:56
+-- Tempo de geração: 05-Ago-2023 às 23:28
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -62,7 +62,11 @@ INSERT INTO `answer` (`id_answer`, `fk_id_question`, `text`, `status`) VALUES
 (41, 5, '1233333', 0),
 (42, 5, '333333', 1),
 (43, 5, '33333333', 0),
-(44, 5, '333333', 0);
+(44, 5, '333333', 0),
+(45, 6, 'vvvvvvvvvvvvvvvvvvv', 0),
+(46, 6, 'vvvvvvvvvvvvvvvvvvvvvvvvv', 0),
+(47, 6, 'vvvvvvvvvvvv', 0),
+(48, 6, 'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv', 1);
 
 -- --------------------------------------------------------
 
@@ -100,6 +104,14 @@ CREATE TABLE `comment` (
   `text` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `comment`
+--
+
+INSERT INTO `comment` (`id_comment`, `fk_id_story`, `fk_id_profile`, `text`) VALUES
+(1, 11, 673, 'fffffffffffffffffffffffffff'),
+(2, 11, 674, 'fffffffffffffffffffffffffffxxxxx');
+
 -- --------------------------------------------------------
 
 --
@@ -117,8 +129,13 @@ CREATE TABLE `compra` (
 --
 
 INSERT INTO `compra` (`fk_id_profile`, `fk_id_gadget`, `data`) VALUES
+(668, 1, '2023-08-05'),
 (668, 26, '2023-07-15'),
-(668, 33, '2023-07-15');
+(668, 33, '2023-07-15'),
+(673, 1, '2023-08-05'),
+(673, 2, '2023-08-05'),
+(674, 1, '2023-08-05'),
+(674, 2, '2023-08-05');
 
 -- --------------------------------------------------------
 
@@ -197,8 +214,8 @@ CREATE TABLE `gadget` (
 --
 
 INSERT INTO `gadget` (`id_gadget`, `type`, `preco`, `g_status`, `in_it`) VALUES
-(1, 0, 125, 1, 'background-image: url(../profile-gadgets/pc-profile/unicorn.jpg);'),
-(2, 1, 500, 1, 'background-image: url(../profile-gadgets/bc-profile/red.jpg);'),
+(1, 0, 0, 1, 'background-image: url(../profile-gadgets/pc-profile/new-user.jpg);'),
+(2, 1, 0, 1, 'background-image: url(../profile-gadgets/bc-profile/new-user.jpg);'),
 (25, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/bonoro.jpg);'),
 (26, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/cucapkke.jpg);'),
 (27, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/taylor.jpg);'),
@@ -226,7 +243,8 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`id_history`, `fk_id_page`, `texto`) VALUES
-(5, 6, 'era uma evz um craiancpoajkfajsldajlsdfdjladfdadh\r\n\r\n\r\n    <h1> djkjdbdsbjsdglbgfjlbjgfjbgfd </h1>');
+(5, 6, 'era uma evz um craiancpoajkfajsldajlsdfdjladfdadh\r\n\r\n\r\n    <h1> djkjdbdsbjsdglbgfjlbjgfjbgfd </h1>'),
+(6, 8, 'vvvvvvvvvvvvvvvvvvvvvvv');
 
 -- --------------------------------------------------------
 
@@ -245,7 +263,8 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id_image`, `fk_id_page`, `path`) VALUES
-(2, 7, '../img-story/TEstezao/TEstezao-img-7.jpeg');
+(2, 7, '../img-story/TEstezao/TEstezao-img-7.jpeg'),
+(3, 9, '../img-story/vvvvvvvvvvvv/vvvvvvvvvvvv-img-2.jpeg');
 
 -- --------------------------------------------------------
 
@@ -298,7 +317,9 @@ CREATE TABLE `page` (
 
 INSERT INTO `page` (`id_page`, `fk_id_story`, `type`, `order_p`) VALUES
 (6, 10, 0, 0),
-(7, 10, 1, 1);
+(7, 10, 1, 1),
+(8, 11, 0, 0),
+(9, 11, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -308,8 +329,8 @@ INSERT INTO `page` (`id_page`, `fk_id_story`, `type`, `order_p`) VALUES
 
 CREATE TABLE `profile` (
   `id_profile` int(11) NOT NULL,
-  `foto` int(11) NOT NULL DEFAULT 0,
-  `fundoFoto` int(11) NOT NULL DEFAULT 0,
+  `foto` int(11) NOT NULL DEFAULT 1,
+  `fundoFoto` int(11) NOT NULL DEFAULT 2,
   `bordaFoto` int(11) NOT NULL DEFAULT 0,
   `fundoPerfil` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -323,7 +344,10 @@ INSERT INTO `profile` (`id_profile`, `foto`, `fundoFoto`, `bordaFoto`, `fundoPer
 (666, 0, 0, 0, 0),
 (668, 26, 0, 0, 33),
 (669, 0, 0, 0, 0),
-(671, 0, 0, 0, 0);
+(671, 0, 0, 0, 0),
+(672, 1, 2, 0, 0),
+(673, 1, 2, 0, 2),
+(674, 1, 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -342,7 +366,8 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`id_question`, `fk_id_story`, `quest_itself`) VALUES
-(5, 10, 'Davi Carvalho de Souza????');
+(5, 10, 'Davi Carvalho de Souza????'),
+(6, 11, 'vvvvvvvvvvvvvv');
 
 -- --------------------------------------------------------
 
@@ -360,7 +385,9 @@ CREATE TABLE `question_user` (
 --
 
 INSERT INTO `question_user` (`fk_id_question`, `fk_id_profile`) VALUES
-(5, 668);
+(5, 668),
+(6, 671),
+(6, 674);
 
 -- --------------------------------------------------------
 
@@ -475,7 +502,8 @@ INSERT INTO `story` (`id_story`, `font`, `nome`, `rating`, `status`, `fk_id_prof
 (5, 0, 'Dummy 2', 0, 3, 7),
 (6, 0, 'Dummy 3', 0, 3, 7),
 (7, 0, 'Dummy 4', 0, 3, 7),
-(10, 0, 'TEstezao', 4, 4, 668);
+(10, 0, 'TEstezao', 4, 4, 668),
+(11, 0, 'vvvvvvvvvvvv', 0, 3, 671);
 
 -- --------------------------------------------------------
 
@@ -502,7 +530,10 @@ CREATE TABLE `user_common` (
 INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `ranking`, `moedas`) VALUES
 (9, 668, 'Davi Carvalho de Souza', 'davi.ana1@gmail.com', '123', 'Dada', 300, 0, 49949981),
 (10, 669, 'Davi Carvalho de Souza', 'davi.ana15@gmail.com', '123', 'Dada', 0, 0, 0),
-(12, 671, 'Davi Carvalho de Souza', 'davi.ana969@gmail.com', '1234', 'Davi', 0, 0, 0);
+(12, 671, 'Davi Carvalho de Souza', 'davi.ana969@gmail.com', '1234', 'Davi', 100, 0, 50),
+(13, 672, 'Davi Carvalho de Souza', 'davi.an1969@gmail.com', '123', 'Davi', 0, 0, 0),
+(14, 673, 'Davi Carvalho de Souza', 'davi.ana96119@gmail.com', '12344', 'Davi', 0, 0, 0),
+(15, 674, 'Davi Carvalho de Souza', 'davi.anaee2@gmail.com', '1234', 'Davi', 100, 0, 50);
 
 --
 -- Índices para tabelas despejadas
@@ -685,7 +716,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de tabela `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de tabela `ban`
@@ -697,7 +728,7 @@ ALTER TABLE `ban`
 -- AUTO_INCREMENT de tabela `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `error`
@@ -721,13 +752,13 @@ ALTER TABLE `gadget`
 -- AUTO_INCREMENT de tabela `history`
 --
 ALTER TABLE `history`
-  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `mods`
@@ -739,19 +770,19 @@ ALTER TABLE `mods`
 -- AUTO_INCREMENT de tabela `page`
 --
 ALTER TABLE `page`
-  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=672;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=675;
 
 --
 -- AUTO_INCREMENT de tabela `question`
 --
 ALTER TABLE `question`
-  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `reference`
@@ -787,13 +818,13 @@ ALTER TABLE `score`
 -- AUTO_INCREMENT de tabela `story`
 --
 ALTER TABLE `story`
-  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `user_common`
 --
 ALTER TABLE `user_common`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restrições para despejos de tabelas
