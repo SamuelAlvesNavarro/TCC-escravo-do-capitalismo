@@ -1,36 +1,18 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
-
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Controle de Gadgets</title>
-    <style>
-        .foto{
-            border: 2px solid black;
-            border-radius: 50%;
-            width: 200px;
-            height: 200px;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        .fundo{
-            border: none;
-            width: 200px;
-            height: 200px;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-    </style>
+    <title>Controle de Gadgets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <!-- Controle de gadgets  pela tabela !-->
         <h2>Fotos de perfil - ATIVAS</h2>
 
     <table>
@@ -54,7 +36,7 @@
                             .$value['id_gadget']. 
                         '</td>'.
 
-                        '<td scope="row"><div class="foto" style="'.$value['in_it'].'"></div></td>'.
+                        '<td scope="row"><div style="'.$value['in_it'].'"></div></td>'.
 
                         '<td scope="row">'
                             .$value['preco'].
@@ -91,7 +73,7 @@
                             .$value['id_gadget']. 
                         '</td>'.
 
-                        '<td scope="row"><div class="fundo" style="'.$value['in_it'].'"></div></td>'.
+                        '<td scope="row"><div style="'.$value['in_it'].'"></div></td>'.
 
                         '<td scope="row">'
                             .$value['preco'].
@@ -105,7 +87,7 @@
         </tbody>
     </table>
 
-        <h2>Fotos de perfil - DESATIVADAS</h2>
+        <h2>Fotos de perfil - DESATIVADOS</h2>
 
     <table>
     <thead>
@@ -128,14 +110,14 @@
                         .$value['id_gadget']. 
                     '</td>'.
 
-                    '<td scope="row"><div class="foto" style="'.$value['in_it'].'"></div></td>'.
+                    '<td scope="row"><div style="'.$value['in_it'].'"></div></td>'.
 
                     '<td scope="row">'
                         .$value['preco'].
                     '</td>'.
 
                     '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button>Alterar</button></a></td>'.
-                    '<td scope="row"><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button>Reativar</button></a></td>'.
+                    '<td scope="row"><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button>Desativar</button></a></td>'.
                 '</tr>';
             }
         ?>
@@ -166,7 +148,7 @@
                         .$value['id_gadget']. 
                     '</td>'.
 
-                    '<td scope="row"><div class="fundo" style="'.$value['in_it'].'"></div></td>'.
+                    '<td scope="row"><div style="'.$value['in_it'].'"></div></td>'.
 
                     '<td scope="row">'
                         .$value['preco'].
@@ -179,11 +161,6 @@
         ?>
     </tbody>
     </table>
-    <!-- Controle de gadgets  pela tabela !-->
-
-
-    <!-- Controle de gadgets  por outra página !-->
-    <a href="adicionar-gadgets.php"><button>Adicionar novo gadget</button></a>
 
 </body>
 </html>
