@@ -37,9 +37,7 @@
                             .$value['id_gadget']. 
                         '</td>'.
 
-                        '<td scope="row"><div style='
-                            .$value['in_it'].
-                        '></div></td>'.
+                        '<td scope="row"><div style="'.$value['in_it'].'"></div></td>'.
 
                         '<td scope="row">'
                             .$value['preco'].
@@ -76,9 +74,7 @@
                             .$value['id_gadget']. 
                         '</td>'.
 
-                        '<td scope="row"><div style='
-                            .$value['in_it'].
-                        '></div></td>'.
+                        '<td scope="row"><div style="'.$value['in_it'].'"></div></td>'.
 
                         '<td scope="row">'
                             .$value['preco'].
@@ -115,9 +111,7 @@
                         .$value['id_gadget']. 
                     '</td>'.
 
-                    '<td scope="row"><div style='
-                        .$value['in_it'].
-                    '></div></td>'.
+                    '<td scope="row"><div style="'.$value['in_it'].'"></div></td>'.
 
                     '<td scope="row">'
                         .$value['preco'].
@@ -155,9 +149,7 @@
                         .$value['id_gadget']. 
                     '</td>'.
 
-                    '<td scope="row"><div style='
-                        .$value['in_it'].
-                    '></div></td>'.
+                    '<td scope="row"><div style="'.$value['in_it'].'"></div></td>'.
 
                     '<td scope="row">'
                         .$value['preco'].
@@ -174,7 +166,7 @@
 
 
     <!-- Controle de gadgets  por outra página !-->
-    <a href="adicionar-gadgets"><button>Adicionar novo gadget</button></a>
+    <a href="adicionar-gadgets.php"><button>Adicionar novo gadget</button></a>
 
 </body>
 </html>
