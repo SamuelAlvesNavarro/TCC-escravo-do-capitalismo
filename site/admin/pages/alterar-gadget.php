@@ -3,6 +3,7 @@
     require "includes/online.php";
 
     $id = $_GET['id'];
+    $_SESSION['id'] = $id;
 
     $gadget = "SELECT preco FROM gadget WHERE id_gadget = '$id'";
     foreach($pdo->query($gadget) as $key => $value){
