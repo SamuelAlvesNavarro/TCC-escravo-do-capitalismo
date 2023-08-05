@@ -130,7 +130,7 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>História</title>
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
-    <link rel="stylesheet" href="../css/story.css?v=1.0233434">
+    <link rel="stylesheet" href="../css/story.css?v=1.01">
     <link rel="stylesheet" href="../css/notification.css?v=11352">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
 </head>
@@ -207,7 +207,11 @@
                                         echo $titulo;
                                     ?>
                                 </h1>
-                                <h2>KKKKKKK</h2>
+                                <h2>
+                                    <?php
+                                        echo '<a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>'
+                                    ?>
+                                </h2>
                             </div>
                             <div onclick = "checkStuff(0)" class="bt-open-close">
                                 <div class="bt">
@@ -385,6 +389,60 @@
             </div>
         </div>
     </div>
+
+    <?php
+        if($showRight == "block;" || $showAnswered == "block;"){
+
+            $sql = "select comment.*, user_common.nome, profile.id_profile as cod, gadget.in_it as foto from comment, profile, user_common, gadget 
+            where 
+            comment.fk_id_profile = profile.id_profile and
+            user_common.fk_id_profile = comment.fk_id_profile and 
+            gadget.id_gadget = profile.foto and
+            gadget.type = 0 and
+            comment.fk_id_story = $id_story";
+
+            $prepare = $pdo->prepare($sql);
+            $prepare->execute();
+   
+            echo '<div class="comments-cover">
+                <div class="comments-container">
+                    <div class="title">
+                        Comentários
+                    </div>';
+                    
+                    if($prepare->rowCount() != 0){
+
+                        echo'<div class="comments">';
+                        
+                        foreach ($pdo->query($sql) as $key => $value) {
+                            echo' <div class="comment-container">
+                                    <div class="arrow"></div>
+                                    <div class="comment">
+                                    <div class="cheader">
+                                            <div class="pic" style="'.$value['foto'].'">
+
+                                            </div>
+                                            <div class="name">
+                                                <a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>
+                                            </div>
+                                        </div>
+                                        <div class="content-comment">
+                                            '.$value['text'].'
+                                        </div>
+                                    </div>
+                                </div>';
+                        }
+                    }
+
+                    echo '</div>
+                </div>
+            </div>';
+
+        }
+        
+    
+    ?>
+    
 </body>
 <script>
     <?php 

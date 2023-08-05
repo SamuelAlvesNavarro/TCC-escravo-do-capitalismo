@@ -30,7 +30,7 @@
             if($pdo->query($sql)->rowCount() > 0){
                 header("Location: error.php?erro=1");
             } else{
-                $sql = "INSERT INTO profile(foto) values('0')";
+                $sql = "INSERT INTO profile(foto) values('1')";
                 
                 $prepare = $pdo->prepare($sql);
                 $prepare->execute();
@@ -54,6 +54,11 @@
                 if($prepare->rowCount() <= 0){
                     header("Location: error.php?erro=3");
                 }else{
+
+                    $sql = "INSERT INTO compra values($fk_profile, 1, now()); INSERT INTO compra values($fk_profile, 2, now());";
+                    $prepare = $pdo->prepare($sql);
+                    $prepare->execute();
+
                     require "includes/criasession.php";
                     $_SESSION['email'] = $email;
                     header("Location:central.php");

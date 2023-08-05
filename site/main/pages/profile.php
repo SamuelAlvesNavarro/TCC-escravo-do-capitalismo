@@ -24,7 +24,7 @@
     $sql = "SELECT * FROM profile WHERE id_profile = $perfildono";
     foreach($pdo->query($sql) as $key => $value){
         $foto = $value['foto'];
-        $fundo = $value['fundoPerfil'];
+        $fundo = $value['fundoFoto'];
     }
 
     $perfilEntrando = -1;
@@ -61,9 +61,6 @@
     foreach($pdo->query($sql) as $key => $value){
         $fundo = $value['in_it'];
     }
-    
-    if($foto == 0 || !isset($foto))$foto = "background-image: url(../profile-gadgets/pc-profile/new-user.jpg);";
-    if($fundo == 0 || !isset($fundo))$fundo = "background-color: rgb(0,0,0);";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -247,7 +247,7 @@ body {
 /* MAIN */
 .main {
   width: 100%;
-  padding-bottom: 200px;
+  padding-bottom: 5cqb;
   background-color: var(--background-page);
   font-family: "Poppins" !important;
 }
@@ -274,9 +274,10 @@ body {
 .question{
   width: 100%;
   font-size: 30px;
-  padding: 2vw;
+  padding: 10px;
   padding-top: 5vh;
   padding-left: 0;
+  line-break: anywhere;
 }
 .options{
   display: flex;
@@ -365,6 +366,100 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+/* COMMENTS */
+
+.comments-cover{
+  z-index: -2;
+  background-color: var(--background-page);
+  padding: 20px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.comments-container{
+  padding: 20px;
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  text-align: center;
+  color: white;
+  font-family: "Poppins";
+}
+.comments-container::after{
+  content: '';
+  z-index: -1;
+  background-color: #454545;
+  position: absolute;
+  inset: 0;
+  transform: skewY(-2deg);
+}
+.comments-container .title{
+  font-size: 30px;
+  font-weight: 600;
+}
+.comments{
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.comment-container{
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+.arrow{
+  width: 5px;
+  max-width: 5px;
+  border-top: 10px solid white;
+  border-right: 0px solid white;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid transparent;
+}
+.comment{
+  width: 100%;
+  padding: 10px;  
+  background-color: white;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  flex-grow: 1;
+}
+.cheader{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  color: blue;
+  font-weight: 900;
+  gap: 20px;
+}
+.pic{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: black;
+  border: 1px solid black;
+  background-size: cover;
+  background-position: center;
+}
+.content-comment{
+  color: black;
+  font-weight: 400;
+  text-align: justify;
+  line-break: anywhere;
+  font-size: 20px;
 }
 /* MEDIA QUERIES */
 @media (max-width: 900px){
