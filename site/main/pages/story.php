@@ -209,7 +209,11 @@
                                 </h1>
                                 <h2>
                                     <?php
-                                        echo '<a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>'
+
+                                        $autor = "select user_common.nome as nome, user_common.fk_id_profile as cod from user_common, story where story.fk_id_profile = user_common.fk_id_profile and story.id_story = $id_story";
+                                        foreach ($pdo->query($autor) as $key => $value) {
+                                            echo '<a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>';
+                                        }
                                     ?>
                                 </h2>
                             </div>
@@ -408,7 +412,9 @@
                 <div class="comments-container">
                     <div class="title">
                         Comentários
-                    </div>';
+                    </div>
+                    <div class="comments-start">
+                    ';
                     
                     if($prepare->rowCount() != 0){
 
@@ -435,6 +441,13 @@
                     }
 
                     echo '</div>
+                        <div class="input-comment">
+                            <form action="comment.php" method="post">
+                                <textarea type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
+                                <input type="submit" value="Comentar">
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>';
 

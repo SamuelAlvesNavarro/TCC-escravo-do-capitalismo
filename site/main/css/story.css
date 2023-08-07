@@ -247,7 +247,7 @@ body {
 /* MAIN */
 .main {
   width: 100%;
-  padding-bottom: 5cqb;
+  padding-bottom: 50px;
   background-color: var(--background-page);
   font-family: "Poppins" !important;
 }
@@ -372,10 +372,11 @@ body {
 
 .comments-cover{
   z-index: -2;
-  background-color: var(--background-page);
+  background-color: #222222;
   padding: 20px;
   padding-left: 0;
   padding-right: 0;
+  padding-top: 50px;
 }
 .comments-container{
   padding: 20px;
@@ -401,8 +402,16 @@ body {
   font-size: 30px;
   font-weight: 600;
 }
+.comments-start{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 .comments{
-  width: 100%;
+  width: 60%;
+  flex-grow: 1;
+  min-width: 200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -461,8 +470,48 @@ body {
   line-break: anywhere;
   font-size: 20px;
 }
+
+/* INPUT-COMMENT */
+
+.input-comment{
+  flex-grow: 1;
+  min-width: 200px;
+  max-height: 300px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #121212;
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 10px 26px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 10px 26px -4px rgba(0,0,0,0.75);
+  box-shadow: 4px 10px 26px -4px rgba(0,0,0,0.75);
+}
+
+.input-comment textarea{
+  width: 100%;
+  height: 200px;
+  outline: none;
+  border: none;
+  background-color: #121212;
+  color: white;
+  padding: 5px;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+.input-comment input{
+  margin: 0;
+  padding: 20px;
+  width: 100%;
+  font-family: "Poppins";
+}
 /* MEDIA QUERIES */
 @media (max-width: 900px){
+  .input-comment{
+    order: 1;
+  }
+  .comments{
+    order: 2;
+  }
   .question-container{
     width: 100%;
   }
@@ -481,6 +530,11 @@ body {
     height: 50px;
     margin: 0 auto;
     margin-top: 20px;
+  }
+}
+@media (max-width: 830px){
+  .input-comment textarea{
+    height: 100px;
   }
 }
 @media (max-width: 700px){
