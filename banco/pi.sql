@@ -330,9 +330,9 @@ INSERT INTO `page` (`id_page`, `fk_id_story`, `type`, `order_p`) VALUES
 CREATE TABLE `profile` (
   `id_profile` int(11) NOT NULL,
   `foto` int(11) NOT NULL DEFAULT 1,
-  `fundoFoto` int(11) NOT NULL DEFAULT 2,
+  `fundoFoto` int(11) NOT NULL DEFAULT 0,
   `bordaFoto` int(11) NOT NULL DEFAULT 0,
-  `fundoPerfil` int(11) NOT NULL DEFAULT 0
+  `fundoPerfil` int(11) NOT NULL DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

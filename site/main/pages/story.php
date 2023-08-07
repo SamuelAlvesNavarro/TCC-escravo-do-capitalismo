@@ -13,6 +13,8 @@
     }
     if(isset($_GET['input_1'])){
         $id_story = $_GET['input_1'];
+
+        $_SESSION['id_story'] = $id_story;
         $story = "SELECT * from story where id_story = $id_story and status = 3";
         $prepare = $pdo->prepare($story);
         $prepare->execute();
@@ -397,7 +399,7 @@
     <?php
         if($showRight == "block;" || $showAnswered == "block;"){
 
-            $sql = "select comment.*, user_common.nome, profile.id_profile as cod, gadget.in_it as foto from comment, profile, user_common, gadget 
+            $sql = "select comment.*, user_common.apelido as nome, profile.id_profile as cod, gadget.in_it as foto from comment, profile, user_common, gadget 
             where 
             comment.fk_id_profile = profile.id_profile and
             user_common.fk_id_profile = comment.fk_id_profile and 
