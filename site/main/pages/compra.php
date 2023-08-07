@@ -14,7 +14,7 @@
         $status = $value['g_status'];
         $preco = $value['preco'];
     }
-    if($status != 1)header("Location: error.php?erro=8");
+    if($status != 1)header("Location: error.php?erro=20");
 
     $check = "SELECT * FROM compra WHERE fk_id_gadget = '$gadget' and fk_id_profile = '$perfil'";
     $prepare = $pdo->prepare($check);

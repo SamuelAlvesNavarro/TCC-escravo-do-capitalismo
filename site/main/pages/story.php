@@ -399,13 +399,25 @@
     <?php
         if($showRight == "block;" || $showAnswered == "block;"){
 
-            $sql = "select comment.*, user_common.apelido as nome, profile.id_profile as cod, gadget.in_it as foto from comment, profile, user_common, gadget 
+            $sql = 
+            
+            "
+            
+            select comment.*, user_common.apelido as nome, profile.id_profile as cod, gadget.in_it as foto
+            
+            from comment, profile, user_common, gadget 
+                
             where 
+
             comment.fk_id_profile = profile.id_profile and
             user_common.fk_id_profile = comment.fk_id_profile and 
             gadget.id_gadget = profile.foto and
             gadget.type = 0 and
-            comment.fk_id_story = $id_story";
+            comment.fk_id_story = $id_story 
+            
+            order by comment.id_comment asc
+            
+            ";
 
             $prepare = $pdo->prepare($sql);
             $prepare->execute();

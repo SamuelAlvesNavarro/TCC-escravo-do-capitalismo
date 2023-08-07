@@ -9,7 +9,7 @@
     $id_story = $_SESSION['id_story'];
 
 
-    if($id_story != 0){
+    if($id_story != 0 && $comment != ""){
         $comment = "INSERT INTO comment VALUES(NULL, '$id_story', '$perfil', '$comment')";
         $prepare = $pdo->prepare($comment);
         $prepare->execute();
@@ -18,6 +18,6 @@
         header("Location: story.php?input_1=$id_story");
 
     }else{
-
+        header("Location: error.php?erro=8");
     }
 ?>

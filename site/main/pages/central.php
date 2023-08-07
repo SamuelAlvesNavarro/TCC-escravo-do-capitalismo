@@ -39,14 +39,11 @@
     $sql = "SELECT * FROM profile WHERE id_profile = $perfil";
     foreach($pdo->query($sql) as $key => $value){
         $foto = $value['foto'];
-        $fundo = $value['fundoPerfil'];
     }
     $sql = "SELECT in_it FROM gadget WHERE id_gadget = $foto and type = 0";
     foreach($pdo->query($sql) as $key => $value){
         $foto = $value['in_it'];
     }
-    
-    if($foto == 0 || !isset($foto))$foto = "background-image: url(../profile-gadgets/pc-profile/new-user.jpg);";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
