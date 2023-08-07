@@ -4,7 +4,7 @@
     require "includes/returnUser.php";
 
     $email = $_SESSION['email'];
-    //$perfil = returnUser($email);
+    $perfil = returnProfileId($email);
     $coment = $_POST['coment'];
     $id_story = $_POST['id_story'];
 
@@ -14,5 +14,4 @@
     $prepare->execute();
 
     header("Location: story.php");
-
 ?>
