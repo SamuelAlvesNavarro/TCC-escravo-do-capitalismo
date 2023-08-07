@@ -24,7 +24,7 @@
     $sql = "SELECT * FROM profile WHERE id_profile = $perfildono";
     foreach($pdo->query($sql) as $key => $value){
         $foto = $value['foto'];
-        $fundo = $value['fundoFoto'];
+        $fundo = $value['fundoPerfil'];
     }
 
     $perfilEntrando = -1;
