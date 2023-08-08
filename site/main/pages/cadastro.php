@@ -25,6 +25,7 @@
         if($senha != $confirmarsenha){
             sendToError(2);
             exit;
+            
         }else{
 
             $sql = "SELECT * FROM user_common WHERE email = '$email'";

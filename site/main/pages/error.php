@@ -1,6 +1,5 @@
 <?php   
     require 'includes/conexao.php';
-    require "includes/report_profile.php";
 
     if(!isset($_POST['erro'])) $erro = 667;
     else $erro = $_POST['erro']; 
