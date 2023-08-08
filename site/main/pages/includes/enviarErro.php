@@ -1,10 +1,10 @@
 <?php
     function sendToError($num){
         
-        if(!isset($num)){
+        /*if(!isset($num)){
             header("Location: ../central.php");
             exit;
-        }
+        }*/
 
         echo
         '<form id="form" action="error.php" method="post">

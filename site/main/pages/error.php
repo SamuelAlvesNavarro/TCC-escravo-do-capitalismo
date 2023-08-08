@@ -1,6 +1,6 @@
 <?php   
     require 'includes/conexao.php';
-
+    
     if(!isset($_POST['erro'])) $erro = 667;
     else $erro = $_POST['erro']; 
 
@@ -27,6 +27,7 @@
 
     if($cod_error == 2){
 
+        require 'includes/report_profile.php';
         $perfil = -1;
         $email = $_SESSION['email'];
         $perfil = returnProfileId($email);
@@ -40,6 +41,7 @@
     }
     if($cod_error == 3){
 
+        require 'includes/report_profile.php';
         $to_show = "e3";
         $perfil = -1;
         $email = $_SESSION['email'];
