@@ -1,5 +1,6 @@
 <?php
         require "includes/conexao.php";
+        require "includes/enviarErro.php";
 
         $nome = null;
         $email = null;
@@ -13,22 +14,24 @@
         $confirmarsenha = $_POST["confirmarsenha"];
 
         if(checkBan($email, $pdo)){
-            header("Location: error.php?erro=19");
+            sendToError(19);
             exit;
         }
         if(checkMod($email, $pdo)){
-            header("Location: error.php?erro=19");
+            sendToError(19);
             exit;
         }
 
         if($senha != $confirmarsenha){
-            header("Location: error.php?erro=2");
+            sendToError(2);
+            exit;
         }else{
 
             $sql = "SELECT * FROM user_common WHERE email = '$email'";
 
             if($pdo->query($sql)->rowCount() > 0){
-                header("Location: error.php?erro=1");
+                sendToError(1);
+                exit;
             } else{
                 $sql = "INSERT INTO profile(foto) values('1')";
                 
@@ -52,7 +55,8 @@
                 $prepare->execute();
                 
                 if($prepare->rowCount() <= 0){
-                    header("Location: error.php?erro=3");
+                    sendToError(3);
+                    exit;
                 }else{
 
                     $sql = "INSERT INTO compra values($fk_profile, 1, now()); INSERT INTO compra values($fk_profile, 2, now());";

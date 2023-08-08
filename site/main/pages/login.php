@@ -1,6 +1,7 @@
 <?php
     require "includes/conexao.php";
-    
+    require "includes/enviarErro.php";
+
     $email = null;
     $senha = null;
 

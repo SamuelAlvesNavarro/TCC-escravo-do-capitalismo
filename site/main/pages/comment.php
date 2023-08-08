@@ -2,6 +2,7 @@
     require "includes/conexao.php";
     require "includes/online.php";
     require "includes/returnUser.php";
+    require "includes/enviarErro.php";
 
     $email = $_SESSION['email'];
     $perfil = returnProfileId($email);
@@ -18,6 +19,7 @@
         header("Location: story.php?input_1=$id_story");
 
     }else{
-        header("Location: error.php?erro=8");
+        sendToError(8);
+        exit;
     }
 ?>

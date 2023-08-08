@@ -2,8 +2,8 @@
     require 'includes/conexao.php';
     require "includes/report_profile.php";
 
-    if(!isset($_GET['erro'])) $erro = 667;
-    else $erro = $_GET['erro']; 
+    if(!isset($_POST['erro'])) $erro = 667;
+    else $erro = $_POST['erro']; 
 
     $sql = "SELECT * FROM error WHERE id_error='$erro'";
     $prepare = $pdo->prepare($sql);
