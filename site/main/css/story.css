@@ -404,15 +404,14 @@ body {
 }
 .comments-start{
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   gap: 20px;
   flex-wrap: wrap;
 }
 .comments{
-  width: 60%;
+  width: 100%;
   flex-grow: 1;
   min-width: 200px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -435,6 +434,12 @@ body {
   border-bottom: 20px solid transparent;
   border-left: 20px solid transparent;
 }
+.mineA{
+  border-top: 10px solid rgb(216, 241, 192);
+  border-left: 0px solid rgb(216, 241, 192);
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
 .comment{
   width: 100%;
   padding: 10px;  
@@ -442,6 +447,11 @@ body {
   border-radius: 10px;
   border-top-left-radius: 0;
   flex-grow: 1;
+}
+.mineC{
+  background-color: rgb(216, 241, 192);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 0px;
 }
 .cheader{
   width: 100%;
@@ -488,7 +498,7 @@ body {
 
 .input-comment textarea{
   width: 100%;
-  height: 200px;
+  height: 40px;
   outline: none;
   border: none;
   background-color: #121212;
@@ -496,6 +506,10 @@ body {
   padding: 5px;
   margin: 0;
   overflow-y: scroll;
+  transition: .2s linear;
+}
+.input-comment textarea:focus{
+  height: 200px;
 }
 
 .input-comment input{
@@ -503,6 +517,10 @@ body {
   padding: 20px;
   width: 100%;
   font-family: "Poppins";
+}
+
+.mine{
+  flex-direction: row-reverse;
 }
 /* MEDIA QUERIES */
 @media (max-width: 900px){

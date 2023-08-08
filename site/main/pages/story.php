@@ -435,9 +435,20 @@
                         echo'<div class="comments">';
                         
                         foreach ($pdo->query($sql) as $key => $value) {
-                            echo' <div class="comment-container">
-                                    <div class="arrow"></div>
-                                    <div class="comment">
+
+                            if($value['cod'] == $perfil){
+                                $class = "mine";
+                                $classC = "mineC";
+                                $classA = "mineA";
+                            }else{
+                                $class = "regular";
+                                $classC = "";
+                                $classA = "";
+                            }
+
+                            echo' <div class="comment-container '.$class.'">
+                                    <div class="arrow '.$classA.'"></div>
+                                    <div class="comment '.$classC.'">
                                     <div class="cheader">
                                             <div class="pic" style="'.$value['foto'].'">
 
