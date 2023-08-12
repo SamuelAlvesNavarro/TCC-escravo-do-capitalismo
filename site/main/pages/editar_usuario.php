@@ -18,7 +18,7 @@
 
     if($emailTroca != $email){
         if($check == $emailTroca){
-            header("Location:error.php?erro=9");
+            echo $emailTroca;
             exit;
         }
     }

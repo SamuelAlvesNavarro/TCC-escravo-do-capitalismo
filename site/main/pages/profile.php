@@ -1,7 +1,7 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
-    
+ 
     $perfildono = -1;
     $perfildono = $_GET['profile'];
 
@@ -31,7 +31,7 @@
 
     /* GET RANK */
 
-    $sql = "SELECT * FROM user_common order by pontos_leitor DESC limit 3";
+    $sql = "SELECT * FROM user_common order by pontos_leitor DESC";
     $rank = 1;
 
     foreach($pdo->query($sql) as $key => $value){
@@ -43,7 +43,9 @@
 
     if($rank < 4) $to_show_rank = "prem";
     else $to_show_rank = "norm";
-    /* RANK STOP */
+
+
+
 
     $email = $_SESSION['email'];
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
@@ -61,199 +63,302 @@
     foreach($pdo->query($sql) as $key => $value){
         $fundo = $value['in_it'];
     }
+
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/profile.css?v=1.01">
-    <link rel="stylesheet" href="../css/menu.css?v=1.01">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/perfil.css?v=1.01">
     <title>Perfil</title>
 </head>
-<body style='<?php echo $fundo ?>'>
-    <div class="deco">
-        <!-- deco -->
+<body>
+<div id="all-menu" class="all_menu disappear">
+        <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
+            <i class="fa-sharp fa-solid fa-xmark"></i>
+        </div>
+        <div id="menu" class="menu off">
+            <div class="lamp">
+                <div class="wire">
+                    
+                </div>
+                <i onclick="switchMenu(1)" class="fa-solid fa-lightbulb"></i>
+            </div>
+            <div class="lamp-area" onclick="switchMenu(2)">
+            </div> 
+            <div class="content">
+                <ul>
+                    <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
+                    <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
+                    <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
+                    <li><a href="writerHub.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
+                    <div class="search-menu">
+                        <form action="pesquisa.php" method="get">
+                            <div class="search-box">
+                                <button class="btn-search"><i class="fas fa-search"></i></button>
+                                <input required type="text" name="busca" class="input-search" placeholder="Pesquisar história........">
+                            </div>
+                        </form>
+                    </div>
+                </ul>
+                <!--<img src="https://clipart-library.com/images/rcLoyAzKi.png" alt="" srcset="">-->
+            </div>
+        </div>
     </div>
     <div class="all">
-        <div class="header">
-            <div class="picture-container" style='<?php echo $fundo ?>'>
-                <div class="picture" style='<?php echo $foto ?>'>
-
+        <div class="denuncia-container" id="dcont">
+            <div class="denuncia">
+                <div class="head">
+                    <div class="icon" onclick="showDe()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <div class="text">
+                        Motivo da Denúncia
+                    </div>
+                </div>
+                <div class="reason">
+                    <form action="generateReportProfile.php" method="post">
+                        <input type="hidden" name="reported" value="<?php echo $perfildono; ?>">
+                        <textarea name="reason" id="" cols="30" rows="10" maxlength="255"></textarea>
+                        <input type="submit" class="bt-save save-rep" value="Registrar">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="acess-menu">
+            <div class="point" onclick="menu_appear()">
+                <div class="icon">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="text">
+                    Menu
+                </div>
+            </div>
+            <div class="point" onclick="showDe()">
+                <div class="icon">
+                    <i class="fas fa-exclamation"></i>
+                </div>
+                <div class="text">
+                    Denunciar<!--<br>Perfil-->
                 </div>
             </div>
         </div>
         <div class="main">
-        <?php
-            if($perfildono == $perfilEntrando){
-                echo '<div class="slider-controller" id="slider-controller">
-                <div class="radio" onclick="switchSheet(0)"></div>
-                <div class="radio" onclick="switchSheet(1)"></div>
-                <div class="radio" onclick="switchSheet(2)"></div>
-                </div>';
-            }
-        ?>
-            <div class="sheet-container">
-                <div class="hs-sheet sheet sheet-appear">
-                    <div class="container">
-                        <div class="about">
-                            <h2>Sobre</h2>
-                            <div class="points">
-                                <?php echo "<span class='pointsh4'>$pontos_leitor</span>"; ?><i class="fa-solid fa-book"></i>
+            <div class="info">
+                <div class="main-info">
+                    <div class="suspect-info">
+                        <h1>Informações Básicas do Suspeito (<?php echo $perfildono?>)</h1>
+                        <div class="suspect-info-going">
+                            <div class="info-div">
+                                <h2>Nome: </h2><span class="written"><?php echo $nome?></span>
                             </div>
-                            <div class="points">
-                                <?php echo "<span class='pointsh4'>$moedas</span>"; ?><i class="fa-solid fa-coins"></i>
+                            <div class="info-div">
+                                <h2>Moedas: </h2><span class="written"><?php echo $moedas?></span>
                             </div>
-                            <?php echo "<div class='rank ".$to_show_rank."'>".$rank."º</div>"; ?>
-                        </div>
-                        <div class="histprof">
-                            <div class="title">
-                                <h1>Histórias escritas por <?php echo $apelido; ?>:</h1>
+                            <div class="info-div">
+                                <h2>Pontos de Leitor: </h2><span class="written"><?php echo $pontos_leitor?></span>
                             </div>
-                            <div class="content">
-                                <?php
-                                    $i = 0;
-                                    $sql = "SELECT * FROM story WHERE fk_id_profile = '$perfildono' AND status = 3";
-                                    foreach($pdo->query($sql) as $key => $value){
-                                        $i++;
-                                        echo "
-
-                                        <a href='story.php?input_1=".$value['id_story']."'>
-                                            <div class='story-link'>
-                                                ". $value['nome']."
-                                            </div>
-                                        </a>
-
-                                        ";
-                                    }
-                                    
-                                    if($i == 0) echo "<div class='no-stories'>Esse usuário não escreveu nenhuma história até o momento</div>";
-                                ?>
+                            <div class="info-div">
+                                <h2>Posição no ranking: </h2><span class="written"><?php echo $rank?>º</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="sheet">
-                    <div class="title">
-                        <h1>Edição de Dados</h1>
-                        <h3>Depois de enviar seus dados editados, você terá de logar novamente.</h3>
-                    </div>
-                    <div class="privdata" id="privdata">
-                        <?php
-                        if($perfildono == $perfilEntrando){
-                            echo "<div id='hidden_form_container' style='display:none;'></div>";
-                            echo "<form method='post' action='editar_usuario.php'>";
-
-                            echo "<label>Apelido:</label>";
-                            echo "<input type='text' name='apelido' value='". $apelido ."' required><br>";
-                            
-                            echo "<label>Nome:</label>";
-                            echo "<input type='text' name='nome' value='". $nome ."' required><br>"; 
-
-                            echo "<label>Email:</label>";
-                            echo "<input type='email' name='email' value='". $email ."' required><br>"; 
-
-                            echo "<label>Senha:</label>";
-                            echo "<input type='password' name='senha' value='". $senha ."' required><br>"; 
-
-                            echo "<input class='submit-bt' type='submit' value='Enviar'>";
-
-                            echo "</form>";
-                        }
-                        ?>
-                    </div>
-                </div>
-                <div class="sheet">
-                    <div class="title">
-                        <h1>Edição de Perfil</h1>
-                        <h3>Clique e troque</h3>
-                    </div>
-                    <div class="privdata profE" id="privdata">
-                        <div class="title subp">
-                            <h2>Fotos</h2>
-                        </div>
-                        <div class="fotos editP">
-                            <?php
-                                if($perfildono == $perfilEntrando){
-                                    $perfil = $perfilEntrando;
-                                    $gadget = "SELECT * FROM gadget WHERE type = 0";
-                                    foreach($pdo->query($gadget) as $key => $value){
-                                        $item = $value['in_it'];
-                                        $preco = $value['preco'];
-                                        $code = $value['id_gadget'];
-
-                                        $check = "SELECT * FROM compra WHERE fk_id_gadget = '$code' and fk_id_profile = '$perfil'";
-                                        $prepare = $pdo->prepare($check);
-                                        $prepare->execute();
-
-                                        $rows = $prepare->rowCount();
-
-                                        if($rows == 1){
-                                            echo "<div class='card  reveal' onclick='switchP(".$code.")'>
-                                                <div class='card-pic' id=".$code." style='$item' value='$preco'></div>
-                                            </div>";
-                                        } 
-                                    }
-                                }
-                            ?>
-                        </div>
-                        <div class="title subp">
-                            <h2>Fundos</h2>
-                        </div>
-                        <div class="fundos editP">
-                            <?php
-                                if($perfildono == $perfilEntrando){
-                                    $perfil = $perfilEntrando;
-                                    $gadget = "SELECT * FROM gadget WHERE type = 1";
-                                    foreach($pdo->query($gadget) as $key => $value){
-                                        $item = $value['in_it'];
-                                        $preco = $value['preco'];
-                                        $code = $value['id_gadget'];
-
-                                        $check = "SELECT * FROM compra WHERE fk_id_gadget = '$code' and fk_id_profile = '$perfil'";
-                                        $prepare = $pdo->prepare($check);
-                                        $prepare->execute();
-
-                                        $rows = $prepare->rowCount();
-
-                                        if($rows == 1){
-                                            echo "<div class='card  reveal' onclick='switchP(".$code.")'>
-                                                <div class='card-pic' id=".$code." style='$item' value='$preco'></div>
-                                            </div>";
-                                        } 
-                                    }
-                                }
-                            ?>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="header">
+                <img style="<?php echo $fundo?>" alt="" class="bc">
+                <div class="pc">
+                    <div class="profile-photo" style="<?php echo $foto?>"></div>
+                </div>
+            </div>
         </div>
+        <div class="split">
+            <hr>
+        </div>
+        <div class="second-info">
+            <div class="stories-title">
+                <h1 class="formal">Histórias do Suspeito</h1>
+            </div>
+            <div class="stories-bet">
+                <div class="stories">
+             
+                        <?php
+                            $i = 0;
+                            $sql = "SELECT * FROM story WHERE fk_id_profile = '$perfildono' AND status = 3";
+                            foreach($pdo->query($sql) as $key => $value){
+                                $i++;
+                                echo "
+
+                                <a href='story.php?input_1=".$value['id_story']."'>
+                                    <p>
+                                        ". $value['nome']."
+                                    </p>
+                                </a>
+
+                                ";
+                            }
+                            
+                            if($i == 0) echo "<p>Esse usuário não postou nenhuma história até o momento</p>";
+                        ?>
+                
+                </div>
+                <div class="bet-container">
+                    <div class="writings">
+                        <!---Essa fonte só tem os números 2 e 9. affssss-->
+                        Recompensa: <div class="span-nums"><?php echo $rank; echo rand(0, 1000000)?></div> <i class="fa-solid fa-coins"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+
+            if($perfildono == $perfilEntrando){
+
+                echo '
+                <div class="split">
+                    <hr>
+                </div>
+                <div class="second-info edit">
+                    <div class="stories-title">
+                        <h1 class="formal">Edição Avançada</h1>
+                    </div>
+                    <div class="all-data-change">
+                        <div class="user-data">
+                            <form action="editar_usuario.php" method="post" class="change">
+                                <table class="formal">
+                                    <thead>
+                                        <tr>
+                                            <th>Dado</th>
+                                            <th>Valor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Apelido:</td>
+                                            <td class="input">
+                                                <input type="text" name="apelido" id="" value="'.$apelido.'">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email:</td>
+                                            <td class="input">
+                                                <input type="email" name="email" id="" value="'.$email.'">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nome:</td>
+                                            <td class="input">
+                                                <input type="text" name="nome" id="" value="'.$nome.'">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Senha:</td>
+                                            <td class="input">
+                                                <input id="senha" type="password" name="senha" id="" value="'.$senha.'">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td>
+                                                Salvar Mudanças: 
+                                            </td>
+                                            <td class="input">
+                                                <input class="bt-save" type="submit" value="Salvar">
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </form>
+                        </div>
+                        <div class="header-change">
+                            <img style="'.$fundo.'?>" alt="" class="bc">
+                            <div class="pc-change">
+                                <div class="profile-photo-change" style="'.$foto.'"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="second-info">
+                    <div class="stories-title">
+                        <h1 class="formal">Fotos</h1>
+                    </div>
+                    <div class="pics">
+                    ';
+                 
+                            if($perfildono == $perfilEntrando){
+                                $perfil = $perfilEntrando;
+                                $gadget = "SELECT * FROM gadget WHERE type = 0";
+                                foreach($pdo->query($gadget) as $key => $value){
+                                    $item = $value['in_it'];
+                                    $preco = $value['preco'];
+                                    $code = $value['id_gadget'];
+
+                                    $check = "SELECT * FROM compra WHERE fk_id_gadget = '$code' and fk_id_profile = '$perfil'";
+                                    $prepare = $pdo->prepare($check);
+                                    $prepare->execute();
+
+                                    $rows = $prepare->rowCount();
+
+                                    if($rows == 1){
+                                        echo "<div class='card card-foto' onclick='switchP(".$code.")'>
+                                            <div class='card-pic' id=".$code." style='$item'></div>
+                                        </div>";
+                                    } 
+                                }
+                            }
+                            
+                        echo'
+                    
+                    </div>
+                    <div class="stories-title">
+                        <h1 class="formal">Fundos</h1>
+                    </div>
+                    <div class="backs">
+                    ';
+                        
+                            if($perfildono == $perfilEntrando){
+                                $gadget = "SELECT * FROM gadget WHERE type = 1";
+                                foreach($pdo->query($gadget) as $key => $value){
+                                    $item = $value['in_it'];
+                                    $preco = $value['preco'];
+                                    $code = $value['id_gadget'];
+
+                                    $check = "SELECT * FROM compra WHERE fk_id_gadget = '$code' and fk_id_profile = '$perfil'";
+                                    $prepare = $pdo->prepare($check);
+                                    $prepare->execute();
+
+                                    $rows = $prepare->rowCount();
+
+                                    if($rows == 1){
+                                        echo "<div class='card-fundo-back' onclick='switchP(".$code.")'>
+                                            <div class='card-fundo' id=".$code." style='$item'></div>
+                                        </div>";
+                                    } 
+                                }
+                            }
+                        
+                            echo '
+                    </div>
+                </div>
+                
+                ';
+            }
+            
+        ?>
     </div>
-<script src="../js/profile.js"></script>
-<?php
+    <div id="f-cont"></div>
+    <script src="../js/menu.js"></script>
+    <script src="../js/perfil.js?v=1.01"></script>
+    <?php
     if($perfildono == $perfilEntrando){
 
         echo '<script> 
-        
-        var sheets = document.getElementsByClassName("sheet");
-        var balls = document.getElementsByClassName("radio");
 
-        function switchSheet(n){
-            for(var i = 0; i < sheets.length; i++){
-                if(i == n){
-                     sheets[i].classList.add("sheet-appear");
-                     balls[i].classList.add("ball-active");
-                }
-                else{
-                    sheets[i].classList.remove("sheet-appear");
-                    balls[i].classList.remove("ball-active");
-                }
-            }
-        } 
         function switchP(n) {
             var theForm, newInput1;
             theForm = document.createElement("form");
@@ -264,14 +369,13 @@
             newInput1.name = "gadget";
             newInput1.value = n;
             theForm.appendChild(newInput1);
-            document.getElementById("hidden_form_container").appendChild(theForm);
+            document.getElementById("f-cont").appendChild(theForm);
             theForm.submit();
         }
 
-        switchSheet(0);
-
         </script>';
     }
+    
 ?>
 </body>
 </html>
