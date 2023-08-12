@@ -13,6 +13,8 @@
     }
     if(isset($_GET['input_1'])){
         $id_story = $_GET['input_1'];
+
+        $_SESSION['id_story'] = $id_story;
         $story = "SELECT * from story where id_story = $id_story and status = 3";
         $prepare = $pdo->prepare($story);
         $prepare->execute();
@@ -130,7 +132,7 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>História</title>
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
-    <link rel="stylesheet" href="../css/story.css?v=1.0233434">
+    <link rel="stylesheet" href="../css/story.css?v=1.01">
     <link rel="stylesheet" href="../css/notification.css?v=11352">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
 </head>
@@ -207,7 +209,15 @@
                                         echo $titulo;
                                     ?>
                                 </h1>
-                                <h2>KKKKKKK</h2>
+                                <h2>
+                                    <?php
+
+                                        $autor = "select user_common.nome as nome, user_common.fk_id_profile as cod from user_common, story where story.fk_id_profile = user_common.fk_id_profile and story.id_story = $id_story";
+                                        foreach ($pdo->query($autor) as $key => $value) {
+                                            echo '<a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>';
+                                        }
+                                    ?>
+                                </h2>
                             </div>
                             <div onclick = "checkStuff(0)" class="bt-open-close">
                                 <div class="bt">
@@ -385,6 +395,92 @@
             </div>
         </div>
     </div>
+
+    <?php
+        if($showRight == "block;" || $showAnswered == "block;"){
+
+            $sql = 
+            
+            "
+            
+            select comment.*, user_common.apelido as nome, profile.id_profile as cod, gadget.in_it as foto
+            
+            from comment, profile, user_common, gadget 
+                
+            where 
+
+            comment.fk_id_profile = profile.id_profile and
+            user_common.fk_id_profile = comment.fk_id_profile and 
+            gadget.id_gadget = profile.foto and
+            gadget.type = 0 and
+            comment.fk_id_story = $id_story 
+            
+            order by comment.id_comment asc
+            
+            ";
+
+            $prepare = $pdo->prepare($sql);
+            $prepare->execute();
+   
+            echo '<div class="comments-cover">
+                <div class="comments-container">
+                    <div class="title">
+                        Comentários
+                    </div>
+                    <div class="comments-start">
+                    ';
+                    
+                    if($prepare->rowCount() != 0){
+
+                        echo'<div class="comments">';
+                        
+                        foreach ($pdo->query($sql) as $key => $value) {
+
+                            if($value['cod'] == $perfil){
+                                $class = "mine";
+                                $classC = "mineC";
+                                $classA = "mineA";
+                            }else{
+                                $class = "regular";
+                                $classC = "";
+                                $classA = "";
+                            }
+
+                            echo' <div class="comment-container '.$class.'">
+                                    <div class="arrow '.$classA.'"></div>
+                                    <div class="comment '.$classC.'">
+                                    <div class="cheader">
+                                            <div class="pic" style="'.$value['foto'].'">
+
+                                            </div>
+                                            <div class="name">
+                                                <a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>
+                                            </div>
+                                        </div>
+                                        <div class="content-comment">
+                                            '.$value['text'].'
+                                        </div>
+                                    </div>
+                                </div>';
+                        }
+                    }
+
+                    echo '</div>
+                        <div class="input-comment">
+                            <form action="comment.php" method="post">
+                                <textarea type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
+                                <input type="submit" value="Comentar">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+
+        }
+        
+    
+    ?>
+    
 </body>
 <script>
     <?php 

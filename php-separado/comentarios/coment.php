@@ -4,7 +4,7 @@
     require "includes/returnUser.php";
 
     $email = $_SESSION['email'];
-    $perfil = returnIdPage($email);
+    //$perfil = returnUser($email);
     $coment = $_POST['coment'];
     $id_story = $_POST['id_story'];
 

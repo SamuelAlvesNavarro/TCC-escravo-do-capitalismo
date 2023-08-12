@@ -1,0 +1,10 @@
+    Erros para serem corrigidos:
+A tela de cadastro para telas de celulares fica com o botão de cadastrar pela metade;
+A página de preview para telas de celulares fica com as questões fora de escala.
+
+    Melhorias estéticas/utilização:
+Na página de criação de histórias quando o quadro de avisos e regras não ficar do lado, seria melhor deixar ele no início para o usuário estar ciente do que ele pode ou não fazer, e os botões de preview e mandar para revisão poderia ficar no final da página;
+Na página de perfil não tem um botão para voltar para central ou para acessar para acessar o menu;
+Quando clicar em alguma opção do menu não abrir outra guia;
+Botão para deslogar.
+

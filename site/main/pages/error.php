@@ -1,9 +1,8 @@
 <?php   
     require 'includes/conexao.php';
-    require "includes/report_profile.php";
-
-    if(!isset($_GET['erro'])) $erro = 667;
-    else $erro = $_GET['erro']; 
+    
+    if(!isset($_POST['erro'])) $erro = 667;
+    else $erro = $_POST['erro']; 
 
     $sql = "SELECT * FROM error WHERE id_error='$erro'";
     $prepare = $pdo->prepare($sql);
@@ -28,6 +27,7 @@
 
     if($cod_error == 2){
 
+        require 'includes/report_profile.php';
         $perfil = -1;
         $email = $_SESSION['email'];
         $perfil = returnProfileId($email);
@@ -41,6 +41,7 @@
     }
     if($cod_error == 3){
 
+        require 'includes/report_profile.php';
         $to_show = "e3";
         $perfil = -1;
         $email = $_SESSION['email'];
@@ -61,7 +62,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Erro</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
