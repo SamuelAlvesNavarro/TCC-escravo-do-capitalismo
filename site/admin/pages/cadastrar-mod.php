@@ -1,5 +1,7 @@
 <?php
+    require "includes/conexao.php";
     require "includes/online.php";
+    include "includes/menu.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,12 +14,19 @@
         body{
             padding: 20px;
         }
+
+            <?php
+                cssMenu();
+            ?>
     </style>
 </head>
 <body data-bs-theme="dark">
+        <?php
+            menu();
+        ?>
     <h1>Cadastro - Mod </h1>
     <br>
-    <form method="post" action="cadastro-mod.php">
+    <form method="post" action="cadastro-mod_exe.php">
         <label for="">Nome:</label>
         <input type="text" name="name">
         <br>

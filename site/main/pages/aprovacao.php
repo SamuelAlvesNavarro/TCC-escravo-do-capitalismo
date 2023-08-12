@@ -1,6 +1,5 @@
 <?php
     require "includes/report_profile.php";
-    require "includes/online.php";
     
     function RetornarIdPage($id_story, $type){
         global $pdo;

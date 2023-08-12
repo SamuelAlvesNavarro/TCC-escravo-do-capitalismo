@@ -1,7 +1,7 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
-
+    include "includes/menu.php";
     
 ?>
 <!DOCTYPE html>
@@ -26,10 +26,15 @@
             background-repeat: no-repeat;
             background-position: center;
         }
+            <?php
+                cssMenu();
+            ?>
     </style>
 </head>
 <body>
-
+    <?php
+        menu();
+    ?>
     <!-- Controle de gadgets  pela tabela !-->
         <h2>Fotos de perfil - ATIVAS</h2>
 
