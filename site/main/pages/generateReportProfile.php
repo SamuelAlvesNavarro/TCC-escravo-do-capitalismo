@@ -7,5 +7,5 @@
 
     generateReport($perfil, $reported, $reason, 1);
 
-    header("Location: perfil.php?profile=$reported");
+    header("Location: profile.php?profile=$reported");
 ?>
