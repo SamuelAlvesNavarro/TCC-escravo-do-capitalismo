@@ -1,6 +1,6 @@
 const toggle = document.getElementById("mode");
 const root = document.querySelector(":root");
-var dark = false;
+let dark = false;
 toggle.addEventListener('click', () => {
     root.classList.toggle('dark');
 
