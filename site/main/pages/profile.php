@@ -73,7 +73,7 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/perfil.css?v=1.01">
+    <link rel="stylesheet" href="../css/perfil.css?v=1.0123">
     <title>Perfil</title>
 </head>
 <body>
@@ -129,7 +129,7 @@
                 </div>
             </div>
         </div>
-        <div class="acess-menu">
+        <div class="acess-menu menu-dis" id="acmenu">
             <div class="point" onclick="menu_appear()">
                 <div class="icon">
                     <i class="fa-solid fa-bars"></i>
@@ -151,7 +151,7 @@
             <div class="info">
                 <div class="main-info">
                     <div class="suspect-info">
-                        <h1>Informações Básicas do Suspeito (<?php echo $perfildono?>)</h1>
+                        <h1>Informações Básicas do Suspeito (<?php echo rand(0, 9); echo $perfildono; echo rand(0, 9);?>)</h1>
                         <div class="suspect-info-going">
                             <div class="info-div">
                                 <h2>Nome: </h2><span class="written"><?php echo $nome?></span>
@@ -353,7 +353,7 @@
     </div>
     <div id="f-cont"></div>
     <script src="../js/menu.js"></script>
-    <script src="../js/perfil.js?v=1.01"></script>
+    <script src="../js/perfil.js?v=1.012"></script>
     <?php
     if($perfildono == $perfilEntrando){
 

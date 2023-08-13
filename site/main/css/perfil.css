@@ -32,6 +32,7 @@
   box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
+  transition: .5s linear;
 }
 
 .point {
@@ -48,6 +49,9 @@
   cursor: pointer;
 }
 
+.menu-dis{
+  top: -100% !important;
+}
 /* DENUNCIA */
 .denuncia-container {
   position: fixed;
@@ -109,12 +113,12 @@ textarea {
   padding: 20px;
   padding-top: 42px;
   padding-bottom: 0;
-  gap: 20px;
   height: -moz-max-content;
   height: max-content;
 }
 
 .header {
+  height: 294px;
   width: 50%;
 }
 
@@ -162,6 +166,8 @@ textarea {
   width: 50%;
   display: flex;
   justify-content: center;
+  height: 294px;
+  min-height: 294px;
 }
 
 .main-info {
@@ -173,6 +179,7 @@ textarea {
   font-size: 30px;
   font-style: italic;
   font-family: oldF;
+  line-height: 42px;
 }
 
 .suspect-info-going {
@@ -186,8 +193,7 @@ textarea {
 }
 
 .info-div {
-  height: 22px;
-  padding-top: 20px;
+  line-height: 42px;
 }
 
 .written {
@@ -198,6 +204,7 @@ textarea {
 .formal {
   font-family: oldF;
   font-style: italic;
+  line-height: 42px;
 }
 
 /* SPLIT */
@@ -241,7 +248,7 @@ textarea {
 .stories p {
   font-family: "Indie Flower";
   font-size: 30px;
-  min-height: 42px;
+  line-height: 42px;
 }
 
 .bet-container {
@@ -320,7 +327,7 @@ td input {
 
 /* PICS */
 .edit {
-  margin-bottom: 20px;
+  height: 542px;
 }
 
 .header-change {
@@ -338,9 +345,9 @@ td input {
   height: -moz-max-content;
   height: max-content;
   background-color: rgb(195, 199, 201);
-  box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.75);
   transform: rotate(-45deg);
 }
 
@@ -427,11 +434,13 @@ td input {
     flex-direction: column-reverse;
   }
   .info {
-    padding-top: 22px;
     width: 100%;
   }
   .header {
     width: 100%;
+  }
+  .edit{
+    margin-bottom: 42px;
   }
 }
 @media (max-width: 700px) {
@@ -443,7 +452,9 @@ td input {
     padding: 0;
   }
   .second-info {
-    padding-left: 20px;
+    padding: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
   .header-change {
     display: none;
@@ -458,8 +469,16 @@ td input {
     width: 100%;
   }
 }
+@media (max-width: 650px) {
+  .info{
+    height: 378px;
+  }
+}
 @media (max-width: 400px) {
   .stories p {
     font-size: 25px;
+  }
+  .edit{
+    height: 588px;
   }
 }/*# sourceMappingURL=perfil.css.map */

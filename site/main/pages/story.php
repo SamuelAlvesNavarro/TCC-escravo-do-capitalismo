@@ -468,7 +468,7 @@
                     echo '</div>
                         <div class="input-comment">
                             <form action="comment.php" method="post">
-                                <textarea type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
+                                <textarea required type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
                                 <input type="submit" value="Comentar">
                             </form>
                         </div>
