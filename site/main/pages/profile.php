@@ -164,7 +164,7 @@
             <div class="info">
                 <div class="main-info">
                     <div class="suspect-info">
-                        <h1>Informações Básicas do Suspeito (<?php echo rand(0, 9); echo $perfildono; echo rand(0, 9);?>)</h1>
+                        <h1 class="formal">Informações Básicas (<?php echo rand(0, 9); echo $perfildono; echo rand(0, 9);?>)</h1>
                         <div class="suspect-info-going">
                             <div class="info-div">
                                 <h2>Nome: </h2><span class="written"><?php echo $nome?></span>
@@ -194,7 +194,7 @@
         </div>
         <div class="second-info">
             <div class="stories-title">
-                <h1 class="formal">Histórias do Suspeito</h1>
+                <h1 class="formal">Histórias</h1>
             </div>
             <div class="stories-bet">
                 <div class="stories">
@@ -366,7 +366,7 @@
     </div>
     <div id="f-cont"></div>
     <script src="../js/menu.js"></script>
-    <script src="../js/perfil.js?v=1.012"></script>
+    <script src="../js/perfil.js?v=1.01234"></script>
     <?php
     if($perfildono == $perfilEntrando){
 

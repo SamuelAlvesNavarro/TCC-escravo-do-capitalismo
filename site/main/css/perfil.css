@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Playfair+Display:ital@1&family=Poltawski+Nowy&family=Roboto:wght@500&display=swap');
 @font-face {
   font-family: oldF;
   src: url(../fonts/oldnewspapertypes/OldNewspaperTypes.ttf);
@@ -13,12 +14,63 @@
   padding: 0;
 }
 
+/* ZA COLORS */
+.za-colors {
+  background-color: #121212;
+  background-color: #1e1e1e;
+  background-color: #222222;
+  background-color: #242424;
+  background-color: #272727;
+  background-color: #2c2c2c;
+  background-color: #2d2d2d;
+  background-color: #333333;
+  background-color: #343434;
+  background-color: #383838;
+}
+
+:root {
+  color-scheme: light;
+  --color: #121212;
+  --all-shadow: -2px -1px 64px 20px rgba(0, 0, 0, 0.75) inset;
+  --paper-color: #E0C9A6;
+  --line-color: #121212;
+
+  --formal: oldF;
+}
+
+.dark1 {
+  color-scheme: dark;
+  --color: #adadad;
+  --all-shadow: -2px -1px 84px 25px rgba(0, 0, 0, 1) inset;
+  --paper-color: #121212;
+  --line-color: #868686;
+}
+
+.dark2 {
+  color-scheme: dark;
+  --color: #121212;
+  --all-shadow: -1px 24px 100px 30px rgba(0,0,0,1) inset;
+  --paper-color: #E0C9A6;
+  --line-color: #121212;
+
+  --formal: 'Playfair Display', serif;
+}
+
+.dark3 {
+  color-scheme: dark;
+  --color: #cacaca;
+  --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;
+  --paper-color: #505050 /*#522c16*/;
+  --line-color: #000000;
+
+  /*--formal: 'Playfair Display', serif;*/
+}
 /* ACESS MENU */
 .acess-menu {
   z-index: 1000;
   padding: 15px;
   position: fixed;
-  background-color: #E0C9A6;
+  background-color: var(--paper-color);
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -71,7 +123,7 @@
 
 .denuncia {
   padding: 5px;
-  background-color: #E0C9A6;
+  background-color: var(--paper-color);
 }
 
 .head {
@@ -97,13 +149,14 @@ textarea {
 
 /* ALL */
 .all {
+  color: var(--color);
   transition: 0.5s linear;
   position: relative;
-  min-height: calc(100vh - 10px);
-  background: repeating-linear-gradient(#E0C9A6 0px, #E0C9A6 40px, #121212 42px);
-  box-shadow: -2px -1px 64px 20px rgba(0, 0, 0, 0.75) inset;
-  -webkit-box-shadow: -2px -1px 64px 20px rgba(0, 0, 0, 0.75) inset;
-  -moz-box-shadow: -2px -1px 64px 20px rgba(0, 0, 0, 0.75) inset;
+  min-height: calc(100vh);
+  background: repeating-linear-gradient(var(--paper-color) 0px, var(--paper-color) 40px, var(--line-color) 42px);
+  box-shadow: var(--all-shadow);
+  -webkit-box-shadow: var(--all-shadow);
+  -moz-box-shadow: var(--all-shadow);
 }
 
 .main {
@@ -178,9 +231,6 @@ textarea {
 
 .info h1 {
   font-size: 30px;
-  font-style: italic;
-  font-family: oldF;
-  line-height: 42px;
 }
 
 .suspect-info-going {
@@ -203,8 +253,7 @@ textarea {
 }
 
 .formal {
-  font-family: oldF;
-  font-style: italic;
+  font-family: var(--formal);
   line-height: 42px;
 }
 
@@ -222,7 +271,7 @@ textarea {
 
 .split hr {
   width: 95%;
-  border: 2px solid black;
+  border: 2px solid var(--line-color);
 }
 
 /* SECOND INFO */
