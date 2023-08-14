@@ -1,6 +1,7 @@
 <?php
     require "../includes/online.php";
     require "../includes/conexao.php";
+    require "deleteAll.php";
 
     $emailUser = $_POST['emailUser'];
 
@@ -17,9 +18,11 @@
         $id = $value['fk_id_profile'];
     }
 
-    $delete = "DELETE FROM profile WHERE id_profile = '$id'";
-    $prepare = $pdo->prepare($delete);
-    $prepare->execute();
+    deleteUser($id);
 
-    header("Location: ../user_center.php");
+    /*$delete = "DELETE FROM profile WHERE id_profile = '$id'";
+    $prepare = $pdo->prepare($delete);
+    $prepare->execute();*/
+
+    //header("Location: ../user_center.php");
 ?>

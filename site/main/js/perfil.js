@@ -12,10 +12,10 @@ senha.addEventListener("mouseleave", () => {
     senha.type = "password";
 })
 
-var menu = document.getElementById("acmenu");
+var menu2 = document.getElementById("acmenu");
 
 function callMenu(){
-    menu.classList.remove("menu-dis");
+    menu2.classList.remove("menu-dis");
 }
 
 setTimeout(function(){callMenu()}, 200)

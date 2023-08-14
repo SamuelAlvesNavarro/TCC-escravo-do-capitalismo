@@ -134,6 +134,7 @@ textarea {
   height: 246px;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .pc {
@@ -481,4 +482,4 @@ td input {
   .edit{
     height: 588px;
   }
-}/*# sourceMappingURL=perfil.css.map */
+}

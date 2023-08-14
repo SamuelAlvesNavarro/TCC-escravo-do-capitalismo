@@ -14,6 +14,7 @@ function switchMenu(n){
             menu.classList.toggle("off");
         }
     }
+    console.log("fghkfghgfhkfh")
 }
 function menu_appear(){
     bodyT.classList.toggle("menuOn");
