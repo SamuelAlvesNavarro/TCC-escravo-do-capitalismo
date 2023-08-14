@@ -1,7 +1,7 @@
 <?php
     function isOnline(){
         include "criasession.php";
-          if(isset($_SESSION['email'])){
+          if(isset($_SESSION['emailMod'])){
               return true;
             }
          return false;

@@ -68,11 +68,17 @@
                             }else{
                                 $x = "<td>Historito</td>";
                             }
+                            if($value['fk_id_reporter'] == 0){
+                                $x = "<td>Deletado</td>";
+                            }
 
                             if($value['fk_id_reported'] != 666){
                                 $y = "<td><a href='user.php?profile=". $value['fk_id_reported']."'><button class='btn btn-danger'>Investigar</button></a></td>";
                             }else{
                                 $y = "<td>Historito</td>";
+                            }
+                            if($value['fk_id_reported'] == 0){
+                                $x = "<td>Deletado</td>";
                             }
 
                             echo "<tr scope='row'>";
@@ -119,6 +125,10 @@
                             if($value['code'] == 1) $cd = "Em Aberto";
                             if($value['code'] == 2) $cd = "Automática";
                             if($value['code'] == 3) $cd = "Resolvido";
+
+                            if($value['fk_id_reporter'] == 0){
+                                $value['fk_id_reporter'] = "Deletado";
+                            }
 
                             echo "<tr scope='row'>";
                             echo "<td>".$value['id_report']."</td>";

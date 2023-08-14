@@ -181,6 +181,9 @@
 .content ul li:nth-child(4){
     text-align: left;
 }
+.content ul li:nth-child(5){
+    text-align: right;
+}
 .content ul li a:hover{
     font-weight: 900;
     font-style: italic;

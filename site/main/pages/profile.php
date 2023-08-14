@@ -5,10 +5,11 @@
     $perfildono = -1;
     $perfildono = $_GET['profile'];
 
-    if($perfildono == 0){
+    if($perfildono == 0 || $perfildono == 666){
         header("Location: central.php");
         exit;
     }
+
 
     $sql = "SELECT * FROM user_common WHERE fk_id_profile = '$perfildono'";
     foreach($pdo->query($sql) as $key => $value){
@@ -92,10 +93,11 @@
             </div> 
             <div class="content">
                 <ul>
-                    <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
-                    <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
-                    <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
-                    <li><a href="writerHub.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
+                    <li><a href="central.php" rel="noopener noreferrer">Central</a></li>
+                    <li><a href="profile.php?profile=<?php echo $perfil?>" rel="noopener noreferrer">Perfil</a></li>
+                    <li><a href="loja.php" rel="noopener noreferrer">Loja</a></li>
+                    <li><a href="writerHub.php" rel="noopener noreferrer">Criação</a></li>
+                    <li><a href="leave.php" rel="noopener noreferrer">Sair</a></li>
                     <div class="search-menu">
                         <form action="pesquisa.php" method="get">
                             <div class="search-box">
