@@ -2,6 +2,7 @@
     require "../includes/conexao.php";
 
     $id_story = $_POST['id_story'];
+
     $img = $_POST['id_img'];
 
     function returnIdPage($id_story){
