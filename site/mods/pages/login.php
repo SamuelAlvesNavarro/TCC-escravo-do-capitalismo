@@ -14,7 +14,7 @@
 
     if($prepare -> rowCount() > 0){
         require "includes/criasession.php";
-        $_SESSION['email'] = $email;
+        $_SESSION['emailMod'] = $email;
         header("Location:esgotos.php");
 
     }else{
