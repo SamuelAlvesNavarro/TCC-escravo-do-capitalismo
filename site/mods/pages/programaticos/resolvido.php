@@ -6,15 +6,15 @@
     $story = $_GET['id_report'];
     $comment = $_GET['id_report'];
 
-    if(!isset($profile)){
+    if(isset($profile)){
         $sql = "UPDATE report_profile SET code = 2 WHERE id_report = $profile";
     }
 
-    if(!isset($story)){
+    if(isset($story)){
         $sql = "UPDATE report_story SET code = 2 WHERE id_report = $story";
     }
 
-    if(!isset($comment)){
+    if(isset($comment)){
         $sql = "UPDATE report_comment SET code = 2 WHERE id_report = $comment";
     }
     
