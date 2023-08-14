@@ -35,11 +35,6 @@
     <div class="container text-center mb-3">
         <div class="row align-items-start">
             <h1 align="center-2" class="col" style="margin-bottom: 50px;">Denúncia de Perfil</h1>
-                <?php
-                    require "includes/conexao.php";
-
-                    $sql = "SELECT * FROM report_profile where code != 2";
-                ?>
             <!--<a href="index.php" class="p-2 col-2"><button type="button" class="btn-close" disabled aria-label="Close"></button></a>-->
         
             <table align="center" class="col-3 table table-striped border border-black border-1 p-2" style="width: 1200px;">
@@ -57,6 +52,11 @@
                 </thead>
                 <tbody>
                     <?php
+
+                        require "includes/conexao.php";
+
+                        $sql = "SELECT * FROM report_profile where code = 1";
+
                         foreach ($pdo->query($sql) as $key => $value) {
                             
                             if($value['code'] == 1) $cd = "Em Aberto";
@@ -65,20 +65,25 @@
 
                             if($value['fk_id_reporter'] != 666){
                                 $x = "<td><a href='user.php?profile=". $value['fk_id_reporter']."'><button class='btn btn-danger'>Investigar</button></a></td>";
+                                
+                                if($value['fk_id_reporter'] == 0){
+                                    $x = "<td>Deletado</td>";
+                                }
+
                             }else{
                                 $x = "<td>Historito</td>";
                             }
-                            if($value['fk_id_reporter'] == 0){
-                                $x = "<td>Deletado</td>";
-                            }
+                            
 
                             if($value['fk_id_reported'] != 666){
                                 $y = "<td><a href='user.php?profile=". $value['fk_id_reported']."'><button class='btn btn-danger'>Investigar</button></a></td>";
+                                
+                                if($value['fk_id_reported'] == 0){
+                                    $y = "<td>Deletado</td>";
+                                }
+
                             }else{
                                 $y = "<td>Historito</td>";
-                            }
-                            if($value['fk_id_reported'] == 0){
-                                $x = "<td>Deletado</td>";
                             }
 
                             echo "<tr scope='row'>";
@@ -100,11 +105,6 @@
     <div class="container text-center mb-3">
         <div class="row align-items-start">
             <h1 align="center-2" class="col" style="margin-bottom: 50px;">Denúncia de História</h1>
-                <?php
-                    require "includes/conexao.php";
-
-                    $sql = "SELECT * FROM report_story where code != 2";
-                ?>
             <!--<a href="index.php" class="p-2 col-2"><button type="button" class="btn-close" disabled aria-label="Close"></button></a>-->
         
             <table align="center" class="col-3 table table-striped border border-black border-1 p-2" style="width: 1200px;">
@@ -120,6 +120,10 @@
                 </thead>
                 <tbody>
                     <?php
+                        require "includes/conexao.php";
+
+                        $sql = "SELECT * FROM report_story where code = 1";
+
                         foreach ($pdo->query($sql) as $key => $value) {
                             
                             if($value['code'] == 1) $cd = "Em Aberto";

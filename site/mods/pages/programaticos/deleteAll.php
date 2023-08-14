@@ -34,6 +34,8 @@
         $sql = "delete from profile where id_profile = $id_profile";
         $prepare = $pdo->prepare($sql);
         $prepare->execute();
+
+        checkAllReport();
     }
     function deleteStory($id_story){
         global $pdo;
@@ -164,6 +166,10 @@
         $prepare->execute();
 
         $sql = "delete from report_profile where fk_id_reported = 0 and fk_id_reporter = 0";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        $sql = "delete from report_profile where fk_id_reported = 0 and fk_id_reporter = 666";
         $prepare = $pdo->prepare($sql);
         $prepare->execute();
     }

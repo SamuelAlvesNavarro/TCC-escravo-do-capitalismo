@@ -11,6 +11,17 @@
     }
 
 
+    $check = "SELECT * FROM user_common WHERE fk_id_profile = '$perfildono'";
+    $prepare = $pdo->prepare($check);
+    $prepare->execute();
+
+    $rows = $prepare->rowCount();
+
+    if($rows != 1){
+        header("Location: central.php");
+        exit;
+    }
+
     $sql = "SELECT * FROM user_common WHERE fk_id_profile = '$perfildono'";
     foreach($pdo->query($sql) as $key => $value){
         $id_dono = $value['id_user'];
