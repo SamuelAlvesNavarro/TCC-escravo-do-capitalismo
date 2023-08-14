@@ -2,9 +2,9 @@
     require "../includes/conexao.php";
     require "../includes/online.php";
 
-    $profile = $_GET['id_report'];
-    $story = $_GET['id_report'];
-    $comment = $_GET['id_report'];
+    $profile = $_GET['id_report_profile'];
+    $story = $_GET['id_report_story'];
+    $comment = $_GET['id_report_comment'];
 
     if(isset($profile)){
         $sql = "UPDATE report_profile SET code = 2 WHERE id_report = $profile";
