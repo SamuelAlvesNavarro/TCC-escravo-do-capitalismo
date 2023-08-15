@@ -2,6 +2,7 @@
     require "includes/conexao.php";
     require "includes/online.php";
     require "includes/values.php";
+    require "includes/enviarErro.php";
 
     function RetornarIdPage($id_story, $type){
         global $pdo;
@@ -28,7 +29,8 @@
                 $rating = $value['rating'];
         }
     }else{
-        header("Location: error.php?erro=14");
+        sendToError(14);
+        exit;
     }
 
 
