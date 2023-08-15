@@ -3,6 +3,7 @@
     require "includes/online.php";
     require "includes/returnUser.php";
     require "includes/enviarErro.php";
+    require "includes/checarTexto.php";
 
     $email = $_SESSION['email'];
     $perfil = returnProfileId($email);
@@ -11,6 +12,12 @@
 
 
     if($id_story != 0 && $comment != ""){
+
+        if(!verificarTexto($comment, 0)){
+            sendToError(8);
+            exit;
+        }
+
         $comment = "INSERT INTO comment VALUES(NULL, '$id_story', '$perfil', '$comment')";
         $prepare = $pdo->prepare($comment);
         $prepare->execute();

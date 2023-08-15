@@ -44,6 +44,7 @@
     foreach($pdo->query($sql) as $key => $value){
         $foto = $value['in_it'];
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -252,5 +253,9 @@
 
     <script src="../js/menu.js?version=1.01"></script>
     <script src="../js/central.js?version=1.02"></script>
+
+    <?php
+        $pdo = '';
+    ?>
 </body>
 </html>

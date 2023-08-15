@@ -33,9 +33,11 @@
   --color: #121212;
   --all-shadow: -2px -1px 64px 20px rgba(0, 0, 0, 0.75) inset;
   --paper-color: #E0C9A6;
+  --table-color: #E0C9A6;
   --line-color: #121212;
 
   --formal: oldF;
+  --reward-opacity: .2;
 }
 
 .dark1 {
@@ -58,10 +60,13 @@
 
 .dark3 {
   color-scheme: dark;
-  --color: #cacaca;
+  --color: #ebebeb;
   --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;
-  --paper-color: #505050 /*#522c16*/;
+  --paper-color: #606060;
+  --table-color: #505050;
   --line-color: #000000;
+
+  --reward-opacity: .9;
 
   /*--formal: 'Playfair Display', serif;*/
 }
@@ -315,7 +320,7 @@ textarea {
   padding: 10px;
   font-size: 30px;
   border: 5px solid red;
-  opacity: 0.2;
+  opacity: var(--reward-opacity);
   rotate: -10deg;
 }
 
@@ -341,7 +346,7 @@ textarea {
 table {
   border-spacing: 0 !important;
   border-collapse: collapse;
-  background-color: rgb(212, 193, 167);
+  background-color: var(--table-color);
   box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);

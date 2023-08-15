@@ -366,7 +366,7 @@
     </div>
     <div id="f-cont"></div>
     <script src="../js/menu.js"></script>
-    <script src="../js/perfil.js?v=1.01234"></script>
+    <script src="../js/perfil.js?v=1.0123456"></script>
     <?php
     if($perfildono == $perfilEntrando){
 

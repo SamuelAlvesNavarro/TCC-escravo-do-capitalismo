@@ -1,6 +1,6 @@
 <?php
     // Lista de palavras que você quer filtrar
-    $palavrasProibidas = array("palavra1", "palavra2", "palavra3");
+    $palavrasProibidas = array("caralho", "cu", "buceta");
 
     // Função para verificar palavras proibidas no texto
     function verificarPalavras($texto, $palavrasProibidas) {
