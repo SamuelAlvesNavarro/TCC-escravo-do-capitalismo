@@ -204,7 +204,9 @@
 
     <h2>Comentários deste usuário</h2>
     <form action="user_comment.php" method="post">
-            <input type="hidden" name="id_profile" value="<?php echo $perfildono; ?>">
+            <?php
+                $_SESSION['perfil'] = $perfildono;
+            ?>
             <button>Averiguar</button>
     </form>
 </body>

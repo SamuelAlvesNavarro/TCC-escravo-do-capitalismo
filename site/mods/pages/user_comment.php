@@ -2,7 +2,7 @@
     include "includes/conexao.php";
     include "includes/online.php";
 
-    $perfil = $_POST['id_profile'];
+    $perfil = $_SESSION['perfil'];
 
     $user = "SELECT nome FROM user_common WHERE fk_id_profile = $perfil";
     foreach($pdo->query($user) as $key => $value){
