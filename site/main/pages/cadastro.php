@@ -66,6 +66,7 @@
 
                     require "includes/criasession.php";
                     $_SESSION['email'] = $email;
+                    $pdo = '';
                     header("Location:central.php");
                 }
             }

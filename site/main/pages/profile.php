@@ -5,7 +5,19 @@
     $perfildono = -1;
     $perfildono = $_GET['profile'];
 
-    if($perfildono == 0){
+    if($perfildono == 0 || $perfildono == 666){
+        header("Location: central.php");
+        exit;
+    }
+
+
+    $check = "SELECT * FROM user_common WHERE fk_id_profile = '$perfildono'";
+    $prepare = $pdo->prepare($check);
+    $prepare->execute();
+
+    $rows = $prepare->rowCount();
+
+    if($rows != 1){
         header("Location: central.php");
         exit;
     }
@@ -73,7 +85,7 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/perfil.css?v=1.01">
+    <link rel="stylesheet" href="../css/perfil.css?v=1.0123">
     <title>Perfil</title>
 </head>
 <body>
@@ -92,10 +104,11 @@
             </div> 
             <div class="content">
                 <ul>
-                    <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
-                    <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
-                    <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
-                    <li><a href="writerHub.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
+                    <li><a href="central.php" rel="noopener noreferrer">Central</a></li>
+                    <li><a href="profile.php?profile=<?php echo $perfilEntrando?>" rel="noopener noreferrer">Perfil</a></li>
+                    <li><a href="loja.php" rel="noopener noreferrer">Loja</a></li>
+                    <li><a href="writerHub.php" rel="noopener noreferrer">Criação</a></li>
+                    <li><a href="leave.php" rel="noopener noreferrer">Sair</a></li>
                     <div class="search-menu">
                         <form action="pesquisa.php" method="get">
                             <div class="search-box">
@@ -129,7 +142,7 @@
                 </div>
             </div>
         </div>
-        <div class="acess-menu">
+        <div class="acess-menu menu-dis" id="acmenu">
             <div class="point" onclick="menu_appear()">
                 <div class="icon">
                     <i class="fa-solid fa-bars"></i>
@@ -151,7 +164,7 @@
             <div class="info">
                 <div class="main-info">
                     <div class="suspect-info">
-                        <h1>Informações Básicas do Suspeito (<?php echo $perfildono?>)</h1>
+                        <h1 class="formal">Informações Básicas (<?php echo rand(0, 9); echo $perfildono; echo rand(0, 9);?>)</h1>
                         <div class="suspect-info-going">
                             <div class="info-div">
                                 <h2>Nome: </h2><span class="written"><?php echo $nome?></span>
@@ -181,7 +194,7 @@
         </div>
         <div class="second-info">
             <div class="stories-title">
-                <h1 class="formal">Histórias do Suspeito</h1>
+                <h1 class="formal">Histórias</h1>
             </div>
             <div class="stories-bet">
                 <div class="stories">
@@ -353,7 +366,7 @@
     </div>
     <div id="f-cont"></div>
     <script src="../js/menu.js"></script>
-    <script src="../js/perfil.js?v=1.01"></script>
+    <script src="../js/perfil.js?v=1.0123456"></script>
     <?php
     if($perfildono == $perfilEntrando){
 

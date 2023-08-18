@@ -2,6 +2,7 @@
     require "includes/conexao.php";
     require "includes/online.php";
     require "includes/values.php";
+    require "includes/enviarErro.php";
 
     function RetornarIdPage($id_story, $type){
         global $pdo;
@@ -28,7 +29,8 @@
                 $rating = $value['rating'];
         }
     }else{
-        header("Location: error.php?erro=14");
+        sendToError(14);
+        exit;
     }
 
 
@@ -155,10 +157,11 @@
                 </div> 
                 <div class="content">
                     <ul>
-                        <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
-                        <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
-                        <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
-                        <li><a href="writerHub.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
+                        <li><a href="central.php" rel="noopener noreferrer">Central</a></li>
+                        <li><a href="profile.php?profile=<?php echo $perfil?>" rel="noopener noreferrer">Perfil</a></li>
+                        <li><a href="loja.php" rel="noopener noreferrer">Loja</a></li>
+                        <li><a href="writerHub.php" rel="noopener noreferrer">Criação</a></li>
+                        <li><a href="leave.php" rel="noopener noreferrer">Sair</a></li>
                         <div class="search">
                             <form action="pesquisa.php" method="get">
                                 <div class="search-box">
@@ -468,7 +471,7 @@
                     echo '</div>
                         <div class="input-comment">
                             <form action="comment.php" method="post">
-                                <textarea type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
+                                <textarea required type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
                                 <input type="submit" value="Comentar">
                             </form>
                         </div>

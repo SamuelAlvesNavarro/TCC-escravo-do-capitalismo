@@ -44,6 +44,7 @@
     foreach($pdo->query($sql) as $key => $value){
         $foto = $value['in_it'];
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -90,10 +91,11 @@
             </div> 
             <div class="content">
                 <ul>
-                    <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
-                    <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
-                    <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
-                    <li><a href="writerHub.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
+                    <li><a href="central.php" rel="noopener noreferrer">Central</a></li>
+                    <li><a href="profile.php?profile=<?php echo $perfil?>" rel="noopener noreferrer">Perfil</a></li>
+                    <li><a href="loja.php" rel="noopener noreferrer">Loja</a></li>
+                    <li><a href="writerHub.php" rel="noopener noreferrer">Criação</a></li>
+                    <li><a href="leave.php" rel="noopener noreferrer">Sair</a></li>
                     <div class="search-menu">
                         <form action="pesquisa.php" method="get">
                             <div class="search-box">
@@ -251,5 +253,9 @@
 
     <script src="../js/menu.js?version=1.01"></script>
     <script src="../js/central.js?version=1.02"></script>
+
+    <?php
+        $pdo = '';
+    ?>
 </body>
 </html>
