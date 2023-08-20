@@ -5,7 +5,6 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $perfil = returnProfileId($_SESSION['email']);
-
         $gadget = $_POST['gadget'];
 
         $sql = "SELECT * FROM gadget WHERE id_gadget = '$gadget'";
