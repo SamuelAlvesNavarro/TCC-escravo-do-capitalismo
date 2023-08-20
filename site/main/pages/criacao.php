@@ -96,7 +96,8 @@
                             <button type="button" class="bt-input-img" onclick="inputimgchangeval(-8)">Remover</button>
                         </div>
                         <div class="input-file-unit">
-                            <i class="fa-solid fa-image"></i><label class="imagem-label" id="imagem9-label" for="imagem9">Imagem 9</label><input class="input-file" type="file" id="imagem9" name="imagem9" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                                <i class="fa-solid fa-image"></i><label class="imagem-label" id="imagem9-label" for="imagem9">Imagem 9</label>
+                            <input class="input-file" type="file" id="imagem9" name="imagem9" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();">
                             <button type="button" class="bt-input-img" onclick="inputimgchangeval(-9)">Remover</button>
                         </div>
                         <div class="input-file-unit">
