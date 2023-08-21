@@ -39,6 +39,15 @@
         <div class="split">
 
         </div>
+        <div class="grandTitle">
+            Títulozão
+        </div>
+        <div class="title">
+            Títulozinho
+        </div>
+        <div class="lines">
+            texto as fuck texto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fuck
+        </div>
         <div class="split">
 
         </div>
@@ -54,9 +63,6 @@
         <div class="split">
 
         </div>
-        <div class="split">
-
-        </div>
         <div class="grandTitle">
             Títulozão
         </div>
@@ -65,24 +71,6 @@
         </div>
         <div class="lines">
             texto as fuck texto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fuck
-        </div>
-        <div class="split">
-
-        </div>
-        <div class="split">
-
-        </div>
-        <div class="grandTitle">
-            Títulozão
-        </div>
-        <div class="title">
-            Títulozinho
-        </div>
-        <div class="lines">
-            texto as fuck texto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fuck
-        </div>
-        <div class="split">
-
         </div>
         <div class="split">
 
