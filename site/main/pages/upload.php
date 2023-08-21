@@ -225,21 +225,34 @@
     /* REFERENCES */
 
     function checkreferenceAf(){ // <--------------------------- IMP
-        $referencia = $_POST['link-reference'];
-        if($referencia != ''){
-            return true;
-        }else{
-            header("Location: criacao.php");
-            return false;
+        for($x = 1; $x < 11; $x++){
+            if($_POST['ref'.$x] != 0){
+                $ref[$x] = $_POST['ref'.$x];
+                if($ref[$x] != ''){
+                    return true;
+                    break;
+                }else{
+                    return false;
+                }
+            }
         }
+        
     }
-    function referencia($referencia, $id_story){ // <--------------------------- IMP
+    function referencia($id_story){ // <--------------------------- IMP
         global $pdo;
-        Createpage($id_story, 2);
-        $id_page = RetornarIdPage($id_story, 2);
-        $reference = "INSERT INTO reference values(NULL, '$id_page', '$referencia')";
-        $prepare = $pdo->prepare($reference);
-        $prepare->execute();
+
+        for($x = 1; $x < 11; $x++){
+            if($_POST['ref'.$x] != 0){
+                $ref = $_POST['ref'.$x];
+
+                Createpage($id_story, 2);
+                $id_page = RetornarIdPage($id_story, 2);
+                $reference = "INSERT INTO reference values(NULL, '$id_page', '$ref')";
+                $prepare = $pdo->prepare($reference);
+                $prepare->execute();
+            }
+        }
+
         header("Location: criacao.php");
     }
 
@@ -353,7 +366,6 @@
     }
     /* IN ITSELF */
     
-    $referencia = $_POST['link-reference']; // <--------------------------- IMP --> NEW NAME : refN
     $perfil = -1;
     $id_story = 0;
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
