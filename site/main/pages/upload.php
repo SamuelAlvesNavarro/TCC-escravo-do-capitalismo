@@ -1,6 +1,8 @@
 <?php
     require 'includes/conexao.php';
     require 'includes/online.php';
+    require "includes/enviarErro.php";
+    
     global $pdo;
 
 
@@ -41,6 +43,13 @@
             header("Location: criacao.php");
             exit;
         }
+
+        if($titulo == "cu"){
+            sendToError(17);
+            exit;
+        } 
+        
+
 
     $email = $_SESSION['email'];
     $array = explode("\n", $_POST['story']);
@@ -188,19 +197,11 @@
             $titulo = gerarnomepasta($titulo, 0, $id_page);
         }
 
-        function checktitulo($titulo){ 
-            if($titulo == "cu"){
-                header("Location:error.php?erro=17");
-                return false;
-            } 
-            return true;
-        }
         function tituloreplacestuff($titulo){
             $titulo = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", '/[!@#$%^&*(),.?":{}|<>\s]/'),explode(" ","a A e E i I o O u U n N"),$titulo);
             $titulo = str_replace(" ", "-", $titulo);
             $titulo = str_replace("'", "-", $titulo);
             $titulo = preg_replace('/[^A-Za-z0-9\-]/', '', $titulo);
-            echo $titulo;
             return $titulo;
         }
 
@@ -211,35 +212,44 @@
         Createpage($id_story, 1);
         $id_page = RetornarIdPage($id_story, 1);
 
-        if(checktitulo($titulo)){
-            $titulo = tituloreplacestuff($titulo);
-        } 
+        $titulo = tituloreplacestuff($titulo);
         
-        if(checktitulo($titulo)){
-            if($id_page != -1){
-                images($titulo, $id_page);
-            }
+        if($id_page != -1){
+            images($titulo, $id_page);
         }
     }
 
     /* REFERENCES */
 
     function checkreferenceAf(){ // <--------------------------- IMP
-        $referencia = $_POST['link-reference'];
-        if($referencia != ''){
-            return true;
-        }else{
-            header("Location: criacao.php");
-            return false;
+        for($x = 1; $x < 11; $x++){
+            if($_POST['ref'.$x] != 0){
+                $ref[$x] = $_POST['ref'.$x];
+                if($ref[$x] != ''){
+                    return true;
+                    break;
+                }else{
+                    return false;
+                }
+            }
         }
+        
     }
-    function referencia($referencia, $id_story){ // <--------------------------- IMP
+    function referencia($id_story){ // <--------------------------- IMP
         global $pdo;
-        Createpage($id_story, 2);
-        $id_page = RetornarIdPage($id_story, 2);
-        $reference = "INSERT INTO reference values(NULL, '$id_page', '$referencia')";
-        $prepare = $pdo->prepare($reference);
-        $prepare->execute();
+
+        for($x = 1; $x < 11; $x++){
+            if($_POST['ref'.$x] != 0){
+                $ref = $_POST['ref'.$x];
+
+                Createpage($id_story, 2);
+                $id_page = RetornarIdPage($id_story, 2);
+                $reference = "INSERT INTO reference values(NULL, '$id_page', '$ref')";
+                $prepare = $pdo->prepare($reference);
+                $prepare->execute();
+            }
+        }
+
         header("Location: criacao.php");
     }
 
@@ -353,7 +363,6 @@
     }
     /* IN ITSELF */
     
-    $referencia = $_POST['link-reference']; // <--------------------------- IMP --> NEW NAME : refN
     $perfil = -1;
     $id_story = 0;
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
