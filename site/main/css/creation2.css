@@ -51,8 +51,8 @@
     width: 100%;
     height: 100vh;
     padding: 5px;
-    position: fixed;
-    display: flex;
+    position: absolute;
+    display: none;
     align-items: center;
     justify-content: center;
     opacity: var(--lines-opacity);
@@ -77,6 +77,8 @@
     }
 }
 .appearModal{
+    display: flex;
+    position: fixed;
     z-index: 5;
 }
 .center{
@@ -90,14 +92,15 @@
 .chevron{
     padding: 15px;
     background-color: white;
+    cursor: pointer;
 }
 .chevron i{
     color: black !important;
 }
 .img-container{
-    max-width: 300px;
-    max-height: 800px;
-    width: 300px;
+    min-width: 200px;
+    max-height: 700px;
+    width: 40vw;
     background-size: contain;
     background-position: center;
     padding: 5px;
@@ -105,6 +108,7 @@
     border-radius: 5px;
 }
 .modal-xmark{
+    cursor: pointer;
     position: absolute;
     top: 15px;
     font-size: 30px;
@@ -199,7 +203,7 @@ i{
 }
 /* MAIN */
 
-.main{
+.main, .references, .question{
     padding: 42px;
     display: flex;
     flex-direction: column;
@@ -300,6 +304,19 @@ pre h1,pre h2,pre h3,pre h4,pre h5,pre h6{
 
 /* IMAGES */
 
+.container-imgs{
+    padding: 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+    z-index: 3;
+    transition: .3s linear;
+    position: relative;
+    padding-bottom: 42px !important;
+}
+.title2{
+    background-color: var(--paper-color);
+}
 .carossel{
     display: flex;
     flex-direction: row;
@@ -312,11 +329,20 @@ pre h1,pre h2,pre h3,pre h4,pre h5,pre h6{
 .to-show-images{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 10px;
+    border: 1px solid;
+    padding: 10px;
 }
 .to-show-images img{
     height: 168px;
     background-size: contain;
+    padding: 5px;
+    background-color: var(--img-bc-color);
+    padding-bottom: 10px;
+    box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
 }
 /* OOPS */
 
@@ -351,10 +377,10 @@ pre h1,pre h2,pre h3,pre h4,pre h5,pre h6{
 }
 
 .to-left{
-    left: 0px;
+    left: -20px;
 }
 .to-right{
-    right: 0px;
+    right: -20px;
 }
 .img-input{
     background-repeat: no-repeat;
@@ -414,6 +440,100 @@ border-radius: 5px;
     width: 100px;
 }
 
+/* REFERENCES */
+.references{
+    padding-top: 42px;
+}
+.appear-refs{
+    font-family: "Indie Flower";
+    line-height: 42px;
+    font-size: 25px;
+}
+.edit .appear-refs{
+    display: none;
+}
+.ref-inputs{
+    display: none;
+}
+.edit .ref-inputs{
+    display: block;
+}
+.ref-input{
+    height: 42px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    line-height: 42px;
+    font-family: oldF;
+    font-size: 25px;
+}
+.ref-input input{
+    line-height: 42px;
+    font-size: 20px;
+    padding-left: 5px;
+    outline: none;
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: transparent;
+    font-family: "Indie Flower";
+    flex-grow: 1;
+}
+.ref-input input:active, .ref-input input:focus, .ref-input input:hover{
+    background-color: var(--table-color);
+}
+
+/* QUESTION */
+
+.question input{
+    line-height: 42px;
+    height: 42px;
+    font-size: 20px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid black;
+    font-family: oldF;
+    width: 100%;
+}
+.question p{
+    line-height: 42px;
+    font-size: 20px;
+    background-color: transparent;
+    font-family: oldF;
+}
+.question-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+.question-container input{
+    display: none;
+}
+.text-question input{
+    display: none;
+}
+.edit .question-container input{
+    display: block !important;
+}
+.edit .text-question input{
+    display: block !important;
+}
+.edit .question-container p{
+    display: none;
+}
+.option{
+    padding: 20px;
+    background-color: var(--table-color);
+    transform: skew(-5deg);
+    box-shadow: 5px 10px 30px 3px rgba(0,0,0,0.75);
+-webkit-box-shadow: 5px 10px 30px 3px rgba(0,0,0,0.75);
+-moz-box-shadow: 5px 10px 30px 3px rgba(0,0,0,0.75);
+}
+.correctOne{
+    background-color: #00ff0d !important;
+    color: black;
+}
 @media (max-width: 900px) {
     .layout-padding{
         padding-left: 100px !important;

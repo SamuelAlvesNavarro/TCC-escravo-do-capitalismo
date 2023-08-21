@@ -224,7 +224,7 @@
 
     /* REFERENCES */
 
-    function checkreferenceAf(){
+    function checkreferenceAf(){ // <--------------------------- IMP
         $referencia = $_POST['link-reference'];
         if($referencia != ''){
             return true;
@@ -233,7 +233,7 @@
             return false;
         }
     }
-    function referencia($referencia, $id_story, $expl){
+    function referencia($referencia, $id_story){ // <--------------------------- IMP
         global $pdo;
         Createpage($id_story, 2);
         $id_page = RetornarIdPage($id_story, 2);
@@ -253,6 +253,9 @@
         $c = $_POST['c'];
         $d = $_POST['d'];
         $certa = $_POST['certa'];
+
+        if($certa != 'a' && $certa != 'b' && $certa != 'c' && $certa != 'd') return false;
+
         if(filter_var($questao, FILTER_CALLBACK, array('options' => 'vazio'))){
             header("Location: criacao.php");
             exit;
@@ -316,9 +319,9 @@
         $dr = 0;
 
         if($certa == 'a') $ar = 1;
-        if($certa == 'b') $br = 1;
-        if($certa == 'c') $cr = 1;
-        if($certa == 'd') $dr = 1;
+        else if($certa == 'b') $br = 1;
+        else if($certa == 'c') $cr = 1;
+        else if($certa == 'd') $dr = 1;
             
         $sql = "INSERT INTO answer VALUES(NULL, '$fk_id_question', '$a', $ar)";
         $prepare = $pdo->prepare($sql);
@@ -350,7 +353,7 @@
     }
     /* IN ITSELF */
     
-    $referencia = $_POST['link-reference'];
+    $referencia = $_POST['link-reference']; // <--------------------------- IMP --> NEW NAME : refN
     $perfil = -1;
     $id_story = 0;
     $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
@@ -362,15 +365,15 @@
     if($perfil == -1)header("Location: error.php?erro=10");
     else{
 
-        if(checkimagesBef())
+        if(checkimagesBef() && checkimagesAf() && checkreferenceAf() && checkQuestion())
         {
             $id_story = uploadHistoria($titulo, $perfil);
 
             if($id_story != -1 && $id_story != ''){
                 history($historia, $id_story);
-                if(checkimagesAf())uploadImagemCompleto($titulo, $id_story);
-                if(checkreferenceAf())referencia($referencia, $id_story, 'bla bla bla');
-                if(checkQuestion())storeQuestion($id_story, $perfil);
+                uploadImagemCompleto($titulo, $id_story);
+                referencia($referencia, $id_story); // <--------------------------- IMP
+                storeQuestion($id_story, $perfil);
             }
         }
     }

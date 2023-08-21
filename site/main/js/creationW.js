@@ -7,6 +7,14 @@ let current = -1;
         var hmax = body.offsetHeight;
 
         var imgsToShow = document.getElementsByClassName('imgsToShow');
+        var refsToShow = document.getElementsByClassName('ref-input-input');
+
+
+        var opps = document.getElementsByClassName('option');
+        var opps_text_input = document.getElementsByClassName('input-op-text');
+        var opps_text = document.getElementsByClassName('opps_text')
+        var question_itself_input = document.getElementsByClassName('input-question-text');
+        var question_itself_p = document.getElementById("question_text");
 
         for(var z = 0; z < imgsToShow.length; z++){
             if(imgsToShow[z].src == ''){
@@ -43,6 +51,28 @@ let current = -1;
             }
 
             pre.innerHTML = texto;
+
+            /* REFS */
+
+            var refShowDiv = document.getElementById('appear-refs');
+
+            refShowDiv.innerHTML = '';
+            var u = 0;
+            for(var i = 0; i < refsToShow.length; i++){
+                if(refsToShow[i].value != ''){
+                    if(u == 0) refShowDiv.innerHTML += (" - <a href="+refsToShow[i].value+">"+refsToShow[i].value+"</a>");
+                    else refShowDiv.innerHTML += ("<br> - <a href="+refsToShow[i].value+">"+refsToShow[i].value+"</a>");
+                    u++;
+                }
+            }
+
+            /* QUESTIONS */
+
+            for(var i = 0; i < 4; i++){
+                opps_text[i].innerHTML = opps_text_input[i].value
+            }
+            question_itself_p.innerHTML = question_itself_input[0].value
+            
         }
 
 
@@ -52,6 +82,9 @@ let current = -1;
         var toggleEdit = document.getElementById("edit-bt");
         var editIcon = document.getElementById("edit-icon");
         var main = document.getElementById("main");
+        var containerImgs = document.getElementById("containerImgs");
+        var refs = document.getElementById("refs"); 
+        var quest = document.getElementById("quest");
 
     toggleEdit.addEventListener('click', switchedit)
 
@@ -62,14 +95,21 @@ let current = -1;
             editIcon.classList.remove('fa-eye');
             editIcon.classList.add('fa-pencil');
             main.classList.remove('edit');
+            containerImgs.classList.remove('edit');
+            refs.classList.remove('edit');
+            quest.classList.remove('edit');
             edit = false;
             toggleEditAll();
+            spread();
 
         }else{
             edit = true;
             editIcon.classList.remove('fa-pencil');
             editIcon.classList.add('fa-eye');
             main.classList.add('edit');
+            containerImgs.classList.add('edit');
+            refs.classList.add('edit');
+            quest.classList.add('edit');
         }
     }
         /* DARK MODE */
@@ -281,7 +321,6 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
                     newT = listActives[t-1];
                 }
 
-                console.log(newT)
                 buildModal(newT);
                 break;
             }
@@ -296,13 +335,37 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
                     newT = listActives[t+1];
                 }
 
-                console.log(newT)
                 buildModal(newT);
                 break;
             }
         }
     }
 
+    /* SET AS RIGHT */
 
+    function setAsRight(val){
+
+        val -= 1;
+
+        for(var i = 0; i < 4; i++){
+            opps[i].classList.remove("correctOne");
+        }
+        opps[val].classList.add("correctOne");
+
+        console.log(opps[val])
+
+        var sett = 0;
+
+        if(val == 0) sett = 'a';
+        if(val == 1) sett = 'b';
+        if(val == 2) sett = 'c';
+        if(val == 3) sett = 'd';
+
+        var input_correct = document.getElementById('certa');
+        input_correct.value = sett;
+    }
+
+    getTheme();
     spread();
     switchedit();
+    

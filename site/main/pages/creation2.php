@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/creation2.css?v=1.01">
+    <link rel="stylesheet" href="../css/creation2.css?v=1.012">
     <title>Criação de Histórias</title>
 </head>
 <body id="body">
@@ -60,6 +60,8 @@
                     <textarea name="historia" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea"></textarea>
                 </div>
             </div>
+        </div>
+        <div class="container-imgs layout-padding" id="containerImgs">
             <div class="title title2">
                 <h1>Imagens:</h1>
                 <div class="controls">
@@ -169,8 +171,75 @@
                 </div>
             </div>
         </div>
+        <div class="references layout-padding" id="refs">
+            <div class="title">
+                <h1>Referências:</h1>
+            </div>
+            <div class="appear-refs" id="appear-refs">
+
+            </div>
+            <div class="ref-inputs">
+                <div class="ref-input">
+                    <label for="ref1">1: </label><input class="ref-input-input" type="url" name="ref1" id="">
+                </div>
+                <div class="ref-input">
+                    <label for="ref1">2: </label><input class="ref-input-input" type="url" name="ref2" id="">
+                </div>
+                <div class="ref-input">
+                    <label for="ref1">3: </label><input class="ref-input-input" type="url" name="ref3" id="">
+                </div>
+                <div class="ref-input">
+                    <label for="ref1">4: </label><input class="ref-input-input" type="url" name="ref4" id="">
+                </div>
+                <div class="ref-input">
+                    <label for="ref1">5: </label><input class="ref-input-input" type="url" name="ref5" id="">
+                </div>
+                <div class="ref-input">
+                    <label for="ref1">6: </label><input class="ref-input-input" type="url" name="ref6" id="">
+                </div>
+                <div class="ref-input">
+                    <label for="ref1">7: </label><input class="ref-input-input" type="url" name="ref7" id="">
+                </div>
+                <div class="ref-input">
+                    <label for="ref1">8: </label><input class="ref-input-input" type="url" name="ref8" id="">
+                </div>
+                <div class="ref-input">
+                    <label for="ref1">9: </label><input class="ref-input-input" type="url" name="ref9" id="">
+                </div>
+                <div class="ref-input">
+                    <label for="ref1">10: </label><input class="ref-input-input" type="url" name="ref10" id="">
+                </div>
+            </div>
+        </div>
+        <div class="question layout-padding" id="quest">
+            <div class="title">
+                <h1>Questão:</h1>
+            </div>
+            <div class="text-question">
+                <p id="question_text"></p>
+                <input type="text" class="input-question-text">
+            </div>
+            <div class="question-container">
+                <input id='certa' type="hidden" name="certa">
+                <div id="opa" class="option" onclick="setAsRight(1)">
+                    <p class="opps_text"></p>
+                    <input type="text" class="input-op-text">
+                </div>
+                <div id="opb" class="option" onclick="setAsRight(2)">
+                    <p class="opps_text"></p>
+                    <input type="text" class="input-op-text">
+                </div>
+                <div id="opc" class="option" onclick="setAsRight(3)">
+                    <p class="opps_text"></p>
+                    <input type="text" class="input-op-text">
+                </div>
+                <div id="opd" class="option" onclick="setAsRight(4)">
+                    <p class="opps_text"></p>
+                    <input type="text" class="input-op-text">
+                </div>
+            </div>
+        </div>
     </div>
-    
     <div class="outer">
         <div class="containerImg" onclick="callModal(1)">
             <img class="empty-img-input img-input" alt="">
@@ -203,6 +272,6 @@
             <img class="empty-img-input img-input" alt="">
         </div>
     </div>
-    <script src="../js/creationW.js"></script>
+    <script src="../js/creationW.js?v=1.012"></script>
 </body>
 </html>
