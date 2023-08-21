@@ -40,7 +40,7 @@
     $titulo = $_POST['titulo'];
         //Se vazio campo do titulo
         if(filter_var($titulo, FILTER_CALLBACK, array('options' => 'vazio'))){
-            header("Location: criacao.php");
+            //header("Location: criacao.php");
             exit;
         }
 
@@ -66,7 +66,7 @@
         exit;
     }
     if(filter_var($historia, FILTER_CALLBACK, array('options' => 'vazio'))){
-        header("Location: criacao.php");
+        //header("Location: criacao.php");
         exit;
     }
 
@@ -126,11 +126,11 @@
         for($x = 1; $x < 11; $x++){
             $extensao = pathinfo($_FILES['imagem'.$x]['name'], PATHINFO_EXTENSION);
             if($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != ''){
-                header("Location: error.php?erro=15");
+                sendToError(15);
                 return false;
             }
             if($_FILES["imagem".$x]["size"] > 500000){//500000
-                header("Location: error.php?erro=16");
+                sendToError(16);
                 return false;
             }
         }
@@ -222,35 +222,35 @@
     /* REFERENCES */
 
     function checkreferenceAf(){ // <--------------------------- IMP
+        $empty = 0;
         for($x = 1; $x < 11; $x++){
-            if($_POST['ref'.$x] != 0){
-                $ref[$x] = $_POST['ref'.$x];
-                if($ref[$x] != ''){
-                    return true;
-                    break;
-                }else{
-                    return false;
-                }
+            if($_POST['ref'.$x] == ''){
+                $empty++;
             }
+        }
+        if($empty == 10){
+            return false;
+        }
+        else{
+            return true;
         }
         
     }
     function referencia($id_story){ // <--------------------------- IMP
         global $pdo;
 
+        Createpage($id_story, 2);
+        $id_page = RetornarIdPage($id_story, 2);
+
         for($x = 1; $x < 11; $x++){
-            if($_POST['ref'.$x] != 0){
+            if($_POST['ref'.$x] != ''){
                 $ref = $_POST['ref'.$x];
 
-                Createpage($id_story, 2);
-                $id_page = RetornarIdPage($id_story, 2);
                 $reference = "INSERT INTO reference values(NULL, '$id_page', '$ref')";
                 $prepare = $pdo->prepare($reference);
                 $prepare->execute();
             }
         }
-
-        header("Location: criacao.php");
     }
 
     /* QUESTION */
@@ -267,27 +267,27 @@
         if($certa != 'a' && $certa != 'b' && $certa != 'c' && $certa != 'd') return false;
 
         if(filter_var($questao, FILTER_CALLBACK, array('options' => 'vazio'))){
-            header("Location: criacao.php");
+            //header("Location: criacao.php");
             exit;
         }
         if(filter_var($a, FILTER_CALLBACK, array('options' => 'vazio'))){
-            header("Location: criacao.php");
+            //header("Location: criacao.php");
             exit;
         }
         if(filter_var($b, FILTER_CALLBACK, array('options' => 'vazio'))){
-            header("Location: criacao.php");
+            //header("Location: criacao.php");
             exit;
         }
         if(filter_var($c, FILTER_CALLBACK, array('options' => 'vazio'))){
-            header("Location: criacao.php");
+            //header("Location: criacao.php");
             exit;
         }
         if(filter_var($d, FILTER_CALLBACK, array('options' => 'vazio'))){
-            header("Location: criacao.php");
+            //header("Location: criacao.php");
             exit;
         }
         if(filter_var($certa, FILTER_CALLBACK, array('options' => 'vazio'))){
-            header("Location: criacao.php");
+            //header("Location: criacao.php");
             exit;
         }
 
@@ -371,17 +371,20 @@
     }
 
     //Upload da história
-    if($perfil == -1)header("Location: error.php?erro=10");
+    if($perfil == -1){
+        sendToError(10); 
+        exit;
+    }
     else{
 
-        if(checkimagesBef() && checkimagesAf() && checkreferenceAf() && checkQuestion())
+        if(checkimagesBef() && checkreferenceAf() && checkQuestion())
         {
             $id_story = uploadHistoria($titulo, $perfil);
 
             if($id_story != -1 && $id_story != ''){
                 history($historia, $id_story);
-                uploadImagemCompleto($titulo, $id_story);
-                referencia($referencia, $id_story); // <--------------------------- IMP
+                if(checkimagesAf())uploadImagemCompleto($titulo, $id_story);
+                referencia($id_story); // <--------------------------- IMP
                 storeQuestion($id_story, $perfil);
             }
         }

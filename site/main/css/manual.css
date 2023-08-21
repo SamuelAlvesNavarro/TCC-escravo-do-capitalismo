@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Playfair+Display:ital@1&family=Poltawski+Nowy&family=Roboto:wght@500&display=swap');
+@font-face {
+  font-family: oldF;
+  src: url(../fonts/oldnewspapertypes/OldNewspaperTypes.ttf);
+}
+@font-face {
+  font-family: reward;
+  src: url(../fonts/nashville-font/Nashville-z8w0.ttf);
+}
+*{
+    padding: 0;
+    margin: 0;
+    color: var(--color);
+}
+
+:root {
+    color-scheme: light;
+    --color: #121212;
+    --all-shadow: -2px -1px 64px 20px rgba(0, 0, 0, 0.75) inset;
+    --paper-color: #E0C9A6;
+    --table-color: #ccad7f;
+    --line-color: #121212;
+  
+    --formal: oldF;
+    --reward-opacity: .2;
+
+    --img-bc-color: #ece0ce;
+
+    --tv-effect-1: rgba(10, 10, 10, .8);
+    --tv-effect-2:  rgba(17, 5, 29, 0.8);
+  }
+  .dark {
+    color-scheme: dark;
+    --color: #ebebeb;
+    --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;
+    --paper-color: #606060;
+    --table-color: #505050;
+    --line-color: #000000;
+  
+    --reward-opacity: .9;
+  
+    --img-bc-color: #404040;
+    /*--formal: 'Playfair Display', serif;*/
+  }
+.main{
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--paper-color);
+    box-shadow: var(--all-shadow);
+}
+
+.split{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    border-top: solid black 5px;
+}
+.grandTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    font-size: 40px;
+    font-family: oldF;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-size: 30px;
+    font-family: oldF;
+}
+
+.lines{
+    font-size: 25px;
+    font-family: oldF;
+    background: repeating-linear-gradient(transparent 0px, transparent 40px, var(--line-color) 42px);
+    line-height: 42px;
+    padding: 42px;
+}
+
+img{
+    display: block;
+    margin: 42px auto;
+}
+.h336{
+    height: 336px;
+}
+.h168{
+    height: 168px;
+}
