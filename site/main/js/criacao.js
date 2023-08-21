@@ -1,18 +1,227 @@
-function inputimgchangeval(num){
-    if(num > 0){
-        inputLchange = eval("inputimgLabel"+num);
-        inputIchange = eval("inputimg"+num);
-        inputLchange.innerHTML = inputIchange.files[0].name;
+let current = -1;
+        let listActives = [];
+        let inplace = ["<h1>", "</h1>", "<h2>", "</h2>"];
+        let replace = ["*1", "/*1", "*2", "/*2"];
+
+        var body = document.querySelector('body');
+        var hmax = body.offsetHeight;
+
+        var imgsToShow = document.getElementsByClassName('imgsToShow');
+        var refsToShow = document.getElementsByClassName('ref-input-input');
+
+        var thrownImg = document.getElementsByClassName('containerImg');
+
+        var opps = document.getElementsByClassName('option');
+        var opps_text_input = document.getElementsByClassName('input-op-text');
+        var opps_text = document.getElementsByClassName('opps_text')
+        var question_itself_input = document.getElementsByClassName('input-question-text');
+        var question_itself_p = document.getElementById("question_text");
+
+        for(var z = 0; z < imgsToShow.length; z++){
+            if(imgsToShow[z].src == ''){
+                imgsToShow[z].style.display = 'none'
+            }
+            else{
+                imgsToShow[z].style.display = 'block'
+                console.log(imgsToShow[z].src)
+            }
+        }
+
+        function replaceT(text, repl, inpl){
+            return text.replace(repl, inpl);
+        }
+
+        function toggleEditAll(){
+
+            /* TITLE */
+
+            var titleh2 = document.getElementById('title-all');
+            var titleInput = document.getElementById('title-input');
+
+            titleh2.innerHTML = titleInput.value;
+
+            /* TEXTAREA */
+            var pre = document.getElementById('pre-history');
+
+            var texta = document.getElementById('textarea-history');
+
+            let texto = texta.value;
+
+            for(var i = 0; i < inplace.length; i++){
+                texto = replaceT(texto, replace[i], inplace[i]);
+            }
+
+            pre.innerHTML = texto;
+
+            /* REFS */
+
+            var refShowDiv = document.getElementById('appear-refs');
+
+            refShowDiv.innerHTML = '';
+            var u = 0;
+            for(var i = 0; i < refsToShow.length; i++){
+                if(refsToShow[i].value != ''){
+                    if(u == 0) refShowDiv.innerHTML += (" - <a href="+refsToShow[i].value+">"+refsToShow[i].value+"</a>");
+                    else refShowDiv.innerHTML += ("<br> - <a href="+refsToShow[i].value+">"+refsToShow[i].value+"</a>");
+                    u++;
+                }
+            }
+
+            /* QUESTIONS */
+
+            for(var i = 0; i < 4; i++){
+                opps_text[i].innerHTML = opps_text_input[i].value
+            }
+            question_itself_p.innerHTML = question_itself_input[0].value
+
+            /* THROWN IMGS */
+
+            for(var i = 0; i < 10; i++){
+                thrownImg[i].classList.add("hide");
+            }
+            for(var u = 0; u < listActives.length; u++){
+                thrownImg[listActives[u]].classList.remove("hide");
+            }
+        }
+
+
+
+        /* EDIT MODE */
+
+        var toggleEdit = document.getElementById("edit-bt");
+        var editIcon = document.getElementById("edit-icon");
+        var main = document.getElementById("main");
+        var containerImgs = document.getElementById("containerImgs");
+        var refs = document.getElementById("refs"); 
+        var quest = document.getElementById("quest");
+
+    toggleEdit.addEventListener('click', switchedit)
+
+    var edit = false;
+    function switchedit(){
+
+        if(edit){
+            editIcon.classList.remove('fa-eye');
+            editIcon.classList.add('fa-pencil');
+            main.classList.remove('edit');
+            containerImgs.classList.remove('edit');
+            refs.classList.remove('edit');
+            quest.classList.remove('edit');
+            edit = false;
+            toggleEditAll();
+            spread();
+
+        }else{
+            edit = true;
+            editIcon.classList.remove('fa-pencil');
+            editIcon.classList.add('fa-eye');
+            main.classList.add('edit');
+            containerImgs.classList.add('edit');
+            refs.classList.add('edit');
+            quest.classList.add('edit');
+            for(var i = 0; i < 10; i++){
+                thrownImg[i].classList.remove("hide");
+            }
+        }
     }
-    if(num < 0){
-        num *= -1;
-        inputLchange = eval("inputimgLabel"+num);
-        inputIchange = eval("inputimg"+num);
-        inputLchange.innerHTML = "Imagem " + num;
-        console.log(inputIchange.files[0]);
-        inputIchange.value = null;
+        /* DARK MODE */
+
+    var toggle = document.getElementById("mode-icon");
+
+    toggle.addEventListener('click', switchmode)
+
+    const root = document.querySelector(":root");
+    var dark = false;
+    function switchmode(){
+        root.classList.toggle('dark');
+
+        if(dark){
+            toggle.classList.remove('fa-moon');
+            toggle.classList.add('fa-sun');
+            dark = false;
+            setTheme("light");
+        }else{
+            dark = true;
+            setTheme("dark");
+            toggle.classList.remove('fa-sun');
+            toggle.classList.add('fa-moon');
+        }
     }
-}
+    function setTheme(theme){
+        localStorage.setItem("Theme", JSON.stringify(theme));
+    }
+    function getTheme(){
+        let theme = JSON.parse(localStorage.getItem("Theme"));
+
+        if(theme == "dark"){
+            switchmode();
+        }
+    }
+
+    /* IMG SPREAD */
+
+    function getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min) ) + min;
+    }
+
+    var img_spread = document.getElementsByClassName('containerImg');
+
+    function spread(){
+        for(var i = 0; i < img_spread.length; i++){
+            if(i < img_spread.length / 2){
+                img_spread[i].classList.add("to-left");
+            }
+            else{
+                img_spread[i].classList.add("to-right");
+            }
+            img_spread[i].style.top = getRndInteger(0, (hmax-200))+"px";
+            img_spread[i].style.transform = "rotate("+getRndInteger(-25, 120)+"deg)";
+        }
+    }
+
+    /* IMG FILES */
+
+    var imgs = document.getElementsByClassName('img-input');
+
+    function inputimgchangeval(num){
+        if(num > 0){
+            inputLchange = eval("inputimgLabel"+num);
+            inputIchange = eval("inputimg"+num);
+            inputLchange.innerHTML = inputIchange.files[0].name;
+
+            var inputimg = document.getElementsByClassName("input-file");
+            
+            
+                const [file] = inputimg[num-1].files
+                if (file) {
+                    imgs[num-1].src = URL.createObjectURL(file)
+                    imgsToShow[num-1].src = URL.createObjectURL(file)
+                    imgs[num-1].classList.remove('empty-img-input')
+                    generateList();
+                }
+        }
+        if(num < 0){
+            num *= -1;
+            inputLchange = eval("inputimgLabel"+num);
+            inputIchange = eval("inputimg"+num);
+            inputLchange.innerHTML = "Imagem " + num;
+            inputIchange.value = null;
+            imgs[num-1].classList.add('empty-img-input')
+            imgs[num-1].removeAttribute('src');
+            imgsToShow[num-1].removeAttribute('src');
+
+            removeFromList(num-1);
+        }
+
+        for(var z = 0; z < imgsToShow.length; z++){
+            if(imgsToShow[z].src == ''){
+                imgsToShow[z].style.display = 'none'
+            }
+            else{
+                imgsToShow[z].style.display = 'block'
+            }
+        }
+    }
 
 var inputimg1 = document.getElementById("imagem1");
 var inputimg2 = document.getElementById("imagem2"); 
@@ -47,5 +256,126 @@ inputimg8.addEventListener("change", () => inputimgchangeval(8));
 inputimg9.addEventListener("change", () => inputimgchangeval(9));
 inputimg10.addEventListener("change", () => inputimgchangeval(10));
 
+    /* TABLE SHOWING */
 
+    var table = document.getElementById('carossel');
 
+    function tableEditToggle(){
+        table.classList.toggle('tableOut');
+    }
+    
+    /* MODAL */
+    var modal = document.getElementById("modal");
+    var activeModal = false;
+
+    function appearModal(){
+        if(activeModal){
+            activeModal = false;
+            modal.classList.remove('appearModal');
+        }
+        else{
+            activeModal = true;
+            modal.classList.add('appearModal');
+        }
+    }
+    function removeFromList(num){
+        listActives.splice(num);
+        listActives.sort();
+        generateList();
+    }
+    function generateList(){
+        listActives = [];
+        var inputs = document.getElementsByClassName("input-file")
+
+        for(var y = 0; y < img_spread.length; y++){
+            if(inputs[y].value != ''){
+                listActives.push(y);
+                listActives.sort();
+            }
+        }
+    }
+    function contains(obj) {
+        for (var i = 0; i < img_spread.length; i++) {
+            if (listActives[i] === obj) {
+                return true;
+            }
+        }
+        return false;
+    }
+    function callModal(num){
+        generateList();
+
+        if(contains(num-1)){
+            if(modal.classList.contains('appearModal')){
+                buildModal(num-1);
+            }
+            else{
+                appearModal();
+                buildModal(num-1);
+            }
+        }
+    }
+    function buildModal(n){
+        img_modal = document.getElementById('img-container');
+
+        img_modal.src = imgs[n].src;
+
+        current = n;
+    }
+    function toLast(){
+        var newT = 0;
+        for(var t = 0; t < listActives.length; t++){
+            if(listActives[t] == current){
+                if(current == listActives[0]) newT = listActives[listActives.length - 1];
+                else{
+                    newT = listActives[t-1];
+                }
+
+                buildModal(newT);
+                break;
+            }
+        }
+    }
+    function toNext(){
+        var newT = 0;
+        for(var t = 0; t < listActives.length; t++){
+            if(listActives[t] == current){
+                if(current == listActives[listActives.length - 1]) newT = listActives[0];
+                else{
+                    newT = listActives[t+1];
+                }
+
+                buildModal(newT);
+                break;
+            }
+        }
+    }
+
+    /* SET AS RIGHT */
+
+    function setAsRight(val){
+
+        val -= 1;
+
+        for(var i = 0; i < 4; i++){
+            opps[i].classList.remove("correctOne");
+        }
+        opps[val].classList.add("correctOne");
+
+        console.log(opps[val])
+
+        var sett = 0;
+
+        if(val == 0) sett = 'a';
+        if(val == 1) sett = 'b';
+        if(val == 2) sett = 'c';
+        if(val == 3) sett = 'd';
+
+        var input_correct = document.getElementById('certa');
+        input_correct.value = sett;
+    }
+
+    getTheme();
+    spread();
+    switchedit();
+    

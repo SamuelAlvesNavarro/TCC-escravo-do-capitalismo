@@ -1,6 +1,8 @@
 <?php
     require 'includes/conexao.php';
     require 'includes/online.php';
+    require "includes/enviarErro.php";
+    
     global $pdo;
 
 
@@ -41,6 +43,13 @@
             header("Location: criacao.php");
             exit;
         }
+
+        if($titulo == "cu"){
+            sendToError(17);
+            exit;
+        } 
+        
+
 
     $email = $_SESSION['email'];
     $array = explode("\n", $_POST['story']);
@@ -188,19 +197,11 @@
             $titulo = gerarnomepasta($titulo, 0, $id_page);
         }
 
-        function checktitulo($titulo){ 
-            if($titulo == "cu"){
-                header("Location:error.php?erro=17");
-                return false;
-            } 
-            return true;
-        }
         function tituloreplacestuff($titulo){
             $titulo = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/", '/[!@#$%^&*(),.?":{}|<>\s]/'),explode(" ","a A e E i I o O u U n N"),$titulo);
             $titulo = str_replace(" ", "-", $titulo);
             $titulo = str_replace("'", "-", $titulo);
             $titulo = preg_replace('/[^A-Za-z0-9\-]/', '', $titulo);
-            echo $titulo;
             return $titulo;
         }
 
@@ -211,14 +212,10 @@
         Createpage($id_story, 1);
         $id_page = RetornarIdPage($id_story, 1);
 
-        if(checktitulo($titulo)){
-            $titulo = tituloreplacestuff($titulo);
-        } 
+        $titulo = tituloreplacestuff($titulo);
         
-        if(checktitulo($titulo)){
-            if($id_page != -1){
-                images($titulo, $id_page);
-            }
+        if($id_page != -1){
+            images($titulo, $id_page);
         }
     }
 
