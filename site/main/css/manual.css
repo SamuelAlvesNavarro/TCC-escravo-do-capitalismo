@@ -49,6 +49,8 @@
     min-height: 100vh;
     background-color: var(--paper-color);
     box-shadow: var(--all-shadow);
+    scroll-snap-align: y mandatory;
+    scroll-behavior: smooth;
 }
 
 .split{

@@ -9,9 +9,6 @@
 </head>
 <body>
     <div class="main">
-        <div class="split">
-
-        </div>
         <div class="grandTitle">
             Títulozão
         </div>

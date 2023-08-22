@@ -14,3 +14,9 @@ Botão para deslogar.
 - Reportar e denunciar comentários
 - Reportar histórias
 
+
+
+
+    TÉCNICAS
+
+    - colocar conferir texto no upload e nos comentários
