@@ -45,7 +45,8 @@
                 <th scope="col">Foto</th>
                 <th scope="col">Preço</th>
                 <th scope="col">Alterar</th>
-                <th scope="col">Desativar</th>
+                <th scope="col">Desativar</th>[
+                <th scope="col">Excluir</th>
             </tr>
         </thead>
         <tbody>
@@ -67,6 +68,7 @@
 
                         '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button>Alterar</button></a></td>'.
                         '<td scope="row"><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button>Desativar</button></a></td>'.
+                        '<td scope="row"><a href="excluir-gadget.php?id='.$value['id_gadget'].'"><button>Excluir</button></a></td>'.
                     '</tr>';
                 }
             ?>
@@ -83,6 +85,7 @@
                 <th scope="col">Preço</th>
                 <th scope="col">Alterar</th>
                 <th scope="col">Desativar</th>
+                <th scope="col">Excluir</th>
             </tr>
         </thead>
         <tbody>
@@ -104,6 +107,7 @@
 
                         '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button>Alterar</button></a></td>'.
                         '<td scope="row"><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button>Desativar</button></a></td>'.
+                        '<td scope="row"><a href="excluir-gadget.php?id='.$value['id_gadget'].'"><button>Excluir</button></a></td>'.
                     '</tr>';
                 }
             ?>
@@ -140,7 +144,7 @@
                     '</td>'.
 
                     '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button>Alterar</button></a></td>'.
-                    '<td scope="row"><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button>Reativar</button></a></td>'.
+                    '<td scope="row"><a href="reativar-gadget.php?id='.$value['id_gadget'].'"><button>Reativar</button></a></td>'.
                 '</tr>';
             }
         ?>
