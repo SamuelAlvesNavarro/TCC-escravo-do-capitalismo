@@ -15,6 +15,7 @@
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
 
+    <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/criacao.css">
     <title>Criação de Histórias</title>

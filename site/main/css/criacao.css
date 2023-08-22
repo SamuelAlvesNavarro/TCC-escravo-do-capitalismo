@@ -622,6 +622,8 @@ border-radius: 5px;
     }
     .text-input{
         width: 100% !important;
+        border: 1px solid white !important;
+        padding-top: 0 !important;
     }
     .title h1{
         font-size: 25px;

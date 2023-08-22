@@ -375,6 +375,30 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
         input_correct.value = sett;
     }
 
+
+
+
+
+
+
+
+
+    /* KEYS */
+
+    document.addEventListener('keyup', (event) => {
+        var name = event.key;
+        if (name === 'ArrowLeft' && activeModal) {
+            toLast();
+        }
+        if (name === 'ArrowRight' && activeModal) {
+            toNext();
+        }
+        if (name === 'Escape' && activeModal) {
+            appearModal();
+        }
+
+      }, false);
+
     getTheme();
     spread();
     switchedit();
