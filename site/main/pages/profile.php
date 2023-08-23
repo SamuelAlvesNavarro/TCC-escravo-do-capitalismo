@@ -81,15 +81,15 @@
         }
     }
     //Fundo
-    $sql = "SELECT in_it FROM gadget WHERE id_gadget = $fundo and type = 1";
+    $sql = "SELECT in_it FROM gadget WHERE id_gadget = $fundo and type = 3";
     $prepare = $pdo->prepare($sql);
     foreach($pdo->query($sql) as $key => $value){
         $fundo = $value['in_it'];
     }
     if($prepare->rowCount() == 0){
-        $sql = "SELECT in_it FROM gadget WHERE id_gadget = 2 and type = 1";
+        $sql = "SELECT in_it FROM gadget WHERE id_gadget = 2 and type = 3";
         foreach($pdo->query($sql) as $key => $value){
-            $foto = $value['in_it'];
+            $fundo = $value['in_it'];
         }
     }
 
