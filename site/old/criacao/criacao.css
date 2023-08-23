@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Poltawski+Nowy&family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Playfair+Display:ital@1&family=Poltawski+Nowy&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+/* ZA COLORS */
+
+.za-colors{
+    background-color: #121212;
+    background-color: #1e1e1e;
+    background-color: #222222;
+    background-color: #242424;
+    background-color: #272727;
+    background-color: #2c2c2c;
+    background-color: #2d2d2d;
+    background-color: #333333;
+    background-color: #343434;
+    background-color: #383838;
+    color:#0F143C;
+}
+*{
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: "Poppins";
+}
+body{
+    background-color: #282E43;
+    max-width: 100vw;
+    color: white;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+.show-preview{
+    display: block;
+}
+#form-criacao{
+    width: 100%;
+    display: block;
+}
+.toogle{
+    position: relative;
+    width: 70px;
+    height: 70px;
+    font-family: 'Poltawski Nowy';
+    text-align: center;
+    transition: .2s linear;
+    cursor: pointer;
+    color: white;
+}
+.toogle:hover{
+    border-radius: 0;
+    background-color: white;
+    color: #0F143C;
+}
+.toogle i{
+    line-height: 10vh;
+    font-size: 30px;
+}
+.all{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 20px;
+}
+.section{
+    background-color: #0F143C;
+    -webkit-box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    border-radius: 10px;
+}
+.prev{
+    padding: 15px;
+}
+.title{
+    flex-grow: 1;
+    height: 10vh;
+    line-height: 10vh;
+    font-family: 'Poltawski Nowy';
+    text-align: center;
+}
+.title h1{
+    font-size: 25px;
+}
+.story-title{
+    flex-grow: 2;
+    height: 10vh;
+    line-height: 10vh;
+}
+.story-title input{
+    width: 96%;
+    margin: 2%;
+}
+.story{
+    flex-grow: 0;
+    width: 70%;
+    height: auto;
+}
+.story > h1{
+    padding: 2%;
+}
+.col2{
+    display: flex;
+    flex-direction: column;
+	box-sizing: border-box;
+    width: 25%;
+    flex-grow: 1;
+    gap: 2vw;
+    height: max-content;
+}
+.warnings{
+    flex-grow: 1;
+    width: calc(100% - 4vw);
+    padding: 2vw;
+    align-self: flex-start;
+    height: auto;
+    font-family: 'Poltawski Nowy';
+}
+.warnings h1{
+    margin-bottom: 2vh;
+}
+.warnings ul{
+    margin-left: 1vw;
+    text-align: justify;
+}
+.warnings ul ol{
+    margin: 1vw;
+    margin-left: 3vw;
+}
+.subref{
+    margin-left: 2vw;
+}
+.page-all{
+    width: 92%;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    font-family: 'Poltawski Nowy';
+    background-color: #090C24;
+    -webkit-box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+}
+.page-title{
+    margin-bottom: 3%;
+}
+.page-title h1{
+    margin-bottom: 1%;
+}
+.page-title ul{
+    margin-left: 2%;
+}
+.page-all textarea{
+    width: 100%;
+    height: 3vh;
+    transition: .2s linear;
+    overflow: hidden;
+    background-color: #282E43;
+    color: white;
+    outline: none;
+    border: none;
+}
+.page-all textarea:active, .page-all textarea:hover, .page-all textarea:focus{
+    height: 70vh;
+    overflow-y: scroll;
+}
+.story-page{
+    border-top: solid 1vh red;
+}
+.pics-page{
+    border-top: solid 1vh rgb(0, 38, 255);
+}
+.ref-page{
+    border-top: solid 1vh rgb(0, 255, 21);
+}
+.ref-page input{
+    width: 100%;
+}
+.uploads{
+    height: auto;
+    flex-grow: 1;
+    padding: 1vw;
+    align-self: flex-start;
+    height: auto;
+    font-family: 'Poltawski Nowy';
+    width: calc(100% - 2vw);
+}
+#upload{
+    height: 6vh;
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+}
+/* PREVIEW */
+#preview-bt{
+    height: 6vh;
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+}
+/* INPUT FILE */
+
+input, button{
+    height: 5vh;
+    line-height: 5vh;
+    border: none;
+    outline: none;
+}
+input[type=text]{
+    background-color: transparent;
+    border-bottom: #090C24 5px solid;
+    font-size: 20px;
+    padding-left: 5px;
+    color: white;
+}
+input[type=url]{
+    background-color: #282E43;
+    font-size: 20px;
+    padding-left: 5px;
+    color: white;
+    outline: none;
+}
+.page-pics-input{
+    width: calc(100%-1vw);
+    height: auto;
+    background-color: #282E43;
+    color: white;
+    font-weight: 400;
+}
+.input-file-unit{
+    padding: .5vw;
+    line-height: 5vh;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.input-file-unit i{
+    line-height: 5vh;
+    margin-right: .5vw;
+}
+.input-file-unit button{
+    width: 20%;
+    height: calc(5vh + 1vw);
+    cursor: pointer;
+    position: absolute;
+    color: white;
+    background-color: #0F143C;
+    right: 0;
+    top: 0;
+}
+.bt-input-img:hover{
+    background-color: white;
+    color:rgb(0, 0, 0);
+}
+.input-file-unit:hover{
+    background-color: #090C24;
+    color:rgb(0, 38, 255);
+}
+.input-file{
+    display: none;
+}
+.imagem-label{
+    cursor: pointer;
+}
+
+/* QUESTION */
+
+.question-container{
+    width: 96%;
+    padding: 2%;
+    border-radius: 10px;
+    font-family: 'Poltawski Nowy';
+    background-color: #0F143C;
+    -webkit-box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 11px 21px -5px rgba(0,0,0,0.75);
+}
+.question-content{
+    width: 100%;
+}
+.question-content input{
+    width: 100%;
+}
+.question-content .input-label{
+    width: 100%;
+}
+.input-label input{
+    width: 90%;
+    height: 50px;
+}
+.input-label{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.input-label .label{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: red;
+    width: 5%;
+}
+.input-label .radio{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 5%;
+}
+.radio input{
+    width: 30px;
+}
+.page-title-alt h3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+@media (max-width: 1200px) {
+    .story{
+        width: 100%;
+    }
+}
+@media (max-width: 500px) {
+    .story{
+        width: 100%;
+    }
+    .toogle{
+        width: 100vw;
+    }
+    ul{
+        list-style: none;
+    }
+    .input-file-unit{
+        flex-direction: column;
+    }
+    .input-file-unit button{
+        width: 100%;
+        top: auto;
+        bottom: 0;
+    }
+    .fa-image{
+        display: none;
+    }
+    .input-label{
+        flex-direction: column;
+        align-items: center;
+        border: #090C24 2px solid;
+    }
+    .input-label .label{
+        width: 100%;
+    }
+    .page-title-alt h3{
+        display: none;
+    }
+}

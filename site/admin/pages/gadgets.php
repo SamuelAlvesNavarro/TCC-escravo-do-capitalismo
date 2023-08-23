@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>Centro de Controle de Gadgets</title>
     <style>
         .foto{
@@ -28,18 +29,20 @@
         }
     </style>
 </head>
-<body>
+<body data-bs-theme="dark">
+
     <!-- Controle de gadgets  pela tabela !-->
         <h2>Fotos de perfil - ATIVAS</h2>
 
-    <table>
+    <table class="table table-dark table-striped">
         <thead>
             <tr>
                 <th scope="col">ID Gadget</th>
                 <th scope="col">Foto</th>
                 <th scope="col">Preço</th>
                 <th scope="col">Alterar</th>
-                <th scope="col">Desativar</th>
+                <th scope="col">Desativar</th>[
+                <th scope="col">Excluir</th>
             </tr>
         </thead>
         <tbody>
@@ -61,6 +64,7 @@
 
                         '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button>Alterar</button></a></td>'.
                         '<td scope="row"><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button>Desativar</button></a></td>'.
+                        '<td scope="row"><a href="excluir-gadget.php?id='.$value['id_gadget'].'"><button>Excluir</button></a></td>'.
                     '</tr>';
                 }
             ?>
@@ -77,6 +81,7 @@
                 <th scope="col">Preço</th>
                 <th scope="col">Alterar</th>
                 <th scope="col">Desativar</th>
+                <th scope="col">Excluir</th>
             </tr>
         </thead>
         <tbody>
@@ -98,6 +103,7 @@
 
                         '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button>Alterar</button></a></td>'.
                         '<td scope="row"><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button>Desativar</button></a></td>'.
+                        '<td scope="row"><a href="excluir-gadget.php?id='.$value['id_gadget'].'"><button>Excluir</button></a></td>'.
                     '</tr>';
                 }
             ?>
@@ -134,7 +140,7 @@
                     '</td>'.
 
                     '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button>Alterar</button></a></td>'.
-                    '<td scope="row"><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button>Reativar</button></a></td>'.
+                    '<td scope="row"><a href="reativar-gadget.php?id='.$value['id_gadget'].'"><button>Reativar</button></a></td>'.
                 '</tr>';
             }
         ?>
@@ -184,5 +190,6 @@
     <!-- Controle de gadgets  por outra página !-->
     <a href="adicionar-gadgets.php"><button>Adicionar novo gadget</button></a>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>

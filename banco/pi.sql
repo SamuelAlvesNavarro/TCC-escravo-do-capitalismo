@@ -215,7 +215,7 @@ CREATE TABLE `gadget` (
 
 INSERT INTO `gadget` (`id_gadget`, `type`, `preco`, `g_status`, `in_it`) VALUES
 (1, 0, 0, 1, 'background-image: url(../profile-gadgets/pc-profile/new-user.jpg);'),
-(2, 1, 0, 1, 'background-image: url(../profile-gadgets/bc-profile/new-user.jpg);'),
+(2, 3, 0, 1, 'background-image: url(../profile-gadgets/bc-profile/new-user.jpg);'),
 (25, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/bonoro.jpg);'),
 (26, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/cucapkke.jpg);'),
 (27, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/taylor.jpg);'),

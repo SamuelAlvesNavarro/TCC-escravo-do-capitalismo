@@ -34,7 +34,7 @@
                 sendToError(1);
                 exit;
             } else{
-                $sql = "INSERT INTO profile(foto) values('1')";
+                $sql = "INSERT INTO profile(foto, fundoPerfil) values('1', '2')";
                 
                 $prepare = $pdo->prepare($sql);
                 $prepare->execute();
