@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>Centro de Controle de Gadgets</title>
     <style>
         .foto{
@@ -31,14 +32,14 @@
             ?>
     </style>
 </head>
-<body>
+<body data-bs-theme="dark">
     <?php
         menu();
     ?>
     <!-- Controle de gadgets  pela tabela !-->
         <h2>Fotos de perfil - ATIVAS</h2>
 
-    <table>
+    <table class="table table-dark table-striped">
         <thead>
             <tr>
                 <th scope="col">ID Gadget</th>
@@ -194,5 +195,6 @@
     <!-- Controle de gadgets  por outra página !-->
     <a href="adicionar-gadgets.php"><button>Adicionar novo gadget</button></a>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
