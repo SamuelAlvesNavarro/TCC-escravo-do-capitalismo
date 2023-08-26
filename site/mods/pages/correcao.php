@@ -16,18 +16,6 @@
         body{
             padding: 20px;
         }
-        .to-center{
-            padding: 20px;
-            position: fixed;
-            top: 0;
-            right: 50px;
-            font-size: 30px;
-            background: #121212;
-            z-index: 1000;
-        }
-        .to-center a{
-            color: white;
-        }
         li a{
             color: yellow !important;
             cursor: pointer;
@@ -36,9 +24,9 @@
     </style>
 </head>
 <body data-bs-theme="dark">
-    <div class="to-center">
-        <a href="esgotos.php"><i class="fa-solid fa-home"></i></a>
-    </div>
+    <?php
+        require "includes/menu.php";
+    ?>
     <h1>Para corrigir (status = 1)</h1>
     <h3>Antes de corrigir uma história, <strong>ATUALIZE A PÁGINA</strong></h3>
     <ul>

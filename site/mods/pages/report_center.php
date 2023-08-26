@@ -13,25 +13,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
-    <style>
-        .to-center{
-            padding: 20px;
-            position: fixed;
-            top: 0;
-            right: 50px;
-            font-size: 30px;
-            background: #121212;
-            z-index: 1000;
-        }
-        .to-center a{
-            color: white;
-        }
-    </style>
 </head>
 <body class="p-5"  data-bs-theme="dark">
-    <div class="to-center">
-        <a href="esgotos.php"><i class="fa-solid fa-home"></i></a>
-    </div>
+    <?php
+        require "includes/menu.php";
+    ?>
     <div class="container text-center mb-3">
         <div class="row align-items-start">
             <h1 align="center-2" class="col" style="margin-bottom: 50px;">Denúncia de Perfil</h1>
