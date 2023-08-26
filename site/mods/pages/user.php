@@ -64,25 +64,11 @@
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <title>Perfil</title>
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
-    <style>
-        .to-center{
-            padding: 20px;
-            position: fixed;
-            top: 0;
-            right: 50px;
-            font-size: 30px;
-            background: #121212;
-            z-index: 1000;
-        }
-        .to-center a{
-            color: white;
-        }
-    </style>
 </head>
 <body style='<?php echo $fundo ?>'>
-    <div class="to-center">
-        <a href="esgotos.php"><i class="fa-solid fa-home"></i></a>
-    </div>
+    <?php
+        require "includes/menu.php";
+    ?>
     <div class="main">
         <div class="fc foto" style='<?php echo $foto ?>; margin-bottom: 30px;'></div>
         <ul class="list-group">

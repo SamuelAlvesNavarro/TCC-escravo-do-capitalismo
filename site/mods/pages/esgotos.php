@@ -26,9 +26,9 @@
     </style>
 </head>
 <body>
-    <div class="to-center">
-        <a href="esgotos.php"><i class="fa-solid fa-home"></i></a>
-    </div>
+    <?php
+        require "includes/menu.php";
+    ?>
     <div class="main">
         <h1 class="center">Caminhos</h1>
         <ul>

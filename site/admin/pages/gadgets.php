@@ -41,7 +41,7 @@
                 <th scope="col">Foto</th>
                 <th scope="col">Preço</th>
                 <th scope="col">Alterar</th>
-                <th scope="col">Desativar</th>[
+                <th scope="col">Desativar</th>
                 <th scope="col">Excluir</th>
             </tr>
         </thead>

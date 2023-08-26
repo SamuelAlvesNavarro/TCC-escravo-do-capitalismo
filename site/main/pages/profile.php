@@ -106,8 +106,8 @@
     <title>Perfil</title>
 </head>
 <body>
-    <?php
-        menu();
+    <?php 
+        require "includes/menu.php";
     ?>
     <div class="all">
         <div class="denuncia-container" id="dcont">

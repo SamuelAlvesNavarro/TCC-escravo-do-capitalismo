@@ -1,7 +1,6 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
-    require "includes/menu.php";
 
     function RetornarIdPage($id_story, $type){
         global $pdo;
@@ -131,15 +130,10 @@
     <link rel="stylesheet" href="../../main/css/menu.css?v=1.01">
     <link rel="stylesheet" href="../../main/css/story.css?v=1.01">
     <link rel="stylesheet" href="../../main/css/notification.css">
-    <style>
-        <?php
-            cssMenu();
-        ?>
-    </style>
 </head>
 <body>
     <?php
-        menu();
+        require "includes/menu.php";
     ?>
     <div id="all-menu" class="all_menu disappear">
             <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
