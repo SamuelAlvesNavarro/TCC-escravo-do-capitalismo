@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+@font-face {
+    font-family: oldF;
+    src: url(../fonts/oldnewspapertypes/OldNewspaperTypes.ttf);
+  }
+  @font-face {
+    font-family: scary;
+    src: url(../fonts/another_danger/Another\ Danger\ -\ Demo.otf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: oldF;
+}
+:root {
+    color-scheme: light;
+    --color: #121212;
+    --all-shadow: -2px -1px 34px 10px rgba(0, 0, 0, 0.75) inset;
+    --paper-color: #E0C9A6;
+    --table-color: #ccad7f;
+    --line-color: #121212;
+    --button: rgb(78, 20, 16);
+    --button-hv: rgb(252, 4, 4);
+  
+    --formal: oldF;
+    --reward-opacity: .2;
+
+    --img-bc-color: #ece0ce;
+
+    --tv-effect-1: rgba(10, 10, 10, .8);
+    --tv-effect-2:  rgba(17, 5, 29, 0.8);
+  }
+  .dark {
+    color-scheme: dark;
+    --color: #ebebeb;
+    --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;
+    --paper-color: #606060;
+    --table-color: #505050;
+    --line-color: #000000;
+    --button: rgb(78, 20, 16);
+    --button-hv: rgb(83, 11, 11);
+  
+    --reward-opacity: .9;
+  
+    --img-bc-color: #404040;
+  }
+
+.all{
+    min-height: 100vh;
+    width: 100%;
+    box-shadow: var(--all-shadow);
+    background-color: var(--paper-color);
+    z-index: 1;
+
+    background-image: url(../img/sangue.png);
+    background-repeat: repeat;
+    background-blend-mode:darken;
+}
+
+/* FADES */
+
+.fadeIn{
+    animation-name: fadeIn;
+    animation-duration: .5s;
+    opacity: 1;
+}
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.fadeOut{
+    cursor:auto;
+    animation-name: fadeOut;
+    animation-duration: .5s;
+    opacity: 0;
+}
+@keyframes fadeOut {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+/* FIXED */
+
+.chv{
+    position: fixed;
+    top: 50%;
+    cursor: pointer;
+    transform: translateY(-50%);
+    font-size: 30px;
+    z-index: 2;
+}
+.chv-right{
+    right: 20px;
+}
+.chv-left{
+    left: 20px;
+}
+
+/* FORM */
+
+.slide{
+    z-index: -1;
+    width: 100%;
+    min-height: 100vh;
+    position:absolute;
+    top: 0;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.current{
+    z-index: 1;
+}
+
+.info{
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-size: 15px;
+    line-height: 42px;
+    max-width: 500px;
+    line-break: auto;
+    box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
+  background-color: var(--table-color);
+}
+.inputArea{
+    width: 100%;
+    min-height: 42px;
+    padding-top: 42px;
+    text-align: center;
+    padding-bottom: 42px;
+    line-height: 42px;
+    background: repeating-linear-gradient(var(--line-color) 0px, transparent 2px, transparent 42px);
+}
+.label{
+    display: inline;
+    font-size: 25px;
+}
+.inp-text{
+    width: 50ch;
+    font-size: 18px;
+    font-family: "Indie Flower";
+    background-color: transparent;
+    outline: none;
+    border: none;
+    line-height: 42px;
+}
+#send{
+    padding: 20px;
+    outline: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: var(--button);
+    transition: .2s linear;
+    transform: skew(5deg);
+    color: white;
+}
+#send:hover{
+    background-color: var(--button-hv);
+}
+
+.darken{
+    background-color: #121212;
+}
+@media (max-width: 800px) {
+    .pc-info{
+        display: none;
+    }
+    .inputArea{
+        order: 1;
+    }
+    .info{
+        order: 2;
+    }
+    .slide{
+        justify-content: center;
+    }
+    .chv-left{
+        top: auto;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        transform: rotate(-90deg);
+    }
+    .chv-right{
+        right: auto;
+        top: 100px;
+        left: 50%;
+        transform: rotate(-90deg);
+    }
+    .inp-text{
+        width: 200px;
+    }
+}

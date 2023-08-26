@@ -41,7 +41,7 @@
         </div>
     </div>
     <form action="upload.php" method="post" enctype="multipart/form-data" autocomplete="off">
-        <div class="all">
+        <div class="all" id="all">
             <div class="header layout-padding">
                 <div class="acess-menu">
                     <i class="fa-solid fa-bars"></i>
@@ -293,6 +293,6 @@
             <img class="empty-img-input img-input" alt="">
         </div>
     </div>
-    <script src="../js/criacao.js"></script>
+    <script src="../js/criacao.js?v=1.01"></script>
 </body>
 </html>

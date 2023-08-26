@@ -124,13 +124,8 @@
     color: black !important;
 }
 /* DECO */
-.deco{
-    /*background-image: url(../img/sangue1.png);*/
-    background-repeat: repeat;
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    z-index: 2;
+body{
+    height: 100%;
 }
 /* ALL */
 body{
@@ -144,6 +139,10 @@ body{
     -moz-box-shadow: -2px -1px 14px 4px rgba(0,0,0,0.75) inset;
     background-color: var(--paper-color);
     overflow-x: hidden;
+
+
+    background-image: url(../img/sangue.png);
+    background-repeat: repeat;
 }
 
 .all pre, textarea{

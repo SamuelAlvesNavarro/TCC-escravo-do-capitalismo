@@ -17,6 +17,16 @@ let current = -1;
         var question_itself_input = document.getElementsByClassName('input-question-text');
         var question_itself_p = document.getElementById("question_text");
 
+        
+
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min) ) + min;
+        }
+
+        var all = document.getElementById('all');
+
+        all.style.backgroundPosition = getRndInteger(0, 100) + '%'+ getRndInteger(0, 100) + '%';
+        
         for(var z = 0; z < imgsToShow.length; z++){
             if(imgsToShow[z].src == ''){
                 imgsToShow[z].style.display = 'none'
@@ -159,10 +169,6 @@ let current = -1;
     }
 
     /* IMG SPREAD */
-
-    function getRndInteger(min, max) {
-        return Math.floor(Math.random() * (max - min) ) + min;
-    }
 
     var img_spread = document.getElementsByClassName('containerImg');
 
