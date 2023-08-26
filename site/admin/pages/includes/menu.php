@@ -1,6 +1,6 @@
 <style>
 .to-center{
-    padding: 20px;
+    padding: 15px;
     position: fixed;
     top: 0;
     right: 50px;

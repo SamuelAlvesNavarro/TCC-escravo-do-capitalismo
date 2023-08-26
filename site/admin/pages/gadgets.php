@@ -14,8 +14,8 @@
         .foto{
             border: 2px solid black;
             border-radius: 50%;
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             background-repeat: no-repeat;
             background-position: center;
         }
@@ -33,9 +33,11 @@
         require "includes/menu.php";
     ?>
     <!-- Controle de gadgets  pela tabela !-->
+    <div class="container text-center mb-3 border-0">
         <h2>Fotos de perfil - ATIVAS</h2>
+    </div>
 
-    <table align="center" class="col-3 table table-striped border border-black border-1 p-2">
+    <table align="center" class="col-3 table table-striped border border-black border-1 p-2 mt-3">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">ID Gadget</th>
@@ -46,7 +48,7 @@
                 <th scope="col">Excluir</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
             <?php
                 $gadget = 'SELECT * FROM gadget WHERE type = 0 AND g_status = 1';
                 foreach($pdo->query($gadget) as $key => $value){
@@ -63,9 +65,9 @@
                             .$value['preco'].
                         '</td>'.
 
-                        '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button>Alterar</button></a></td>'.
-                        '<td scope="row"><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button>Desativar</button></a></td>'.
-                        '<td scope="row"><a href="excluir-gadget.php?id='.$value['id_gadget'].'"><button>Excluir</button></a></td>'.
+                        '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button class="btn btn-info">Alterar</button></a></td>'.
+                        '<td scope="row"><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button class="btn btn-primary">Desativar</button></a></td>'.
+                        '<td scope="row"><a href="excluir-gadget.php?id='.$value['id_gadget'].'"><button class="btn btn-danger">Excluir</button></a></td>'.
                     '</tr>';
                 }
             ?>

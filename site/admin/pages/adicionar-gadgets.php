@@ -1,7 +1,7 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
-    include "includes/menu.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,15 +11,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Adicionar gadgets</title>
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
-    <style>
-        <?php
-            cssMenu();
-        ?>
-    </style>
 </head>
 <body>
     <?php
-        menu();
+        include "includes/menu.php";
     ?>
     <form action="gadgets-upload.php" method="post" enctype="multipart/form-data">
         <label for="">Gadget:</label>
