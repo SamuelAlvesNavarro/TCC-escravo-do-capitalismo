@@ -3,18 +3,21 @@ var menu = document.getElementById("menu");
 var all_menu = document.getElementById("all-menu");
 var chevron = document.getElementById("chevron-menu");
 
-function switchMenu(n){
-    if(n == 1){
+var n = true;
+function switchMenu(){
+    if(n){
         menu.classList.toggle("on");
         menu.classList.toggle("off");
+        n = false;
     }
     else{
         if(menu.classList.contains("off")){
             menu.classList.toggle("on");
             menu.classList.toggle("off");
+            
         }
+        n = true;
     }
-    console.log("fghkfghgfhkfh")
 }
 function menu_appear(){
     bodyT.classList.toggle("menuOn");

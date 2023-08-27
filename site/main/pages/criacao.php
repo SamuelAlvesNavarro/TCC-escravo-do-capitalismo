@@ -17,10 +17,14 @@
 
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/menu.css?v=1.01">
     <link rel="stylesheet" href="../css/criacao.css">
     <title>Criação de Histórias</title>
 </head>
 <body id="body">
+    <?php
+        require "includes/menu.php";
+    ?>
     <div class="deco">
 
     </div>
@@ -43,7 +47,7 @@
     <form action="upload.php" method="post" enctype="multipart/form-data" autocomplete="off">
         <div class="all" id="all">
             <div class="header layout-padding">
-                <div class="acess-menu">
+                <div class="acess-menu" onclick="menu_appear()">
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <div class="logo">
@@ -294,5 +298,6 @@
         </div>
     </div>
     <script src="../js/criacao.js?v=1.01"></script>
+    <script src="../js/menu.js?v=1.01"></script>
 </body>
 </html>

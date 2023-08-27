@@ -4,6 +4,37 @@
     margin: 0;
     padding: 0;
 }
+:root {
+    color-scheme: light;
+    --color: #121212;
+    --all-shadow: -2px -1px 34px 10px rgba(0, 0, 0, 0.75) inset;
+    --paper-color: #E0C9A6;
+    --table-color: #ccad7f;
+    --line-color: #121212;
+    --button: rgb(78, 20, 16);
+    --button-hv: rgb(4, 252, 211);
+  
+    --formal: oldF;
+    --reward-opacity: .2;
+
+    --img-bc-color: #ece0ce;
+
+    --tv-effect-1: rgba(10, 10, 10, .8);
+    --tv-effect-2:  rgba(17, 5, 29, 0.8);
+  }
+  .dark {
+    color-scheme: dark;
+    --color: #ebebeb;
+    --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;
+    --paper-color: #606060;
+    --table-color: #505050;
+    --line-color: #000000;
+  
+    --reward-opacity: .9;
+  
+    --img-bc-color: #404040;
+  }
+
 .menuOn{
     overflow-y: hidden;
     height: 100vh;
@@ -27,7 +58,7 @@
     box-shadow: -2px -1px 64px 44px rgba(0,0,0,0.75) inset;
     -webkit-box-shadow: -2px -1px 64px 44px rgba(0,0,0,0.75) inset;
     -moz-box-shadow: -2px -1px 64px 44px rgba(0,0,0,0.75) inset;
-    background: repeating-linear-gradient(#E0C9A6 0px, #E0C9A6 40px, #121212 42px);
+    background: repeating-linear-gradient(var(--paper-color) 0px, var(--paper-color) 40px, var(--line-color) 42px);
     z-index: 1;
 }
 .lamp-area{
@@ -147,7 +178,7 @@
 .content ul li a{
     font-size: 50px;
     line-height: 40px;
-    color: #121212;
+    color: var(--color);
     transition: .2s linear;
     opacity: 0.1;
     text-decoration: none;
@@ -163,7 +194,7 @@
 }
  .content ul li a{
     font-weight: 200;
-    color: #121212;
+    color: var(--color);
     opacity: 1;
 }
 .content ul li{
@@ -218,13 +249,13 @@
     transition: all .5s ease-in-out;
     background-color: transparent !important;
     padding-right: 40px;
-    color:#000000;
+    color:var(--color);
   }
   #search-thing{
     background: transparent !important;
   }
   .input-search::placeholder{
-    color:#121212;
+    color:var(--color);
     font-size: 18px;
     letter-spacing: 2px;
     font-weight: 100;
@@ -240,7 +271,7 @@
     border-radius: 50%;
     position: absolute;
     right: 0px;
-    color:#000000 ;
+    color:var(--color) ;
     background-color:transparent;
     pointer-events: painted;  
   }
@@ -299,7 +330,7 @@
     left: 20px;
     width: 50px;
     height: 100px;
-    background-color: #E0C9A6;
+    background-color: var(--paper-color);
     box-shadow: 0px 6px 20px 1px rgba(0,0,0,1);
     -webkit-box-shadow: 0px 6px 20px 1px rgba(0,0,0,1);
     -moz-box-shadow: 0px 6px 20px 1px rgba(0,0,0,1);
@@ -311,7 +342,7 @@
     font-size: 40px;
 }
 #chevron-menu{
-    color: black !important;
+    color: var(--color) !important;
 }
 .chevron-phases{
    top: -100px;

@@ -1,3 +1,9 @@
+<?php
+    include_once "includes/returnUser.php";
+
+    $email = $_SESSION['email'];
+    $perfil = returnProfileId($email);
+?>
 <div id="all-menu" class="all_menu disappear">
     <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
         <i class="fa-sharp fa-solid fa-xmark"></i>
@@ -14,7 +20,7 @@
         <div class="content">
             <ul>
                 <li><a href="central.php" rel="noopener noreferrer">Central</a></li>
-                <li><a href="profile.php?profile=<?php echo $perfilEntrando?>" rel="noopener noreferrer">Perfil</a></li>
+                <li><a href="profile.php?profile=<?php echo $perfil?>" rel="noopener noreferrer">Perfil</a></li>
                 <li><a href="loja.php" rel="noopener noreferrer">Loja</a></li>
                 <li><a href="writerHub.php" rel="noopener noreferrer">Criação</a></li>
                 <li><a href="leave.php" rel="noopener noreferrer">Sair</a></li>

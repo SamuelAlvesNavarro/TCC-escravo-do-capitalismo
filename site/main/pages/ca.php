@@ -11,7 +11,7 @@
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
 
-    <link rel="stylesheet" href="../css/cadastro.css?v=1.012">
+    <link rel="stylesheet" href="../css/cadastro.css?v=1.0123">
     <title>Cadastro</title>
 </head>
 <body>
@@ -31,7 +31,7 @@
             <form action="cadastro.php" method="post">
                 <div class="slide">
                    <div class="essInfo info">
-                        Sua conta será visitada por muita gente
+                         Muita gente visitará sua conta
                    </div>
                    <div class="inputArea">
                         <div class="label">Nome:</div>
@@ -89,7 +89,7 @@
                         Coloque o mouse sobre a senha para vê-la
                   </div>
                 </div>
-                <div class="slide">
+                <div class="slide ">
                     <div class="essInfo info">
                         Se o sangue te atrapalhar, atualize a página
                    </div>
@@ -104,12 +104,12 @@
                         Use a tecla " " para " "
                   </div>
                 </div>
-                <div class="slide">
+                <div class="slide bt-slide ">
                     <button id="send" type="submit">Terminar Cadastro</button>
                 </div>
             </form>
         </div>
     </div>
-    <script src="../js/cadastro.js?v=1.01"></script>
+    <script src="../js/cadastro.js?v=1.012"></script>
 </body>
 </html>

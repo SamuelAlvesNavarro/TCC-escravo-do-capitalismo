@@ -4,8 +4,11 @@ function getRndInteger(min, max) {
 
 var all = document.getElementById('all');
 
-all.style.backgroundPosition = getRndInteger(0, 100) + '%'+ getRndInteger(0, 100) + '%';
+function getBloody(){
+    all.style.backgroundPosition = getRndInteger(0, 100) + '%'+ getRndInteger(0, 100) + '%';
+}
 
+getBloody();
 
 
     /* DARK MODE */
@@ -23,6 +26,7 @@ function getTheme(){
     }
 }
 
+getTheme()
 /* SLIDE */
 
 var chv_left = document.getElementById("chv-left");
@@ -49,6 +53,7 @@ var slides = document.getElementsByClassName("slide");
     var lastTime = 0;
     function setSlide(n){
 
+        getBloody()
         var now = new Date().getTime(); // Time in milliseconds
         if (now - lastTime < 1000) {
             return;
@@ -131,10 +136,16 @@ var slides = document.getElementsByClassName("slide");
         else if(senha.value == '') setSlide(3)
         else if(senha2.value == '' || senha.value != senha2.value) setSlide(4)
         
+        leave();
+
     })
     send.addEventListener("mouseenter", () => {
         all.classList.add("darken");
     })
     send.addEventListener("mouseleave", () => {
-        all.classList.remove("darken");
+        leave();
     })
+
+    function leave(){
+        all.classList.remove("darken");
+    }

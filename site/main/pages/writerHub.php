@@ -45,38 +45,9 @@
 </head>
 <body>
     <div class="all">
-        <div id="all-menu" class="all_menu disappear">
-            <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
-                <i class="fa-sharp fa-solid fa-xmark"></i>
-            </div>
-            <div id="menu" class="menu off">
-                <div class="lamp">
-                    <div class="wire">
-                        
-                    </div>
-                    <i onclick="switchMenu(1)" class="fa-solid fa-lightbulb"></i>
-                </div>
-                <div class="lamp-area" onclick="switchMenu(2)">
-                </div> 
-                <div class="content">
-                    <ul>
-                        <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
-                        <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
-                        <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
-                        <li><a href="writerHub.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
-                        <div class="search">
-                            <form action="pesquisa.php" method="get">
-                                <div class="search-box">
-                                    <button class="btn-search"><i class="fas fa-search"></i></button>
-                                    <input required type="text" name="busca" class="input-search" placeholder="Pesquisar história........">
-                                </div>
-                            </form>
-                        </div>
-                    </ul>
-                    <!--<img src="https://clipart-library.com/images/rcLoyAzKi.png" alt="" srcset="">-->
-                </div>
-            </div>
-        </div>
+    <?php
+        require "includes/menu.php";
+    ?>
         <div class="nav">
             <div class="go-back" onclick="acentral()">
                 <i class="fa-solid fa-chevron-left"></i>

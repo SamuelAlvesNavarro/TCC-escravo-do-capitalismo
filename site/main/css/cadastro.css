@@ -20,7 +20,7 @@
     --table-color: #ccad7f;
     --line-color: #121212;
     --button: rgb(78, 20, 16);
-    --button-hv: rgb(252, 4, 4);
+    --button-hv: rgb(4, 252, 211);
   
     --formal: oldF;
     --reward-opacity: .2;
@@ -38,7 +38,7 @@
     --table-color: #505050;
     --line-color: #000000;
     --button: rgb(78, 20, 16);
-    --button-hv: rgb(83, 11, 11);
+    --button-hv: rgb(4, 252, 211);
   
     --reward-opacity: .9;
   
@@ -55,6 +55,7 @@
     background-image: url(../img/sangue.png);
     background-repeat: repeat;
     background-blend-mode:darken;
+    transition: .5s linear;
 }
 
 /* FADES */
@@ -74,7 +75,7 @@
 }
 
 .fadeOut{
-    cursor:auto;
+    cursor:default !important;
     animation-name: fadeOut;
     animation-duration: .5s;
     opacity: 0;
@@ -117,7 +118,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -127,7 +128,6 @@
 
 .info{
     padding: 10px;
-    border-radius: 20px;
     display: flex;
     align-items: center;
     text-align: center;
@@ -141,6 +141,14 @@
   -moz-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
   background-color: var(--table-color);
 }
+.essInfo{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.pc-info{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
 .inputArea{
     width: 100%;
     min-height: 42px;
@@ -153,6 +161,7 @@
 .label{
     display: inline;
     font-size: 25px;
+    background-color: var(--paper-color);
 }
 .inp-text{
     width: 50ch;
@@ -161,7 +170,8 @@
     background-color: transparent;
     outline: none;
     border: none;
-    line-height: 42px;
+    line-height: 30px;
+    background-color: var(--paper-color);
 }
 #send{
     padding: 20px;
@@ -170,20 +180,28 @@
     font-size: 30px;
     cursor: pointer;
     background-color: var(--button);
-    transition: .2s linear;
     transform: skew(5deg);
     color: white;
 }
 #send:hover{
+    text-align: center;
     background-color: var(--button-hv);
+    transform: skew(-5deg);
 }
 
 .darken{
     background-color: #121212;
 }
+
+.bt-slide {
+    justify-content: center;
+}
 @media (max-width: 800px) {
     .pc-info{
         display: none;
+    }
+    .essInfo{
+        border-radius: 20px;
     }
     .inputArea{
         order: 1;
