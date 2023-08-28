@@ -3,6 +3,7 @@
         require "includes/enviarErro.php";
 
         $nome = null;
+        $apelido = null;
         $email = null;
         $senha = null;
         $confirmarsenha = null;
@@ -12,6 +13,12 @@
         $email = $_POST["email"];
         $senha = $_POST["senha"];
         $confirmarsenha = $_POST["confirmarsenha"];
+
+
+        if(checkTam($nome, 50) || checkTam($apelido, 50) || checkTam($email, 50) || checkTam($senha, 50) || checkTam($confirmarsenha, 50)){
+            sendToError(20);
+            exit;
+        }
 
         if(checkBan($email, $pdo)){
             sendToError(19);
@@ -92,6 +99,14 @@
         $prepare->execute();
 
         if($prepare->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function checkTam($var, $tam){
+        if($var > $tam){
             return true;
         }else{
             return false;
