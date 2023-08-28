@@ -322,7 +322,7 @@
                     ';
                         
                             if($perfildono == $perfilEntrando){
-                                $gadget = "SELECT * FROM gadget WHERE type = 1";
+                                $gadget = "SELECT * FROM gadget WHERE type = 3";
                                 foreach($pdo->query($gadget) as $key => $value){
                                     $item = $value['in_it'];
                                     $preco = $value['preco'];

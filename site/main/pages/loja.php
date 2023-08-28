@@ -141,7 +141,7 @@
                         <h1>Fundos</h1>
                         <div class="items-div">
                             <?php
-                                $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 1";
+                                $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 3";
                                 $i = 0;
                                 foreach($pdo->query($gadget) as $key => $value){
                                     $item = $value['in_it'];

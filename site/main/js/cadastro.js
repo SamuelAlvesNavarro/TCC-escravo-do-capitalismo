@@ -28,6 +28,8 @@ function getTheme(){
 
 getTheme()
 /* SLIDE */
+var senha = document.getElementById("senha")
+    var senha2 = document.getElementById("Confsenha")
 
 var chv_left = document.getElementById("chv-left");
 var chv_right = document.getElementById("chv-right");
@@ -49,10 +51,34 @@ var slides = document.getElementsByClassName("slide");
         slides[n].classList.add('fadeIn');
         current = n;
     }
-    
+    function generatePrev(n){
+        var prevDivV = document.getElementById("prev-cont")
+
+        prevDiv = '';
+
+        if(document.getElementById('nome').value != '' && n != 0) prevDiv = prevDiv + "<div class='prev-lib'>Nome: <val>" + document.getElementById('nome').value + "</val></div>";
+        if(document.getElementById('apelido').value != '' && n != 1) prevDiv = prevDiv + "<div class='prev-lib'>Apelido: <val>" + document.getElementById('apelido').value + "</val></div>";
+        if(document.getElementById('email').value != '' && validateEmail(document.getElementById('email').value) && n != 2) prevDiv = prevDiv + "<div class='prev-lib'>Email: <val>" + document.getElementById('email').value + "</val></div>";
+        if(senha.value != '' && n == 5) prevDiv = prevDiv + "<div class='prev-lib'>Senha: <val>" + document.getElementById('senha').value + "</val></div>";
+        if(senha2.value != '' && n == 5){
+
+            if(senha.value == senha2.value)prevDiv = prevDiv + "<div class='prev-lib'>Confirmada: <val>V</val></div>";
+            else{
+                prevDiv = prevDiv + "<div class='prev-lib'>Confirmada: <val>X</val></div>";
+            }
+        }
+
+        prevDivV.innerHTML = prevDiv;
+
+        prevSlide = document.getElementsByClassName('prev')
+
+        prevSlide[n].innerHTML = prevDiv;
+    }
+
     var lastTime = 0;
     function setSlide(n){
 
+        generatePrev(n)
         getBloody()
         var now = new Date().getTime(); // Time in milliseconds
         if (now - lastTime < 1000) {
@@ -102,7 +128,6 @@ var slides = document.getElementsByClassName("slide");
 
     /* SENHA */
 
-    var senha = document.getElementById("senha")
 
     senha.addEventListener("mouseenter", () => {
         senha.type = 'text';
@@ -110,8 +135,6 @@ var slides = document.getElementsByClassName("slide");
     senha.addEventListener("mouseout", () => {
         senha.type = 'password';
     })
-
-    var senha2 = document.getElementById("Confsenha")
 
     senha2.addEventListener("mouseenter", () => {
         senha2.type = 'text';
@@ -149,3 +172,15 @@ var slides = document.getElementsByClassName("slide");
     function leave(){
         all.classList.remove("darken");
     }
+
+
+    document.addEventListener('keyup', (event) => {
+        var name = event.key;
+        if (name === 'ArrowRight' || name === 'Enter') {
+            toNext();
+        }
+        if (name === 'ArrowLeft') {
+            toLast();
+        }
+
+      }, false);

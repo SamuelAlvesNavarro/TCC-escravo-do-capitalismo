@@ -91,7 +91,7 @@
         </thead>
         <tbody class="table-group-divider">
             <?php
-                $gadget = 'SELECT * FROM gadget WHERE type = 1 AND g_status = 1';
+                $gadget = 'SELECT * FROM gadget WHERE type = 3 AND g_status = 1';
                 foreach($pdo->query($gadget) as $key => $value){
 
                     echo
@@ -167,7 +167,7 @@
     </thead>
     <tbody>
         <?php
-            $gadget = 'SELECT * FROM gadget WHERE type = 1 AND g_status = 0';
+            $gadget = 'SELECT * FROM gadget WHERE type = 3 AND g_status = 0';
             foreach($pdo->query($gadget) as $key => $value){
 
                 echo

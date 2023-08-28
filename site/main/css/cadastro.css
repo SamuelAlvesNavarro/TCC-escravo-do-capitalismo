@@ -55,9 +55,17 @@
     background-image: url(../img/sangue.png);
     background-repeat: repeat;
     background-blend-mode:darken;
-    transition: .5s linear;
+    transition: .2s linear;
 }
 
+.prev-lib{
+    font-size: 25px;
+    max-height: 42px;
+    overflow-y: hidden;
+}
+val{
+    font-family: 'Indie Flower';
+}
 /* FADES */
 
 .fadeIn{
@@ -213,17 +221,12 @@
         justify-content: center;
     }
     .chv-left{
-        top: auto;
-        bottom: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        transform: rotate(-90deg);
+        top: 100px;
+        left: 50px;
     }
     .chv-right{
-        right: auto;
         top: 100px;
-        left: 50%;
-        transform: rotate(-90deg);
+        right: 50px;
     }
     .inp-text{
         width: 200px;
