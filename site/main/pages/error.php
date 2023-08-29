@@ -67,6 +67,7 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/erro.css?v=1.01">
+    <link rel="stylesheet" href="../css/scroll.css?v=1.09">
 </head>
 <body>
     <div class="bc erro <?php echo $to_show;?>">

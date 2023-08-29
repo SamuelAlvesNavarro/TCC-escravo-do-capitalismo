@@ -51,6 +51,7 @@
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/aprovacao.css">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Aprovação</title>
 </head>
 <body>

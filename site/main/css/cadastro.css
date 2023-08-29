@@ -200,7 +200,12 @@ val{
 .darken{
     background-color: #121212;
 }
-
+.xmark{
+    color: red;
+}
+.check{
+    color: #00ff0d;
+}
 .bt-slide {
     justify-content: center;
 }

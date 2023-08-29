@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/manual.css">
+    <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Manual de Uso - Histórias Assombrosas</title>
 </head>
 <body>

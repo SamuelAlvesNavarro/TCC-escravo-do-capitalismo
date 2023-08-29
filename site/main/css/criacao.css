@@ -15,6 +15,7 @@
     color: var(--color);
 }
 
+  
 :root {
     color-scheme: light;
     --color: #121212;
@@ -547,6 +548,7 @@ border-radius: 5px;
 .correctOne p{
     color: black !important;
 }
+
 
 
 .hide{

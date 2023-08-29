@@ -74,18 +74,21 @@
     foreach($pdo->query($sql) as $key => $value){
         $foto = $value['in_it'];
     }
+    $prepare->execute();
     if($prepare->rowCount() == 0){
         $sql = "SELECT in_it FROM gadget WHERE id_gadget = 1 and type = 0";
         foreach($pdo->query($sql) as $key => $value){
             $foto = $value['in_it'];
         }
     }
+
     //Fundo
     $sql = "SELECT in_it FROM gadget WHERE id_gadget = $fundo and type = 3";
     $prepare = $pdo->prepare($sql);
     foreach($pdo->query($sql) as $key => $value){
         $fundo = $value['in_it'];
     }
+    $prepare->execute();
     if($prepare->rowCount() == 0){
         $sql = "SELECT in_it FROM gadget WHERE id_gadget = 2 and type = 3";
         foreach($pdo->query($sql) as $key => $value){
@@ -103,6 +106,7 @@
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/perfil.css?v=1.0123">
+    <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Perfil</title>
 </head>
 <body>
@@ -353,7 +357,7 @@
     </div>
     <div id="f-cont"></div>
     <script src="../js/menu.js"></script>
-    <script src="../js/perfil.js?v=1.0123456"></script>
+    <script src="../js/perfil.js?v=1.01"></script>
     <?php
     if($perfildono == $perfilEntrando){
 
