@@ -38,6 +38,15 @@ function darGadget($codEvento, $perfil){
     }
 
     $checkCompra = "SELECT * FROM compra WHERE fk_id_profile = '$perfil' AND fk_id_gadget = '$id_gadget'";
+    $prepare = $pdo->prepare($checkCompra);
+    
+    if($prepare->rowCount() > 0){
+        exit;
+    }else{
+        $user_gadget = "INSERT INTO compra VALUES('$perfil', '$id_gadget', '".date('y-m-d')."')";
+        $prepare = $pdo->prepare($user_gadget);
+        $prepare->execute();
+    }
 
 }
 
