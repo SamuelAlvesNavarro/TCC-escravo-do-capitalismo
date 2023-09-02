@@ -21,6 +21,7 @@
         <a href="gadgets.php"><li>Centro de Controle de Gadgets</li></a>
         <a href="cadastrar-mod.php"><li>Cadastrar Moderadores</li></a>
         <a href="delete-mod.php"><li>Deletar Moderadores</li></a>
+        <a href="verificar-compras.php"><li>Verificar Compras de Gadgets</li></a>
     </ul>
 </body>
 </html>

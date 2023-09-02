@@ -16,5 +16,38 @@
     <?php
         require "includes/menu.php";
     ?>
+
+    <h1 align="center">Tabela de compra de gadgets</h1>
+
+    <table align="center" class="table table-dark table-striped" border="2">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID Gadget</th>
+                <th scope="col">Email</th>
+                <th scope="col">User</th>
+                <th scope="col">ID Profile</th>
+                
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <?php
+
+                $sql = "SELECT user_common.email as email, user_common.fk_id_profile as perfil, user_common.nome as nome, compra.fk_id_gadget as id_gadget FROM compra, user_common";
+                foreach($pdo->query($sql) as $key => $value){
+                    $perfil = $value['perfil'];
+
+                    echo '
+                        <tr scope="row">
+                        <td>' .$value['id_gadget']. '</td>
+                        <td>' .$value['email']. '</td>
+                        <td>' .$value['nome']. '</td>
+                        <td>' .$perfil. '</td>
+                        </tr>
+                    ';
+                }
+
+            ?>
+        </tbody>
+    </table>
 </body>
 </html>
