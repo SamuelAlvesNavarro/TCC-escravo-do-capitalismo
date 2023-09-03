@@ -39,6 +39,7 @@ function darGadget($codEvento, $perfil){
 
     $checkCompra = "SELECT * FROM compra WHERE fk_id_profile = '$perfil' AND fk_id_gadget = '$id_gadget'";
     $prepare = $pdo->prepare($checkCompra);
+    $prepare->execute();
     
     if($prepare->rowCount() > 0){
         exit;
@@ -50,8 +51,13 @@ function darGadget($codEvento, $perfil){
 
 }
 
-function evento(){
+function evento($codEvento){
     global $pdo;
+
+    $sql = "SELECT * FROM eventos WHERE id_evento = '$codEvento'";
+    foreach($pdo->query($sql) as $key => $value){
+        $execute = $value['comando'];
+    }
 
 }
 
