@@ -9,13 +9,8 @@
     $email = $_SESSION['email'];
     $perfil = returnProfileId($email);
 
-function darMoedas($codEvento, $perfil){
+function darMoedas($moedas, $perfil){
     global $pdo;
-
-    $sql = "SELECT * FROM eventos WHERE id_evento = '$codEvento'";
-    foreach($pdo->query($sql) as $key => $value){
-        $moedas = $value['moedas'];
-    }
 
     $user = "SELECT * FROM user_common WHERE fk_id_profile = '$perfil'";
     foreach($pdo->query($user) as $key => $value){
