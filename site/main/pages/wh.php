@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="../css/scroll.css">
     <link rel="stylesheet" href="../css/wh.css?v=1.01">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
 </head>
 <body>
     <?php
