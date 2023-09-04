@@ -1,10 +1,6 @@
 <?php
 
-    require 'conexao.php';
-    require 'online.php';
     require 'returnUser.php';
-
-    $codEvento = $_POST['evento'];
 
     /*$email = $_SESSION['email'];
     $perfil = returnProfileId($email);*/
@@ -53,15 +49,16 @@ function darGadget($id_gadget){
 
 }
 
-function evento($codEvento){
+function evento($type){
     global $pdo;
 
-    $sql = "SELECT * FROM eventos WHERE id_evento = '$codEvento'";
+    $sql = "SELECT * FROM eventos WHERE type = '$type' and type != 0";
     foreach($pdo->query($sql) as $key => $value){
-        $execute = $value['comando'];
+        $execute = $value['script'];
+        eval($execute);
     }
 
-    eval($execute);
+    return 0;
 }
 
 ?>

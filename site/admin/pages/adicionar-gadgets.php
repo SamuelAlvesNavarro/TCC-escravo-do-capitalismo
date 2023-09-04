@@ -12,10 +12,12 @@
     <title>Adicionar gadgets</title>
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body  data-bs-theme="dark">
     <?php
         include "includes/menu.php";
     ?>
+    <h1>Adicionar Novo Gadget</h1>
+    <br>
     <form action="gadgets-upload.php" method="post" enctype="multipart/form-data">
         <label for="">Gadget:</label>
         <input type="file" name="image" required><br>

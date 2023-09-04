@@ -18,7 +18,10 @@
     ?>
 
     <h1 align="center">Tabela de compra de gadgets</h1>
-
+    <form action="#" method="get">
+        <input type="email" name="email" id="" value="">
+        <input type="submit" value="mandar">
+    </form>
     <table align="center" class="table table-dark table-striped" border="2">
         <thead class="thead-dark">
             <tr>
@@ -31,8 +34,11 @@
         </thead>
         <tbody class="table-group-divider">
             <?php
-
-                $sql = "SELECT user_common.email as email, user_common.fk_id_profile as perfil, user_common.nome as nome, compra.fk_id_gadget as id_gadget FROM compra, user_common";
+                if(isset($_GET['email']) && $_GET['email'] != ""){
+                    $sql = "SELECT user_common.email as email, user_common.fk_id_profile as perfil, user_common.nome as nome, compra.fk_id_gadget as id_gadget FROM compra, user_common where compra.fk_id_profile = user_common.fk_id_profile and user_common.email = '".$_GET['email']."' order by id_gadget ASC";
+                }else{
+                    $sql = "SELECT user_common.email as email, user_common.fk_id_profile as perfil, user_common.nome as nome, compra.fk_id_gadget as id_gadget FROM compra, user_common where compra.fk_id_profile = user_common.fk_id_profile order by id_gadget ASC";
+                }
                 foreach($pdo->query($sql) as $key => $value){
                     $perfil = $value['perfil'];
 

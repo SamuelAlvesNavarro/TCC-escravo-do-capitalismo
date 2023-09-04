@@ -66,8 +66,15 @@
 
                     require "includes/criasession.php";
                     $_SESSION['email'] = $email;
+                   
+
+                    include_once "includes/eventos.php";
+                    evento(1);
+                    
                     $pdo = '';
                     header("Location:central.php");
+
+                    
                 }
             }
         }

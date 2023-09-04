@@ -32,6 +32,9 @@
     <?php
         require "includes/menu.php";
     ?>
+    <h1>Centro de Gadgets</h1>
+    <br>
+    <a href="adicionar-gadgets.php"><button>Adicionar novo gadget</button></a>
     <!-- Controle de gadgets  pela tabela !-->
     <div class="container text-center mb-3 border-0">
         <h2>Fotos de perfil - ATIVAS</h2>
@@ -193,7 +196,6 @@
 
 
     <!-- Controle de gadgets  por outra página !-->
-    <a href="adicionar-gadgets.php"><button>Adicionar novo gadget</button></a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
