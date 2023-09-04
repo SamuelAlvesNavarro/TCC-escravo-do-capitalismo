@@ -58,13 +58,30 @@ var slides = document.getElementsByClassName("slide");
 
         if(document.getElementById('nome').value != '' && n != 0) prevDiv = prevDiv + "<div class='prev-lib'>Nome: <val>" + document.getElementById('nome').value + "</val></div>";
         if(document.getElementById('apelido').value != '' && n != 1) prevDiv = prevDiv + "<div class='prev-lib'>Apelido: <val>" + document.getElementById('apelido').value + "</val></div>";
-        if(document.getElementById('email').value != '' && validateEmail(document.getElementById('email').value) && n != 2) prevDiv = prevDiv + "<div class='prev-lib'>Email: <val>" + document.getElementById('email').value + "</val></div>";
-        if(senha.value != '' && n == 5) prevDiv = prevDiv + "<div class='prev-lib'>Senha: <val>" + document.getElementById('senha').value + "</val></div>";
+        if(document.getElementById('email').value != '' && n != 2){
+            if(validateEmail(document.getElementById('email').value)){
+                prevDiv = prevDiv + "<div class='prev-lib'>Email: <val>" + document.getElementById('email').value + "</val></div>";
+            }
+            else{
+                var x = document.getElementById('email').value;
+                x = "inválido"
+                prevDiv = prevDiv + "<div class='prev-lib'>Email: <val>" + x + "</val></div>";
+         
+            }
+        } 
+        if(senha.value != '' && n == 5){
+            var se = document.getElementById('senha').value;
+            var sen = '';
+            for(var i = 0; i < se.length; i++){
+                sen += '*';
+            }
+            prevDiv = prevDiv + "<div class='prev-lib' type='password'>Senha: <val>" + sen + "</val></div>";
+        }
         if(senha2.value != '' && n == 5){
 
-            if(senha.value == senha2.value)prevDiv = prevDiv + "<div class='prev-lib'>Confirmada: <val>V</val></div>";
+            if(senha.value == senha2.value)prevDiv = prevDiv + "<div class='prev-lib'>Confirmada: <val><i class='fa-solid fa-check'></i></val></div>";
             else{
-                prevDiv = prevDiv + "<div class='prev-lib'>Confirmada: <val>X</val></div>";
+                prevDiv = prevDiv + "<div class='prev-lib'>Confirmada: <val><i class='fa-solid fa-xmark'></i></val></div>";
             }
         }
 

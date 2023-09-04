@@ -27,3 +27,14 @@ function menu_appear(){
     menu.classList.add("off");
     chevron.classList.toggle("chevron-phases");
 }
+
+function switchmode(){
+    root.classList.toggle('dark');
+}
+function getTheme(){
+    let theme = JSON.parse(localStorage.getItem("Theme"));
+
+    if(theme == "dark"){
+        switchmode();
+    }
+}

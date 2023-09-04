@@ -3,7 +3,7 @@
     require "includes/online.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,8 @@
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
-    <link rel="stylesheet" href="../css/criacao.css">
+    <link rel="stylesheet" href="../css/criacao.css?v=1.09">
+    <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Criação de Histórias</title>
 </head>
 <body id="body">
@@ -60,7 +61,7 @@
                         <input type="submit" value="Enviar">
                     </div>
                     <div class="manual opp" id="manual-bt">
-                        <a target="_blank" href="manual.php#historia"><i id="manual-icon" class="far fa-sticky-note"></i></a>
+                        <a target="_blank" href="manual.php#Chistoria"><i id="manual-icon" class="far fa-sticky-note"></i></a>
                     </div>
                     <div class="edit opp" id="edit-bt">
                         <i id="edit-icon" class="fa-solid fa-pencil op-icon"></i>

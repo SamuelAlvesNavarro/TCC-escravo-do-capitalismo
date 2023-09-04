@@ -22,10 +22,12 @@
 
     /* PEGANDO TOP */
 
+    $topProfs = array();
     $topUsers = array();
     $i =  0;
     $sql = "select count(*) as amount, story.fk_id_profile, user_common.apelido from story, user_common where story.fk_id_profile = user_common.fk_id_profile and story.status = 3 group by story.fk_id_profile order by amount desc limit 3;";
     foreach($pdo->query($sql) as $key => $value){
+        $topProfs[$i] = $value['fk_id_profile'];
         $topUsers[$i] = $value['apelido'];
         $amounts[$i] = $value['amount'];
         $i++;
@@ -41,6 +43,7 @@
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/writerHub.css?v=1">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Área do escritor</title>
 </head>
 <body>
@@ -172,7 +175,10 @@
                                 <div class="line line1"></div>
                             </div>
                             <div class="name name1">
-                                <?php if(isset($topUsers[0])) echo ''.$topUsers[0].' ('.$amounts[0].')'; else echo "Ninguém";?>
+                                <?php 
+
+                                    if(isset($topUsers[0])) echo ''.$topUsers[0].' ('.$amounts[0].')'; else echo "Ninguém";
+                                ?>
                             </div>
                         </div>
                         <div class="top top1">

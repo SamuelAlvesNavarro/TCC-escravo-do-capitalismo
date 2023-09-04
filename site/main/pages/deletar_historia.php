@@ -1,7 +1,26 @@
 <?php
-    require "includes/conexao.php";
+    require "includes/returnUser.php";
+    require "includes/online.php";
+    
+    $perfil = -1;
+    $email = $_SESSION['email'];
+    $perfil = returnProfileId($email);
+    if($perfil == -1 || !isset($perfil)){
+        header("Location: acesso.html");  
+        exit;
+    }
 
     $id_story = $_POST['story'];
+
+    $sql = "select fk_id_profile from story where id_story = ".$_POST['story'];
+    foreach($pdo->query($sql) as $key => $value){
+        $id = $value['fk_id_profile'];
+    }
+
+    if($id != $perfil){
+        header("Location: central.php");
+        exit;
+    }
 
     function returnIdPage($id_story){
         global $pdo;

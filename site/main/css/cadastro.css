@@ -33,7 +33,7 @@
   .dark {
     color-scheme: dark;
     --color: #ebebeb;
-    --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;
+    --all-shadow: -10px -10px 50px 0px rgba(0,0,0,1) inset;
     --paper-color: #606060;
     --table-color: #505050;
     --line-color: #000000;
@@ -200,7 +200,12 @@ val{
 .darken{
     background-color: #121212;
 }
-
+.xmark{
+    color: red;
+}
+.check{
+    color: #00ff0d;
+}
 .bt-slide {
     justify-content: center;
 }

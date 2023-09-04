@@ -22,6 +22,7 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
     <link rel="stylesheet" href="../css/pesquisa.css?v=1.01">
+    <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Pesquisa</title>
 </head>
 <body>

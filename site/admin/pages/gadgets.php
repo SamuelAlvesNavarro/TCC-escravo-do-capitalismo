@@ -106,9 +106,9 @@
                             .$value['preco'].
                         '</td>'.
 
-                        '<td><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button>Alterar</button></a></td>'.
-                        '<td><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button>Desativar</button></a></td>'.
-                        '<td><a href="excluir-gadget.php?id='.$value['id_gadget'].'"><button>Excluir</button></a></td>'.
+                        '<td><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button class="btn btn-info">Alterar</button></a></td>'.
+                        '<td><a href="desativar-gadget.php?id='.$value['id_gadget'].'"><button class="btn btn-primary">Desativar</button></a></td>'.
+                        '<td><a href="excluir-gadget.php?id='.$value['id_gadget'].'"><button class="btn btn-danger">Excluir</button></a></td>'.
                     '</tr>';
                 }
             ?>
@@ -117,8 +117,8 @@
 
         <h2>Fotos de perfil - DESATIVADAS</h2>
 
-    <table>
-    <thead>
+    <table align="center" class="table table-dark table-striped">
+        <thead class="thead-dark">
         <tr>
             <th scope="col">ID Gadget</th>
             <th scope="col">Foto</th>
@@ -127,7 +127,7 @@
             <th scope="col">Desativar</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="table-group-divider">
         <?php
             $gadget = 'SELECT * FROM gadget WHERE type = 0 AND g_status = 0';
             foreach($pdo->query($gadget) as $key => $value){
@@ -144,8 +144,8 @@
                         .$value['preco'].
                     '</td>'.
 
-                    '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button>Alterar</button></a></td>'.
-                    '<td scope="row"><a href="reativar-gadget.php?id='.$value['id_gadget'].'"><button>Reativar</button></a></td>'.
+                    '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button class="btn btn-info">Alterar</button></a></td>'.
+                    '<td scope="row"><a href="reativar-gadget.php?id='.$value['id_gadget'].'"><button class="btn btn-primary">Reativar</button></a></td>'.
                 '</tr>';
             }
         ?>
@@ -155,8 +155,8 @@
 
         <h2>Fundos de perfil - DESATIVADOS</h2>
 
-    <table>
-    <thead>
+    <table align="center" class="table table-dark table-striped">
+    <thead class="thead-dark">
         <tr>
             <th scope="col">ID Gadget</th>
             <th scope="col">Fundo</th>
@@ -165,7 +165,7 @@
             <th scope="col">Desativar</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="table-group-divider">
         <?php
             $gadget = 'SELECT * FROM gadget WHERE type = 3 AND g_status = 0';
             foreach($pdo->query($gadget) as $key => $value){
@@ -182,8 +182,8 @@
                         .$value['preco'].
                     '</td>'.
 
-                    '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button>Alterar</button></a></td>'.
-                    '<td scope="row"><a href="reativar-gadget.php?id='.$value['id_gadget'].'"><button>Reativar</button></a></td>'.
+                    '<td scope="row"><a href="alterar-gadget.php?id='.$value['id_gadget'].'"><button class="btn btn-info">Alterar</button></a></td>'.
+                    '<td scope="row"><a href="reativar-gadget.php?id='.$value['id_gadget'].'"><button class="btn btn-primary">Reativar</button></a></td>'.
                 '</tr>';
             }
         ?>

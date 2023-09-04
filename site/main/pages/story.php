@@ -137,6 +137,7 @@
     <link rel="stylesheet" href="../css/story.css?v=1.01">
     <link rel="stylesheet" href="../css/notification.css?v=11352">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../css/scroll.css?v=1.09">
 </head>
 <body>
     <div class="acess-menu" onclick="menu_appear()">
