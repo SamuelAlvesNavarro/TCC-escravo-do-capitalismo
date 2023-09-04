@@ -62,6 +62,24 @@
 
         <div class="split"></div> 
 
+        <div class="grandTitle" id="escritor">Área do escritor</div>
+
+                <div class="lines">
+                    Na área do escritor, o usuário terá acesso a página de criação de histórias, as suas histórias que devem ser corrigidas e aquelas que devem ser aprovadas e poderá ver o ranking de melhores escritores.
+                </div>
+
+            <div class="title">Correção/Aprovação</div>
+
+                <div class="lines">
+                    Quando o usuário envia uma história para correção ela irá aparecer na lista de correção, o que significa que ela está na fila para ser corrigida.
+                    <br>
+                    Após ela ser corrigida por algum moderador, ela irá aparecer na lista de aprovação onde o usuário, ao selecioná-la, poderá ver as alterações feitas 
+                    pelo moderador e caso concorde a história ficará disponível para todos os usuários. Caso o dono da história discorde das alterações feitas 
+                    pelo moderador a história, a história será apagada. 
+                </div>
+
+        <div class="split"></div>
+
         <div class="grandTitle" id="criacao-historia">
             Criação de histórias
         </div>
