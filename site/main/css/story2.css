@@ -1,11 +1,21 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Playfair+Display:ital,wght@1,400;1,500&family=Poltawski+Nowy&family=Roboto:wght@500&display=swap');
 
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+
+@font-face {
+  font-family: oldF;
+  src: url(../fonts/oldnewspapertypes/OldNewspaperTypes.ttf);
+}
+@font-face {
+  font-family: reward;
+  src: url(../fonts/nashville-font/Nashville-z8w0.ttf);
+}
 *{
     padding: 0;
     margin: 0;
 }
-
 /* MODES */
 
 :root {
@@ -42,25 +52,36 @@
 .all{
     width: 100%;
     min-height: 100vh;
-    background-image: url(../img/kid-spider.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-
 }
 
 .banner{
     min-height: 100vh;
-    background-color: rgba(0,0,0,.9);
     position: relative;
+    background-image: url(../img/kid-spider.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: transparent;
+    transition: .2s linear;
+}
+.banner_in{
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(18,18,18,.9);
     display: flex;
     align-items: flex-end;
 }
 
 .mainTitle{
     position: absolute;
+    bottom: 0;
     top: 50%;
     left: 50%;
+    
     transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 1s linear;
 }
 .mainTitle h1{
     color: white;
@@ -69,10 +90,49 @@
     font-style: italic;
     font-size: 50px;
 }
+.mainTitle h3{
+    font-size: 35px;
+    display: none;
+    font-family: 'Playfair Display', serif;
+    font-weight: 200;
+}
+.mainTitle h4{
+    font-family: "Poppins";
+    font-size: 20px;
+}
+.un a{
+    list-style: none;
+    color: white;
+    text-decoration: none;
+}
+.un {
+    display: inline-block;
+    background-image: linear-gradient(red 0 0);
+    background-position: 0 100%; /*OR bottom left*/
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    transition:
+      all .5s,
+      background-size 1s,
+      background-position 0s 1s; /*change after the size immediately*/
+  }
+  
+  .un:hover {
+    background-position: 100% 100%; /*OR bottom right*/
+    background-size: 100% 2px;
+    
+  }
+
+  .acLink{
+    background-position: 100% 100%; /*OR bottom right*/
+    background-size: 100% 2px;
+  }
+
+  
 
 .pageRefer_container{
     width: 100%;
-    height: 250px;
+    height: 200px;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -82,7 +142,7 @@
 .pageRefer{
     width: 30%;
     max-width: 500px;
-    height: 200px;
+    height: 150px;
     background: repeating-linear-gradient(transparent 0px, transparent 20px, var(--line-color) 22px);
     background-color: var(--table-color);
     transition: .5s linear;
@@ -92,12 +152,72 @@
     background-color: var(--paper-color);
 }
 
+/* BANNER MODEST */
 
 
+.modest{
+    background-color: #080808;
+    background-image: none;
+}
+.modest .pageRefer{
+    transform: translateY(100%);
+}
+.modest .mainTitle{
+    transform: translate(-50%, 0);
+    top: auto;
+    bottom: 100px;
+}
+.modest .mainTitle h1, .modest .mainTitle h4{
+    display: none;
+}
+.modest .mainTitle h3{
+    display: block;
+    font-size: 40px;
+}
+.modest .banner_in{
+    background-color: transparent;
+}
 /* PAGE */
 .page{
     padding: 20px;
+    padding-top: 50px;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
 }
 .line-page{
-    
+    line-height: 32px;
+    width: 100%;
+    max-width: 900px;
+    color: #121212;
+    background: #121212;
+    transition: all .5s linear;
+    min-height: 200px;
+    max-height: 100vh;
+    box-shadow: -1px -29px 21px 21px #121212 inset;
+    -webkit-box-shadow: -1px -29px 21px 21px #121212 inset;
+    -moz-box-shadow: -1px -29px 21px 21px #121212 inset;
+    padding: 20px;
+    padding-top: 0;
+}
+.active{
+    color: white;
+    background: repeating-linear-gradient(transparent 0px, transparent 30px, rgb(189, 188, 188) 32px);
+    max-height: none;
+    min-height: 100vh;
+}
+
+
+.history pre{
+    font-family: 'Indie Flower';
+    font-size: 18px;
+    line-height: 32px;
+    line-break: auto;
+    width: 100%;
+    white-space: break-spaces;
+    text-align: justify;
+}
+pre strong{
+    color: red;
+    font-weight: 200;
 }
