@@ -1,14 +1,93 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Playfair+Display:ital,wght@1,400;1,500&family=Poltawski+Nowy&family=Roboto:wght@500&display=swap');
+
 *{
     padding: 0;
     margin: 0;
 }
+
+/* MODES */
+
+:root {
+    color-scheme: light;
+    --color: #121212;
+    --all-shadow: -2px -1px 64px 20px rgba(0, 0, 0, 0.75) inset;
+    --paper-color: #E0C9A6;
+    --table-color: #ccad7f;
+    --line-color: #121212;
+  
+    --formal: oldF;
+    --reward-opacity: .2;
+
+    --img-bc-color: #ece0ce;
+
+    --tv-effect-1: rgba(10, 10, 10, .8);
+    --tv-effect-2:  rgba(17, 5, 29, 0.8);
+  }
+  .dark {
+    color-scheme: dark;
+    --color: #ebebeb;
+    --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;
+    --paper-color: #606060;
+    --table-color: #505050;
+    --line-color: #000000;
+  
+    --reward-opacity: .9;
+  
+    --img-bc-color: #404040;
+    /*--formal: 'Playfair Display', serif;*/
+  }
+
+
 .all{
     width: 100%;
     min-height: 100vh;
-    /*
-* Created with https://www.css-gradient.com
-* Gradient link: https://www.css-gradient.com/?c1=e8c49a&c2=a47951&gt=r&gd=dtl
-*/
-background: #E8C49A;
-background: radial-gradient(at left top, #E8C49A, #A47951);
+    background-image: url(../img/kid-spider.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.banner{
+    min-height: 100vh;
+    background-color: rgba(0,0,0,.9);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+.mainTitle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+}
+.mainTitle h1{
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 50px;
+}
+
+.pageRefer_container{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+}
+.pageRefer{
+    width: 30%;
+    max-width: 500px;
+    height: 200px;
+    background: repeating-linear-gradient(transparent 0px, transparent 20px, var(--line-color) 22px);
+    background-color: var(--table-color);
+    transition: .5s linear;
+}
+.superRefer{
+    transform: scale(1.2);
+    background-color: var(--paper-color);
 }

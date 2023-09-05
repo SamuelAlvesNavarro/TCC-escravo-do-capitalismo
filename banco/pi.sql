@@ -203,6 +203,14 @@ INSERT INTO `error_user` (`id_error`, `fk_id_profile`, `fk_id_story`) VALUES
 
 -- --------------------------------------------------------
 
+
+CREATE TABLE `evento`(
+   id_evento int primary key,
+   titulo varchar(255) not null,
+   descr text not null,
+   tipo int not null,
+   script text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Estrutura da tabela `gadget`
 --
