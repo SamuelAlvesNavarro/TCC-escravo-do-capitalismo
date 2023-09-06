@@ -279,6 +279,8 @@
 
         /* SCROLL ANIS*/
 
+        var ac_ = 0;
+
         window.addEventListener("scroll", reveal);
 
         function reveal(){
@@ -294,13 +296,26 @@
             if(revealtop < windowH - revealpoint){
                 reveal.classList.add('active');
                 bn.classList.add("modest");
+                ac_ = 1;
             }else{
                 reveal.classList.remove('active');
                 bn.classList.remove("modest");
+                ac_ = 0;
             }
 
-            console.log(revealbottom - (windowH + revealpoint));
+            if(ac_ == 1){
 
+                var pageMax = reveal.offsetHeight / 10;
+
+                var In_height = revealbottom - (windowH - revealtop);
+
+                if(In_height < 0){
+                    In_height = pageMax;
+                }
+
+                console.log((pageMax/In_height))
+            }
+           
             for(var z = 0; z < underlines.length; z++){
 
                 var revealtop = underlines[z].getBoundingClientRect().top;
