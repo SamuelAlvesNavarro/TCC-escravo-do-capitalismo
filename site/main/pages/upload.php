@@ -1,10 +1,8 @@
 <?php
-    require 'includes/conexao.php';
     require 'includes/online.php';
     require "includes/enviarErro.php";
-    
+    require "includes/conexao.php";
     global $pdo;
-
 
     /* FILTRAR CÓDIGO HTML E PHP */
 
