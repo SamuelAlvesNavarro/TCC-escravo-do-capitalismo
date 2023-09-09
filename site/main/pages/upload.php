@@ -64,7 +64,7 @@
         exit;
     }
     if(filter_var($historia, FILTER_CALLBACK, array('options' => 'vazio'))){
-        //header("Location: criacao.php");
+        header("Location: criacao.php");
         exit;
     }
 
@@ -292,7 +292,7 @@
         return true;
     }
 
-    function storeQuestion($id_story, $perfil){
+    function storeQuestion($id_story){
 
         global $pdo;
         $questao = $_POST['question'];
