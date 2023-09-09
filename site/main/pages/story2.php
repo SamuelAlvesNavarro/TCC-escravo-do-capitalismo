@@ -130,23 +130,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/story2.css?v=1.01">
+    <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/story2.css?v=1.01<?php echo rand(0,10000)?>">
     <link rel="stylesheet" href="../css/scroll.css?v=1.01">
     <title>História</title>
 </head>
 <body>
     <div class="all">
-        <section class="controls">
+        <section class="controls-sec" id="contr">
             <div class="progressBar">
                 <div class="bar">
-                    <div class="filled">
+                    <div class="filled" id="filled">
 
                     </div>
                 </div>
             </div>
         </section>
         <section class="menu">
-
+            <div class="el-container">
+                <div class="controls">
+                    <div class="back-to-central-bt">
+                        <a href="central.php">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </a>
+                    </div>
+                    
+                </div>
+                <div class="logo">
+                    <div class="logo-pic">
+                        <svg id="eBYGrpvxAe61" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><path d="M40.1,467.1l-11.2,9c-3.2,2.5-7.1,3.9-11.1,3.9C8,480,0,472,0,462.2L0,192C0,86,86,0,192,0s192,86,192,192v270.2c0,9.8-8,17.8-17.8,17.8-4,0-7.9-1.4-11.1-3.9l-11.2-9c-13.4-10.7-32.8-9-44.1,3.9l-30.5,35c-3.3,3.8-8.2,6-13.3,6s-9.9-2.2-13.3-6l-26.6-30.5c-12.7-14.6-35.4-14.6-48.2,0L141.3,506c-3.3,3.8-8.2,6-13.3,6s-9.9-2.2-13.3-6L84.2,471c-11.3-12.9-30.7-14.6-44.1-3.9ZM160,192c0-17.673112-14.326888-32-32-32s-32,14.326888-32,32s14.326888,32,32,32s32-14.326888,32-32Zm96,32c17.673112,0,32-14.326888,32-32s-14.326888-32-32-32-32,14.326888-32,32s14.326888,32,32,32Z" transform="matrix(.707107 0.707107-.707107 0.707107 180.411309 35.439723)"/></svg>
+                    </div>
+                </div>
+            </div>
         </section>
         <section class="banner" id="banner">
             <div class="banner_in">
@@ -193,10 +208,34 @@
                     ?>
                 </div>
                 <div class="pg images">
+                    <?php
 
+                        $id_page = RetornarIdPage($id_story, 1);
+                        $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
+
+                        $prepare = $pdo->prepare($sql);
+                        $prepare -> execute();
+
+                        if($prepare -> rowCount() > 0){
+                            foreach ($pdo->query($sql) as $key => $value) {
+                                echo "<img src='". $value['path'] ."'><br><br>";
+                            }
+                        }
+                    ?>
                 </div>
                 <div class="pg refs">
+                    <?php
+                        $id_page = RetornarIdPage($id_story, 2);
+                        $sql = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
+                        $prepare = $pdo->prepare($sql);
+                        $prepare -> execute();
 
+                        if($prepare -> rowCount() > 0){
+                            foreach ($pdo->query($sql) as $key => $value) {
+                                echo "<a href ='". $value['path'] ."'>". $value['path'] ."</a>";
+                            }             
+                        }
+                    ?>
                 </div>
             </div>
         </section>
@@ -285,6 +324,7 @@
 
         function reveal(){
 
+            var controls = document.getElementById("contr");
             var reveal = document.getElementById('content-page');
             var underlines = document.getElementsByClassName("un");
 
@@ -296,33 +336,37 @@
             if(revealtop < windowH - revealpoint){
                 reveal.classList.add('active');
                 bn.classList.add("modest");
+                controls.classList.add("appear-controls");
                 ac_ = 1;
             }else{
                 reveal.classList.remove('active');
                 bn.classList.remove("modest");
+                controls.classList.remove("appear-controls");
                 ac_ = 0;
             }
 
-            // When the user scrolls the page, execute myFunction
-/*window.onscroll = function() {myFunction()};
+            
 
-function myFunction() {
+function returnBar() {
   var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var height = document.getElementById("content-page").scrollHeight;
   var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
-}*/
+  
+  if(scrolled > 100){
+    scrolled = 100;
+  }
+  
+  return scrolled;
+}
             if(ac_ == 1){
 
-                var pageMax = reveal.offsetHeight / 10;
 
-                var In_height = revealbottom - (windowH - revealtop);
+                var In_height = windowH - revealtop;
 
-                if(In_height < 0){
-                    In_height = pageMax;
-                }
+                var filled = document.getElementById("filled");
 
-                console.log((pageMax/In_height))
+                filled.style.height = (returnBar()) + "%";
+                //console.log((In_height/revealbottom))
             }
            
             for(var z = 0; z < underlines.length; z++){
