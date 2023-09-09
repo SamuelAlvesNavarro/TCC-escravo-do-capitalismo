@@ -38,7 +38,7 @@
     $titulo = $_POST['titulo'];
         //Se vazio campo do titulo
         if(filter_var($titulo, FILTER_CALLBACK, array('options' => 'vazio'))){
-            //header("Location: criacao.php");
+            header("Location: criacao.php");
             exit;
         }
 
