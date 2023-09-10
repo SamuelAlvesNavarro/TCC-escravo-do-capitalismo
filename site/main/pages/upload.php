@@ -38,7 +38,7 @@
     $titulo = $_POST['titulo'];
         //Se vazio campo do titulo
         if(filter_var($titulo, FILTER_CALLBACK, array('options' => 'vazio'))){
-            //header("Location: criacao.php");
+            header("Location: criacao.php");
             exit;
         }
 
@@ -64,7 +64,7 @@
         exit;
     }
     if(filter_var($historia, FILTER_CALLBACK, array('options' => 'vazio'))){
-        //header("Location: criacao.php");
+        header("Location: criacao.php");
         exit;
     }
 
@@ -265,34 +265,34 @@
         if($certa != 'a' && $certa != 'b' && $certa != 'c' && $certa != 'd') return false;
 
         if(filter_var($questao, FILTER_CALLBACK, array('options' => 'vazio'))){
-            //header("Location: criacao.php");
+            header("Location: criacao.php");
             exit;
         }
         if(filter_var($a, FILTER_CALLBACK, array('options' => 'vazio'))){
-            //header("Location: criacao.php");
+            header("Location: criacao.php");
             exit;
         }
         if(filter_var($b, FILTER_CALLBACK, array('options' => 'vazio'))){
-            //header("Location: criacao.php");
+            header("Location: criacao.php");
             exit;
         }
         if(filter_var($c, FILTER_CALLBACK, array('options' => 'vazio'))){
-            //header("Location: criacao.php");
+            header("Location: criacao.php");
             exit;
         }
         if(filter_var($d, FILTER_CALLBACK, array('options' => 'vazio'))){
-            //header("Location: criacao.php");
+            header("Location: criacao.php");
             exit;
         }
         if(filter_var($certa, FILTER_CALLBACK, array('options' => 'vazio'))){
-            //header("Location: criacao.php");
+            header("Location: criacao.php");
             exit;
         }
 
         return true;
     }
 
-    function storeQuestion($id_story, $perfil){
+    function storeQuestion($id_story){
 
         global $pdo;
         $questao = $_POST['question'];
