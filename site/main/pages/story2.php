@@ -41,7 +41,6 @@
     $showQuestion = 0;
     $showRight = "none;";
     $showWrong = "none;";
-    $showNo = "none;";
 
     /* QUESTION */
 
@@ -81,10 +80,11 @@
         }
 
     }
-
-    if($showWrong == "block;" || $showRight == "block;") $showNo = "none;";
-    else $showNo = "block;";
     
+    if($showRight == "block;" || $showWrong == "block;") $showQuestion = "none";
+    else{
+        $showQuestion = "block;";
+    }
     /* SCORE STUFF */
 
     $check = "SELECT * FROM score WHERE fk_id_profile = $perfil and fk_id_story = $id_story";
@@ -92,11 +92,12 @@
     $prepare->execute();
 
     if($prepare->rowCount() == 0){
-        $showQuestion = "flex;";
         $showAnswered = "none;";
     }else{
-        $showQuestion = "none;";
         $showAnswered = "block;";
+        $showRight = "none;";
+        $showWrong = "none;";
+        $showQuestion = "none;";
     }
 
     /* ANSWERS */
@@ -125,18 +126,29 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="pt-br" class="dark">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/menu.css?v=1.01">
     <link rel="stylesheet" href="../css/story2.css?v=1.01<?php echo rand(0,10000)?>">
     <link rel="stylesheet" href="../css/scroll.css?v=1.01">
+    <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <title>História</title>
 </head>
 <body>
+    <?php
+        include "includes/menu.php";
+    ?>
     <div class="all">
+        <div class="goBt goBack" onclick="toLast()" id="chv-l">
+            <i class="fa-solid fa-chevron-left"></i>
+        </div>
+        <div class="goBt goFoward"  onclick="toNext()" id="chv-r">
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
         <section class="controls-sec" id="contr">
             <div class="progressBar">
                 <div class="bar">
@@ -145,8 +157,9 @@
                     </div>
                 </div>
             </div>
+            <i class="fa-solid fa-sun mode"></i>
         </section>
-        <section class="menu">
+        <section class="menuH">
             <div class="el-container">
                 <div class="controls">
                     <div class="back-to-central-bt">
@@ -154,7 +167,9 @@
                             <i class="fa-solid fa-chevron-left"></i>
                         </a>
                     </div>
-                    
+                    <div class="back-to-central-bt" onclick="menu_appear()">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
                 </div>
                 <div class="logo">
                     <div class="logo-pic">
@@ -184,13 +199,22 @@
                 </div>
                 <div class="pageRefer_container">
                     <div class="pageRefer" onclick="changePosN(0)">
-                        0
+                        <div class="refer_bar"></div>
+                        <div class="rest">
+                            <h1>Referências</h1>
+                        </div>
                     </div>
                     <div class="pageRefer superRefer" onclick="changePosN(1)">
-                        1
+                        <div class="refer_bar"></div>
+                        <div class="rest">
+                            <h1>História</h1>
+                        </div>
                     </div>
                     <div class="pageRefer" onclick="changePosN(2)">
-                        2
+                        <div class="refer_bar"></div>
+                        <div class="rest">
+                            <h1>Imagens</h1>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -208,20 +232,22 @@
                     ?>
                 </div>
                 <div class="pg images">
-                    <?php
+                    <div class="cont-img">
+                        <?php
 
-                        $id_page = RetornarIdPage($id_story, 1);
-                        $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
+                            $id_page = RetornarIdPage($id_story, 1);
+                            $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
 
-                        $prepare = $pdo->prepare($sql);
-                        $prepare -> execute();
+                            $prepare = $pdo->prepare($sql);
+                            $prepare -> execute();
 
-                        if($prepare -> rowCount() > 0){
-                            foreach ($pdo->query($sql) as $key => $value) {
-                                echo "<img src='". $value['path'] ."'><br><br>";
+                            if($prepare -> rowCount() > 0){
+                                foreach ($pdo->query($sql) as $key => $value) {
+                                    echo "<img src='". $value['path'] ."'>";
+                                }
                             }
-                        }
-                    ?>
+                        ?>  
+                    </div>
                 </div>
                 <div class="pg refs">
                     <?php
@@ -232,155 +258,220 @@
 
                         if($prepare -> rowCount() > 0){
                             foreach ($pdo->query($sql) as $key => $value) {
-                                echo "<a href ='". $value['path'] ."'>". $value['path'] ."</a>";
+                                echo "→ <a href ='". $value['path'] ."'>". $value['path'] ."</a><br>";
                             }             
                         }
                     ?>
                 </div>
             </div>
         </section>
-        <section class="quest">
+        <section class="quest" id="quest_item">
+            <div class="quest-cont">
+                <?php 
+                    if($showAnswered == "block;"){
+                        echo 
+                        '<div class="answered">
+                            <h1>Você já respondeu essa pergunta! Obrigado por sua avalicação!</h1>          
+                        </div>';
+                    }
+                    if($showQuestion == "block;"){
+                        echo '<div class="unanswered">
+                            <div class="question-container">
+                                <div class="question">
+                                   '.$questionText.'
+                                </div>
+                                <form id="question-form" method="post">
+                                    <div class="options">
+                                        <div class="option" onclick="answerForm(0)">
+                                            <div class="op-lel">A</div><div class="text_op">'.$answers[0].'</div>
+                                        </div>
+                                        <div class="option" onclick="answerForm(1)">
+                                            <div class="op-lel">B</div><div class="text_op">'.$answers[1].'</div>
+                                        </div>
+                                        <div class="option" onclick="answerForm(2)">
+                                            <div class="op-lel">C</div><div class="text_op">'.$answers[2].'</div>
+                                        </div>
+                                        <div class="option" onclick="answerForm(3)">
+                                            <div class="op-lel">D</div><div class="text_op">'.$answers[3].'</div>
+                                        </div>
+                                        <input type="hidden" name="id_story" value="'.$id_story.'"><br>
+                                        <input type="hidden" name="id_question" value="'.$id_question.'"><br>
+                                    </div>
+                                </form>
+                            </div>  
+                        </div>';
+                    }
+                    if($showWrong == "block;"){
+                        echo '<div id="wrong" class="wrong" style="display:'.$showWrong.'">
+                                <h1>Você Errou!</h1>
+                                <div class="bt-retry">
+                                    <form action="retry_exe.php" method="post">
+                                        <input type="hidden" name="__prof" value="'.$id_question.'">
+                                        <input type="submit" value="Tentar Novamente">
+                                    </form>
+                                </div>
+                            </div>';
 
+                        
+                    }
+                    if($showRight == "block;"){
+                        echo '
+                        <div class="rating-container">
+                            <div class="rating-part">
+                                <h1>Você Acertou</h1>
+                            </div>
+                            <div class="rating-part rating-container-input">
+                                <form id="form-container" action="score.php" method="post">
+                                    <input type="number" required name="rating" id="rating-input" max="5" min="1" placeholder="Dê uma nota à história!"><br>
+                                    <input type="hidden" name="id_story" value="'.$id_story.'">
+                                    <input type="hidden" name="id_question" value="'.$id_question.'">
+                                    <input type="submit" value="Enviar" id="rating-input-submit">
+                                </form>
+                            </div>
+                        </div>
+                        ';
+                    }
+                ?>
+            </div>
         </section>
-        <section class="comment">
 
-        </section>
+        <?php
+
+        if($showAnswered == "block;"){
+        
+            echo '<section class="comments" id="comments">
+
+            <h1>Comentários</h1>
+
+            <form action="comment.php" method="post">
+                <textarea required type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
+                <input type="submit" value="Comentar">
+            </form>
+            
+            ';
+
+            $sql = 
+            
+            "
+            
+            select comment.*, user_common.apelido as nome, profile.id_profile as cod, gadget.in_it as foto
+            
+            from comment, profile, user_common, gadget 
+                
+            where 
+
+            comment.fk_id_profile = profile.id_profile and
+            user_common.fk_id_profile = comment.fk_id_profile and 
+            gadget.id_gadget = profile.foto and
+            gadget.type = 0 and
+            comment.fk_id_story = $id_story 
+            
+            order by comment.id_comment asc
+            
+            ";
+
+            $prepare = $pdo->prepare($sql);
+            $prepare->execute();
+   
+            echo '
+                <div class="comments-container">
+                    ';
+                    
+                    if($prepare->rowCount() != 0){
+                        
+                        foreach ($pdo->query($sql) as $key => $value) {
+
+                            if($value['cod'] == $perfil){
+                                $class = "mine";
+                                $classC = "mineC";
+                                $classA = "mineA";
+                            }else{
+                                $class = "regular";
+                                $classC = "";
+                                $classA = "";
+                            }
+
+                            echo' <div class="comment-container '.$class.'">
+                                    <div class="arrow '.$classA.'"></div>
+                                    <div class="comment '.$classC.'">
+                                    <div class="cheader">
+                                            <div class="pic" style="'.$value['foto'].'">
+
+                                            </div>
+                                            <div class="name">
+                                                <a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>
+                                            </div>
+                                        </div>
+                                        <div class="content-comment">
+                                            '.$value['text'].'
+                                        </div>
+                                    </div>
+                                </div>';
+                        }
+                    }
+
+                    echo '
+                 
+                </div>';
+
+        }
+        
+    
+    
+        echo '</section>';
+    ?>
     </div>
     <script>
-        function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
-}
-
-        var bn = document.getElementById('banner');
-
-        function getBloody(){
-            bn.style.backgroundPosition = getRndInteger(0, 100) + '%'+ getRndInteger(0, 100) + '%';
-        }
-
-        getBloody();
-
-
-        /* REFER CONTROL */
-
-        var nS = 1;
-
-        var changePos = document.getElementsByClassName("pageRefer");
-
-        var subTitle = document.getElementById("subTitle");
-
-        function toLast(){
-            if(nS != 0) changePosN(nS - 1);
-            else changePosN(changePos.length - 1)
-        }
-        function toNext(){
-            if(nS != changePos.length - 1) changePosN(nS + 1);
-            else changePosN(0)
-        }
-
+        var style = document.querySelector('.quest').style;
         
+        /* QUESTION */
+        <?php
+            if($showQuestion == "block;"){
+                echo '
+                function answerForm(n){
 
-        function changePosN(n){
-            if(changePos.length == 2){
+                    var options = document.getElementsByClassName("text_op");
+                    var question_form = document.getElementById("question-form");
+                    newInput1 = document.createElement("input");
+                    newInput1.type = "hidden";
+                    newInput1.name = "number";
+                    newInput1.value = options[n].innerText;
+                    question_form.appendChild(newInput1);
 
-            }else{
 
-                changePos[n].style.order = 2;
-                changePos[n].classList.add("superRefer");
+                    question_form.action = "resposta.php";
+                    question_form.submit();
 
-                nS = n;
+                    
+                } ';
 
-                if(n == 0){
-                    changePos[1].style.order = 3;
-                    changePos[2].style.order = 1;
-
-                    subTitle.innerHTML = "Referências";
-                }
-                else if(n == 1){
-                    changePos[0].style.order = 1;
-                    changePos[2].style.order = 3;
-
-                    subTitle.innerHTML = "História";
-                }
-                else if(n == 2){
-                    changePos[0].style.order = 3;
-                    changePos[1].style.order = 1;
-
-                    subTitle.innerHTML = "Imagens";
-                }
-
-                for(var i  = 0; i < changePos.length; i++){
-                    if(i != n){
-                        changePos[i].classList.remove("superRefer");
-                    }
-                }
-            }
-        }
-
-        /* SCROLL ANIS*/
-
-        var ac_ = 0;
-
-        window.addEventListener("scroll", reveal);
-
-        function reveal(){
-
-            var controls = document.getElementById("contr");
-            var reveal = document.getElementById('content-page');
-            var underlines = document.getElementsByClassName("un");
-
-            var windowH = window.innerHeight;
-            var revealtop = reveal.getBoundingClientRect().top;
-            var revealbottom = reveal.getBoundingClientRect().bottom;
-            var revealpoint = 100;
-
-            if(revealtop < windowH - revealpoint){
-                reveal.classList.add('active');
-                bn.classList.add("modest");
-                controls.classList.add("appear-controls");
-                ac_ = 1;
-            }else{
-                reveal.classList.remove('active');
-                bn.classList.remove("modest");
-                controls.classList.remove("appear-controls");
-                ac_ = 0;
+                echo '
+                    style.setProperty("--background", "linear-gradient(0deg, rgba(46, 46, 46, 0.808), rgba(46, 46, 46, 0.808)), url(../img-story/hgghhhhhhhhhhhh/hgghhhhhhhhhhhh-img-1.jpg)");
+                ';
             }
 
-            
 
-function returnBar() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.getElementById("content-page").scrollHeight;
-  var scrolled = (winScroll / height) * 100;
-  
-  if(scrolled > 100){
-    scrolled = 100;
-  }
-  
-  return scrolled;
-}
-            if(ac_ == 1){
-
-
-                var In_height = windowH - revealtop;
-
-                var filled = document.getElementById("filled");
-
-                filled.style.height = (returnBar()) + "%";
-                //console.log((In_height/revealbottom))
+            if($showRight == "block;"){
+                echo '
+                    style.setProperty("--background", "rgba(8, 131, 14, .7)");
+                ';
             }
-           
-            for(var z = 0; z < underlines.length; z++){
 
-                var revealtop = underlines[z].getBoundingClientRect().top;
-                var revealpoint = 100;
-
-                if(revealtop < windowH - revealpoint){
-                    underlines[z].classList.add("acLink");
-                }else{
-                    underlines[z].classList.remove("acLink");
-                }
+            if($showWrong == "block;"){
+                echo '
+                    style.setProperty("--background", "rgba(148, 8, 8, 0.815)");
+                ';
             }
-        }
+
+            if($showAnswered == "block;"){
+                echo '
+                    document.getElementById("quest_item").style.display = "none";
+                ';
+            }
+        ?>
+
     </script>
+    <script src="../js/story2.js"></script>
+    <script src="../js/menu.js"></script>
 </body>
 </html>
