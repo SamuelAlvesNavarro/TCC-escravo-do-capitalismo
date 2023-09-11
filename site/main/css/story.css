@@ -290,9 +290,9 @@ body{
     font-size: 40px;
 }
 .modest .banner_in{
-    box-shadow: -1px -29px 21px 1px var(--paper-out-color) inset;
-    -webkit-box-shadow: -1px -29px 21px 1px var(--paper-out-color) inset;
-    -moz-box-shadow: -1px -29px 21px 1px var(--paper-out-color)  inset;
+    box-shadow: -1px -29px 21px 1px var(--paper-shadow-color) inset;
+    -webkit-box-shadow: -1px -29px 21px 1px var(--paper-shadow-color) inset;
+    -moz-box-shadow: -1px -29px 21px 1px var(--paper-shadow-color)  inset;
 }
 /* PAGE */
 .page{
