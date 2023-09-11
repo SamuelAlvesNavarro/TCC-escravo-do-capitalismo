@@ -81,6 +81,35 @@ function toNext(){
 function changePosN(n){
     if(changePos.length == 2){
 
+        changePos[n].style.order = 1;
+        changePos[n].classList.add("superRefer");
+
+        nS = n;
+
+        if(n == 0){
+            changePos[1].style.order = 2;
+
+            subTitle.innerHTML = "Referências"; 
+            
+            pgs[0].style.display = "none";
+            pgs[1].style.display = "block";
+        }
+        else if(n == 1){
+
+            changePos[0].style.order = 2;            
+            
+            subTitle.innerHTML = "História";
+
+            pgs[0].style.display = "block";
+            pgs[1].style.display = "none";
+        }
+
+        for(var i  = 0; i < changePos.length; i++){
+            if(i != n){
+                changePos[i].classList.remove("superRefer");
+            }
+        }
+
     }else{
 
         changePos[n].style.order = 2;

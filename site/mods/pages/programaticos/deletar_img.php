@@ -1,5 +1,5 @@
 <?php
-    require "../includes/conexao.php";
+    require "conexao.php";
     require "corrigido.php";
 
     $img = $_POST['id_img'];

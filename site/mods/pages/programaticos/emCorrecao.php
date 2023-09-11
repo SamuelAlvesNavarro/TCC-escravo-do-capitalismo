@@ -1,5 +1,5 @@
 <?php 
-    include "../includes/conexao.php";
+    require "conexao.php";
 
     $story = $_POST['id_story'];
 

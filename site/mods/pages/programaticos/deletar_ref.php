@@ -1,5 +1,5 @@
 <?php
-    require "../includes/conexao.php";
+    require "conexao.php";
 
     $ref = $_POST['id_ref'];
     $id_story = $_POST['id_story'];

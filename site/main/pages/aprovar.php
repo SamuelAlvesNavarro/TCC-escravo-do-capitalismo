@@ -1,5 +1,5 @@
 <?php 
-    include "conexao.php";
+    include "includes/conexao.php";
 
     $story = $_POST['id_story'];
 
@@ -7,5 +7,5 @@
     $prepare = $pdo->prepare($sql);
     $prepare->execute();
 
-    header("Location: ../writerHub.php");
+    header("Location: writerHub.php");
 ?>

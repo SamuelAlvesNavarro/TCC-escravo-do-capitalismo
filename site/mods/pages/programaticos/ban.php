@@ -1,6 +1,6 @@
 <?php
     require "../includes/online.php";
-    require "../includes/conexao.php";
+    require "conexao.php";
     require "deleteAll.php";
 
     $emailUser = $_POST['emailUser'];

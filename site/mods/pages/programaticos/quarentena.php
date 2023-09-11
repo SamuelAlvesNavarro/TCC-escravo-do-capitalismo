@@ -1,6 +1,6 @@
 <?php
     require "../includes/online.php";
-    require "../includes/conexao.php";
+    require "conexao.php";
 
     $id_story = $_POST['id_story'];
 

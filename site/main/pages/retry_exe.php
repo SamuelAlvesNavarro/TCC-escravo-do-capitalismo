@@ -28,7 +28,7 @@
     
 
     if(isset($id_story)){
-        header("Location: story2.php?input_1=$id_story");
+        header("Location: story.php?input_1=$id_story");
     }
     else{
         header("Location: central.php");

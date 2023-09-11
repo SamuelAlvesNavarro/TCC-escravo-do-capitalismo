@@ -188,7 +188,8 @@
 
             if($prepare -> rowCount() > 0){
                 foreach ($pdo->query($sql) as $key => $value) {
-                    echo "<img src='". $value['path'] ."'>";
+                    $banner_path = $value['path'];
+                    break;
                 }
             }else{
                 $banner_path = 'background-image: url(../img/kid-spider.jpg)';
@@ -226,12 +227,24 @@
                             <h1>História</h1>
                         </div>
                     </div>
-                    <div class="pageRefer" onclick="changePosN(2)">
-                        <div class="refer_bar"></div>
-                        <div class="rest">
-                            <h1>Imagens</h1>
-                        </div>
-                    </div>
+                    <?php
+
+                        $id_page = RetornarIdPage($id_story, 1);
+                        $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
+
+                        $prepare = $pdo->prepare($sql);
+                        $prepare -> execute();
+
+                        if($prepare -> rowCount() > 0){
+                            echo '<div class="pageRefer" onclick="changePosN(2)">
+                                        <div class="refer_bar"></div>
+                                        <div class="rest">
+                                            <h1>Imagens</h1>
+                                        </div>
+                                    </div>';
+                        }
+
+                    ?>
                 </div>
             </div>
         </section>
@@ -264,26 +277,27 @@
                                 foreach ($pdo->query($sql) as $key => $value) {
                                     echo "<img src='". $value['path'] ."'>";
                                 }
-                            }
-                            echo '</div>
+                                
+                                echo '</div>
                             </div>';
+                            }
+                            
                         ?>  
-                    
+
+                <div class="pg refs">
                     <?php
                         $id_page = RetornarIdPage($id_story, 2);
-                        $sql = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
-                        $prepare = $pdo->prepare($sql);
+                        $ref = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
+                        $prepare = $pdo->prepare($ref);
                         $prepare -> execute();
 
                         if($prepare -> rowCount() > 0){
-                            echo '<div class="pg refs">';
-                            foreach ($pdo->query($sql) as $key => $value) {
+                            foreach ($pdo->query($ref) as $key => $value) {
                                 echo "→ <a href ='". $value['path'] ."'>". $value['path'] ."</a><br>";
-                            }    
-                            echo'</div>';         
+                            }          
                         }
                     ?>
-               
+                </div>
             </div>
         </section>
         <section class="quest" id="quest_item">
@@ -358,89 +372,88 @@
 
         <?php
 
-        if($showAnswered == "block;"){
-        
-            echo '<section class="comments" id="comments">
+            if($showAnswered == "block;"){
+            
+                echo '<section class="comments" id="comments">
 
-            <h1>Comentários</h1>
+                <h1>Comentários</h1>
 
-            <form action="comment.php" method="post">
-                <textarea required type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
-                <input type="submit" value="Comentar">
-            </form>
-            
-            ';
-
-            $sql = 
-            
-            "
-            
-            select comment.*, user_common.apelido as nome, profile.id_profile as cod, gadget.in_it as foto
-            
-            from comment, profile, user_common, gadget 
+                <form action="comment.php" method="post">
+                    <textarea required type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
+                    <input type="submit" value="Comentar">
+                </form>
                 
-            where 
+                ';
 
-            comment.fk_id_profile = profile.id_profile and
-            user_common.fk_id_profile = comment.fk_id_profile and 
-            gadget.id_gadget = profile.foto and
-            gadget.type = 0 and
-            comment.fk_id_story = $id_story 
-            
-            order by comment.id_comment asc
-            
-            ";
-
-            $prepare = $pdo->prepare($sql);
-            $prepare->execute();
-   
-            echo '
-                <div class="comments-container">
-                    ';
+                $sql = 
+                
+                "
+                
+                select comment.*, user_common.apelido as nome, profile.id_profile as cod, gadget.in_it as foto
+                
+                from comment, profile, user_common, gadget 
                     
-                    if($prepare->rowCount() != 0){
+                where 
+
+                comment.fk_id_profile = profile.id_profile and
+                user_common.fk_id_profile = comment.fk_id_profile and 
+                gadget.id_gadget = profile.foto and
+                gadget.type = 0 and
+                comment.fk_id_story = $id_story 
+                
+                order by comment.id_comment asc
+                
+                ";
+
+                $prepare = $pdo->prepare($sql);
+                $prepare->execute();
+    
+                echo '
+                    <div class="comments-container">
+                        ';
                         
-                        foreach ($pdo->query($sql) as $key => $value) {
+                        if($prepare->rowCount() != 0){
+                            
+                            foreach ($pdo->query($sql) as $key => $value) {
 
-                            if($value['cod'] == $perfil){
-                                $class = "mine";
-                                $classC = "mineC";
-                                $classA = "mineA";
-                            }else{
-                                $class = "regular";
-                                $classC = "";
-                                $classA = "";
+                                if($value['cod'] == $perfil){
+                                    $class = "mine";
+                                    $classC = "mineC";
+                                    $classA = "mineA";
+                                }else{
+                                    $class = "regular";
+                                    $classC = "";
+                                    $classA = "";
+                                }
+
+                                echo' <div class="comment-container '.$class.'">
+                                        <div class="arrow '.$classA.'"></div>
+                                        <div class="comment '.$classC.'">
+                                        <div class="cheader">
+                                                <div class="pic" style="'.$value['foto'].'">
+
+                                                </div>
+                                                <div class="name">
+                                                    <a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>
+                                                </div>
+                                            </div>
+                                            <div class="content-comment">
+                                                '.$value['text'].'
+                                            </div>
+                                        </div>
+                                    </div>';
                             }
-
-                            echo' <div class="comment-container '.$class.'">
-                                    <div class="arrow '.$classA.'"></div>
-                                    <div class="comment '.$classC.'">
-                                    <div class="cheader">
-                                            <div class="pic" style="'.$value['foto'].'">
-
-                                            </div>
-                                            <div class="name">
-                                                <a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>
-                                            </div>
-                                        </div>
-                                        <div class="content-comment">
-                                            '.$value['text'].'
-                                        </div>
-                                    </div>
-                                </div>';
                         }
-                    }
 
-                    echo '
-                 
-                </div>';
+                        echo '
+                    
+                    </div>';
 
-        }
-        
-    
-    
-        echo '</section>';
-    ?>
+            }
+            
+            echo '</section>';
+
+        ?>
     </div>
     <script>
         var style = document.querySelector('.quest').style;
@@ -466,9 +479,8 @@
                     
                 } ';
 
-                ===
                 echo '
-                    style.setProperty("--background", "linear-gradient(0deg, rgba(46, 46, 46, 0.808), rgba(46, 46, 46, 0.808)), url(../img-story/hgghhhhhhhhhhhh/hgghhhhhhhhhhhh-img-1.jpg)"); 
+                    style.setProperty("--background", "linear-gradient(0deg, rgba(46, 46, 46, 0.808), rgba(46, 46, 46, 0.808))"); 
                 ';
             }
 

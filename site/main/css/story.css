@@ -378,7 +378,6 @@ pre strong{
     background-size: cover;
     position: absolute;
     inset: 0;
-    transform: skewY(-2deg);
 }
 
 
@@ -505,7 +504,6 @@ pre strong{
     background-size: cover;
     position: absolute;
     inset: 0;
-    transform: skewY(-2deg);
 }
 .comments h1{
     font-family: 'Poppins', serif;

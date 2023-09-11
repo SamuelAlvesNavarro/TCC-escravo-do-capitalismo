@@ -1,6 +1,6 @@
 <?php
 
-    include "../includes/conexao.php";
+    require "conexao.php";
 
     function deleteUser($id_profile){
         global $pdo;
