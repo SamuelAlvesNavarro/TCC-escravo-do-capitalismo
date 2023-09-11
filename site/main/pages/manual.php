@@ -143,9 +143,11 @@
 
         <div class="split"></div>
 
-        <div class="split">
+        <div class="grandTitle" id="story">Histórias</div>
 
-        </div>
+        
+
+        <div class="split"></div>
         <div class="grandTitle">
             Títulozão
         </div>
