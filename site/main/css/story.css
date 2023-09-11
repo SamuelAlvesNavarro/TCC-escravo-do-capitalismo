@@ -79,19 +79,17 @@ body{
     transform: translateY(-50%);
 }
 .progressBar{
-    width: 10px;
+    width: 5px;
     height: 200px;
-    border-radius: 20px;
     background-color: var(--table-color);
 }
 .bar{
     height: 100%;
-    width: 10px;
+    width: 5px;
 }
 .filled{
     width: 100%;
     background-color: red;
-    border-radius: 20px;
 }
 .mode{
     font-size: 30px;
@@ -165,7 +163,6 @@ body{
 .banner{
     min-height: 100vh;
     position: relative;
-    background-image: url(../img/kid-spider.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-color: transparent;
