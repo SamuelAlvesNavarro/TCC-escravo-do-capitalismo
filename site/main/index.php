@@ -2382,7 +2382,7 @@ l-21 20 1 -29z"/>
      
                                     <tbody>
                                         <?php
-                                            require "pages/includes/conexao.php";
+                                            require "../conexao.php";
                                             $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
                                             $rank = 1;
                                             foreach ($pdo->query($sql) as $key => $value) {

@@ -20,11 +20,10 @@
         $prepare = $pdo->prepare($story);
         $prepare->execute();
 
-        if($prepare->rowCount() == 0)header("Location: error.php");
+        if($prepare->rowCount() == 0) sendToError(14);
 
         foreach ($pdo->query($story) as $key => $value) {
 
-            
                 $titulo = $value['nome'];
                 $rating = $value['rating'];
         }
@@ -42,7 +41,6 @@
     $showQuestion = 0;
     $showRight = "none;";
     $showWrong = "none;";
-    $showNo = "none;";
 
     /* QUESTION */
 
@@ -82,10 +80,11 @@
         }
 
     }
-
-    if($showWrong == "block;" || $showRight == "block;") $showNo = "none;";
-    else $showNo = "block;";
     
+    if($showRight == "block;" || $showWrong == "block;") $showQuestion = "none";
+    else{
+        $showQuestion = "block;";
+    }
     /* SCORE STUFF */
 
     $check = "SELECT * FROM score WHERE fk_id_profile = $perfil and fk_id_story = $id_story";
@@ -93,11 +92,12 @@
     $prepare->execute();
 
     if($prepare->rowCount() == 0){
-        $showQuestion = "flex;";
         $showAnswered = "none;";
     }else{
-        $showQuestion = "none;";
         $showAnswered = "block;";
+        $showRight = "none;";
+        $showWrong = "none;";
+        $showQuestion = "none;";
     }
 
     /* ANSWERS */
@@ -132,208 +132,149 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
-    <title>História</title>
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
-    <link rel="stylesheet" href="../css/story.css?v=1.01">
-    <link rel="stylesheet" href="../css/notification.css?v=11352">
+    <link rel="stylesheet" href="../css/story.css?v=1.01<?php echo rand(0,10000)?>">
+    <link rel="stylesheet" href="../css/scroll.css?v=1.01">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../css/scroll.css?v=1.09">
+    <title>História</title>
 </head>
 <body>
-    <div class="acess-menu" onclick="menu_appear()">
-        <i class="fa-solid fa-bars fa-acess"></i>
-    </div>
-    <div id="all-menu" class="all_menu disappear">
-            <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
-                <i class="fa-sharp fa-solid fa-xmark"></i>
-            </div>
-            <div id="menu" class="menu off">
-                <div class="lamp">
-                    <div class="wire">
-                        
-                    </div>
-                    <i onclick="switchMenu(1)" class="fa-solid fa-lightbulb"></i>
-                </div>
-                <div class="lamp-area" onclick="switchMenu(2)">
-                </div> 
-                <div class="content">
-                    <ul>
-                        <li><a href="central.php" rel="noopener noreferrer">Central</a></li>
-                        <li><a href="profile.php?profile=<?php echo $perfil?>" rel="noopener noreferrer">Perfil</a></li>
-                        <li><a href="loja.php" rel="noopener noreferrer">Loja</a></li>
-                        <li><a href="writerHub.php" rel="noopener noreferrer">Criação</a></li>
-                        <li><a href="leave.php" rel="noopener noreferrer">Sair</a></li>
-                        <div class="search">
-                            <form action="pesquisa.php" method="get">
-                                <div class="search-box">
-                                    <button class="btn-search"><i class="fas fa-search"></i></button>
-                                    <input required type="text" name="busca" class="input-search" placeholder="Pesquisar história........">
-                                </div>
-                            </form>
-                        </div>
-                    </ul>
-                    <!--<img src="https://clipart-library.com/images/rcLoyAzKi.png" alt="" srcset="">-->
-                </div>
-            </div>
+    <?php
+        include "includes/menu.php";
+    ?>
+    <div class="all">
+        <div class="goBt goBack" onclick="toLast()" id="chv-l">
+            <i class="fa-solid fa-chevron-left"></i>
         </div>
-    </div>
-    <div id="alertWr" class="alert hide">
-        <span class="fa-solid fa-circle-xmark n_icon"></span>
-        <span class="msg">Você errou: <?php echo $perdaDeMoedas;?><i class='fa-solid fa-coins'></i></span>
-        <div class="close-btn" onclick="callOutNotification(0)">
-            <span class="fas fa-times"></span>
+        <div class="goBt goFoward"  onclick="toNext()" id="chv-r">
+            <i class="fa-solid fa-chevron-right"></i>
         </div>
-    </div>
-    <div id="alertRi" class="alert hide">
-        <span class="fa-solid fa-check n_icon"></span>
-        <span class="msg">Você acertou: +<?php echo $ganhoDeMoedas;?><i class='fa-solid fa-coins'></i> +<?php echo $ganhoDePontosLeitor;?><i class="fa-solid fa-book"></i></span>
-        <div class="close-btn" onclick="callOutNotification(1)">
-            <span class="fas fa-times"></span>
-        </div>
-    </div>
-    <div class="all transi" id="all">
-        <div id="sideBar" class="sideBar">
-            <div class="container">
-                <div id="goBack" onclick="putUp(-1)" class="goBack pointer">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </div>
-                <div style = "right: 0;" id="goFoward" onclick="putUp(1)" class="goFoward pointer">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-            </div>
-        </div>
-        <div id="slider" class="story-all-container slider">
-            <div class="page slide">
-                <div class="history">
-                    <div class="writing">
-                        <div id="title-container" class="story-title-container">
-                            <div class="story-title transi">
-                                <h1 class="transi">
-                                    <?php
-                                        echo $titulo;
-                                    ?>
-                                </h1>
-                                <h2>
-                                    <?php
+        <section class="controls-sec" id="contr">
+            <div class="progressBar">
+                <div class="bar">
+                    <div class="filled" id="filled">
 
-                                        $autor = "select user_common.nome as nome, user_common.fk_id_profile as cod from user_common, story where story.fk_id_profile = user_common.fk_id_profile and story.id_story = $id_story";
-                                        foreach ($pdo->query($autor) as $key => $value) {
-                                            echo '<a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>';
-                                        }
-                                    ?>
-                                </h2>
-                            </div>
-                            <div onclick = "checkStuff(0)" class="bt-open-close">
-                                <div class="bt">
-                                    <i style="font-size: 30px;" class="exp-min fa-solid fa-expand"></i>
-                                </div>
-                            </div>
-                            <div class="classif">
-                                <div class="stars"> 
-                                    <div class="ratings transi">
-                                        <div class="empty-stars"></div>
-                                        <div id="full-stars"></div>
-                                    </div>
-                                </div> 
-                            </div>
+                    </div>
+                </div>
+            </div>
+            <i class="fa-solid fa-sun mode"></i>
+        </section>
+        <section class="menuH">
+            <div class="el-container">
+                <div class="controls">
+                    <div class="back-to-central-bt">
+                        <a href="central.php">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </a>
+                    </div>
+                    <div class="back-to-central-bt" onclick="menu_appear()">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+                <div class="logo">
+                    <div class="logo-pic">
+                        <svg id="eBYGrpvxAe61" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><path d="M40.1,467.1l-11.2,9c-3.2,2.5-7.1,3.9-11.1,3.9C8,480,0,472,0,462.2L0,192C0,86,86,0,192,0s192,86,192,192v270.2c0,9.8-8,17.8-17.8,17.8-4,0-7.9-1.4-11.1-3.9l-11.2-9c-13.4-10.7-32.8-9-44.1,3.9l-30.5,35c-3.3,3.8-8.2,6-13.3,6s-9.9-2.2-13.3-6l-26.6-30.5c-12.7-14.6-35.4-14.6-48.2,0L141.3,506c-3.3,3.8-8.2,6-13.3,6s-9.9-2.2-13.3-6L84.2,471c-11.3-12.9-30.7-14.6-44.1-3.9ZM160,192c0-17.673112-14.326888-32-32-32s-32,14.326888-32,32s14.326888,32,32,32s32-14.326888,32-32Zm96,32c17.673112,0,32-14.326888,32-32s-14.326888-32-32-32-32,14.326888-32,32s14.326888,32,32,32Z" transform="matrix(.707107 0.707107-.707107 0.707107 180.411309 35.439723)"/></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="banner" id="banner">
+            <div class="banner_in">
+                <div class="mainTitle">
+                    <h1><?php echo $titulo; ?></h1>
+                    <h4 id="autor">por: 
+                        <span class="un">
+                            <?php
+                                $autor = "select user_common.nome as nome, user_common.fk_id_profile as cod from user_common, story where story.fk_id_profile = user_common.fk_id_profile and story.id_story = $id_story";
+                                foreach ($pdo->query($autor) as $key => $value) {
+                                    echo '<a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>';
+                                }
+                            ?>
+                        </span>
+                    </h4>
+                    <h3 id="subTitle">História</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                    </svg>
+                </div>
+                <div class="pageRefer_container">
+                    <div class="pageRefer" onclick="changePosN(0)">
+                        <div class="refer_bar"></div>
+                        <div class="rest">
+                            <h1>Referências</h1>
                         </div>
-                        <div class="lines">
-                            <div class="text"> <!-- contenteditable -->
-                                <?php
-                                    $id_page = RetornarIdPage($id_story, 0);
-                                    $sql = "select texto from history where fk_id_page='$id_page'";
-                                    foreach ($pdo->query($sql) as $key => $value) {
-                                        $text = stripslashes($value["texto"]);
-                                        echo "<pre style='font-family: 'Indie Flower''>".$text."</pre>";
-                                    }
-                                ?>
-                            </div>
+                    </div>
+                    <div class="pageRefer superRefer" onclick="changePosN(1)">
+                        <div class="refer_bar"></div>
+                        <div class="rest">
+                            <h1>História</h1>
+                        </div>
+                    </div>
+                    <div class="pageRefer" onclick="changePosN(2)">
+                        <div class="refer_bar"></div>
+                        <div class="rest">
+                            <h1>Imagens</h1>
                         </div>
                     </div>
                 </div>
             </div>
-            <?php
-            $id_page = RetornarIdPage($id_story, 1);
-            $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
+        </section>
+        <section class="page">
+            <div class="line-page" id="content-page">
+                <div class="pg history">
+                    <?php
+                        $id_page = RetornarIdPage($id_story, 0);
+                        $sql = "select texto from history where fk_id_page='$id_page'";
+                        foreach ($pdo->query($sql) as $key => $value) {
+                            $text = stripslashes($value["texto"]);
+                            echo "<pre>".$text."</pre>";
+                        }
+                    ?>
+                </div>
+                <div class="pg images">
+                    <div class="cont-img">
+                        <?php
 
-            $prepare = $pdo->prepare($sql);
-            $prepare -> execute();
+                            $id_page = RetornarIdPage($id_story, 1);
+                            $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
 
-            if($prepare -> rowCount() > 0){
-                echo '
-                <div class="page slide">
-                    <div>
-                        <div class="writing images-page">
-                            <div id="title-container" class="story-title-container">
-                                <div class="story-title transi">
-                                    <h1 class="transi">Imagens</h1>
-                                </div>
-                                <div onclick = "checkStuff(1)" class="bt-open-close">
-                                    <div class="bt">
-                                        <i style="font-size: 30px;" class="exp-min fa-solid fa-expand"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="images" spellcheck="false">';
-                                    
-                                    foreach ($pdo->query($sql) as $key => $value) {
-                                        echo "<img src='". $value['path'] ."'><br><br>";
-                                    }
-                                echo 
-                            '</div>
-                        </div>
+                            $prepare = $pdo->prepare($sql);
+                            $prepare -> execute();
+
+                            if($prepare -> rowCount() > 0){
+                                foreach ($pdo->query($sql) as $key => $value) {
+                                    echo "<img src='". $value['path'] ."'>";
+                                }
+                            }
+                        ?>  
                     </div>
-                </div>';
-            }
-            
-                $id_page = RetornarIdPage($id_story, 2);
-                $sql = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
-                $prepare = $pdo->prepare($sql);
-                $prepare -> execute();
+                </div>
+                <div class="pg refs">
+                    <?php
+                        $id_page = RetornarIdPage($id_story, 2);
+                        $sql = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
+                        $prepare = $pdo->prepare($sql);
+                        $prepare -> execute();
 
-                if($prepare -> rowCount() > 0){
-                    echo'
-                        <div class="page slide">
-                            <div>
-                                <div class="writing reference-writing">
-                                    <div id="title-container" class="story-title-container">
-                                        <div class="story-title transi">
-                                            <h1 class="transi">Referências</h1>
-                                        </div>
-                                        <div onclick = "checkStuff(2)" class="bt-open-close">
-                                            <div class="bt">
-                                                <i style="font-size: 30px;" class="exp-min fa-solid fa-expand"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="lines">
-                                        <div class="text" spellcheck="false"> ';
-                    
-                                        
-                                        foreach ($pdo->query($sql) as $key => $value) {
-                                            echo "<a href ='". $value['path'] ."'>". $value['path'] ."</a>";
-                                        }
-                                                
-                                        echo' 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ';
-                }
-            ?>
-        </div>
-        <div class="main">
-            <div class="interaction-container">
+                        if($prepare -> rowCount() > 0){
+                            foreach ($pdo->query($sql) as $key => $value) {
+                                echo "→ <a href ='". $value['path'] ."'>". $value['path'] ."</a><br>";
+                            }             
+                        }
+                    ?>
+                </div>
+            </div>
+        </section>
+        <section class="quest" id="quest_item">
+            <div class="quest-cont">
                 <?php 
                     if($showAnswered == "block;"){
                         echo 
                         '<div class="answered">
-                            <h1>Você já respondeu essa pergunta! Obrigado pela avalicação!</h1>          
+                            <h1>Você já respondeu essa pergunta! Obrigado por sua avalicação!</h1>          
                         </div>';
                     }
-                    if($showQuestion == "flex;"){
+                    if($showQuestion == "block;"){
                         echo '<div class="unanswered">
                             <div class="question-container">
                                 <div class="question">
@@ -341,67 +282,73 @@
                                 </div>
                                 <form id="question-form" method="post">
                                     <div class="options">
-                                        <div class="col1-op op-col">
-                                            <div class="option" onclick="answerForm(0)">
-                                                '.$answers[0].'
-                                            </div>
-                                            <div class="option" onclick="answerForm(1)">
-                                                '.$answers[1].'
-                                            </div>
+                                        <div class="option" onclick="answerForm(0)">
+                                            <div class="op-lel">A</div><div class="text_op">'.$answers[0].'</div>
                                         </div>
-                                        <div class="col2-op op-col">
-                                            <div class="option" onclick="answerForm(2)">
-                                                '.$answers[2].'
-                                            </div>
-                                            <div class="option" onclick="answerForm(3)">
-                                                '.$answers[3].'
-                                            </div>
+                                        <div class="option" onclick="answerForm(1)">
+                                            <div class="op-lel">B</div><div class="text_op">'.$answers[1].'</div>
+                                        </div>
+                                        <div class="option" onclick="answerForm(2)">
+                                            <div class="op-lel">C</div><div class="text_op">'.$answers[2].'</div>
+                                        </div>
+                                        <div class="option" onclick="answerForm(3)">
+                                            <div class="op-lel">D</div><div class="text_op">'.$answers[3].'</div>
                                         </div>
                                         <input type="hidden" name="id_story" value="'.$id_story.'"><br>
                                         <input type="hidden" name="id_question" value="'.$id_question.'"><br>
                                     </div>
                                 </form>
                             </div>  
-                            <div class="rating-container">
-                                <div id="noAnswer" class="noAnswer" style="display:'.$showNo.'">
-                                    <div class="things-container-noAnswer">
-                                        <div class="rating-part">
-                                            <h1>Você ainda não respondeu à pergunta</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="right" class="right" style="display:'.$showRight.'">
-                                    <div class="things-container" style="background-color: #1f4921;">
-                                        <div class="rating-part">
-                                            <h1>Você Acertou</h1>
-                                        </div>
-                                        <div class="rating-part rating-container-input">
-                                            <form id="form-container" action="score.php" method="post">
-                                                <input type="number" name="rating" id="rating-input" max="5" min="1" placeholder="Dê uma nota à história!"><br>
-                                                <input type="hidden" name="id_story" value="'.$id_story.'"><br>
-                                                <input type="hidden" name="id_question" value="'.$id_question.'"><br>
-                                                <input type="submit" value="Enviar" id="rating-input-submit">
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="wrong" class="wrong" style="display:'.$showWrong.'">
-                                    <div class="things-container" style="background-color: rgb(87, 17, 17);">
-                                        <div class="rating-part">
-                                            <h1>Você Errou</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>';
+                    }
+                    if($showWrong == "block;"){
+                        echo '<div id="wrong" class="wrong" style="display:'.$showWrong.'">
+                                <h1>Você Errou!</h1>
+                                <div class="bt-retry">
+                                    <form action="retry_exe.php" method="post">
+                                        <input type="hidden" name="__prof" value="'.$id_question.'">
+                                        <input type="submit" value="Tentar Novamente">
+                                    </form>
+                                </div>
+                            </div>';
+
+                        
+                    }
+                    if($showRight == "block;"){
+                        echo '
+                        <div class="rating-container">
+                            <div class="rating-part">
+                                <h1>Você Acertou</h1>
+                            </div>
+                            <div class="rating-part rating-container-input">
+                                <form id="form-container" action="score.php" method="post">
+                                    <input type="number" required name="rating" id="rating-input" max="5" min="1" placeholder="Dê uma nota à história!"><br>
+                                    <input type="hidden" name="id_story" value="'.$id_story.'">
+                                    <input type="hidden" name="id_question" value="'.$id_question.'">
+                                    <input type="submit" value="Enviar" id="rating-input-submit">
+                                </form>
+                            </div>
+                        </div>
+                        ';
                     }
                 ?>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <?php
-        if($showRight == "block;" || $showAnswered == "block;"){
+        <?php
+
+        if($showAnswered == "block;"){
+        
+            echo '<section class="comments" id="comments">
+
+            <h1>Comentários</h1>
+
+            <form action="comment.php" method="post">
+                <textarea required type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
+                <input type="submit" value="Comentar">
+            </form>
+            
+            ';
 
             $sql = 
             
@@ -426,17 +373,11 @@
             $prepare = $pdo->prepare($sql);
             $prepare->execute();
    
-            echo '<div class="comments-cover">
+            echo '
                 <div class="comments-container">
-                    <div class="title">
-                        Comentários
-                    </div>
-                    <div class="comments-start">
                     ';
                     
                     if($prepare->rowCount() != 0){
-
-                        echo'<div class="comments">';
                         
                         foreach ($pdo->query($sql) as $key => $value) {
 
@@ -469,75 +410,68 @@
                         }
                     }
 
-                    echo '</div>
-                        <div class="input-comment">
-                            <form action="comment.php" method="post">
-                                <textarea required type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
-                                <input type="submit" value="Comentar">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>';
+                    echo '
+                 
+                </div>';
 
         }
         
     
-    ?>
     
-</body>
-<script>
-    <?php 
-        if($showRight == "none;"){
-            echo '
-            function answerForm(n){
+        echo '</section>';
+    ?>
+    </div>
+    <script>
+        var style = document.querySelector('.quest').style;
+        
+        /* QUESTION */
+        <?php
+            if($showQuestion == "block;"){
+                echo '
+                function answerForm(n){
 
-                var options = document.getElementsByClassName("option");
-                var question_form = document.getElementById("question-form");
-                newInput1 = document.createElement("input");
-                newInput1.type = "hidden";
-                newInput1.name = "number";
-                newInput1.value = options[n].innerText;
-                question_form.appendChild(newInput1);
+                    var options = document.getElementsByClassName("text_op");
+                    var question_form = document.getElementById("question-form");
+                    newInput1 = document.createElement("input");
+                    newInput1.type = "hidden";
+                    newInput1.name = "number";
+                    newInput1.value = options[n].innerText;
+                    question_form.appendChild(newInput1);
 
 
-                question_form.action = "resposta.php";
-                question_form.submit();
+                    question_form.action = "resposta.php";
+                    question_form.submit();
 
-                
-            } ';
-        }
-        if(isset($_SESSION['story']) && $_SESSION['story'] != -1){
-            echo '
-            var alerts = document.getElementsByClassName("alert");
+                    
+                } ';
 
-            function callNotification(n){
-                alerts[n].classList.remove("hide");
-                alerts[n].classList.add("showAlert");
-                alerts[n].classList.add("show");
-            } 
-            function callOutNotification(w){
-                alerts[w].classList.remove("show");
-                alerts[w].classList.add("hide");
+                echo '
+                    style.setProperty("--background", "linear-gradient(0deg, rgba(46, 46, 46, 0.808), rgba(46, 46, 46, 0.808)), url(../img-story/hgghhhhhhhhhhhh/hgghhhhhhhhhhhh-img-1.jpg)");
+                ';
             }
 
-            callNotification('.$n_type.')
-            ';
-            $_SESSION['story'] = -1;
-        }
-    ?>
 
-        var stars = document.getElementById("full-stars")
+            if($showRight == "block;"){
+                echo '
+                    style.setProperty("--background", "rgba(8, 131, 14, .7)");
+                ';
+            }
 
-        var qP = <?php echo $rating ?>;
+            if($showWrong == "block;"){
+                echo '
+                    style.setProperty("--background", "rgba(148, 8, 8, 0.815)");
+                ';
+            }
 
-        stars.style.width = calcStar(qP) + "%";     
-        
-        function calcStar(points){
-            return (100*points)/5;
-        }
-    
-</script>
-<script src="../js/story.js?v=1.01"></script>
-<script src="../js/menu.js?v=1.01"></script>
+            if($showAnswered == "block;"){
+                echo '
+                    document.getElementById("quest_item").style.display = "none";
+                ';
+            }
+        ?>
+
+    </script>
+    <script src="../js/story.js"></script>
+    <script src="../js/menu.js"></script>
+</body>
 </html>

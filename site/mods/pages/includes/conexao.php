@@ -1,3 +1,3 @@
 <?php
-
-     require "../../../conexao.php";
+     require "../../conexao.php";
+?>
