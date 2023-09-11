@@ -28,6 +28,7 @@
     --table-color: #ccad7f;
     --line-color: #121212;
     --paper-out-color: #E0C9A6;
+    --paper-shadow-color: 0;
 
     --menu-color: #ccad7f; 
 
@@ -42,6 +43,7 @@
     --table-color: #505050;
     --line-color: white;
     --paper-out-color: #121212;
+    --paper-shadow-color: #121212;
 
     --menu-color: #121212;
 
