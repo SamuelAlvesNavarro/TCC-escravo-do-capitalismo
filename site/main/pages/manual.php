@@ -145,7 +145,29 @@
 
         <div class="grandTitle" id="story">Histórias</div>
 
-        
+        <div class="title"></div>
+
+            <div classs="lines">
+
+            </div>
+
+        <div class="title">Questões</div>
+
+            <div class="lines">
+                A área de questões está abaixo da história, nela o usuário deverá escolher a resposta correta, caso erre serão retirados x pontos de leitor e ele poderá tentar novamente, caso acerte o usuário receberá 50 moedas e 100 pontos de leitor e vai liberar a opção de avaliar a história.
+            </div>
+
+        <div class="title">Avaliação</div>
+
+            <div class="lines">
+                A área de avaliação substituirá a área de questões após o usuário respondê-la corretamente. Nela o usuário poderá avaliar a história com uma nota de 1 a 5. Após a avaliação ser feita a área de comentários irá substituí-la.
+            </div>
+
+        <div class="title">Comentários</div>
+
+            <div class="lines">
+                A área de comentários substituirá a área de avaliação após o usuário avaliar a história. Nela o usuário poderá ver o comentários de outras pessoas e enviar seu próprio comentário. 
+            </div>
 
         <div class="split"></div>
         <div class="grandTitle">
