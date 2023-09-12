@@ -2,6 +2,27 @@
     require "includes/conexao.php";
     require "includes/online.php"; 
 
+    function checkAllReport(){
+        global $pdo;
+
+        $sql = "delete from report_story where fk_id_reported_story = 0 and fk_id_reporter = 0";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        $sql = "delete from report_comment where fk_id_reported = 0 and fk_id_reporter = 0";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        $sql = "delete from report_profile where fk_id_reported = 0 and fk_id_reporter = 0";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        $sql = "delete from report_profile where fk_id_reported = 0 and fk_id_reporter = 666";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+    }
+    
+    checkAllReport();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +101,7 @@
                             echo "<td>".$cd."</td>";
                             echo "$y";
                             echo "$x";
-                            echo "<td><a href='resolvido?id_report=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
+                            echo "<td><a href='programaticos/resolvido.php?id_report_profile=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
                             echo "</tr>";
                         }
                     ?>
@@ -126,7 +147,7 @@
                             echo "<td>".$value['fk_id_reporter']."</td>";
                             echo "<td>".$value['reason']."</td>";
                             echo "<td>".$cd."</td>";
-                            echo "<td><a href='resolvido?id_report=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
+                            echo "<td><a href='programaticos/resolvido.php?id_report_story=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
                             echo "</tr>";
                         }
                     ?>

@@ -1,7 +1,6 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
-    require "includes/menu.php";
  
     $perfildono = -1;
     $perfildono = $_GET['profile'];
@@ -44,7 +43,7 @@
 
     /* GET RANK */
 
-    $sql = "SELECT * FROM user_common order by pontos_leitor DESC";
+    $sql = "SELECT * FROM user_common order by pontos_leitor desc, moedas desc Limit 3";
     $rank = 1;
 
     foreach($pdo->query($sql) as $key => $value){

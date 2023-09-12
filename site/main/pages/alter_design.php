@@ -22,11 +22,11 @@
         if($type == 0){
             $user = "UPDATE profile SET foto = '$gadget' WHERE id_profile = '$perfil'";
         } else if($type == 1){
-            $user = "UPDATE profile SET fundoPerfil = '$gadget' WHERE id_profile = '$perfil'";
+            $user = "UPDATE profile SET fundoFoto = '$gadget' WHERE id_profile = '$perfil'";
         } else if($type == 2){
             $user = "UPDATE profile SET bordaFoto = '$gadget' WHERE id_profile = '$perfil'";
         } else if($type == 3){
-            $user = "UPDATE profile SET fundoFoto = '$gadget' WHERE id_profile = '$perfil'";
+            $user = "UPDATE profile SET fundoPerfil = '$gadget' WHERE id_profile = '$perfil'";
         }
 
         $prepare = $pdo->prepare($user);

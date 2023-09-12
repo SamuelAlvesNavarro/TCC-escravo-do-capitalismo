@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja</title>
     <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/loja.css">
+    <link rel="stylesheet" href="../css/loja.css?v=10.1">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/scroll.css?v=1.09">
@@ -72,6 +72,7 @@
                     <div class="display-items">
                         <div class="all-display-items">
                             <div class="img-display"></div>
+                            <div class="nome-display"></div>
                             <div class="price-display">
                                 0
                             </div>
@@ -87,6 +88,7 @@
                                 $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 0";
                                 $z = 0;
                                 foreach($pdo->query($gadget) as $key => $value){
+                                    $nome = $value['nome'];
                                     $item = $value['in_it'];
                                     $preco = $value['preco'];
                                     $code = $value['id_gadget'];
@@ -104,6 +106,7 @@
 
                                             </div>
                                             <hr>
+                                            <div id='".$code."n'>$nome</div>
                                             <div class='price' id='".$code."p'>
                                                 $preco<i class='fa-solid fa-coins'></i>
                                             </div>
@@ -130,6 +133,7 @@
                     <div class="display-items">
                         <div class="all-display-items bc-display">
                             <div class="img-display"></div>
+                            <div class="nome-display"></div>
                             <div class="price-display">
                                 0
                             </div>
@@ -145,6 +149,7 @@
                                 $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 3";
                                 $i = 0;
                                 foreach($pdo->query($gadget) as $key => $value){
+                                    $nome = $value['nome'];
                                     $item = $value['in_it'];
                                     $preco = $value['preco'];
                                     $code = $value['id_gadget'];
@@ -162,6 +167,7 @@
 
                                             </div>
                                             <hr>
+                                            <div id='".$code."n'>$nome</div>
                                             <div class='price' id='".$code."p'>
                                                 $preco<i class='fa-solid fa-coins'></i>
                                             </div>

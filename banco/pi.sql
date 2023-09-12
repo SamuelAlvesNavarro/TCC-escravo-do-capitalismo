@@ -220,6 +220,7 @@ CREATE TABLE `gadget` (
   `type` int(11) NOT NULL,
   `preco` int(11) NOT NULL,
   `g_status` int(11) NOT NULL DEFAULT 1,
+  `nome` varchar(255) NOT NULL,
   `in_it` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -227,18 +228,18 @@ CREATE TABLE `gadget` (
 -- Extraindo dados da tabela `gadget`
 --
 
-INSERT INTO `gadget` (`id_gadget`, `type`, `preco`, `g_status`, `in_it`) VALUES
-(1, 0, 0, 1, 'background-image: url(../profile-gadgets/pc-profile/new-user.jpg);'),
-(2, 3, 0, 1, 'background-image: url(../profile-gadgets/bc-profile/new-user.jpg);'),
-(25, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/bonoro.jpg);'),
-(26, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/cucapkke.jpg);'),
-(27, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/taylor.jpg);'),
-(28, 0, 25, 1, 'background-image: url(../profile-gadgets/pc-profile/wise-tree.jpg);'),
-(29, 0, 10, 1, 'background-image: url(../profile-gadgets/pc-profile/murilinho.jpg);'),
-(30, 1, 15, 1, 'background-image: url(../profile-gadgets/bc-profile/cassio.jpg);'),
-(31, 1, 9999, 1, 'background-image: url(../profile-gadgets/bc-profile/slay-lacre.jpg);'),
-(32, 1, 700, 1, 'background-image: url(../profile-gadgets/bc-profile/nicki.jpg);'),
-(33, 1, 69, 1, 'background-image: url(../profile-gadgets/bc-profile/ariana.jpg);');
+INSERT INTO `gadget` (`id_gadget`, `type`, `preco`, `g_status`, `nome`, `in_it`) VALUES
+(1, 0, 0, 1, 'Novo Usuário Foto', 'background-image: url(../profile-gadgets/pc-profile/new-user.jpg);'),
+(2, 3, 0, 1, 'Novo Usuário Fundo', 'background-image: url(../profile-gadgets/bc-profile/new-user.jpg);'),
+(25, 0, 25, 1, 'Bolsonaro', 'background-image: url(../profile-gadgets/pc-profile/bonoro.jpg);'),
+(26, 0, 25, 1, 'Cupcakke', 'background-image: url(../profile-gadgets/pc-profile/cucapkke.jpg);'),
+(27, 0, 25, 1, 'Taylor Swift', 'background-image: url(../profile-gadgets/pc-profile/taylor.jpg);'),
+(28, 0, 25, 1, 'Árvore Sábia', 'background-image: url(../profile-gadgets/pc-profile/wise-tree.jpg);'),
+(29, 0, 10, 1, 'Muliro', 'background-image: url(../profile-gadgets/pc-profile/murilinho.jpg);'),
+(30, 3, 15, 1, 'Cálcio', 'background-image: url(../profile-gadgets/bc-profile/cassio.jpg);'),
+(31, 3, 9999, 1, 'Slay', 'background-image: url(../profile-gadgets/bc-profile/slay-lacre.jpg);'),
+(32, 3, 700, 1, 'Nicki Minaj Macha Era', 'background-image: url(../profile-gadgets/bc-profile/nicki.jpg);'),
+(33, 3, 69, 1, 'Ariana Small', 'background-image: url(../profile-gadgets/bc-profile/ariana.jpg);');
 
 -- --------------------------------------------------------
 

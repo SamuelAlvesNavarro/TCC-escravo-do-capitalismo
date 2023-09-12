@@ -22,7 +22,7 @@
     $topUsers = array();
     $topIds = array();
     $i =  0;
-    $sql = "SELECT * FROM user_common order by pontos_leitor desc Limit 3";
+    $sql = "SELECT * FROM user_common order by pontos_leitor desc, moedas desc Limit 3";
     foreach($pdo->query($sql) as $key => $value){
         $topUsers[$i] = $value['apelido'];
         $topIds[$i] = $value['fk_id_profile'];

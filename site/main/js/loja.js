@@ -2,6 +2,7 @@ var displays = document.getElementsByClassName("display-items");
 var item_shops = document.getElementsByClassName("items");
 var price_displays = document.getElementsByClassName("price-display");
 var img_display = document.getElementsByClassName("img-display");
+var nome_display = document.getElementsByClassName("nome-display");
 var buttons_buy_e = document.getElementsByClassName("buy");
 var current = 0;
 var section = document.getElementsByClassName("section");
@@ -48,11 +49,14 @@ function show_item(store_type, item){
     item_shops[store_type].classList.add("mini-shop");
 
     var item_price = item+"p";
+    var nome_ = item+"n";
     var price_ = document.getElementById(item_price).innerHTML;
+    var nome = document.getElementById(nome_).innerHTML;
     var img = document.getElementById(item);
    
     img_display[store_type].style.backgroundImage = img.style.backgroundImage;
     price_displays[store_type].innerHTML = price_;
+    nome_display[store_type].innerHTML = nome;
 
     buttons_buy_e[store_type].value = item;
 }
