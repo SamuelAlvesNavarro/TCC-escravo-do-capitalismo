@@ -5,6 +5,7 @@
     $name = $_POST['name'];
     $preco = $_POST['preco'];
     $type = $_POST['type'];
+    $mostrado = $_POST['mostrado'];
     
     $extensao = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
 
@@ -26,7 +27,7 @@
         copy("../../main/profile-gadgets/bc-profile/$name_image.$extensao", "../../admin/profile-gadgets/bc-profile/$name_image.$extensao");
     }
 
-    $image = "INSERT INTO gadget values(NULL, '$type', '$preco', 1, '$path')";
+    $image = "INSERT INTO gadget values(NULL, '$type', '$preco', 1, '$mostrado', '$path')";
     $prepare = $pdo->prepare($image);
     $prepare->execute();
 

@@ -162,7 +162,7 @@
                 $upload_arquivo = $pasta_destino.$nome_principal;
                 move_uploaded_file($name['tmp_name'], $upload_arquivo);
 
-                $page = "INSERT INTO images values(NULL, '$id_page', '$upload_arquivo')";
+                $page = "INSERT INTO images values(NULL, '$id_page', 0, '$upload_arquivo')";
                 $prepare = $pdo->prepare($page);
                 $prepare->execute();
             }

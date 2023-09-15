@@ -270,6 +270,7 @@ INSERT INTO `history` (`id_history`, `fk_id_page`, `texto`) VALUES
 CREATE TABLE `images` (
   `id_image` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
+  `fundo` tinyint not null default 0,
   `path` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

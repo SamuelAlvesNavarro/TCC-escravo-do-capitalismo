@@ -4,10 +4,11 @@
     $text = $_POST['story'];
     $title = $_POST['nome'];
     $id_story = $_POST['id_story'];
+    $fundo = $_POST['fundo'];
 
     function saveStory($text, $title, $id_story, $st){
 
-        global $pdo;
+        global $pdo, $fundo;
         
         $sql = "UPDATE story SET nome = '$title' WHERE id_story = '$id_story'";
         $prepare = $pdo->prepare($sql);
@@ -30,6 +31,21 @@
         
         $status = "UPDATE story SET status = $st WHERE id_story = '$id_story'";
         $prepare = $pdo->prepare($status);
+        $prepare->execute();
+
+        /* FUNDO */
+
+        $page = "SELECT id_page from page where fk_id_story = $id_story and type = 1";
+        foreach ($pdo->query($page) as $key => $value){
+            $id_page = $value['id_page'];
+        }
+
+        $sql = "UPDATE images SET fundo = 0 WHERE fk_id_page = $id_page";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        $sql = "UPDATE images SET fundo = 1 WHERE id_image = $fundo";
+        $prepare = $pdo->prepare($sql);
         $prepare->execute();
 
         /* QUESTÃO */

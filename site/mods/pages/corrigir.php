@@ -66,9 +66,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <table class="table table-dark">
+                    <table class="table table-dark image-table">
                         <?php
                             $id_page = RetornarIdPage($id_story, 1);
+
                             $sql = "SELECT * FROM images WHERE fk_id_page='$id_page'";
                         
                             $prepare = $pdo->prepare($sql);
@@ -80,6 +81,7 @@
                                     <thead>
                                         <tr>
                                             <th>Imagens</th>
+                                            <th>Fundo</th>
                                             <th>Remover</th>
                                         </tr>
                                     </thead>
@@ -87,9 +89,21 @@
                                     ";
 
                                 foreach ($pdo->query($sql) as $key => $value) {
+
+                                    $fundo_ = $value['fundo'];
+
+                                    if($fundo_ == 1){
+                                        $checked = 'checked';
+                                    }else{
+                                        $checked = '';
+                                    }
+
                                     echo "<tr>
                                             <td>
                                                 <img class='img-story' src='../../main/pages/". $value['path'] ."'>
+                                            </td>
+                                            <td>
+                                                <input type='radio' name='fundo' value='".$value['id_image']."' ".$checked.">
                                             </td>
                                             <td>
                                                 <button type='button' class='btn btn-danger' onclick='send(4, ".$id_story.", ". $value['id_image'] .")'>Deletar</button>

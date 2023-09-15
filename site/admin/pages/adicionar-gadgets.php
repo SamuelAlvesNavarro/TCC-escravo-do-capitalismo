@@ -21,7 +21,9 @@
     <form action="gadgets-upload.php" method="post" enctype="multipart/form-data">
         <label for="">Gadget:</label>
         <input type="file" name="image" required><br>
-        <label for="">Nome do Gadget:</label>
+        <label for="">Nome do Gadget (Mostrado):</label>
+        <input type="text" name="mostrado" id="" required><br>
+        <label for="">Nome do Gadget (Imagem):</label>
         <input type="text" name="name" id="" required><br>
         <label for="">Preço: </label>
         <input type="number" name="preco" id="" required><br>
@@ -29,5 +31,14 @@
         <input type="number" name="type" id="" required><br>
         <button>Enviar</button>
     </form>
+
+    <br>
+
+    <h1>Tipos</h1>
+
+    <ul>
+        <li>1: Foto</li>
+        <li>3: Fundo</li>
+    </ul>
 </body>
 </html>
