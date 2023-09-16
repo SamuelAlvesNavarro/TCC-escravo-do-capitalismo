@@ -43,11 +43,16 @@
   }
   
 .nav{
-    width: calc(100% - 84px);
+    position: absolute;
+    width: calc(100% - 42px);
+    padding: 21px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     position: fixed;
+    color: white;
+    z-index: 100;
+    background-color: #242424;
 }
   
 .go-back{
@@ -84,6 +89,10 @@
     background: repeating-linear-gradient(transparent 0px, transparent 40px, var(--line-color) 42px);
     line-height: 42px;
     padding: 42px;
+}
+
+.form-search-th{
+    margin-top: 84px;
 }
 
 .search-box{
@@ -125,31 +134,59 @@
 }
 
 .title-r{
-    margin-top: 84px;
+    margin-top: 42px;
     font-size: 20px;
 }
 
-.res {
+.resultsAll{
     margin-top: 42px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-
 .action{
+    background-color: var(--paper-color);
     cursor: pointer;
-    width: 50%;
-    height: 42px;
     overflow: hidden;
-    transition: .2s linear;
+    transition: .1s linear;
     position: relative;
+    max-width: 300px;
+    box-shadow: -13px 10px 65px -5px black;
+    color: white;
 }
 
 .action:hover{
-    width: 50%;
-    box-shadow: -13px 10px 65px -5px black;
-    height: 84px;
-    padding-left: 10px;
-    line-break: anywhere;
+    transform: translateY(-20px);
+}
+.action:hover .square{
+    
+    box-shadow: 40px -83px 100px 12px rgba(0,0,0,0.75) inset;
+-webkit-box-shadow: 40px -83px 100px 12px rgba(0,0,0,0.75) inset;
+-moz-box-shadow: 40px -83px 100px 12px rgba(0,0,0,0.75) inset;
 }
 
+.square{
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+    box-shadow: 0;
+-webkit-box-shadow: 0;
+-moz-box-shadow: 0;
+    transition: .2s linear;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.square i{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 .readqm{
     font-size: 20px;
     position: absolute;
@@ -167,4 +204,31 @@
 }
 .fa-star{
     color: #dede44;
+}
+
+
+
+@media (max-width: 450px) {
+    .nav{
+        width: calc(100% - 20px);
+        padding: 10px;
+    }
+    .go-back{
+        font-size: 20px;
+    }
+
+    .go-menu{
+        font-size: 20px;
+    }
+    h1{
+        font-size: 25px;
+    }
+    .lines{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .square{
+        width: 200px;
+        height: 200px;
+    }
 }

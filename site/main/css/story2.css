@@ -36,17 +36,23 @@
     --paper-color: #f0e1cc;
     --table-color: #ccad7f;
     --line-color: #121212;
-    --paper-out-color: #E0C9A6;
+    --paper-out-color: #fcf3e7;
     --paper-shadow-color: 0;
 
-    --menu-color: #121212; 
+    --menu-color: #242424; 
+
+
+    --banner-color: rgba(12,12,12,0.3);
+    --modest-banner-color: #fcf3e7;
+
+    
 
     --shadow-color: (0,0,0,0.2);
     --shadow-main: 0;
   }
   .dark {
     color-scheme: dark;
-    --color: #ebebeb;
+    --color: #fcecd5;
     --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;
     --paper-color: #606060;
     --table-color: #505050;
@@ -54,7 +60,10 @@
     --paper-out-color: #121212;
     --paper-shadow-color: #121212;
 
-    --menu-color: #121212;
+    --menu-color: #242424;
+
+    --banner-color: rgba(12,12,12,0.3);
+    --modest-banner-color: #121212;
 
     --shadow-color: (255,255,255,0.2);
     --shadow-main: #121212;
@@ -115,9 +124,9 @@ body{
     position: fixed;
     z-index: 1000;
     width: calc(100% - 30px);
-    box-shadow: 0px 3px 6px 0px var(--shadow-color);
--webkit-box-shadow: 0px 3px 6px 0px var(--shadow-color);
--moz-box-shadow: 0px 3px 6px 0px var(--shadow-color);
+    box-shadow: 1px -2px 5px 0px rgba(255,255,255,0.75);
+-webkit-box-shadow: 1px -2px 5px 0px rgba(255,255,255,0.75);
+-moz-box-shadow: 1px -2px 5px 0px rgba(255,255,255,0.75);
 }
 .el-container{
     display: flex;
@@ -145,6 +154,9 @@ body{
     fill: white !important;
     border: 5px solid white !important;
 }
+.menuH i{
+    color: white !important;
+}
 /* BANNER */
 
 .banner{
@@ -158,7 +170,7 @@ body{
 .banner_in{
     width: 100%;
     min-height: 100vh;
-    background-color: rgba(18,18,18,.3);
+    background: var(--banner-color);
     transition: .5s linear;
     display: flex;
     align-items: flex-end;
@@ -249,13 +261,15 @@ body{
 }
 .modest .mainTitle h1, .modest .mainTitle h4{
     display: none;
+    color: var(--color);
 }
 .modest .mainTitle h3{
     display: block;
     font-size: 40px;
+    color: var(--color);
 }
 .modest .banner_in{
-    background-color: rgba(18,18,18,.9);
+    background: var(--modest-banner-color);
     box-shadow: -1px -29px 21px 1px var(--paper-shadow-color) inset;
     -webkit-box-shadow: -1px -29px 21px 1px var(--paper-shadow-color) inset;
     -moz-box-shadow: -1px -29px 21px 1px var(--paper-shadow-color)  inset;
@@ -263,7 +277,7 @@ body{
 /* PAGE */
 .page{
     padding-top: 50px;
-    background-color: var(--paper-out-color);
+    background: var(--paper-out-color);
     display: flex;
     justify-content: center;
     margin-bottom: 100px;
@@ -274,7 +288,7 @@ body{
     padding-bottom: 0;
 }
 .pg h1{
-    font-family: var(--formal);
+    font-family: "Poppins";
     margin-bottom: 32px;
 }
 .page a{
@@ -283,10 +297,10 @@ body{
 .line-page{
     line-height: 32px;
     width: 100%;
-    max-width: 900px;
+    max-width: 700px;
     background: var(--paper-out-color);
     color: var(--paper-out-color);
-    transition: all .5s linear;
+    transition: all .5s;
     min-height: 200px;
     box-shadow: -1px -29px 21px 1px var(--shadow-main) inset;
     -webkit-box-shadow: -1px -29px 21px 1px var(--shadow-main) inset;
@@ -297,6 +311,7 @@ body{
     background: repeating-linear-gradient(transparent 0px, transparent 30px, var(--line-color) 32px);
     max-height: none;
     min-height: 20vh;
+
 }
 
 .line-page pre{
@@ -334,8 +349,10 @@ pre strong{
 }
 .cont-img img{
     max-width: 100%;
+    border: 1px solid var(--color);
 }
 .images{
+    padding-bottom: 20px;
     margin-top: 30px;
     background-color: var(--paper-out-color);
     border: 2px solid var(--color);

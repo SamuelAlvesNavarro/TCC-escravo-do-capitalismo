@@ -39,3 +39,8 @@ function getTheme(){
 
 
 getTheme();
+
+
+function story(n){
+    window.location=("story.php?story="+n);
+}

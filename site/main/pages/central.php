@@ -148,7 +148,7 @@
                                     foreach($pdo->query($showStory) as $key => $value){
                                         $id_story = $value['id_story'];
                                         $nome = $value['nome'];
-                                        echo "<a class='ageRankA' href='story.php?input_1=". $id_story ."' style='order:".$i."'>$nome</a>";
+                                        echo "<a class='ageRankA' href='story.php?story=". $id_story ."' style='order:".$i."'>$nome</a>";
                                         $i++;
                                     }
                                 ?>
@@ -166,7 +166,7 @@
                                     foreach($pdo->query($showStory) as $key => $value){
                                         $id_story = $value['id_story'];
                                         $nome = $value['nome'];
-                                        echo "<a class='bestRankA' href='story.php?input_1=". $id_story ."' style='order:".$i."'>$nome</a>";
+                                        echo "<a class='bestRankA' href='story.php?story=". $id_story ."' style='order:".$i."'>$nome</a>";
                                         $i++;
                                     }
                                 ?>

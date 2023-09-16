@@ -52,7 +52,7 @@
                     $prepare->execute();
 
                     $_SESSION['story'] = 1;
-                    header("Location: story.php?input_1=".$id_story);
+                    header("Location: story.php?story=".$id_story);
                 }else{
                     sendToError(19);
                     exit; 
@@ -83,7 +83,7 @@
                     $prepare->execute();
 
                     $_SESSION['story'] = 1;
-                    header("Location: story.php?input_1=".$id_story);
+                    header("Location: story.php?story=".$id_story);
                 }else{
                     header("Location: error.php?erro=11"); //erro -> já respondeu a questão e tentou chamar a página de acerto para farmar pontos
                 }
@@ -109,7 +109,7 @@
             $prepare->execute();
 
             $_SESSION['story'] = 0;
-            header("Location: story.php?input_1=".$id_story);
+            header("Location: story.php?story=".$id_story);
         }
 
     }else{

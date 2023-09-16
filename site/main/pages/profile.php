@@ -196,7 +196,7 @@
                                 $i++;
                                 echo "
 
-                                <a href='story.php?input_1=".$value['id_story']."'>
+                                <a href='story.php?story=".$value['id_story']."'>
                                     <p>
                                         ". $value['nome']."
                                     </p>
@@ -219,9 +219,8 @@
         </div>
         <?php
 
-            if($perfildono == $perfilEntrando){
+            if($perfildono == $perfilEntrando): ?>
 
-                echo '
                 <div class="split">
                     <hr>
                 </div>
@@ -243,25 +242,25 @@
                                         <tr>
                                             <td>Apelido:</td>
                                             <td class="input">
-                                                <input type="text" name="apelido" id="" value="'.$apelido.'">
+                                                <input type="text" name="apelido" id="" value="<?php echo $apelido ?>">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Email:</td>
                                             <td class="input">
-                                                <input type="email" name="email" id="" value="'.$email.'">
+                                                <input type="email" name="email" id="" value="<?php echo $email ?>">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Nome:</td>
                                             <td class="input">
-                                                <input type="text" name="nome" id="" value="'.$nome.'">
+                                                <input type="text" name="nome" id="" value="<?php echo $nome ?>">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Senha:</td>
                                             <td class="input">
-                                                <input id="senha" type="password" name="senha" id="" value="'.$senha.'">
+                                                <input id="senha" type="password" name="senha" id="" value="<?php echo $senha ?>'">
                                             </td>
                                         </tr>
                                     </tbody>
@@ -279,9 +278,9 @@
                             </form>
                         </div>
                         <div class="header-change">
-                            <img style="'.$fundo.'?>" alt="" class="bc">
+                            <img style="<?php echo $fundo ?>" alt="" class="bc">
                             <div class="pc-change">
-                                <div class="profile-photo-change" style="'.$foto.'"></div>
+                                <div class="profile-photo-change" style="<?php echo $foto ?>"></div>
                             </div>
                         </div>
                     </div>
@@ -291,8 +290,8 @@
                         <h1 class="formal">Fotos</h1>
                     </div>
                     <div class="pics">
-                    ';
                  
+                        <?php 
                             if($perfildono == $perfilEntrando){
                                 $perfil = $perfilEntrando;
                                 $gadget = "SELECT * FROM gadget WHERE type = 0";
@@ -307,23 +306,23 @@
 
                                     $rows = $prepare->rowCount();
 
-                                    if($rows == 1){
-                                        echo "<div class='card card-foto' onclick='switchP(".$code.")'>
-                                            <div class='card-pic' id=".$code." style='$item'></div>
+                                    if($rows == 1): ?>
+                                        <div class='card card-foto' onclick='switchP("<?php echo $code ?>")'>
+                                            <div class='card-pic' id="<?php echo $code ?>" style='<?php echo $item ?>'></div>
                                         </div>";
-                                    } 
+                                    
+                                    <?php endif;
                                 }
                             }
-                            
-                        echo'
+                        ?>
                     
                     </div>
                     <div class="stories-title">
                         <h1 class="formal">Fundos</h1>
                     </div>
                     <div class="backs">
-                    ';
                         
+                            <?php 
                             if($perfildono == $perfilEntrando){
                                 $gadget = "SELECT * FROM gadget WHERE type = 3";
                                 foreach($pdo->query($gadget) as $key => $value){
@@ -343,16 +342,13 @@
                                         </div>";
                                     } 
                                 }
-                            }
+                            } ?>
                         
-                            echo '
                     </div>
                 </div>
                 
-                ';
-            }
             
-        ?>
+            <?php endif; ?>
     </div>
     <div id="f-cont"></div>
     <script src="../js/menu.js"></script>

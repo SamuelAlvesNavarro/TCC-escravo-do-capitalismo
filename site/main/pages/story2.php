@@ -12,8 +12,8 @@
             return $id_page;
         }
     }
-    if(isset($_GET['input_1'])){
-        $id_story = $_GET['input_1'];
+    if(isset($_GET['story'])){
+        $id_story = $_GET['story'];
 
         $_SESSION['id_story'] = $id_story;
         $story = "SELECT * from story where id_story = $id_story and status = 3";
@@ -142,9 +142,6 @@
     <?php
         include "includes/menu.php";
     ?>
-    <div class="filter">
-        
-    </div>
     <div class="all">
         <section class="controls-sec" id="contr">
             <div class="progressBar">
@@ -208,7 +205,7 @@
                     </h4>
                     <h3 id="subTitle"><?php echo $titulo; ?></h3>
                     <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
-                        <path style="color: white !important;" fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                        <path style="color: white;" fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
                     </svg>
                 </div>
             </div>
@@ -216,7 +213,7 @@
         <section class="page">
             <div class="line-page" id="content-page">
                 <div class="pg history">
-                    <h1>História</h1>
+
                     <?php
                         $id_page = RetornarIdPage($id_story, 0);
                         $sql = "select texto from history where fk_id_page='$id_page'";
@@ -474,7 +471,7 @@
         ?>
 
     </script>
-    <script src="../js/story2.js?v=1.012"></script>
+    <script src="../js/story2.js?v=1.0312"></script>
     <script src="../js/menu.js"></script>
 </body>
 </html>

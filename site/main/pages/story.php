@@ -12,8 +12,8 @@
             return $id_page;
         }
     }
-    if(isset($_GET['input_1'])){
-        $id_story = $_GET['input_1'];
+    if(isset($_GET['story'])){
+        $id_story = $_GET['story'];
 
         $_SESSION['id_story'] = $id_story;
         $story = "SELECT * from story where id_story = $id_story and status = 3";

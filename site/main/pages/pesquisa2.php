@@ -21,7 +21,7 @@
     <title>Pesquisa</title>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/pesquisa2.css?v=1.01">
+    <link rel="stylesheet" href="../css/pesquisa2.css?v=1.0132">
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
     <link rel="stylesheet" href="../css/scroll.css?v=1.09">
 </head>
@@ -30,16 +30,17 @@
         <?php
             require "includes/menu.php";
         ?>
-        <div class="lines">
-            <div class="nav">
+        <div class="nav">
                 <div class="go-back" onclick="acentral()">
                     <i class="fa-solid fa-chevron-left"></i>
                 </div>
+                <i class="fa-solid go-menu fa-sun mode"></i>
                 <div class="go-menu" onclick="menu_appear()">
                     <i class="fa-solid fa-bars"></i>
                 </div>
             </div>
-            <form method="get" action="pesquisa2.php">
+        <div class="lines">
+            <form class="form-search-th" method="get" action="pesquisa2.php">
                 <div class="bar">
                     <div class="search-box">
                         <input required type="text" name="busca" class="input-search-page" placeholder="Pesquisar história........">
@@ -47,9 +48,7 @@
                     </div>
                 </div>
             </form>
-            <i class="fa-solid fa-sun mode">
-
-            </i>
+            
             <div class="main">
                 <div class="results">
                     <div class="title-r">
@@ -80,19 +79,37 @@
                                     $sim = similar_text($titulos[$i][0], $pesquisa, $perc);
                                     $titulos[$i][1] = $perc;
 
-
                                     $titulos[$i][2] = $value["id_story"];
                                     
-                                    $sql = "SELECT id_page FROM page where type = 0 and fk_id_story = ".$titulos[$i][2];
+                                    $sql = "SELECT id_page FROM page where type = 1 and fk_id_story = ".$titulos[$i][2];
+                                    $prepare = $pdo->prepare($sql);
+                                    $prepare->execute();
 
-                                    foreach($pdo->query($sql) as $key => $value){
-                                        $page = $value['id_page'];
-
-                                        $sql = "select left(texto, 50) as sample from history where fk_id_page = ".$page;
+                                    if($prepare->rowCount() != 0){
 
                                         foreach($pdo->query($sql) as $key => $value){
-                                            $titulos[$i][3] = $value['sample'];
+                                            $page = $value['id_page'];
+    
+                                            $sql = "select path from images where fk_id_page = $page and fundo = 1";
+                                            
+                                            $prepare = $pdo->prepare($sql);
+                                            $prepare->execute();
+
+                                            if($prepare->rowCount() != 0){
+
+                                                foreach($pdo->query($sql) as $key => $value){
+                                                    $titulos[$i][3] = "url(".$value['path'].")";
+                                                }
+
+                                            }else{
+
+                                                $titulos[$i][3] = "linear-gradient(rgb(50,50,50), rgb(0,0,0));";
+                                            }
                                         }
+
+                                    }else{
+
+                                        $titulos[$i][3] = "linear-gradient(rgb(50,50,50), rgb(0,0,0));";
                                     }
 
                                     $i++;
@@ -104,7 +121,9 @@
                                 if($titulos[0][1] == 0){ 
 
                                     echo "<div class='no-res-title'>Não há resultados para essa pesquisa. Tente novamente considerando que a pesquisa diferencia letras maiúsculas e minúsculas. <br>Conteúdos Relacionados:</div>";
-                                    echo "<br>";
+                                    
+                                    echo "<div class='resultsAll'>";
+
                                     for($i = 0; $i < sizeof($titulos); $i++){
 
                                         if($i == 10)break;
@@ -146,10 +165,21 @@
                                             }
                                         }
 
-                                        echo "<div class='action' onclick='story(".$titulos[$i][2].")'><h3>". $titulos[$i][0] ."</h3><p>".$titulos[$i][3]."...</p>".$titulos[$i][4]."</div>";
+                                        echo "<div class='action' onclick='story(".$titulos[$i][2].")'>
+
+                                                <div class='square' style='background-image: ". $titulos[$i][3]."'>
+                                                    <h3>". $titulos[$i][0] ."</h3>
+                                                        ".$titulos[$i][4].
+                                                "</div>
+                                            
+                                            </div>";
                                     }  
 
+                                    echo "</div>";
+
                                 }else{
+
+                                    echo "<div class='resultsAll'>";
                                 
                                     for($i = 0; $i < sizeof($titulos); $i++){
 
@@ -193,9 +223,18 @@
                                             }
                                         }
 
-                                        echo "<div class='action' onclick='story(".$titulos[$i][2].")'><h3>". $titulos[$i][0] ."</h3><p>".$titulos[$i][3]."...</p>".$titulos[$i][4]."</div>";
+                                        echo "<div class='action' onclick='story(".$titulos[$i][2].")'>
+
+                                                <div class='square' style='background-image: ". $titulos[$i][3]."'>
+                                                    <h3>". $titulos[$i][0] ."</h3>
+                                                        ".$titulos[$i][4].
+                                                "</div>
+                                            
+                                            </div>";
 
                                     }  
+
+                                    echo "</div>";
                                 } 
 
                             }else{
@@ -208,7 +247,7 @@
             </div>
         </div>
     </div>
-    <script src="../js/pesquisa2.js?v=1.01"></script>
+    <script src="../js/pesquisa2.js?v=1.012"></script>
     <script src="../js/menu.js"></script>
 </body>
 </html>

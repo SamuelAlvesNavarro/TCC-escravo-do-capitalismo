@@ -83,8 +83,10 @@
                 $prepare = $pdo->prepare($answer);
                 $prepare->execute();
 
-                if($prepare->rowCount() > 0){
-                    echo '<div class="table-sect">
+                if($prepare->rowCount() > 0):
+                
+            ?>
+                    <div class="table-sect">
                         <div class="title t-table">Controle de Histórias <i id="del" class="fa-solid fa-plus" onclick="switchDetails()"></i></div>
                         <div class="ta">
                             <table class="table table-dark">
@@ -97,36 +99,50 @@
                                         <th>Deletar</th>
                                     </tr>
                                 </thead>
-                                <tbody>';
+                                <tbody>
            
             
-                         
-                                    $answer = "SELECT *, count(comment.id_comment) as Cam FROM story, comment WHERE story.fk_id_profile = '$perfil' and comment.fk_id_story = story.id_story and status = 3;";
-                                    foreach($pdo->query($answer) as $key => $value){
-                                        echo "
+                                    <?php 
+                                    $answer = "
+                                        SELECT * FROM story WHERE 
+                                        fk_id_profile = 668 and 
+                                        status = 3;
+                                    ";
+
+                                    foreach($pdo->query($answer) as $key => $value):
+                                    
+                                    ?>
+                                        
+                                        <?php 
+
+                                            $answer = "
+                                            SELECT count(*) as Cam FROM comment WHERE 
+                                            fk_id_story = ".$value['id_story']."
+                                            ";
+
+                                            foreach($pdo->query($answer) as $key => $comment):
+                                        ?>
                                         
                                             <tr>
-                                                <td>".$value['nome']."</td>
-                                                <td class='detail dis'>".$value['rating']."</td>
-                                                <td class='detail dis'>".$value['Cam']."</td>
-                                                <td><button class='keep' onclick='keep(".$value['id_story'].")'>SECRET</button></td>
-                                                <td><button class='del' onclick='deleteH(".$value['id_story'].")'>Deletar</button></td>
+                                                <td><?php echo $value['nome']; ?></td>
+                                                <td class='detail dis'><?php echo $value['rating']; ?></td>
+                                                <td class='detail dis'><?php echo $comment['Cam']; ?></td>
+                                                <td><button class='keep' onclick='keep("<?php echo $value["id_story"]; ?>")'>SECRET</button></td>
+                                                <td><button class='del' onclick='deleteH("<?php echo $value["id_story"]; ?>")'>Deletar</button></td>
                                             </tr>
                                         
-                                        
-                                        ";
-                                    }
+                                            <?php endforeach; ?>
+                                            
+                                    <?php endforeach; ?>
                               
-                            echo'</tbody>
+                                </tbody>
                             </table>
                         </div>
-                        </div>
-                        
-                    ';
+                    </div>
 
-                }
+                <?php endif; ?>
             
-            ?>
+            
         </div>
         <div class="main">
             <div class="manage">
