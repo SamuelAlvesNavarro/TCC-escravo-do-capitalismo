@@ -16,20 +16,24 @@
     <?php
         include "includes/menu.php";
     ?>
-    <h1>Adicionar Novo Gadget</h1>
+    <h1 align="center">Adicionar Novo Gadget</h1>
     <br>
-    <form action="gadgets-upload.php" method="post" enctype="multipart/form-data">
-        <label for="">Gadget:</label>
-        <input type="file" name="image" required><br>
-        <label for="">Nome do Gadget (Mostrado):</label>
-        <input type="text" name="mostrado" id="" required><br>
-        <label for="">Nome do Gadget (Imagem):</label>
-        <input type="text" name="name" id="" required><br>
-        <label for="">Preço: </label>
-        <input type="number" name="preco" id="" required><br>
-        <label for="">Tipo: </label>
-        <input type="number" name="type" id="" required><br>
-        <button>Enviar</button>
+    <form action="gadgets-upload.php" method="post" enctype="multipart/form-data" class="container border border-2 table-bordered p-4" style="width: 50%;">
+        <label class="form-label">Gadget:</label>
+        <input type="file" name="image" required class="form-control"><br><br>
+
+        <label class="form-label">Nome do Gadget (Mostrado):</label>
+        <input type="text" name="mostrado" id="" required class="form-control"><br><br>
+
+        <label class="form-label">Nome do Gadget (Imagem):</label>
+        <input type="text" name="name" id="" required class="form-control"><br><br>
+
+        <label class="form-label">Preço: </label>
+        <input type="number" name="preco" id="" required class="form-control"><br><br>
+
+        <label class="form-label">Tipo: </label>
+        <input type="number" name="type" id="" required class="form-control" placeholder="Os tipos são 1 ou 3"><br><br>
+        <button class="btn btn-primary">Enviar</button>
     </form>
 
     <br>
