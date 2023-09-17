@@ -21,19 +21,19 @@
     <?php
         include "includes/menu.php";
     ?>
-    <h1>Cadastro - Mod </h1>
+    <h1 align="center">Cadastro - Mod </h1>
     <br>
     <form method="post" action="cadastro-mod_exe.php">
-        <label for="">Nome:</label>
-        <input type="text" name="name">
+        <label class="form-label">Nome:</label>
+        <input type="text" name="name" class="form-control">
         <br>
-        <label for="">Email:</label>
-        <input type="email" name="email">
+        <label class="form-label">Email:</label>
+        <input type="email" name="email" class="form-control">
         <br>
-        <label for="">Senha:</label>
-        <input type="password" name="senha">
+        <label class="form-label">Senha:</label>
+        <input type="password" name="senha" class="form-control">
         <br>
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Enviar" class="btn btn-primary">
     </form>
 </body>
 </html>

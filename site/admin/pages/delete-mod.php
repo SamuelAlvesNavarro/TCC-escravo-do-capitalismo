@@ -12,8 +12,10 @@
     <title>Delete Mod</title>
 </head>
 <body data-bs-theme="dark">
-    
-    <h1>Moderadores do site</h1>
+    <?php
+        include "includes/menu.php";
+    ?>
+    <h1 align="center" class="m-5">Moderadores do site</h1>
 
     <table align="center" class="table table-dark table-striped">
         <thead class="thead-dark">

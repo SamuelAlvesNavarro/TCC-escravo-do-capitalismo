@@ -3,7 +3,7 @@
     require "includes/online.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +34,7 @@
     ?>
     <h1>Centro de Gadgets</h1>
     <br>
-    <a href="adicionar-gadgets.php"><button>Adicionar novo gadget</button></a>
+    <a href="adicionar-gadgets.php"><button class="btn btn-light">Adicionar novo gadget</button></a>
     <!-- Controle de gadgets  pela tabela !-->
     <div class="container text-center mb-3 border-0">
         <h2>Fotos de perfil - ATIVAS</h2>
