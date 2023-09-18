@@ -105,6 +105,23 @@
                         <li>b</li>
                         <li>c</li>
                     </ul>
+                    <br>Nessa área o texto pode ser formatado com alguns códigos, como por exemplo:<br><br>
+                    <ul>
+                        <li>*1 Teste /*1</li>
+                        <h1>Teste</h1><br>
+                        <li>*2 Teste /*2</li>
+                        <h2>Teste</h2><br>
+                        <li>*3 Teste /*3</li>
+                        <h3>Teste</h3><br>
+                        <li>*4 Teste /*4</li>
+                        <h4>Teste</h4><br>
+                        <li>*5 Teste /*5</li>
+                        <h5>Teste</h5><br>
+                        <li>*6 Teste /*6</li>
+                        <h6>Teste</h6><br>
+                        <li>** Teste /**</li>
+                        <strong>Teste</strong><br>
+                    </ul>
                 </div>
             <div class="title">
                 Imagens
@@ -144,14 +161,6 @@
         <div class="split"></div>
 
         <div class="grandTitle" id="story">Histórias</div>
-
-            <div class="title">Seleção de área</div>
-
-                <div class="lines">
-                    Nesta área o usuário poderá escolher se ele quer ver a história, as imagens ou as referências. 
-                </div>
-
-                <img src="" alt="">
 
             <div class="title">Questões</div>
 
