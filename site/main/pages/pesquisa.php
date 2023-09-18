@@ -216,7 +216,7 @@
         theForm.method = 'get';
         newInput1 = document.createElement('input');
         newInput1.type = 'hidden';
-        newInput1.name = 'input_1';
+        newInput1.name = 'story';
         newInput1.value = n;
         theForm.appendChild(newInput1);
         document.getElementById('hidden_form_container').appendChild(theForm);
