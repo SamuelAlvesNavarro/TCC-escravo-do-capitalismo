@@ -145,11 +145,13 @@
 
         <div class="grandTitle" id="story">Histórias</div>
 
-            <div class="title"></div>
+            <div class="title">Seleção de área</div>
 
-                <div classs="lines">
-                    Na área x o usuário poderá escolher se ele quer ver a história, as imagens ou as referências. 
+                <div class="lines">
+                    Nesta área o usuário poderá escolher se ele quer ver a história, as imagens ou as referências. 
                 </div>
+
+                <img src="" alt="">
 
             <div class="title">Questões</div>
 

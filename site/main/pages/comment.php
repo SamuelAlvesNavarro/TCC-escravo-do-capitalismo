@@ -23,7 +23,7 @@
         $prepare->execute();
 
         $_SESSION['id_story'] = 0;
-        header("Location: story.php?input_1=$id_story");
+        header("Location: story.php?story=$id_story");
 
     }else{
         sendToError(8);

@@ -56,7 +56,7 @@
         $prepare = $pdo->prepare($add);
         $prepare->execute();
 
-        header("Location: story.php?input_1=".$id_story);
+        header("Location: story.php?story=".$id_story);
 
     }else{
         header("Location: central.php");
