@@ -90,6 +90,7 @@
                     A aba de título é destinada ao título da história, deve-se seguir as seguintes condições:<br>
                     <ul>
                         <li>O título não pode estar em branco;</li>
+                        <li>O conteúdo não deve conter nenhuma tag html ou código php;</li>
                         <li>O título deve ter relação com a história;</li>
                         <li>O título não pode conter mais de 40 caracteres;</li>
                         <li>O título não pode conter nenhum palavrão;</li>
@@ -102,7 +103,7 @@
                     A área de conteúdo é destinada ao texto da história, deve-se seguir as seguintes condições:
                     <ul>
                         <li>O conteúdo da história não pode estar em branco;</li>
-                        <li>b</li>
+                        <li>O conteúdo não deve conter nenhuma tag html ou código php;</li>
                         <li>c</li>
                     </ul>
                     <br>Nessa área o texto pode ser formatado com alguns códigos, como por exemplo:<br><br>
@@ -144,8 +145,6 @@
                     <ul>
                         <li>A referência deve ser uma URL;</li>
                         <li>Não utilizar a URL de sites que não estão relacionados a história, assim como a de sites para maiores de 18 anos;</li>
-                        <li>c</li>
-                        <li>d</li>
                     </ul>
                 </div>
             <div class="title">
