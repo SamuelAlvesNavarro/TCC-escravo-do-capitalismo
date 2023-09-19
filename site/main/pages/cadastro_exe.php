@@ -1,6 +1,7 @@
 <?php
         require "includes/conexao.php";
         require "includes/enviarErro.php";
+        require "includes/values.php";
 
         $nome = null;
         $email = null;
@@ -50,7 +51,7 @@
                 $prepare -> bindParam(1, $fk_profile);
                 $prepare -> bindParam(2, $nome);
                 $prepare -> bindParam(3, $email);
-                $prepare -> bindParam(4, $senha);
+                $prepare -> bindParam(4, crypt($senha, $salt));
                 $prepare -> bindParam(5, $apelido);
                 
                 $prepare->execute();
