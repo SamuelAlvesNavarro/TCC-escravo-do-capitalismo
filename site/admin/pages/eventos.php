@@ -42,9 +42,9 @@
                 <td class="col"><?php echo $value['type']; ?></td>
                 <td class="col"><?php echo $value['titulo']; ?></td>
                 <td class="col"><?php echo $value['descr']; ?></td>
-                <td><a href="alterar-gadget.php?id=<?php echo $value['id_gadget']; ?>"><button class="btn btn-info">Alterar</button></a></td>
-                <td><a href="alterar-gadget.php?id=<?php echo $value['id_gadget']; ?>"><button class="btn btn-primary">Desativar</button></a></td>
-                <td><a href="alterar-gadget.php?id=<?php echo $value['id_gadget']; ?>"><button class="btn btn-danger">Excluir</button></a></td>
+                <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-info col">Alterar</button></a></td>
+                <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-primary col">Desativar</button></a></td>
+                <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-danger col">Excluir</button></a></td>
             </tr>
         <?php endforeach; ?>
     </table>

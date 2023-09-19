@@ -22,15 +22,14 @@
         <input type="text" name="titulo" required class="form-control"><br><br>
 
         <label class="form-label">Tipo:</label>
-        <input type="text" name="type" id="" required class="form-control"><br><br>
+        <input type="number" name="type" id="" required class="form-control" placeholder="Se estiver em dúvida, verifique os tipos"><br><br>
 
         <label class="form-label">Descrição:</label>
-        <textarea name="name" id="" cols="30" rows="10" class="form-control"></textarea><br><br>
+        <textarea name="desc" id="" cols="30" rows="10" class="form-control"></textarea><br><br>
 
         <label class="form-label">Função a ser executada: </label><br>
         <input type="radio" name="funcao" onclick="openX(2)" required value="2">Dar gadget <br>
         <input type="radio" name="funcao" onclick="openX(1)" required value="1">Dar moedas
-
         <br>
         <br>
         <input type="hidden" id='num' name="number" placeholder="Quantidade de Moedas" class="form-control" required>
