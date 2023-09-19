@@ -4,20 +4,17 @@
 
     $id_gadget = $_GET['id'];
 
-    $sql = "SELECT compra.*, gadget.* FROM compra, gadget WHERE compra.fk_id_gadget = '$id_gadget' and gadget.id_gadget = '$id_gadget'";
+    $sql = "select profile.id_profile, gadget.preco from profile, compra, gadget where profile.id_profile = compra.fk_id_profile and compra.fk_id_gadget = '$id_gadget' and gadget.id_gadget = '$id_gadget'";
     foreach($pdo->query($sql) as $key => $value){
         $moedas = $value['preco'];
-        $id_profile = $value['fk_id_profile'];
-    }
 
-    if($id_profile != ''){
-        $user = "SELECT * FROM user_common WHERE fk_id_profile = '$id_profile'";
-        foreach($pdo->query($user) as $key => $value){
-            $user_moedas = $value['moedas'];
-        }
-        $nuser_moedas = $user_moedas + $moedas;
+        $user = "
+        update user_common
+        set moedas = moedas + $moedas
+        where 
+        user_common.fk_id_profile = '".$value['id_profile']."'
+        ";
 
-        $user = "UPDATE user_common SET moedas = '$nuser_moedas' WHERE fk_id_profile = '$id_profile'";
         $prepare = $pdo->prepare($user);
         $prepare->execute();
     }
@@ -39,6 +36,10 @@
     unlink($caminhoMain);
 
     $excluir = "DELETE FROM gadget WHERE id_gadget = '$id_gadget'";
+    $prepare = $pdo->prepare($excluir);
+    $prepare->execute();
+
+    $excluir = "DELETE FROM evento WHERE script = darGadget('$id_gadget')";
     $prepare = $pdo->prepare($excluir);
     $prepare->execute();
 

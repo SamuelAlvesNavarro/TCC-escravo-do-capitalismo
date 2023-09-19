@@ -309,7 +309,7 @@
                                     if($rows == 1): ?>
                                         <div class='card card-foto' onclick='switchP("<?php echo $code ?>")'>
                                             <div class='card-pic' id="<?php echo $code ?>" style='<?php echo $item ?>'></div>
-                                        </div>";
+                                        </div>
                                     
                                     <?php endif;
                                 }
