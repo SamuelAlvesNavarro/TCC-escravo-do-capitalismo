@@ -18,6 +18,15 @@
     ?>
     <h1 align="center">Adicionar Novo Gadget</h1>
     <br>
+    
+    <h1>Tipos</h1>
+
+    <ul>
+        <li>0: Foto</li>
+        <li>3: Fundo</li>
+    </ul>
+    
+    <br>
     <form action="gadgets-upload.php" method="post" enctype="multipart/form-data" class="container border border-2 table-bordered p-4" style="width: 50%;">
         <label class="form-label">Gadget:</label>
         <input type="file" name="image" required class="form-control"><br><br>
@@ -36,13 +45,6 @@
         <button class="btn btn-primary">Enviar</button>
     </form>
 
-    <br>
-
-    <h1>Tipos</h1>
-
-    <ul>
-        <li>1: Foto</li>
-        <li>3: Fundo</li>
-    </ul>
+    
 </body>
 </html>

@@ -52,7 +52,7 @@ function darGadget($id_gadget){
 function evento($type){
     global $pdo;
 
-    $sql = "SELECT * FROM evento WHERE type = '$type' and type != 0";
+    $sql = "SELECT * FROM evento WHERE type = '$type' and active = 1";
     foreach($pdo->query($sql) as $key => $value){
         $execute = $value['script'];
         eval($execute);

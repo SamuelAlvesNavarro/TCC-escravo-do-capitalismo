@@ -209,7 +209,8 @@ CREATE TABLE `evento`(
    titulo varchar(255) not null,
    descr text not null,
    type int not null,
-   script text
+   script text,
+   active int not null default 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Estrutura da tabela `gadget`
