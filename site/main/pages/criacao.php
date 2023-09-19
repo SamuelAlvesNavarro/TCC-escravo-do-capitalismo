@@ -73,7 +73,7 @@
             </div>
             <div class="main layout-padding" id="main">
                 <div class="title" id="titleEnter">
-                    <h1>Título:</h1><input id='title-input' class="text-input" type="text" name="titulo" maxLength="40" placeholder="seu título"><h2 id="title-all">Título</h2>
+                    <h1>Título:</h1><input id='title-input' required class="text-input" type="text" name="titulo" maxLength="40" placeholder="seu título"><h2 id="title-all">Título</h2>
                 </div>
                 <div class="history" id="history-div">
                     <div class="title">
@@ -81,7 +81,7 @@
                     </div>
                     <div class="input-history">
                         <pre id="pre-history" maxlength="12000" class="historyArea"></pre>
-                        <textarea name="story" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea"></textarea>
+                        <textarea name="story" required oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea"></textarea>
                     </div>
                 </div>
             </div>
@@ -204,7 +204,7 @@
                 </div>
                 <div class="ref-inputs">
                     <div class="ref-input">
-                        <label for="ref1">1: </label><input class="ref-input-input" type="url" name="ref1" id="">
+                        <label for="ref1">1: </label><input required class="ref-input-input" type="url" name="ref1" id="">
                     </div>
                     <div class="ref-input">
                         <label for="ref1">2: </label><input class="ref-input-input" type="url" name="ref2" id="">
@@ -241,25 +241,25 @@
                 </div>
                 <div class="text-question">
                     <p id="question_text"></p>
-                    <input type="text" name="question" class="input-question-text">
+                    <input type="text" name="question" required class="input-question-text">
                 </div>
                 <div class="question-container">
                     <input id='certa' type="hidden" name="certa">
                     <div id="opa" class="option" onclick="setAsRight(1)">
                         <p class="opps_text"></p>
-                        <input type="text" name="a" class="input-op-text">
+                        <input type="text" name="a" required class="input-op-text">
                     </div>
                     <div id="opb" class="option" onclick="setAsRight(2)">
                         <p class="opps_text"></p>
-                        <input type="text" name="b" class="input-op-text">
+                        <input type="text" name="b" required class="input-op-text">
                     </div>
                     <div id="opc" class="option" onclick="setAsRight(3)">
                         <p class="opps_text"></p>
-                        <input type="text" name="c" class="input-op-text">
+                        <input type="text" name="c" required class="input-op-text">
                     </div>
                     <div id="opd" class="option" onclick="setAsRight(4)">
                         <p class="opps_text"></p>
-                        <input type="text" name="d" class="input-op-text">
+                        <input type="text" name="d" required class="input-op-text">
                     </div>
                 </div>
             </div>
