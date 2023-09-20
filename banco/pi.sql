@@ -212,6 +212,9 @@ CREATE TABLE `evento`(
    script text,
    active int not null default 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+insert into 'evento' values(1, 'Cadastro', 'Todo novo usuário ganha 500 moedas ao se cadastrar',
+0, 'darMoedas(500);', 0)
 --
 -- Estrutura da tabela `gadget`
 --
@@ -508,10 +511,6 @@ CREATE TABLE `story` (
 --
 
 INSERT INTO `story` (`id_story`, `font`, `nome`, `rating`, `status`, `fk_id_profile`) VALUES
-(4, 0, 'Dummy 1', 0, 3, 7),
-(5, 0, 'Dummy 2', 0, 3, 7),
-(6, 0, 'Dummy 3', 0, 3, 7),
-(7, 0, 'Dummy 4', 0, 3, 7),
 (10, 0, 'TEstezao', 4, 4, 668),
 (11, 0, 'vvvvvvvvvvvv', 0, 3, 671);
 
