@@ -7,6 +7,7 @@
     $desc = $_POST['desc'];
     $func = $_POST['funcao'];
     $num = $_POST['num'];
+    $umber = $_POST['number'];
 
     if($func == 1){
         $script = 'darMoedas('.$num.')';
@@ -18,4 +19,5 @@
     $prepare = $pdo->prepare($evento);
     $prepare->execute();
 
+    header("Location:eventos.php");
 ?>

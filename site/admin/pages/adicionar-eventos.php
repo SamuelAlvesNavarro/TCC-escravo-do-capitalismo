@@ -32,7 +32,7 @@
         <input type="hidden" id='num' name="number" placeholder="Quantidade de Moedas" class="form-control" required>
 
         <div id="gadgets" style="display: none;">
-            <select name="num" id="" required>
+            <select name="num" id="gadget">
                 <option value="">Selecione...</option>
                 <?php 
                     $sql = "SELECT * FROM gadget WHERE g_status = 1 AND id_gadget != 1 AND id_gadget != 2";
@@ -42,22 +42,24 @@
                 <?php endforeach; ?>
             </select>
         </div>
-
         <br>
         <input type="hidden" id='mand' value="Mandar" class="btn btn-primary">
+
     </form>
     <script>
         function openX(n){
-            document.getElementById('mand').type = 'submit';
+            document.getElementById('mand').setAttribute('type', 'submit');
 
             if(n == 2){
                 document.getElementById('gadgets').style.display = 'block';
                 document.getElementById('num').type = 'hidden';
+                document.getElementById('gadget').required = true;
             }
 
             if(n == 1){
                 document.getElementById('gadgets').style.display = 'none';
                 document.getElementById('num').type = 'number';
+                document.getElementById('gadget').required = false;
             }
         }
     </script>

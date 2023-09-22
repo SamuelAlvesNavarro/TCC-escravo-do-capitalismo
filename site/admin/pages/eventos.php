@@ -23,30 +23,67 @@
 
     <h2>Eventos ativos</h2>
 
-    <table>
-        <thead class="thead-dark row">
+    <h2>Eventos inativos</h2>
+
+    <table align="center" class="table table-dark table-striped">
+        <thead class="thead-dark">
             <tr>
-                <th scope="col">Tipo</th>
-                <th scope="col">Titulo</th>
-                <th scope="col">Descrição</th>
+                <th scope="col">ID Gadget</th>
+                <th scope="col">Foto</th>
+                <th scope="col">Preço</th>
                 <th scope="col">Alterar</th>
                 <th scope="col">Desativar</th>
                 <th scope="col">Excluir</th>
             </tr>
         </thead>
-        <?php
-            $sql = "SELECT * FROM evento WHERE active = 1";
-            foreach($pdo->query($sql) as $key => $value):
-        ?>
-            <tr class="row">
-                <td class="col"><?php echo $value['type']; ?></td>
-                <td class="col"><?php echo $value['titulo']; ?></td>
-                <td class="col"><?php echo $value['descr']; ?></td>
-                <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-info col">Alterar</button></a></td>
-                <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-primary col">Desativar</button></a></td>
-                <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-danger col">Excluir</button></a></td>
+        <tbody class="table-group-divider">
+            <?php
+                $sql = "SELECT * FROM evento WHERE active = 1";
+                foreach($pdo->query($sql) as $key => $value):
+            ?>
+                <tr scope="row">
+                    <td><?php echo $value['type']; ?></td>
+                    <td><?php echo $value['titulo']; ?></td>
+                    <td><?php echo $value['descr']; ?></td>
+                    <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-info col">Alterar</button></a></td>
+                    <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-primary col">Desativar</button></a></td>
+                    <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-danger col">Excluir</button></a></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+
+    <br><br><br>
+
+    <h2>Eventos inativos</h2>
+
+    <table align="center" class="table table-dark table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID Gadget</th>
+                <th scope="col">Foto</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Alterar</th>
+                <th scope="col">Desativar</th>
+                <th scope="col">Excluir</th>
             </tr>
-        <?php endforeach; ?>
+        </thead>
+        <tbody class="table-group-divider">
+            <?php
+                $sql = "SELECT * FROM evento WHERE active = 0";
+                foreach($pdo->query($sql) as $key => $value):
+            ?>
+                <tr scope="row">
+                    <td><?php echo $value['type']; ?></td>
+                    <td><?php echo $value['titulo']; ?></td>
+                    <td><?php echo $value['descr']; ?></td>
+                    <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-info col">Alterar</button></a></td>
+                    <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-primary col">Desativar</button></a></td>
+                    <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-danger col">Excluir</button></a></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
 </body>
 </html>

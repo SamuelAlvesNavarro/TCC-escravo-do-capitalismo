@@ -205,7 +205,7 @@ INSERT INTO `error_user` (`id_error`, `fk_id_profile`, `fk_id_story`) VALUES
 
 
 CREATE TABLE `evento`(
-   id_evento int primary key,
+   id_evento int primary key AUTO_INCREMENT,
    titulo varchar(255) not null,
    descr text not null,
    type int not null,
