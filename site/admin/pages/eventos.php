@@ -23,8 +23,6 @@
 
     <h2>Eventos ativos</h2>
 
-    <h2>Eventos inativos</h2>
-
     <table align="center" class="table table-dark table-striped">
         <thead class="thead-dark">
             <tr>
