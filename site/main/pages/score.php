@@ -19,7 +19,7 @@
         $prepare->execute();
 
         if($prepare->rowCount() == 0){
-            header("Location: central.php");
+            //header("Location: central.php");
         }
 
         $check = "SELECT * FROM score WHERE fk_id_profile = $perfil and fk_id_story = $id_story";

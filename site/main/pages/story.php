@@ -142,13 +142,20 @@
     <?php
         include "includes/menu.php";
     ?>
+    <div class="report_comment_modal" id="report_comment_modal">
+        <div class="close-rep" onclick="rep(0)">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="report_comment_container">
+            <form action="report_comment" method="post">
+                <h1>Escreva sua Denúncia</h1>
+                <input type="hidden" name="id_comment" id="rep_c">
+                <textarea name="reason" id="" cols="30" rows="10"></textarea>
+                <input type="submit" value="Denunciar">
+            </form>
+        </div>
+    </div>
     <div class="all">
-        <div class="goBt goBack" onclick="toLast()" id="chv-l">
-            <i class="fa-solid fa-chevron-left"></i>
-        </div>
-        <div class="goBt goFoward"  onclick="toNext()" id="chv-r">
-            <i class="fa-solid fa-chevron-right"></i>
-        </div>
         <section class="controls-sec" id="contr">
             <div class="progressBar">
                 <div class="bar">
@@ -170,6 +177,14 @@
                     <div class="back-to-central-bt" onclick="menu_appear()">
                         <i class="fa-solid fa-bars"></i>
                     </div>
+                </div>
+                <div class="classif">
+                    <div class="stars"> 
+                        <div class="ratings transi">
+                            <div class="empty-stars"></div>
+                            <div id="full-stars"></div>
+                        </div>
+                    </div> 
                 </div>
                 <div class="logo">
                     <div class="logo-pic">
@@ -200,57 +215,26 @@
                 <div class="mainTitle">
                     <h1><?php echo $titulo; ?></h1>
                     <h4 id="autor">por: 
-                        <span class="un">
+                        <span class="un" >
                             <?php
                                 $autor = "select user_common.nome as nome, user_common.fk_id_profile as cod from user_common, story where story.fk_id_profile = user_common.fk_id_profile and story.id_story = $id_story";
                                 foreach ($pdo->query($autor) as $key => $value) {
-                                    echo '<a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>';
+                                    echo '<a href="profile.php?profile='.$value['cod'].'" style="color: white !important;">'.$value['nome'].'</a>';
                                 }
                             ?>
                         </span>
                     </h4>
-                    <h3 id="subTitle">História</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                    <h3 id="subTitle"><?php echo $titulo; ?></h3>
+                    <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                        <path style="color: white;" fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
                     </svg>
-                </div>
-                <div class="pageRefer_container">
-                    <div class="pageRefer" onclick="changePosN(0)">
-                        <div class="refer_bar"></div>
-                        <div class="rest">
-                            <h1>Referências</h1>
-                        </div>
-                    </div>
-                    <div class="pageRefer superRefer" onclick="changePosN(1)">
-                        <div class="refer_bar"></div>
-                        <div class="rest">
-                            <h1>História</h1>
-                        </div>
-                    </div>
-                    <?php
-
-                        $id_page = RetornarIdPage($id_story, 1);
-                        $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
-
-                        $prepare = $pdo->prepare($sql);
-                        $prepare -> execute();
-
-                        if($prepare -> rowCount() > 0){
-                            echo '<div class="pageRefer" onclick="changePosN(2)">
-                                        <div class="refer_bar"></div>
-                                        <div class="rest">
-                                            <h1>Imagens</h1>
-                                        </div>
-                                    </div>';
-                        }
-
-                    ?>
                 </div>
             </div>
         </section>
         <section class="page">
             <div class="line-page" id="content-page">
                 <div class="pg history">
+
                     <?php
                         $id_page = RetornarIdPage($id_story, 0);
                         $sql = "select texto from history where fk_id_page='$id_page'";
@@ -260,35 +244,8 @@
                         }
                     ?>
                 </div>
-               
-                        <?php
-
-                            $id_page = RetornarIdPage($id_story, 1);
-                            $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
-
-                            $prepare = $pdo->prepare($sql);
-                            $prepare -> execute();
-
-                            if($prepare -> rowCount() > 0): ?>
-
-                
-                                <div class="pg images">
-                                    <div class="cont-img">
-            
-                                    <?php foreach ($pdo->query($sql) as $key => $value): ?>
-                                        
-                                        <img src="<?php echo $value['path'] ?>">
-
-                                    <?php endforeach; ?>
-                                    
-                                    </div>
-                                </div>
-                        
-                            <?php endif; ?>
-                            
-                         
-
                 <div class="pg refs">
+                    <h1>Referências</h1>
                     <?php
                         $id_page = RetornarIdPage($id_story, 2);
                         $ref = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
@@ -302,75 +259,104 @@
                         }
                     ?>
                 </div>
+                        <?php
+
+                            $id_page = RetornarIdPage($id_story, 1);
+                            $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
+
+                            $prepare = $pdo->prepare($sql);
+                            $prepare -> execute();
+
+                            if($prepare -> rowCount() > 0): ?>
+
+                
+                                <div class="pg images">
+                                    <h1>Imagens</h1>
+                                    <div class="cont-img">
+            
+                                    <?php foreach ($pdo->query($sql) as $key => $value): ?>
+                                        
+                                        <img src="<?php echo $value['path'] ?>">
+
+                                    <?php endforeach; ?>
+                                    
+                                    </div>
+                                </div>
+                        
+                            <?php endif; ?>
+                            
             </div>
         </section>
         <section class="quest" id="quest_item">
             <div class="quest-cont">
-                <?php 
-                    if($showAnswered == "block;"){
-                        echo 
-                        '<div class="answered">
-                            <h1>Você já respondeu essa pergunta! Obrigado por sua avalicação!</h1>          
-                        </div>';
-                    }
-                    if($showQuestion == "block;"){
-                        echo '<div class="unanswered">
-                            <div class="question-container">
-                                <div class="question">
-                                   '.$questionText.'
-                                </div>
-                                <form id="question-form" method="post">
-                                    <div class="options">
-                                        <div class="option" onclick="answerForm(0)">
-                                            <div class="op-lel">A</div><div class="text_op">'.$answers[0].'</div>
-                                        </div>
-                                        <div class="option" onclick="answerForm(1)">
-                                            <div class="op-lel">B</div><div class="text_op">'.$answers[1].'</div>
-                                        </div>
-                                        <div class="option" onclick="answerForm(2)">
-                                            <div class="op-lel">C</div><div class="text_op">'.$answers[2].'</div>
-                                        </div>
-                                        <div class="option" onclick="answerForm(3)">
-                                            <div class="op-lel">D</div><div class="text_op">'.$answers[3].'</div>
-                                        </div>
-                                        <input type="hidden" name="id_story" value="'.$id_story.'"><br>
-                                        <input type="hidden" name="id_question" value="'.$id_question.'"><br>
-                                    </div>
-                                </form>
-                            </div>  
-                        </div>';
-                    }
-                    if($showWrong == "block;"){
-                        echo '<div id="wrong" class="wrong" style="display:'.$showWrong.'">
-                                <h1>Você Errou!</h1>
-                                <div class="bt-retry">
-                                    <form action="retry_exe.php" method="post">
-                                        <input type="hidden" name="__prof" value="'.$id_question.'">
-                                        <input type="submit" value="Tentar Novamente">
-                                    </form>
-                                </div>
-                            </div>';
 
-                        
-                    }
-                    if($showRight == "block;"){
-                        echo '
-                        <div class="rating-container">
-                            <div class="rating-part">
-                                <h1>Você Acertou</h1>
+                <?php if($showAnswered == "block;"): ?>
+                    <div class="answered">
+                        <h1>Você já respondeu essa pergunta! Obrigado por sua avalicação!</h1>          
+                    </div>
+                <?php endif; ?>
+                <?php if($showQuestion == "block;"): ?>
+
+                    <div class="unanswered">
+                        <div class="question-container">
+                            <div class="question">
+                                <?php echo $questionText; ?>
                             </div>
-                            <div class="rating-part rating-container-input">
-                                <form id="form-container" action="score.php" method="post">
-                                    <input type="number" required name="rating" id="rating-input" max="5" min="1" placeholder="Dê uma nota à história!"><br>
-                                    <input type="hidden" name="id_story" value="'.$id_story.'">
-                                    <input type="hidden" name="id_question" value="'.$id_question.'">
-                                    <input type="submit" value="Enviar" id="rating-input-submit">
-                                </form>
-                            </div>
+                            <form id="question-form" method="post">
+                                <div class="options">
+                                    <div class="option" onclick="answerForm(0)">
+                                        <div class="op-lel">A</div><div class="text_op"><?php echo $answers[0]; ?></div>
+                                    </div>
+                                    <div class="option" onclick="answerForm(1)">
+                                        <div class="op-lel">B</div><div class="text_op"><?php echo $answers[1]; ?></div>
+                                    </div>
+                                    <div class="option" onclick="answerForm(2)">
+                                        <div class="op-lel">C</div><div class="text_op"><?php echo $answers[2]; ?></div>
+                                    </div>
+                                    <div class="option" onclick="answerForm(3)">
+                                        <div class="op-lel">D</div><div class="text_op"><?php echo $answers[3]; ?></div>
+                                    </div>
+                                    <input type="hidden" name="id_story" value="<?php echo $id_story; ?>"><br>
+                                    <input type="hidden" name="id_question" value="<?php echo $id_question; ?>"><br>
+                                </div>
+                            </form>
+                        </div>  
+                    </div>
+                
+                <?php endif; ?>
+
+                <?php if($showWrong == "block;"): ?>
+
+                    <div id="wrong" class="wrong" style="display:<?php echo $showWrong; ?>">
+                        <h1>Você Errou!</h1>
+                        <div class="bt-retry">
+                            <form action="retry_exe.php" method="post">
+                                <input type="hidden" name="__prof" value="<?php echo $id_question; ?>">
+                                <input type="submit" value="Tentar Novamente">
+                            </form>
                         </div>
-                        ';
-                    }
-                ?>
+                    </div>
+
+                <?php endif; ?>
+
+                <?php if($showRight == "block;"): ?>
+                    
+                    <div class="rating-container">
+                        <div class="rating-part">
+                            <h1>Você Acertou</h1>
+                        </div>
+                        <div class="rating-part rating-container-input">
+                            <form id="form-container" action="score.php" method="post">
+                                <input type="number" required name="rating" id="rating-input" max="5" min="1" placeholder="Dê uma nota à história!"><br>
+                                <input type="hidden" name="id_story" value="<?php echo $id_story; ?>">
+                                <input type="hidden" name="id_question" value="<?php echo $id_question; ?>">
+                                <input type="submit" value="Enviar" id="rating-input-submit">
+                            </form>
+                        </div>
+                    </div>
+
+                <?php endif; ?>
+                
             </div>
         </section>
 
@@ -424,21 +410,28 @@
                                     $class = "mine";
                                     $classC = "mineC";
                                     $classA = "mineA";
+                                    $del = '<a href="excluir_comment?id_comment='.$value['id_comment'].'"><i class="fa-solid fa-trash"></i></a>';
                                 }else{
                                     $class = "regular";
                                     $classC = "";
                                     $classA = "";
+                                    $del = '<a onclick="rep('.$value['id_comment'].')"><i class="fa-solid fa-exclamation"></i></a>';
                                 }
 
                                 echo' <div class="comment-container '.$class.'">
                                         <div class="arrow '.$classA.'"></div>
                                         <div class="comment '.$classC.'">
                                         <div class="cheader">
-                                                <div class="pic" style="'.$value['foto'].'">
+                                                <div class="row-c">
+                                                    <div class="pic" style="'.$value['foto'].'">
 
+                                                    </div>
+                                                    <div class="name">
+                                                        <a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>
+                                                    </div>
                                                 </div>
-                                                <div class="name">
-                                                    <a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>
+                                                <div class="cntr">
+                                                    '.$del.'
                                                 </div>
                                             </div>
                                             <div class="content-comment">
@@ -508,8 +501,19 @@
             }
         ?>
 
+
+var stars = document.getElementById("full-stars")
+
+        var qP = <?php echo $rating ?>;
+
+        stars.style.width = calcStar(qP) + "%";     
+        
+        function calcStar(points){
+            return (100*points)/5;
+        }
+
     </script>
-    <script src="../js/story.js?v=1.01"></script>
+    <script src="../js/story.js?v=1.03124"></script>
     <script src="../js/menu.js"></script>
 </body>
 </html>

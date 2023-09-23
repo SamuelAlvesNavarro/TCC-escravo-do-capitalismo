@@ -1,0 +1,367 @@
+@font-face {
+    font-family: oldF;
+    src: url(../fonts/oldnewspapertypes/OldNewspaperTypes.ttf);
+  }
+  @font-face {
+    font-family: reward;
+    src: url(../fonts/nashville-font/Nashville-z8w0.ttf);
+  }
+*{
+    padding: 0;
+    margin: 0;
+}
+:root {
+    color-scheme: light;
+    --all-shadow: 1px 1px 29px 1px rgba(0,0,0,0.75) inset;
+    --select-bc: #ffe5ba;
+    --paper-color-all: #f0e1cc75;
+}
+.dark {
+    color-scheme: dark;
+    --all-shadow: 1px 1px 29px 1px rgba(0,0,0,0.75) inset;
+    --select-bc: #121212;
+    --paper-color-all: #1212129a;
+}
+body{
+    background-image: url(../img/sangue.png);
+    background-color: var(--paper-color);
+}
+.all{
+    background-color: var(--paper-color-all);
+    color: var(--color);
+    min-height: 100vh;
+    width: 100%;
+    font-family: "Poppins";
+    box-shadow: var(--all-shadow);
+    backdrop-filter: blur(5px);
+}
+.header{
+    position: fixed;
+    padding: 15px;
+    width: calc(100% - 30px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1212127e;
+    backdrop-filter: blur(5px);
+    z-index: 2;
+}
+.historito {
+    transition: 0.5s linear;
+    width: 30px;
+    height: 30px;
+    fill: white;
+    border: 3px solid white;
+  }
+.fa-bars{
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+.user-op {
+    width: 40px;
+    height: 40px;
+    border: var(--color) 5px solid;
+    border-radius: 50%;
+    font-size: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s linear;
+    overflow: hidden;
+  }
+  
+  .pcpic {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s linear;
+    color: var(--color);
+  }
+  
+  .user-op:hover {
+    border: red solid 5px;
+  }
+
+  
+/* BANNER */
+
+.banner{
+    padding: 40px;
+    padding-top: 200px;
+    width: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px
+}
+.title-banner{
+    width: 100%;
+    height: 77px;
+    text-align: center;
+    font-family: oldF;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 26px;
+}
+.span-title{
+    width: 100%;
+    text-align: center;
+    color: red;
+}
+
+
+.search {
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    border: 0px solid transparent;
+    transition: 0.2s linear;
+  }
+  
+  .search-bar {
+    width: calc(100% - 80px);
+    max-width: 800px;
+    height: 50px;
+    text-align: left;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    color: #121212;
+    font-size: 20px;
+    font-family: "Poppins", serif;
+    padding-left: 20px;
+  }
+  
+  .bt-search {
+    width: 80px;
+    height: 50px;
+    text-align: center;
+    border: none;
+    background-color: black;
+    border-left: 3px solid black;
+    color: white;
+    line-height: 50px;
+  }
+  
+  .has-value {
+    width: 100%;
+    height: 50px;
+    border: 2px solid var(--color);
+  }
+
+
+  .controls{
+    width: calc(100% - 80px);
+    position: absolute;
+    top: 90px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+    color: var(--color)
+  }
+
+  .controls i{
+    cursor: pointer;
+  }
+
+  .controls a{
+    color: var(--color);
+  }
+/* MAIN */
+
+.main{
+    width: calc(100% - 40px);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-in{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.toggle{
+    position: relative;
+
+}
+.togs{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    font-size: 20px;
+}
+.oop{
+    padding: 5px;
+    cursor: pointer;
+}
+.oop:hover{
+    border-bottom: solid var(--color) 2px;
+}
+.active_oop{
+    border-bottom: solid var(--color) 2px;
+}
+
+
+
+.page-container{
+    display: flex;
+    flex-direction: column;
+}
+.page{
+    display: none;
+}
+.active-pg{
+    display: block;
+}
+
+    /* HISTORY PAGE */
+
+.history-page{
+    padding: 20px;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.pp{
+    max-width: 1000px;
+    width: 100%;
+}
+.expl{
+    width: 100%;
+    line-height: 32px;
+    background: repeating-linear-gradient(transparent 0px, transparent 30px, var(--color) 32px);
+}
+.select-container{
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    max-width: 500px;
+}
+select{
+    background-color: var(--select-bc);
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid var(--color);
+    outline: none;
+    font-family: "Poppins";
+}
+option{
+    width: 100%;
+    padding: 5px !important;
+}
+
+.allStories{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 20px;
+    max-height: 100vh;
+    overflow: hidden;
+}
+.action{
+    background-color: var(--paper-color);
+    cursor: pointer;
+    overflow: hidden;
+    transition: .1s linear;
+    position: relative;
+    max-width: 300px;
+    color: white;
+    
+}
+
+.action:hover .square{
+    
+    box-shadow: 37px 38px 49px 1px rgba(0,0,0,0.75) inset;
+-webkit-box-shadow: 37px 38px 49px 1px rgba(0,0,0,0.75) inset;
+-moz-box-shadow: 37px 38px 49px 1px rgba(0,0,0,0.75) inset;
+}
+
+.square{
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    box-shadow: 0;
+-webkit-box-shadow: 0;
+-moz-box-shadow: 0;
+    transition: .2s linear;
+
+    box-shadow: 13px 21px 49px 1px rgba(0,0,0,0.75) inset;
+-webkit-box-shadow: 13px 21px 49px 1px rgba(0,0,0,0.75) inset;
+-moz-box-shadow: 13px 21px 49px 1px rgba(0,0,0,0.75) inset;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.square i{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.readqm{
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.readme{
+    color: gray;
+}
+.wrong{
+    color: red;
+}
+.read{
+    color: rgb(21, 243, 32);
+}
+.fa-star{
+    color: #dede44;
+}
+
+.second-way{
+    display: none;
+    cursor: pointer;
+
+    box-shadow: 13px 21px 49px 1px rgba(0,0,0,0.75) inset;
+-webkit-box-shadow: 13px 21px 49px 1px rgba(0,0,0,0.75) inset;
+-moz-box-shadow: 13px 21px 49px 1px rgba(0,0,0,0.75) inset;
+}
+.second-way a{
+    padding: 10px;
+}
+.second-way button{
+    background-color: transparent !important;
+    border: 0;
+    outline: 0;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .second-way{
+        display: block;
+    }
+    .action{
+        display: none;
+    }
+    .title-banner{
+        font-size: 40px;
+        line-height: 20px;
+    }
+}

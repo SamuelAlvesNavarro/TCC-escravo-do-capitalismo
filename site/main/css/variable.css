@@ -1,0 +1,12 @@
+:root {
+    color-scheme: light;
+    --color: #121212;
+    --paper-color: #f0e1cc;
+    --line-color: #121212;
+  }
+  .dark {
+    color-scheme: dark;
+    --color: #ebebeb;
+    --paper-color: #606060;
+    --line-color: #000000;
+  }

@@ -20,7 +20,7 @@
         $resp = $_POST['number'];
 
         
-        $sql = "SELECT * from answer where fk_id_question = $id_question and status=1";
+        $sql = "SELECT * from answer where fk_id_question = $id_question and status = 1";
         foreach($pdo->query($sql) as $key => $value){
             $rig = $value['text'];
         }

@@ -116,7 +116,7 @@
   width: 100%;
   z-index: -10;
   background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;

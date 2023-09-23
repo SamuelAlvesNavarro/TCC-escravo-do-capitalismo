@@ -50,6 +50,108 @@ return Math.floor(Math.random() * (max - min) ) + min;
 
 var bn = document.getElementById('banner');
 
+
+/* REFER CONTROL */
+
+var nS = 1;
+
+var changePos = document.getElementsByClassName("pageRefer");
+
+var subTitle = document.getElementById("subTitle");
+
+var pgs = document.getElementsByClassName("pg");
+
+function toLast(){
+    if(nS != 0) changePosN(nS - 1);
+    else changePosN(changePos.length - 1)
+}
+function toNext(){
+    if(nS != changePos.length - 1) changePosN(nS + 1);
+    else changePosN(0)
+}
+
+
+
+function changePosN(n){
+    if(changePos.length == 2){
+
+        changePos[n].style.order = 1;
+        changePos[n].classList.add("superRefer");
+
+        nS = n;
+
+        if(n == 0){
+            changePos[1].style.order = 2;
+
+            subTitle.innerHTML = "Referências"; 
+            
+            pgs[0].style.display = "none";
+            pgs[1].style.display = "block";
+        }
+        else if(n == 1){
+
+            changePos[0].style.order = 2;            
+            
+            subTitle.innerHTML = "História";
+
+            pgs[0].style.display = "block";
+            pgs[1].style.display = "none";
+        }
+
+        for(var i  = 0; i < changePos.length; i++){
+            if(i != n){
+                changePos[i].classList.remove("superRefer");
+            }
+        }
+
+    }else{
+
+        changePos[n].style.order = 2;
+        changePos[n].classList.add("superRefer");
+
+        nS = n;
+
+        if(n == 0){
+            changePos[1].style.order = 3;
+            changePos[2].style.order = 1;
+
+            subTitle.innerHTML = "Referências"; 
+            
+            pgs[0].style.display = "none";
+            pgs[1].style.display = "none";
+            pgs[2].style.display = "block";
+        }
+        else if(n == 1){
+            changePos[0].style.order = 1;
+            changePos[2].style.order = 3;
+
+            subTitle.innerHTML = "História";
+
+            pgs[0].style.display = "block";
+            pgs[1].style.display = "none";
+            pgs[2].style.display = "none";
+        }
+        else if(n == 2){
+            changePos[0].style.order = 3;
+            changePos[1].style.order = 1;
+
+            subTitle.innerHTML = "Imagens";
+
+            pgs[0].style.display = "none";
+            pgs[1].style.display = "block";
+            pgs[2].style.display = "none";
+        }
+
+        for(var i  = 0; i < changePos.length; i++){
+            if(i != n){
+                changePos[i].classList.remove("superRefer");
+            }
+        }
+    }
+}
+
+changePosN(1);
+
 /* SCROLL ANIS*/
 
 var ac_ = 0;
@@ -67,7 +169,7 @@ function reveal(){
 
     var windowH = window.innerHeight;
     var revealtop = reveal.getBoundingClientRect().top;
-    var revealpoint = -50;
+    var revealpoint = 100;
 
     if(revealtop < windowH - revealpoint){
         reveal.classList.add('active');
@@ -91,6 +193,12 @@ function reveal(){
             controls.classList.remove("appear-controls");
             ac_ = 0;
     
+            chv_l.classList.add("sum_l");
+            chv_r.classList.add("sum_r");
+    
+        }else{
+            chv_l.classList.remove("sum_l");
+            chv_r.classList.remove("sum_r");
         }
     }
 
