@@ -279,7 +279,7 @@
                         echo '<div class="unanswered">
                             <div class="question-container">
                                 <div class="question">
-                                   '.$questionText.'
+                                   '.$questionText.'x
                                 </div>
                                 <form id="question-form" method="post">
                                     <div class="options">
