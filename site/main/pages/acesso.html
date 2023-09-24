@@ -50,8 +50,8 @@
                     </div>
                 </div>
                 <form autocomplete="off" class="login-form" id="login-form" name="login" method="post" action="login.php">
-                    <input id="input-email" autocomplete="false" class="input" type="email" id="email" name="email" placeholder="Email"><br>
-                    <input id="input-senha" minlength="8" maxlength="20" autocomplete="false" class="input senha-login" type="password" id="senha" name="senha" placeholder="Senha"><br>
+                    <input id="input-email" required autocomplete="false" class="input" type="email" id="email" name="email" placeholder="Email"><br>
+                    <input id="input-senha" required minlength="8" maxlength="20" autocomplete="false" class="input senha-login" type="password" id="senha" name="senha" placeholder="Senha"><br>
                     <div class="after" id="after">
                         <input class="login-submit" id="submit-login" type="button" value="Login">
                         <div id="arrowthing" class="arrowthing"><i class="fa-solid fa-chevron-right"></i></div>
@@ -69,7 +69,7 @@
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="../js/acesso.js?v=1.01"></script>
+    <script src="../js/acesso.js?v=1.012"></script>
     <script>
         function typingAni(){
             $("#assombrosas-span").removeClass("no-as");

@@ -22,7 +22,8 @@ email.addEventListener('change', () => {login_bt(email.value, senha.value)});
 
 function login_bt(em, se){
 
-    if(se && em && validEmail(em)){
+    if(se && em //&& validEmail(em)
+    ){
         login_submit.classList.add("filled-login-bt");
         arrow.classList.add("arrowappear");
     }else{

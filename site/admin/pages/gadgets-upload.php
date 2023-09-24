@@ -32,5 +32,5 @@
     $prepare->execute();
 
 
-    header("Location:gadgets.php");
+    header("Location: adicionar-gadgets.php");
 ?>

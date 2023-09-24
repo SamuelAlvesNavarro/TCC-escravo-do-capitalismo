@@ -6,6 +6,10 @@
     $id_story = $_POST['id_story'];
     $fundo = $_POST['fundo'];
 
+    if(!isset($fundo)){
+        $fundo = 0;
+    }
+
     function saveStory($text, $title, $id_story, $st){
 
         global $pdo, $fundo;

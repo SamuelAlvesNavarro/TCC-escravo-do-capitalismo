@@ -147,7 +147,7 @@
             <i class="fa-solid fa-xmark"></i>
         </div>
         <div class="report_comment_container">
-            <form action="report_comment" method="post">
+            <form action="generateReportComment.php" method="post">
                 <h1>Escreva sua Denúncia</h1>
                 <input type="hidden" name="id_comment" id="rep_c">
                 <textarea name="reason" id="" cols="30" rows="10"></textarea>

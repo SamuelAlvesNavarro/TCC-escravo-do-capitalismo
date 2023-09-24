@@ -26,10 +26,11 @@
     <table align="center" class="table table-dark table-striped">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">ID Gadget</th>
-                <th scope="col">Foto</th>
-                <th scope="col">Preço</th>
-                <th scope="col">Alterar</th>
+                <th scope="col">ID Evento</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Título</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Editar</th>
                 <th scope="col">Desativar</th>
                 <th scope="col">Excluir</th>
             </tr>
@@ -40,11 +41,12 @@
                 foreach($pdo->query($sql) as $key => $value):
             ?>
                 <tr scope="row">
+                    <td><?php echo $value['id_evento']; ?></td>
                     <td><?php echo $value['type']; ?></td>
                     <td><?php echo $value['titulo']; ?></td>
                     <td><?php echo $value['descr']; ?></td>
                     <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-info col">Alterar</button></a></td>
-                    <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-primary col">Desativar</button></a></td>
+                    <td><a href="desativar_evento.php?id_evento=<?php echo $value['id_evento']; ?>"><button class="btn btn-primary col">Desativar</button></a></td>
                     <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-danger col">Excluir</button></a></td>
                 </tr>
             <?php endforeach; ?>
@@ -59,11 +61,12 @@
     <table align="center" class="table table-dark table-striped">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">ID Gadget</th>
-                <th scope="col">Foto</th>
-                <th scope="col">Preço</th>
-                <th scope="col">Alterar</th>
-                <th scope="col">Desativar</th>
+                <th scope="col">ID Evento</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Título</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Ativar</th>
                 <th scope="col">Excluir</th>
             </tr>
         </thead>
@@ -73,11 +76,12 @@
                 foreach($pdo->query($sql) as $key => $value):
             ?>
                 <tr scope="row">
+                    <td><?php echo $value['id_evento']; ?></td>
                     <td><?php echo $value['type']; ?></td>
                     <td><?php echo $value['titulo']; ?></td>
                     <td><?php echo $value['descr']; ?></td>
                     <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-info col">Alterar</button></a></td>
-                    <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-primary col">Desativar</button></a></td>
+                    <td><a href="ativar_evento.php?id_evento=<?php echo $value['id_evento']; ?>"><button class="btn btn-primary col">Ativar</button></a></td>
                     <td><a href="alterar-gadget.php?id=<?php echo $value['id_evento']; ?>"><button class="btn btn-danger col">Excluir</button></a></td>
                 </tr>
             <?php endforeach; ?>

@@ -6,6 +6,10 @@
     $id_story = $_POST['id_story'];
     $fundo = $_POST['fundo'];
 
+    if(!isset($fundo)){
+        $fundo = 0;
+    }
+
     $sql = "UPDATE story SET nome = '$title' WHERE id_story = '$id_story'";
     $prepare = $pdo->prepare($sql);
     $prepare->execute();
@@ -22,6 +26,7 @@
     }
 
     $text = addslashes($text);
+
     $sql = "UPDATE history SET texto = '$text' WHERE id_history = '$id_history'";
     $prepare = $pdo->prepare($sql);
     $prepare->execute();

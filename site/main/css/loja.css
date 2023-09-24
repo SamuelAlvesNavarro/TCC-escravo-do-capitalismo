@@ -80,6 +80,7 @@ body svg{
     min-height: 100vh;
     height: auto;
     overflow-y: hidden;
+    color: black !important;
 }
 .section{
     width: 100%;
@@ -233,6 +234,7 @@ body svg{
     width: 100px;
     height: 100px;
     background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 .item hr{

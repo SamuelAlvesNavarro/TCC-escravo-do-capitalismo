@@ -261,7 +261,7 @@
                                         <tr>
                                             <td>Senha:</td>
                                             <td class="input">
-                                                <input id="senha" type="password" name="senha" id="" value="<?php echo crypt($senha, '1234'); ?>">
+                                                <input id="senha" type="password" name="senha" id="" value="<?php echo $senha; ?>">
                                             </td>
                                         </tr>
                                     </tbody>

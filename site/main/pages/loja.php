@@ -18,10 +18,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja</title>
     <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/loja.css?v=10.1">
+    <link rel="stylesheet" href="../css/loja.css?v=10.12">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../css/scroll.css?v=1.09">
+    <link rel="stylesheet" href="../css/scroll.css?v=1.092">
 </head>
 <body>
     <div class="logo-back">

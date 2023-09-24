@@ -188,7 +188,7 @@
                                     echo "
                                     
                                         <tr>
-                                            <td><input type='text' name='rep".$i."' value=".$value['text'].">
+                                            <td><input type='text' name='rep".$i."' value='".$value['text']."'>
                                             <td><input type='number' min='0' max='1' name='status_a_".$i."' value=".$value['status'].">
                                         </tr>
                                     
