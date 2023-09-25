@@ -105,7 +105,7 @@
                                     <?php 
                                     $answer = "
                                         SELECT * FROM story WHERE 
-                                        fk_id_profile = 668 and 
+                                        fk_id_profile = $perfil and 
                                         status = 3;
                                     ";
 

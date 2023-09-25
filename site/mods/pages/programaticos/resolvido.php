@@ -21,6 +21,6 @@
     $prepare = $pdo->prepare($sql);
     $prepare->execute();
 
-    //header("Location: ../report_center.php");
+    header("Location: ../report_center.php");
 
 ?>

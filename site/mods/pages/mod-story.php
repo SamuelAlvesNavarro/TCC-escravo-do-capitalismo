@@ -127,47 +127,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <title>História</title>
-    <link rel="stylesheet" href="../../main/css/menu.css?v=1.01">
-    <link rel="stylesheet" href="../../main/css/story.css?v=1.01">
-    <link rel="stylesheet" href="../../main/css/notification.css">
+    <link rel="stylesheet" href="../css/story.css">
 </head>
 <body>
     <?php
         require "includes/menu.php";
     ?>
-    <div id="all-menu" class="all_menu disappear">
-            <div id="chevron-menu" class="close-menu chevron-phases" onclick="menu_appear()">
-                <i class="fa-sharp fa-solid fa-xmark"></i>
-            </div>
-            <div id="menu" class="menu off">
-                <div class="lamp">
-                    <div class="wire">
-                        
-                    </div>
-                    <i onclick="switchMenu(1)" class="fa-solid fa-lightbulb"></i>
-                </div>
-                <div class="lamp-area" onclick="switchMenu(2)">
-                </div> 
-                <div class="content">
-                    <ul>
-                        <li><a href="central.php" target="_blank" rel="noopener noreferrer">Central</a></li>
-                        <li><a href="profile.php?profile=<?php echo $perfil?>" target="_blank" rel="noopener noreferrer">Perfil</a></li>
-                        <li><a href="loja.php" target="_blank" rel="noopener noreferrer">Loja</a></li>
-                        <li><a href="writerHub.php" target="_blank" rel="noopener noreferrer">Criação</a></li>
-                        <div class="search">
-                            <form action="pesquisa.php" method="get">
-                                <div class="search-box">
-                                    <button class="btn-search"><i class="fas fa-search"></i></button>
-                                    <input required type="text" name="busca" class="input-search" placeholder="Pesquisar história........">
-                                </div>
-                            </form>
-                        </div>
-                    </ul>
-                    <!--<img src="https://clipart-library.com/images/rcLoyAzKi.png" alt="" srcset="">-->
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="all transi" id="all">
         <div id="sideBar" class="sideBar">
             <div class="container">
@@ -245,7 +210,7 @@
                             <div class="images" spellcheck="false">';
                                     
                                     foreach ($pdo->query($sql) as $key => $value) {
-                                        echo "<img src='". $value['path'] ."'><br><br>";
+                                        echo "<img src='../../main/pages/". $value['path'] ."'><br><br>";
                                     }
                                 echo 
                             '</div>
@@ -377,6 +342,5 @@
         }
     
 </script>
-<script src="../../main/js/story.js?v=1.01"></script>
-<script src="../../main/js/menu.js?v=1.01"></script>
+<script src="../js/story.js"></script>
 </html>

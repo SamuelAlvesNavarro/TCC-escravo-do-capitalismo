@@ -410,7 +410,7 @@
                                     $class = "mine";
                                     $classC = "mineC";
                                     $classA = "mineA";
-                                    $del = '<a href="excluir_comment?id_comment='.$value['id_comment'].'"><i class="fa-solid fa-trash"></i></a>';
+                                    $del = '<a href="excluir_comment.php?id_comment='.$value['id_comment'].'"><i class="fa-solid fa-trash"></i></a>';
                                 }else{
                                     $class = "regular";
                                     $classC = "";
