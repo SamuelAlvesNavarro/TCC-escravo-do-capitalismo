@@ -104,7 +104,6 @@
                     <ul>
                         <li>O conteúdo da história não pode estar em branco;</li>
                         <li>O conteúdo não deve conter nenhuma tag html ou código php;</li>
-                        <li>c</li>
                     </ul>
                     <br>Nessa área o texto pode ser formatado com alguns códigos, como por exemplo:<br><br>
                     <ul>
@@ -185,30 +184,6 @@
                         <li>É proibido a disseminação de discurso de ódio nos comentários;</li>
                     </ul>
                 </div>
-
-        <div class="split"></div>
-        <div class="grandTitle">
-            Títulozão
-        </div>
-        <div class="title">
-            Títulozinho
-        </div>
-        <div class="lines">
-            texto as fuck texto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fucktexto as fuck
-        </div>
-        <div class="split">
-
-        </div>
-        <div class="grandTitle">
-            História
-        </div>
-        <div class="title">
-            Título da história
-        </div>
-        <div class="lines">
-           o titulo deve conter a paa
-           <img class="h168" src="../img/3.jpg" alt="">
-        </div>
     </div>
 </body>
 </html>
