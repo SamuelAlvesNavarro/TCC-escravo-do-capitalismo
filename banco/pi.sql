@@ -1,3 +1,6 @@
+drop database if exists pi;
+create database pi;
+use pi;
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/

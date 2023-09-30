@@ -12,16 +12,13 @@
 }
 :root {
     color-scheme: light;
-    --color: #121212;
     --all-shadow: -2px -1px 34px 10px rgba(0, 0, 0, 0.75) inset;
-    --paper-color: #E0C9A6;
 
 
     --line-height: 40px;
     --line-size: 42px;
 
     --table-color: #ccad7f;
-    --line-color: #121212;
     --button: rgb(78, 20, 16);
     --button-hv: rgb(4, 252, 211);
   
@@ -35,11 +32,8 @@
   }
   .dark {
     color-scheme: dark;
-    --color: #ebebeb;
     --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;
-    --paper-color: #606060;
     --table-color: #505050;
-    --line-color: #000000;
   
     --reward-opacity: .9;
   

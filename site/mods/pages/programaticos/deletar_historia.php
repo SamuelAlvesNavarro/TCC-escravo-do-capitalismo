@@ -41,42 +41,42 @@
                     $path = "SELECT path FROM images WHERE id_image = '$img'";
                     foreach($pdo->query($path) as $key => $value){
                         $caminho = $value['path'];
+
+                        $delImg = "DELETE FROM images WHERE id_image = '$img'";
+                        $prepare = $pdo->prepare($delImg);
+                        $prepare->execute();
+
+                        $delPage = "DELETE FROM page WHERE id_page = '$id_page' and type = 1";
+                        $prepare = $pdo->prepare($delPage);
+                        $prepare->execute();
+
+                        $destroy_img = '../../../main/pages/'.$caminho;
+                        unlink($destroy_img);
+
+                        $caminho_parts = explode("/", $caminho);
+                        unset($caminho_parts[3]);
+                        $caminho = implode("/", $caminho_parts);
+                        $caminho = '../../../main/pages/'.$caminho;
+                        
+                        rmdir($caminho);
+
                     } 
-                    
-                    $delImg = "DELETE FROM images WHERE id_image = '$img'";
-                    $prepare = $pdo->prepare($delImg);
-                    $prepare->execute();
-
-                    $delPage = "DELETE FROM page WHERE id_page = '$id_page' and type = 1";
-                    $prepare = $pdo->prepare($delPage);
-                    $prepare->execute();
-
-                    $destroy_img = '../../../main/pages/'.$caminho;
-                    unlink($destroy_img);
-
-                    $caminho_parts = explode("/", $caminho);
-                    unset($caminho_parts[3]);
-                    $caminho = implode("/", $caminho_parts);
-                    $caminho = '../../../main/pages/'.$caminho;
-
-                    echo $caminho;
-                    
-                    rmdir($caminho);
 
                 }else{
 
                     $path = "SELECT path FROM images WHERE id_image = '$img'";
                     foreach($pdo->query($path) as $key => $value){
                         $caminho = $value['path'];
+
+                        $caminho = '../../../main/pages/'.$caminho;
+
+                        unlink($caminho);
+
+                        $del = "DELETE FROM images WHERE id_image = '$img'";
+                        $prepare = $pdo->prepare($del);
+                        $prepare->execute();
+
                     }
-
-                    $caminho = '../../../site-prototipo/pages/'.$caminho;
-
-                    unlink($caminho);
-
-                    $del = "DELETE FROM images WHERE id_image = '$img'";
-                    $prepare = $pdo->prepare($del);
-                    $prepare->execute();
                 }
         }
     }

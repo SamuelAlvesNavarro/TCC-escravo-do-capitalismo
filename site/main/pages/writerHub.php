@@ -42,7 +42,8 @@
     <title>Área do Escritor</title>
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/scroll.css">
-    <link rel="stylesheet" href="../css/wh.css?v=1.01">
+    <link rel="stylesheet" href="../css/variable.css?v=1.01">
+    <link rel="stylesheet" href="../css/wh.css?v=1.012">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
 </head>
@@ -263,7 +264,7 @@
                     </div>
                     
                 </div>
-            </div>
+        </div>
     </div>
     <script src="../js/wh.js?v=1.01"></script>
     <script src="../js/menu.js"></script>

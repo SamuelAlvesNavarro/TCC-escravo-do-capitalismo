@@ -353,7 +353,120 @@ option{
     color: white;
 }
 
+
+
+/* EVENTOS */
+
+.evento{
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.container-eventos{
+    padding: 20px;
+}
+.title-evento{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+.title-full h1{
+    font-family: "Poppins";
+}
+.bar-full{
+    flex-grow: 1;
+    width: 100%;
+    height: 4px;
+    background-color: var(--color);
+}
+.content-evento{
+    margin-top: 10px;
+    width: 100%;
+    max-width: 1000px;
+    line-height: 32px;
+    background: repeating-linear-gradient(transparent 0px, transparent 30px, var(--color) 32px);
+}
+
+
+
+.none-eventos{
+    min-height: 150px;
+    width: 100%;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+/* TOP USERS */
+
+.top-writers{
+    padding: 42px;
+    padding-top: 0;
+}
+.tops{
+    padding-top: 42px;
+    margin-top: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0;
+    background-color: #121212;
+    align-items: flex-end;
+    border-radius: .5rem;
+}
+.user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.info{
+    height: 42px;
+    font-family: oldF;
+}
+.bar{
+    width: 50px;
+    border-radius: .5rem;
+}
+
+.user:nth-child(1) .info a{
+    color: gold;
+}
+.user:nth-child(2) .info a{
+    color: silver;
+}
+.user:nth-child(3) .info a{
+    color: rgb(143, 69, 8);
+}
+
+.user:nth-child(1) .bar{
+    background-image: linear-gradient(to top, black, gold 20%);
+    height: 168px;
+}
+.user:nth-child(2) .bar{
+    background-image: linear-gradient(to top, black, silver 20%);
+    height: 126px;
+}
+.user:nth-child(3) .bar{
+    background-image: linear-gradient(to top, black, rgb(143, 69, 8) 20%);
+    height: 84px;
+}
+
+
 @media (max-width: 600px) {
+    .banner{
+        width: 100%;
+        padding: 0;
+        padding-top: 200px;
+        gap: 10px;
+    }
     .second-way{
         display: block;
     }
@@ -363,5 +476,52 @@ option{
     .title-banner{
         font-size: 40px;
         line-height: 20px;
+    }
+    .none-eventos{
+        font-size: 20px;
+        text-align: center;
+    }
+    .tops{
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .user{
+        gap: 20px;
+        padding-left: 20px;
+        flex-direction: row-reverse;
+    }
+    .bar{
+        width: 20px;
+    }
+
+    .title{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .history-page{
+        padding: 0;
+        padding-top: 10px;
+    }
+    .oop{
+        font-size: 15px;
+    }
+    h1{
+        font-size: 22px !important;
+    }
+    .top-writers{
+        padding: 0;
+        padding-top: 10px;
+    }
+    .search-bar{
+        padding-left: 5px;
+        padding-right: 5px;
+        width: calc(100% - 10px);
+    }
+    .main{
+        padding-top: 40px;
+    }
+    .controls{
+        font-size: 20px;
     }
 }

@@ -18,21 +18,6 @@
         $moedas = $value['moedas'];
         $pontos = $value['pontos_leitor'];
     }
-
-    $topUsers = array();
-    $topIds = array();
-    $i =  0;
-    $sql = "SELECT * FROM user_common order by pontos_leitor desc, moedas desc Limit 3";
-    foreach($pdo->query($sql) as $key => $value){
-        $topUsers[$i] = $value['apelido'];
-        $topIds[$i] = $value['fk_id_profile'];
-        $i++;
-    }
-
-    for($z = 0; $z < 3; $z++){
-        if(!isset($topUsers[$z])) $topUsers[$z] = "Ninguém";
-        if(!isset($topIds[$z])) $topIds[$z] = 0;
-    }
     
     /* PEGANDO AS COISAS DO PERFIL */
     
@@ -45,6 +30,18 @@
         $foto = $value['in_it'];
     }
 
+
+    /* PEGANDO TOP */
+
+    $topProfs = array();
+    $topUsers = array();
+    $i =  0;
+    $sql = "SELECT * FROM user_common order by pontos_leitor desc, moedas desc Limit 3";
+    foreach($pdo->query($sql) as $key => $value){
+        $topProfs[$i] = $value['fk_id_profile'];
+        $topUsers[$i] = $value['apelido'];
+        $i++;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,8 +51,8 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/scroll.css?v=1.01">
     <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/variable.css">
-    <link rel="stylesheet" href="../css/central2.css?v=1.012">
+    <link rel="stylesheet" href="../css/variable.css?v=1.01">
+    <link rel="stylesheet" href="../css/central2.css?v=1.012<?php echo rand(0,1000)?>">
     <title>Central</title>
 </head>
 <body>
@@ -251,10 +248,127 @@
                         </div>
                     </div>
                     <div class="page events-page">
-                        2 fdj,gjs
+                        <div class="container-eventos">
+
+                                <?php
+                                
+                                    $evento = "select * from evento where active = 1";
+                                    $prepare = $pdo->prepare($sql);
+                                    $prepare->execute();
+
+                                    foreach($pdo->query($evento) as $key => $value):
+
+                                ?>
+
+                            <div class="evento">
+                                <div class="title-evento">
+                                    <div class="bar-full"></div>
+                                    <div class="title-full">
+                                        <h1><?php echo $value['titulo']; ?></h1>
+                                    </div>
+                                    <div class="bar-full"></div>
+                                </div>
+                                <div class="content-evento">
+                                    <?php echo $value['descr']; ?>
+                                </div>
+                            </div>
+
+
+                            <?php endforeach; 
+
+                                $evento = "select * from evento where active = 1";
+                                $prepare = $pdo->prepare($evento);
+                                $prepare->execute();
+
+                                if($prepare->rowCount() <= 0):
+                                    
+                            ?>
+
+
+                                <div class="none-eventos">
+                                    Não há eventos no momento.
+                                </div>
+
+                            <?php endif; ?>
+                        </div>
                     </div>
                     <div class="page">
-                        3 sfggfgfs
+                    <div class="top-writers">
+                <div class="title">
+                    <h1>Ranking de Usuários</h1>
+                </div>
+                <div class="tops">
+                    
+                    <div class="user">
+                        <div class="info">
+                            <?php 
+                                $t = 0;
+                                if(!isset($topProfs[$t])){
+                                    $to_show_id = '<a href="#">';
+                                }
+                                else{
+                                    $to_show_id = '<a target="_blank" href="profile.php?profile='.$topProfs[ $t].'">';
+                                }
+
+                                echo $to_show_id;
+                                    if(isset($topUsers[$t])) echo ''.$topUsers[$t].''; 
+                                    else echo "Ninguém";
+                                echo '</a>';
+
+                                $t++;
+                            ?>
+                        </div>
+                        <div class="bar">
+
+                        </div>
+                    </div>
+                    <div class="user">
+                        <div class="info">
+                            <?php 
+                                if(!isset($topProfs[$t])){
+                                    $to_show_id = '<a href="#">';
+                                }
+                                else{
+                                    $to_show_id = '<a target="_blank" href="profile.php?profile='.$topProfs[ $t].'">';
+                                }
+
+                                echo $to_show_id;
+                                    if(isset($topUsers[$t])) echo ''.$topUsers[$t].''; 
+                                    else echo "Ninguém";
+                                echo '</a>';
+
+                                $t++;
+                            ?>
+                        </div>
+                        <div class="bar">
+                            
+                        </div>
+                    </div>
+                    <div class="user">
+                        <div class="info">
+                            <?php 
+                                if(!isset($topProfs[$t])){
+                                    $to_show_id = '<a href="#">';
+                                }
+                                else{
+                                    $to_show_id = '<a target="_blank" href="profile.php?profile='.$topProfs[ $t].'">';
+                                }
+
+                                echo $to_show_id;
+                                    if(isset($topUsers[$t])) echo ''.$topUsers[$t].''; 
+                                    else echo "Ninguém";
+                                echo '</a>';
+
+                                $t++;
+                            ?>
+                        </div>
+                        <div class="bar">
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+        </div>
                     </div>
                 </div>
             </div>
