@@ -247,6 +247,13 @@
             </div>
         </div>
     </div>
+
+    <?php
+    
+        include "includes/footer.php";
+        
+    ?>
+
     <script src="../js/pesquisa.js?v=1.012"></script>
     <script src="../js/menu.js"></script>
 </body>

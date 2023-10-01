@@ -515,5 +515,12 @@ var stars = document.getElementById("full-stars")
     </script>
     <script src="../js/story.js?v=1.03124"></script>
     <script src="../js/menu.js"></script>
+
+
+    <?php
+    
+        include "includes/footer.php";
+        
+    ?>
 </body>
 </html>

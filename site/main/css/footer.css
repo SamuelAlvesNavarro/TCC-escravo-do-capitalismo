@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+body{
+    scroll-behavior: smooth;
+}
+footer *{
+    color: white;
+}
+footer{
+    background-color: #121212;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins";
+}
+footer h2{
+    margin-bottom: 10px;
+}
+.first-row{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    min-height: 180px;
+}
+#img-footer{
+    position: absolute;
+    width: 200px;
+    bottom: 0;
+    right: 20px;
+}
+.historito-footer {
+    transition: 0.5s linear;
+    width: 30px;
+    height: 30px;
+    fill: white;
+    border: 3px solid white;
+  }
+.path-footer{
+    color: rgb(128, 128, 128);
+    text-decoration: none;
+}
+footer form input{
+    font-family: "Poppins";
+    font-size: 15px;
+    padding: 5px;
+    margin: 0;
+    border: 0;
+    outline: 0;
+}
+#submit-footer{
+    background-color: rgb(36, 33, 33);
+    transition: .4s linear;
+    cursor: pointer;
+    color: white;
+}
+#submit-footer:hover{
+    background-color: red;
+}
+
+
+
+
+
+.copyright{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+.copyright a{
+    color: white;
+}

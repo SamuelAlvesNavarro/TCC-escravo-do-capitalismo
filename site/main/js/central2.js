@@ -53,7 +53,37 @@ function story(n){
     window.location = "story.php?story=" + n;
 }
 
+function sortAndReturn(orders, scores){
+
+    //1) combine the arrays:
+    var list = [];
+    for (var j = 0; j < orders.length; j++) 
+        list.push({'order': orders[j], 'score': scores[j]});
+
+    //2) sort:
+    list.sort(function(a, b) {
+        return ((a.score < b.score) ? -1 : ((a.score == b.score) ? 0 : 1));
+        //Sort could be modified to, for example, sort on the age 
+        // if the name is the same. See Bonus section below
+    });
+
+    //3) separate them back out:
+    for (var k = 0; k < list.length; k++) {
+        orders[k] = list[k].order;
+        scores[k] = list[k].score;
+    }
+
+    return orders;
+}
+
 const st = document.getElementsByClassName('story');
+var orders = [];
+var scores = [];
+
+for(var i  = 0; i < st.length; i++){
+    orders.push(i);
+    scores.push(st[i].getAttribute("score"));
+}
 
 function valC(){
 
@@ -64,9 +94,23 @@ function valC(){
             st[i].style.order = i+1;
         }
     }
-    if(select == 'older'){
+    else if(select == 'older'){
         for(var i  = 0; i < st.length; i++){
             st[i].style.order = st.length-i;
+        }
+    }
+    else{
+        var sorted_arr = sortAndReturn(orders, scores);
+        
+        if(select == "bigS"){
+            for(var i  = 0; i < st.length; i++){
+                st[sorted_arr[i]].style.order = st.length-i;
+            }
+        }
+        if(select == "smallS"){
+            for(var i  = 0; i < st.length; i++){
+                st[sorted_arr[i]].style.order = i;
+            }
         }
     }
 }

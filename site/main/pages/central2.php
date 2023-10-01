@@ -125,6 +125,8 @@
                                     <select name="type" id="type-s" onchange="valC()">
                                         <option value="newer">Mais novas</option>
                                         <option value="older">Mais velhas</option>
+                                        <option value="bigS">Maiores Notas</option>
+                                        <option value="smallS">Menores Notas</option>
                                     </select>
                                 </div>
                             </div>
@@ -143,6 +145,7 @@
                             foreach($pdo->query($sql) as $key => $value){
                                 $titulos[$i][0] = $value["nome"];
                                 $titulos[$i][1] = $value["id_story"];
+                                $titulos[$i][2] = $value['rating'];
                                 
                                 $sql = "SELECT id_page FROM page where type = 1 and fk_id_story = ".$titulos[$i][1];
                                 $prepare = $pdo->prepare($sql);
@@ -161,18 +164,18 @@
                                         if($prepare->rowCount() != 0){
 
                                             foreach($pdo->query($sql) as $key => $value){
-                                                $titulos[$i][2] = "url(".$value['path'].")";
+                                                $titulos[$i][3] = "url(".$value['path'].")";
                                             }
 
                                         }else{
 
-                                            $titulos[$i][2] = "linear-gradient(rgb(50,50,50), rgb(0,0,0));";
+                                            $titulos[$i][3] = "linear-gradient(rgb(50,50,50), rgb(0,0,0));";
                                         }
                                     }
 
                                 }else{
 
-                                    $titulos[$i][2] = "linear-gradient(rgb(50,50,50), rgb(0,0,0));";
+                                    $titulos[$i][3] = "linear-gradient(rgb(50,50,50), rgb(0,0,0));";
                                 }
 
                                 $i++;
@@ -199,16 +202,16 @@
 
                                         if($prepare->rowCount() == 0){
 
-                                            $titulos[$i][3] = "<i class='fa-brands fa-readme readqm readme'></i>";
+                                            $titulos[$i][4] = "<i class='fa-brands fa-readme readqm readme'></i>";
                                             
                                         }
                                         else{
-                                            $titulos[$i][3] = "<i class='fa-solid fa-xmark readqm wrong'></i>";
+                                            $titulos[$i][4] = "<i class='fa-solid fa-xmark readqm wrong'></i>";
                                         }
                                     }
                                     else{
 
-                                        $titulos[$i][3] = "<i class='fa-solid fa-check readqm read'></i>";
+                                        $titulos[$i][4] = "<i class='fa-solid fa-check readqm read'></i>";
 
                                         $check = "SELECT * FROM score WHERE fk_id_story = ".$titulos[$i][1]." and fk_id_profile = ".$perfil;
                                         $prepare = $pdo->prepare($check);
@@ -216,25 +219,25 @@
 
                                         if($prepare->rowCount() == 0){
 
-                                            $titulos[$i][3] = "<i class='fa-solid fa-check readqm read'></i>";
+                                            $titulos[$i][4] = "<i class='fa-solid fa-check readqm read'></i>";
                                             
                                         }
                                         else{
-                                            $titulos[$i][3] = "<i class='fa-solid readqm fa-star'></i>";
+                                            $titulos[$i][4] = "<i class='fa-solid readqm fa-star'></i>";
                                         }
                                     }
 
                                     echo "
-                                        <div class='story'>
+                                        <div class='story' score='".$titulos[$i][2]."'>
                                             <div class='action' onclick='story(".$titulos[$i][1].")'>
 
-                                                <div class='square' style='background-image: ". $titulos[$i][2]."'>
+                                                <div class='square' style='background-image: ". $titulos[$i][3]."'>
                                                     <h3>". $titulos[$i][0] ."</h3>
-                                                        ".$titulos[$i][3].
+                                                        ".$titulos[$i][4].
                                                 "</div>
                                             
                                             </div>
-                                            <div class='second-way' style='background-image: ". $titulos[$i][2]."'>
+                                            <div class='second-way' style='background-image: ". $titulos[$i][3]."'>
                                                 <a href='story.php?story=".$titulos[$i][1]."'><button>". $titulos[$i][0] ."</button></a>
                                             </div>
                                         </div>
@@ -374,7 +377,12 @@
             </div>
         </div>
     </div>
+    <?php
+    
+        include "includes/footer.php";
+    
+    ?>
     <script src="../js/menu.js"></script>
-    <script src="../js/central2.js?v=1.01234"></script>
+    <script src="../js/central2.js?v=1.012344"></script>
 </body>
 </html>

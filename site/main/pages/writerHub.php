@@ -270,6 +270,12 @@
     <script src="../js/menu.js"></script>
 <script src="../js/darkmode.js"></script>
 
+    <?php
+    
+        include "includes/footer.php";
+        
+    ?>
+
 <div id="hidden_form_container" style="display:none;"></div>
 
 <script>
