@@ -155,5 +155,52 @@
             </table>
         </div>
     </div>
+
+    <div class="container text-center mb-3">
+        <div class="row align-items-start">
+            <h1 align="center-2" class="col" style="margin-bottom: 50px;">Denúncia de Comentário</h1>
+            <!--<a href="index.php" class="p-2 col-2"><button type="button" class="btn-close" disabled aria-label="Close"></button></a>-->
+        
+            <table align="center" class="col-3 table table-striped border border-black border-1 p-2" style="width: 1200px;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Código da história denunciada</th>
+                        <th scope="col">Código do denunciador</th>
+                        <th scope="col">Razão</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Resolvido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        require "includes/conexao.php";
+
+                        $sql = "SELECT * FROM report_comment where code = 1";
+
+                        foreach ($pdo->query($sql) as $key => $value) {
+                            
+                            if($value['code'] == 1) $cd = "Em Aberto";
+                            if($value['code'] == 2) $cd = "Automática";
+                            if($value['code'] == 3) $cd = "Resolvido";
+
+                            if($value['fk_id_reporter'] == 0){
+                                $value['fk_id_reporter'] = "Deletado";
+                            }
+
+                            echo "<tr scope='row'>";
+                            echo "<td>".$value['id_report']."</td>";
+                            echo "<td><a href='mod-story.php?input_1=".$value['fk_id_reported']."'>História</a></td>";
+                            echo "<td>".$value['fk_id_reporter']."</td>";
+                            echo "<td>".$value['reason']."</td>";
+                            echo "<td>".$cd."</td>";
+                            echo "<td><a href='programaticos/resolvido.php?id_report_story=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
+                            echo "</tr>";
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
