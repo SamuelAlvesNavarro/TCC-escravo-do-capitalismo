@@ -150,7 +150,7 @@
             <form action="generateReportComment.php" method="post">
                 <h1>Escreva sua Denúncia</h1>
                 <input type="hidden" name="id_comment" id="rep_c">
-                <textarea name="reason" maxlength="255" id="" cols="30" rows="10"></textarea>
+                <textarea name="reason" maxLength="255" id="" cols="30" rows="10"></textarea>
                 <input type="submit" value="Denunciar">
             </form>
         </div>
