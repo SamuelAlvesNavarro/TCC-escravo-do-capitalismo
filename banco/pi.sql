@@ -2,13 +2,13 @@ drop database if exists pi;
 create database pi;
 use pi;
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 24-Set-2023 às 22:10
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.1.12
+-- Host: 127.0.0.1:3307
+-- Tempo de geração: 03-Out-2023 às 14:17
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE `admin` (
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `admin`
@@ -55,7 +55,7 @@ CREATE TABLE `answer` (
   `fk_id_question` int(11) NOT NULL,
   `text` varchar(100) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `answer`
@@ -77,7 +77,16 @@ CREATE TABLE `ban` (
   `id_ban` int(11) NOT NULL,
   `user_email` varchar(255) NOT NULL,
   `date_ban` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `ban`
+--
+
+INSERT INTO `ban` (`id_ban`, `user_email`, `date_ban`) VALUES
+(1, 'fdggf134@gmail.com', '2023-10-03'),
+(2, 'fdggf@gmail', '2023-10-03'),
+(3, 'fdggf1@gmail', '2023-10-03');
 
 -- --------------------------------------------------------
 
@@ -90,7 +99,7 @@ CREATE TABLE `comment` (
   `fk_id_story` int(11) NOT NULL,
   `fk_id_profile` int(11) NOT NULL,
   `text` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `comment`
@@ -109,7 +118,7 @@ CREATE TABLE `compra` (
   `fk_id_profile` int(11) NOT NULL,
   `fk_id_gadget` int(11) NOT NULL,
   `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `compra`
@@ -131,7 +140,7 @@ CREATE TABLE `error` (
   `id_error` int(11) NOT NULL,
   `cod_error` varchar(5) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `error`
@@ -157,6 +166,7 @@ INSERT INTO `error` (`id_error`, `cod_error`, `description`) VALUES
 (18, '3', 'Você tentou acessar uma história que não é sua. Isso é proibido e passível de banimento. O Historito não gostou da sua atitude e enviou uma notificação das suas atividades para o moderador.'),
 (19, '1', 'Esse email é inválido'),
 (20, '1', 'Você colocou mais caracteres do que o permitido'),
+(21, '1', 'Email informado não é válido'),
 (42, '4', 'Reservado'),
 (666, '4', 'Reservado'),
 (667, '0', 'Você entrou na página de erro sem um erro. Por favor, não o faça novamente. Só acesse essa página quando necessário.');
@@ -171,7 +181,7 @@ CREATE TABLE `error_user` (
   `id_error` int(11) NOT NULL,
   `fk_id_profile` int(11) DEFAULT NULL,
   `fk_id_story` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -186,7 +196,7 @@ CREATE TABLE `evento` (
   `type` int(11) NOT NULL,
   `script` text DEFAULT NULL,
   `active` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `evento`
@@ -208,7 +218,7 @@ CREATE TABLE `gadget` (
   `g_status` int(11) NOT NULL DEFAULT 1,
   `nome` varchar(255) NOT NULL,
   `in_it` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `gadget`
@@ -269,7 +279,7 @@ CREATE TABLE `history` (
   `id_history` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
   `texto` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `history`
@@ -289,7 +299,7 @@ CREATE TABLE `images` (
   `fk_id_page` int(11) NOT NULL,
   `fundo` tinyint(4) NOT NULL DEFAULT 0,
   `path` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `images`
@@ -308,7 +318,7 @@ INSERT INTO `images` (`id_image`, `fk_id_page`, `fundo`, `path`) VALUES
 CREATE TABLE `like_comment` (
   `fk_id_profile` int(11) NOT NULL,
   `fk_id_comment` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -321,7 +331,7 @@ CREATE TABLE `mods` (
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `mods`
@@ -341,7 +351,7 @@ CREATE TABLE `page` (
   `fk_id_story` int(11) NOT NULL,
   `type` int(11) NOT NULL,
   `order_p` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `page`
@@ -364,7 +374,7 @@ CREATE TABLE `profile` (
   `fundoFoto` int(11) NOT NULL DEFAULT 0,
   `bordaFoto` int(11) NOT NULL DEFAULT 0,
   `fundoPerfil` int(11) NOT NULL DEFAULT 2
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `profile`
@@ -383,7 +393,7 @@ CREATE TABLE `question` (
   `id_question` int(11) NOT NULL,
   `fk_id_story` int(11) NOT NULL,
   `quest_itself` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `question`
@@ -401,7 +411,7 @@ INSERT INTO `question` (`id_question`, `fk_id_story`, `quest_itself`) VALUES
 CREATE TABLE `question_user` (
   `fk_id_question` int(11) NOT NULL,
   `fk_id_profile` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `question_user`
@@ -420,7 +430,7 @@ CREATE TABLE `reference` (
   `id_reference` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
   `path` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `reference`
@@ -442,7 +452,7 @@ CREATE TABLE `report_comment` (
   `fk_id_comment` int(11) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
   `code` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -456,7 +466,7 @@ CREATE TABLE `report_profile` (
   `fk_id_reporter` int(11) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
   `code` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `report_profile`
@@ -477,7 +487,7 @@ CREATE TABLE `report_story` (
   `fk_id_reporter` int(11) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
   `code` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -490,7 +500,7 @@ CREATE TABLE `score` (
   `fk_id_profile` int(11) NOT NULL,
   `fk_id_story` int(11) NOT NULL,
   `nota` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `score`
@@ -512,7 +522,7 @@ CREATE TABLE `story` (
   `rating` float NOT NULL DEFAULT 0,
   `status` int(11) NOT NULL DEFAULT 0,
   `fk_id_profile` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `story`
@@ -537,7 +547,7 @@ CREATE TABLE `user_common` (
   `pontos_leitor` int(11) NOT NULL DEFAULT 0,
   `ranking` int(11) NOT NULL DEFAULT 0,
   `moedas` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `user_common`
@@ -739,7 +749,7 @@ ALTER TABLE `answer`
 -- AUTO_INCREMENT de tabela `ban`
 --
 ALTER TABLE `ban`
-  MODIFY `id_ban` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `comment`
@@ -799,7 +809,7 @@ ALTER TABLE `page`
 -- AUTO_INCREMENT de tabela `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `question`
@@ -847,7 +857,7 @@ ALTER TABLE `story`
 -- AUTO_INCREMENT de tabela `user_common`
 --
 ALTER TABLE `user_common`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restrições para despejos de tabelas
