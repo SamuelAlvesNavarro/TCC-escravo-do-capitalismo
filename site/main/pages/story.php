@@ -124,6 +124,11 @@
         
         $i++;
     }
+
+
+    /* GUARDANDO NA SESSÃO */
+
+    $_SESSION['current_story'] = $id_story;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -2,14 +2,14 @@
     require 'includes/online.php';
     require "includes/enviarErro.php";
     require "includes/conexao.php";
+    require 'includes/checarTexto.php';
     global $pdo;
 
     /* FILTRAR CÓDIGO HTML E PHP */
 
     function contemTagsHTML($string){
-        $padrao = '/<[^>]*>/'; // Encontra as tags HTML
         
-        if(preg_match($padrao, $string)) {
+        if(preg_match('/<.*>/', $string)) {
             return true; // A string contém HTML
 
         } else {
@@ -42,10 +42,12 @@
             exit;
         }
 
-        if($titulo == "cu"){
+        echo $titulo;
+        
+        if(!verificarTexto($titulo, 0)){
             sendToError(17);
             exit;
-        } 
+        }
         
 
 
@@ -56,11 +58,15 @@
 
     //Filtros da história
     if(contemTagsHTML($historia) || contemTagsHTML($titulo)){
-        header("Location: error.php");
+        sendToError(22);
         exit;
     }
     if(filtrarPHP($historia) || filtrarPHP($titulo)){
-        header("Location: error.php");
+        sendToError(22);
+        exit;
+    }
+    if(!verificarTexto($historia, 0)){
+        sendToError(17);
         exit;
     }
     if(filter_var($historia, FILTER_CALLBACK, array('options' => 'vazio'))){

@@ -12,14 +12,14 @@
     $name_image = str_replace(" ", "", $name);
     //MAIN
     if($type == 0){
-        $path = "background-image: url(../profile-gadgets/pc-profile/$name_image.$extensao";
+        $path = "background-image: url(../profile-gadgets/pc-profile/$name_image.$extensao);";
         move_uploaded_file($_FILES['image']['tmp_name'], "../../main/profile-gadgets/pc-profile/$name_image.$extensao");
 
         //mod
         copy("../../main/profile-gadgets/pc-profile/$name_image.$extensao", "../../mods/profile-gadgets/pc-profile/$name_image.$extensao");
         copy("../../main/profile-gadgets/pc-profile/$name_image.$extensao", "../../admin/profile-gadgets/pc-profile/$name_image.$extensao");
     }else{
-        $path = "background-image: url(../profile-gadgets/bc-profile/$name_image.$extensao";
+        $path = "background-image: url(../profile-gadgets/bc-profile/$name_image.$extensao);";
         move_uploaded_file($_FILES['image']['tmp_name'], "../../main/profile-gadgets/bc-profile/$name_image.$extensao");
 
         //mod

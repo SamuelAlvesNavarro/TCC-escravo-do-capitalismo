@@ -1,11 +1,23 @@
 <?php
     // Lista de palavras que você quer filtrar
-    $palavrasProibidas = array("caralho", "cu", "buceta", "vtnc", "pqp", "fdp", "porra", "viado", "viadinho", "viadão", "baitola", 
-    "foder", "vsfd", "xoxota", "xota", "cacete", "pica", "pika", "pau", "arrombado", "arrombada", "bct", "fodido", "fodida", "merda", 
-    "bicha", "boiola", "puta", "fodendo", "fds", "foda-se", "foda", "caceta", "boquete", "siririca", "brocha", "desgraçado", 
-    "desgraçada", "punheta", "punheteiro", "punheteira", "mongol", "retardado", "retardada", "merda", "bosta", "escroto", "escrota", 
-    "vagabundo", "vagabunda", "grelo", "piroca", "puto", "nigga", "nigger", "cagado", "cagada", "rola", "trouxa", "boqueteira", "boqueteiro", 
-    "biscate", "balofo", "balofa", "bananão", "corno", "corna", "chifrudo", "chifruda");
+    $palavrasProibidas = array("caralho", "cu", "buceta", 
+    "vtnc", "pqp", "fdp", "porra", 
+    "viado", "viadinho", "viadão", "baitola", 
+    "foder", "vsfd", "xoxota", "xota", "cacete", 
+    "pica", "pika", "pau", "arrombado", 
+    "arrombada", "bct", "fodido", "fodida", "merda", 
+    "bicha", "boiola", "puta", "fodendo", "fds", 
+    "foda-se", "foda", "caceta", "boquete", 
+    "siririca", "brocha", "desgraçado", 
+    "desgraçada", "punheta", "punheteiro", 
+    "punheteira", "mongol", "retardado", "retardada", 
+    "merda", "bosta", "escroto", "escrota", 
+    "vagabundo", "vagabunda", "grelo", "piroca", 
+    "puto", "nigga", "nigger", "cagado", "cagada", 
+    "rola", "trouxa", "boqueteira", "boqueteiro", 
+    "biscate", "balofo", "balofa", "bananão", 
+    "corno", "corna", "chifrudo", "chifruda"
+    );
 
     // Função para verificar palavras proibidas no texto
     function verificarPalavras($texto, $palavrasProibidas) {
@@ -22,6 +34,7 @@
         $tagsPerigosas = array("script", "iframe", "php");
         foreach ($tagsPerigosas as $tag) {
             if (stripos($texto, "<$tag>") !== false) {
+                echo "foi aqui vei";
                 return false; // Encontrou tag perigosa
             }
         }

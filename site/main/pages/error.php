@@ -14,6 +14,7 @@
             $id_error = $value['id_error'];
             $cod_error = $value['cod_error'];
             $desc = $value['description'];
+            $returnT = $value['returnT'];
         }
 
     }else{
@@ -85,7 +86,31 @@
             ?>
 
             <div class="to-central">
-                <a href="index.php"><button>Volte</button></a>
+                <a href="<?php
+
+                    $link = '';
+
+                    if($returnT == 1){
+                        $link = "central.php";
+                    }
+                    if($returnT == 2){
+                        $link = "acesso.html";
+                    }
+                    if($returnT == 3){
+
+                        if(isset($_SESSION['current_story'])) $link = "story.php?story=".$_SESSION['current_story'];
+                        else{
+                            $link = "central.php";
+                        }
+                        
+                    }
+                    if($returnT == 4){
+                        $link = "criacao.php";
+                    }
+                
+                    
+                    echo $link;
+                ?>"><button>Volte</button></a>
             </div>
         </div>
         <div class="class-show">
