@@ -165,7 +165,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Código</th>
-                        <th scope="col">Código da história denunciada</th>
+                        <th scope="col">Código do denunciado</th>
                         <th scope="col">Código do denunciador</th>
                         <th scope="col">Razão</th>
                         <th scope="col">Código</th>
@@ -190,11 +190,11 @@
 
                             echo "<tr scope='row'>";
                             echo "<td>".$value['id_report']."</td>";
-                            echo "<td><a href='mod-story.php?input_1=".$value['fk_id_reported']."'>História</a></td>";
+                            echo "<td>".$value['fk_id_reported']."</td>";
                             echo "<td>".$value['fk_id_reporter']."</td>";
                             echo "<td>".$value['reason']."</td>";
                             echo "<td>".$cd."</td>";
-                            echo "<td><a href='programaticos/resolvido.php?id_report_story=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
+                            echo "<td><a href='programaticos/resolvido.php?id_report_comment=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
                             echo "</tr>";
                         }
                     ?>
