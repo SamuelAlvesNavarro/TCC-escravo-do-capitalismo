@@ -147,30 +147,31 @@ CREATE TABLE `error` (
 -- Extraindo dados da tabela `error`
 --
 
-INSERT INTO `error` (`id_error`, `cod_error`, `description`) VALUES
-(1, '1', 'Email já cadastrado no site'),
-(2, '1', 'Senhas diferente'),
-(3, '4', 'Processo falhou'),
-(4, '4', 'Reservado'),
-(6, '3', 'Item não existe'),
-(7, '4', 'Reservado'),
-(8, '4', 'Sei la(Página de compra)'),
-(9, '3', 'Item já foi comprado'),
-(10, '3', 'Perfil inválido'),
-(11, '3', 'Você já respondeu essa pergunta'),
-(12, '4', 'Sei la(Página de resposta)'),
-(13, '4', 'Reservado'),
-(14, '2', 'Nenhuma história foi selecionada'),
-(15, '2', 'Extensão inválida'),
-(16, '1', 'Tamanho da imagem ultrapassou de 5 MB'),
-(17, '2', 'Título ofensivo'),
-(18, '3', 'Você tentou acessar uma história que não é sua. Isso é proibido e passível de banimento. O Historito não gostou da sua atitude e enviou uma notificação das suas atividades para o moderador.'),
-(19, '1', 'Esse email é inválido'),
-(20, '1', 'Você colocou mais caracteres do que o permitido'),
-(21, '1', 'Email informado não é válido'),
-(42, '4', 'Reservado'),
-(666, '4', 'Reservado'),
-(667, '0', 'Você entrou na página de erro sem um erro. Por favor, não o faça novamente. Só acesse essa página quando necessário.');
+INSERT INTO `error` (`id_error`, `cod_error`, `description`, `returnT`) VALUES
+(1, '1', 'Email já cadastrado no site', 1),
+(2, '1', 'Senha não confirmada', 2),
+(3, '4', 'Processo falhou', 1),
+(4, '4', 'Reservado', 1),
+(6, '3', 'Item não existe', 5),
+(7, '4', 'Reservado', 1),
+(8, '4', 'Sei la(Página de compra)', 1),
+(9, '3', 'Item já foi comprado', 5),
+(10, '3', 'Perfil inválido', 1),
+(11, '3', 'Você já respondeu essa pergunta', 3),
+(12, '4', 'Sei la(Página de resposta)', 3),
+(13, '4', 'Reservado', 1),
+(14, '2', 'Nenhuma história foi selecionada', 1),
+(15, '2', 'Extensão inválida', 4),
+(16, '1', 'Tamanho da imagem ultrapassou de 5 MB', 4),
+(17, '2', 'Conteúdo Ofensivo', 4),
+(18, '3', 'Você tentou acessar uma história que não é sua. Isso é proibido e passível de banimento. O Historito não gostou da sua atitude e enviou uma notificação das suas atividades para o moderador.', 1),
+(19, '1', 'Esse email é inválido', 1),
+(20, '1', 'Você colocou mais caracteres do que o permitido', 1),
+(21, '1', 'Email informado não é válido', 2),
+(22, '3', 'Você tentou injetar código na sua história', 3),
+(42, '4', 'Reservado', 1),
+(666, '4', 'Reservado', 1),
+(667, '0', 'Você entrou na página de erro sem um erro. Por favor, não o faça novamente. Só acesse essa página quando necessário.', 1);
 
 -- --------------------------------------------------------
 

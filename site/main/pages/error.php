@@ -107,7 +107,9 @@
                     if($returnT == 4){
                         $link = "criacao.php";
                     }
-                
+                    if($returnT == 5){
+                        $link = "loja.php";
+                    }
                     
                     echo $link;
                 ?>"><button>Volte</button></a>
