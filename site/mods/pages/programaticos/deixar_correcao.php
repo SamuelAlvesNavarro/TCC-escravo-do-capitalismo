@@ -63,10 +63,16 @@
         $id_question = $value['id_question'];
     }
 
+    $r = $_POST['status_a'];
     $sql = "select * from answer where fk_id_question = ".$id_question;
     $i = 1;
     foreach($pdo->query($sql) as $key => $value){
-        $sql = "UPDATE answer SET text = '".$_POST['rep'.$i.'']."', status = '".$_POST['status_a_'.$i.'']."' where id_answer = ".$value['id_answer']." ";
+        $sql = "UPDATE answer SET text = '".$_POST['rep'.$i.'']."', status = '0' where id_answer = ".$value['id_answer']." ";
+
+        if($i == $r){
+            $sql = "UPDATE answer SET text = '".$_POST['rep'.$i.'']."', status = '1' where id_answer = ".$value['id_answer']." ";
+        }
+        
         $prepare = $pdo->prepare($sql);
         $prepare->execute();
         $i++;
