@@ -185,11 +185,16 @@
                                 $i = 1;
                                 $answer = "SELECT * FROM answer WHERE fk_id_question = '$id_question'";
                                 foreach($pdo->query($answer) as $key => $value){
+                                    if($value['status'] == 1){
+                                        $checked = "checked";
+                                    }else{
+                                        $checked = "";
+                                    }
                                     echo "
                                     
                                         <tr>
                                             <td><input type='text' name='rep".$i."' value='".$value['text']."'>
-                                            <td><input type='number' min='0' max='1' name='status_a_".$i."' value=".$value['status'].">
+                                            <td><input type='radio' name='status_a' ".$checked." value=".$i.">
                                         </tr>
                                     
                                     
