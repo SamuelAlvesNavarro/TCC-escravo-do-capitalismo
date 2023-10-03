@@ -118,3 +118,16 @@ h2{
     color: #ffffff;
   }
   
+
+
+  .go-back{
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  .go-back a{
+    color: white;
+  }

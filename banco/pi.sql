@@ -450,7 +450,7 @@ CREATE TABLE `report_comment` (
   `fk_id_reported` int(11) NOT NULL,
   `fk_id_reporter` int(11) NOT NULL,
   `fk_id_comment` int(11) NOT NULL,
-  `reason` varchar(50) DEFAULT NULL,
+  `reason` text DEFAULT not NULL,
   `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

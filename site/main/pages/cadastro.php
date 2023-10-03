@@ -12,7 +12,7 @@
     <meta http-equiv="pragma" content="no-cache" />
 
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../css/cadastro.css?v=1.09">
+    <link rel="stylesheet" href="../css/cadastro.css?v=1.092">
     <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Cadastro</title>
 </head>

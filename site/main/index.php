@@ -3,6 +3,8 @@
     include "pages/includes/criasession.php";
     session_unset();
     session_destroy();
+
+    include "pages/includes/loading.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

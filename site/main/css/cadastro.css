@@ -128,10 +128,12 @@ val{
     gap: 20px;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .current{
-    z-index: 1;
+    z-index: 1; 
+    backdrop-filter: blur(6px);
 }
 
 .info{
@@ -169,7 +171,6 @@ val{
 .label{
     display: inline;
     font-size: 25px;
-    background-color: var(--paper-color);
 }
 .inp-text{
     width: 50ch;
@@ -179,7 +180,6 @@ val{
     outline: none;
     border: none;
     line-height: 30px;
-    background-color: var(--paper-color);
 }
 #send{
     padding: 20px;

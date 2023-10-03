@@ -27,6 +27,9 @@ function getTheme(){
 }
 
 getTheme()
+
+
+
 /* SLIDE */
 var senha = document.getElementById("senha")
     var senha2 = document.getElementById("Confsenha")
@@ -95,15 +98,16 @@ var slides = document.getElementsByClassName("slide");
     var lastTime = 0;
     function setSlide(n){
 
-        generatePrev(n)
-        getBloody()
+    
         var now = new Date().getTime(); // Time in milliseconds
-        if (now - lastTime < 1000) {
+        if (now - lastTime < 2000) {
             return;
         } else {
             lastTime = now;
         }
 
+        generatePrev(n)
+        getBloody()
         if(n == 0){
             chv_left.classList.remove("fadeIn");
             chv_left.classList.add("fadeOut");

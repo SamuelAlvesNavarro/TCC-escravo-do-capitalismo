@@ -39,13 +39,16 @@ if(isset($_POST['submit'])){
         $res = mandarEmail($subject, $body, $email);
 
         if($res){
-            echo "<h1 class='sucess'>Você acaba de receber um email contendo sua senha!</h1>";
+            echo "<h1 class='sucess'>Você acaba de receber um email contendo os passos para recuperar sua senha!</h1>";
         }else{
             echo "<h1 class='defeat'>Algo deu errado durante o envio de um email para você, tente novamente!<br>Se os erros continuarem, espere 24 horas antes de tentar novamente</h1>";
         }
             
     }else{
-        echo "<h1 class='defeat'>Algo deu errado durante o envio de um email para você, tente novamente!<br>Se os erros continuarem, espere 24 horas antes de tentar novamente</h1>";
+        echo "<h1 class='defeat'>
+        Algo deu errado durante o envio de um email para você, tente novamente!
+        <br>
+        Se os erros continuarem, espere 24 horas antes de tentar novamente</h1>";
     }
 }else{
     header("Location: acesso.html");
