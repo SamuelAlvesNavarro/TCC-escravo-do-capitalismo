@@ -29,3 +29,16 @@ alter table profile AUTO_INCREMENT = 0;
 alter table question AUTO_INCREMENT = 0;
 
 
+
+
+Google Perspective API: Oferece uma API que pode ser usada para avaliar a toxicidade de texto, identificando palavras ofensivas.
+
+WebPurify: Oferece um serviço de moderação de conteúdo com uma lista de palavras-chave não permitidas e suporte a palavras personalizadas.
+
+ModerateContent: Uma plataforma de moderação de conteúdo que usa IA para detectar conteúdo impróprio, incluindo palavras ofensivas.
+
+Amazon Web Services (AWS) Comprehend: Pode ser usado para analisar o sentimento e a emoção em texto, identificando conteúdo ofensivo.
+
+PerspectiveAPI Wrapper: Um wrapper de código aberto para o Perspective API do Google que facilita a integração em seu projeto.
+
+
