@@ -227,7 +227,7 @@
                             echo "<td>".$value['fk_id_reporter']."</td>";
                             echo "<td>".$value['reason']."</td>";
                             echo "<td>".$cd."</td>";
-                            echo "<td><a href='programaticos/resolvido.php?id_report_story=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
+                            echo "<td><a href='programaticos/resolvido.php?id_report_comment=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
                             echo "</tr>";
                         }
                     ?>
