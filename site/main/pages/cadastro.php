@@ -117,7 +117,7 @@
                 </div>
                 <div class="slide bt-slide ">
                     <div class="prev"></div>
-                    <button id="send" type="submit">Terminar Cadastro</button>
+                    <input id="send" type="submit">Terminar Cadastro</input>
                 </div>
             </form>
         </div>

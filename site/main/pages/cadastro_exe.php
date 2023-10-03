@@ -3,6 +3,10 @@
         require "includes/enviarErro.php";
         require "includes/values.php";
 
+        function valido($email) {
+            return filter_var($email, FILTER_VALIDATE_EMAIL);
+        }
+        
         $nome = null;
         $email = null;
         $senha = null;
@@ -13,6 +17,12 @@
         $email = $_POST["email"];
         $senha = $_POST["senha"];
         $confirmarsenha = $_POST["confirmarsenha"];
+
+        
+        if(!valido($email)){
+            sendToError(21);
+            exit;
+        }
 
         if(checkBan($email, $pdo)){
             sendToError(19);

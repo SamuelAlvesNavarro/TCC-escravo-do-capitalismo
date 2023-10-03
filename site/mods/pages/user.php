@@ -47,7 +47,7 @@
     foreach($pdo->query($sql) as $key => $value){
         $foto = $value['in_it'];
     }
-    $sql = "SELECT in_it FROM gadget WHERE id_gadget = $fundo and type = 1";
+    $sql = "SELECT in_it FROM gadget WHERE id_gadget = $fundo and type = 3";
     foreach($pdo->query($sql) as $key => $value){
         $fundo = $value['in_it'];
     }
@@ -88,8 +88,8 @@
             <input type="submit" class="op ban" value="Banir">
         </form>
     </div>
-    <div class="main container text-center mb-3 ">
-        <div class="row align-items-start">
+    <div class="main text-center">
+        <div class="d-f-fix">
             <h1 align="center-2" class="col" style="margin-bottom: 50px;">Denúncia de Perfil</h1>
                 <?php
                     require "includes/conexao.php";
@@ -145,8 +145,8 @@
             </table>
         </div>
     </div>
-    <div class="main container text-center mb-3 ">
-        <div class="row align-items-start">
+    <div class="main text-center">
+        <div class="d-f-fix">
             <h1 align="center-2" class="col" style="margin-bottom: 50px;">Denúncia de História</h1>
                 <?php
                     require "includes/conexao.php";
@@ -187,13 +187,16 @@
         </div>
     </div>
     <!-- Coloquei aqui para n atrapalhar o resto da página !-->
-
-    <h2>Comentários deste usuário</h2>
-    <form action="user_comment.php" method="post">
-            <?php
-                $_SESSION['perfil'] = $perfildono;
-            ?>
-            <button>Averiguar</button>
-    </form>
+    <div class="main text-center">
+        <div class="d-f-fix">
+            <h2>Comentários deste usuário</h2>
+            <form action="user_comment.php" method="post">
+                    <?php
+                        $_SESSION['perfil'] = $perfildono;
+                    ?>
+                    <button>Averiguar</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

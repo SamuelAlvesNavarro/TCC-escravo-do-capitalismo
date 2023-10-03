@@ -39,3 +39,9 @@
 .g{
     background-color: green;
 }
+
+.d-f-fix{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
