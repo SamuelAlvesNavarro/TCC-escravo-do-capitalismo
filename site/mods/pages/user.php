@@ -193,7 +193,7 @@
                 <?php
                     require "includes/conexao.php";
 
-                    $sql = "SELECT * FROM report_story where fk_id_reporter = $perfildono";
+                    $sql = "SELECT * FROM report_comment where fk_id_reporter = $perfildono or fk_id_reported = $perfildono";
                 ?>
             <!--<a href="index.php" class="p-2 col-2"><button type="button" class="btn-close" disabled aria-label="Close"></button></a>-->
         
@@ -209,7 +209,6 @@
                 </thead>
                 <tbody>
                     <?php
-                        $sql = "SELECT * FROM report_comment WHERE code = 1";
 
                         foreach ($pdo->query($sql) as $key => $value) {
                             
@@ -227,7 +226,6 @@
                             echo "<td>".$value['fk_id_reporter']."</td>";
                             echo "<td>".$value['reason']."</td>";
                             echo "<td>".$cd."</td>";
-                            echo "<td><a href='programaticos/resolvido.php?id_report_comment=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
                             echo "</tr>";
                         }
                     ?>
