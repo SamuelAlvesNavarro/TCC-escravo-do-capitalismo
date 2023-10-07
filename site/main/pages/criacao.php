@@ -197,7 +197,7 @@
             </div>
             <div class="references layout-padding" id="refs">
                 <div class="title">
-                    <h1>Referências:</h1>
+                    <h1>Referências: <button type="button" onclick="copyPerfil()">COPIAR LINK DO PERFIL</button></h1>
                 </div>
                 <div class="appear-refs" id="appear-refs">
 
@@ -241,25 +241,25 @@
                 </div>
                 <div class="text-question">
                     <p id="question_text"></p>
-                    <input type="text" name="question" required class="input-question-text">
+                    <input type="text" name="question"  maxLength = '100' required class="input-question-text">
                 </div>
                 <div class="question-container">
                     <input id='certa' type="hidden" name="certa">
                     <div id="opa" class="option" onclick="setAsRight(1)">
                         <p class="opps_text"></p>
-                        <input type="text" name="a" required class="input-op-text">
+                        <input type="text" name="a"  maxLength = '100' required class="input-op-text">
                     </div>
                     <div id="opb" class="option" onclick="setAsRight(2)">
                         <p class="opps_text"></p>
-                        <input type="text" name="b" required class="input-op-text">
+                        <input type="text" name="b"  maxLength = '100' required class="input-op-text">
                     </div>
                     <div id="opc" class="option" onclick="setAsRight(3)">
                         <p class="opps_text"></p>
-                        <input type="text" name="c" required class="input-op-text">
+                        <input type="text" name="c"  maxLength = '100' required class="input-op-text">
                     </div>
                     <div id="opd" class="option" onclick="setAsRight(4)">
                         <p class="opps_text"></p>
-                        <input type="text" name="d" required class="input-op-text">
+                        <input type="text" name="d" maxLength = '100' required class="input-op-text">
                     </div>
                 </div>
             </div>
@@ -300,5 +300,13 @@
     </div>
     <script src="../js/criacao.js?v=1.01"></script>
     <script src="../js/menu.js?v=1.01"></script>
+
+    <script>
+        function copyPerfil(){
+            navigator.clipboard.writeText("TCC-escravo-do-capitalismo/site/main/pages/profile?profile="+<?php 
+                echo $perfil;
+            ?>)
+        }   
+    </script>
 </body>
 </html>

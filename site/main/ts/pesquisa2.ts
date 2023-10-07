@@ -1,13 +1,18 @@
 function acentral(){
-    window.location="central.php";
+    const win: Window = window;
+
+    win.location = "central.php";
 }
 
 var toggle = document.getElementsByClassName("mode");
-const root = document.querySelector(":root");
+const root = document.querySelector<HTMLUListElement>(":root");
 var dark = false;
 toggle[0].addEventListener('click', switchmode)
 
 function switchmode(){
+
+    if(root == null) return
+
     root.classList.toggle('dark');
 
     if(dark){
@@ -26,11 +31,11 @@ function switchmode(){
         toggle[0].classList.add('fa-solid');
     }
 }
-function setTheme(theme){
+function setTheme(theme: string){
     localStorage.setItem("Theme", JSON.stringify(theme));
 }
 function getTheme(){
-    let theme = JSON.parse(localStorage.getItem("Theme"));
+    const theme:string = JSON.parse(localStorage.getItem("Theme") || 'light');
 
     if(theme == "dark"){
         switchmode();
@@ -41,6 +46,9 @@ function getTheme(){
 getTheme();
 
 
-function story(n){
-    window.location=("story.php?story="+n);
+function story(n: number) {
+
+    const win: Window = window;
+
+    win.location = "story.php?story=" + n;
 }

@@ -2,7 +2,6 @@ var toggle = document.getElementsByClassName("mode");
 const root = document.querySelector(":root");
 var dark = false;
 toggle[0].addEventListener('click', switchmode)
-toggle[1].addEventListener('click', switchmode)
 
 function switchmode(){
     root.classList.toggle('dark');
@@ -12,10 +11,6 @@ function switchmode(){
         toggle[0].classList.remove('fa-solid');
         toggle[0].classList.add('fa-sun');
         toggle[0].classList.add('far');
-        toggle[1].classList.remove('fa-moon');
-        toggle[1].classList.remove('fa-solid');
-        toggle[1].classList.add('fa-sun');
-        toggle[1].classList.add('far');
         dark = false;
         setTheme("light");
     }else{
@@ -25,10 +20,6 @@ function switchmode(){
         toggle[0].classList.remove('far');
         toggle[0].classList.add('fa-moon');
         toggle[0].classList.add('fa-solid');
-        toggle[1].classList.remove('fa-sun');
-        toggle[1].classList.remove('far');
-        toggle[1].classList.add('fa-moon');
-        toggle[1].classList.add('fa-solid');
     }
 }
 function setTheme(theme){
@@ -42,43 +33,93 @@ function getTheme(){
     }
 }
 
-function showInput(){
-    var search_div = document.getElementById("search-div");
-    search_div.classList.add("has-value");
+getTheme();
+
+var oops = document.getElementsByClassName("oop")
+var pages = document.getElementsByClassName("page")
+
+function changeOop(n){
+    for(var i = 0; i < oops.length; i++){
+        oops[i].classList.remove('active_oop');
+        pages[i].classList.remove('active-pg');
+    }
+    oops[n].classList.add('active_oop');
+    pages[n].classList.add('active-pg');
 }
-function apesquisa(){
-    window.location="pesquisa.php";
-}
-function aloja(){
-    window.location="loja.php";
-}
 
-function anchor(anchor){
-    window.location.href = "#"+anchor;
+changeOop(0);
+
+function story(n){
+    window.location = "story.php?story=" + n;
 }
 
+function sortAndReturn(orders, scores){
 
+    //1) combine the arrays:
+    var list = [];
+    for (var j = 0; j < orders.length; j++) 
+        list.push({'order': orders[j], 'score': scores[j]});
 
-var results = document.getElementsByClassName("results");
-var bestRank = document.getElementById("bestRank");
-var ageRank = document.getElementById("ageRank");
+    //2) sort:
+    list.sort(function(a, b) {
+        return ((a.score < b.score) ? -1 : ((a.score == b.score) ? 0 : 1));
+        //Sort could be modified to, for example, sort on the age 
+        // if the name is the same. See Bonus section below
+    });
 
-ageRank.addEventListener("change", () => {ranks(0)})
-bestRank.addEventListener("change", () => {ranks(1)})
+    //3) separate them back out:
+    for (var k = 0; k < list.length; k++) {
+        orders[k] = list[k].order;
+        scores[k] = list[k].score;
+    }
 
-function ranks(n){
+    return orders;
+}
 
-    if(n == 0) var spin = "ageRankA";
-    if(n == 1) var spin = "bestRankA";
-    
-    var spinA = document.getElementsByClassName(spin);
+const st = document.getElementsByClassName('story');
+var orders = [];
+var scores = [];
 
-    for(var i = 0; i < spinA.length; i++){
-        spinA[i].style.order = spinA[i].style.order * -1;
+for(var i  = 0; i < st.length; i++){
+    orders.push(i);
+    scores.push(st[i].getAttribute("score"));
+}
+
+function valC(){
+
+    var select = document.getElementById("type-s").value;
+
+    if(select == 'newer'){
+        for(var i  = 0; i < st.length; i++){
+            st[i].style.order = i+1;
+        }
+    }
+    else if(select == 'older'){
+        for(var i  = 0; i < st.length; i++){
+            st[i].style.order = st.length-i;
+        }
+    }
+    else{
+        var sorted_arr = sortAndReturn(orders, scores);
+        
+        if(select == "bigS"){
+            for(var i  = 0; i < st.length; i++){
+                st[sorted_arr[i]].style.order = st.length-i;
+            }
+        }
+        if(select == "smallS"){
+            for(var i  = 0; i < st.length; i++){
+                st[sorted_arr[i]].style.order = i;
+            }
+        }
     }
 }
 
-//ranks(0);
-//ranks(1);
-setTimeout(showInput, 500);
-getTheme();
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+var all = document.querySelector('body');
+
+all.style.backgroundPosition = getRndInteger(0, 100) + '%'+ getRndInteger(0, 100) + '%';

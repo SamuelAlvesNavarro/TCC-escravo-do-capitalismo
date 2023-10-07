@@ -254,7 +254,7 @@
         
     ?>
 
-    <script src="../js/pesquisa.js?v=1.012"></script>
+    <script src="../js/pesquisa.js?v=1.0123"></script>
     <script src="../js/menu.js"></script>
 </body>
 </html>

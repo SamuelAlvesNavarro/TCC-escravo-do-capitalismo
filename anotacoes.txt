@@ -20,3 +20,13 @@ Botão para deslogar.
     TÉCNICAS
 
     - colocar conferir texto no upload e nos comentários
+
+
+
+OBFUSCADOR
+
+https://www.obfuscator.io/
+
+INICIAR TS 
+
+npm start
