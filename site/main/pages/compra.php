@@ -1,27 +1,37 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
+    require "includes/enviarErro.php";
     include "includes/returnUser.php";
 
     $email = $_SESSION['email'];
     $perfil = returnProfileId($email);
 
     $gadget =  $_POST['gadget'];
-    if($gadget == 0 || !isset($gadget))header("Location: error.php?erro=6");
+    if($gadget == 0 || !isset($gadget)){
+        sendToError(6);
+        exit;
+    }
 
     $moedas = "SELECT * FROM gadget WHERE id_gadget = '$gadget'";
     foreach($pdo->query($moedas) as $key => $value){
         $status = $value['g_status'];
         $preco = $value['preco'];
     }
-    if($status != 1)header("Location: error.php?erro=20");
+    if($status != 1){
+        sendToError(20);
+        exit;
+    }
 
     $check = "SELECT * FROM compra WHERE fk_id_gadget = '$gadget' and fk_id_profile = '$perfil'";
     $prepare = $pdo->prepare($check);
     $prepare->execute();
 
     $rows = $prepare->rowCount();
-    if($rows != 0)header("Location: error.php?erro=9");
+    if($rows != 0){
+        sendToError(9);
+        exit;
+    }
 
     $moedas = "SELECT * FROM user_common WHERE fk_id_profile = '$perfil'";
     foreach($pdo->query($moedas) as $key => $value){

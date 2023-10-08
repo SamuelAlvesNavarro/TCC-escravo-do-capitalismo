@@ -20,12 +20,15 @@
         $prepare = $pdo->prepare($story);
         $prepare->execute();
 
-        if($prepare->rowCount() == 0) sendToError(14);
+        if($prepare->rowCount() == 0){
+            sendToError(14);
+            exit;
+        }
 
         foreach ($pdo->query($story) as $key => $value) {
 
-                $titulo = $value['nome'];
-                $rating = $value['rating'];
+            $titulo = $value['nome'];
+            $rating = $value['rating'];
         }
     }else{
         sendToError(14);
