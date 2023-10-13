@@ -1,20 +1,12 @@
-    Erros para serem corrigidos:
-A tela de cadastro para telas de celulares fica com o botão de cadastrar pela metade;
-A página de preview para telas de celulares fica com as questões fora de escala.
-
-    Melhorias estéticas/utilização:
-Na página de criação de histórias quando o quadro de avisos e regras não ficar do lado, seria melhor deixar ele no início para o usuário estar ciente do que ele pode ou não fazer, e os botões de preview e mandar para revisão poderia ficar no final da página;
-Quando clicar em alguma opção do menu não abrir outra guia;
-Botão para deslogar.
 
 
-- História da Home page
-- Melhorar as notificações das histórias (fica mei bugado para celular)
-- Conferir email no perfil (mudança de dados)
-- Reportar e denunciar comentários
-- Reportar histórias
+    PARA fazer
 
-
+    - TELA DE CARREGAMENTO
+    - NOVAS ANOTAÇÕES
+    - RESOLVER A IMAGEM DO READ.PHP
+    - PEDIR PROS MANOS ESCREVEREM MAIS ANOTAÇÕES
+    - PASSAR TUDO POR TS
 
 
     TÉCNICAS
@@ -30,3 +22,7 @@ https://www.obfuscator.io/
 INICIAR TS 
 
 npm start
+
+
+
+
