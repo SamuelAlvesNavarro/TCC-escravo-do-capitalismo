@@ -2353,7 +2353,7 @@ l-21 20 1 -29z"/>
                         As histórias postadas pelos usuários são originais e chequadas, visando que apenas as melhores cheguem aos nossos assíduos leitores.
                         </p>
                         <p class="p">
-                           <a class="try-link" href="">Ler uma História &rArr;</a>    
+                           <a class="try-link" href="read.php">Ler uma História &rArr;</a>    
                         </p>
                     </div>
                 </div>
@@ -2377,7 +2377,7 @@ l-21 20 1 -29z"/>
                                     <thead>
                                         <tr>
                                             <th scope="col">Rank</th>
-                                            <th scope="col">User</th>
+                                            <th scope="col">Usuário</th>
                                             <th scope="col">Pontunação</th>
                                         </tr>
                                     </thead>

@@ -43,8 +43,8 @@
 
 
     --banner-color: rgba(12,12,12,0.3);
-    --modest-banner-center: #fcf3e7;
-    --modest-banner-outer: #fcf3e7;
+    --modest-banner-center: #1212121a;
+    --modest-banner-outer: #121212;
     
 
     --shadow-color: (0,0,0,0.2);
@@ -92,7 +92,9 @@ body{
     align-items: center;
     gap: 10px;
 }
-
+.controls-sec i{
+    cursor: pointer;
+}
 .appear-controls{
     right: 20px;
     transform: translateY(-50%);
@@ -165,7 +167,7 @@ body{
     position: relative;
     vertical-align: middle;
     display: inline-block;
-    color: var(--star-bc);
+    color: #fcecd5;;
     overflow: hidden;
   }
   
@@ -177,7 +179,9 @@ body{
     overflow: hidden;
     color: gold;
   }
-  
+  .empty-stars:before{
+    color: #fcecd5;
+  }
   .empty-stars:before, #full-stars:before {
     content: "★★★★★";
     font-size: 30px;
@@ -203,7 +207,7 @@ body{
 .banner_in{
     width: 100%;
     min-height: 100vh;
-    background: var(--banner-color);
+    background: radial-gradient(at center top, var(--modest-banner-center), var(--modest-banner-outer));
     transition: .5s linear;
     display: flex;
     align-items: flex-end;
@@ -223,7 +227,6 @@ body{
     flex-direction: column;
     align-items: center;
     transition: all .2s linear;
-    color: white;
 }
 .mainTitle h1{
     font-family: 'Playfair Display', serif;
@@ -232,25 +235,25 @@ body{
     font-size: 50px;
     text-align: center;
     width: 100%;
-    color: white;
+    color: #fcecd5;
 }
 .mainTitle h3{
     font-size: 35px;
     display: none;
     font-family: 'Playfair Display', serif;
     font-weight: 200;
-    color: white;
+    color: #fcecd5;
 }
 .mainTitle h4{
     font-family: "Poppins";
     font-size: 20px;
     width: 100%;
     text-align: center;
-    color: white;
+    color: #fcecd5;
 }
 .un a{
     list-style: none;
-    color: var(--color);
+    color: #fcecd5;
     text-decoration: none;
 }
 .un {
@@ -302,7 +305,8 @@ body{
     color: var(--color);
 }
 .modest .banner_in{
-    background: radial-gradient(at center top, var(--modest-banner-center), var(--modest-banner-outer));
+    /*background: radial-gradient(at center top, var(--modest-banner-center), var(--modest-banner-outer));*/
+    background: var(--paper-out-color);
     backdrop-filter: blur(10px);
     box-shadow: -1px -29px 21px 1px var(--paper-shadow-color) inset;
     -webkit-box-shadow: -1px -29px 21px 1px var(--paper-shadow-color) inset;
@@ -315,6 +319,9 @@ body{
     display: flex;
     justify-content: center;
     margin-bottom: 100px;
+}
+.refs a{
+    line-break: anywhere;
 }
 .pg{
     padding: 20px;

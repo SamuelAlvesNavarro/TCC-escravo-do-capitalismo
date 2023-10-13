@@ -143,6 +143,7 @@
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
     <link rel="stylesheet" href="../css/story.css?v=1.01<?php echo rand(0,10000)?>">
     <link rel="stylesheet" href="../css/scroll.css?v=1.01">
+    <link rel="stylesheet" href="../css/notification.css?v=113523">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <title>História</title>
 </head>
@@ -161,6 +162,20 @@
                 <textarea name="reason" maxLength="255" id="" cols="30" rows="10"></textarea>
                 <input type="submit" value="Denunciar">
             </form>
+        </div>
+    </div>
+    <div id="alertWr" class="alert hide">
+        <span class="fa-solid fa-circle-xmark n_icon"></span>
+        <span class="msg">Você errou: <span class="grupo-n"><?php echo $perdaDeMoedas;?><i class='fa-solid fa-coins'></i></span></span>
+        <div class="close-btn" onclick="callOutNotification(0)">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+    <div id="alertRi" class="alert hide">
+        <span class="fa-solid fa-check n_icon"></span>
+        <span class="msg">Você acertou: <span class="grupo-n">+<?php echo $ganhoDeMoedas;?><i class='fa-solid fa-coins'></i></span><span class="grupo-n">+<?php echo $ganhoDePontosLeitor;?><i class="fa-solid fa-book"></i></span></span>
+        <div class="close-btn" onclick="callOutNotification(1)">
+            <span class="fas fa-times"></span>
         </div>
     </div>
     <div class="all">
@@ -227,14 +242,14 @@
                             <?php
                                 $autor = "select user_common.nome as nome, user_common.fk_id_profile as cod from user_common, story where story.fk_id_profile = user_common.fk_id_profile and story.id_story = $id_story";
                                 foreach ($pdo->query($autor) as $key => $value) {
-                                    echo '<a href="profile.php?profile='.$value['cod'].'" style="color: white !important;">'.$value['nome'].'</a>';
+                                    echo '<a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>';
                                 }
                             ?>
                         </span>
                     </h4>
                     <h3 id="subTitle"><?php echo $titulo; ?></h3>
                     <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
-                        <path style="color: white;" fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                        <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
                     </svg>
                 </div>
             </div>
@@ -507,7 +522,26 @@
                     document.getElementById("quest_item").style.display = "none";
                 ';
             }
+
+            if(isset($_SESSION['story']) && $_SESSION['story'] != -1):
         ?>
+                var alerts = document.getElementsByClassName("alert");
+    
+                function callNotification(n){
+                    alerts[n].classList.remove("hide");
+                    alerts[n].classList.add("showAlert");
+                    alerts[n].classList.add("show");
+                } 
+                function callOutNotification(w){
+                    alerts[w].classList.remove("show");
+                    alerts[w].classList.add("hide");
+                }
+    
+                callNotification(<?php echo $n_type ?>)
+
+                <?php $_SESSION['story'] = -1; ?>
+
+        <?php endif; ?>
 
 
 var stars = document.getElementById("full-stars")

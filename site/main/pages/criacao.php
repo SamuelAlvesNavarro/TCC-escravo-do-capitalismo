@@ -303,7 +303,7 @@
 
     <script>
         function copyPerfil(){
-            navigator.clipboard.writeText("TCC-escravo-do-capitalismo/site/main/pages/profile?profile="+<?php 
+            navigator.clipboard.writeText("TCC-escravo-do-capitalismo/site/main/pages/profile.php?profile="+<?php 
                 echo $perfil;
             ?>)
         }   
