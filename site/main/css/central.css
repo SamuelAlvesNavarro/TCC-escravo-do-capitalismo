@@ -149,6 +149,7 @@ body{
     border-left: 3px solid black;
     color: white;
     line-height: 50px;
+    cursor: pointer;
   }
   
   .has-value {

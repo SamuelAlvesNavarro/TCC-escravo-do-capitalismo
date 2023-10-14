@@ -18,10 +18,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja</title>
     <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/loja.css?v=10.12">
+    <link rel="stylesheet" href="../css/loja.css?v=10.12<?php echo rand(0,1000)?>">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/scroll.css?v=1.092">
+    <link rel="stylesheet" href="../css/variable.css">
 </head>
 <body>
     <div class="logo-back">
@@ -207,7 +208,7 @@
         }
     </script>
     <script src="../js/menu.js?v=1.01"></script>
-    <script src="../js/loja.js"></script>
+    <script src="../js/loja.js?v=1.<?php echo rand(0,1000)?>"></script>
     <script src="../js/darkmode.js"></script>
 </body>
 </html>

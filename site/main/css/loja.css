@@ -4,19 +4,45 @@
 *{
     margin: 0;
     padding: 0;
+    color: var(--color);
 }
+:root {
+    color-scheme: light;
+    --all-shadow: 1px 1px 29px 1px rgba(0,0,0,0.75) inset;
+    --body-color: rgb(103,28,24);
+    --body-outer-color: rgba(59,18,16,1);
+    --body-box-shadow: 2px 0px 89px 45px rgba(0,0,0,0.75) inset;
+    --bc-svg-color: rgba(124,66,42,.2);
+    --lighter-tone-gray: #E0C9A6;
+    --item-tone: #d6c5ad;
+    --info-top: rgb(229 166 130);
+    --info-bt: #E0C9A6;
+}
+.dark {
+    color-scheme: dark;
+    --all-shadow: 1px 1px 29px 1px rgba(0,0,0,0.75) inset;
+    --body-color: #606060;
+    --body-outer-color: #606060;
+    --body-box-shadow: none;
+    --bc-svg-color: rgba(32, 27, 24, 0.3);
+    --lighter-tone-gray: #454545;
+    --item-tone: #505050;
+    --info-top: #121212;
+    --info-bt: #303030;
+}
+
 body{
-    background: rgb(103,28,24);
-    background: radial-gradient(circle, rgba(103,28,24,1) 0%, rgba(59,18,16,1) 100%);   
-    box-shadow: 2px 0px 89px 45px rgba(0,0,0,0.75) inset;
-    -webkit-box-shadow: 2px 0px 89px 45px rgba(0,0,0,0.75) inset;
-    -moz-box-shadow: 2px 0px 89px 45px rgba(0,0,0,0.75) inset;
+    background: var(--body-color);
+    background: radial-gradient(circle, var(--body-color) 0%,  var(--body-outer-color) 100%);   
+    box-shadow: var(--body-box-shadow);
+    -webkit-box-shadow: var(--body-box-shadow);
+    -moz-box-shadow: var(--body-box-shadow);
     
 }
 body svg{
-    fill: rgba(124,66,42,.2);
+    fill: var(--bc-svg-color);
     width: 140px;
-    border: 10px solid rgba(124,66,42,.2);
+    border: 10px solid var(--bc-svg-color);
 }
 .logo-back{
     position: fixed;
@@ -28,7 +54,7 @@ body svg{
     justify-content: center;
     width: 225px;
     height: 225px;
-    border: 10px solid rgba(124,66,42,.2);
+    border: 10px solid var(--bc-svg-color);
     border-radius: 50%;
 }
 .info{
@@ -41,7 +67,7 @@ body svg{
     right: 70px;
     width: auto;
     padding: 20px;
-    background: linear-gradient(rgb(229 166 130), #E0C9A6);
+    background: linear-gradient(var(--info-top), var(--info-bt));
     animation: appear-info;
     animation-duration: 2s;
     animation-timing-function: linear;
@@ -57,7 +83,7 @@ body svg{
     left: 70px;
     width: auto;
     padding: 20px;
-    background: linear-gradient(rgb(229 166 130), #E0C9A6);
+    background: linear-gradient(var(--info-top), var(--info-bt));
     animation: appear-info;
     animation-duration: 2s;
     animation-timing-function: linear;
@@ -80,7 +106,6 @@ body svg{
     min-height: 100vh;
     height: auto;
     overflow-y: hidden;
-    color: black !important;
 }
 .section{
     width: 100%;
@@ -121,7 +146,7 @@ body svg{
 .to-bt{
     font-family: 'Playfair Display';
     font-style: italic;
-    background-color: #E0C9A6;
+    background-color: var(--info-top);
     font-size: 20px;
     padding: 20px;
     color: black;
@@ -185,7 +210,7 @@ body svg{
 .items{
     border-radius: 2px;
     text-align: center;
-    background: linear-gradient(to right, #b8a790, #7e6b56);
+    background: linear-gradient(to right, var(--lighter-tone-gray), var(--info-top));
     box-shadow: -1px 2px 13px 5px rgba(0,0,0,0.75);
     -webkit-box-shadow: -1px 2px 13px 5px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 2px 13px 5px rgba(0,0,0,0.75);
@@ -227,8 +252,9 @@ body svg{
     box-shadow: -1px 2px 13px 2px rgba(0,0,0,0.75);
     -webkit-box-shadow: -1px 2px 13px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 2px 13px 2px rgba(0,0,0,0.75);
-    background-color: #d6c5ad;
+    background-color: var(--item-tone);
     cursor: pointer;
+    max-width: 100px;
 }
 .img{
     width: 100px;
@@ -272,14 +298,14 @@ body svg{
 }
 .nome-display{
     padding-top: 10px;
-    background-color: #92806b;
+    background-color: var(--item-tone);
     font-size: 30px;
     text-align: center;
 }
 .price-display{
     width: calc(100% - 20px);
     padding: 10px;
-    background-color: #92806b;
+    background-color: var(--item-tone);
     font-size: 30px;
     font-weight: 600;
     text-align: center;
@@ -290,7 +316,7 @@ body svg{
     justify-content: center;
     width: calc(100% - 20px);
     padding: 10px;
-    background-color: #92806b;
+    background-color: var(--item-tone);
 }
 .button-buy button{
     font-family: 'Playfair Display';
@@ -313,7 +339,6 @@ body svg{
 }
 
 .sumir-section{
-    transform: translateY(200px);
     opacity: 0;
 }
 .display_none{

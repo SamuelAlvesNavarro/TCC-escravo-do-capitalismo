@@ -56,13 +56,13 @@
 
                         }else{
 
-                            $titulos[$i][3] = "linear-gradient(rgb(50,50,50), rgb(0,0,0));";
+                            $titulos[$i][3] = 'linear-gradient(rgb(50,50,50), rgb(0,0,0));';
                         }
                     }
 
                 }else{
 
-                    $titulos[$i][3] = "linear-gradient(rgb(50,50,50), rgb(0,0,0));";
+                    $titulos[$i][3] = 'linear-gradient(rgb(50,50,50), rgb(0,0,0));';
                 }
 
                 $i++;
@@ -73,7 +73,8 @@
 
             if($titulos[0][1] == 0){ 
 
-                echo "<div class='no-res-title'>Não há resultados para essa pesquisa. Tente novamente considerando que a pesquisa diferencia letras maiúsculas e minúsculas. <br>Conteúdos Relacionados:</div>";
+                echo "<div class='no-res-title'>Não há resultados para essa pesquisa. Tente novamente. Conteúdos Relacionados:</div>";
+                echo "<div class='actions'>";
 
                 for($i = 0; $i < sizeof($titulos); $i++){
 
@@ -116,25 +117,29 @@
                         }
                     }
 
-                    /* echo "<div class='action' onclick='story(".$titulos[$i][2].")'>
+                    echo "<div class='action' onclick='picG(".$i.")' img='".$titulos[$i][3]."'>
 
-                            <div class='square' style='background-image: ". $titulos[$i][3]."'>
-                                <h3>". $titulos[$i][0] ."</h3>
-                                    ".$titulos[$i][4].
-                            "</div>
+                            <div onclick='story(".$titulos[$i][2].")'><h3>". $titulos[$i][0] ."</h3></div>
+
+                            <div class='square'>
+                            
+                                    ".$titulos[$i][4]."
+                            </div>
                         
-                        </div>"; */
+                        </div>"; 
 
-                    echo '<div class="pg" onclick="generate('.$i.')">
+                    echo '<div class="pg" onclick="picG('.$i.')">
                     '. $titulos[$i][0] .'
                         </div>
 
                         ';
                 }  
 
+                echo "</div>";
 
             }else{
 
+                echo "<div class='actions'>";
             
                 for($i = 0; $i < sizeof($titulos); $i++){
 
@@ -178,22 +183,26 @@
                         }
                     }
 
-                    /* echo "<div class='action' onclick='story(".$titulos[$i][2].")'>
+                    echo "<div class='action' onclick='picG(".$i.")' img='".$titulos[$i][3]."'>
 
-                            <div class='square' style='background-image: ". $titulos[$i][3]."'>
-                                <h3>". $titulos[$i][0] ."</h3>
-                                    ".$titulos[$i][4].
-                            "</div>
+                            <div onclick='story(".$titulos[$i][2].")'><h3>". $titulos[$i][0] ."</h3></div>
+
+                            <div class='square'>
+                            
+                                    ".$titulos[$i][4]."
+                            </div>
                         
-                        </div>"; */
+                        </div>";  
 
-                        echo '<div class="pg" onclick="generate('.$i.')">
+                        echo '<div class="pg" onclick="picG('.$i.')">
                         '. $titulos[$i][0] .'
                             </div>
     
                             ';
 
                 }  
+
+                echo "</div>";
             } 
 
         }else{

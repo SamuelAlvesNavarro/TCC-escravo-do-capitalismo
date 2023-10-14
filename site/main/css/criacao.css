@@ -99,9 +99,8 @@
     color: black !important;
 }
 .img-container{
+    max-height: 80vh;
     min-width: 200px;
-    max-height: 700px;
-    width: 40vw;
     background-size: contain;
     background-position: center;
     padding: 5px;

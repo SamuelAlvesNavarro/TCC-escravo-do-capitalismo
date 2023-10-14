@@ -38,7 +38,7 @@
     --line-color: #121212;
     --paper-out-color: #fcf3e7;
     --paper-shadow-color: 0;
-
+    --input-color-report: #f3ddc0;
     --menu-color: #242424; 
 
 
@@ -59,6 +59,7 @@
     --line-color: white;
     --paper-out-color: #121212;
     --paper-shadow-color: #121212;
+    --input-color-report: #242424;
 
     --menu-color: #242424;
 
@@ -721,7 +722,7 @@ pre strong{
     height: 100vh;
     position: fixed;
     z-index: 10000;
-    background-color: rgba(12,12,12, .2);
+    background-color: rgba(12,12,12, .3);
     backdrop-filter: blur(10px);
 }
 .rep_appear{
@@ -730,14 +731,26 @@ pre strong{
 .fa-trash{
     color: black;
 }
+.report_comment_container{
+    background-color: var(--paper-out-color);
+    padding: 15px;
+}
 .report_comment_container form{
     font-family: "Poppins";
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+.report_comment_container form textarea{
+    background-color: var(--input-color-report);
+    margin-bottom: 20px;
+}
 .report_comment_container form input{
-    padding: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: "Poppins";
+    border-radius: 20px;
 }
 
 .close-rep{
@@ -747,6 +760,9 @@ pre strong{
     top: 10px;
     left: 10px;
     font-size: 30px;
+}
+.close-rep i{
+    color: white;
 }
 @media (max-width: 600px) {
     .mainTitle h1{

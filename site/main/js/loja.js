@@ -10,10 +10,6 @@ var section = document.getElementsByClassName("section");
 
 const root = document.querySelector(":root");
 
-function switchmode(){
-    root.classList.toggle('dark');
-}
-
 function to(n){
     section[current].classList.add("sumir-section");
 
@@ -59,4 +55,9 @@ function show_item(store_type, item){
     nome_display[store_type].innerHTML = nome;
 
     buttons_buy_e[store_type].value = item;
+}
+
+
+function switchmode(){
+    root.classList.toggle('dark');
 }

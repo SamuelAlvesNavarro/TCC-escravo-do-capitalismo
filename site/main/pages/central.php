@@ -90,7 +90,7 @@
             <div class="search-bar">
                 <form action="pesquisa.php" method="get">
                     <div id="search-div" class="search">
-                        <input id="search-input" class="search-bar" type="text" name="busca" id="" placeholder="Pesquise e encontre......">
+                        <input id="search-input" required class="search-bar" type="text" name="busca" id="" placeholder="Pesquise e encontre......">
                         <button class="bt-search"><i class="fas fa-search"></i></button>
                     </div>
                 </form>
