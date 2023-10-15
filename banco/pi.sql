@@ -148,7 +148,7 @@ INSERT INTO `error` (`id_error`, `cod_error`, `description`, `returnT`) VALUES
 (15, '2', 'Extensão inválida', 4),
 (16, '1', 'Tamanho da imagem ultrapassou de 5 MB', 4),
 (17, '2', 'Conteúdo Ofensivo', 4),
-(18, '3', 'Você tentou acessar uma história que não é sua. Isso é proibido e passível de banimento. O Historito não gostou da sua atitude e enviou uma notificação das suas atividades para o moderador.', 1),
+(18, '3', 'Você tentou acessar uma história que não é sua. Isso é proibido e passível de banimento.', 1),
 (19, '1', 'Esse email é inválido', 1),
 (20, '1', 'Você tentou comprar um item não disponível', 1),
 (21, '1', 'Email informado não é válido', 2),

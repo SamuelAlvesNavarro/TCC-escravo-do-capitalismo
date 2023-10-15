@@ -282,7 +282,7 @@
     function aprovar(n) {
         var theForm, newInput1;
         theForm = document.createElement('form');
-        theForm.action = 'aprovacao.php';
+        theForm.action = 'aprovacao2.php';
         theForm.method = 'post';
         newInput1 = document.createElement('input');
         newInput1.type = 'hidden';

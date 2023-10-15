@@ -85,7 +85,7 @@
                     $_SESSION['story'] = 1;
                     header("Location: story.php?story=".$id_story);
                 }else{
-                    header("Location: error.php?erro=11"); //erro -> já respondeu a questão e tentou chamar a página de acerto para farmar pontos
+                    sendToError(11); //erro -> já respondeu a questão e tentou chamar a página de acerto para farmar pontos
                 }
             }
 
@@ -113,6 +113,6 @@
         }
 
     }else{
-        header("Location: error.php?erro=12");
+        sendToError(23);
     }
 ?>
