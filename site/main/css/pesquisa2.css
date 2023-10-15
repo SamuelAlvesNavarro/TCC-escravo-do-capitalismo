@@ -85,7 +85,7 @@
     background-size: 100%;
     background-repeat: no-repeat;
     animation-name: none;
-    animation-duration: 1.5s;
+    animation-duration: 2s;
 }
 @keyframes pulse {
     0%{
@@ -105,9 +105,9 @@
     background: repeating-linear-gradient(transparent 0px, transparent 30px, var(--line-color) 32px), linear-gradient(to bottom, var(--paper-transp-color) 60%, #121212);
     line-height: 32px;
     padding: 32px;
-    position: relative;
+    transition: .4s;
+    backdrop-filter: blur(5px);
 }
-
 .form-search-th{
     margin-top: 84px;
 }

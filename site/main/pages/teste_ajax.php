@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="bc" id="bc">
-            <div class="lines">
+            <div class="lines" id="lines">
                     
                 
                 <div class="main">

@@ -58,6 +58,7 @@ function buscar(){
             pages = [];
 
             for(var z = 0; z < pgs.length; z++){
+                document.querySelector('footer').style.zIndex = pgs.length + 1;
                 pages.push(z);
             }
 
@@ -92,7 +93,6 @@ function setFundo(num){
         document.getElementById("all").style.animationName = 'pulse';
     }
     
-    
 }
 function generate(num){
 
@@ -101,11 +101,11 @@ function generate(num){
     var number_to_appear = 5;
 
     if(pages.length <= 5){
-        number_to_appear = pages.length;
+        number_to_appear = 3;
     }
 
     var starter_width = 700;
-    var starter_bottom = -100;
+    var starter_bottom = 0;
     var starter_bottom_changer = 0;
     var starter_bottom_upper = 25;
     var starter_bottom_changer_changer = (starter_bottom_upper/(number_to_appear-1));
