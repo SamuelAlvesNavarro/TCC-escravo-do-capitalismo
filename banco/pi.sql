@@ -1,14 +1,11 @@
-drop database if exists pi;
-create database pi;
-use pi;
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 08-Out-2023 às 16:20
--- Versão do servidor: 10.4.28-MariaDB
--- versão do PHP: 8.2.4
+-- Host: 127.0.0.1:3307
+-- Tempo de geração: 16-Out-2023 às 12:52
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +32,7 @@ CREATE TABLE `admin` (
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `admin`
@@ -55,7 +52,17 @@ CREATE TABLE `answer` (
   `fk_id_question` int(11) NOT NULL,
   `text` varchar(100) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `answer`
+--
+
+INSERT INTO `answer` (`id_answer`, `fk_id_question`, `text`, `status`) VALUES
+(5, 2, 'A mansão era habitada por um assassino em série e apenas uma morte poderia quebrar a maldição.', 0),
+(6, 2, 'A mansão era amaldiçoada por um espírito vingativo que exigia o sacrifício de uma pessoa inocente pa', 1),
+(7, 2, 'A mansão era construída em cima de um antigo cemitério indígena, e apenas um ritual específico poder', 0),
+(8, 2, 'A mansão era o esconderijo de um tesouro amaldiçoado que precisava ser devolvido ao seu lugar de ori', 0);
 
 -- --------------------------------------------------------
 
@@ -67,7 +74,7 @@ CREATE TABLE `ban` (
   `id_ban` int(11) NOT NULL,
   `user_email` varchar(255) NOT NULL,
   `date_ban` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `ban`
@@ -76,7 +83,9 @@ CREATE TABLE `ban` (
 INSERT INTO `ban` (`id_ban`, `user_email`, `date_ban`) VALUES
 (1, 'fdggf134@gmail.com', '2023-10-03'),
 (2, 'fdggf@gmail', '2023-10-03'),
-(3, 'fdggf1@gmail', '2023-10-03');
+(3, 'fdggf1@gmail', '2023-10-03'),
+(4, 'g@gmail.com', '2023-10-16'),
+(5, 'd@gmail.com', '2023-10-16');
 
 -- --------------------------------------------------------
 
@@ -89,7 +98,7 @@ CREATE TABLE `comment` (
   `fk_id_story` int(11) NOT NULL,
   `fk_id_profile` int(11) NOT NULL,
   `text` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -101,7 +110,7 @@ CREATE TABLE `compra` (
   `fk_id_profile` int(11) NOT NULL,
   `fk_id_gadget` int(11) NOT NULL,
   `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `compra`
@@ -125,7 +134,7 @@ CREATE TABLE `error` (
   `cod_error` varchar(5) NOT NULL,
   `description` text NOT NULL,
   `returnT` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `error`
@@ -167,7 +176,7 @@ CREATE TABLE `error_user` (
   `id_error` int(11) NOT NULL,
   `fk_id_profile` int(11) DEFAULT NULL,
   `fk_id_story` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -182,7 +191,7 @@ CREATE TABLE `evento` (
   `type` int(11) NOT NULL,
   `script` text DEFAULT NULL,
   `active` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `evento`
@@ -204,7 +213,7 @@ CREATE TABLE `gadget` (
   `g_status` int(11) NOT NULL DEFAULT 1,
   `nome` varchar(255) NOT NULL,
   `in_it` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `gadget`
@@ -265,7 +274,14 @@ CREATE TABLE `history` (
   `id_history` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
   `texto` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `history`
+--
+
+INSERT INTO `history` (`id_history`, `fk_id_page`, `texto`) VALUES
+(2, 4, 'Era uma noite escura e tempestuosa quando um grupo de cinco amigos decidiu explorar a antiga mansão abandonada, conhecida como a \"Casa dos Horrores\", na periferia da cidade. O local era envolto em lendas e histórias sinistras, mas isso só aumentava a empolgação do grupo. A mansão, de arquitetura gótica, estava mergulhada em mistério e abandonada há décadas.\r\nOs amigos eram Mike, um cético convicto; Sarah, uma jovem destemida; Tom, o engraçadinho do grupo; Lisa, uma estudante de história obcecada com o sobrenatural; e Alex, um amante de adrenalina.\r\nAo adentrarem a mansão, a atmosfera ficou densa. As paredes rangiam, o cheiro de mofo era sufocante e um silêncio sepulcral dominava o lugar. Eles exploraram os quartos decadentes, repletos de móveis cobertos por lençóis empoeirados e retratos misteriosos que pareciam observá-los.\r\nÀ medida que avançavam, eles começaram a ouvir sussurros inquietantes, passos silenciosos e sombras que se moviam rapidamente. O medo começou a se instalar em seus corações, mas nenhum deles queria admitir. Lisa, por outro lado, estava entusiasmada, acreditando que a mansão escondia segredos sombrios.\r\nA primeira morte ocorreu quando Tom desapareceu de repente. Eles o procuraram por toda a mansão, mas ele tinha simplesmente sumido. Pânico se instalou no grupo. Eles discutiram sobre abandonar a mansão, mas o mau tempo os forçou a ficar. Enquanto estavam na sala de estar, um grito arrepiante ecoou de algum lugar desconhecido.\r\nSarah, em pânico, correu para a origem do som, mas ela também desapareceu. O grupo restante ficou aterrorizado e decidiram investigar o porão, onde suspeitavam que algo terrível estava escondido.\r\nAo entrarem no porão, encontraram uma sala sinistra com paredes cobertas de escritos enigmáticos e velas acesas. Em uma mesa no centro da sala, havia uma fotografia antiga que retratava a mansão como um local feliz há muitos anos. A imagem mostrava os cinco amigos, mas com um sexto membro, uma figura obscura nas sombras.\r\nLogo, Alex foi atacado por uma força invisível, estrangulado até a morte. Ele caiu no chão, enquanto o grupo assistia horrorizado. Agora só restavam Mike e Lisa.\r\nEm pânico, eles decidiram desvendar o mistério da mansão e encontrar uma maneira de sair. Eles seguiram os escritos nas paredes e descobriram que a mansão era assombrada por um antigo espírito vingativo, que exigia um sacrifício humano para quebrar a maldição. A fotografia indicava que o sexto membro era o alvo.\r\nLisa percebeu que ela era a única opção para ser o próximo sacrifício, mas Mike se recusou a permitir isso. Eles lutaram e, em um momento de desespero, Lisa esfaqueou Mike para se libertar e completar o sacrifício.\r\nAo fazê-lo, a mansão tremeu e os espíritos dos amigos mortos emergiram, agarrando Lisa e arrastando-a para as sombras. Com a maldição finalmente quebrada, a mansão começou a desmoronar. Lisa desapareceu nas trevas, enquanto a mansão desmoronava, engolindo-a junto com os segredos sombrios.');
 
 -- --------------------------------------------------------
 
@@ -278,7 +294,7 @@ CREATE TABLE `images` (
   `fk_id_page` int(11) NOT NULL,
   `fundo` tinyint(4) NOT NULL DEFAULT 0,
   `path` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -289,7 +305,7 @@ CREATE TABLE `images` (
 CREATE TABLE `like_comment` (
   `fk_id_profile` int(11) NOT NULL,
   `fk_id_comment` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -302,7 +318,7 @@ CREATE TABLE `mods` (
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `mods`
@@ -322,7 +338,15 @@ CREATE TABLE `page` (
   `fk_id_story` int(11) NOT NULL,
   `type` int(11) NOT NULL,
   `order_p` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `page`
+--
+
+INSERT INTO `page` (`id_page`, `fk_id_story`, `type`, `order_p`) VALUES
+(4, 2, 0, 0),
+(5, 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -336,7 +360,7 @@ CREATE TABLE `profile` (
   `fundoFoto` int(11) NOT NULL DEFAULT 0,
   `bordaFoto` int(11) NOT NULL DEFAULT 0,
   `fundoPerfil` int(11) NOT NULL DEFAULT 2
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `profile`
@@ -355,7 +379,14 @@ CREATE TABLE `question` (
   `id_question` int(11) NOT NULL,
   `fk_id_story` int(11) NOT NULL,
   `quest_itself` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `question`
+--
+
+INSERT INTO `question` (`id_question`, `fk_id_story`, `quest_itself`) VALUES
+(2, 2, 'Qual foi a razão pela qual a mansão era assombrada e o que era necessário para quebrar a maldição?');
 
 -- --------------------------------------------------------
 
@@ -366,7 +397,14 @@ CREATE TABLE `question` (
 CREATE TABLE `question_user` (
   `fk_id_question` int(11) NOT NULL,
   `fk_id_profile` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `question_user`
+--
+
+INSERT INTO `question_user` (`fk_id_question`, `fk_id_profile`) VALUES
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -378,7 +416,14 @@ CREATE TABLE `reference` (
   `id_reference` int(11) NOT NULL,
   `fk_id_page` int(11) NOT NULL,
   `path` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `reference`
+--
+
+INSERT INTO `reference` (`id_reference`, `fk_id_page`, `path`) VALUES
+(2, 5, 'http://localhost/TCC-escravo-do-capitalismo/site/main/pages/profile.php?profile=1');
 
 -- --------------------------------------------------------
 
@@ -393,7 +438,7 @@ CREATE TABLE `report_comment` (
   `fk_id_comment` int(11) NOT NULL,
   `reason` text NOT NULL,
   `code` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -407,7 +452,7 @@ CREATE TABLE `report_profile` (
   `fk_id_reporter` int(11) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
   `code` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `report_profile`
@@ -431,7 +476,7 @@ CREATE TABLE `report_story` (
   `fk_id_reporter` int(11) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
   `code` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -444,7 +489,14 @@ CREATE TABLE `score` (
   `fk_id_profile` int(11) NOT NULL,
   `fk_id_story` int(11) NOT NULL,
   `nota` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `score`
+--
+
+INSERT INTO `score` (`id_score`, `fk_id_profile`, `fk_id_story`, `nota`) VALUES
+(3, 1, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -459,7 +511,14 @@ CREATE TABLE `story` (
   `rating` float NOT NULL DEFAULT 0,
   `status` int(11) NOT NULL DEFAULT 0,
   `fk_id_profile` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `story`
+--
+
+INSERT INTO `story` (`id_story`, `font`, `nome`, `rating`, `status`, `fk_id_profile`) VALUES
+(2, 0, 'O Sacrifício na Casa dos Horrores', 5, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -477,14 +536,14 @@ CREATE TABLE `user_common` (
   `pontos_leitor` int(11) NOT NULL DEFAULT 0,
   `ranking` int(11) NOT NULL DEFAULT 0,
   `moedas` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `user_common`
 --
 
 INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `ranking`, `moedas`) VALUES
-(1, 1, 'Apresentação', 'davi.carvalho@aluno.ifsp.edu.br', 'apresentacao123', 'The Boss', 100, 0, 9975);
+(1, 1, 'Apresentação', 'davi.carvalho@aluno.ifsp.edu.br', 'apresentacao123', 'The Boss', 200, 0, 10025);
 
 --
 -- Índices para tabelas despejadas
@@ -673,13 +732,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de tabela `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `ban`
 --
 ALTER TABLE `ban`
-  MODIFY `id_ban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_ban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `comment`
@@ -715,7 +774,7 @@ ALTER TABLE `gadget`
 -- AUTO_INCREMENT de tabela `history`
 --
 ALTER TABLE `history`
-  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `images`
@@ -733,25 +792,25 @@ ALTER TABLE `mods`
 -- AUTO_INCREMENT de tabela `page`
 --
 ALTER TABLE `page`
-  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `question`
 --
 ALTER TABLE `question`
-  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `reference`
 --
 ALTER TABLE `reference`
-  MODIFY `id_reference` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_reference` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `report_comment`
@@ -775,19 +834,19 @@ ALTER TABLE `report_story`
 -- AUTO_INCREMENT de tabela `score`
 --
 ALTER TABLE `score`
-  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `story`
 --
 ALTER TABLE `story`
-  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `user_common`
 --
 ALTER TABLE `user_common`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restrições para despejos de tabelas
