@@ -277,6 +277,7 @@ body{
 .p{
     margin-top: 20px;
     font-size: 20px;
+    text-align: justify;
 }
 .try-link{
     color: black;
