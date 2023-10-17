@@ -86,7 +86,7 @@
 
                         $caminho = '../../../main/pages/'.$caminho;
 
-                        unlink($caminho);
+                        rmdir($caminho);
 
                         $del = "DELETE FROM images WHERE id_image = '$img'";
                         $prepare = $pdo->prepare($del);

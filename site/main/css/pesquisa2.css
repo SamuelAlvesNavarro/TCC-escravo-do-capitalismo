@@ -229,7 +229,11 @@ tr{
     position: relative;
 }
 
-
+@media (max-width: 800px) {
+    .pg{
+        display: none !important;
+    }
+}
 @media (max-width: 450px) {
     .nav{
         width: calc(100% - 20px);

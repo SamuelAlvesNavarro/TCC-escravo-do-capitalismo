@@ -426,7 +426,11 @@ pre strong{
     inset: 0;
 }
 
-
+.question-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .question{
     font-family: 'Playfair Display', serif;
     font-size: 40px;
