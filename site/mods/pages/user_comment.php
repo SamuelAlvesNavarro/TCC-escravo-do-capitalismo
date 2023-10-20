@@ -10,7 +10,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,11 +41,11 @@
                     $name = $value['nome'];
                 }
 
-                echo "<br>";
+                echo "<br><br>";
                 echo "História pertencente: <a href='mod-story.php?input_1=$id_story'>$name</a><br>";
                 echo "<p>Comentário: $text</p>";
-            }
-                    
+                echo "<a href='delete_comment.php?id_comment=". $value['id_comment'] ."'><button class='btn btn-danger'>Deletar</button></a>";
+            } 
         }
         
     ?>
