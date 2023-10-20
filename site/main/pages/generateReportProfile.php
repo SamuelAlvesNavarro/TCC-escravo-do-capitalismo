@@ -5,7 +5,7 @@
     $reason = $_POST['reason'];
     $reported = $_POST['reported'];
 
-    generateReport($perfil, $reported, $reason, 1);
+    generateReport($reported, $perfil, $reason, 1);
 
     header("Location: profile.php?profile=$reported");
 ?>

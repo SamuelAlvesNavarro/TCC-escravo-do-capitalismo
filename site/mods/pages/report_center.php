@@ -50,7 +50,7 @@
                         <th scope="col">Código</th>
                         <th scope="col">Código do denunciado</th>
                         <th scope="col">Código do denunciador</th>
-                        <th scope="col">Razão</th>
+                        <th scope="col">Texto</th>
                         <th scope="col">Código</th>
                         <th scope="col">Perfil do Denunciado</th>
                         <th scope="col">Perfil do Denunciador</th>
@@ -95,8 +95,8 @@
 
                             echo "<tr scope='row'>";
                             echo "<td>".$value['id_report']."</td>";
-                            echo "<td>".$value['fk_id_reporter']."</td>";
                             echo "<td>".$value['fk_id_reported']."</td>";
+                            echo "<td>".$value['fk_id_reporter']."</td>";
                             echo "<td>".$value['reason']."</td>";
                             echo "<td>".$cd."</td>";
                             echo "$y";
@@ -120,7 +120,7 @@
                         <th scope="col">Código</th>
                         <th scope="col">Código da história denunciada</th>
                         <th scope="col">Código do denunciador</th>
-                        <th scope="col">Razão</th>
+                        <th scope="col">Texto</th>
                         <th scope="col">Código</th>
                         <th scope="col">Resolvido</th>
                     </tr>
@@ -167,7 +167,7 @@
                         <th scope="col">Código</th>
                         <th scope="col">Código do denunciado</th>
                         <th scope="col">Código do denunciador</th>
-                        <th scope="col">Razão</th>
+                        <th scope="col">Texto</th>
                         <th scope="col">Código</th>
                         <th scope="col">Visualizar</th>
                         <th scope="col">Resolvido</th>
