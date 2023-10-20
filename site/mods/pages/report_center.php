@@ -25,7 +25,7 @@
     checkAllReport();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -169,6 +169,7 @@
                         <th scope="col">Código do denunciador</th>
                         <th scope="col">Razão</th>
                         <th scope="col">Código</th>
+                        <th scope="col">Visualizar</th>
                         <th scope="col">Resolvido</th>
                     </tr>
                 </thead>
@@ -194,6 +195,7 @@
                             echo "<td>".$value['fk_id_reporter']."</td>";
                             echo "<td>".$value['reason']."</td>";
                             echo "<td>".$cd."</td>";
+                            echo "<td><a href='comment.php?id_comment=". $value['fk_id_comment'] ."'><button class='btn btn-primary'>Comentário</button></a></td>";
                             echo "<td><a href='programaticos/resolvido.php?id_report_comment=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
                             echo "</tr>";
                         }
