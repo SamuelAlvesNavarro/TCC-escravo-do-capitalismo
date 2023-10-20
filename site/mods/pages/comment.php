@@ -20,6 +20,7 @@
 
 </head>
 <body data-bs-theme="dark">
+    
     <p class="container text-center"><?php echo $comment; ?></p>
 </body>
 </html>

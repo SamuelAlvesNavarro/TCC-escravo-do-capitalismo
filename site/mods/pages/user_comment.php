@@ -35,6 +35,7 @@
 
                 $text = $value['text'];
                 $id_story = $value['fk_id_story'];
+                $id_comment = $value['id_comment'];
 
                 $story = "SELECT * FROM story WHERE id_story = $id_story";
                 foreach($pdo->query($story) as $key => $value){
@@ -44,7 +45,7 @@
                 echo "<br><br>";
                 echo "História pertencente: <a href='mod-story.php?input_1=$id_story'>$name</a><br>";
                 echo "<p>Comentário: $text</p>";
-                echo "<a href='delete_comment.php?id_comment=". $value['id_comment'] ."'><button class='btn btn-danger'>Deletar</button></a>";
+                echo "<a href='delete_comment.php?id_comment=". $id_comment ."'><button class='btn btn-danger'>Deletar</button></a>";
             } 
         }
         
