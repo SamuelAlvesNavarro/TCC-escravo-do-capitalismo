@@ -4,7 +4,13 @@
     $ganhoDePontosLeitor = 100;
 
 
-    $salt_p_senha = "NoseSex";
-    $salt = $salt_p_senha;
-    $method = 'aes-128-cbc';
+    /* ENCRYPT PASSWORD*/
+
+    $ciphering = "AES-128-CTR";
+    $iv_length = openssl_cipher_iv_length($ciphering);
+    $options = 0;
+    $encryption_iv = '123456789101112a';
+    $encryption_key = "escravo-do-capitalismo";
+    $decryption_iv = $encryption_iv ;
+    $decryption_key = $encryption_key;
 ?>

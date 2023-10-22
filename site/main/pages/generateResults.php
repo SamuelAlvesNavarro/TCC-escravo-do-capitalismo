@@ -128,11 +128,6 @@
                         
                         </div>"; 
 
-                    echo '<div class="pg" onclick="picG('.$i.')">
-                    '. $titulos[$i][0] .'
-                        </div>
-
-                        ';
                 }  
 
                 echo "</div>";
@@ -193,12 +188,6 @@
                             </div>
                         
                         </div>";  
-
-                        echo '<div class="pg" onclick="picG('.$i.')">
-                        '. $titulos[$i][0] .'
-                            </div>
-    
-                            ';
 
                 }  
 

@@ -16,6 +16,24 @@
         $apelido = $_POST["apelido"];
         $email = $_POST["email"];
         $senha = $_POST["senha"];
+
+        if(strlen($senha) > 20){
+            sendToError(42);
+            exit;
+        }
+        if(strlen($apelido) > 15){
+            sendToError(42);
+            exit;
+        }
+        if(strlen($nome) > 50){
+            sendToError(42);
+            exit;
+        }
+        if(strlen($email) > 50){
+            sendToError(42);
+            exit;
+        }
+
         $confirmarsenha = $_POST["confirmarsenha"];
 
         
@@ -57,6 +75,13 @@
                 
                 $sql = "INSERT INTO user_common(fk_id_profile, nome, email, senha, apelido) values(?, ?, ?, ?, ?)";
                 $prepare = $pdo->prepare($sql);
+
+                $senha = openssl_encrypt($senha, $ciphering, $encryption_key, $options, $encryption_iv);
+
+                if(strlen($senha) > 200){
+                    sendToError(42);
+                    exit;
+                }
 
                 $prepare -> bindParam(1, $fk_profile);
                 $prepare -> bindParam(2, $nome);

@@ -11,7 +11,7 @@
     --color: #121212;
     --all-shadow: -2px -1px 34px 10px rgba(0, 0, 0, 0.75) inset;
     --paper-color: #E0C9A6;
-
+    --paper-transp-color: #c7aa7ece;
 
     --line-height: 40px;
     --line-size: 42px;
@@ -36,6 +36,7 @@
     --paper-color: #606060;
     --table-color: #505050;
     --line-color: #000000;
+    --paper-transp-color: #121212d7;
   
     --reward-opacity: .9;
   
@@ -43,7 +44,6 @@
   }
   
 .nav{
-    position: absolute;
     width: calc(100% - 42px);
     padding: 21px;
     display: flex;
@@ -53,6 +53,7 @@
     color: white;
     z-index: 100;
     background-color: #242424;
+    gap: 10px;
 }
   
 .go-back{
@@ -78,25 +79,52 @@
 .all{
     width: 100%;
     min-height: 100vh;
-    background-color: var(--paper-color);
+    background-image: linear-gradient(to bottom, var(--paper-color) 60%, #121212);
     box-shadow: -2px -1px 64px 20px rgba(0, 0, 0, 0.75) inset;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    animation-name: none;
+    animation-duration: 2s;
 }
-
+@keyframes pulse {
+    0%{
+        background-size: 120%;
+    }
+    100%{
+        background-size: 100%;
+    }
+}
+.main{
+    padding-top: 64px;
+}
 .lines{
     min-height: 100vh;
     font-size: 20px;
     font-family: oldF;
-    background: repeating-linear-gradient(transparent 0px, transparent 40px, var(--line-color) 42px);
-    line-height: 42px;
-    padding: 42px;
-}
+    background: 
+    repeating-linear-gradient(transparent 0px, transparent 30px, var(--line-color) 32px), 
+    radial-gradient(at center top, transparent 5%, var(--paper-transp-color) 65%);
 
+
+    line-height: 32px;
+    padding: 32px;
+    transition: .4s;
+    backdrop-filter: blur(5px);
+}
 .form-search-th{
     margin-top: 84px;
 }
-
-.search-box{
+.bar{
+    flex-grow: 1; 
+    max-width: 700px;
+}
+.search-box-s{
+    margin-top: 0;
+   
+    border-bottom: 1px solid white;
     width: 100%;
+    color: white;
     height: fit-content;
     position: relative;
     font-family: 'Playfair Display', serif;
@@ -116,6 +144,7 @@
     padding-right: 40px;
     color:var(--color);
     outline: none;
+    color: white;
 }
 
 .btn{
@@ -131,67 +160,60 @@
     color: var(--color);
     background-color: transparent;
     pointer-events: painted;
+    color: white;
 }
 
 .title-r{
-    margin-top: 42px;
+    margin-top: 60px;
     font-size: 20px;
 }
-
+.no-res-title{
+    margin-bottom: 32px;
+}
 .resultsAll{
-    margin-top: 42px;
+    margin-top: 32px;
     display: flex;
     flex-direction: row;
     gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
 }
+
+table{
+    width: 100%;
+}
+td{
+    padding: 10px;
+}
+tr{
+    border-bottom: 1px solid var(--line-color);
+    border-collapse: collapse;
+}
+.square{
+    padding-left: 10px;
+    border-left: 1px solid var(--line-color);
+}
 .action{
-    background-color: var(--paper-color);
+    padding: 0 10px;
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     cursor: pointer;
     overflow: hidden;
     transition: .1s linear;
     position: relative;
-    max-width: 300px;
-    box-shadow: -13px 10px 65px -5px black;
-    color: white;
+    color: var(--color);
 }
 
 .action:hover{
-    transform: translateY(-20px);
-}
-.action:hover .square{
-    
-    box-shadow: 40px -83px 100px 12px rgba(0,0,0,0.75) inset;
--webkit-box-shadow: 40px -83px 100px 12px rgba(0,0,0,0.75) inset;
--moz-box-shadow: 40px -83px 100px 12px rgba(0,0,0,0.75) inset;
+    color: white !important;
+    background-color: black;
 }
 
-.square{
-    width: 280px;
-    height: 280px;
-    display: flex;
-    align-items: flex-end;
-    padding: 10px;
-    box-shadow: 0;
--webkit-box-shadow: 0;
--moz-box-shadow: 0;
-    transition: .2s linear;
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-.square i{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
 .readqm{
     font-size: 20px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
 }
 .readme{
     color: gray;
@@ -205,9 +227,17 @@
 .fa-star{
     color: #dede44;
 }
+#results{
+    width: 100%;
+    overflow-y: hidden;
+    position: relative;
+}
 
-
-
+@media (max-width: 800px) {
+    .pg{
+        display: none !important;
+    }
+}
 @media (max-width: 450px) {
     .nav{
         width: calc(100% - 20px);
@@ -226,9 +256,5 @@
     .lines{
         padding-left: 15px;
         padding-right: 15px;
-    }
-    .square{
-        width: 200px;
-        height: 200px;
     }
 }

@@ -143,7 +143,7 @@
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
     <link rel="stylesheet" href="../css/story.css?v=1.01<?php echo rand(0,10000)?>">
     <link rel="stylesheet" href="../css/scroll.css?v=1.01">
-    <link rel="stylesheet" href="../css/notification.css?v=113523">
+    <link rel="stylesheet" href="../css/notification.css?v=1135232">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <title>História</title>
 </head>
@@ -322,7 +322,7 @@
 
                     <div class="unanswered">
                         <div class="question-container">
-                            <div class="question">
+                            <div class="question" id="quest">
                                 <?php echo $questionText; ?>
                             </div>
                             <form id="question-form" method="post">

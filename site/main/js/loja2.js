@@ -1,0 +1,83 @@
+var displays = document.getElementsByClassName("display-items");
+var item_shops = document.getElementsByClassName("items");
+var price_displays = document.getElementsByClassName("price-display");
+var img_display = document.getElementsByClassName("img-display");
+var nome_display = document.getElementsByClassName("nome-display");
+var buttons_buy_e = document.getElementsByClassName("buy");
+var current = 0;
+var section = document.getElementsByClassName("section");
+
+
+const root = document.querySelector(":root");
+
+function to(n){
+    section[current].classList.add("sumir-section");
+
+
+    setTimeout(dissapear, 500, current, n)
+}
+function dissapear(current_div, n_div){
+
+    section[current_div].classList.add("display_none");
+
+    if(current_div != 0){
+        displays[current_div-1].classList.remove("show-display");
+        item_shops[current_div-1].classList.remove("mini-shop");
+        buttons_buy_e[current_div-1].value = "xxxx";
+    }
+    
+    setTimeout(appear_session, 100, current_div, n_div)
+}
+function appear_session(current_div, n_div){
+
+    section[n_div].classList.remove("display_none");
+
+    setTimeout(finish_appear, 100, current_div, n_div)
+}
+function finish_appear(current_div, n_div){
+
+    section[n_div].classList.remove("sumir-section");
+    current = n_div;
+}
+
+function show_item(store_type, item){
+    displays[store_type].classList.add("show-display");
+    item_shops[store_type].classList.add("mini-shop");
+
+    var item_price = item+"p";
+    var nome_ = item+"n";
+    var price_ = document.getElementById(item_price).innerHTML;
+    var nome = document.getElementById(nome_).innerHTML;
+    var img = document.getElementById(item);
+   
+    img_display[store_type].style.backgroundImage = img.style.backgroundImage;
+    price_displays[store_type].innerHTML = price_;
+    nome_display[store_type].innerHTML = nome;
+
+    buttons_buy_e[store_type].value = item;
+}
+
+
+function switchmode(){
+    root.classList.toggle('dark');
+}
+
+
+
+
+
+var checks = document.getElementsByClassName("check-item");
+var types = document.getElementsByClassName("type");
+
+function check(n){
+    checks[n].checked = true;
+
+    for(var i = 0; i < types.length; i++){
+        if(i != n)types[i].style.display = "none";
+        else{
+            types[i].style.display = "flex";
+        }
+    }
+}
+
+check(0)

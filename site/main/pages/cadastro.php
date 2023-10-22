@@ -12,7 +12,7 @@
     <meta http-equiv="pragma" content="no-cache" />
 
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../css/cadastro.css?v=1.092">
+    <link rel="stylesheet" href="../css/cadastro.css?v=1.0922">
     <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Cadastro</title>
 </head>
@@ -58,12 +58,12 @@
                    <div class="inputArea">
                         <div class="prev"></div>
                         <div class="label">Apelido: </div>
-                        <input type="text" required name="apelido" id="apelido" class='inp-text' maxLength="50" placeholder="Escreva aqui seu apelido">
+                        <input type="text" required name="apelido" id="apelido" class='inp-text' maxLength="15" placeholder="Escreva aqui seu apelido">
                         <!--<div class="res">
                             mpty
                         </div>-->
                    </div>
-                   <div class="pc-info info">
+                   <div class="pc-info info don">
                         Use a tecla M para abrir o menu
                   </div>
                 </div>
@@ -90,7 +90,7 @@
                    <div class="inputArea">
                         <div class="prev"></div>
                         <div class="label">Sua senha: </div>
-                        <input type="password" required name="senha" id="senha" class='inp-text' maxLength="50" placeholder="Escreva aqui sua senha">
+                        <input type="password" required name="senha" id="senha" class='inp-text' maxLength="20" placeholder="Escreva aqui sua senha">
                         <!--<div class="res">
                             mpty
                         </div>-->

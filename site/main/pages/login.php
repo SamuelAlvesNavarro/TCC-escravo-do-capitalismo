@@ -1,6 +1,7 @@
 <?php
     require "includes/conexao.php";
     require "includes/enviarErro.php";
+    require "includes/values.php";
 
     $email = null;
     $senha = null;
@@ -8,7 +9,7 @@
     $email = $_POST["email"];
     $senha = $_POST["senha"];
 
-    $sql = "SELECT * FROM user_common WHERE email = '$email' and senha = '$senha'";
+    $sql = "SELECT * FROM user_common WHERE email = '$email' and senha = '".openssl_encrypt($senha, $ciphering, $encryption_key, $options, $encryption_iv)."'";
 
     $prepare = $pdo->prepare($sql);
     $prepare -> execute();

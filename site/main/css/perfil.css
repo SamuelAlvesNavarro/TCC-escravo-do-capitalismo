@@ -77,8 +77,6 @@
   position: fixed;
   background-color: var(--paper-color);
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -91,7 +89,10 @@
   -moz-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
   transition: .5s linear;
 }
-
+.menu-char{
+  left: 50%;
+  transform: translateX(-50%);
+}
 .point {
   display: flex;
   flex-direction: row;
@@ -108,6 +109,9 @@
 
 .menu-dis{
   top: -100% !important;
+}
+.den-dis{
+  right: 10px !important;
 }
 /* DENUNCIA */
 .denuncia-container {

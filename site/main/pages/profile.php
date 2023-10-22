@@ -28,7 +28,7 @@
         $id_dono = $value['id_user'];
         $nome = $value['nome'];
         $email = $value['email'];
-        $senha = $value['senha'];
+        $senha = openssl_decrypt($value['senha'], $ciphering, $decryption_key, $options, $decryption_iv);
         $apelido = $value['apelido'];
         $pontos_leitor = $value['pontos_leitor'];
         $moedas = $value['moedas'];
@@ -105,7 +105,7 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/perfil.css?v=1.0123">
+    <link rel="stylesheet" href="../css/perfil.css?v=1.01232">
     <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Perfil</title>
 </head>
@@ -133,21 +133,26 @@
                 </div>
             </div>
         </div>
-        <div class="acess-menu menu-dis" id="acmenu">
+
+        <?php if($perfildono != $perfilEntrando):?>
+            <div class="acess-menu den-dis">
+                
+                <div class="point" onclick="showDe()">
+                    <div class="icon">
+                        <i class="fas fa-exclamation"></i>
+                    </div>
+                </div>
+
+            </div>
+        <?php endif; ?>
+
+        <div class="acess-menu menu-char menu-dis" id="acmenu">
             <div class="point" onclick="menu_appear()">
                 <div class="icon">
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <div class="text">
                     Menu
-                </div>
-            </div>
-            <div class="point" onclick="showDe()">
-                <div class="icon">
-                    <i class="fas fa-exclamation"></i>
-                </div>
-                <div class="text">
-                    Denunciar<!--<br>Perfil-->
                 </div>
             </div>
         </div>
@@ -243,25 +248,25 @@
                                         <tr>
                                             <td>Apelido:</td>
                                             <td class="input">
-                                                <input type="text" name="apelido" id="" value="<?php echo $apelido ?>">
+                                                <input type="text" name="apelido"  value="<?php echo $apelido ?>">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Email:</td>
                                             <td class="input">
-                                                <input type="email" name="email" id="" value="<?php echo $email ?>">
+                                                <input type="email" name="email"  value="<?php echo $email ?>">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Nome:</td>
                                             <td class="input">
-                                                <input type="text" name="nome" id="" value="<?php echo $nome ?>">
+                                                <input type="text" name="nome"  value="<?php echo $nome ?>">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Senha:</td>
                                             <td class="input">
-                                                <input id="senha" type="password" name="senha" id="" value="<?php echo $senha; ?>">
+                                                <input id="senha" type="password" name="senha"  value="<?php echo $senha; ?>">
                                             </td>
                                         </tr>
                                     </tbody>
