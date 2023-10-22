@@ -27,6 +27,10 @@
         $prepare = $pdo->prepare($sql);
         $prepare->execute();
 
+        $sql = "update report_comment set fk_id_reported = 0 where fk_id_reported = $id_profile";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
         $sql = "update report_profile set fk_id_reporter = 0 where fk_id_reporter = $id_profile";
         $prepare = $pdo->prepare($sql);
         $prepare->execute();

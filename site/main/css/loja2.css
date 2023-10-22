@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Poltawski+Nowy&family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Playfair+Display:ital@1&family=Poltawski+Nowy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    color: var(--color);
+    font-family: 'Space Grotesk', sans-serif;
+}
+:root {
+    color-scheme: light;
+    --paper-color-all: #f0e1cc;
+    --imp-color: rgb(228, 14, 14);
+    --color-sort-bc: #eccfa5;
+    --border-item-color: #fcc67b6e;
+}
+.dark {
+    color-scheme: dark;
+    --paper-color-all: #161616;
+    --imp-color: rgb(252, 27, 27);
+    --color-sort-bc: #080808;
+    --border-item-color: #fcecd52c;
+}
+.befAll{
+    background-color: var(--paper-color-all);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+.all{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.enter-menu{
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.historito {
+    transition: 0.5s linear;
+    width: 30px;
+    height: 30px;
+    fill: var(--color);
+    border: 3px solid  var(--color);
+  }
+
+.title{
+    padding-top: 10px;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: "Poppins";
+    color: var(--imp-color);
+}
+
+/*  PHRASE */
+.phrase{
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 40px;
+}
+/* SELECTION */
+
+.selection{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--color-sort-bc);
+}
+input[type='radio'], label{
+    cursor: pointer;
+}
+input[type='radio']{
+    appearance: none;
+    border: 2px solid var(--color);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position: relative;
+    transition: .2s ease-out;
+}
+input[type='radio']:checked, input[type='radio']:hover{
+    border: 2px solid var(--imp-color);
+}
+input[type="radio"]:checked::before {
+	content: "";
+	display: block;
+	width: 12px;
+	height: 12px;
+	background-color: var(--imp-color);
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	animation: appear .8s;
+}
+@keyframes appear {
+	0% {
+		transform: translate(-50%, -50%) scale(0);
+		background-color: var(--color);
+	}
+	50% {
+		transform: translate(-50%, -50%) scale(1.4);
+		background-color: var(--imp-color);
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(1);
+		background-color: var(--imp-color);
+	}
+}
+.opp{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 600;
+}
+
+
+
+/* ITEMS */
+.items-all{
+    margin-top: 20px;
+}
+.type{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.item{
+    max-width: calc(25% - 50px);
+    width: 100%;
+    flex-grow: 1;
+    border: 1px solid var(--border-item-color);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    transition: 2s ease-out;
+    border-collapse: collapse;
+}
+img{
+    transition: .2s linear;
+    background-position: center center;
+    background-size: 100%;
+    object-fit: contain;
+    transition: .2s ease-out;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.item:hover{
+    background-color: #080808;
+}
+.item:hover img{
+    background-size: 120%;
+    cursor: pointer;
+}
+.price{
+    margin-top: 10px;
+    font-size: 20px;
+}
+.rest-item{
+    text-align: center;
+}
+
+.size1 img{
+    height: 130px;
+}
+.size2 img{
+    height: 140px;
+}
+.size3 img{
+    height: 155px;
+}
+.size4 img{
+    height: 150px;
+}
+.size5 img{
+    height: 200px;
+}
+.size5{
+    font-size: 30px;
+}

@@ -165,7 +165,7 @@ INSERT INTO `error` (`id_error`, `cod_error`, `description`, `returnT`) VALUES
 (20, '1', 'Você tentou comprar um item não disponível', 1),
 (21, '1', 'Email informado não é válido', 2),
 (22, '3', 'Você tentou injetar código na sua história', 3),
-(42, '4', 'Reservado', 1),
+(42, '1', 'Texto muito longo', 1),
 (666, '4', 'Reservado', 1),
 (667, '0', 'Você entrou na página de erro sem um erro. Por favor, não o faça novamente. Só acesse essa página quando necessário.', 1);
 
@@ -534,7 +534,7 @@ CREATE TABLE `user_common` (
   `fk_id_profile` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `senha` varchar(20) NOT NULL,
+  `senha` varchar(200) NOT NULL,
   `apelido` varchar(15) NOT NULL,
   `pontos_leitor` int(11) NOT NULL DEFAULT 0,
   `ranking` int(11) NOT NULL DEFAULT 0,

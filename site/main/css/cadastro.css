@@ -191,15 +191,7 @@ val{
     transform: skew(5deg);
     color: white;
 }
-#send:hover{
-    text-align: center;
-    background-color: var(--button-hv);
-    transform: skew(-5deg);
-}
 
-.darken{
-    background-color: #121212;
-}
 .xmark{
     color: red;
 }
