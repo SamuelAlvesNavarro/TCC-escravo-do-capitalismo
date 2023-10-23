@@ -302,17 +302,6 @@ CREATE TABLE `images` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `like_comment`
---
-
-CREATE TABLE `like_comment` (
-  `fk_id_profile` int(11) NOT NULL,
-  `fk_id_comment` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `mods`
 --
 
@@ -893,13 +882,6 @@ ALTER TABLE `history`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`fk_id_page`) REFERENCES `page` (`id_page`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `like_comment`
---
-ALTER TABLE `like_comment`
-  ADD CONSTRAINT `like_comment_ibfk_1` FOREIGN KEY (`fk_id_comment`) REFERENCES `comment` (`id_comment`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `like_comment_ibfk_2` FOREIGN KEY (`fk_id_profile`) REFERENCES `profile` (`id_profile`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `page`
