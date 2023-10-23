@@ -321,12 +321,12 @@ textarea {
 .writings {
   font-family: reward;
   font-style: 40px;
-  color: red;
+  color: #5a1919;
   padding: 10px;
   font-size: 30px;
-  border: 5px solid red;
+  border: 5px solid #5a1919;
   opacity: var(--reward-opacity);
-  rotate: -10deg;
+  transform: rotate(-10deg);
 }
 
 .span-nums {

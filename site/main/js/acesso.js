@@ -15,6 +15,14 @@ function validEmail(email){
     return /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(email)
 }
 
+document.addEventListener('keyup', (event) => {
+    var name = event.key;
+    if (name === 'Enter' && senha.value && email.value) {
+        form_login.submit();
+    }
+
+  }, false);
+
 /* LOGIN */
 
 senha.addEventListener('change', () => {login_bt(email.value, senha.value)});
