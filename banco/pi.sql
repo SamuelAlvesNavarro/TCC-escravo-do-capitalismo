@@ -616,13 +616,6 @@ ALTER TABLE `images`
   ADD KEY `fk_id_page` (`fk_id_page`);
 
 --
--- Índices para tabela `like_comment`
---
-ALTER TABLE `like_comment`
-  ADD PRIMARY KEY (`fk_id_comment`,`fk_id_profile`),
-  ADD KEY `fk_id_profile` (`fk_id_profile`);
-
---
 -- Índices para tabela `mods`
 --
 ALTER TABLE `mods`
