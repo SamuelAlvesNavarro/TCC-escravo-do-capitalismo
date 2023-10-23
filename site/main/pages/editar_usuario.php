@@ -8,7 +8,7 @@
     $nome = $_POST['nome'];
     $emailTroca = $_POST['email'];
     $senha = $_POST['senha'];
-    $senha = openssl_encrypt($senha, $ciphering, $encryption_key, $options, $encryption_iv)
+    $senha = openssl_encrypt($senha, $ciphering, $encryption_key, $options, $encryption_iv);
     $apelido = $_POST['apelido'];
 
 

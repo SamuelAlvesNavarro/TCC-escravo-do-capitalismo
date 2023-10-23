@@ -41,6 +41,7 @@ function story(n) {
 
 
 function buscar(){
+    
     var query = document.getElementById("query").value;
 
     $.ajax({  

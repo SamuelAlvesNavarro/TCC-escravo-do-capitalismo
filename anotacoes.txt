@@ -33,3 +33,13 @@ npm start
 
 
 
+SOBRE A DOCUMENTAÇÃO
+
+-> Diagrama de classes;
+-> Tema
+-> Sumário
+-> Diagramas de sequência
+-> MER
+-> Modelo lógico
+-> Modelo físico
+
