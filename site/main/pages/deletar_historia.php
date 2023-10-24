@@ -72,7 +72,8 @@
 
                         $caminho_parts = explode("/", $caminho);
                         unset($caminho_parts[3]);
-                        $caminho = implode("/", $caminho_parts);
+                        $caminhos_parts = array($caminho_parts[0], $caminho_parts[1], $caminho_parts[2]);
+                        $caminho = implode("/", $caminhos_parts);
                         
                         rmdir($caminho);
 
@@ -86,7 +87,7 @@
 
                         $caminho = '../../../main/pages/'.$caminho;
 
-                        rmdir($caminho);
+                        unlink($caminho);
 
                         $del = "DELETE FROM images WHERE id_image = '$img'";
                         $prepare = $pdo->prepare($del);
