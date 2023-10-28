@@ -10,6 +10,8 @@
     foreach($pdo->query($moedas) as $key => $value){
         $moedas = $value['moedas'];
     }
+
+    $v = 0;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -43,17 +45,23 @@
             </div>
         </section>
         <section class="phrase">
-            Na loja, você pode gastar seu dinheiro e comprar itens
+            Nesse momento, você tem <?php echo $moedas; ?> <i class="fa-solid fa-coins"></i>.
         </section>
         <section class="main">
             <section class="selection">
-                <div class="opp" onclick="check(0)">
-                    <input type="radio" name="itens-sort" class="check-item">
-                    <label for="fotos">Fotos</label>
+                <div class="selection2">
+                    <div class="opp" onclick="check(0)">
+                        <input type="radio" name="itens-sort" class="check-item">
+                        <label for="fotos">Foto</label>
+                    </div>
+                    <div class="opp" onclick="check(1)">
+                        <input type="radio" name="itens-sort" class="check-item">
+                        <label for="fundo">Fundo</label>
+                    </div>
                 </div>
-                <div class="opp" onclick="check(1)">
-                    <input type="radio" name="itens-sort" class="check-item">
-                    <label for="fundo">Fundo</label>
+                <div class="search-bar-cont">
+                    <input id="search_text" class="search-bar" type="text" name="itens-sort" class="check-item" onchange="search()" placeholder="Pesquisar....">
+                    <i class="fa-solid fa-search"></i>
                 </div>
             </section>
             <section class="items-all">
@@ -80,13 +88,15 @@
                                 $item = explode(")", $item_image)[0];
                             ?>
                                 
-                                <div  class="item size<?php echo rand(1,5);?>" onclick='show_item(0, <?php echo $nome;?>)'>
-                                    <img id='<?php echo $nome;?>' src='<?php echo $item;?>'>
+                                <div  class="item size<?php echo rand(1,5);?>" onclick='show_item(<?php echo $v; $v++;?>, 0, <?php echo $code;?>)'>
+                                    <div class="exp_img">
+                                        <img class="item_img" id='<?php echo $nome;?>' src='<?php echo $item;?>'>
+                                    </div>
                                     
                                     <div class="rest-item">
-                                        <div id='<?php echo $code;?>n'><?php echo $nome;?></div>
+                                        <div class="item-name" id='<?php echo $code;?>n'><?php echo $nome;?></div>
                                         <div class='price' id='<?php echo $code;?>p'>
-                                            $<?php echo $preco;?>.00
+                                            $<?php echo $preco;?>.00 (<i class="fa-solid fa-coins"></i>)
                                         </div>
                                     </div>
 
@@ -99,7 +109,7 @@
                         <?php endif; ?>
                 </div>
                 <div id="fundo" class="type">
-                <?php
+                    <?php
                         $gadget = "SELECT * FROM gadget WHERE g_status = 1 and type = 3";
                         $z = 0;
                         foreach($pdo->query($gadget) as $key => $value){
@@ -122,13 +132,14 @@
                                 $item = explode(")", $item_image)[0];
                             ?>
                                 
-                                <div  class="item size<?php echo rand(1,5);?>" onclick='show_item(0, <?php echo $nome;?>)'>
-                                    <img id='<?php echo $nome;?>' src='<?php echo $item;?>'>
-
+                                <div  class="item size<?php echo rand(1,5);?>" onclick='show_item(<?php echo $v; $v++;?>, 1, <?php echo $code;?>)'>
+                                    <div class="exp_img">
+                                        <img class="item_img" id='<?php echo $nome;?>' src='<?php echo $item;?>'>
+                                    </div>
                                     <div class="rest-item">
-                                        <div id='<?php echo $code;?>n'><?php echo $nome;?></div>
+                                        <div class="item-name" id='<?php echo $code;?>n'><?php echo $nome;?></div>
                                         <div class='price' id='<?php echo $code;?>p'>
-                                            $<?php echo $preco;?>.00
+                                            $<?php echo $preco;?>.00 (<i class="fa-solid fa-coins"></i>)
                                         </div>
                                     </div>
                                 
@@ -140,6 +151,22 @@
                             <h3>Você já comprou todos os itens dessa sessão da loja. Parabéns!</h3>;
                         <?php endif; ?>
                 </div>
+                <div id="item_display">
+                    <div class="photo">
+                        <img id="item_display_photo" src="" alt="" srcset="">
+                    </div>
+                    <div class="info">
+                        <h1 id="item_nome_title"></h1>
+                        <h2 id="sub">Foto</h2>
+
+                        <div id="price_display"></div>
+
+                        <div class="comprar" onclick="buy()">
+                            <button class="buy">Comprar</button>
+                        </div>
+                    </div>
+                    
+                </div>
             </section>
         </section>
     </div>
@@ -148,26 +175,6 @@
 
     <div id="hidden_form_container" style="display:none;"></div>
 
-    <script>
-        function buy(numB) {
-
-            var buttons_buy = document.getElementsByClassName("buy");
-            n = buttons_buy[numB].value;
-
-            if(n == "xxxx") return;
-            var theForm, input_cod;
-            theForm = document.createElement('form');
-            theForm.action = 'compra.php';
-            theForm.method = 'post';
-            input_cod = document.createElement('input');
-            input_cod.type = 'hidden';
-            input_cod.name = 'gadget';
-            input_cod.value = n;
-            theForm.appendChild(input_cod);
-            document.getElementById('hidden_form_container').appendChild(theForm);
-            theForm.submit();
-        }
-    </script>
     <script src="../js/menu.js?v=1.01"></script>
     <script src="../js/loja2.js?v=1.<?php echo rand(0,1000)?>"></script>
     <script src="../js/darkmode.js"></script>

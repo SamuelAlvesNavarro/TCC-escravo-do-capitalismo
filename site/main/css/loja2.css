@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Poltawski+Nowy&family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Playfair+Display:ital@1&family=Poltawski+Nowy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
 
 *{
     margin: 0;
@@ -81,12 +82,19 @@
 .selection{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
     padding: 15px;
     border-radius: 10px;
     background-color: var(--color-sort-bc);
+}
+.selection2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
 }
 input[type='radio'], label{
     cursor: pointer;
@@ -136,8 +144,32 @@ input[type="radio"]:checked::before {
     align-items: center;
     font-weight: 600;
 }
-
-
+.search-bar-cont{
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 5px;
+}
+.search-bar{
+    border: none;
+    outline: none;
+    font-size: 15px;
+    margin-right: 30px;
+    border-radius: 10px;
+    padding: 4px 0;
+    max-width: 50ch;
+    width: 0;
+    transition: .4s linear;
+    color: var(--color);
+}
+.search-bar-cont:hover .search-bar, .search-bar:hover, .search-bar:focus, .search-bar:not(:placeholder-shown){
+    width: 100%;
+    padding: 4px;
+}
+.fa-search{
+    position: absolute;
+    right: 0;
+}
 
 /* ITEMS */
 .items-all{
@@ -165,13 +197,13 @@ input[type="radio"]:checked::before {
     border-collapse: collapse;
 }
 img{
-    transition: .2s linear;
     background-position: center center;
     background-size: 100%;
     object-fit: contain;
     transition: .2s ease-out;
     width: 100%;
     margin-bottom: 10px;
+    border-radius: 10px;
 }
 .item:hover{
     background-color: #080808;
@@ -187,22 +219,61 @@ img{
 .rest-item{
     text-align: center;
 }
+.exp_img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    width: 100%;
+    max-height: 700px;
+}
 
-.size1 img{
-    height: 130px;
+
+
+
+#item_display{
+    display: flex;
+    flex-direction: row;
 }
-.size2 img{
-    height: 140px;
+.photo, .info{
+    width: 50%;
+    padding: 20px;
 }
-.size3 img{
-    height: 155px;
+.photo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.size4 img{
-    height: 150px;
+.info{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
 }
-.size5 img{
-    height: 200px;
+#item_display_photo{
+    border-radius: 10px;
 }
-.size5{
+#item_nome_title{
     font-size: 30px;
+}
+#sub{
+    font-size: 20px;
+    font-weight: 300;
+}
+#price_display{
+    font-size: 40px;
+    margin-top: 20px;
+    font-family: "Noto Sans JP";
+}
+
+
+.buy{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--imp-color);
+    color: #ffffff;
+    outline: none;
+    border: none;
+    font-size: 30px;
+    border-radius: 5px;
+    cursor: pointer;
 }

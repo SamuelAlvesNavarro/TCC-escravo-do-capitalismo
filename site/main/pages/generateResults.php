@@ -17,7 +17,7 @@
 
         if(isset($_GET['busca']) && $_GET['busca'] != ""){
 
-            $pesquisa = $_GET['busca'];
+            $pesquisa = strtolower($_GET['busca']);
             $sql = "SELECT * FROM story where status = 3 order by id_story desc ";
             $prepare = $pdo->prepare($sql);
             $prepare->execute();
@@ -28,7 +28,7 @@
             }
 
             foreach($pdo->query($sql) as $key => $value){
-                $titulos[$i][0] = $value["nome"];
+                $titulos[$i][0] = strtolower($value["nome"]);
                 $sim = similar_text($titulos[$i][0], $pesquisa, $perc);
                 $titulos[$i][1] = $perc;
 
