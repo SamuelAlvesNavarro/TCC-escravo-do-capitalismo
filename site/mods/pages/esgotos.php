@@ -1,6 +1,7 @@
 <?php
     require "includes/conexao.php";
     require "includes/online.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +37,7 @@
             <a href="story-center.php"><li>Centro de Controle de Histórias</li></a>
             <a href="report_center.php"><li>Centro de Controle de Denúncias</li></a>
             <a href="user_center.php"><li>Centro de Controle de Usuários</li></a>
+            <a href="includes/closing_session.php"><li>Sair</li></a>
         </ul>
     </div>
 </body>
