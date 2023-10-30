@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+        }
+        .tr{
+            padding: 20px;
+            width: 50%;
+        }
+        textarea{
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="input tr">
+        <button onclick="strong()"><strong>B</strong></button>
+        <button onclick="italic()"><em>B</em></button>
+        <button onclick="addImg(1)">Adicionar Imagem</button>
+        <textarea id="story" onchange="botar()" required oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea"></textarea>
+    </div>
+    <div class="res tr">
+        <pre id="result">
+
+        </pre>
+    </div>
+    <script>
+        var result = document.getElementById("result");
+        var input_ = document.getElementById("story");
+
+        function botar(){
+            var texto = input_.value;
+
+            texto = texto.replace("<img1>", "<img src='https://th.bing.com/th/id/OIP.KTzqaoXrm0DE6uUiGqEn9wHaFj?w=261&h=196&c=7&r=0&o=5&pid=1.7'>")
+
+            result.innerHTML = texto;
+        }
+
+        function mudar(tag){
+            var comeco = input_.selectionStart;
+            var fim = input_.selectionEnd;
+
+            var current_texto = input_.value;
+
+            current_texto = 
+                current_texto.slice(0, comeco) + "<"+tag+">" 
+                + current_texto.slice(comeco, fim)
+                + "</"+tag+">"
+                + current_texto.slice(fim)
+
+
+            result.innerHTML = current_texto
+            input_.value = current_texto
+        }
+
+        function strong(){
+           mudar("strong");
+        }
+        function italic(){
+           mudar("em");
+        }
+        function addImg(num){
+           var comeco = input_.selectionStart;
+
+           var current_texto = input_.value;
+
+           current_texto = current_texto.slice(0, comeco) 
+           + "<img"+num+">"
+           +  current_texto.slice(comeco) 
+
+           input_.value = current_texto
+
+        }
+    </script>
+</body>
+</html>
