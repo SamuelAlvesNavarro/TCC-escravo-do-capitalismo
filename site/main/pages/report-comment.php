@@ -11,3 +11,4 @@
     $denucia = "INSERT INTO report_comment VALUES(NULL, $reportado, $reportando, $id_comment, $text, 0)";
     $prepare = $pdo->prepare($denuncia);
     $prepare->execute();
+?>
