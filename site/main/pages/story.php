@@ -151,6 +151,7 @@
     <?php
         include "includes/menu.php";
     ?>
+    https://www.leagueoflegends.com/en-pl/news/lore/previously-on-star-guardian/
     <div class="report_comment_modal" id="report_comment_modal">
         <div class="close-rep" onclick="rep(0)">
             <i class="fa-solid fa-xmark"></i>
