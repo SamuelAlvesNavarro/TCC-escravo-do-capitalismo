@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+@font-face {
+    font-family: scary;
+    src: url(../../site/main/fonts/another_danger/demo.otf);
+}
+:root{
+    --color: #121212;
+    --color-menu: #121212;
+    --paper-color: rgb(247, 223, 195);
+    --max-shadow: rgb(170, 124, 72);
+}
+.dark{
+    --color: rgb(245, 231, 214);
+    --color-menu: rgb(245, 231, 214);
+    --paper-color: #363636;
+    --max-shadow: #000000;
+}
+.transi{
+    --color: transparent;
+}
+.transi_time_integrals{
+    --times-fonts: 500ms
+}
+.transi_time_shorts{
+    --times-fonts: 20ms
+}
+body{
+    background-color: var(--paper-color);
+    transition: var(--times-fonts);
+}
+
+
+.filter{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: linear-gradient(transparent, var(--max-shadow));
+    z-index: 1;
+}
+
+
+
+
+#all{
+    width: 100%;
+    height: 100vh;
+}
+
+/* MENU */
+.menu_bar{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    position: fixed;
+    top: 0;
+    z-index: 4;
+}
+/* CONTROL */
+.control{
+    position: fixed;
+    z-index: 4;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-menu);
+    transition: all var(--times-fonts);
+    font-size: 25px;
+    font-family: "Poppins";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+.control p{
+    transition: all var(--times-fonts);
+    cursor: pointer;
+}
+.active_li{
+    padding-left: 20px;
+}
+
+.i_cont{
+    width: clac(100% + 40px);
+    text-align: center;
+    padding: 0 20px;
+}
+
+.card{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    color: var(--color);
+    transition: var(--times-fonts);
+    font-family: 'Gloria Hallelujah';
+    font-size: 30px;
+    line-height: 32px;
+    background: repeating-linear-gradient(transparent 0px, transparent 30px, var(--color) 32px);
+    z-index: 2;
+}
+.ap_card{
+    display: block;
+}
+
+
+.titulo{
+    animation-name: pulseTitle;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    text-align: center;
+    z-index: 4;
+    background: none;
+}
+.historia{
+    text-align: justify;
+    top: 200px;
+    font-size: 20px;
+    width: 100%;
+    max-width: 900px;
+    padding: 0 20px;
+    padding-bottom: 100px;
+}
+.historia pre{
+    width: 100%;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 18px;
+    line-height: 32px;
+    line-break: auto;
+    white-space: break-spaces;
+    text-align: justify;
+}
+pre h1, pre h2, pre h3, pre h4, pre h5, pre h6{
+    display: inline;
+    line-height: 0px;
+}
+@keyframes pulseTitle {
+    50%{
+        font-family: "Indie Flower";
+        font-size: 30px;
+    }
+    51%{
+        font-family: scary;
+        font-size: 3em;
+    }
+    59%{
+        font-family: scary;
+        font-size: 3em;;
+    }
+    60%{
+        font-family: "Indie Flower";
+        font-size: 30px;
+    }
+}
+
+@keyframes changeBackground {
+    10%{
+        background-position: 10% 20%;
+    }
+    35%{
+        background-position: 50% 70%;
+    }
+    60%{
+        background-position: 70% 30%;
+    }
+    80%{
+        background-position: 80% 80%;
+    }
+}
