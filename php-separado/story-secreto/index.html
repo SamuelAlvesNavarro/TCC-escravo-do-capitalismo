@@ -8,22 +8,23 @@
     <title>Story 3.0</title>
     <style>
         .show_img{
-            background-image: url(../../site/main/img/the-ritual.jpg);
-            backdrop-filter: blur(10px);
+            background: radial-gradient(circle at 91% 13%, transparent 0%, transparent 40%, rgba(3, 9, 10, 0.795) 78%, #121212 100%), url(../../site/main/img/the-ritual.jpg);
             background-repeat: no-repeat;
             background-size: cover;
-            animation-name: changeBackground;
-            animation-duration: 30s;
-            animation-iteration-count: infinite;
+            backdrop-filter: blur(5px);
+         background-position: 50% 50%;
         }
     </style>
 </head>
 <body class="transi_time_integrals show_img">
-    <div class="filter">
+    <div class="filter" id="filter">
         
     </div>
     <div id="all">
         <div class="menu_bar">
+            <div class="menu_enter">
+                <i class="fa-solid fa-bars"></i>
+            </div>
             <div class="on-off">
                 <input type="checkbox"  onclick="switchAni()">
             </div>
@@ -31,17 +32,17 @@
         </div>
         <div class="control">
             <div class="i_cont" onclick="setPrev()">
-                <i class="fa-solid fa-chevron-up"></i>
+                <i class="fa-solid fa-chevron-left"></i>
             </div>
             <p class="menu-li active_li" onclick="setAp(0)">Título</p>
             <p class="menu-li" onclick="setAp(1)">História</p>
             <p class="menu-li" onclick="setAp(2)">Pergunta</p>
             <div class="i_cont" onclick="setNext()">
-                <i class="fa-solid fa-circle-chevron-down"></i>
+                <i class="fa-solid fa-chevron-right"></i>
             </div>
         </div>
         <div class="card titulo">
-            Título
+            A casa abandonada de Grace
         </div>
         <div class="card historia">
             <pre>
@@ -77,7 +78,8 @@ Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempor
 e quasi exercitationem numquam rem veniam laboriosam repellendus ali
 quam, velit beatae cu   mque necessitatibus unde aliquid commodi fuga? Dolores un
 de ut perspiciatis! Earum?
-<img src="../../site/main/img/the-ritual.jpg" alt=""> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempor
+<img src="../../site/main/img/the-ritual.jpg" alt=""> 
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempor
 e quasi exercitationem numquam rem veniam laboriosam repellendus aliqua
 m, velit beatae cumque necessitatibus unde aliquid commodi fuga? Dolores unde ut perspiciatis! Earum?
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore qua
@@ -85,8 +87,19 @@ si exercitationem numquam rem veniam laboriosam repellendus aliquam, velit b
 eatae cumque necessitatibus unde aliquid commodi fuga? Dolores unde ut perspiciatis! Earum?
             </pre>
         </div>
-        <div class="card">
-            Nada
+        <div class="card pergunta">
+            Quem matou a dona da casa?
+
+            <div class="options">
+                <div class="col1 col">
+                    <div class="op">Aquela velha vagabunda</div>
+                    <div class="op">Aquela velha vagabunda dois louca caralho</div>
+                </div>
+                <div class="col2 col">
+                    <div class="op">12</div>
+                    <div class="op">12</div>
+                </div>
+            </div>
         </div>
     </div>
     <script>
@@ -95,6 +108,7 @@ eatae cumque necessitatibus unde aliquid commodi fuga? Dolores unde ut perspicia
         var body = document.querySelector("body")
         var all = document.getElementById("all")
         var lis = document.getElementsByClassName("menu-li")
+        var filter = document.getElementById("filter")
         var cur = 0;
         var f_t = 0;
         var transi_time = 500;
@@ -104,6 +118,12 @@ eatae cumque necessitatibus unde aliquid commodi fuga? Dolores unde ut perspicia
             root.classList.toggle("dark")
         }
         function setAp(num){
+
+            if(num == 0){
+                body.classList.add("on_title")
+            }else{
+                body.classList.remove("on_title")
+            }
 
             if(num == cur && f_t > 0) return
 
@@ -182,6 +202,17 @@ eatae cumque necessitatibus unde aliquid commodi fuga? Dolores unde ut perspicia
         if(ani_time == "20"){
             switchAni();
         }
+
+        document.addEventListener('keyup', (event) => {
+        var name = event.key;
+        if (name === 'ArrowRight') {
+            setNext();
+        }
+        if (name === 'ArrowLeft') {
+            setPrev();
+        }
+
+      }, false);
 
         setAp(0)
         darkmode()

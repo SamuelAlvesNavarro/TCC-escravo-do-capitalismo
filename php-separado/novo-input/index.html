@@ -27,6 +27,7 @@
     <div class="input tr">
         <button onclick="strong()"><strong>B</strong></button>
         <button onclick="italic()"><em>B</em></button>
+        <button onclick="small()"><small>B</small></button>
         <button onclick="addImg(1)">Adicionar Imagem</button>
         <textarea id="story" onchange="botar()" required oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea"></textarea>
     </div>
@@ -69,6 +70,9 @@
         }
         function italic(){
            mudar("em");
+        }
+        function small(){
+           mudar("small");
         }
         function addImg(num){
            var comeco = input_.selectionStart;
