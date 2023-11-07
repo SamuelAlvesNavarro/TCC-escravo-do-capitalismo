@@ -128,6 +128,21 @@
         $i++;
     }
 
+    /* PEGANDO LINKS */
+
+    $paths = array();
+
+    $id_page = RetornarIdPage($id_story, 1);
+    $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
+
+    $prepare = $pdo->prepare($sql);
+    $prepare -> execute();
+
+    if($prepare -> rowCount() > 0){
+        foreach ($pdo->query($sql) as $key => $value){
+            array_push($paths, $value['path']);
+        }
+    }
 
     /* GUARDANDO NA SESSÃO */
 
@@ -151,7 +166,6 @@
     <?php
         include "includes/menu.php";
     ?>
-    https://www.leagueoflegends.com/en-pl/news/lore/previously-on-star-guardian/
     <div class="report_comment_modal" id="report_comment_modal">
         <div class="close-rep" onclick="rep(0)">
             <i class="fa-solid fa-xmark"></i>
@@ -264,51 +278,36 @@
                         $sql = "select texto from history where fk_id_page='$id_page'";
                         foreach ($pdo->query($sql) as $key => $value) {
                             $text = stripslashes($value["texto"]);
+
+                            for($t = 0; $t < 10; $t++){
+                                if(!isset($paths[$t]))break;
+                                $text = str_replace("<img".($t+1).">", "<img src=".$paths[$t].">", $text);
+                            }
+
                             echo "<pre>".$text."</pre>";
+
                         }
+                        
+                        
                     ?>
                 </div>
                 <div class="pg refs">
-                    <h1>Referências</h1>
-                    <?php
-                        $id_page = RetornarIdPage($id_story, 2);
-                        $ref = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
-                        $prepare = $pdo->prepare($ref);
-                        $prepare -> execute();
-
-                        if($prepare -> rowCount() > 0){
-                            foreach ($pdo->query($ref) as $key => $value) {
-                                echo "→ <a href ='". $value['path'] ."'>". $value['path'] ."</a><br>";
-                            }          
-                        }
-                    ?>
-                </div>
+                    <div class="text">
+                       <h1>Referências</h1>
                         <?php
-
-                            $id_page = RetornarIdPage($id_story, 1);
-                            $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
-
-                            $prepare = $pdo->prepare($sql);
+                            $id_page = RetornarIdPage($id_story, 2);
+                            $ref = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
+                            $prepare = $pdo->prepare($ref);
                             $prepare -> execute();
 
-                            if($prepare -> rowCount() > 0): ?>
-
-                
-                                <div class="pg images">
-                                    <h1>Imagens</h1>
-                                    <div class="cont-img">
-            
-                                    <?php foreach ($pdo->query($sql) as $key => $value): ?>
-                                        
-                                        <img src="<?php echo $value['path'] ?>">
-
-                                    <?php endforeach; ?>
-                                    
-                                    </div>
-                                </div>
-                        
-                            <?php endif; ?>
-                            
+                            if($prepare -> rowCount() > 0){
+                                foreach ($pdo->query($ref) as $key => $value) {
+                                    echo "→ <a href ='". $value['path'] ."'>". $value['path'] ."</a><br>";
+                                }          
+                            }
+                        ?> 
+                    </div>
+                </div>
             </div>
         </section>
         <section class="quest" id="quest_item">
@@ -477,8 +476,32 @@
         ?>
     </div>
     <script>
+
+        function randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
         var style = document.querySelector('.quest').style;
         
+        var imgs = document.querySelectorAll(".img_story img");
+
+        imgs.forEach(img => {
+            img.addEventListener("click", () =>{
+                img.classList.toggle("activeZoom")
+            })
+        })
+
+        var img_story = document.getElementsByClassName("img_story")
+
+        for(var i = 0; i < imgs.length; i++){
+            numb = randomIntFromInterval(-5, 5);
+
+            imgs[i].style.transform = 
+            "rotate("+numb+"deg)";
+
+            var ac_h = img_story[i].offsetHeight;
+            img_story[i].style.height = ac_h + "px";
+        }
         /* QUESTION */
         <?php
             if($showQuestion == "block;"){

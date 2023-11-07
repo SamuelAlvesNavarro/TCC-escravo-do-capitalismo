@@ -75,6 +75,7 @@
                             $prepare = $pdo->prepare($sql);
                             $prepare -> execute();
                         
+                            $i = 1;
                             if($prepare -> rowCount() > 0){
                                 
                                 echo "
@@ -100,7 +101,7 @@
 
                                     echo "<tr>
                                             <td>
-                                                <img class='img-story' src='../../main/pages/". $value['path'] ."'>
+                                                <img id='imgIn".$i."' class='img-story' src='../../main/pages/". $value['path'] ."'>
                                             </td>
                                             <td>
                                                 <input type='radio' name='fundo' value='".$value['id_image']."' ".$checked.">
@@ -109,10 +110,13 @@
                                                 <button type='button' class='btn btn-danger' onclick='send(4, ".$id_story.", ". $value['id_image'] .")'>Deletar</button>
                                             </td>
                                           </tr>";
+                                        
+                                    $i++;
                                 }
                                     
                                 echo "</tbody>";
                             }
+
                         ?>
                     </table>
                 </div>
@@ -214,9 +218,31 @@
 
         var textarea = document.getElementById('textarea-story')
         var preH = document.getElementById('pre-history')
+        var img_story = document.getElementsByClassName("img-story")
 
+        function returnUrl(num){
+            var url2 = document.getElementById("imgIn"+num).src;
+            return url2;
+        }
+
+        function addTexto(){
+            var texto = textarea.value;
+
+            for(var i = 1; i <= 10; i++){
+                var checkImg = document.getElementById("imgIn"+i);
+
+                if(checkImg != null){
+                    let url = returnUrl(i)
+                    texto = texto.replace(new RegExp("<img"+i+">", "g"), 
+                        "<img src='"+url+"'>"
+                    )
+                }
+            }
+
+            preH.innerHTML = texto;
+        }
         textarea.addEventListener("change", () => {
-            preH.innerHTML = textarea.value;
+            addTexto()
         })
 
         function send(type, id, n){
