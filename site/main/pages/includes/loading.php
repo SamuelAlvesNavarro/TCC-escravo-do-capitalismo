@@ -9,11 +9,63 @@
     .finished{
         display: none !important;
     }
+    .Loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    z-index: 100000;
+}
+.Loading .spinner {
+    animation: rotator 1.4s linear infinite;
+}
+@keyframes  rotator{
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(270deg);
+    }
+}
+.Loading .path {
+    stroke-dasharray: 187;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    stroke: #00E88F;
+    animation: dash 1.4s ease-in-out infinite;
+}
+@keyframes dash {
+    0% {
+    stroke-dashoffset: 187;
+}
+
+50% {
+    stroke-dashoffset: 46.75;
+    transform: rotate(135deg);
+}
+100% {
+    stroke-dashoffset: 187;
+    transform: rotate(450deg);
+}
+}
 </style>
 <div id="grand">
-
+    <div class="Loading">
+        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+            </circle>
+        </svg>
+    </div>
 </div>
 <script>
+    function load(){
+        document.getElementById("grand").classList.remove("finished");
+    }
     // Check if the page is still loading
     function isPageLoading() {
         return document.readyState === 'loading';
@@ -22,7 +74,7 @@
     // Add an event listener to check when the page finishes loading
     window.addEventListener('load', function() {
         if (isPageLoading()) {
-            console.log('Page is still loading resources.');
+            load()
         } else {
             document.getElementById("grand").classList.add("finished");
         }
