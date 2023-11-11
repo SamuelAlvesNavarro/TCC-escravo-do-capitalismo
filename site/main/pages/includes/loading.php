@@ -5,6 +5,7 @@
         background-color: black;
         width: 100%;
         height: 100vh;
+        background-color: #121212;
     }
     .finished{
         display: none !important;
@@ -18,11 +19,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #FFFFFF;
     z-index: 100000;
 }
 .Loading .spinner {
-    animation: rotator 1.4s linear infinite;
+    animation: rotator 2s linear infinite;
 }
 @keyframes  rotator{
     0% {
@@ -33,15 +33,16 @@
     }
 }
 .Loading .path {
-    stroke-dasharray: 187;
+    stroke-dasharray: 200;
     stroke-dashoffset: 0;
     transform-origin: center;
-    stroke: #00E88F;
-    animation: dash 1.4s ease-in-out infinite;
+    stroke: rgb(179, 14, 8);
+    animation: dash 2s ease-in-out infinite;
 }
 @keyframes dash {
     0% {
-    stroke-dashoffset: 187;
+    stroke-dashoffset: 200;
+    
 }
 
 50% {
@@ -49,15 +50,17 @@
     transform: rotate(135deg);
 }
 100% {
-    stroke-dashoffset: 187;
+    stroke-dashoffset: 200;
     transform: rotate(450deg);
 }
 }
+
 </style>
 <div id="grand">
     <div class="Loading">
         <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
             <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+                
             </circle>
         </svg>
     </div>
