@@ -27,24 +27,72 @@
     <div class="input tr">
         <button onclick="strong()"><strong>B</strong></button>
         <button onclick="italic()"><em>B</em></button>
+        <button onclick="small()"><small>B</small></button>
         <button onclick="addImg(1)">Adicionar Imagem</button>
         <textarea id="story" onchange="botar()" required oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea"></textarea>
+
+
+        <h1>Inputs</h1>
+
+        <label for="image1">Imagem 1</label><input class="inp_img" onchange="botar()" type="file" name="image1" id="">
+        <label for="image2">Imagem 2</label><input class="inp_img" onchange="botar()" type="file" name="image2" id="">
+        <label for="image3">Imagem 3</label><input class="inp_img" onchange="botar()" type="file" name="image3" id="">
+        <label for="image4">Imagem 4</label><input class="inp_img" onchange="botar()" type="file" name="image4" id="">
+        <label for="image5">Imagem 5</label><input class="inp_img" onchange="botar()" type="file" name="image5" id="">
+        <label for="image6">Imagem 6</label><input class="inp_img" onchange="botar()" type="file" name="image6" id="">
+        <label for="image7">Imagem 7</label><input class="inp_img" onchange="botar()" type="file" name="image7" id="">
+        <label for="image8">Imagem 8</label><input class="inp_img" onchange="botar()" type="file" name="image8" id="">
+        <label for="image9">Imagem 9</label><input class="inp_img" onchange="botar()" type="file" name="image9" id="">
+        <label for="image10">Imagem 10</label><input class="inp_img" onchange="botar()" type="file" name="image10" id="">
     </div>
     <div class="res tr">
         <pre id="result">
 
         </pre>
+        <h1>Código</h1>
+        <div id="code">
+            
+        </div>
     </div>
     <script>
         var result = document.getElementById("result");
         var input_ = document.getElementById("story");
+        var inputimg = document.getElementsByClassName("inp_img")
 
+        function returnUrl(num){
+            const [file] = inputimg[num-1].files
+            if (file) {
+                console.log(URL.createObjectURL(file))
+                return URL.createObjectURL(file);
+            }
+        }
         function botar(){
-            var texto = input_.value;
+            var texto = "<div class='text'>" + input_.value + "</div>";
+            var textoSave = "<div class='text'>" + input_.value + "</div>";
 
-            texto = texto.replace("<img1>", "<img src='https://th.bing.com/th/id/OIP.KTzqaoXrm0DE6uUiGqEn9wHaFj?w=261&h=196&c=7&r=0&o=5&pid=1.7'>")
+            for(var i = 1; i <= 10; i++){
+                let url = returnUrl(i)
+                texto = texto.replace(new RegExp("<img"+i+">", "g"), 
+                    "</div>"+
+                        "<div class='img_story'>"+
+                            "<img src='"+url+"'>"+
+                        "</div>"+
+                    "<div class='text'>"
+                )
+
+                textoSave = textoSave.replace(new RegExp("<img"+i+">", "g"), 
+                    "</div>"+
+                        "<div class='img_story'>"+
+                            "<img"+i+">"+
+                        "</div>"+
+                    "<div class='text'>"
+                )
+            }
+            
 
             result.innerHTML = texto;
+
+            document.getElementById("code").innerText = textoSave;
         }
 
         function mudar(tag){
@@ -69,6 +117,9 @@
         }
         function italic(){
            mudar("em");
+        }
+        function small(){
+           mudar("small");
         }
         function addImg(num){
            var comeco = input_.selectionStart;

@@ -350,12 +350,36 @@ body{
     padding-top: 0;
 }
 .active{
-    background: repeating-linear-gradient(transparent 0px, transparent 30px, var(--line-color) 32px);
     max-height: none;
     min-height: 20vh;
 
 }
-
+.text{
+    background: repeating-linear-gradient(transparent 0px, transparent 30px, var(--line-color) 32px);
+}
+.img_story{
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.img_story img{
+    padding: 10px 10px 30px 10px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    max-width: calc(100% - 40px);
+    cursor:zoom-in;
+    transition: .1s linear;
+}
+.activeZoom{
+    position: absolute;
+    cursor: zoom-out !important;
+    z-index: 1000000;
+    height: 90vh;
+    max-width: 90vw !important;
+}
 .line-page pre{
     color: var(--paper-out-color);
 }
@@ -771,7 +795,25 @@ pre strong{
 .close-rep i{
     color: white;
 }
+@media (max-width: 1200px) {
+    .activeZoom{
+        position: absolute;
+        width: auto;
+        max-height: 90vh;
+        cursor: zoom-out !important;
+        z-index: 1000000;
+        max-width: 80vw !important;
+    }
+}
 @media (max-width: 600px) {
+    .img_story img{
+        cursor: auto;
+    }
+    .activeZoom{
+        position: absolute;
+        width: 100%;
+        cursor: auto !important;
+    }
     .mainTitle h1{
         font-size: 30px;
         line-break: anywhere;
