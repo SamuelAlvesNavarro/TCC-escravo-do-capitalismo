@@ -29,6 +29,8 @@
         <button onclick="italic()"><em>B</em></button>
         <button onclick="small()"><small>B</small></button>
         <button onclick="addImg(1)">Adicionar Imagem</button>
+        <button onclick="hr()">Hr</button>
+        <button onclick="titulo()">Título</button>
         <textarea id="story" onchange="botar()" required oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea"></textarea>
 
 
@@ -87,9 +89,20 @@
                         "</div>"+
                     "<div class='text'>"
                 )
+
             }
             
+            textoSave = textoSave.replace(new RegExp("<hr>", "g"), 
+                    "</div>"+
+                        "<div class='hr_space'>"+
+                            "<hr>"+
+                        "</div>"+
+                    "<div class='text'>"
+                )
 
+            textoSave = textoSave.replace(new RegExp("<div class='text'></div>", "g"), 
+                ""
+            )
             result.innerHTML = texto;
 
             document.getElementById("code").innerText = textoSave;
@@ -120,6 +133,22 @@
         }
         function small(){
            mudar("small");
+        }
+        function titulo(){
+           mudar("h1");
+        }
+        function hr(){
+            var comeco = input_.selectionStart;
+
+            var current_texto = input_.value;
+
+            current_texto = current_texto.slice(0, comeco) 
+            + "<hr>"
+            +  current_texto.slice(comeco) 
+
+            input_.value = current_texto
+
+            botar()
         }
         function addImg(num){
            var comeco = input_.selectionStart;

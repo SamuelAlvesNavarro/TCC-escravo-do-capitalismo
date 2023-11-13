@@ -166,7 +166,12 @@
     <?php
         include "includes/menu.php";
     ?>
-    https://www.leagueoflegends.com/en-pl/news/lore/previously-on-star-guardian/
+
+    <!--
+        https://www.leagueoflegends.com/en-pl/news/lore/previously-on-star-guardian/ 
+        https://www.freepik.com/free-ai-image/spooky-outdoors-background_59233546.htm#query=horror%20background&position=3&from_view=keyword&track=ais
+    -->
+
     <div class="report_comment_modal" id="report_comment_modal">
         <div class="close-rep" onclick="rep(0)">
             <i class="fa-solid fa-xmark"></i>
@@ -246,7 +251,7 @@
                     break;
                 }
             }else{
-                $banner_path = 'background-image: url(../img/kid-spider.jpg)';
+                $banner_path = 'background-image: url(../img/general-bc.jpg)';
             }
         ?>
         <section class="banner" id="banner" style="<?php echo $banner_path ?>">
@@ -293,8 +298,10 @@
                     ?>
                 </div>
                 <div class="pg refs">
+                    <div class="hr_div">
+                        <hr>
+                    </div>
                     <div class="text">
-                       <h1>Referências</h1>
                         <?php
                             $id_page = RetornarIdPage($id_story, 2);
                             $ref = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
@@ -494,15 +501,19 @@
 
         var img_story = document.getElementsByClassName("img_story")
 
-        for(var i = 0; i < imgs.length; i++){
-            numb = randomIntFromInterval(-5, 5);
+        function generate(){
+          for(var i = 0; i < imgs.length; i++){
+                numb = randomIntFromInterval(-5, 5);
 
-            imgs[i].style.transform = 
-            "rotate("+numb+"deg)";
+                imgs[i].style.transform = 
+                "rotate("+numb+"deg)";
 
-            var ac_h = img_story[i].offsetHeight;
-            img_story[i].style.height = ac_h + "px";
+                var ac_h = img_story[i].offsetHeight;
+                img_story[i].style.height = ac_h + "px";
+            }  
         }
+
+        generate()
         /* QUESTION */
         <?php
             if($showQuestion == "block;"){

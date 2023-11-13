@@ -15,7 +15,6 @@
                 <input id="submit-footer" type="submit" value="Pesquisar">
             </form>
         </div>-->
-        <img id="img-footer" src="../img/police-man-png.png" alt="" srcset="">
     </div>
     <hr>
     <div class="copyright">
