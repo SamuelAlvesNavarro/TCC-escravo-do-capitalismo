@@ -6,7 +6,7 @@ toggle[1].addEventListener('click', switchmode)*/
 const root = document.querySelector(":root");
 var dark = false;
 function switchmode(){
-    root.classList.toggle('dark3');
+    root.classList.toggle('dark');
 
     if(dark){
         dark = false;

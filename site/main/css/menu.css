@@ -8,9 +8,9 @@
     color-scheme: light;
     --color: #121212;
     --all-shadow: -2px -1px 34px 10px rgba(0, 0, 0, 0.75) inset;
-    --paper-color: #E0C9A6;
+    --paper-color-menu: #E0C9A6;
     --table-color: #ccad7f;
-    --line-color: #121212;
+    --line-color-menu: #121212;
     --button: rgb(78, 20, 16);
     --button-hv: rgb(4, 252, 211);
   
@@ -26,9 +26,9 @@
     color-scheme: dark;
     --color: #ebebeb;
     --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;
-    --paper-color: #606060;
+    --paper-color-menu: #606060;
     --table-color: #505050;
-    --line-color: #000000;
+    --line-color-menu: #000000;
   
     --reward-opacity: .9;
   
@@ -58,7 +58,7 @@
     box-shadow: -2px -1px 64px 44px rgba(0,0,0,0.75) inset;
     -webkit-box-shadow: -2px -1px 64px 44px rgba(0,0,0,0.75) inset;
     -moz-box-shadow: -2px -1px 64px 44px rgba(0,0,0,0.75) inset;
-    background: repeating-linear-gradient(var(--paper-color) 0px, var(--paper-color) 40px, var(--line-color) 42px);
+    background: repeating-linear-gradient(var(--paper-color-menu) 0px, var(--paper-color-menu) 40px, var(--line-color-menu) 42px);
     z-index: 1;
 }
 .lamp-area{

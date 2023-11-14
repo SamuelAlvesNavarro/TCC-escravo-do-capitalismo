@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" class="transi_time_integrals">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Story 3.0</title>
+    <style>
+        .show_img{
+            background: radial-gradient(circle at 91% 13%, transparent 0%, transparent 40%, rgba(3, 9, 10, 0.795) 78%, #121212 100%), url(../../site/main/img/the-ritual.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            backdrop-filter: blur(5px);
+         background-position: 50% 50%;
+        }
+    </style>
+</head>
+<body class="transi_time_integrals show_img">
+    <div class="filter" id="filter">
+        
+    </div>
+    <div id="all">
+        <div class="menu_bar">
+            <div class="menu_enter">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="on-off">
+                <input type="checkbox"  onclick="switchAni()">
+            </div>
+            <p onclick="darkmode()">Dark</p>
+        </div>
+        <div class="control">
+            <div class="i_cont" onclick="setPrev()">
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <p class="menu-li active_li" onclick="setAp(0)">Título</p>
+            <p class="menu-li" onclick="setAp(1)">História</p>
+            <p class="menu-li" onclick="setAp(2)">Pergunta</p>
+            <div class="i_cont" onclick="setNext()">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+        </div>
+        <div class="card titulo">
+            A casa abandonada de Grace
+        </div>
+        <div class="card historia">
+            <pre>
+                <h1>dhuaduisfd f sfd sfdg</h1>
+
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+Tempore quasi exercitationem numquam rem veniam laboriosam repel
+    lendus aliquam, velit beatae cum    qu                          e necessitatibus unde al
+    iquid commodi fuga? Dolores unde ut perspiciatis! Earum?
+Lor em, ipsum dolor sit amet co  
+nsectetur adipisicing elit. Tempore 
+quasi exercitationem numquam rem veniam laboriosam repellendus aliqu
+am, velit beatae cumque necessitatibus unde aliquid commodi fuga? Dolore
+s unde ut    perspiciatis! Earum?  
+Lorem, ipsum dolor sit amet consectetur adipisicing
+elit. Tempore quasi exe
+rcitationem numquam rem veniam laboriosam repellendus aliquam, velit 
+beatae cumque necessitatibus unde aliquid commodi fuga? Dolores unde ut persp
+iciatis! Earum?
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore quas
+i exercitatio   nem numquam rem veniam laboriosam repellendus aliquam, velit be
+atae cumque necessitatibus unde aliquid commodi fuga? Dolores unde ut perspiciatis! Earum?
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempor
+e quasi exercitationem num  m rem veniam laboriosam repell
+endus aliquam, velit beatae cumque necessitatibus unde aliquid co
+mmodi fuga? Dolores unde ut perspiciatis! Earum?
+Lorem, ipsum dolor sit amet consectetur adipisicing
+    elit. Tempore q
+uasi exercitationem numquam rem veniam laboriosam repellendus ali
+quam, velit beatae cumque necessitatibus unde aliquid commodi fuga? Dolores u
+nde ut perspiciatis! Earum?
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempor
+e quasi exercitationem numquam rem veniam laboriosam repellendus ali
+quam, velit beatae cu   mque necessitatibus unde aliquid commodi fuga? Dolores un
+de ut perspiciatis! Earum?
+<img src="../../site/main/img/the-ritual.jpg" alt=""> 
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempor
+e quasi exercitationem numquam rem veniam laboriosam repellendus aliqua
+m, velit beatae cumque necessitatibus unde aliquid commodi fuga? Dolores unde ut perspiciatis! Earum?
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore qua
+si exercitationem numquam rem veniam laboriosam repellendus aliquam, velit b
+eatae cumque necessitatibus unde aliquid commodi fuga? Dolores unde ut perspiciatis! Earum?
+            </pre>
+        </div>
+        <div class="card pergunta">
+            Quem matou a dona da casa?
+
+            <div class="options">
+                <div class="col1 col">
+                    <div class="op">Aquela velha vagabunda</div>
+                    <div class="op">Aquela velha vagabunda dois louca caralho</div>
+                </div>
+                <div class="col2 col">
+                    <div class="op">12</div>
+                    <div class="op">12</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var cards = document.getElementsByClassName("card")
+        var root = document.querySelector(":root")
+        var body = document.querySelector("body")
+        var all = document.getElementById("all")
+        var lis = document.getElementsByClassName("menu-li")
+        var filter = document.getElementById("filter")
+        var cur = 0;
+        var f_t = 0;
+        var transi_time = 500;
+        var transi = true;
+
+        function darkmode(){
+            root.classList.toggle("dark")
+        }
+        function setAp(num){
+
+            if(num == 0){
+                body.classList.add("on_title")
+            }else{
+                body.classList.remove("on_title")
+            }
+
+            if(num == cur && f_t > 0) return
+
+            f_t++;
+
+            root.classList.add("transi")
+
+            setTimeout(() => {
+                if(num != 0){
+                    body.classList.remove("show_img")
+                }
+                cards[cur].classList.remove("ap_card")
+                cards[num].classList.add("ap_card")
+                cur = num
+
+                for(var i = 0; i < lis.length; i++){
+                    if(i != num)lis[i].classList.remove("active_li");
+                }
+
+            }, transi_time);
+
+            setTimeout(() => {
+                if(num == 0){
+                    body.classList.add("show_img")
+                }
+                root.classList.remove("transi")
+
+                lis[cur].classList.add("active_li");
+
+            }, transi_time*2);
+
+        }
+        function setPrev(){
+            let prev = cur - 1;
+
+            if(prev <= -1){
+                prev = cards.length - 1
+            }
+
+            setAp(prev)
+        }
+
+        function setNext(){
+            let next = cur + 1;
+
+            if(next >= cards.length){
+                next = 0
+            }
+
+            setAp(next)
+        }
+
+        function switchAni(){
+            
+            if(transi){
+                root.classList.add("transi_time_shorts")
+                root.classList.remove("transi_time_integrals")
+                transi_time = 20;
+                setAni_time(transi_time)
+            }
+            else{
+                root.classList.add("transi_time_integrals")
+                root.classList.remove("transi_time_shorts")
+                transi_time = 500;
+                setAni_time(transi_time)
+            }
+            
+            transi = !transi;
+        }
+        function setAni_time(time){
+            localStorage.setItem("Ani_Time", JSON.stringify(time));
+        }
+
+        let ani_time = JSON.parse(localStorage.getItem("Ani_Time"));
+
+        if(ani_time == "20"){
+            switchAni();
+        }
+
+        document.addEventListener('keyup', (event) => {
+        var name = event.key;
+        if (name === 'ArrowRight') {
+            setNext();
+        }
+        if (name === 'ArrowLeft') {
+            setPrev();
+        }
+
+      }, false);
+
+        setAp(0)
+        darkmode()
+    </script>
+</body>
+</html>

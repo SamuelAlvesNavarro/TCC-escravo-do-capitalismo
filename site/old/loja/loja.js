@@ -61,23 +61,3 @@ function show_item(store_type, item){
 function switchmode(){
     root.classList.toggle('dark');
 }
-
-
-
-
-
-var checks = document.getElementsByClassName("check-item");
-var types = document.getElementsByClassName("type");
-
-function check(n){
-    checks[n].checked = true;
-
-    for(var i = 0; i < types.length; i++){
-        if(i != n)types[i].style.display = "none";
-        else{
-            types[i].style.display = "flex";
-        }
-    }
-}
-
-check(0)

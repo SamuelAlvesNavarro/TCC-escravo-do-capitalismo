@@ -42,7 +42,6 @@
             exit;
         }
 
-        echo $titulo;
         
         if(!verificarTexto($titulo, 0)){
             sendToError(17);
@@ -57,7 +56,7 @@
     $historia = implode("",$array);
 
     //Filtros da história
-    if(contemTagsHTML($historia) || contemTagsHTML($titulo)){
+    if(contemTagsHTML($titulo)){
         sendToError(22);
         exit;
     }
@@ -118,6 +117,7 @@
         global $pdo;
         Createpage($id_story, 0);
         $id_page = RetornarIdPage($id_story, 0);
+        $historia = reconHistory($historia);
         $historia = addslashes($historia);
         $history = "INSERT INTO history values(NULL, '$id_page', '$historia')";
         $prepare = $pdo->prepare($history);
@@ -140,7 +140,24 @@
         }
         return true;
     }
+    function reconHistory($historia){
+        $qt = 1;
+        $eachOnes = array();
+        for($x = 1; $x < 11; $x++){
+            if($_FILES["imagem".$x]["size"] > 0){
+                array_push($eachOnes, "<img".$qt.">");
+                $qt++;
+            }else{
+                array_push($eachOnes, "");
+            }
+            
+            $historia = str_replace("<img".$x.">", $eachOnes[$x-1], $historia);
+        }
+
+        return $historia;
+    }
     function checkimagesAf(){
+
         $empty = 0;
         for($x = 1; $x < 11; $x++){
             if($_FILES["imagem".$x]["error"] <= 1){
@@ -153,8 +170,9 @@
         }
         if($empty == 10){
             return false;
+        }else{
+            return true;
         }
-        return true;
     }
     function uploadImagemCompleto($titulo, $id_story){
 
@@ -387,7 +405,7 @@
 
             if($id_story != -1 && $id_story != ''){
                 history($historia, $id_story);
-                if(checkimagesAf())uploadImagemCompleto($titulo, $id_story);
+                if(checkimagesAf($historia))uploadImagemCompleto($titulo, $id_story);
                 referencia($id_story); // <--------------------------- IMP
                 storeQuestion($id_story, $perfil);
             }

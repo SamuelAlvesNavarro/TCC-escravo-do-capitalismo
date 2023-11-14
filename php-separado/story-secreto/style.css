@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+@font-face {
+    font-family: scary;
+    src: url(../../site/main/fonts/another_danger/demo.otf);
+}
+@font-face {
+    font-family: title;
+    src: url(../../site/main/fonts/stalker/Night\ Stalker\ Free.ttf);
+}
+:root{
+    --color: #121212;
+    --color-menu: #121212;
+    --line-color: #121212af;
+    --paper-color: rgb(247, 223, 195);
+    --max-shadow: rgb(143, 103, 58);
+}
+.dark{
+    --color: rgb(245, 231, 214);
+    --color-menu: rgb(245, 231, 214);
+    --line-color: rgba(245, 231, 214, 0.692);
+    --paper-color: #363636;
+    --max-shadow: #000000;
+}
+.transi{
+    --color: transparent;
+}
+.transi_time_integrals{
+    --times-fonts: 500ms
+}
+.transi_time_shorts{
+    --times-fonts: 20ms
+}
+body{
+    background-color: var(--paper-color);
+    transition: var(--times-fonts);
+}
+
+
+.filter{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: linear-gradient(transparent, var(--max-shadow));
+    z-index: 1;
+}
+
+.on_title .filter{
+    background: linear-gradient(transparent, #000000) !important;
+}
+
+#all{
+    width: 100%;
+    height: 100vh;
+}
+
+/* MENU */
+.menu_bar{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    position: fixed;
+    top: 0;
+    z-index: 4;
+    font-size: 30px;
+    color: var(--color);
+}
+.on_title .menu_bar{
+    color: rgb(247, 223, 195);
+}
+/* CONTROL */
+.control{
+    position: fixed;
+    z-index: 4;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    color: rgb(247, 223, 195);
+    transition: all var(--times-fonts);
+    background-color: #121212;
+    font-size: 25px;
+    font-family: "Poppins";
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.control p{
+    transition: all var(--times-fonts);
+    cursor: pointer;
+}
+.active_li{
+    padding-bottom: 20px;
+}
+
+.i_cont{
+    width: calc(100% + 40px);
+    text-align: center;
+    padding: 0 20px;
+}
+
+.card{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    color: var(--color);
+    transition: var(--times-fonts);
+    font-family: 'Gloria Hallelujah';
+    font-size: 30px;
+    line-height: 32px;
+    z-index: 2;
+}
+.ap_card{
+    display: block;
+}
+
+
+.titulo{
+    text-align: center;
+    z-index: 4;
+    background: none;
+    font-size: 70px;
+    max-width: 600px;
+    width: 100%;
+    line-height: 80px;
+    line-break: anywhere;
+    font-family: title;
+    animation-name: titleC;
+    animation-duration: 5s;
+    animation-delay: 2s;
+    color: rgb(245, 231, 214);
+}
+@keyframes titleC {
+    50%{
+        color: red;
+        font-size: 80px;
+    }
+}
+.historia{
+    text-align: justify;
+    top: 200px;
+    font-size: 20px;
+    width: 100%;
+    max-width: 700px;
+    padding: 0 20px;
+    padding-bottom: 100px;
+    background: repeating-linear-gradient(transparent 0px, transparent 30px, var(--line-color) 32px);
+}
+.historia pre{
+    width: 100%;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 18px;
+    line-height: 32px;
+    line-break: auto;
+    white-space: break-spaces;
+    text-align: justify;
+}
+pre h1, pre h2, pre h3, pre h4, pre h5, pre h6{
+    display: inline;
+    line-height: 0px;
+}
+
+
+.pergunta{
+    text-align: center;
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+.col{
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.op{
+    background-color: #000000;
+    color: rgb(245, 231, 214);
+    padding: 10px;
+    flex-grow: 1; 
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+    max-width: 300px;
+}

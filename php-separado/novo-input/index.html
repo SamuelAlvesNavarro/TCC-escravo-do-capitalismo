@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+        }
+        .tr{
+            padding: 20px;
+            width: 50%;
+        }
+        textarea{
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="input tr">
+        <button onclick="strong()"><strong>B</strong></button>
+        <button onclick="italic()"><em>B</em></button>
+        <button onclick="small()"><small>B</small></button>
+        <button onclick="addImg(1)">Adicionar Imagem</button>
+        <button onclick="hr()">Hr</button>
+        <button onclick="titulo()">Título</button>
+        <textarea id="story" onchange="botar()" required oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea"></textarea>
+
+
+        <h1>Inputs</h1>
+
+        <label for="image1">Imagem 1</label><input class="inp_img" onchange="botar()" type="file" name="image1" id="">
+        <label for="image2">Imagem 2</label><input class="inp_img" onchange="botar()" type="file" name="image2" id="">
+        <label for="image3">Imagem 3</label><input class="inp_img" onchange="botar()" type="file" name="image3" id="">
+        <label for="image4">Imagem 4</label><input class="inp_img" onchange="botar()" type="file" name="image4" id="">
+        <label for="image5">Imagem 5</label><input class="inp_img" onchange="botar()" type="file" name="image5" id="">
+        <label for="image6">Imagem 6</label><input class="inp_img" onchange="botar()" type="file" name="image6" id="">
+        <label for="image7">Imagem 7</label><input class="inp_img" onchange="botar()" type="file" name="image7" id="">
+        <label for="image8">Imagem 8</label><input class="inp_img" onchange="botar()" type="file" name="image8" id="">
+        <label for="image9">Imagem 9</label><input class="inp_img" onchange="botar()" type="file" name="image9" id="">
+        <label for="image10">Imagem 10</label><input class="inp_img" onchange="botar()" type="file" name="image10" id="">
+    </div>
+    <div class="res tr">
+        <pre id="result">
+
+        </pre>
+        <h1>Código</h1>
+        <div id="code">
+            
+        </div>
+    </div>
+    <script>
+        var result = document.getElementById("result");
+        var input_ = document.getElementById("story");
+        var inputimg = document.getElementsByClassName("inp_img")
+
+        function returnUrl(num){
+            const [file] = inputimg[num-1].files
+            if (file) {
+                console.log(URL.createObjectURL(file))
+                return URL.createObjectURL(file);
+            }
+        }
+        function botar(){
+            var texto = "<div class='text'>" + input_.value + "</div>";
+            var textoSave = "<div class='text'>" + input_.value + "</div>";
+
+            for(var i = 1; i <= 10; i++){
+                let url = returnUrl(i)
+                texto = texto.replace(new RegExp("<img"+i+">", "g"), 
+                    "</div>"+
+                        "<div class='img_story'>"+
+                            "<img src='"+url+"'>"+
+                        "</div>"+
+                    "<div class='text'>"
+                )
+
+                textoSave = textoSave.replace(new RegExp("<img"+i+">", "g"), 
+                    "</div>"+
+                        "<div class='img_story'>"+
+                            "<img"+i+">"+
+                        "</div>"+
+                    "<div class='text'>"
+                )
+
+            }
+            
+            textoSave = textoSave.replace(new RegExp("<hr>", "g"), 
+                    "</div>"+
+                        "<div class='hr_space'>"+
+                            "<hr>"+
+                        "</div>"+
+                    "<div class='text'>"
+                )
+
+            textoSave = textoSave.replace(new RegExp("<div class='text'></div>", "g"), 
+                ""
+            )
+            result.innerHTML = texto;
+
+            document.getElementById("code").innerText = textoSave;
+        }
+
+        function mudar(tag){
+            var comeco = input_.selectionStart;
+            var fim = input_.selectionEnd;
+
+            var current_texto = input_.value;
+
+            current_texto = 
+                current_texto.slice(0, comeco) + "<"+tag+">" 
+                + current_texto.slice(comeco, fim)
+                + "</"+tag+">"
+                + current_texto.slice(fim)
+
+
+            result.innerHTML = current_texto
+            input_.value = current_texto
+        }
+
+        function strong(){
+           mudar("strong");
+        }
+        function italic(){
+           mudar("em");
+        }
+        function small(){
+           mudar("small");
+        }
+        function titulo(){
+           mudar("h1");
+        }
+        function hr(){
+            var comeco = input_.selectionStart;
+
+            var current_texto = input_.value;
+
+            current_texto = current_texto.slice(0, comeco) 
+            + "<hr>"
+            +  current_texto.slice(comeco) 
+
+            input_.value = current_texto
+
+            botar()
+        }
+        function addImg(num){
+           var comeco = input_.selectionStart;
+
+           var current_texto = input_.value;
+
+           current_texto = current_texto.slice(0, comeco) 
+           + "<img"+num+">"
+           +  current_texto.slice(comeco) 
+
+           input_.value = current_texto
+
+           botar()
+
+        }
+    </script>
+</body>
+</html>

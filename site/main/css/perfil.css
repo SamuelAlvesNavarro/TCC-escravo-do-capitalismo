@@ -40,25 +40,7 @@
   --reward-opacity: .2;
 }
 
-.dark1 {
-  color-scheme: dark;
-  --color: #adadad;
-  --all-shadow: -2px -1px 84px 25px rgba(0, 0, 0, 1) inset;
-  --paper-color: #121212;
-  --line-color: #868686;
-}
-
-.dark2 {
-  color-scheme: dark;
-  --color: #121212;
-  --all-shadow: -1px 24px 100px 30px rgba(0,0,0,1) inset;
-  --paper-color: #E0C9A6;
-  --line-color: #121212;
-
-  --formal: 'Playfair Display', serif;
-}
-
-.dark3 {
+.dark {
   color-scheme: dark;
   --color: #ebebeb;
   --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;

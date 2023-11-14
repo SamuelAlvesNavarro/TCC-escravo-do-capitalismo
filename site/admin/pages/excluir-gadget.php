@@ -39,7 +39,7 @@
     $prepare = $pdo->prepare($excluir);
     $prepare->execute();
 
-    $excluir = "DELETE FROM evento WHERE script = darGadget('$id_gadget')";
+    $excluir = "DELETE FROM evento WHERE script = 'darGadget(".$id_gadget.")'";
     $prepare = $pdo->prepare($excluir);
     $prepare->execute();
 

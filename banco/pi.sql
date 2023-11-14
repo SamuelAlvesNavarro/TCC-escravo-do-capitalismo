@@ -349,8 +349,6 @@ INSERT INTO `page` (`id_page`, `fk_id_story`, `type`, `order_p`) VALUES
 CREATE TABLE `profile` (
   `id_profile` int(11) NOT NULL,
   `foto` int(11) NOT NULL DEFAULT 1,
-  `fundoFoto` int(11) NOT NULL DEFAULT 0,
-  `bordaFoto` int(11) NOT NULL DEFAULT 0,
   `fundoPerfil` int(11) NOT NULL DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -358,8 +356,8 @@ CREATE TABLE `profile` (
 -- Extraindo dados da tabela `profile`
 --
 
-INSERT INTO `profile` (`id_profile`, `foto`, `fundoFoto`, `bordaFoto`, `fundoPerfil`) VALUES
-(1, 65, 0, 0, 2);
+INSERT INTO `profile` (`id_profile`, `foto`, `fundoPerfil`) VALUES
+(1, 65, 2);
 
 -- --------------------------------------------------------
 
@@ -526,7 +524,6 @@ CREATE TABLE `user_common` (
   `senha` varchar(200) NOT NULL,
   `apelido` varchar(15) NOT NULL,
   `pontos_leitor` int(11) NOT NULL DEFAULT 0,
-  `ranking` int(11) NOT NULL DEFAULT 0,
   `moedas` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -534,8 +531,8 @@ CREATE TABLE `user_common` (
 -- Extraindo dados da tabela `user_common`
 --
 
-INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `ranking`, `moedas`) VALUES
-(1, 1, 'Apresentação', 'davi.carvalho@aluno.ifsp.edu.br', 'apresentacao123', 'The Boss', 200, 0, 10025);
+INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `moedas`) VALUES
+(1, 1, 'Apresentação', 'davi.carvalho@aluno.ifsp.edu.br', 'apresentacao123', 'The Boss', 200, 10025);
 
 --
 -- Índices para tabelas despejadas

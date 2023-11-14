@@ -23,6 +23,7 @@
         <a href="delete-mod.php"><li>Deletar Moderadores</li></a>
         <a href="verificar-compras.php"><li>Verificar Compras de Gadgets</li></a>
         <a href="eventos.php"><li>Centro de Eventos</li></a>
+        <a href="includes/closing_session.php"><li>Sair</li></a>
     </ul>
 </body>
 </html>
