@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
-    <link rel="stylesheet" href="../css/criacao.css?v=1.091">
+    <link rel="stylesheet" href="../css/criacao.css?v=1.0912">
     <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Criação de Histórias</title>
 </head>
@@ -77,9 +77,17 @@
                 </div>
                 <div class="history" id="history-div">
                     <div class="title">
-                        <h1>Ocorrido:</h1>
+                        <h1 for="story">Ocorrido:</h1>
                     </div>
                     <div class="input-history">
+                        <div class="edit-part">
+                            <button type="button">B</button>
+                            <button type="button">B</button>
+                            <button type="button">B</button>
+                            <button type="button">B</button>
+                            <button type="button">B</button>
+                            <button type="button">B</button>
+                        </div>
                         <pre id="pre-history" maxlength="12000" class="historyArea"></pre>
                         <textarea name="story" required oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea"></textarea>
                     </div>

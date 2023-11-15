@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/scroll.css">
     <link rel="stylesheet" href="../css/variable.css?v=1.01">
-    <link rel="stylesheet" href="../css/wh.css?v=1.012">
+    <link rel="stylesheet" href="../css/wh.css?v=1.01222">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
 </head>
@@ -69,16 +69,6 @@
             </div>
         </div>
         <div class="banner-parts">
-            <div class="banner-container">
-                <div class="banner">
-                    <div class="slider">
-                        <img src="../img/4.jpg" alt="" class="slide" id="img1">
-                        <img src="../img/5.jpg" alt="" class="slide" id="img2">
-                        <img src="../img/6.jpg" alt="" class="slide" id="img3">
-                        <img src="../img/4.jpg" alt="" class="slide" id="img1">
-                    </div>
-                </div>
-            </div>
             <?php
                 $answer = "SELECT * FROM story WHERE fk_id_profile = '$perfil' and status = 3";
                 $prepare = $pdo->prepare($answer);
