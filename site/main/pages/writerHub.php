@@ -86,7 +86,7 @@
                                         <th>História</th>
                                         <th class="detail dis">Pontuação</th>
                                         <th class="detail dis">Quantidade de Comentários</th>
-                                        <th>SECRET</th>
+                                        <th>Tornar Anônima</th>
                                         <th>Deletar</th>
                                     </tr>
                                 </thead>
