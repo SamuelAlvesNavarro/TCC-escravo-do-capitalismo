@@ -118,7 +118,7 @@
                                                 <td><?php echo $value['nome']; ?></td>
                                                 <td class='detail dis'><?php echo $value['rating']; ?></td>
                                                 <td class='detail dis'><?php echo $comment['Cam']; ?></td>
-                                                <td><button class='keep' onclick='keep("<?php echo $value["id_story"]; ?>")'>SECRET</button></td>
+                                                <td><button class='keep' onclick='keep("<?php echo $value["id_story"]; ?>")'>Anonimar</button></td>
                                                 <td><button class='del' onclick='deleteH("<?php echo $value["id_story"]; ?>")'>Deletar</button></td>
                                             </tr>
                                         
@@ -256,7 +256,7 @@
                 </div>
         </div>
     </div>
-    <script src="../js/wh.js?v=1.01"></script>
+    <script src="../js/wh.js?v=1.012"></script>
     <script src="../js/menu.js"></script>
 <script src="../js/darkmode.js"></script>
 
@@ -272,7 +272,7 @@
     function aprovar(n) {
         var theForm, newInput1;
         theForm = document.createElement('form');
-        theForm.action = 'aprovacao2.php';
+        theForm.action = 'aprovacao.php';
         theForm.method = 'post';
         newInput1 = document.createElement('input');
         newInput1.type = 'hidden';

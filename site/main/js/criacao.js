@@ -51,17 +51,7 @@ let current = -1;
             titleh2.innerHTML = titleInput.value;
 
             /* TEXTAREA */
-            var pre = document.getElementById('pre-history');
-
-            var texta = document.getElementById('textarea-history');
-
-            let texto = texta.value;
-
-            for(var i = 0; i < inplace.length; i++){
-                texto = replaceT(texto, replace[i], inplace[i]);
-            }
-
-            pre.innerHTML = texto;
+            botar()
 
             /* REFS */
 
@@ -117,6 +107,8 @@ let current = -1;
             containerImgs.classList.remove('edit');
             refs.classList.remove('edit');
             quest.classList.remove('edit');
+            document.getElementById("edit-part-d").style.display = "none";
+            document.getElementById("containerImgs").style.display = "none";
             edit = false;
             toggleEditAll();
             spread();
@@ -129,6 +121,8 @@ let current = -1;
             containerImgs.classList.add('edit');
             refs.classList.add('edit');
             quest.classList.add('edit');
+            document.getElementById("edit-part-d").style.display = "flex";
+            document.getElementById("containerImgs").style.display = "block";
             for(var i = 0; i < 10; i++){
                 thrownImg[i].classList.remove("hide");
             }
@@ -205,6 +199,8 @@ let current = -1;
                     imgs[num-1].classList.remove('empty-img-input')
                     generateList();
                 }
+
+            checkBts()
         }
         if(num < 0){
             num *= -1;
@@ -217,6 +213,7 @@ let current = -1;
             imgsToShow[num-1].removeAttribute('src');
 
             removeFromList(num-1);
+            checkBts()
         }
 
         for(var z = 0; z < imgsToShow.length; z++){
@@ -408,4 +405,187 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
     getTheme();
     spread();
     switchedit();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var result = document.getElementById("pre-history");
+        var input_ = document.getElementById("story-input-b");
+        var inputimg = document.getElementsByClassName("input-file")
+
+        function returnUrl(num){
+            const [file] = inputimg[num-1].files
+            if (file) {
+                return URL.createObjectURL(file);
+            }
+        }
+        function botar(){
+            var texto = "<div class='text'>" + input_.value + "</div>";
+            var textoSave = "<div class='text'>" + input_.value + "</div>";
+
+            for(var i = 1; i <= 10; i++){
+                let url = returnUrl(i)
+                texto = texto.replace(new RegExp("<img"+i+">", "g"), 
+                    "</div>"+
+                        "<div class='img_story'>"+
+                            "<img src='"+url+"'>"+
+                        "</div>"+
+                    "<div class='text'>"
+                )
+
+                textoSave = textoSave.replace(new RegExp("<img"+i+">", "g"), 
+                    "</div>"+
+                        "<div class='img_story'>"+
+                            "<img"+i+">"+
+                        "</div>"+
+                    "<div class='text'>"
+                )
+
+            }
+
+            texto = texto.replace(new RegExp("<hr>", "g"), 
+                    "</div>"+
+                        "<div class='hr_space'>"+
+                            "<hr>"+
+                        "</div>"+
+                    "<div class='text'>"
+                )
+            textoSave = textoSave.replace(new RegExp("<hr>", "g"), 
+                    "</div>"+
+                        "<div class='hr_space'>"+
+                            "<hr>"+
+                        "</div>"+
+                    "<div class='text'>"
+                )
+
+            textoSave = textoSave.replace(new RegExp("<div class='text'></div>", "g"), 
+                ""
+            )
+
+            texto = texto.replace(new RegExp("<div class='text'></div>", "g"), 
+                ""
+            )
+
+            result.innerHTML = texto;
+
+            document.getElementById("code_s").value = textoSave;
+        }
+
+        function mudar(tag){
+            var comeco = input_.selectionStart;
+            var fim = input_.selectionEnd;
+
+            var current_texto = input_.value;
+
+            current_texto = 
+                current_texto.slice(0, comeco) + "<"+tag+">" 
+                + current_texto.slice(comeco, fim)
+                + "</"+tag+">"
+                + current_texto.slice(fim)
+
+
+            result.innerHTML = current_texto
+            input_.value = current_texto
+        }
+
+        function strong(){
+           mudar("strong");
+        }
+        function italic(){
+           mudar("i");
+        }
+        function small(){
+           mudar("small");
+        }
+        function h(which){
+           mudar("h"+which);
+        }
+        function hr(){
+            var comeco = input_.selectionStart;
+
+            var current_texto = input_.value;
+
+            current_texto = current_texto.slice(0, comeco) 
+            + "<hr>"
+            +  current_texto.slice(comeco) 
+
+            input_.value = current_texto
+
+            botar()
+        }
+        function addImg(num){
+           var comeco = input_.selectionStart;
+
+           var current_texto = input_.value;
+
+           current_texto = current_texto.slice(0, comeco) 
+           + "<img"+num+">"
+           +  current_texto.slice(comeco) 
+
+           input_.value = current_texto
+
+           botar()
+
+        }
     
+        var btsImg = document.getElementsByClassName("img-bt");
+
+        function checkBts(){
+            for(var i = 0; i < 10; i++){
+                var num = "imagem"+(i+1);
+
+                var inputCheck = document.getElementById(num);
+
+                if(inputCheck.value != ''){
+                    btsImg[i].classList.remove("hidden-bt-img")
+                }else{
+                    btsImg[i].classList.add("hidden-bt-img")
+                }
+            }
+        }
+
+        checkBts()
+
+
+
+        var onfucusInput = false;
+
+        function IsFocus(){
+            onfucusInput = true
+        }
+        function IsOutFocus(){
+            onfucusInput = false
+        }
+
+        document.addEventListener('keyup', (event) => {
+            var name = event.key;
+            if (name === 'Tab' && onfucusInput) {
+
+                var comeco = input_.selectionStart;
+
+                var current_texto = input_.value;
+
+                current_texto = current_texto.slice(0, comeco) 
+                + "     "
+                +  current_texto.slice(comeco) 
+
+                input_.value = current_texto
+
+                botar()
+            }
+        }, false);

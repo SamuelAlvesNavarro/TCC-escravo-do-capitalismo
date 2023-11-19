@@ -69,6 +69,7 @@
         exit;
     }
     if(filter_var($historia, FILTER_CALLBACK, array('options' => 'vazio'))){
+        echo $historia;
         header("Location: criacao.php");
         exit;
     }

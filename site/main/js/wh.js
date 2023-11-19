@@ -32,43 +32,6 @@ function getRndInteger(min, max) {
 
 
 
-
-const slider = document.querySelector('.slider');
-const slideWidth = slider.clientWidth;
-let currentIndex = 0;
-let intervalId;
-
-function slideTo(index) {
-    currentIndex = index;
-
-    if(currentIndex != 0){
-        slider.classList.add("transitionAnni");
-    }
-    else{
-        slider.classList.remove("transitionAnni");
-    }
-
-    slider.style.transform = `translateX(-${index * slideWidth}px)`;
-}
-
-function startAutoAdvance() {
-    intervalId = setInterval(() => {
-        currentIndex = (currentIndex + 1) % slider.children.length;
-        slideTo(currentIndex);
-    }, 5000); // Change slide every 3 seconds
-}
-
-function stopAutoAdvance() {
-    clearInterval(intervalId);
-}
-
-startAutoAdvance();
-
-slider.addEventListener('mouseenter', stopAutoAdvance);
-slider.addEventListener('mouseleave', startAutoAdvance);
-
-
-
 var all = document.getElementById('all');
 
 function getBloody(){

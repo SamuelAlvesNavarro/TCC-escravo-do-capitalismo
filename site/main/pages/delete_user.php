@@ -7,7 +7,11 @@
     $modo = $_POST['modo'];
     $id_profile = returnProfileId($_SESSION['email']);
 
-    
+    if($id_profile == 666){
+        header("Location: index.php");
+        exit;
+    }
+
     if($modo){
 
 
