@@ -220,12 +220,20 @@ i{
     display: flex;
     flex-direction: column;
     gap: 42px;
-    background: repeating-linear-gradient(transparent 0px, transparent 40px, var(--line-color) 42px);
     z-index: 3;
     transition: .3s linear;
     position: relative;
 }
-
+.references, .question, .title, .text{
+    background: repeating-linear-gradient(transparent 0px, transparent 40px, var(--line-color) 42px);
+}
+.text{
+    line-height: 42px;
+}
+.hr_space hr{
+    margin: 30px 0;
+    border: 2px solid var(--color);
+}
 .title{
     position: relative;
     width: 100%;
@@ -271,6 +279,49 @@ i{
   transition: 1s linear;
   border: 0;
 }
+    /*  edit part */
+.edit-part{
+    position: sticky;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0;
+    justify-content: flex-start;
+    background-color: var(--table-color);
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid var(--color);
+}
+.edit-part button{
+    flex-grow: 1;
+    padding: 10px 10px;
+    text-align: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.edit-part button:hover{
+    background-color: red;
+}
+#hr-bt hr{
+    min-width: 20px;
+}
+.hidden-bt-img{
+    display: none;
+}
+.img_story{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+}
+.img_story img{
+    max-width: 100%;
+    padding: 10px;
+    background: #ffffff;
+    transform: rotate(1deg);
+}
+    /* */
 .edit pre{
   display: none;
 }
@@ -281,6 +332,7 @@ i{
   -webkit-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 24px -10px rgba(0, 0, 0, 0.75);
   border: 1px solid var(--color);
+  border-top: 0;
 }
 .text-input{
     display: none !important;
@@ -303,7 +355,6 @@ pre, textarea{
   height: max-content;
     font-size: 20px;
     width: 100%;
-    line-break: anywhere;
     min-height: 336px;
     line-height: 42px;
     background-color: transparent;

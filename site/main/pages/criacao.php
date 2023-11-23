@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
-    <link rel="stylesheet" href="../css/criacao.css?v=1.091">
+    <link rel="stylesheet" href="../css/criacao.css?v=1.09121<?php echo rand(0,100)?>">
     <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Criação de Histórias</title>
 </head>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="controls">
                     <div class="submit-bt">
-                        <input type="submit" value="Enviar">
+                        <input type="submit" onclick="botar()" value="Enviar">
                     </div>
                     <div class="manual opp" id="manual-bt">
                         <a target="_blank" href="manual.php#Chistoria"><i id="manual-icon" class="far fa-sticky-note"></i></a>
@@ -73,15 +73,37 @@
             </div>
             <div class="main layout-padding" id="main">
                 <div class="title" id="titleEnter">
-                    <h1>Título:</h1><input id='title-input' required class="text-input" type="text" name="titulo" maxLength="40" placeholder="seu título"><h2 id="title-all">Título</h2>
+                    <h1>Título:</h1><input onfocus="IsOutFocus()" id='title-input' required class="text-input" type="text" name="titulo" maxLength="40" placeholder="seu título"><h2 id="title-all">Título</h2>
                 </div>
                 <div class="history" id="history-div">
                     <div class="title">
-                        <h1>Ocorrido:</h1>
+                        <h1 for="story">Ocorrido:</h1>
                     </div>
                     <div class="input-history">
+                        <div class="edit-part" id="edit-part-d">
+                            <button type="button" onclick="strong()"><strong>B</strong></button>
+                            <button type="button" onclick="italic()"><i>B</i></button>
+                            <button type="button" onclick="small()"><small>B</small></button>
+                            <button type="button" onclick="h('1')"><h1>B</h1></button>
+                            <button type="button" onclick="h('2')"><h2>B</h2></button>
+                            <button type="button" onclick="h('3')"><h3>B</h3></button>
+                            <button type="button" onclick="h('4')"><h4>B</h4></button>
+                            <button type="button" onclick="h('5')"><h5>B</h5></button>
+                            <button type="button" onclick="h('6')"><h6>B</h6></button>
+                            <button id="hr-bt" type="button" onclick="hr()"><hr></hr></button>
+                            <button class="img-bt" id="img-bt-1" type="button" onclick="addImg(1)"><i class="fa-solid fa-image"></i> (1)</button>
+                            <button class="img-bt" id="img-bt-2" type="button" onclick="addImg(2)"><i class="fa-solid fa-image"></i> (2)</button>
+                            <button class="img-bt" id="img-bt-3" type="button" onclick="addImg(3)"><i class="fa-solid fa-image"></i> (3)</button>
+                            <button class="img-bt" id="img-bt-4" type="button" onclick="addImg(4)"><i class="fa-solid fa-image"></i> (4)</button>
+                            <button class="img-bt" id="img-bt-5" type="button" onclick="addImg(5)"><i class="fa-solid fa-image"></i> (5)</button>
+                            <button class="img-bt" id="img-bt-6" type="button" onclick="addImg(6)"><i class="fa-solid fa-image"></i> (6)</button>
+                            <button class="img-bt" id="img-bt-7" type="button" onclick="addImg(7)"><i class="fa-solid fa-image"></i> (7)</button>
+                            <button class="img-bt" id="img-bt-8" type="button" onclick="addImg(8)"><i class="fa-solid fa-image"></i> (8)</button>
+                            <button class="img-bt" id="img-bt-9" type="button" onclick="addImg(9)"><i class="fa-solid fa-image"></i> (9)</button>
+                            <button class="img-bt" id="img-bt-10" type="button" onclick="addImg(10)"><i class="fa-solid fa-image"></i> (10)</button>
+                        </div>
                         <pre id="pre-history" maxlength="12000" class="historyArea"></pre>
-                        <textarea name="story" required oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea"></textarea>
+                        <textarea onfocus="IsFocus()" onchange="botar()" tabindex="10" id="story-input-b" required oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea"></textarea>
                     </div>
                 </div>
             </div>
@@ -117,7 +139,7 @@
                                     <i class="fa-solid fa-image"></i>
                                     <label class="imagem-label" id="imagem1-label" for="imagem1">Imagem 1</label>
                                 </div>
-                                <input class="input-file" type="file" id="imagem1" name="imagem1" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                                <input onfocus="IsOutFocus()" class="input-file" type="file" id="imagem1" name="imagem1" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
                                 <button id="bt-first" type="button" class="bt-input-img" onclick="inputimgchangeval(-1)">Remover</button>
                             </div>
                             <div class="input-file-unit">
@@ -125,7 +147,7 @@
                                     <i class="fa-solid fa-image"></i>
                                     <label class="imagem-label" id="imagem2-label" for="imagem2">Imagem 2</label>
                                 </div>
-                                <input class="input-file" type="file" id="imagem2" name="imagem2" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                                <input onfocus="IsOutFocus()" class="input-file" type="file" id="imagem2" name="imagem2" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
                                 <button type="button" class="bt-input-img" onclick="inputimgchangeval(-2)">Remover</button>
                             </div>
                             <div class="input-file-unit">
@@ -133,7 +155,7 @@
                                     <i class="fa-solid fa-image"></i>
                                     <label class="imagem-label" id="imagem3-label" for="imagem3">Imagem 3</label>
                                 </div>
-                                <input class="input-file" type="file" id="imagem3" name="imagem3" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                                <input onfocus="IsOutFocus()" class="input-file" type="file" id="imagem3" name="imagem3" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
                                 <button type="button" class="bt-input-img" onclick="inputimgchangeval(-3)">Remover</button>
                             </div>
                             <div class="input-file-unit">
@@ -141,7 +163,7 @@
                                     <i class="fa-solid fa-image"></i>
                                     <label class="imagem-label" id="imagem4-label" for="imagem4">Imagem 4</label>
                                 </div>
-                                <input class="input-file" type="file" id="imagem4" name="imagem4" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                                <input onfocus="IsOutFocus()" class="input-file" type="file" id="imagem4" name="imagem4" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
                                 <button type="button" class="bt-input-img" onclick="inputimgchangeval(-4)">Remover</button>
                             </div>
                             <div class="input-file-unit">
@@ -149,7 +171,7 @@
                                     <i class="fa-solid fa-image"></i>
                                     <label class="imagem-label" id="imagem5-label" for="imagem5">Imagem 5</label>
                                 </div>
-                                <input class="input-file" type="file" id="imagem5" name="imagem5" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                                <input onfocus="IsOutFocus()" class="input-file" type="file" id="imagem5" name="imagem5" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
                                 <button type="button" class="bt-input-img" onclick="inputimgchangeval(-5)">Remover</button>
                             </div>
                             <div class="input-file-unit">
@@ -157,7 +179,7 @@
                                     <i class="fa-solid fa-image"></i>
                                     <label class="imagem-label" id="imagem6-label" for="imagem6">Imagem 6</label>
                                 </div>
-                                <input class="input-file" type="file" id="imagem6" name="imagem6" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                                <input onfocus="IsOutFocus()" class="input-file" type="file" id="imagem6" name="imagem6" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
                                 <button type="button" class="bt-input-img" onclick="inputimgchangeval(-6)">Remover</button>
                             </div>
                             <div class="input-file-unit">
@@ -165,7 +187,7 @@
                                     <i class="fa-solid fa-image"></i>
                                     <label class="imagem-label" id="imagem7-label" for="imagem7">Imagem 7</label>
                                 </div>
-                                <input class="input-file" type="file" id="imagem7" name="imagem7" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                                <input onfocus="IsOutFocus()" class="input-file" type="file" id="imagem7" name="imagem7" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
                                 <button type="button" class="bt-input-img" onclick="inputimgchangeval(-7)">Remover</button>
                             </div>
                             <div class="input-file-unit">
@@ -173,7 +195,7 @@
                                     <i class="fa-solid fa-image"></i>
                                     <label class="imagem-label" id="imagem8-label" for="imagem8">Imagem 8</label>
                                 </div>
-                                <input class="input-file" type="file" id="imagem8" name="imagem8" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                                <input onfocus="IsOutFocus()" class="input-file" type="file" id="imagem8" name="imagem8" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
                                 <button type="button" class="bt-input-img" onclick="inputimgchangeval(-8)">Remover</button>
                             </div>
                             <div class="input-file-unit">
@@ -181,14 +203,14 @@
                                     <i class="fa-solid fa-image"></i>
                                     <label class="imagem-label" id="imagem9-label" for="imagem9">Imagem 9</label>
                                 </div>
-                                <input class="input-file" type="file" id="imagem9" name="imagem9" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                                <input onfocus="IsOutFocus()" class="input-file" type="file" id="imagem9" name="imagem9" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
                                 <button type="button" class="bt-input-img" onclick="inputimgchangeval(-9)">Remover</button></div>
                             <div class="input-file-unit">
                                 <div class="join">
                                     <i class="fa-solid fa-image"></i>
                                     <label class="imagem-label" id="imagem10-label" for="imagem10">Imagem 10</label>
                                 </div>
-                                <input class="input-file" type="file" id="imagem10" name="imagem10" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
+                                <input onfocus="IsOutFocus()" class="input-file" type="file" id="imagem10" name="imagem10" accept=".jpg, .jpeg, .png" id="" ondragstart="return false" draggable="false" ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();" ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"><br>
                                 <button id="bt-last" class="bt-input-img" type="button" onclick="inputimgchangeval(-10)">Remover</button>
                             </div>
                         </div>
@@ -204,34 +226,34 @@
                 </div>
                 <div class="ref-inputs">
                     <div class="ref-input">
-                        <label for="ref1">1: </label><input required class="ref-input-input" type="url" name="ref1" id="">
+                        <label for="ref1">1: </label><input onfocus="IsOutFocus()" required class="ref-input-input" type="url" name="ref1" id="">
                     </div>
                     <div class="ref-input">
-                        <label for="ref1">2: </label><input class="ref-input-input" type="url" name="ref2" id="">
+                        <label for="ref1">2: </label><input onfocus="IsOutFocus()" class="ref-input-input" type="url" name="ref2" id="">
                     </div>
                     <div class="ref-input">
-                        <label for="ref1">3: </label><input class="ref-input-input" type="url" name="ref3" id="">
+                        <label for="ref1">3: </label><input onfocus="IsOutFocus()" class="ref-input-input" type="url" name="ref3" id="">
                     </div>
                     <div class="ref-input">
-                        <label for="ref1">4: </label><input class="ref-input-input" type="url" name="ref4" id="">
+                        <label for="ref1">4: </label><input onfocus="IsOutFocus()" class="ref-input-input" type="url" name="ref4" id="">
                     </div>
                     <div class="ref-input">
-                        <label for="ref1">5: </label><input class="ref-input-input" type="url" name="ref5" id="">
+                        <label for="ref1">5: </label><input onfocus="IsOutFocus()" class="ref-input-input" type="url" name="ref5" id="">
                     </div>
                     <div class="ref-input">
-                        <label for="ref1">6: </label><input class="ref-input-input" type="url" name="ref6" id="">
+                        <label for="ref1">6: </label><input onfocus="IsOutFocus()" class="ref-input-input" type="url" name="ref6" id="">
                     </div>
                     <div class="ref-input">
-                        <label for="ref1">7: </label><input class="ref-input-input" type="url" name="ref7" id="">
+                        <label for="ref1">7: </label><input onfocus="IsOutFocus()" class="ref-input-input" type="url" name="ref7" id="">
                     </div>
                     <div class="ref-input">
-                        <label for="ref1">8: </label><input class="ref-input-input" type="url" name="ref8" id="">
+                        <label for="ref1">8: </label><input onfocus="IsOutFocus()" class="ref-input-input" type="url" name="ref8" id="">
                     </div>
                     <div class="ref-input">
-                        <label for="ref1">9: </label><input class="ref-input-input" type="url" name="ref9" id="">
+                        <label for="ref1">9: </label><input onfocus="IsOutFocus()" class="ref-input-input" type="url" name="ref9" id="">
                     </div>
                     <div class="ref-input">
-                        <label for="ref1">10: </label><input class="ref-input-input" type="url" name="ref10" id="">
+                        <label for="ref1">10: </label><input onfocus="IsOutFocus()" class="ref-input-input" type="url" name="ref10" id="">
                     </div>
                 </div>
             </div>
@@ -241,29 +263,30 @@
                 </div>
                 <div class="text-question">
                     <p id="question_text"></p>
-                    <input type="text" name="question"  maxLength = '100' required class="input-question-text">
+                    <input onfocus="IsOutFocus()" type="text" name="question"  maxLength = '100' required class="input-question-text">
                 </div>
                 <div class="question-container">
                     <input id='certa' type="hidden" name="certa">
                     <div id="opa" class="option" onclick="setAsRight(1)">
                         <p class="opps_text"></p>
-                        <input type="text" name="a"  maxLength = '100' required class="input-op-text">
+                        <input onfocus="IsOutFocus()" type="text" name="a"  maxLength = '100' required class="input-op-text">
                     </div>
                     <div id="opb" class="option" onclick="setAsRight(2)">
                         <p class="opps_text"></p>
-                        <input type="text" name="b"  maxLength = '100' required class="input-op-text">
+                        <input onfocus="IsOutFocus()"  type="text" name="b"  maxLength = '100' required class="input-op-text">
                     </div>
                     <div id="opc" class="option" onclick="setAsRight(3)">
                         <p class="opps_text"></p>
-                        <input type="text" name="c"  maxLength = '100' required class="input-op-text">
+                        <input onfocus="IsOutFocus()"  type="text" name="c"  maxLength = '100' required class="input-op-text">
                     </div>
                     <div id="opd" class="option" onclick="setAsRight(4)">
                         <p class="opps_text"></p>
-                        <input type="text" name="d" maxLength = '100' required class="input-op-text">
+                        <input onfocus="IsOutFocus()"  type="text" name="d" maxLength = '100' required class="input-op-text">
                     </div>
                 </div>
             </div>
         </div>
+        <input type="hidden" name="story" id="code_s">
     </form>
 
     <div class="outer">
@@ -298,7 +321,7 @@
             <img class="empty-img-input img-input" alt="">
         </div>
     </div>
-    <script src="../js/criacao.js?v=1.01"></script>
+    <script src="../js/criacao.js?v=1.0121<?php echo rand(0,1000);?>"></script>
     <script src="../js/menu.js?v=1.01"></script>
 
     <script>
