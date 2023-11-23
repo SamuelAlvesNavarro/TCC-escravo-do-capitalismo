@@ -24,10 +24,7 @@
                 $titulo = $value['nome'];
                 $rating = $value['rating'];
         }
-    }else{
-        header("Location: error.php?erro=14");
     }
-
 
     if(isset($_SESSION['story'])){
         $n_type = $_SESSION['story'];
@@ -46,16 +43,6 @@
         $id_question = $value['id_question'];
     }
 
-    /* CHECK QUESTION TO SHOW */
-
-    $email = $_SESSION['email'];
-    $perfil = -1;
-    $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
-    foreach($pdo->query($sql) as $key => $value){
-        $perfil = $value['fk_id_profile'];
-    }
-
-
     if($prepare->rowCount() > 0){
 
         $showRight = "block;";
@@ -71,11 +58,6 @@
     if($showWrong == "block;" || $showRight == "block;") $showNo = "none;";
     else $showNo = "block;";
     
-    /* SCORE STUFF */
-
-    $check = "SELECT * FROM score WHERE fk_id_profile = $perfil and fk_id_story = $id_story";
-    $prepare = $pdo->prepare($check);
-    $prepare->execute();
 
     if($prepare->rowCount() == 0){
         $showQuestion = "flex;";
