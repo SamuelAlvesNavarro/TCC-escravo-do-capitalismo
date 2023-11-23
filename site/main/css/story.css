@@ -30,26 +30,27 @@
 /* MODES */
 
 :root {
-    color-scheme: light;
-    --color: #121212;
-    --all-shadow: -2px -1px 34px 10px rgba(0, 0, 0, 0.75) inset;
-    --paper-color: #f0e1cc;
-    --table-color: #ccad7f;
-    --line-color: #121212;
-    --hr-color: #121212;
-    --paper-out-color: #fcf3e7;
-    --paper-shadow-color: 0;
-    --input-color-report: #f3ddc0;
-    --menu-color: #242424; 
+    color-scheme: dark;
+    --color: #fcecd5;
+    --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;
+    --paper-color: #606060;
+    --table-color: #505050;
+    --line-color: #fcecd5ec;
+    --hr-color: #363534;
+    --paper-out-color: #121212;
+    --paper-shadow-color: #121212;
+    --input-color-report: #242424;
 
+    --menu-color: #060606;
 
     --banner-color: rgba(12,12,12,0.3);
     --modest-banner-center: #1212121a;
     --modest-banner-outer: #121212;
-    
 
-    --shadow-color: (0,0,0,0.2);
-    --shadow-main: 0;
+    --shadow-color: (255,255,255,0.2);
+    --shadow-main: #121212;
+
+    --main-ultra-color: rgb(255,0,0);
   }
   .dark {
     color-scheme: dark;
@@ -59,18 +60,20 @@
     --table-color: #505050;
     --line-color: #fcecd5ec;
     --hr-color: #363534;
-    --paper-out-color: #010108;
-    --paper-shadow-color: #010108;
+    --paper-out-color: #121212;
+    --paper-shadow-color: #121212;
     --input-color-report: #242424;
 
-    --menu-color: #121212;
+    --menu-color: #060606;
 
     --banner-color: rgba(12,12,12,0.3);
     --modest-banner-center: #1212121a;
     --modest-banner-outer: #121212;
 
     --shadow-color: (255,255,255,0.2);
-    --shadow-main: #010108;
+    --shadow-main: #121212;
+
+    --main-ultra-color: rgb(255,0,0);
   }
 
 
@@ -85,6 +88,44 @@ body{
 .page hr{
     margin: 50px 0;
     border: 2px solid var(--hr-color);
+}
+
+/* REPORT STORY */
+
+.report_story_modal{
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-family: oldF;
+}
+.appear_report_story{
+    display: flex;
+}
+.report_story_container{
+    padding: 10px;
+    border-radius: 20px;
+    background-color: var(--paper-out-color);
+}
+.report_story_container textarea{
+    width: 100%;
+    background-color: var(--paper-color);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    resize: none;
+}
+#rep_st_bt{
+    width: 100%;
+    padding: 10px 0;
+    outline: none;
+    border: none;
+    background-color: var(--main-ultra-color);
+    cursor: pointer;
 }
 /* CONTROLS */
 
@@ -118,7 +159,7 @@ body{
 }
 .filled{
     width: 100%;
-    background-color: red;
+    background-color: var(--main-ultra-color);
 }
 .mode{
     font-size: 30px;
@@ -127,7 +168,7 @@ body{
 /* MENU */
 
 .menuH{
-    padding: 10px;
+    padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
     background: var(--menu-color);
@@ -160,8 +201,8 @@ body{
 }
 .menuH svg {
     transition: 0.5s linear;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     fill: white !important;
     border: 5px solid white !important;
 }
@@ -566,9 +607,77 @@ pre strong{
 
 /* COMMENTS */
 
+.header_comments select {
+    /* Reset Select */
+    appearance: none;
+    outline: 10px red;
+    border: 0;
+    box-shadow: none;
+    /* Personalize */
+    flex: 1;
+    padding: 10px;
+    color: var(--color);
+    background-color: var(--paper-color);
+
+    background-image: none;
+    cursor: pointer;
+  }
+  /* Remove IE arrow */
+  select::-ms-expand {
+    display: none;
+  }
+  /* Custom Select wrapper */
+  .select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    padding: 20px;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+  /* Arrow */
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 15px;
+    background-color: var(--main-ultra-color);
+    transition: .25s all ease;
+    pointer-events: none;
+  }
+
+.header_comments{
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    padding-left: 20px;
+    margin-top: 20px;
+}
+#am_c{
+    font-size: 40px;
+}
+.comments hr{
+    width: 100%;
+    border: 1px solid var(--hr-color);
+}
+.initial_sec_comments{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 10px;
+    font-size: 22px;
+    font-family: 'Playfair Display', serif;
+}
 .comments{
     padding: 20px;
-    padding-top: 100px;
     padding-bottom: 100px;
     display: flex;
     flex-direction: column;
@@ -580,7 +689,7 @@ pre strong{
 .comments::after{
     content: '';
     z-index: -1;
-    background: var(--table-color);
+    background: var(--paper-out-color);
     background-repeat:no-repeat;
     background-size: cover;
     position: absolute;
@@ -592,21 +701,38 @@ pre strong{
     color: black;
 }
 .comments form{
+    box-sizing: border-box;
     width: calc(100% - 40px);
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-top: 20px;
-    padding: 20px 30px;
+    align-items: center;
+    gap: 20px;
 }
 .comments textarea{
+    background-color: transparent;
+    color: var(color);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid white;
     width: 100%;
-    max-width: 500px;
-    height: 200px;
+    max-width: 800px;
+    resize: none;
+    font-family: "Indie Flower";
+    line-height: 30px;
+    font-size: 16px;
 }
 .comments input{
+    height: 40px;
     padding: 10px;
-    height: 50px;
+    background-color: var(--table-color);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.comments input:hover{
+    background-color: var(--main-ultra-color);
 }
 
 .comments-container{
@@ -807,6 +933,31 @@ pre strong{
         cursor: zoom-out !important;
         z-index: 1000000;
         max-width: 80vw !important;
+    }
+}
+@media (max-width: 800px) {
+    .report_story_container h1{
+        font-size: 22px;
+    }
+    .select {
+        position: relative;
+        display: flex;
+        width: 140px;
+        height: 3em;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 0;
+      }
+    .select::after{
+        padding: 5px;
+        top: 0px;
+        right: 0px;
+    }
+    .initial_sec_comments h2{
+        font-size: 20px;
+    }
+    #am_c{
+        font-size: 22px;
     }
 }
 @media (max-width: 600px) {

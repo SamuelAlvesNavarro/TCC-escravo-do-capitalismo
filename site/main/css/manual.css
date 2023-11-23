@@ -13,6 +13,7 @@
     padding: 0;
     margin: 0;
     color: var(--color);
+    box-sizing: border-box;
 }
 
 :root {
@@ -77,11 +78,12 @@
 }
 
 .lines{
-    font-size: 25px;
+    font-size: 22px;
     font-family: oldF;
     background: repeating-linear-gradient(transparent 0px, transparent 40px, var(--line-color) 42px);
     line-height: 42px;
     padding: 42px;
+    text-align: justify;
 }
 
 img{

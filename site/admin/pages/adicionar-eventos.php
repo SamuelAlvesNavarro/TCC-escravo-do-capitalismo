@@ -21,7 +21,11 @@
         <input type="text" name="titulo" required class="form-control"><br><br>
 
         <label class="form-label">Tipo:</label>
-        <input type="number" name="type" id="" required class="form-control" placeholder="Se estiver em dúvida, verifique os tipos"><br><br>
+        <select name="type" id="">
+            <option value="1">Cadastro</option>
+            <option value="2">Compra de Itens</option>
+            <option value="3">Aprovar História</option>
+        </select><br><br>
 
         <label class="form-label">Descrição:</label>
         <textarea name="desc" id="" cols="30" rows="10" class="form-control"></textarea><br><br>

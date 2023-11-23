@@ -90,7 +90,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/menu.css?v=1.01">
-    <link rel="stylesheet" href="../css/aprovacao2.css?v=1.01<?php echo rand(0,10000)?>">
+    <link rel="stylesheet" href="../css/aprovacao.css?v=1.01<?php echo rand(0,10000)?>">
     <link rel="stylesheet" href="../css/scroll.css?v=1.01">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <title>História</title>
@@ -262,7 +262,7 @@
             </div>
         </section>
     </div>
-    <script src="../js/aprovacao2.js?v=1.03124"></script>
+    <script src="../js/aprovacao.js?v=1.03124"></script>
     <script src="../js/menu.js"></script>
 
 

@@ -6,7 +6,7 @@ use pi;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19/11/2023 às 01:55
+-- Tempo de geração: 23/11/2023 às 20:48
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -102,13 +102,6 @@ CREATE TABLE `comment` (
   `fk_id_profile` int(11) NOT NULL,
   `text` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `comment`
---
-
-INSERT INTO `comment` (`id_comment`, `fk_id_story`, `fk_id_profile`, `text`) VALUES
-(3, 4, 1, 'Amei a história');
 
 -- --------------------------------------------------------
 
@@ -470,9 +463,8 @@ CREATE TABLE `report_profile` (
 INSERT INTO `report_profile` (`id_report`, `fk_id_reported`, `fk_id_reporter`, `reason`, `code`) VALUES
 (1, 1, 666, 'AUTO - aos esgotos: 24/09/23 09:25:16 - 14 - OBS', 2),
 (2, 1, 666, 'AUTO - aos esgotos: 08/10/23 03:17:35 - 14 - OBS', 2),
-(3, 1, 666, 'AUTO - aos esgotos: 08/10/23 03:20:54 - 6 - BAN', 1),
-(4, 1, 666, 'AUTO - aos esgotos: 08/10/23 03:21:41 - 6 - OBS', 2),
-(5, 1, 8, 'Perfil Estanho mano\r\n', 1);
+(3, 1, 666, 'AUTO - aos esgotos: 08/10/23 03:20:54 - 6 - BAN', 3),
+(4, 1, 666, 'AUTO - aos esgotos: 08/10/23 03:21:41 - 6 - OBS', 2);
 
 -- --------------------------------------------------------
 
@@ -500,13 +492,6 @@ CREATE TABLE `score` (
   `fk_id_story` int(11) NOT NULL,
   `nota` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `score`
---
-
-INSERT INTO `score` (`id_score`, `fk_id_profile`, `fk_id_story`, `nota`) VALUES
-(5, 1, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -746,7 +731,7 @@ ALTER TABLE `ban`
 -- AUTO_INCREMENT de tabela `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `error`

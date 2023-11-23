@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+*{
+    margin: 0;
+    padding: 0;
+}
+/* ZA COLORS */
+.za-colors {
+background-color: #121212;
+background-color: #1e1e1e;
+background-color: #222222;
+background-color: #242424;
+background-color: #272727;
+background-color: #2c2c2c;
+background-color: #2d2d2d;
+background-color: #333333;
+background-color: #343434;
+background-color: #383838;
+}
+
+/* MODES */
+:root {
+color-scheme: light;
+--color: black;
+--body-bc: #121212;
+--nav: white;
+--title: white;
+--paper-color: #f0f0f0;
+--paper-line-color: steelblue;
+}
+
+.dark {
+color-scheme: dark;
+--color: white;
+--body-bc: #282E43;
+--nav: #0F143C;
+--title: white;
+--paper-color: #f0f0f0;
+--paper-line-color: steelblue;
+}
+.all{
+    padding: 20px;
+    background-color: var(--body-bc);
+    min-height: 100vh;
+    font-family: "Poppins";
+}
+.nav, .navBottom{
+    height: 60px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: .5s linear;
+    background-color: var(--nav);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 15px;
+}
+.go-back{
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: black 0px 7px 29px 0px;
+    transition: .5s linear;
+}
+.go-menu{
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: black 0px 7px 29px 0px;
+    transition: .5s linear;
+}
+.logo-pic svg{
+    width: 50px;
+    fill: var(--color);
+    height: 50px;
+    border: 5px var(--color) solid;
+    transition: .5s linear;
+}
+.title{
+    margin: 20px;
+    margin-left: 0;
+    color: var(--title);
+}
+.main{
+    background-color: var(--nav);
+    border-radius: 15px;
+    padding: 20px;
+    transition: .5s linear;
+    color: black !important;
+}
+.parts{
+    margin-top: 20px;
+    box-shadow: black 0px 7px 29px 0px;
+    background-color: var(--paper-color);
+}
+.p1{
+    margin-top: 0;
+}
+.history{
+    font-family: "Indie Flower";
+    padding: 10px;
+    border-top: red 5px solid;
+    line-break: anywhere;
+}
+.images{
+    font-family: "Indie Flower";
+    padding: 10px;
+    border-top: blue 5px solid;
+}
+.refs{
+    font-family: "Indie Flower";
+    padding: 10px;
+    border-top: green 5px solid;
+}
+.history h1, .images h1, .refs h1{
+    background-color: var(--paper-color);
+}
+.lines {
+    height: 100%;
+    width: 100%;
+    background-image: repeating-linear-gradient(var(--paper-color) 0px, var(--paper-color) 24px, var(--paper-line-color) 25px);
+  }
+  .text {
+    margin-top:20px;
+    line-height: 25px;
+    width: 98%;
+    overflow: hidden;
+    outline: none;
+    text-align: justify;
+  }
+  .text pre{
+    font-family: "Indie Flower";
+    white-space: break-spaces;
+    line-break: anywhere;
+  }
+  .text img{
+    max-width: 300px;
+    display: inline-block;
+  }
+  .text pre h1,.text pre h2,.text pre h3,.text pre h4,.text pre h5,.text pre h6{
+    display: inline;
+    background-color: transparent;
+  }
+
+.quesP{
+    padding: 20px;
+}
+.question{
+    font-size: 20px;
+    margin-top: 10px;
+}
+.table{
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    font-size: 20px;
+    box-shadow: black 0px 7px 29px 0px;
+}
+tr, td, th{
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.navBottom{
+    margin-top: 30px;
+    justify-content: space-around;
+}
+.check-bt{
+    color: white;
+    background-color: rgb(0, 255, 0);
+}
+.xmark-bt{
+    color: white;
+    background-color: rgb(255, 0, 0);
+}

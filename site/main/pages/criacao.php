@@ -61,7 +61,7 @@
                         <input type="submit" onclick="botar()" value="Enviar">
                     </div>
                     <div class="manual opp" id="manual-bt">
-                        <a target="_blank" href="manual.php#Chistoria"><i id="manual-icon" class="far fa-sticky-note"></i></a>
+                        <a target="_blank" href="manual.php#criacao-historia"><i id="manual-icon" class="far fa-sticky-note"></i></a>
                     </div>
                     <div class="edit opp" id="edit-bt">
                         <i id="edit-icon" class="fa-solid fa-pencil op-icon"></i>
@@ -83,6 +83,7 @@
                         <div class="edit-part" id="edit-part-d">
                             <button type="button" onclick="strong()"><strong>B</strong></button>
                             <button type="button" onclick="italic()"><i>B</i></button>
+                            <button type="button" onclick="underline()"><u>B</u></button>
                             <button type="button" onclick="small()"><small>B</small></button>
                             <button type="button" onclick="h('1')"><h1>B</h1></button>
                             <button type="button" onclick="h('2')"><h2>B</h2></button>
@@ -218,8 +219,9 @@
                 </div>
             </div>
             <div class="references layout-padding" id="refs">
-                <div class="title">
-                    <h1>Referências: <button type="button" onclick="copyPerfil()">COPIAR LINK DO PERFIL</button></h1>
+                <div class="title ref_t">
+                    <h1>Referências: </h1>
+                    <button type="button" onclick="copyPerfil()">COPIAR LINK DO PERFIL</button>
                 </div>
                 <div class="appear-refs" id="appear-refs">
 

@@ -24,6 +24,7 @@
     --border-item-color: #fcecd52c;
 }
 .befAll{
+    background-image: url(../img/sangue.png);
     background-color: var(--paper-color-all);
     width: 100%;
     height: 100%;

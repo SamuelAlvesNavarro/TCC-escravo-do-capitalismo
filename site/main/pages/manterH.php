@@ -19,5 +19,6 @@
         $sql = "update story set fk_id_profile = 666 where id_story = $id_story";
         $prepare = $pdo->prepare($sql);
         $prepare->execute();
+        header("Location: writerHub.php");
     }
 ?>

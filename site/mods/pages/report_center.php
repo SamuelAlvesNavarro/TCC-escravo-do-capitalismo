@@ -122,6 +122,7 @@
                         <th scope="col">Código do denunciador</th>
                         <th scope="col">Texto</th>
                         <th scope="col">Código</th>
+                        <th scope="col">Perfil do Denunciador</th>
                         <th scope="col">Resolvido</th>
                     </tr>
                 </thead>
@@ -141,12 +142,15 @@
                                 $value['fk_id_reporter'] = "Deletado";
                             }
 
+                            $x = "<td><a href='user.php?profile=". $value['fk_id_reporter']."'><button class='btn btn-danger'>Investigar</button></a></td>";
+
                             echo "<tr scope='row'>";
                             echo "<td>".$value['id_report']."</td>";
                             echo "<td><a href='mod-story.php?input_1=".$value['fk_id_reported_story']."'>História</a></td>";
                             echo "<td>".$value['fk_id_reporter']."</td>";
                             echo "<td>".$value['reason']."</td>";
                             echo "<td>".$cd."</td>";
+                            echo $x;
                             echo "<td><a href='programaticos/resolvido.php?id_report_story=". $value['id_report'] ."'><button class='btn btn-success'>Resolvido</button></a></td>";
                             echo "</tr>";
                         }

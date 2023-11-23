@@ -512,6 +512,9 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
         function small(){
            mudar("small");
         }
+        function underline(){
+            mudar("u");
+         }
         function h(which){
            mudar("h"+which);
         }

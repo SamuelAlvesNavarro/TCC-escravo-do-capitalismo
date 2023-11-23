@@ -105,7 +105,7 @@
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/menu.css">
-    <link rel="stylesheet" href="../css/perfil.css?v=1.012322">
+    <link rel="stylesheet" href="../css/perfil.css?v=1.0123222">
     <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Perfil</title>
 </head>
@@ -144,6 +144,30 @@
                 </div>
 
             </div>
+        <?php endif; ?>
+
+        <?php if($perfildono == $perfilEntrando):?>
+
+            <div class="del-container" id="delcont">
+                <div class="del">
+                    <div class="title_del">
+                        <h1>Você está na área de deletar conta</h1>
+                        <h3>Como deseja deletá-la?</h3>
+                    </div>
+                    <i class="fa-solid fa-xmark del_toggle" onclick="openDel()"></i>
+                    <div class="bodydel">
+                        <form action="delete_user.php" method="post">
+                            <input type="submit" value="Não quero manter minhas histórias">
+                            <input type="hidden" name="modo" value="0">
+                        </form>
+                        <form action="delete_user.php" method="post">
+                            <input type="submit" value="Quero manter minhas histórias">
+                            <input type="hidden" name="modo" value="1">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         <?php endif; ?>
 
         <div class="acess-menu menu-char menu-dis" id="acmenu">
@@ -231,8 +255,13 @@
                     <hr>
                 </div>
                 <div class="second-info edit">
-                    <div class="stories-title">
+                    <div class="stories-title sec_edit_title">
                         <h1 class="formal">Edição Avançada</h1>
+                    <?php if($perfildono == $perfilEntrando):?>
+                        <div class="trash-can-cont" onclick="openDel()">
+                            <i class="fa-solid fa-trash"></i>
+                        </div>
+                    <?php endif; ?>
                     </div>
                     <div class="all-data-change">
                         <div class="user-data">
@@ -360,27 +389,31 @@
     <script src="../js/menu.js"></script>
     <script src="../js/perfil.js?v=1.012"></script>
     <?php
-    if($perfildono == $perfilEntrando){
+    if($perfildono == $perfilEntrando):?>
 
-        echo '<script> 
+        <script> 
 
-        function switchP(n) {
-            var theForm, newInput1;
-            theForm = document.createElement("form");
-            theForm.action = "alter_design.php";
-            theForm.method = "post";
-            newInput1 = document.createElement("input");
-            newInput1.type = "hidden";
-            newInput1.name = "gadget";
-            newInput1.value = n;
-            theForm.appendChild(newInput1);
-            document.getElementById("f-cont").appendChild(theForm);
-            theForm.submit();
-        }
+            function switchP(n) {
+                var theForm, newInput1;
+                theForm = document.createElement("form");
+                theForm.action = "alter_design.php";
+                theForm.method = "post";
+                newInput1 = document.createElement("input");
+                newInput1.type = "hidden";
+                newInput1.name = "gadget";
+                newInput1.value = n;
+                theForm.appendChild(newInput1);
+                document.getElementById("f-cont").appendChild(theForm);
+                theForm.submit();
+            }
 
-        </script>';
-    }
+            function openDel(){
+                document.getElementById("delcont").classList.toggle("appear_del")
+            }
+
+        </script>
+
+    <?php endif; ?>
     
-?>
 </body>
 </html>

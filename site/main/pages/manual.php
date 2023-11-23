@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../css/manual.css">
+    <link rel="stylesheet" href="../css/manual.css?v=<?php echo rand(0,1000);?>">
     <link rel="stylesheet" href="../css/scroll.css?v=1.09">
     <title>Manual de Uso - Histórias Assombrosas</title>
 </head>
@@ -19,7 +19,7 @@
             </div>
                 <div class="lines">
                     O site tem como objetivo permitir que os usuários escrevam histórias de terror para os demais usuários lerem e responderem uma pergunta
-                    relacionada a história, recebendo pontos de leitor para gastar com os itens da loja para personalizar seu perfil.
+                    relacionada a história, recebendo pontos de leitor e moedas para gastar com os itens da loja para personalizar seu perfil.
                 </div>
 
         <div class="split"></div>
@@ -28,7 +28,7 @@
 
             <div class="lines">
                 A central é a home page do site, onde o usuário terá acesso a página da loja, a área do escritor, ao perfil e a barra de pesquisa.
-                E além disso, na parte inferior, o usuário pode vizualizar seus dados(Pontos de leitor e moedas), o ranking de melhores autores, os eventos do site ,
+                Além disso, na parte inferior, estão o ranking de melhores autores, os eventos do site,
                 as histórias mais recentes e as mais bem avaliadas.
 
             </div>
@@ -47,16 +47,14 @@
         <div class="grandTitle" id="perfil">Perfil</div>
 
             <div class="lines">
-                Na página do perfil será exibida as informações básicas do usuário dono do perfil, juntamente das histórias publicadas 
+                    Na página do perfil será exibida as informações básicas do usuário dono do perfil, juntamente das histórias publicadas 
                 por ele.
                 <br>
-                Caso o usuário seja o dono do perfil, na parte inferior da página, aparecerá a seção "edição avançada", onde o usuário poderá 
+                    Caso o usuário seja o dono do perfil, na parte inferior da página, aparecerá a seção "edição avançada", onde o usuário poderá 
                 alterar suas informações pessoais e mudar sua foto e fundo do perfil.
                 <br>
-                Na parte superior da tela terá a opção de denunciar o perfil(Como demonstra a imagem abaixo).
-                <img class="h168" src="../img/denuncia.png">
-                Ela só deverá ser utilizada caso o usuário em questão tenha quebrado alguma regra do site(Uma denúncia falsa poderá resultar em banimento). 
-                Ao selecionar a opção uma caixa de texto irá aparecer, o usuário que fez a denúncia deve escrever o motivo da denúncia nela e após isso selecionar
+                    Ela só deverá ser utilizada caso o usuário em questão tenha quebrado alguma regra do site(Uma denúncia falsa poderá resultar em banimento). 
+                Ao selecionar a opção, uma caixa de texto aparecerá, e o usuário que fez a denúncia deve escrever o motivo da denúncia nesta caixa e, após isso, selecionar
                 a opção registrar, para concluir o envio da denúncia.
             </div>
 
@@ -65,17 +63,17 @@
         <div class="grandTitle" id="escritor">Área do escritor</div>
 
                 <div class="lines">
-                    Na área do escritor, o usuário terá acesso a página de criação de histórias, as suas histórias que devem ser corrigidas e aquelas que devem ser aprovadas e poderá ver o ranking de melhores escritores.
+                    Na área do escritor, o usuário terá acesso a página de criação de histórias. As suas histórias que devem ser corrigidas e aquelas que devem ser aprovadas também estarão nessa página.
                 </div>
 
             <div class="title">Correção/Aprovação</div>
 
                 <div class="lines">
-                    Quando o usuário envia uma história para correção ela irá aparecer na lista de correção, o que significa que ela está na fila para ser corrigida.
+                    Quando o usuário envia uma história para a correção, essa irá aparecer na lista de correção, o que significa que ela está na fila para ser corrigida.
                     <br>
-                    Após ela ser corrigida por algum moderador, ela irá aparecer na lista de aprovação onde o usuário, ao selecioná-la, poderá ver as alterações feitas 
-                    pelo moderador e caso concorde a história ficará disponível para todos os usuários. Caso o dono da história discorde das alterações feitas 
-                    pelo moderador a história, a história será apagada. 
+                    Após ela ser corrigida por algum moderador, ela irá aparecer na lista de aprovação, onde o usuário, ao selecioná-la, poderá ver as alterações feitas 
+                    pelo moderador e caso concorde com as correções e a aprove, a história ficará disponível para todos os usuários. Caso o dono da história discorde das alterações feitas 
+                    pelo moderador, a história será apagada. 
                 </div>
 
         <div class="split"></div>
@@ -90,7 +88,7 @@
                     A aba de título é destinada ao título da história, deve-se seguir as seguintes condições:<br>
                     <ul>
                         <li>O título não pode estar em branco;</li>
-                        <li>O conteúdo não deve conter nenhuma tag html ou código php;</li>
+                        <li>O conteúdo não deve conter nenhum código estranho;</li>
                         <li>O título deve ter relação com a história;</li>
                         <li>O título não pode conter mais de 40 caracteres;</li>
                         <li>O título não pode conter nenhum palavrão;</li>
@@ -103,24 +101,7 @@
                     A área de conteúdo é destinada ao texto da história, deve-se seguir as seguintes condições:
                     <ul>
                         <li>O conteúdo da história não pode estar em branco;</li>
-                        <li>O conteúdo não deve conter nenhuma tag html ou código php;</li>
-                    </ul>
-                    <br>Nessa área o texto pode ser formatado com alguns códigos, como por exemplo:<br><br>
-                    <ul>
-                        <li>*1 Teste /*1</li>
-                        <h1>Teste</h1><br>
-                        <li>*2 Teste /*2</li>
-                        <h2>Teste</h2><br>
-                        <li>*3 Teste /*3</li>
-                        <h3>Teste</h3><br>
-                        <li>*4 Teste /*4</li>
-                        <h4>Teste</h4><br>
-                        <li>*5 Teste /*5</li>
-                        <h5>Teste</h5><br>
-                        <li>*6 Teste /*6</li>
-                        <h6>Teste</h6><br>
-                        <li>** Teste /**</li>
-                        <strong>Teste</strong><br>
+                        <li>O conteúdo não deve conter nenhum código estranho;</li>
                     </ul>
                 </div>
             <div class="title">
@@ -129,7 +110,6 @@
                 <div class="lines">
                     A área de imagens é destinada ao envio de imagens da história, deve-se seguir as seguintes condições:<br>
                     <ul>
-                        <li>A história deve conter pelo menos 1 imagem;</li>
                         <li>As imagens devem ter relação com a história;</li>
                         <li>O tamanho máximo da imagem é de 5 MB;</li>
                         <li>A extensão da imagem deve ser png, jpg ou jpeg;</li>
@@ -139,7 +119,7 @@
                 Referências
             </div>
                 <div class="lines">
-                    A área de referências é destinada as fontes utilizadas para a construção da história, deve-se seguir as seguintes
+                    A área de referências é destinada às fontes utilizadas para a construção da história, deve-se seguir as seguintes
                     condições:
                     <ul>
                         <li>A referência deve ser uma URL;</li>
@@ -163,27 +143,54 @@
             <div class="title">Questões</div>
 
                 <div class="lines">
-                    A área de questões está abaixo da história, nela o usuário deverá escolher a resposta correta, caso erre serão retirados x pontos de leitor e ele poderá tentar novamente, caso acerte o usuário receberá 50 moedas e 100 pontos de leitor e vai liberar a opção de avaliar a história.
+                    A área de questões está abaixo da história. Nela, o usuário deverá escolher a resposta correta. Caso erre, será retirada uma quantidade de moedas e ele poderá tentar novamente. Caso acerte, o usuário receberá moedas, pontos de leitor e vai liberar a opção de avaliar a história.
                 </div>
 
             <div class="title">Avaliação</div>
 
                 <div class="lines">
-                    A área de avaliação substituirá a área de questões após o usuário respondê-la corretamente. Nela o usuário poderá avaliar a história com uma nota de 1 a 5. Após a avaliação ser feita a área de comentários irá substituí-la.
+                    A área de avaliação substituirá a área de questões após o usuário respondê-la corretamente. Nela, o usuário poderá avaliar a história com uma nota de 1 a 5. Após a avaliação ser feita, a área de comentários irá substituí-la.
                 </div>
 
             <div class="title">Comentários</div>
 
                 <div class="lines">
-                    A área de comentários substituirá a área de avaliação após o usuário avaliar a história. Nela o usuário poderá ver o comentários de outras pessoas e enviar seu próprio comentário.<br>
+                    A área de comentários substituirá a área de avaliação após o usuário avaliar a história. Nela, o usuário poderá ver os comentários de outras pessoas e enviar seus próprios comentários.<br>
                     Os comentários devem seguir as seguintes orientações:
                     <ul>
                         <li>É proibido comentários que fogem do tema da história;</li>
                         <li>É proibido o uso de palavrões nos comentários;</li>
                         <li>É proibido o uso de links nos comentários;</li>
-                        <li>É proibido a disseminação de discurso de ódio nos comentários;</li>
+                        <li>É proibida a disseminação de discurso de ódio nos comentários;</li>
                     </ul>
                 </div>
     </div>
+    <script>
+
+const root = document.querySelector(":root");
+var dark = false;
+function switchmode(){
+    root.classList.toggle('dark');
+
+    if(dark){
+        dark = false;
+        setTheme("light");
+    }else{
+        dark = true;
+        setTheme("dark");
+    }
+}
+        function setTheme(theme){
+            localStorage.setItem("Theme", JSON.stringify(theme));
+        }
+        function getTheme(){
+            let theme = JSON.parse(localStorage.getItem("Theme"));
+
+            if(theme == "dark"){
+                switchmode();
+            }
+        }
+        getTheme();
+    </script>
 </body>
 </html>

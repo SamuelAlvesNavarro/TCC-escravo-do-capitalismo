@@ -18,14 +18,22 @@ body{
     border: none;
     border-top: 5px solid red;
     color: white;
-    width: 50%;
     outline: none;
     height: 100vh;
 }
 .to-show{
     border: white 1px portrait;
-    width: calc(50% - 20px);
     padding-left: 10px;
+}
+.img_story{
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img_story img{
+    max-width: 100%;
 }
 .input-title{
     background-color: #353535;
@@ -33,7 +41,11 @@ body{
     border: none;
     outline: none;
 }
+input[name='pergunta']{
+    width: 100%;
+}
 pre{
+    margin-top: 20px;
     line-break: anywhere !important;
     white-space: break-spaces !important;
 }
