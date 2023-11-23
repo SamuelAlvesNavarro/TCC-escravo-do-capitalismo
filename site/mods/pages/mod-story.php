@@ -24,10 +24,7 @@
                 $titulo = $value['nome'];
                 $rating = $value['rating'];
         }
-    }else{
-        header("Location: error.php?erro=14");
     }
-
 
     if(isset($_SESSION['story'])){
         $n_type = $_SESSION['story'];
