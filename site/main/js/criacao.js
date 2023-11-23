@@ -94,6 +94,7 @@ let current = -1;
         var containerImgs = document.getElementById("containerImgs");
         var refs = document.getElementById("refs"); 
         var quest = document.getElementById("quest");
+        var prof_c = document.getElementById("copy_prof");
 
     toggleEdit.addEventListener('click', switchedit)
 
@@ -109,6 +110,7 @@ let current = -1;
             quest.classList.remove('edit');
             document.getElementById("edit-part-d").style.display = "none";
             document.getElementById("containerImgs").style.display = "none";
+            prof_c.style.display = "none";
             edit = false;
             toggleEditAll();
             spread();
@@ -123,6 +125,7 @@ let current = -1;
             quest.classList.add('edit');
             document.getElementById("edit-part-d").style.display = "flex";
             document.getElementById("containerImgs").style.display = "block";
+            prof_c.style.display = "block";
             for(var i = 0; i < 10; i++){
                 thrownImg[i].classList.remove("hide");
             }

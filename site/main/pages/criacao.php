@@ -221,7 +221,7 @@
             <div class="references layout-padding" id="refs">
                 <div class="title ref_t">
                     <h1>Referências: </h1>
-                    <button type="button" onclick="copyPerfil()">COPIAR LINK DO PERFIL</button>
+                    <button type="button" id="copy_prof" onclick="copyPerfil()">COPIAR LINK DO PERFIL</button>
                 </div>
                 <div class="appear-refs" id="appear-refs">
 
