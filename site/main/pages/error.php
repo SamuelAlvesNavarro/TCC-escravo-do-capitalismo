@@ -71,6 +71,9 @@
     <link rel="stylesheet" href="../css/scroll.css?v=1.09">
 </head>
 <body>
+<?php
+        require "includes/loading.php";
+    ?>
     <div class="bc erro <?php echo $to_show;?>">
         <div class="title">
             <strong>

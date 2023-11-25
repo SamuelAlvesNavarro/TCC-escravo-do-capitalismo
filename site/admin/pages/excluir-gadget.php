@@ -21,12 +21,15 @@
 
     $path = "SELECT in_it FROM gadget WHERE id_gadget = '$id_gadget'";
     foreach($pdo->query($path) as $key => $value){
-        $caminho = $value['int_it'];
+        $caminho = $value['in_it'];
     } 
 
     $caminho_parts = explode("/", $caminho);
     unset($caminho_parts[0]);
     $caminho = implode("/", $caminho_parts);
+
+    $caminho = str_replace(");", "", $caminho);
+
     $caminhoAdmin = '../'.$caminho;
     $caminhoMod = '../../mods/'.$caminho;
     $caminhoMain = '../../main/'.$caminho;

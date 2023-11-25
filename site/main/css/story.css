@@ -502,7 +502,7 @@ pre strong{
 }
 .question{
     font-family: 'Playfair Display', serif;
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
     color: white;
 }
@@ -542,9 +542,6 @@ pre strong{
     height: 20px;
     width: 20px;
     background-color: rgba(11, 117, 11, 0.514);
-}
-.wrong-answer{
-    background-color: rgba(255, 0, 30, 0.514) !important;
 }
 
 .wrong h1, .rating-part h1{
@@ -936,6 +933,9 @@ pre strong{
     }
 }
 @media (max-width: 800px) {
+    .question{
+        font-size: 25px;
+    }
     .report_story_container h1{
         font-size: 22px;
     }

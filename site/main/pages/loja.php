@@ -28,6 +28,9 @@
 </head>
 <body>
     <?php
+        require "includes/loading.php";
+    ?>
+    <?php
         require "includes/menu.php";
     ?>
     <div class="befAll">

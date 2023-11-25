@@ -1,8 +1,12 @@
 <?php
     require "includes/conexao.php";
-    require "includes/online.php";
     require "includes/values.php";
-    require "includes/enviarErro.php";
+
+    $sql = "select * from story order by rating desc";
+    foreach ($pdo->query($sql) as $key => $value) {
+        $id_story = $value['id_story'];
+        break;
+    }
 
     function RetornarIdPage($id_story, $type){
         global $pdo;
@@ -12,39 +16,19 @@
             return $id_page;
         }
     }
-    if(isset($_GET['story'])){
-        $id_story = $_GET['story'];
 
-        $_SESSION['id_story'] = $id_story;
-        $story = "SELECT * from story where id_story = $id_story and status = 3";
-        $prepare = $pdo->prepare($story);
-        $prepare->execute();
+    $story = "SELECT * from story where id_story = $id_story and status = 3";
+    $prepare = $pdo->prepare($story);
+    $prepare->execute();
 
-        if($prepare->rowCount() == 0){
-            sendToError(14);
-            exit;
-        }
+    foreach ($pdo->query($story) as $key => $value) {
 
-        foreach ($pdo->query($story) as $key => $value) {
-
-            $titulo = $value['nome'];
-            $rating = $value['rating'];
-            $perfil_dono = $value['fk_id_profile'];
-        }
-    }else{
-        sendToError(14);
-        exit;
+        $titulo = $value['nome'];
+        $rating = $value['rating'];
+        $perfil_dono = $value['fk_id_profile'];
     }
 
-
-    if(isset($_SESSION['story'])){
-        $n_type = $_SESSION['story'];
-    }
-
-    $showAnswered = 0;
-    $showQuestion = 0;
-    $showRight = "none;";
-    $showWrong = "none;";
+    $showQuestion = "block;";
 
     /* QUESTION */
 
@@ -52,56 +36,6 @@
     foreach($pdo->query($question) as $key => $value){
         $questionText = $value['quest_itself'];
         $id_question = $value['id_question'];
-    }
-
-    /* CHECK QUESTION TO SHOW */
-
-    $email = $_SESSION['email'];
-    $perfil = -1;
-    $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
-    foreach($pdo->query($sql) as $key => $value){
-        $perfil = $value['fk_id_profile'];
-    }
-
-    $check = "SELECT * FROM question_user WHERE fk_id_profile = $perfil and fk_id_question = $id_question";
-    $prepare = $pdo->prepare($check);
-    $prepare->execute();
-
-    if($prepare->rowCount() > 0){
-
-        $showRight = "block;";
-
-    }else{
-
-        /* CHECK ERROR */
-
-        $check = "SELECT * FROM error_user WHERE fk_id_profile = $perfil and fk_id_story = $id_story";
-        $prepare = $pdo->prepare($check);
-        $prepare->execute();
-
-        if($prepare->rowCount() > 0){
-            $showWrong = "block;";
-        }
-
-    }
-    
-    if($showRight == "block;" || $showWrong == "block;") $showQuestion = "none";
-    else{
-        $showQuestion = "block;";
-    }
-    /* SCORE STUFF */
-
-    $check = "SELECT * FROM score WHERE fk_id_profile = $perfil and fk_id_story = $id_story";
-    $prepare = $pdo->prepare($check);
-    $prepare->execute();
-
-    if($prepare->rowCount() == 0){
-        $showAnswered = "none;";
-    }else{
-        $showAnswered = "block;";
-        $showRight = "none;";
-        $showWrong = "none;";
-        $showQuestion = "none;";
     }
 
     /* ANSWERS */
@@ -175,9 +109,6 @@
     <?php
         require "includes/loading.php";
     ?>
-    <?php
-        include "includes/menu.php";
-    ?>
 
     <!--
         https://www.leagueoflegends.com/en-pl/news/lore/previously-on-star-guardian/ 
@@ -239,15 +170,9 @@
             <div class="el-container">
                 <div class="controls">
                     <div class="back-to-central-bt">
-                        <a href="central.php">
+                        <a href="../index.php">
                             <i class="fa-solid fa-chevron-left"></i>
                         </a>
-                    </div>
-                    <div class="back-to-central-bt" onclick="menu_appear()">
-                        <i class="fa-solid fa-bars"></i>
-                    </div>
-                    <div class="back-to-central-bt" onclick="report_story_toggle()">
-                        <i class="fa-solid fa-exclamation"></i>
                     </div>
                 </div>
                 <div class="classif">
@@ -355,11 +280,6 @@
         <section class="quest" id="quest_item">
             <div class="quest-cont">
 
-                <?php if($showAnswered == "block;"): ?>
-                    <div class="answered">
-                        <h1>Você já respondeu essa pergunta! Obrigado por sua avalicação!</h1>          
-                    </div>
-                <?php endif; ?>
                 <?php if($showQuestion == "block;"): ?>
 
                     <div class="unanswered">
@@ -369,16 +289,16 @@
                             </div>
                             <form id="question-form" method="post">
                                 <div class="options">
-                                    <div class="option" onclick="answerForm(0)">
+                                    <div class="option" onclick="answerForm()">
                                         <div class="op-lel">A</div><div class="text_op"><?php echo $answers[0]; ?></div>
                                     </div>
-                                    <div class="option" onclick="answerForm(1)">
+                                    <div class="option" onclick="answerForm()">
                                         <div class="op-lel">B</div><div class="text_op"><?php echo $answers[1]; ?></div>
                                     </div>
-                                    <div class="option" onclick="answerForm(2)">
+                                    <div class="option" onclick="answerForm()">
                                         <div class="op-lel">C</div><div class="text_op"><?php echo $answers[2]; ?></div>
                                     </div>
-                                    <div class="option" onclick="answerForm(3)">
+                                    <div class="option" onclick="answerForm()">
                                         <div class="op-lel">D</div><div class="text_op"><?php echo $answers[3]; ?></div>
                                     </div>
                                     <input type="hidden" name="id_story" value="<?php echo $id_story; ?>"><br>
@@ -389,158 +309,10 @@
                     </div>
                 
                 <?php endif; ?>
-
-                <?php if($showWrong == "block;"): ?>
-
-                    <div id="wrong" class="wrong" style="display:<?php echo $showWrong; ?>">
-                        <h1>Você Errou!</h1>
-                        <div class="bt-retry">
-                            <form action="retry_exe.php" method="post">
-                                <input type="hidden" name="__prof" value="<?php echo $id_question; ?>">
-                                <input type="submit" value="Tentar Novamente">
-                            </form>
-                        </div>
-                    </div>
-
-                <?php endif; ?>
-
-                <?php if($showRight == "block;"): ?>
-                    
-                    <div class="rating-container">
-                        <div class="rating-part">
-                            <h1>Você Acertou!</h1>
-                        </div>
-                        <div class="rating-part rating-container-input">
-                            <form id="form-container" action="score.php" method="post">
-                                <input type="number" required name="rating" id="rating-input" max="5" min="1" placeholder="Dê uma nota à história!"><br>
-                                <input type="hidden" name="id_story" value="<?php echo $id_story; ?>">
-                                <input type="hidden" name="id_question" value="<?php echo $id_question; ?>">
-                                <input type="submit" value="Enviar" id="rating-input-submit">
-                            </form>
-                        </div>
-                    </div>
-
-                <?php endif; ?>
                 
             </div>
         </section>
-
-        <?php
-
-            if($showAnswered == "block;"):
-                
-        ?>
-            
-                <section class="comments" id="comments">
-
-                <hr>
-                <div class="header_comments">
-                    <div class="initial_sec_comments">
-                        <h2 id="am_c"><?php echo $amount; ?></h2>
-                        <h2>comentário<?php if($amount != 1) echo "s"; ?></h2>
-                    </div>
-                    
-                <?php 
-
-                    if($amount > 1):
-                
-                ?>
-                    <div class="order_comments">
-                        <div class="select">
-                            <select id="type-s" onchange="comment_reorder()">
-                            <option value="1">Mais velhos</option>
-                            <option value="2">Mais novos</option>
-                            </select>
-                        </div>
-                    </div>
-                
-                <?php endif; ?>
-                </div>
-
-                
-                <form action="comment.php" method="post">
-                    <textarea required type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
-                    <input type="submit" value="Comentar">
-                </form>
-
-                <div class="comments-container" id="cont_comment">
-
-                <?php 
-                $sql = 
-                
-                "
-                
-                select comment.*, user_common.apelido as nome, profile.id_profile as cod, gadget.in_it as foto
-                
-                from comment, profile, user_common, gadget 
-                    
-                where 
-
-                comment.fk_id_profile = profile.id_profile and
-                user_common.fk_id_profile = comment.fk_id_profile and 
-                gadget.id_gadget = profile.foto and
-                gadget.type = 0 and
-                comment.fk_id_story = $id_story 
-                
-                order by comment.id_comment asc
-                
-                ";
-
-                $prepare = $pdo->prepare($sql);
-                $prepare->execute();
-                        
-                        if($prepare->rowCount() != 0):
-                            
-                        ?>
-
-                            <?php foreach ($pdo->query($sql) as $key => $value):
-
-                                if($value['cod'] == $perfil){
-                                    $class = "mine";
-                                    $classC = "mineC";
-                                    $classA = "mineA";
-                                    $del = '<a href="excluir_comment.php?id_comment='.$value['id_comment'].'"><i class="fa-solid fa-trash"></i></a>';
-                                }else{
-                                    $class = "regular";
-                                    $classC = "";
-                                    $classA = "";
-                                    $del = '<a onclick="rep('.$value['id_comment'].')"><i class="fa-solid fa-exclamation"></i></a>';
-                                }
-
-                                ?>
-
-                                <div class="comment-container <?php echo $class; ?>">
-                                        <div class="arrow <?php echo $classA; ?>"></div>
-                                        <div class="comment <?php echo $classC; ?>">
-                                        <div class="cheader">
-                                                <div class="row-c">
-                                                    <div class="pic" style="<?php echo $value['foto']; ?>">
-
-                                                    </div>
-                                                    <div class="name">
-                                                        <a href="profile.php?profile='<?php echo $value['cod']; ?>'"><?php echo $value['nome']; ?></a>
-                                                    </div>
-                                                </div>
-                                                <div class="cntr">
-                                                <?php echo $del; ?>
-                                                </div>
-                                            </div>
-                                            <div class="content-comment">
-                                            <?php echo $value['text']; ?>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                            <?php endforeach; ?>
-                        
-
-                        <?php endif; ?>
-
-                    </div>
-            </section>
-
-        <?php endif; ?>
-        
+    
     </div>
     <script>
 
@@ -579,42 +351,13 @@
                 echo '
                 function answerForm(n){
 
-                    var options = document.getElementsByClassName("text_op");
-                    var question_form = document.getElementById("question-form");
-                    newInput1 = document.createElement("input");
-                    newInput1.type = "hidden";
-                    newInput1.name = "number";
-                    newInput1.value = options[n].innerText;
-                    question_form.appendChild(newInput1);
-
-
-                    question_form.action = "resposta.php";
-                    question_form.submit();
+                    location.href = "cadastro.php"
 
                     
                 } ';
 
                 echo '
                     style.setProperty("--background", "linear-gradient(0deg, rgba(46, 46, 46, 0.808), rgba(46, 46, 46, 0.808))"); 
-                ';
-            }
-
-
-            if($showRight == "block;"){
-                echo '
-                    style.setProperty("--background", "rgba(8, 131, 14, .7)");
-                ';
-            }
-
-            if($showWrong == "block;"){
-                echo '
-                    style.setProperty("--background", "rgba(148, 8, 8, 0.815)");
-                ';
-            }
-
-            if($showAnswered == "block;"){
-                echo '
-                    document.getElementById("quest_item").style.display = "none";
                 ';
             }
 
