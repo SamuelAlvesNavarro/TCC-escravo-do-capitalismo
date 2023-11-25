@@ -26,5 +26,5 @@
         exit;
     }
 
-    header("Location:story.php?story=$id_story");
+    header("Location:story.php?story=$id_story#comments");
 ?>

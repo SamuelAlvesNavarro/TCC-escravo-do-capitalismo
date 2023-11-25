@@ -2,7 +2,7 @@
     require "includes/conexao.php";
     require "includes/online.php";
     require "includes/enviarErro.php";
-    include "includes/returnUser.php";
+    include "includes/eventos.php";
 
     $email = $_SESSION['email'];
     $perfil = returnProfileId($email);
@@ -53,6 +53,9 @@
         $prepare->execute();
 
         $_SESSION['loja'] = 2;
+
+        evento(2);
+
         header("Location:loja.php");
     }
 ?>

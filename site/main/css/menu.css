@@ -6,7 +6,7 @@
 }
 :root {
     color-scheme: light;
-    --color: #121212;
+    --color_menu: #121212;
     --all-shadow: -2px -1px 34px 10px rgba(0, 0, 0, 0.75) inset;
     --paper-color-menu: #E0C9A6;
     --table-color: #ccad7f;
@@ -24,7 +24,7 @@
   }
   .dark {
     color-scheme: dark;
-    --color: #ebebeb;
+    --color_menu: #ebebeb;
     --all-shadow: -10px -10px 100px 40px rgba(0,0,0,1) inset;
     --paper-color-menu: #606060;
     --table-color: #505050;
@@ -178,7 +178,7 @@
 .content ul li a{
     font-size: 50px;
     line-height: 40px;
-    color: var(--color);
+    color: var(--color_menu);
     transition: .2s linear;
     opacity: 0.1;
     text-decoration: none;
@@ -194,7 +194,7 @@
 }
  .content ul li a{
     font-weight: 200;
-    color: var(--color);
+    color: var(--color_menu);
     opacity: 1;
 }
 .content ul li{
@@ -249,13 +249,13 @@
     transition: all .5s ease-in-out;
     background-color: transparent !important;
     padding-right: 40px;
-    color:var(--color);
+    color:var(--color_menu);
   }
   #search-thing{
     background: transparent !important;
   }
   .input-search::placeholder{
-    color:var(--color);
+    color:var(--color_menu);
     font-size: 18px;
     letter-spacing: 2px;
     font-weight: 100;
@@ -271,7 +271,7 @@
     border-radius: 50%;
     position: absolute;
     right: 0px;
-    color:var(--color) ;
+    color:var(--color_menu) ;
     background-color:transparent;
     pointer-events: painted;  
   }

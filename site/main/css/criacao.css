@@ -130,6 +130,9 @@ body{
 /* ALL */
 body{
     overflow-x: hidden;
+    background-color: var(--paper-color);
+    background-image: url(../img/sangue.png);
+    background-repeat: repeat;
 }
 .all{
     position: relative;
@@ -137,12 +140,11 @@ body{
     box-shadow: -2px -1px 14px 4px rgba(0,0,0,0.75) inset;
     -webkit-box-shadow: -2px -1px 14px 4px rgba(0,0,0,0.75) inset;
     -moz-box-shadow: -2px -1px 14px 4px rgba(0,0,0,0.75) inset;
-    background-color: var(--paper-color);
+    
     overflow-x: hidden;
+    backdrop-filter: blur(10px);
 
-
-    background-image: url(../img/sangue.png);
-    background-repeat: repeat;
+    
 }
 
 .all pre, textarea{
@@ -244,6 +246,24 @@ i{
   font-family: oldF;
     line-height: 42px;
 
+}
+.ref_t{
+    display: flex;
+    justify-content: space-between;
+}
+.ref_t button{
+    outline: none;
+    border: none;
+    background-color: var(--table-color);
+    color: var(--color);
+    cursor: pointer;
+    padding: 5px 10px;
+    box-shadow: 2px 1px 10px 2px black;
+    font-family: oldF;
+}
+.ref_t button:hover{
+    background-color: rgba(255, 0, 0);
+    color: #ffffff;
 }
 #titleEnter{
     display: flex;

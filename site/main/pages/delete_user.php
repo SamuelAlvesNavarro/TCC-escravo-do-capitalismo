@@ -1,11 +1,34 @@
 <?php
+    include "includes/conexao.php"; 
     include "includes/online.php";
-    include "includes/conexao.php";
-    include "includes/returnUser.php";
-    
-    
+     
     $modo = $_POST['modo'];
-    $id_profile = returnProfileId($_SESSION['email']);
+    $email = $_SESSION['email'];
+
+    $sql = "SELECT fk_id_profile FROM user_common WHERE email = '$email'";
+    foreach($pdo->query($sql) as $key => $value){
+        $id_profile = $value['fk_id_profile'];
+    }
+
+    function checkAllReport(){
+        global $pdo;
+
+        $sql = "delete from report_story where fk_id_reported_story = 0 and fk_id_reporter = 0";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        $sql = "delete from report_comment where fk_id_reported = 0 and fk_id_reporter = 0";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        $sql = "delete from report_profile where fk_id_reported = 0 and fk_id_reporter = 0";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        $sql = "delete from report_profile where fk_id_reported = 0 and fk_id_reporter = 666";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+    }
 
     if($id_profile == 666){
         header("Location: index.php");
@@ -128,6 +151,33 @@
         $prepare->execute();
     }
 
-    require "includes/closing_session.php";
-    header("Location:acesso.html");
+    $sql = "update report_profile set fk_id_reported = 0 where fk_id_reported = $id_profile";
+    $prepare = $pdo->prepare($sql);
+    $prepare->execute();
+
+    $sql = "update report_story set fk_id_reporter = 0 where fk_id_reporter = $id_profile";
+    $prepare = $pdo->prepare($sql);
+    $prepare->execute();
+
+    $sql = "update report_comment set fk_id_reporter = 0 where fk_id_reporter = $id_profile";
+    $prepare = $pdo->prepare($sql);
+    $prepare->execute();
+
+    $sql = "update report_comment set fk_id_reported = 0 where fk_id_reported = $id_profile";
+    $prepare = $pdo->prepare($sql);
+    $prepare->execute();
+
+    $sql = "update report_profile set fk_id_reporter = 0 where fk_id_reporter = $id_profile";
+    $prepare = $pdo->prepare($sql);
+    $prepare->execute();
+
+    $sql = "delete from profile where id_profile = $id_profile";
+    $prepare = $pdo->prepare($sql);
+    $prepare->execute();
+
+    checkAllReport();
+
+    session_unset();
+    session_destroy();
+    header("Location: acesso.html");
 ?>

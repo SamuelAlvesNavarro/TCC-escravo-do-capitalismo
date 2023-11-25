@@ -1,6 +1,7 @@
 <?php 
-    include "includes/conexao.php";
-    include_once "includes/eventos.php";
+    require "includes/conexao.php";
+    require "includes/online.php";
+   require "includes/eventos.php";
 
     $story = $_POST['id_story'];
 
@@ -8,7 +9,7 @@
     $prepare = $pdo->prepare($sql);
     $prepare->execute();
 
-    evento(5);
+    evento(3);
 
     header("Location: writerHub.php");
 ?>

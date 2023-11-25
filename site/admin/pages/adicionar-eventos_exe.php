@@ -10,9 +10,9 @@
     $umber = $_POST['number'];
 
     if($func == 1){
-        $script = 'darMoedas('.$num.')';
+        $script = 'darMoedas('.$num.');';
     }else{
-        $script = 'darGadget('.$num.')';
+        $script = 'darGadget('.$num.');';
     }
 
     $evento = "INSERT INTO evento values(NULL, '$titulo', '$desc', '$type', '$script', 0)";

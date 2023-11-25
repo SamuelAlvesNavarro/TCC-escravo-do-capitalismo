@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Playfair+Display:ital,wght@1,400;1,500&family=Poltawski+Nowy&family=Roboto:wght@500&display=swap');
+@font-face {
+    font-family: oldF;
+    src: url(../fonts/oldnewspapertypes/OldNewspaperTypes.ttf);
+  }
+
 body{
     scroll-behavior: smooth;
 }
@@ -10,18 +16,25 @@ footer{
     padding: 20px;
     display: flex;
     flex-direction: column;
-    font-family: "Poppins";
+    font-family: oldF;
 }
 footer h2{
+    width: max-content;
     margin-bottom: 10px;
+    border-bottom: 2px solid red;
+    padding-bottom: 5px;
+    padding-right: 10px;
 }
 .first-row{
+    box-sizing: border-box;
+    padding: 30px 100px;
     width: 100%;
     position: relative;
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    justify-content: space-between;
     min-height: 200px;
+    flex-wrap: wrap;
 }
 #img-footer{
     position: absolute;
@@ -60,7 +73,13 @@ footer form input{
 .go-all-up{
     font-size: 30px;
 }
-
+.column-four i{
+    font-size: 20px;
+    padding: 5px;
+    border: 2px solid white;
+    cursor: pointer;
+    border-radius: 50%;
+}
 
 
 
@@ -73,4 +92,30 @@ footer form input{
 }
 .copyright a{
     color: white;
+}
+
+.col_footer{
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 900px) {
+    .first-row{
+        padding: 20px 30px;
+        gap: 20px 0px;
+    }
+    .col_footer{
+        width: 50%;
+        justify-content: center;
+    }
+}
+@media (max-width: 600px) {
+    .first-row{
+        padding: 10px 10px;
+        gap: 20px 0px;
+        justify-content: center;
+    }
+    .col_footer{
+        width: 100%;
+        justify-content: center;
+    }
 }

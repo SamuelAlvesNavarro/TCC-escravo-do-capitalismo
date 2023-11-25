@@ -29,6 +29,7 @@
 
             $titulo = $value['nome'];
             $rating = $value['rating'];
+            $perfil_dono = $value['fk_id_profile'];
         }
     }else{
         sendToError(14);
@@ -147,6 +148,14 @@
     /* GUARDANDO NA SESSÃO */
 
     $_SESSION['current_story'] = $id_story;
+
+
+
+    $sql = "select count(*) as num from comment where fk_id_story = $id_story";
+
+    foreach ($pdo->query($sql) as $key => $value){
+        $amount = $value['num'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -155,7 +164,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/menu.css?v=1.01">
+    <link rel="stylesheet" href="../css/menu.css?v=1.012">
     <link rel="stylesheet" href="../css/story.css?v=1.01<?php echo rand(0,10000)?>">
     <link rel="stylesheet" href="../css/scroll.css?v=1.01">
     <link rel="stylesheet" href="../css/notification.css?v=1135232">
@@ -185,6 +194,20 @@
             </form>
         </div>
     </div>
+    <div class="report_story_modal" id="report_story_modal">
+        <div class="close-rep" onclick="report_story_toggle()">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="report_story_container">
+            <form action="generateReportStory.php" method="post">
+                <h1>Escreva sua Denúncia</h1>
+                <input type="hidden" name="id_story" id="rep_s"  value="<?php echo $id_story; ?>">
+                <textarea name="reason" maxLength="255" id="" cols="30" rows="10"></textarea>
+                <br>
+                <input id="rep_st_bt" type="submit" value="Gravar Denúncia">
+            </form>
+        </div>
+    </div>
     <div id="alertWr" class="alert hide">
         <span class="fa-solid fa-circle-xmark n_icon"></span>
         <span class="msg">Você errou: <span class="grupo-n"><?php echo $perdaDeMoedas;?><i class='fa-solid fa-coins'></i></span></span>
@@ -208,7 +231,6 @@
                     </div>
                 </div>
             </div>
-            <i class="fa-solid fa-sun mode"></i>
         </section>
         <section class="menuH">
             <div class="el-container">
@@ -220,6 +242,9 @@
                     </div>
                     <div class="back-to-central-bt" onclick="menu_appear()">
                         <i class="fa-solid fa-bars"></i>
+                    </div>
+                    <div class="back-to-central-bt" onclick="report_story_toggle()">
+                        <i class="fa-solid fa-exclamation"></i>
                     </div>
                 </div>
                 <div class="classif">
@@ -258,6 +283,9 @@
             <div class="banner_in">
                 <div class="mainTitle">
                     <h1><?php echo $titulo; ?></h1>
+                    <?php
+                        if($perfil_dono != 666):
+                    ?>
                     <h4 id="autor">por: 
                         <span class="un" >
                             <?php
@@ -268,6 +296,7 @@
                             ?>
                         </span>
                     </h4>
+                    <?php endif; ?>
                     <h3 id="subTitle"><?php echo $titulo; ?></h3>
                     <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
@@ -284,6 +313,8 @@
                         $sql = "select texto from history where fk_id_page='$id_page'";
                         foreach ($pdo->query($sql) as $key => $value) {
                             $text = stripslashes($value["texto"]);
+                            $text = str_replace("<u>", "<span class='un'>", $text);
+                            $text = str_replace("</u>", "</span>", $text);
 
                             for($t = 0; $t < 10; $t++){
                                 if(!isset($paths[$t]))break;
@@ -374,7 +405,7 @@
                     
                     <div class="rating-container">
                         <div class="rating-part">
-                            <h1>Você Acertou</h1>
+                            <h1>Você Acertou!</h1>
                         </div>
                         <div class="rating-part rating-container-input">
                             <form id="form-container" action="score.php" method="post">
@@ -393,19 +424,45 @@
 
         <?php
 
-            if($showAnswered == "block;"){
+            if($showAnswered == "block;"):
+                
+        ?>
             
-                echo '<section class="comments" id="comments">
+                <section class="comments" id="comments">
 
-                <h1>Comentários</h1>
+                <hr>
+                <div class="header_comments">
+                    <div class="initial_sec_comments">
+                        <h2 id="am_c"><?php echo $amount; ?></h2>
+                        <h2>comentário<?php if($amount != 1) echo "s"; ?></h2>
+                    </div>
+                    
+                <?php 
 
+                    if($amount > 1):
+                
+                ?>
+                    <div class="order_comments">
+                        <div class="select">
+                            <select id="type-s" onchange="comment_reorder()">
+                            <option value="1">Mais velhos</option>
+                            <option value="2">Mais novos</option>
+                            </select>
+                        </div>
+                    </div>
+                
+                <?php endif; ?>
+                </div>
+
+                
                 <form action="comment.php" method="post">
                     <textarea required type="text" name="comment-text" maxlength="512" placeholder="Escreva aqui seu comentário"></textarea>
                     <input type="submit" value="Comentar">
                 </form>
-                
-                ';
 
+                <div class="comments-container" id="cont_comment">
+
+                <?php 
                 $sql = 
                 
                 "
@@ -428,14 +485,12 @@
 
                 $prepare = $pdo->prepare($sql);
                 $prepare->execute();
-    
-                echo '
-                    <div class="comments-container">
-                        ';
                         
-                        if($prepare->rowCount() != 0){
+                        if($prepare->rowCount() != 0):
                             
-                            foreach ($pdo->query($sql) as $key => $value) {
+                        ?>
+
+                            <?php foreach ($pdo->query($sql) as $key => $value):
 
                                 if($value['cod'] == $perfil){
                                     $class = "mine";
@@ -449,39 +504,40 @@
                                     $del = '<a onclick="rep('.$value['id_comment'].')"><i class="fa-solid fa-exclamation"></i></a>';
                                 }
 
-                                echo' <div class="comment-container '.$class.'">
-                                        <div class="arrow '.$classA.'"></div>
-                                        <div class="comment '.$classC.'">
+                                ?>
+
+                                <div class="comment-container <?php echo $class; ?>">
+                                        <div class="arrow <?php echo $classA; ?>"></div>
+                                        <div class="comment <?php echo $classC; ?>">
                                         <div class="cheader">
                                                 <div class="row-c">
-                                                    <div class="pic" style="'.$value['foto'].'">
+                                                    <div class="pic" style="<?php echo $value['foto']; ?>">
 
                                                     </div>
                                                     <div class="name">
-                                                        <a href="profile.php?profile='.$value['cod'].'">'.$value['nome'].'</a>
+                                                        <a href="profile.php?profile='<?php echo $value['cod']; ?>'"><?php echo $value['nome']; ?></a>
                                                     </div>
                                                 </div>
                                                 <div class="cntr">
-                                                    '.$del.'
+                                                <?php echo $del; ?>
                                                 </div>
                                             </div>
                                             <div class="content-comment">
-                                                '.$value['text'].'
+                                            <?php echo $value['text']; ?>
                                             </div>
                                         </div>
-                                    </div>';
-                            }
-                        }
+                                    </div>
 
-                        echo '
-                    
-                    </div>';
+                            <?php endforeach; ?>
+                        
 
-            }
-            
-            echo '</section>';
+                        <?php endif; ?>
 
-        ?>
+                    </div>
+            </section>
+
+        <?php endif; ?>
+        
     </div>
     <script>
 
@@ -591,7 +647,7 @@ var stars = document.getElementById("full-stars")
         }
 
     </script>
-    <script src="../js/story.js?v=1.03124"></script>
+    <script src="../js/story.js?v=1.031242<?php echo rand(0,10000)?>"></script>
     <script src="../js/menu.js"></script>
 
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/result_recover.css">
     <link rel="stylesheet" href="../css/scroll.css?v=1.09">
+    <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <title>Recuperação de Senha</title>
 </head>
 <body>

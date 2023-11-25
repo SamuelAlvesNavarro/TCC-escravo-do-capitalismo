@@ -1,44 +1,45 @@
 
+    const root = document.querySelector(":root");
+    var dark = false;
+    function switchmode(){
+        root.classList.toggle('dark');
 
-/* THEME */
+        if(dark){
+            dark = false;
+            setTheme("light");
+        }else{
+            dark = true;
+            setTheme("dark");
+        }
+    }
+    function setTheme(theme){
+        localStorage.setItem("Theme", JSON.stringify(theme));
+    }
+    function getTheme(){
+        let theme = JSON.parse(localStorage.getItem("Theme"));
 
-var toggle = document.getElementsByClassName("mode");
-const root = document.querySelector(":root");
-var dark = false;
-toggle[0].addEventListener('click', switchmode)
+        if(theme == "dark"){
+            switchmode();
+        }
+    }
 
-function switchmode(){
-    root.classList.toggle('dark');
+    getTheme()
 
-    if(dark){
-        toggle[0].classList.remove('fa-moon');
-        toggle[0].classList.remove('fa-solid');
-        toggle[0].classList.add('fa-sun');
-        toggle[0].classList.add('far');
-        dark = false;
-        setTheme("light");
-    }else{
-        dark = true;
-        setTheme("dark");
-        toggle[0].classList.remove('fa-sun');
-        toggle[0].classList.remove('far');
-        toggle[0].classList.add('fa-moon');
-        toggle[0].classList.add('fa-solid');
+
+function comment_reorder(){
+    var type = document.getElementById("type-s").value;
+
+    if(type == "1"){
+        document.getElementById("cont_comment").style.flexDirection = "column"
+    }else if(type == "2"){
+        document.getElementById("cont_comment").style.flexDirection = "column-reverse"
     }
 }
-function setTheme(theme){
-    localStorage.setItem("Theme", JSON.stringify(theme));
+/* REPORT STORY */
+
+function report_story_toggle(){
+    document.getElementById("report_story_modal").classList.toggle("appear_report_story");
 }
-function getTheme(){
-    let theme = JSON.parse(localStorage.getItem("Theme"));
-
-    if(theme == "dark"){
-        switchmode();
-    }
-}
-
-
-getTheme();
 /* REST */  
 
 

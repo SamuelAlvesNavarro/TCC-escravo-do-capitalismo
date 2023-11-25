@@ -33,7 +33,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/corrigir.css">
+    <link rel="stylesheet" href="../css/corrigir.css?v=<?php echo rand(0,1000); ?>">
     <title>Corrigir</title>
 </head>
 <body>
@@ -54,9 +54,9 @@
         <h2><input class='input-title' type="text" name="nome" value="<?php echo $title;?>"></h2>
         <br><br>
         <div class="text container">
-            <div class="row">
-                <?php echo "<textarea name='story' id='textarea-story' class='text-area-story col-6'>".$text."</textarea>"; ?>
-                <div class="to-show col-6">
+            <div>
+                <?php echo "<textarea name='story' id='textarea-story' class='text-area-story col-12'>".$text."</textarea>"; ?>
+                <div class="to-show col-12">
                     <pre id="pre-history">
                         <?php echo $text; ?>
                     </pre>
@@ -279,6 +279,8 @@
             theForm.submit();
 
         }
+
+        addTexto()
     </script> 
 </body>
 </html>
