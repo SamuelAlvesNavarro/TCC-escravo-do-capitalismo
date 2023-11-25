@@ -3,7 +3,7 @@
             padding: 20px;
             position: fixed;
             top: 0;
-            right: 50px;
+            right: 40px;
             font-size: 30px;
             background: #121212;
             z-index: 1000;

@@ -93,13 +93,7 @@
     }
 
 
-    /* QUARENTENA */
-    echo '
-        <form method="post" action="programaticos/quarentena.php">
-            <input type="hidden" name="id_story" value="'.$id_story.'"><br>
-            <button>Quarentena</button>
-        </form>
-    ';
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -115,6 +109,7 @@
     <?php
         require "includes/menu.php";
     ?>
+    
     <div class="all transi" id="all">
         <div id="sideBar" class="sideBar">
             <div class="container">
@@ -268,6 +263,11 @@
                             </div>  
                         </div>';
                 ?>
+                <?php /* QUARENTENA */ ?>
+                <form method="post" action="programaticos/quarentena.php">
+                    <input type="hidden" name="id_story" value="<?php echo $id_story; ?>"><br>
+                    <button style="background-color: red; padding: 10px; float:right; margin-right:30px; cursor:pointer;">Quarentena</button>
+                </form>
             </div>
         </div>
     </div>
