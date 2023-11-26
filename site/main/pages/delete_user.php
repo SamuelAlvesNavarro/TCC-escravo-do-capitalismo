@@ -35,29 +35,16 @@
         exit;
     }
 
-    if($modo){
+    function deleteStory($id_story){
+        global $pdo;
 
-
-        $story = "SELECT id_story FROM story WHERE fk_id_profile = $id_profile";
-        foreach($pdo->query($story) as $key => $value){
-            $id_story = $value['id_story'];
-        }
-
-        // PASSA HISTORITO
-        $passaHistory = "UPDATE story SET fk_id_profile = 666 WHERE id_story = '$id_story'";
-        $prepare = $pdo->prepare($passaHistory);
+        $sql = "update report_story set fk_id_reported_story = 0 where fk_id_reported_story = $id_story";
+        $prepare = $pdo->prepare($sql);
         $prepare->execute();
 
-        //DELETE
-        $sql = "DELETE FROM profile WHERE id_profile = $id_profile";
-        $prepare = $pdo->prepare($sql);
-        $prepare->execute();        
-
-    }else{
-
-        $sql = "SELECT id_story FROM story WHERE fk_id_profile = $id_profile";
-        foreach($pdo->query($sql) as $key => $value){
-            $id_story = $value['id_story'];
+        $sql = "select * from comment where fk_id_story = $id_story";
+        foreach ($pdo->query($sql) as $key => $value){
+            deleteComment($value['id_comment']);
         }
 
         function returnIdPage($id_story){
@@ -70,7 +57,7 @@
             }
             // Coletando id_page
         }
-
+    
         function delImage($id_story){
             global $pdo;
     
@@ -83,72 +70,92 @@
     
             // COLETANDO ID_IMAGE EM FORMA DE ARRAY
             $image = "SELECT * FROM images WHERE fk_id_page = '$id_page'";
+            $img = array();
             foreach ($pdo->query($image) as $key => $value){
-                $img[$key] = $value['id_image'];
+                array_push($img, $value['id_image']);
             }
     
             //APAGANDO CADA DAS IMAGENS POR VEZ
-                for($i = 0; $i < $num; $i++){            
-                    $img = $img[$i];
+            for($i = 0; $i < $num; $i++){            
+                $img2 = $img[$i];
     
-                    if($num == 1){
-                        
-                        $path = "SELECT path FROM images WHERE id_image = '$img'";
-                        foreach($pdo->query($path) as $key => $value){
-                            $caminho = $value['path'];
+                $path = "SELECT path FROM images WHERE id_image = '$img2'";
+                foreach($pdo->query($path) as $key => $value){
+                    $caminho_cru = $value['path'];
+                    $caminho = $value['path'];
     
-                            $delImg = "DELETE FROM images WHERE id_image = '$img'";
-                            $prepare = $pdo->prepare($delImg);
-                            $prepare->execute();
+                    unlink($caminho);
     
-                            $delPage = "DELETE FROM page WHERE id_page = '$id_page' and type = 1";
-                            $prepare = $pdo->prepare($delPage);
-                            $prepare->execute();
+                    $del = "DELETE FROM images WHERE id_image = '$img2'";
+                    $prepare = $pdo->prepare($del);
+                    $prepare->execute();
     
-                            $destroy_img = $caminho;
-                            unlink($destroy_img);
-    
-                            $caminho_parts = explode("/", $caminho);
-                            unset($caminho_parts[3]);
-                            $caminhos_parts = array($caminho_parts[0], $caminho_parts[1], $caminho_parts[2]);
-                            $caminho = implode("/", $caminhos_parts);
-
-                            rmdir($caminho);
-    
-                        } 
-    
-                    }else{
-    
-                        $path = "SELECT path FROM images WHERE id_image = '$img'";
-                        foreach($pdo->query($path) as $key => $value){
-                            $caminho = $value['path'];
-    
-                            $caminho = '../../main/pages/'.$caminho;
-    
-                            unlink($caminho);
-    
-                            $del = "DELETE FROM images WHERE id_image = '$img'";
-                            $prepare = $pdo->prepare($del);
-                            $prepare->execute();
-    
-                        }
-                    }
+                }
             }
+    
+            $caminho_parts = explode("/", $caminho_cru);
+            $caminho = "../img-story/".$caminho_parts[2];
+            
+            rmdir($caminho);
         }
+    
         $id_page = returnIdPage($id_story);
         $images = "SELECT * FROM images WHERE fk_id_page = '$id_page'";
         $count = "SELECT COUNT(*) as numb FROM images WHERE fk_id_page = '$id_page'";
         foreach ($pdo->query($count) as $key => $value){
             $num = $value['numb'];
         }
-
+    
         for($i = 0; $i < $num; $i++){
             delImage($id_story);
+            break;
         }
+    
+        $delStory = "DELETE FROM story WHERE id_story = '$id_story'";
+        $prepare = $pdo->prepare($delStory);
+        $prepare->execute();
 
-        $sql = "DELETE FROM profile WHERE id_profile = $id_profile";
+        checkAllReport();
+    }
+    function deleteComment($id_comment){
+
+        global $pdo;
+
+        $sql = "update report_comment set fk_id_reported = 0 where fk_id_reported = $id_comment";
         $prepare = $pdo->prepare($sql);
         $prepare->execute();
+
+        $sql = "delete from comment where id_comment = $id_comment";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();
+
+        checkAllReport();
+    }
+
+    if($modo){
+
+
+        $story = "SELECT id_story FROM story WHERE fk_id_profile = $id_profile";
+        foreach($pdo->query($story) as $key => $value){
+            $id_story = $value['id_story']; 
+            
+            $passaHistory = "UPDATE story SET fk_id_profile = 666 WHERE id_story = '$id_story'";
+            $prepare = $pdo->prepare($passaHistory);
+            $prepare->execute();
+        }
+
+        //DELETE
+        $sql = "DELETE FROM profile WHERE id_profile = $id_profile";
+        $prepare = $pdo->prepare($sql);
+        $prepare->execute();        
+
+    }else{
+
+        $sql = "SELECT id_story FROM story WHERE fk_id_profile = $id_profile";
+        foreach($pdo->query($sql) as $key => $value){
+            $id_story = $value['id_story'];
+            deleteStory($id_story);
+        }
     }
 
     $sql = "update report_profile set fk_id_reported = 0 where fk_id_reported = $id_profile";
