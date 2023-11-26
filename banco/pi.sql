@@ -6,7 +6,7 @@ use pi;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23/11/2023 às 20:48
+-- Tempo de geração: 25/11/2023 às 22:53
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `nome`, `email`, `senha`) VALUES
-(1, 'Davi', 'davi.ana145@gmail.com', '1234');
+(1, 'Davi', 'admin@gmail.com', 'admin1234');
 
 -- --------------------------------------------------------
 
@@ -62,10 +62,10 @@ CREATE TABLE `answer` (
 --
 
 INSERT INTO `answer` (`id_answer`, `fk_id_question`, `text`, `status`) VALUES
-(13, 4, 'A mansão era habitada por um assassino em série e apenas uma morte poderia quebrar a maldição.', 0),
-(14, 4, 'A mansão era amaldiçoada por um espírito vingativo que exigia o sacrifício de uma pessoa inocente.', 1),
-(15, 4, 'A mansão não era assombrada.', 0),
-(16, 4, 'A mansão era o esconderijo de um tesouro amaldiçoado que precisava ser devolvido ao seu lugar.', 0);
+(1, 1, 'A mansão era habitada por um assassino em série e apenas uma morte poderia quebrar a maldição.', 0),
+(2, 1, 'A mansão era amaldiçoada por um espírito vingativo que exigia o sacrifício de uma pessoa inocente.', 1),
+(3, 1, 'A mansão não era assombrada.', 0),
+(4, 1, 'A mansão era o esconderijo de um tesouro amaldiçoado que precisava ser devolvido ao seu lugar.', 0);
 
 -- --------------------------------------------------------
 
@@ -78,17 +78,6 @@ CREATE TABLE `ban` (
   `user_email` varchar(255) NOT NULL,
   `date_ban` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `ban`
---
-
-INSERT INTO `ban` (`id_ban`, `user_email`, `date_ban`) VALUES
-(1, 'fdggf134@gmail.com', '2023-10-03'),
-(2, 'fdggf@gmail', '2023-10-03'),
-(3, 'fdggf1@gmail', '2023-10-03'),
-(4, 'g@gmail.com', '2023-10-16'),
-(5, 'd@gmail.com', '2023-10-16');
 
 -- --------------------------------------------------------
 
@@ -120,11 +109,8 @@ CREATE TABLE `compra` (
 --
 
 INSERT INTO `compra` (`fk_id_profile`, `fk_id_gadget`, `data`) VALUES
-(1, 1, '2023-09-24'),
-(1, 2, '2023-09-24'),
-(1, 25, '2023-10-08'),
-(1, 34, '2023-09-24'),
-(1, 65, '2023-09-24');
+(666, 1, '2023-09-24'),
+(666, 2, '2023-09-24');
 
 -- --------------------------------------------------------
 
@@ -225,47 +211,13 @@ CREATE TABLE `gadget` (
 INSERT INTO `gadget` (`id_gadget`, `type`, `preco`, `g_status`, `nome`, `in_it`) VALUES
 (1, 0, 0, 1, 'Novo Usuário Foto', 'background-image: url(../profile-gadgets/pc-profile/new-user.jpg);'),
 (2, 3, 0, 1, 'Novo Usuário Fundo', 'background-image: url(../profile-gadgets/bc-profile/new-user.jpg);'),
-(25, 0, 25, 1, 'Bolsonaro', 'background-image: url(../profile-gadgets/pc-profile/bonoro.jpg);'),
-(26, 0, 25, 1, 'Cupcakke', 'background-image: url(../profile-gadgets/pc-profile/cucapkke.jpg);'),
-(27, 0, 25, 1, 'Taylor Swift', 'background-image: url(../profile-gadgets/pc-profile/taylor.jpg);'),
-(28, 0, 25, 1, 'Árvore Sábia', 'background-image: url(../profile-gadgets/pc-profile/wise-tree.jpg);'),
-(29, 0, 10, 1, 'Muliro', 'background-image: url(../profile-gadgets/pc-profile/murilinho.jpg);'),
-(30, 3, 15, 1, 'Cálcio', 'background-image: url(../profile-gadgets/bc-profile/cassio.jpg);'),
-(31, 3, 30, 1, 'Slay', 'background-image: url(../profile-gadgets/bc-profile/slay-lacre.jpg);'),
-(32, 3, 20, 1, 'Nicki Minaj Macha Era', 'background-image: url(../profile-gadgets/bc-profile/nicki.jpg);'),
-(33, 3, 20, 1, 'Ariana Small', 'background-image: url(../profile-gadgets/bc-profile/ariana.jpg);'),
-(34, 0, 0, 1, 'Alê', 'background-image: url(../profile-gadgets/bc-profile/ale.jpg);'),
-(35, 0, 0, 1, 'Ana Julya', 'background-image: url(../profile-gadgets/pc-profile/anaJ.jpg);'),
-(36, 0, 0, 1, 'André', 'background-image: url(../profile-gadgets/pc-profile/andre.png);'),
-(37, 0, 0, 1, 'Beatriz', 'background-image: url(../profile-gadgets/pc-profile/beatriz.jpg);'),
-(38, 0, 0, 1, 'Bianca', 'background-image: url(../profile-gadgets/pc-profile/bianca.jpeg);'),
-(39, 0, 0, 1, 'Bruno', 'background-image: url(../profile-gadgets/pc-profile/bruno.jpg);'),
-(40, 0, 0, 1, 'Caique Brito', 'background-image: url(../profile-gadgets/pc-profile/caique.jpg);'),
-(41, 0, 0, 1, 'Carol', 'background-image: url(../profile-gadgets/pc-profile/carol.png);'),
-(42, 0, 0, 1, 'Elô', 'background-image: url(../profile-gadgets/pc-profile/elo.jpeg);'),
-(43, 0, 0, 1, 'Noc na bush', 'background-image: url(../profile-gadgets/pc-profile/felipe.jpeg);'),
-(44, 0, 0, 1, 'Fravio', 'background-image: url(../profile-gadgets/pc-profile/flavio.jpg);'),
-(45, 0, 0, 1, 'Arlindo', 'background-image: url(../profile-gadgets/pc-profile/arlindo.jpg);'),
-(46, 0, 0, 1, 'Silva', 'background-image: url(../profile-gadgets/pc-profile/silva.jpg);'),
-(47, 0, 0, 1, 'Maia', 'background-image: url(../profile-gadgets/pc-profile/maia.jpg);'),
-(48, 0, 0, 1, 'Guilherme', 'background-image: url(../profile-gadgets/pc-profile/cintra.jpeg);'),
-(49, 0, 0, 1, 'i', 'background-image: url(../profile-gadgets/pc-profile/igo.jpg);'),
-(50, 0, 0, 1, 'Geeeeeeente', 'background-image: url(../profile-gadgets/pc-profile/kayc.jpg);'),
-(51, 0, 0, 1, 'Kevão', 'background-image: url(../profile-gadgets/pc-profile/kevin.jpeg);'),
-(52, 0, 0, 1, 'Fazendeiro', 'background-image: url(../profile-gadgets/pc-profile/dona.jpeg);'),
-(53, 0, 0, 1, 'Verassimo', 'background-image: url(../profile-gadgets/pc-profile/verasmo.jpg);'),
-(54, 0, 0, 1, 'Luan', 'background-image: url(../profile-gadgets/pc-profile/luan.jpg);'),
-(55, 0, 0, 1, 'Méris', 'background-image: url(../profile-gadgets/pc-profile/meris.png);'),
-(56, 0, 0, 1, 'Mário', 'background-image: url(../profile-gadgets/pc-profile/mario.png);'),
-(57, 0, 0, 1, 'Albuquerque', 'background-image: url(../profile-gadgets/pc-profile/albu.jpg);'),
-(58, 0, 0, 1, 'Sordado', 'background-image: url(../profile-gadgets/pc-profile/soldado.jpg);'),
-(59, 0, 0, 1, 'Akali na base', 'background-image: url(../profile-gadgets/pc-profile/inoe.png);'),
-(60, 0, 0, 1, 'Lacrador Profissional', 'background-image: url(../profile-gadgets/pc-profile/lacre.jpg);'),
-(61, 0, 0, 1, 'Presente', 'background-image: url(../profile-gadgets/pc-profile/presente.jpeg);'),
-(62, 0, 0, 1, 'Alemão', 'background-image: url(../profile-gadgets/pc-profile/rafa.jpg);'),
-(63, 0, 0, 1, 'Renan', 'background-image: url(../profile-gadgets/pc-profile/renan.jpg);'),
-(64, 0, 0, 1, 'Cancelado', 'background-image: url(../profile-gadgets/pc-profile/gomes.jpg);'),
-(65, 0, 50, 1, 'Premiado', 'background-image: url(../profile-gadgets/pc-profile/rachel.jpg);');
+(3, 0, 15, 1, 'Palhaço', 'background-image: url(../profile-gadgets/pc-profile/palhaco.jpg);'),
+(4, 0, 55, 1, 'Bruxa', 'background-image: url(../profile-gadgets/pc-profile/bruxa.jpg);'),
+(5, 3, 120, 1, 'Castelo Negro', 'background-image: url(../profile-gadgets/bc-profile/castelo.jpg);'),
+(6, 3, 15, 1, 'Monstro', 'background-image: url(../profile-gadgets/bc-profile/monster.webp);'),
+(7, 3, 100, 1, 'Fantasma', 'background-image: url(../profile-gadgets/bc-profile/fantasma.jpg);'),
+(8, 3, 15, 1, 'Casa Sombria', 'background-image: url(../profile-gadgets/bc-profile/dark_house.jpg);'),
+(9, 3, 60, 1, 'Policiais', 'background-image: url(../profile-gadgets/bc-profile/police.webp);');
 
 -- --------------------------------------------------------
 
@@ -284,7 +236,7 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`id_history`, `fk_id_page`, `texto`) VALUES
-(4, 8, '<div class=\'text\'>     Era uma noite escura e tempestuosa quando um grupo de cinco amigos decidiu explorar a antiga mansão abandonada, conhecida como a \"Casa dos Horrores\", na periferia da cidade. O local era envolto em lendas e histórias sinistras, mas isso só aumentava a empolgação do grupo. A mansão, de arquitetura gótica, estava <strong>mergulhada em mistério</strong> e abandonada há décadas.</div><div class=\'hr_space\'><hr></div><div class=\'text\'><h1>A Casa</h1>\r\n     Os amigos eram Mike, um cético convicto; Sarah, uma jovem destemida; Tom, o engraçadinho do grupo; Lisa, uma estudante de história obcecada com o sobrenatural; e Alex, um amante de adrenalina.</div><div class=\'img_story\'><img1></div><div class=\'text\'>\r\n     Ao adentrarem a mansão, a atmosfera ficou densa. As paredes rangiam, o cheiro de mofo era sufocante e um silêncio sepulcral dominava o lugar. Eles exploraram os quartos decadentes, repletos de móveis cobertos por lençóis empoeirados e retratos misteriosos que pareciam observá-los.\r\n     À medida que avançavam, eles começaram a ouvir sussurros inquietantes, passos silenciosos e sombras que se moviam rapidamente. O medo começou a se instalar em seus corações, mas nenhum deles queria admitir. Lisa, por outro lado, estava entusiasmada, acreditando que a mansão escondia segredos sombrios.\r\n     A primeira morte ocorreu quando Tom desapareceu de repente. Eles o procuraram por toda a mansão, mas ele tinha simplesmente sumido. Pânico se instalou no grupo. Eles discutiram sobre abandonar a mansão, mas o mau tempo os forçou a ficar. Enquanto estavam na sala de estar, um grito arrepiante ecoou de algum lugar desconhecido.\r\n     Sarah, em pânico, correu para a origem do som, mas ela também desapareceu. O grupo restante ficou aterrorizado e decidiram investigar o porão, onde suspeitavam que algo terrível estava escondido.\r\n     Ao entrarem no porão, encontraram uma sala sinistra com paredes cobertas de escritos enigmáticos e velas acesas. Em uma mesa no centro da sala, havia uma fotografia antiga que retratava a mansão como um local feliz há muitos anos. A imagem mostrava os cinco amigos, mas com um sexto membro, uma figura obscura nas sombras.</div><div class=\'img_story\'><img3></div><div class=\'text\'>\r\n     Logo, Alex foi atacado por uma força invisível, estrangulado até a morte. Ele caiu no chão, enquanto o grupo assistia horrorizado. Agora só restavam Mike e Lisa.\r\n     Em pânico, eles decidiram desvendar o mistério da mansão e encontrar uma maneira de sair. Eles seguiram os escritos nas paredes e descobriram que a mansão era assombrada por um antigo espírito vingativo, que exigia um sacrifício humano para quebrar a maldição. A fotografia indicava que o sexto membro era o alvo.\r\nLisa percebeu que ela era a única opção para ser o próximo sacrifício, mas Mike se recusou a permitir isso. Eles lutaram e, em um momento de desespero, Lisa esfaqueou Mike para se libertar e completar o sacrifício.\r\n     Ao fazê-lo, a mansão tremeu e os espíritos dos amigos mortos emergiram, agarrando Lisa e arrastando-a para as sombras. Com a maldição finalmente quebrada, a mansão começou a desmoronar. Lisa desapareceu nas trevas, enquanto a mansão desmoronava, engolindo-a junto com os segredos sombrios.</div><div class=\'img_story\'><img4></div>');
+(1, 1, '<div class=\'text\'>     Era uma noite escura e tempestuosa quando um grupo de cinco amigos decidiu explorar a antiga mansão abandonada, conhecida como a \"Casa dos Horrores\", na periferia da cidade. O local era envolto em lendas e histórias sinistras, mas isso só aumentava a empolgação do grupo. A mansão, de arquitetura gótica, estava <strong>mergulhada em mistério</strong> e abandonada há décadas.</div><div class=\'hr_space\'><hr></div><div class=\'text\'><h1>A Casa</h1>\r\n     Os amigos eram Mike, um cético convicto; Sarah, uma jovem destemida; Tom, o engraçadinho do grupo; Lisa, uma estudante de história obcecada com o sobrenatural; e Alex, um amante de adrenalina.</div><div class=\'img_story\'><img1></div><div class=\'text\'>\r\n     Ao adentrarem a mansão, a atmosfera ficou densa. As paredes rangiam, o cheiro de mofo era sufocante e um silêncio sepulcral dominava o lugar. Eles exploraram os quartos decadentes, repletos de móveis cobertos por lençóis empoeirados e retratos misteriosos que pareciam observá-los.\r\n     À medida que avançavam, eles começaram a ouvir sussurros inquietantes, passos silenciosos e sombras que se moviam rapidamente. O medo começou a se instalar em seus corações, mas nenhum deles queria admitir. Lisa, por outro lado, estava entusiasmada, acreditando que a mansão escondia segredos sombrios.\r\n     A primeira morte ocorreu quando Tom desapareceu de repente. Eles o procuraram por toda a mansão, mas ele tinha simplesmente sumido. Pânico se instalou no grupo. Eles discutiram sobre abandonar a mansão, mas o mau tempo os forçou a ficar. Enquanto estavam na sala de estar, um grito arrepiante ecoou de algum lugar desconhecido.\r\n     Sarah, em pânico, correu para a origem do som, mas ela também desapareceu. O grupo restante ficou aterrorizado e decidiram investigar o porão, onde suspeitavam que algo terrível estava escondido.\r\n     Ao entrarem no porão, encontraram uma sala sinistra com paredes cobertas de escritos enigmáticos e velas acesas. Em uma mesa no centro da sala, havia uma fotografia antiga que retratava a mansão como um local feliz há muitos anos. A imagem mostrava os cinco amigos, mas com um sexto membro, uma figura obscura nas sombras.</div><div class=\'img_story\'><img3></div><div class=\'text\'>\r\n     Logo, Alex foi atacado por uma força invisível, estrangulado até a morte. Ele caiu no chão, enquanto o grupo assistia horrorizado. Agora só restavam Mike e Lisa.\r\n     Em pânico, eles decidiram desvendar o mistério da mansão e encontrar uma maneira de sair. Eles seguiram os escritos nas paredes e descobriram que a mansão era assombrada por um antigo espírito vingativo, que exigia um sacrifício humano para quebrar a maldição. A fotografia indicava que o sexto membro era o alvo.\r\nLisa percebeu que ela era a única opção para ser o próximo sacrifício, mas Mike se recusou a permitir isso. Eles lutaram e, em um momento de desespero, Lisa esfaqueou Mike para se libertar e completar o sacrifício.\r\n     Ao fazê-lo, a mansão tremeu e os espíritos dos amigos mortos emergiram, agarrando Lisa e arrastando-a para as sombras. Com a maldição finalmente quebrada, a mansão começou a desmoronar. Lisa desapareceu nas trevas, enquanto a mansão desmoronava, engolindo-a junto com os segredos sombrios.</div><div class=\'img_story\'><img4></div>');
 
 -- --------------------------------------------------------
 
@@ -304,10 +256,10 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id_image`, `fk_id_page`, `fundo`, `path`) VALUES
-(6, 9, 0, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-1.jpg'),
-(7, 9, 1, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-2.jpg'),
-(8, 9, 0, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-3.jpg'),
-(9, 9, 0, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-4.jpg');
+(1, 2, 0, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-1.jpg'),
+(2, 2, 1, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-2.jpg'),
+(3, 2, 0, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-3.jpg'),
+(4, 2, 0, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-4.jpg');
 
 -- --------------------------------------------------------
 
@@ -347,9 +299,9 @@ CREATE TABLE `page` (
 --
 
 INSERT INTO `page` (`id_page`, `fk_id_story`, `type`, `order_p`) VALUES
-(8, 4, 0, 0),
-(9, 4, 1, 1),
-(10, 4, 2, 2);
+(1, 1, 0, 0),
+(2, 1, 1, 1),
+(3, 1, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -368,7 +320,6 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id_profile`, `foto`, `fundoPerfil`) VALUES
-(1, 65, 2),
 (666, 1, 2);
 
 -- --------------------------------------------------------
@@ -388,7 +339,7 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`id_question`, `fk_id_story`, `quest_itself`) VALUES
-(4, 4, 'Qual foi a razão pela qual a mansão era assombrada e o que era necessário para quebrar a maldição?');
+(1, 1, 'Qual foi a razão pela qual a mansão era assombrada e o que era necessário para quebrar a maldição?');
 
 -- --------------------------------------------------------
 
@@ -400,13 +351,6 @@ CREATE TABLE `question_user` (
   `fk_id_question` int(11) NOT NULL,
   `fk_id_profile` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `question_user`
---
-
-INSERT INTO `question_user` (`fk_id_question`, `fk_id_profile`) VALUES
-(4, 1);
 
 -- --------------------------------------------------------
 
@@ -425,7 +369,7 @@ CREATE TABLE `reference` (
 --
 
 INSERT INTO `reference` (`id_reference`, `fk_id_page`, `path`) VALUES
-(4, 10, 'https://chat.openai.com/');
+(1, 3, 'https://chat.openai.com/');
 
 -- --------------------------------------------------------
 
@@ -455,16 +399,6 @@ CREATE TABLE `report_profile` (
   `reason` varchar(50) DEFAULT NULL,
   `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `report_profile`
---
-
-INSERT INTO `report_profile` (`id_report`, `fk_id_reported`, `fk_id_reporter`, `reason`, `code`) VALUES
-(1, 1, 666, 'AUTO - aos esgotos: 24/09/23 09:25:16 - 14 - OBS', 2),
-(2, 1, 666, 'AUTO - aos esgotos: 08/10/23 03:17:35 - 14 - OBS', 2),
-(3, 1, 666, 'AUTO - aos esgotos: 08/10/23 03:20:54 - 6 - BAN', 3),
-(4, 1, 666, 'AUTO - aos esgotos: 08/10/23 03:21:41 - 6 - OBS', 2);
 
 -- --------------------------------------------------------
 
@@ -513,7 +447,7 @@ CREATE TABLE `story` (
 --
 
 INSERT INTO `story` (`id_story`, `font`, `nome`, `rating`, `status`, `fk_id_profile`) VALUES
-(4, 0, 'O Sacrifício na Casa dos Horrores', 3, 3, 666);
+(1, 0, 'O Sacrifício na Casa dos Horrores', 0, 3, 666);
 
 -- --------------------------------------------------------
 
@@ -537,7 +471,7 @@ CREATE TABLE `user_common` (
 --
 
 INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `moedas`) VALUES
-(1, 1, 'Apresentação', 'davi.carvalho@aluno.ifsp.edu.br', 'oNUJYEgUKJDoiQFDIVm+', 'The Boss', 400, 10025);
+(1, 666, '?????', 'historito@mail.com', 'oMEWbFUQJdW72Q==', '?????', 0, 100000);
 
 --
 -- Índices para tabelas despejadas
@@ -719,19 +653,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de tabela `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `ban`
 --
 ALTER TABLE `ban`
-  MODIFY `id_ban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_ban` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `error`
@@ -743,7 +677,7 @@ ALTER TABLE `error`
 -- AUTO_INCREMENT de tabela `error_user`
 --
 ALTER TABLE `error_user`
-  MODIFY `id_error` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_error` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `evento`
@@ -755,19 +689,19 @@ ALTER TABLE `evento`
 -- AUTO_INCREMENT de tabela `gadget`
 --
 ALTER TABLE `gadget`
-  MODIFY `id_gadget` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_gadget` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `history`
 --
 ALTER TABLE `history`
-  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `mods`
@@ -779,7 +713,7 @@ ALTER TABLE `mods`
 -- AUTO_INCREMENT de tabela `page`
 --
 ALTER TABLE `page`
-  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `profile`
@@ -791,25 +725,25 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT de tabela `question`
 --
 ALTER TABLE `question`
-  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `reference`
 --
 ALTER TABLE `reference`
-  MODIFY `id_reference` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_reference` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `report_comment`
 --
 ALTER TABLE `report_comment`
-  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `report_profile`
 --
 ALTER TABLE `report_profile`
-  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `report_story`
@@ -821,19 +755,19 @@ ALTER TABLE `report_story`
 -- AUTO_INCREMENT de tabela `score`
 --
 ALTER TABLE `score`
-  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `story`
 --
 ALTER TABLE `story`
-  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `user_common`
 --
 ALTER TABLE `user_common`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para tabelas despejadas

@@ -10,6 +10,9 @@
     <title>Manual de Uso - Histórias Assombrosas</title>
 </head>
 <body>
+    <?php
+        require "includes/loading.php";
+    ?>
     <div class="main">
         <div class="grandTitle" id="geral">
             Uso geral do site

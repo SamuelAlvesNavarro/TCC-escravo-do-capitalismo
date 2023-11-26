@@ -25,7 +25,7 @@
     $topProfs = array();
     $topUsers = array();
     $i =  0;
-    $sql = "select count(*) as amount, story.fk_id_profile, user_common.apelido from story, user_common where story.fk_id_profile = user_common.fk_id_profile and story.status = 3 group by story.fk_id_profile order by amount desc limit 3;";
+    $sql = "select count(*) as amount, story.fk_id_profile, user_common.apelido from story, user_common where story.fk_id_profile = user_common.fk_id_profile and story.status = 3 and user_common.fk_id_profile != 666 group by story.fk_id_profile order by amount desc limit 3;";
     foreach($pdo->query($sql) as $key => $value){
         $topProfs[$i] = $value['fk_id_profile'];
         $topUsers[$i] = $value['apelido'];
@@ -48,6 +48,9 @@
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
 </head>
 <body>
+    <?php
+        require "includes/loading.php";
+    ?>
     <?php
         include "includes/menu.php";
     ?>

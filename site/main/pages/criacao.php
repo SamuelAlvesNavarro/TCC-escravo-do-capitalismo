@@ -23,6 +23,9 @@
     <title>Criação de Histórias</title>
 </head>
 <body id="body">
+<?php
+        require "includes/loading.php";
+    ?>
     <?php
         require "includes/menu.php";
     ?>

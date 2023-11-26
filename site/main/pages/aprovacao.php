@@ -35,6 +35,8 @@
         foreach ($pdo->query($story) as $key => $value) {
 
             $titulo = $value['nome'];
+
+            $perfil_dono = $value['fk_id_profile'];
         }
 
     }else{
@@ -81,6 +83,22 @@
         $i++;
     }
 
+     /* PEGANDO LINKS */
+
+     $paths = array();
+
+     $id_page = RetornarIdPage($id_story, 1);
+     $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
+ 
+     $prepare = $pdo->prepare($sql);
+     $prepare -> execute();
+ 
+     if($prepare -> rowCount() > 0){
+         foreach ($pdo->query($sql) as $key => $value){
+             array_push($paths, $value['path']);
+         }
+     }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -97,6 +115,9 @@
 </head>
 <body>
     <?php
+        require "includes/loading.php";
+    ?>
+    <?php
         include "includes/menu.php";
     ?>
     <div class="all">
@@ -108,7 +129,6 @@
                     </div>
                 </div>
             </div>
-            <i class="fa-solid fa-sun mode"></i>
         </section>
         <section class="menuH">
             <div class="el-container">
@@ -151,13 +171,16 @@
                     break;
                 }
             }else{
-                $banner_path = 'background-image: url(../img/kid-spider.jpg)';
+                $banner_path = 'background-image: url(../img/general-bc.jpg)';
             }
         ?>
         <section class="banner" id="banner" style="<?php echo $banner_path ?>">
             <div class="banner_in">
                 <div class="mainTitle">
                     <h1><?php echo $titulo; ?></h1>
+                    <?php
+                        if($perfil_dono != 666):
+                    ?>
                     <h4 id="autor">por: 
                         <span class="un" >
                             <?php
@@ -168,6 +191,7 @@
                             ?>
                         </span>
                     </h4>
+                    <?php endif; ?>
                     <h3 id="subTitle"><?php echo $titulo; ?></h3>
                     <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
@@ -184,51 +208,40 @@
                         $sql = "select texto from history where fk_id_page='$id_page'";
                         foreach ($pdo->query($sql) as $key => $value) {
                             $text = stripslashes($value["texto"]);
+                            $text = str_replace("<u>", "<span class='un'>", $text);
+                            $text = str_replace("</u>", "</span>", $text);
+
+                            for($t = 0; $t < 10; $t++){
+                                if(!isset($paths[$t]))break;
+                                $text = str_replace("<img".($t+1).">", "<img src=".$paths[$t].">", $text);
+                            }
+
                             echo "<pre>".$text."</pre>";
+
                         }
+                        
+                        
                     ?>
                 </div>
                 <div class="pg refs">
-                    <h1>Referências</h1>
-                    <?php
-                        $id_page = RetornarIdPage($id_story, 2);
-                        $ref = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
-                        $prepare = $pdo->prepare($ref);
-                        $prepare -> execute();
-
-                        if($prepare -> rowCount() > 0){
-                            foreach ($pdo->query($ref) as $key => $value) {
-                                echo "→ <a href ='". $value['path'] ."'>". $value['path'] ."</a><br>";
-                            }          
-                        }
-                    ?>
-                </div>
+                    <div class="hr_div">
+                        <hr>
+                    </div>
+                    <div class="text">
                         <?php
-
-                            $id_page = RetornarIdPage($id_story, 1);
-                            $sql = "SELECT path FROM images WHERE fk_id_page='$id_page'";
-
-                            $prepare = $pdo->prepare($sql);
+                            $id_page = RetornarIdPage($id_story, 2);
+                            $ref = "SELECT path FROM reference WHERE fk_id_page='$id_page'";
+                            $prepare = $pdo->prepare($ref);
                             $prepare -> execute();
 
-                            if($prepare -> rowCount() > 0): ?>
-
-                
-                                <div class="pg images">
-                                    <h1>Imagens</h1>
-                                    <div class="cont-img">
-            
-                                    <?php foreach ($pdo->query($sql) as $key => $value): ?>
-                                        
-                                        <img src="<?php echo $value['path'] ?>">
-
-                                    <?php endforeach; ?>
-                                    
-                                    </div>
-                                </div>
-                        
-                            <?php endif; ?>
-                            
+                            if($prepare -> rowCount() > 0){
+                                foreach ($pdo->query($ref) as $key => $value) {
+                                    echo "→ <a href ='". $value['path'] ."'>". $value['path'] ."</a><br>";
+                                }          
+                            }
+                        ?> 
+                    </div>
+                </div>
             </div>
         </section>
         <section class="quest" id="quest_item">
@@ -262,7 +275,7 @@
             </div>
         </section>
     </div>
-    <script src="../js/aprovacao.js?v=1.03124"></script>
+    <script src="../js/aprovacao.js?v=1.031242"></script>
     <script src="../js/menu.js"></script>
 
 

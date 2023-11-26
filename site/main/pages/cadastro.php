@@ -42,7 +42,7 @@
                    <div class="inputArea">
                         <div class="prev"></div>
                         <div class="label">Nome:</div>
-                        <input type="text" required name="name" id="nome" class='inp-text' maxLength="50" placeholder="Escreva aqui seu nome">
+                        <input type="text" required minlength="8" name="name" id="nome" class='inp-text' maxLength="50" placeholder="Escreva aqui seu nome">
                         <!--<div class="res">
                             mpty
                         </div>-->
@@ -58,7 +58,7 @@
                    <div class="inputArea">
                         <div class="prev"></div>
                         <div class="label">Apelido: </div>
-                        <input type="text" required name="apelido" id="apelido" class='inp-text' maxLength="15" placeholder="Escreva aqui seu apelido">
+                        <input type="text" required minlength="8" name="apelido" id="apelido" class='inp-text' maxLength="15" placeholder="Escreva aqui seu apelido">
                         <!--<div class="res">
                             mpty
                         </div>-->
@@ -74,7 +74,7 @@
                    <div class="inputArea">
                         <div class="prev"></div>
                         <div class="label">Seu melhor email: </div>
-                        <input type="email" required name="email" id="email" class='inp-text' maxLength="50" placeholder="Escreva aqui seu email">
+                        <input type="email" required minlength="8" name="email" id="email" class='inp-text' maxLength="50" placeholder="Escreva aqui seu email">
                         <!--<div class="res">
                             mpty
                         </div>-->
@@ -90,7 +90,7 @@
                    <div class="inputArea">
                         <div class="prev"></div>
                         <div class="label">Sua senha: </div>
-                        <input type="password" required name="senha" id="senha" class='inp-text' maxLength="20" placeholder="Escreva aqui sua senha">
+                        <input type="password" minlength="8" required name="senha" id="senha" class='inp-text' maxLength="20" placeholder="Escreva aqui sua senha">
                         <!--<div class="res">
                             mpty
                         </div>-->
@@ -106,7 +106,7 @@
                    <div class="inputArea">
                         <div class="prev"></div>
                         <div class="label">Confirme sua senha: </div>
-                        <input type="password" required name="confirmarsenha" id="Confsenha" class='inp-text' maxLength="50" placeholder="Confirmar senha">
+                        <input type="password" minlength="8" required name="confirmarsenha" id="Confsenha" class='inp-text' maxLength="50" placeholder="Confirmar senha">
                         <!--<div class="res">
                             mpty
                         </div>-->

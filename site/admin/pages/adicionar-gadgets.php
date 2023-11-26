@@ -41,7 +41,10 @@
         <input type="number" name="preco" id="" required class="form-control"><br><br>
 
         <label class="form-label">Tipo: </label>
-        <input type="number" name="type" id="" required class="form-control" placeholder="Os tipos são 1 ou 3"><br><br>
+        <select name="type" id="" class="form-control">
+            <option value="0">Foto</option>
+            <option value="3">Fundo</option>
+        </select><br><br>
         <button class="btn btn-primary">Enviar</button>
     </form>
 

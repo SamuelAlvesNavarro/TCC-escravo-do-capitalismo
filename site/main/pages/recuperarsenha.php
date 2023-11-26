@@ -11,6 +11,9 @@
     <title>Recuperação de Senha</title>
 </head>
 <body>
+    <?php
+        require "includes/loading.php";
+    ?>
     <div class="go-back">
         <a href="acesso.html"><i class="fa-solid fa-chevron-left"></i></a>
     </div>

@@ -3,6 +3,7 @@
     require "includes/enviarErro.php";
     require "includes/conexao.php";
     require 'includes/checarTexto.php';
+    require "includes/loading.php";
     global $pdo;
 
     /* FILTRAR CÓDIGO HTML E PHP */

@@ -11,6 +11,8 @@
 <body>
 <?php
 
+    require "includes/values.php";
+
 if(isset($_POST['submit'])){
     require "includes/conexao.php";
 
@@ -27,13 +29,12 @@ if(isset($_POST['submit'])){
     if(isset($check)){
         $sql = "SELECT * FROM user_common WHERE email = '". $_POST['email'] ."'";
         foreach($pdo->query($sql) as $key => $value){
-            $password = $value['senha'];
+            $password = openssl_decrypt($value['senha'], $ciphering, $decryption_key, $options, $decryption_iv);
             $apelido = $value['apelido'];
         }
 
         $subject = "Não responda esse email";
-        $body = "Olá $apelido, não sabemos se é você tentando recuperar a senha da sua conta. Se não for, logue no site e mude sua senha, visando segurança. Se for você, aqui está: $password
-        De todo o modo, recomendamos que você troque sua senha";
+        $body = "Olá $apelido, não sabemos se é você tentando recuperar a senha da sua conta. Caso não seja você, recomendamos que logue no site e mude seu email de cadastro, por fins de segurança. Sua senha atual é: $password.";
         $email = $_POST['email'];
 
         require "includes/envio.php";

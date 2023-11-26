@@ -110,6 +110,9 @@
     <title>Perfil</title>
 </head>
 <body>
+    <?php
+        require "includes/loading.php";
+    ?>
     <?php 
         require "includes/menu.php";
     ?>

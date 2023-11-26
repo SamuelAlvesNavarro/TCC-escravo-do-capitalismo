@@ -2353,7 +2353,7 @@ l-21 20 1 -29z"/>
                         As histórias postadas pelos usuários são originais e chequadas, visando que apenas as melhores cheguem aos nossos assíduos leitores.
                         </p>
                         <p class="p">
-                           <a class="try-link" href="read.php">Ler uma História &rArr;</a>    
+                           <a class="try-link" href="pages/read.php">Ler uma História &rArr;</a>    
                         </p>
                     </div>
                 </div>
@@ -2385,7 +2385,7 @@ l-21 20 1 -29z"/>
                                     <tbody>
                                         <?php
                                             require "../conexao.php";
-                                            $sql = 'select pontos_leitor, nome from user_common order by pontos_leitor desc limit 5';
+                                            $sql = 'select pontos_leitor, nome from user_common where fk_id_profile != 666 order by pontos_leitor desc limit 5';
                                             $rank = 1;
                                             foreach ($pdo->query($sql) as $key => $value) {
 

@@ -12,10 +12,10 @@
         $senha = null;
         $confirmarsenha = null;
 
-        $nome = $_POST["name"];
-        $apelido = $_POST["apelido"];
-        $email = $_POST["email"];
-        $senha = $_POST["senha"];
+        $nome = trim($_POST["name"]);
+        $apelido = trim($_POST["apelido"]);
+        $email = trim($_POST["email"]);
+        $senha = trim($_POST["senha"]);
 
         if(strlen($senha) > 20){
             sendToError(42);
@@ -34,7 +34,7 @@
             exit;
         }
 
-        $confirmarsenha = $_POST["confirmarsenha"];
+        $confirmarsenha = trim($_POST["confirmarsenha"]);
 
         
         if(!valido($email)){
