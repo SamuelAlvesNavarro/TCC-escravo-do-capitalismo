@@ -8,13 +8,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>Adicionar gadgets</title>
+    <title>Adicionar evento</title>
 </head>
 <body data-bs-theme="dark">
     <?php
         include "includes/menu.php";
     ?>
-    <h1 align="center">Adicionar Novo Gadget</h1>
+    <h1 align="center">Adicionar Novo Evento</h1>
     <br>
     <form action="adicionar-eventos_exe.php" method="post" class="container border border-2 table-bordered p-4" style="width: 50%;">
         <label class="form-label">Titulo:</label>

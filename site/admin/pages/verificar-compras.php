@@ -19,7 +19,7 @@
 
     <h1 align="center">Tabela de compra de gadgets</h1>
     <form action="#" method="get">
-        <input type="email" name="email" id="" value="">
+        <input class="mt-3 mb-3 ms-3" type="email" name="email" id="" value="">
         <input type="submit" value="mandar" class="btn btn-search">
     </form>
     <table align="center" class="table table-dark table-striped" border="2">

@@ -17,11 +17,11 @@
         require "includes/menu.php";
     ?>
 
-    <h1 align="center">Centro de Gadgets</h1>
+    <h1 align="center">Centro de Eventos</h1>
 
-    <a href="adicionar-eventos.php"><button class="btn btn-light">Adicionar novo Evento</button></a>
+    <a href="adicionar-eventos.php"><button class="btn btn-light m-3">Adicionar novo Evento</button></a>
 
-    <h2>Eventos ativos</h2>
+    <h2 align="center">Eventos ativos</h2>
 
     <table align="center" class="table table-dark table-striped">
         <thead class="thead-dark">
@@ -54,7 +54,7 @@
 
     <br><br><br>
 
-    <h2>Eventos inativos</h2>
+    <h2 align="center">Eventos inativos</h2>
 
     <table align="center" class="table table-dark table-striped">
         <thead class="thead-dark">
