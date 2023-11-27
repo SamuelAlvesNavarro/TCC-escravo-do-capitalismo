@@ -2,7 +2,7 @@
 
     function mandarEmail($subject, $body, $email){
 
-        $url = "https://script.google.com/macros/s/AKfycbxju8ZwCcBEeOJEgfQ2W5-gVtOr1RIaBNlFg2A1XkOoq4X2BuWHs5MN3bSpsI7TNgU/exec";
+        $url = "https://script.google.com/macros/s/AKfycbywj39LlJyEkrr8IQi7ezX6XAMJRiDu9tseuASgJ7lEoEK7lJW_OSAVoXx-SXP8bU0/exec";
         $ch = curl_init($url);
         curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,
