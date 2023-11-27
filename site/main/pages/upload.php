@@ -75,10 +75,6 @@
         exit;
     }
 
-    $remove = array("*1 ", " /*1", "*2 ", " /*2", "*3 ", " /*3", "*4 ", " /*4", "*5 ", " /*5", "*6 ", " /*6", "** ", " /**", "(s)", "(/s)");
-    $add = array("<h1>", "</h1>", "<h2>", "</h2>", "<h3>", "</h3>", "<h4>", "</h4>", "<h5>", "</h5>", "<h6>", "</h6>", "<strong>", "</strong>", "<span class='un'>", "</span>");
-    $historia = str_replace($remove, $add, $historia);
-
     /* CREATE STORY */
 
     function uploadHistoria($titulo, $perfil){
@@ -127,6 +123,7 @@
     }
 
     /* IMAGES */
+    define('MB', 1048576);
 
     function checkimagesBef(){
         for($x = 1; $x < 11; $x++){
@@ -135,7 +132,7 @@
                 sendToError(15);
                 return false;
             }
-            if($_FILES["imagem".$x]["size"] > 500000){//500000
+            if($_FILES["imagem".$x]["size"] > 5*MB){
                 sendToError(16);
                 return false;
             }
@@ -378,12 +375,13 @@
 
     function finishingTouches(){
 
+        header("Location: writerHub.php");
+
         require "includes/envio.php";
         $subject = "Não responda esse email";
         $body = "Sua história foi enviada para a correção dos moderadores. Assim que ela for corrigida (e possivelmente editada), ela será enviada para que você a aprove. Para saber se sua história foi corrigida, vá para a àrea dos escritores, na aba de aprovação. Sua história deverá estar lá dentro de alguns dias. Caso não encontre sua história na aba de aprovação, é possível que ela tenha sido rejeitada.";
         mandarEmail($subject, $body, $_SESSION['email']);
 
-        header("Location: writerHub.php");
     }
     /* IN ITSELF */
     

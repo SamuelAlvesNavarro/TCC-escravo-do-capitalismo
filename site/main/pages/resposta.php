@@ -19,7 +19,11 @@
         $id_question = $_POST['id_question'];
         $resp = $_POST['number'];
 
-        
+        $sql = "SELECT fk_id_profile from story where id_story = $id_story";
+        foreach($pdo->query($sql) as $key => $value){
+            $perfil_autor = $value['fk_id_profile'];
+        }
+
         $sql = "SELECT * from answer where fk_id_question = $id_question and status = 1";
         foreach($pdo->query($sql) as $key => $value){
             $rig = $value['text'];
@@ -75,6 +79,11 @@
 
                     /* MOEDAS */
                     $add = "UPDATE user_common SET moedas = '$moedas' WHERE fk_id_profile = '$perfil'";
+                    $prepare = $pdo->prepare($add);
+                    $prepare->execute();
+
+                    /* MOEDAS (AUTOR) */
+                    $add = "UPDATE user_common SET moedas = moedas + 25 WHERE fk_id_profile = '$perfil_autor'";
                     $prepare = $pdo->prepare($add);
                     $prepare->execute();
 

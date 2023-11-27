@@ -42,7 +42,7 @@
                    <div class="inputArea">
                         <div class="prev"></div>
                         <div class="label">Nome:</div>
-                        <input type="text" required minlength="8" name="name" id="nome" class='inp-text' maxLength="50" placeholder="Escreva aqui seu nome">
+                        <input type="text" required minlength="5" name="name" id="nome" class='inp-text' maxLength="50" placeholder="Escreva aqui seu nome">
                         <!--<div class="res">
                             mpty
                         </div>-->
@@ -58,13 +58,13 @@
                    <div class="inputArea">
                         <div class="prev"></div>
                         <div class="label">Apelido: </div>
-                        <input type="text" required minlength="8" name="apelido" id="apelido" class='inp-text' maxLength="15" placeholder="Escreva aqui seu apelido">
+                        <input type="text" required minlength="4" name="apelido" id="apelido" class='inp-text' maxLength="15" placeholder="Escreva aqui seu apelido">
                         <!--<div class="res">
                             mpty
                         </div>-->
                    </div>
                    <div class="pc-info info don">
-                        Use a tecla M para abrir o menu
+                        
                   </div>
                 </div>
                 <div class="slide">
@@ -80,12 +80,12 @@
                         </div>-->
                    </div>
                    <div class="pc-info info">
-                        Use a tecla " " para " "
+                        
                   </div>
                 </div>
                 <div class="slide">
                     <div class="essInfo info">
-                        " "
+                        
                    </div>
                    <div class="inputArea">
                         <div class="prev"></div>
@@ -112,7 +112,7 @@
                         </div>-->
                    </div>
                    <div class="pc-info info">
-                        Use a tecla " " para " "
+                        
                   </div>
                 </div>
                 <div class="slide bt-slide ">
