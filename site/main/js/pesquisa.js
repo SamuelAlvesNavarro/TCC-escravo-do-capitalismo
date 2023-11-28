@@ -23,7 +23,7 @@ function setTheme(theme) {
     localStorage.setItem("Theme", JSON.stringify(theme));
 }
 function getTheme() {
-    const theme = JSON.parse(localStorage.getItem("Theme") || 'light');
+    const theme = JSON.parse(localStorage.getItem("Theme"));
     
     if (theme == "dark") {
         switchmode();
