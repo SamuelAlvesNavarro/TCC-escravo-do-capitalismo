@@ -9,8 +9,6 @@ let current = -1;
         var imgsToShow = document.getElementsByClassName('imgsToShow');
         var refsToShow = document.getElementsByClassName('ref-input-input');
 
-        var thrownImg = document.getElementsByClassName('containerImg');
-
         var opps = document.getElementsByClassName('option');
         var opps_text_input = document.getElementsByClassName('input-op-text');
         var opps_text = document.getElementsByClassName('opps_text')
@@ -74,14 +72,6 @@ let current = -1;
             }
             question_itself_p.innerHTML = question_itself_input[0].value
 
-            /* THROWN IMGS */
-
-            for(var i = 0; i < 10; i++){
-                thrownImg[i].classList.add("hide");
-            }
-            for(var u = 0; u < listActives.length; u++){
-                thrownImg[listActives[u]].classList.remove("hide");
-            }
         }
 
 
@@ -113,7 +103,6 @@ let current = -1;
             prof_c.style.display = "none";
             edit = false;
             toggleEditAll();
-            spread();
 
         }else{
             edit = true;
@@ -126,9 +115,6 @@ let current = -1;
             document.getElementById("edit-part-d").style.display = "flex";
             document.getElementById("containerImgs").style.display = "block";
             prof_c.style.display = "block";
-            for(var i = 0; i < 10; i++){
-                thrownImg[i].classList.remove("hide");
-            }
         }
     }
         /* DARK MODE */
@@ -165,26 +151,7 @@ let current = -1;
         }
     }
 
-    /* IMG SPREAD */
-
-    var img_spread = document.getElementsByClassName('containerImg');
-
-    function spread(){
-        for(var i = 0; i < img_spread.length; i++){
-            if(i < img_spread.length / 2){
-                img_spread[i].classList.add("to-left");
-            }
-            else{
-                img_spread[i].classList.add("to-right");
-            }
-            img_spread[i].style.top = getRndInteger(0, (hmax-200))+"px";
-            img_spread[i].style.transform = "rotate("+getRndInteger(-25, 120)+"deg)";
-        }
-    }
-
     /* IMG FILES */
-
-    var imgs = document.getElementsByClassName('img-input');
 
     function inputimgchangeval(num){
         if(num > 0){
@@ -197,9 +164,7 @@ let current = -1;
             
                 const [file] = inputimg[num-1].files
                 if (file) {
-                    imgs[num-1].src = URL.createObjectURL(file)
                     imgsToShow[num-1].src = URL.createObjectURL(file)
-                    imgs[num-1].classList.remove('empty-img-input')
                     generateList();
                 }
 
@@ -211,8 +176,6 @@ let current = -1;
             inputIchange = eval("inputimg"+num);
             inputLchange.innerHTML = "Imagem " + num;
             inputIchange.value = null;
-            imgs[num-1].classList.add('empty-img-input')
-            imgs[num-1].removeAttribute('src');
             imgsToShow[num-1].removeAttribute('src');
 
             removeFromList(num-1);
@@ -293,7 +256,7 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
         listActives = [];
         var inputs = document.getElementsByClassName("input-file")
 
-        for(var y = 0; y < img_spread.length; y++){
+        for(var y = 0; y < 10; y++){
             if(inputs[y].value != ''){
                 listActives.push(y);
                 listActives.sort();
@@ -301,7 +264,7 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
         }
     }
     function contains(obj) {
-        for (var i = 0; i < img_spread.length; i++) {
+        for (var i = 0; i < 10; i++) {
             if (listActives[i] === obj) {
                 return true;
             }
@@ -324,7 +287,7 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
     function buildModal(n){
         img_modal = document.getElementById('img-container');
 
-        img_modal.src = imgs[n].src;
+        img_modal.src = imgsToShow[n].src;
 
         current = n;
     }
@@ -406,7 +369,6 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
       }, false);
 
     getTheme();
-    spread();
     switchedit();
 
 
@@ -550,6 +512,7 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
         }
     
         var btsImg = document.getElementsByClassName("img-bt");
+        var btsImgBar = document.getElementsByClassName("img-bt-bar");
 
         function checkBts(){
             for(var i = 0; i < 10; i++){
@@ -559,8 +522,10 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
 
                 if(inputCheck.value != ''){
                     btsImg[i].classList.remove("hidden-bt-img")
+                    btsImgBar[i].classList.remove("hidden-bt-img")
                 }else{
                     btsImg[i].classList.add("hidden-bt-img")
+                    btsImgBar[i].classList.add("hidden-bt-img")
                 }
             }
         }
@@ -595,3 +560,38 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
                 botar()
             }
         }, false);
+
+
+
+
+
+
+
+
+
+
+
+window.addEventListener("scroll", reveal);
+
+function reveal(){
+
+    var bar_to_show = document.getElementById("floating-bar");
+
+    var bar_p_t = document.getElementById("edit-part-d");
+
+    var windowH = document.documentElement.scrollTop;
+
+    var bar_p_t_h = bar_p_t.getBoundingClientRect().bottom;
+    var revealpoint_bar_p_t = +300;
+
+    var history_text = document.getElementById("story-input-b")
+
+    var histor_h = history_text.getBoundingClientRect().bottom;
+
+
+    if(bar_p_t_h + revealpoint_bar_p_t < windowH && histor_h + 800 > windowH){
+        bar_to_show.classList.add("float-bar")
+    }else{
+        bar_to_show.classList.remove("float-bar")
+    }
+}

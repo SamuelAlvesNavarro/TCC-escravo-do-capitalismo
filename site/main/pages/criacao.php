@@ -29,6 +29,29 @@
     <?php
         require "includes/menu.php";
     ?>
+    <div class="floating-bar" id="floating-bar">
+        <button type="button" onclick="strong()"><strong>B</strong></button>
+        <button type="button" onclick="italic()"><i>B</i></button>
+        <button type="button" onclick="underline()"><u>B</u></button>
+        <button type="button" onclick="small()"><small>B</small></button>
+        <button type="button" onclick="h('1')"><h1>B</h1></button>
+        <button type="button" onclick="h('2')"><h2>B</h2></button>
+        <button type="button" onclick="h('3')"><h3>B</h3></button>
+        <button type="button" onclick="h('4')"><h4>B</h4></button>
+        <button type="button" onclick="h('5')"><h5>B</h5></button>
+        <button type="button" onclick="h('6')"><h6>B</h6></button>
+        <button id="hr-bt" type="button" onclick="hr()"><hr></hr></button>
+        <button class="img-bt-bar" id="img-bt-1" type="button" onclick="addImg(1)"><i class="fa-solid fa-image"></i> (1)</button>
+        <button class="img-bt-bar" id="img-bt-2" type="button" onclick="addImg(2)"><i class="fa-solid fa-image"></i> (2)</button>
+        <button class="img-bt-bar" id="img-bt-3" type="button" onclick="addImg(3)"><i class="fa-solid fa-image"></i> (3)</button>
+        <button class="img-bt-bar" id="img-bt-4" type="button" onclick="addImg(4)"><i class="fa-solid fa-image"></i> (4)</button>
+        <button class="img-bt-bar" id="img-bt-5" type="button" onclick="addImg(5)"><i class="fa-solid fa-image"></i> (5)</button>
+        <button class="img-bt-bar" id="img-bt-6" type="button" onclick="addImg(6)"><i class="fa-solid fa-image"></i> (6)</button>
+        <button class="img-bt-bar" id="img-bt-7" type="button" onclick="addImg(7)"><i class="fa-solid fa-image"></i> (7)</button>
+        <button class="img-bt-bar" id="img-bt-8" type="button" onclick="addImg(8)"><i class="fa-solid fa-image"></i> (8)</button>
+        <button class="img-bt-bar" id="img-bt-9" type="button" onclick="addImg(9)"><i class="fa-solid fa-image"></i> (9)</button>
+        <button class="img-bt-bar" id="img-bt-10" type="button" onclick="addImg(10)"><i class="fa-solid fa-image"></i> (10)</button>
+    </div>
     <div class="deco">
 
     </div>
@@ -117,9 +140,6 @@
                     <div class="controls">
                         <div class="opp chevD" onclick="tableEditToggle()">
                             <i class="fa-solid fa-chevron-down op-icon"></i>
-                        </div>
-                        <div class="opp" id="spreadBt" onclick="spread()">
-                            <i class="fa-solid fa-arrows-rotate op-icon"></i>
                         </div>
                     </div>
                 </div>
@@ -294,38 +314,6 @@
         <input type="hidden" name="story" id="code_s">
     </form>
 
-    <div class="outer">
-        <div class="containerImg" onclick="callModal(1)">
-            <img class="empty-img-input img-input" alt="">
-        </div>
-        <div class="containerImg" onclick="callModal(2)">
-            <img class="empty-img-input img-input" alt="">
-        </div>
-        <div class="containerImg" onclick="callModal(3)">
-            <img class="empty-img-input img-input" alt="">
-        </div>
-        <div class="containerImg" onclick="callModal(4)">
-            <img class="empty-img-input img-input" alt="">
-        </div>
-        <div class="containerImg" onclick="callModal(5)">
-            <img class="empty-img-input img-input" alt="">
-        </div>
-        <div class="containerImg" onclick="callModal(6)">
-            <img class="empty-img-input img-input" alt="">
-        </div>
-        <div class="containerImg" onclick="callModal(7)">
-            <img class="empty-img-input img-input" alt="">
-        </div>
-        <div class="containerImg" onclick="callModal(8)">
-            <img class="empty-img-input img-input" alt="">
-        </div>
-        <div class="containerImg" onclick="callModal(9)">
-            <img class="empty-img-input img-input" alt="">
-        </div>
-        <div class="containerImg" onclick="callModal(10)">
-            <img class="empty-img-input img-input" alt="">
-        </div>
-    </div>
     <script src="../js/criacao.js?v=1.0121<?php echo rand(0,1000);?>"></script>
     <script src="../js/menu.js?v=1.01"></script>
 
