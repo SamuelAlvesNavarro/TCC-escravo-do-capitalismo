@@ -43,7 +43,7 @@
     height: 100vh;
     position: fixed;
     width: 100%;
-    z-index: 100000;
+    z-index: 1000000000;
     transition: .8s linear;
 }
 .disappear{
