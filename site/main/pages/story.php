@@ -572,7 +572,8 @@
             }  
         }
 
-        generate()
+        setTimeout(generate, 200)
+
         /* QUESTION */
         <?php
             if($showQuestion == "block;"){
