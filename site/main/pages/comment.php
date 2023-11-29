@@ -14,7 +14,7 @@
     if($id_story != 0 && $comment != ""){
 
         if(!verificarTexto($comment, 0)){
-            sendToError(8);
+            sendToError(17);
             exit;
         }
 
