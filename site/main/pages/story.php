@@ -156,6 +156,15 @@
     foreach ($pdo->query($sql) as $key => $value){
         $amount = $value['num'];
     }
+
+
+
+    if($perfil_dono == $perfil){
+        $showAnswered = "block;";
+        $showRight = "none;";
+        $showWrong = "none;";
+        $showQuestion = "none;";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
