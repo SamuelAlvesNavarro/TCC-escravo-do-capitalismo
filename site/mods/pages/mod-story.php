@@ -18,6 +18,11 @@
         $prepare = $pdo->prepare($story);
         $prepare->execute();
 
+        if($prepare -> rowCount() == 0){
+            header("Location:esgotos.php");
+            exit;
+        }
+
         foreach ($pdo->query($story) as $key => $value) {
 
             $titulo = $value['nome'];
