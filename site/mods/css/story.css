@@ -1003,3 +1003,13 @@ pre strong{
         padding: 5px;
       }
 }
+
+
+
+
+
+
+
+.wrong-answer{
+    background-color: rgba(255, 0, 30, 0.514) !important;
+}
