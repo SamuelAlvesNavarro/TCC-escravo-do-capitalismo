@@ -72,7 +72,6 @@
             <li class="list-group-item">Nome Completo: <?php echo $nome ?></li>
             <li class="list-group-item">Apelido: <?php echo $apelido ?></li>
             <li class="list-group-item">Email: <?php echo $email ?></li>
-            <li class="list-group-item">Senha: <?php echo $senha ?></li>
             <li class="list-group-item">Pontos: <?php echo $pontos_leitor ?> <i class="fa-solid fa-book"></i></li>
             <li class="list-group-item">Moedas: <?php echo $moedas ?> <i class="fa-solid fa-coins"></i></li>
         </ul>

@@ -149,6 +149,7 @@ body{
 
 .all pre, textarea{
     font-family: "Indie Flower";
+    text-align: justify;
 }
 
 .layout-padding{

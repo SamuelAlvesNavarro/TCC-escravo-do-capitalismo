@@ -99,7 +99,7 @@
             </div>
             <div class="main layout-padding" id="main">
                 <div class="title" id="titleEnter">
-                    <h1>Título:</h1><input onfocus="IsOutFocus()" id='title-input' required class="text-input" type="text" name="titulo" maxLength="40" placeholder="seu título"><h2 id="title-all">Título</h2>
+                    <h1>Título:</h1><input onfocus="IsOutFocus()" id='title-input' required class="text-input" type="text" name="titulo" maxLength="40" placeholder="seu título" value="Fins diversos"><h2 id="title-all">Título</h2>
                 </div>
                 <div class="history" id="history-div">
                     <div class="title">
@@ -130,7 +130,19 @@
                             <button class="img-bt" id="img-bt-10" type="button" onclick="addImg(10)"><i class="fa-solid fa-image"></i> (10)</button>
                         </div>
                         <pre id="pre-history" maxlength="12000" class="historyArea"></pre>
-                        <textarea onfocus="IsFocus()" onchange="botar()" tabindex="10" id="story-input-b" required oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea"></textarea>
+                        <textarea onfocus="IsFocus()" onchange="botar()" tabindex="10" id="story-input-b" required oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="textarea-history" maxlength="12000" class="historyArea">
+    Era uma noite sombria e nebulosa, onde as sombras pareciam ganhar vida própria. Na pequena cidade de Ravenswood, cercada por densas florestas e montanhas imponentes, uma atmosfera de mistério pairava no ar. Os moradores locais sussurravam histórias sobre eventos estranhos e inexplicáveis que aconteciam na região, mas nenhuma história era tão temida quanto a lenda dos "Fins Diversos".
+    A lenda contava que, uma vez a cada década, uma série de eventos macabros assolava a cidade. Esses eventos, conhecidos como "Fins Diversos", eram uma manifestação sobrenatural que trazia consigo um destino sombrio para aqueles que ousassem cruzar o caminho das forças desconhecidas que habitavam a área.
+    Na noite em que a lenda previa o próximo ciclo dos Fins Diversos, um grupo de jovens intrépidos decidiu explorar a floresta proibida que cercava a cidade. O grupo era composto por quatro amigos: Julia, Marcos, Clara e Rafael. Eles acreditavam que as histórias eram apenas lendas urbanas, criadas para assustar os incautos. No entanto, estavam prestes a descobrir a verdade aterrorizante que se escondia nas sombras.
+<img1>
+    À medida que adentravam a floresta, a atmosfera ao redor se tornava mais densa, como se as árvores estivessem sussurrando segredos obscuros. O grupo caminhava cautelosamente, guiado apenas pela luz tênue da lua filtrada pelas copas das árvores. De repente, um murmúrio ecoou pelo ar, fazendo com que todos se detivessem. Parecia um sussurro distante, carregado de uma energia sinistra.
+    Ignorando a sensação de apreensão, continuaram sua jornada. À medida que avançavam, as sombras pareciam ganhar vida, dançando ao redor do grupo como espectros famintos por suas almas. Então, um a um, começaram a experimentar visões horríveis, cada uma personalizada com seus medos mais profundos e sombrios.
+    Marcos viu o rosto pálido de uma criança perdida na escuridão, enquanto Clara foi perseguida por sombras grotescas que se contorciam ao seu redor. Julia e Rafael ouviram sussurros que ecoavam seus segredos mais sombrios. O terror se intensificava a cada passo, e a floresta parecia se alimentar do medo que se espalhava entre eles.
+    À medida que a noite avançava, a floresta se tornou um labirinto de pesadelos, e o grupo percebeu que não estavam sozinhos. Criaturas sinistras emergiam das sombras, movendo-se silenciosamente entre as árvores, olhos brilhando com uma luz maligna. Eram os guardiões dos Fins Diversos, os arautos de um destino inescapável.
+    Em um frenesi de pânico, o grupo tentou encontrar uma saída, mas a floresta parecia se fechar ao seu redor. À medida que os Fins Diversos se aproximavam, os amigos compreenderam a verdade da lenda. Cada visão, cada suspiro, eram os prelúdios de um fim inevitável e terrível.
+    O amanhecer revelou uma floresta silenciosa e aparentemente inofensiva. Não havia sinal do grupo intrépido, apenas a lembrança sombria dos Fins Diversos que, mais uma vez, haviam cumprido seu ciclo de terror. Ravenswood guardava seus segredos sobrenaturais, e as lendas se perpetuavam, alertando os incautos a evitar as sombras da floresta proibida.
+<img2>
+                        </textarea>
                     </div>
                 </div>
             </div>
@@ -251,7 +263,7 @@
                 </div>
                 <div class="ref-inputs">
                     <div class="ref-input">
-                        <label for="ref1">1: </label><input onfocus="IsOutFocus()" required class="ref-input-input" type="url" name="ref1" id="">
+                        <label for="ref1">1: </label><input onfocus="IsOutFocus()" required class="ref-input-input" type="url" name="ref1" id="" value="https://TCC-escravo-do-capitalismo/site/main/pages/profile.php?profile=667">
                     </div>
                     <div class="ref-input">
                         <label for="ref1">2: </label><input onfocus="IsOutFocus()" class="ref-input-input" type="url" name="ref2" id="">
@@ -288,25 +300,25 @@
                 </div>
                 <div class="text-question">
                     <p id="question_text"></p>
-                    <input onfocus="IsOutFocus()" type="text" name="question"  maxLength = '100' required class="input-question-text">
+                    <input onfocus="IsOutFocus()" type="text" name="question"  maxLength = '100' required class="input-question-text" value="Qual foi a visão de Marcos?">
                 </div>
                 <div class="question-container">
                     <input id='certa' type="hidden" name="certa">
-                    <div id="opa" class="option" onclick="setAsRight(1)">
+                    <div id="opa" class="option correctOne" onclick="setAsRight(1)">
                         <p class="opps_text"></p>
-                        <input onfocus="IsOutFocus()" type="text" name="a"  maxLength = '100' required class="input-op-text">
+                        <input onfocus="IsOutFocus()" type="text" name="a"  maxLength = '100' required class="input-op-text" value="uma criança perdida na escuridão">
                     </div>
                     <div id="opb" class="option" onclick="setAsRight(2)">
                         <p class="opps_text"></p>
-                        <input onfocus="IsOutFocus()"  type="text" name="b"  maxLength = '100' required class="input-op-text">
+                        <input onfocus="IsOutFocus()"  type="text" name="b"  maxLength = '100' required class="input-op-text" value="sombras grotescas">
                     </div>
                     <div id="opc" class="option" onclick="setAsRight(3)">
                         <p class="opps_text"></p>
-                        <input onfocus="IsOutFocus()"  type="text" name="c"  maxLength = '100' required class="input-op-text">
+                        <input onfocus="IsOutFocus()"  type="text" name="c"  maxLength = '100' required class="input-op-text" value="grandes olhos vermelhos">
                     </div>
                     <div id="opd" class="option" onclick="setAsRight(4)">
                         <p class="opps_text"></p>
-                        <input onfocus="IsOutFocus()"  type="text" name="d" maxLength = '100' required class="input-op-text">
+                        <input onfocus="IsOutFocus()"  type="text" name="d" maxLength = '100' required class="input-op-text" value="terríveis morcegos">
                     </div>
                 </div>
             </div>

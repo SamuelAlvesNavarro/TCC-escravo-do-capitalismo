@@ -510,7 +510,9 @@ inputimg10.addEventListener("change", () => inputimgchangeval(10));
            botar()
 
         }
-    
+
+
+
         var btsImg = document.getElementsByClassName("img-bt");
         var btsImgBar = document.getElementsByClassName("img-bt-bar");
 

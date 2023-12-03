@@ -6,7 +6,7 @@ use pi;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25/11/2023 às 22:53
+-- Tempo de geração: 03/12/2023 às 17:10
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -65,7 +65,27 @@ INSERT INTO `answer` (`id_answer`, `fk_id_question`, `text`, `status`) VALUES
 (1, 1, 'A mansão era habitada por um assassino em série e apenas uma morte poderia quebrar a maldição.', 0),
 (2, 1, 'A mansão era amaldiçoada por um espírito vingativo que exigia o sacrifício de uma pessoa inocente.', 1),
 (3, 1, 'A mansão não era assombrada.', 0),
-(4, 1, 'A mansão era o esconderijo de um tesouro amaldiçoado que precisava ser devolvido ao seu lugar.', 0);
+(4, 1, 'A mansão era o esconderijo de um tesouro amaldiçoado que precisava ser devolvido ao seu lugar.', 0),
+(5, 2, 'errado', 1),
+(6, 2, 'errado de novo', 0),
+(7, 2, 'errado errado', 0),
+(8, 2, 'terrível', 0),
+(9, 3, 'certo', 1),
+(10, 3, 'errado', 0),
+(11, 3, 'erradíssimo', 0),
+(12, 3, 'errei', 0),
+(13, 4, 'errada', 0),
+(14, 4, 'certa', 1),
+(15, 4, 'erradíssima', 0),
+(16, 4, 'não é essa', 0),
+(17, 5, 'quebrei as regras da sociedade capitalista', 0),
+(18, 5, 'sou curta demais', 0),
+(19, 5, 'não sou uma história de terror', 0),
+(20, 5, 'todos os motivos acima', 1),
+(21, 6, 'uma criança perdida na escuridão', 1),
+(22, 6, 'sombras grotescas', 0),
+(23, 6, 'grandes olhos vermelhos', 0),
+(24, 6, 'terríveis morcegos', 0);
 
 -- --------------------------------------------------------
 
@@ -92,6 +112,13 @@ CREATE TABLE `comment` (
   `text` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `comment`
+--
+
+INSERT INTO `comment` (`id_comment`, `fk_id_story`, `fk_id_profile`, `text`) VALUES
+(1, 4, 668, 'Que história louca, amei. Dei nota 3 de 5 de tanto que gostei!');
+
 -- --------------------------------------------------------
 
 --
@@ -110,7 +137,13 @@ CREATE TABLE `compra` (
 
 INSERT INTO `compra` (`fk_id_profile`, `fk_id_gadget`, `data`) VALUES
 (666, 1, '2023-09-24'),
-(666, 2, '2023-09-24');
+(666, 2, '2023-09-24'),
+(667, 1, '2023-11-30'),
+(667, 2, '2023-11-30'),
+(668, 1, '2023-11-30'),
+(668, 2, '2023-11-30'),
+(669, 1, '2023-11-30'),
+(669, 2, '2023-11-30');
 
 -- --------------------------------------------------------
 
@@ -166,6 +199,13 @@ CREATE TABLE `error_user` (
   `fk_id_profile` int(11) DEFAULT NULL,
   `fk_id_story` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `error_user`
+--
+
+INSERT INTO `error_user` (`id_error`, `fk_id_profile`, `fk_id_story`) VALUES
+(1, 667, 2);
 
 -- --------------------------------------------------------
 
@@ -236,7 +276,12 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`id_history`, `fk_id_page`, `texto`) VALUES
-(1, 1, '<div class=\'text\'>     Era uma noite escura e tempestuosa quando um grupo de cinco amigos decidiu explorar a antiga mansão abandonada, conhecida como a \"Casa dos Horrores\", na periferia da cidade. O local era envolto em lendas e histórias sinistras, mas isso só aumentava a empolgação do grupo. A mansão, de arquitetura gótica, estava <strong>mergulhada em mistério</strong> e abandonada há décadas.</div><div class=\'hr_space\'><hr></div><div class=\'text\'><h1>A Casa</h1>\r\n     Os amigos eram Mike, um cético convicto; Sarah, uma jovem destemida; Tom, o engraçadinho do grupo; Lisa, uma estudante de história obcecada com o sobrenatural; e Alex, um amante de adrenalina.</div><div class=\'img_story\'><img1></div><div class=\'text\'>\r\n     Ao adentrarem a mansão, a atmosfera ficou densa. As paredes rangiam, o cheiro de mofo era sufocante e um silêncio sepulcral dominava o lugar. Eles exploraram os quartos decadentes, repletos de móveis cobertos por lençóis empoeirados e retratos misteriosos que pareciam observá-los.\r\n     À medida que avançavam, eles começaram a ouvir sussurros inquietantes, passos silenciosos e sombras que se moviam rapidamente. O medo começou a se instalar em seus corações, mas nenhum deles queria admitir. Lisa, por outro lado, estava entusiasmada, acreditando que a mansão escondia segredos sombrios.\r\n     A primeira morte ocorreu quando Tom desapareceu de repente. Eles o procuraram por toda a mansão, mas ele tinha simplesmente sumido. Pânico se instalou no grupo. Eles discutiram sobre abandonar a mansão, mas o mau tempo os forçou a ficar. Enquanto estavam na sala de estar, um grito arrepiante ecoou de algum lugar desconhecido.\r\n     Sarah, em pânico, correu para a origem do som, mas ela também desapareceu. O grupo restante ficou aterrorizado e decidiram investigar o porão, onde suspeitavam que algo terrível estava escondido.\r\n     Ao entrarem no porão, encontraram uma sala sinistra com paredes cobertas de escritos enigmáticos e velas acesas. Em uma mesa no centro da sala, havia uma fotografia antiga que retratava a mansão como um local feliz há muitos anos. A imagem mostrava os cinco amigos, mas com um sexto membro, uma figura obscura nas sombras.</div><div class=\'img_story\'><img3></div><div class=\'text\'>\r\n     Logo, Alex foi atacado por uma força invisível, estrangulado até a morte. Ele caiu no chão, enquanto o grupo assistia horrorizado. Agora só restavam Mike e Lisa.\r\n     Em pânico, eles decidiram desvendar o mistério da mansão e encontrar uma maneira de sair. Eles seguiram os escritos nas paredes e descobriram que a mansão era assombrada por um antigo espírito vingativo, que exigia um sacrifício humano para quebrar a maldição. A fotografia indicava que o sexto membro era o alvo.\r\nLisa percebeu que ela era a única opção para ser o próximo sacrifício, mas Mike se recusou a permitir isso. Eles lutaram e, em um momento de desespero, Lisa esfaqueou Mike para se libertar e completar o sacrifício.\r\n     Ao fazê-lo, a mansão tremeu e os espíritos dos amigos mortos emergiram, agarrando Lisa e arrastando-a para as sombras. Com a maldição finalmente quebrada, a mansão começou a desmoronar. Lisa desapareceu nas trevas, enquanto a mansão desmoronava, engolindo-a junto com os segredos sombrios.</div><div class=\'img_story\'><img4></div>');
+(1, 1, '<div class=\'text\'>     Era uma noite escura e tempestuosa quando um grupo de cinco amigos decidiu explorar a antiga mansão abandonada, conhecida como a \"Casa dos Horrores\", na periferia da cidade. O local era envolto em lendas e histórias sinistras, mas isso só aumentava a empolgação do grupo. A mansão, de arquitetura gótica, estava <strong>mergulhada em mistério</strong> e abandonada há décadas.</div><div class=\'hr_space\'><hr></div><div class=\'text\'><h1>A Casa</h1>\r\n     Os amigos eram Mike, um cético convicto; Sarah, uma jovem destemida; Tom, o engraçadinho do grupo; Lisa, uma estudante de história obcecada com o sobrenatural; e Alex, um amante de adrenalina.</div><div class=\'img_story\'><img1></div><div class=\'text\'>\r\n     Ao adentrarem a mansão, a atmosfera ficou densa. As paredes rangiam, o cheiro de mofo era sufocante e um silêncio sepulcral dominava o lugar. Eles exploraram os quartos decadentes, repletos de móveis cobertos por lençóis empoeirados e retratos misteriosos que pareciam observá-los.\r\n     À medida que avançavam, eles começaram a ouvir sussurros inquietantes, passos silenciosos e sombras que se moviam rapidamente. O medo começou a se instalar em seus corações, mas nenhum deles queria admitir. Lisa, por outro lado, estava entusiasmada, acreditando que a mansão escondia segredos sombrios.\r\n     A primeira morte ocorreu quando Tom desapareceu de repente. Eles o procuraram por toda a mansão, mas ele tinha simplesmente sumido. Pânico se instalou no grupo. Eles discutiram sobre abandonar a mansão, mas o mau tempo os forçou a ficar. Enquanto estavam na sala de estar, um grito arrepiante ecoou de algum lugar desconhecido.\r\n     Sarah, em pânico, correu para a origem do som, mas ela também desapareceu. O grupo restante ficou aterrorizado e decidiram investigar o porão, onde suspeitavam que algo terrível estava escondido.\r\n     Ao entrarem no porão, encontraram uma sala sinistra com paredes cobertas de escritos enigmáticos e velas acesas. Em uma mesa no centro da sala, havia uma fotografia antiga que retratava a mansão como um local feliz há muitos anos. A imagem mostrava os cinco amigos, mas com um sexto membro, uma figura obscura nas sombras.</div><div class=\'img_story\'><img3></div><div class=\'text\'>\r\n     Logo, Alex foi atacado por uma força invisível, estrangulado até a morte. Ele caiu no chão, enquanto o grupo assistia horrorizado. Agora só restavam Mike e Lisa.\r\n     Em pânico, eles decidiram desvendar o mistério da mansão e encontrar uma maneira de sair. Eles seguiram os escritos nas paredes e descobriram que a mansão era assombrada por um antigo espírito vingativo, que exigia um sacrifício humano para quebrar a maldição. A fotografia indicava que o sexto membro era o alvo.\r\nLisa percebeu que ela era a única opção para ser o próximo sacrifício, mas Mike se recusou a permitir isso. Eles lutaram e, em um momento de desespero, Lisa esfaqueou Mike para se libertar e completar o sacrifício.\r\n     Ao fazê-lo, a mansão tremeu e os espíritos dos amigos mortos emergiram, agarrando Lisa e arrastando-a para as sombras. Com a maldição finalmente quebrada, a mansão começou a desmoronar. Lisa desapareceu nas trevas, enquanto a mansão desmoronava, engolindo-a junto com os segredos sombrios.</div><div class=\'img_story\'><img4></div>'),
+(2, 4, '<div class=\'text\'>história para errar a pergunta</div>'),
+(3, 6, '<div class=\'text\'>história para acertar a pergunta</div>'),
+(4, 8, '<div class=\'text\'>história para dar nota</div>'),
+(5, 10, '<div class=\'text\'>Infelizmente eu estou na quarentena.\r\n</div><div class=\'img_story\'><img1></div>'),
+(6, 13, '<div class=\'text\'>    Era uma noite sombria e nebulosa, onde as sombras pareciam ganhar vida própria. Na pequena cidade de Ravenswood, cercada por densas florestas e montanhas imponentes, uma atmosfera de mistério pairava no ar. Os moradores locais sussurravam histórias sobre eventos estranhos e inexplicáveis que aconteciam na região, mas nenhuma história era tão temida quanto a lenda dos \"Fins Diversos\".\r    A lenda contava que, uma vez a cada década, uma série de eventos macabros assolava a cidade. Esses eventos, conhecidos como \"Fins Diversos\", eram uma manifestação sobrenatural que trazia consigo um destino sombrio para aqueles que ousassem cruzar o caminho das forças desconhecidas que habitavam a área.\r    Na noite em que a lenda previa o próximo ciclo dos Fins Diversos, um grupo de jovens intrépidos decidiu explorar a floresta proibida que cercava a cidade. O grupo era composto por quatro amigos: Julia, Marcos, Clara e Rafael. Eles acreditavam que as histórias eram apenas lendas urbanas, criadas para assustar os incautos. No entanto, estavam prestes a descobrir a verdade aterrorizante que se escondia nas sombras.\r</div><div class=\'img_story\'><img1></div><div class=\'text\'>\r    À medida que adentravam a floresta, a atmosfera ao redor se tornava mais densa, como se as árvores estivessem sussurrando segredos obscuros. O grupo caminhava cautelosamente, guiado apenas pela luz tênue da lua filtrada pelas copas das árvores. De repente, um murmúrio ecoou pelo ar, fazendo com que todos se detivessem. Parecia um sussurro distante, carregado de uma energia sinistra.\r    Ignorando a sensação de apreensão, continuaram sua jornada. À medida que avançavam, as sombras pareciam ganhar vida, dançando ao redor do grupo como espectros famintos por suas almas. Então, um a um, começaram a experimentar visões horríveis, cada uma personalizada com seus medos mais profundos e sombrios.\r    Marcos viu o rosto pálido de uma criança perdida na escuridão, enquanto Clara foi perseguida por sombras grotescas que se contorciam ao seu redor. Julia e Rafael ouviram sussurros que ecoavam seus segredos mais sombrios. O terror se intensificava a cada passo, e a floresta parecia se alimentar do medo que se espalhava entre eles.\r    À medida que a noite avançava, a floresta se tornou um labirinto de pesadelos, e o grupo percebeu que não estavam sozinhos. Criaturas sinistras emergiam das sombras, movendo-se silenciosamente entre as árvores, olhos brilhando com uma luz maligna. Eram os guardiões dos Fins Diversos, os arautos de um destino inescapável.\r    Em um frenesi de pânico, o grupo tentou encontrar uma saída, mas a floresta parecia se fechar ao seu redor. À medida que os Fins Diversos se aproximavam, os amigos compreenderam a verdade da lenda. Cada visão, cada suspiro, eram os prelúdios de um fim inevitável e terrível.\r    O amanhecer revelou uma floresta silenciosa e aparentemente inofensiva. Não havia sinal do grupo intrépido, apenas a lembrança sombria dos Fins Diversos que, mais uma vez, haviam cumprido seu ciclo de terror. Ravenswood guardava seus segredos sobrenaturais, e as lendas se perpetuavam, alertando os incautos a evitar as sombras da floresta proibida.\r</div><div class=\'img_story\'><img2></div><div class=\'text\'>\r                        </div>');
 
 -- --------------------------------------------------------
 
@@ -259,7 +304,10 @@ INSERT INTO `images` (`id_image`, `fk_id_page`, `fundo`, `path`) VALUES
 (1, 2, 0, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-1.jpg'),
 (2, 2, 1, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-2.jpg'),
 (3, 2, 0, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-3.jpg'),
-(4, 2, 0, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-4.jpg');
+(4, 2, 0, '../img-story/OSacrificionaCasadosHorrores/OSacrificionaCasadosHorrores-img-4.jpg'),
+(5, 11, 0, '../img-story/EstounaQuarentena/EstounaQuarentena-img-1.jpg'),
+(6, 14, 0, '../img-story/Finsdiversos/Finsdiversos-img-1.jpg'),
+(7, 14, 0, '../img-story/Finsdiversos/Finsdiversos-img-2.jpg');
 
 -- --------------------------------------------------------
 
@@ -301,7 +349,19 @@ CREATE TABLE `page` (
 INSERT INTO `page` (`id_page`, `fk_id_story`, `type`, `order_p`) VALUES
 (1, 1, 0, 0),
 (2, 1, 1, 1),
-(3, 1, 2, 2);
+(3, 1, 2, 2),
+(4, 2, 0, 0),
+(5, 2, 2, 2),
+(6, 3, 0, 0),
+(7, 3, 2, 2),
+(8, 4, 0, 0),
+(9, 4, 2, 2),
+(10, 5, 0, 0),
+(11, 5, 1, 1),
+(12, 5, 2, 2),
+(13, 6, 0, 0),
+(14, 6, 1, 1),
+(15, 6, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -320,7 +380,10 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id_profile`, `foto`, `fundoPerfil`) VALUES
-(666, 1, 2);
+(666, 1, 2),
+(667, 1, 2),
+(668, 1, 2),
+(669, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -339,7 +402,12 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`id_question`, `fk_id_story`, `quest_itself`) VALUES
-(1, 1, 'Qual foi a razão pela qual a mansão era assombrada e o que era necessário para quebrar a maldição?');
+(1, 1, 'Qual foi a razão pela qual a mansão era assombrada e o que era necessário para quebrar a maldição?'),
+(2, 2, 'Errado?'),
+(3, 3, 'Certo?'),
+(4, 4, 'nota?'),
+(5, 5, 'Por que estou na quarentena?'),
+(6, 6, 'Qual foi a visão de Marcos?');
 
 -- --------------------------------------------------------
 
@@ -351,6 +419,16 @@ CREATE TABLE `question_user` (
   `fk_id_question` int(11) NOT NULL,
   `fk_id_profile` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `question_user`
+--
+
+INSERT INTO `question_user` (`fk_id_question`, `fk_id_profile`) VALUES
+(3, 667),
+(4, 667),
+(4, 668),
+(4, 669);
 
 -- --------------------------------------------------------
 
@@ -369,7 +447,12 @@ CREATE TABLE `reference` (
 --
 
 INSERT INTO `reference` (`id_reference`, `fk_id_page`, `path`) VALUES
-(1, 3, 'https://chat.openai.com/');
+(1, 3, 'https://chat.openai.com/'),
+(2, 5, 'https://TCC-escravo-do-capitalismo/site/main/pages/profile.php?profile=666'),
+(3, 7, 'https://TCC-escravo-do-capitalismo/site/main/pages/profile.php?profile=666'),
+(4, 9, 'https://TCC-escravo-do-capitalismo/site/main/pages/profile.php?profile=666'),
+(5, 12, 'https://TCC-escravo-do-capitalismo/site/main/pages/profile.php?profile=666'),
+(6, 15, 'https://TCC-escravo-do-capitalismo/site/main/pages/profile.php?profile=667');
 
 -- --------------------------------------------------------
 
@@ -386,6 +469,13 @@ CREATE TABLE `report_comment` (
   `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `report_comment`
+--
+
+INSERT INTO `report_comment` (`id_report`, `fk_id_reported`, `fk_id_reporter`, `fk_id_comment`, `reason`, `code`) VALUES
+(1, 668, 669, 1, 'Como que a pessoa diz que ama uma história e depois simplesmente dá uma nota 3????? E outra, o cara é o autor da história e fica comentando que amou??? Bane ele, produção.', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -399,6 +489,13 @@ CREATE TABLE `report_profile` (
   `reason` varchar(50) DEFAULT NULL,
   `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `report_profile`
+--
+
+INSERT INTO `report_profile` (`id_report`, `fk_id_reported`, `fk_id_reporter`, `reason`, `code`) VALUES
+(1, 668, 669, 'Bane esse cara, moderação. Um doido.', 1);
 
 -- --------------------------------------------------------
 
@@ -414,6 +511,14 @@ CREATE TABLE `report_story` (
   `code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `report_story`
+--
+
+INSERT INTO `report_story` (`id_report`, `fk_id_reported_story`, `fk_id_reporter`, `reason`, `code`) VALUES
+(1, 4, 669, 'Tanto quanto o autor, essa história é tão louca.', 1),
+(2, 5, 669, 'Manda para a quarentena ademiro', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -426,6 +531,15 @@ CREATE TABLE `score` (
   `fk_id_story` int(11) NOT NULL,
   `nota` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `score`
+--
+
+INSERT INTO `score` (`id_score`, `fk_id_profile`, `fk_id_story`, `nota`) VALUES
+(1, 667, 4, 4),
+(2, 668, 4, 3),
+(3, 669, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -447,7 +561,12 @@ CREATE TABLE `story` (
 --
 
 INSERT INTO `story` (`id_story`, `font`, `nome`, `rating`, `status`, `fk_id_profile`) VALUES
-(1, 0, 'O Sacrifício na Casa dos Horrores', 0, 3, 666);
+(1, 0, 'O Sacrifício na Casa dos Horrores', 0, 3, 666),
+(2, 0, 'O experimento', 0, 3, 666),
+(3, 0, 'Não vá ao topo da montanha', 0, 3, 666),
+(4, 0, 'Balas soltas', 3.66667, 3, 666),
+(5, 0, 'Estou na Quarentena', 0, 4, 666),
+(6, 0, 'Fins diversos', 0, 1, 667);
 
 -- --------------------------------------------------------
 
@@ -471,7 +590,10 @@ CREATE TABLE `user_common` (
 --
 
 INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `moedas`) VALUES
-(1, 666, '?????', 'historito@mail.com', 'oMEWbFUQJdW72Q==', '?????', 0, 100000);
+(1, 666, '?????', 'historito@mail.com', 'oMEWbFUQJdW72Q==', '?????', 0, 100075),
+(2, 667, 'Apresentação do PI', 'apre@gmail.com', 'oNUJYApDddA=', 'Apresentação', 200, 60),
+(3, 668, 'Para as denúncias', 'pd@gmail.com', 'scFKNwhFc9I=', 'Para denúncias', 100, 60),
+(4, 669, 'Para as denúncias (2)', 'pd2@gmail.com', 'scFKNwhFc9I=', 'Para Denúncias', 100, 60);
 
 --
 -- Índices para tabelas despejadas
@@ -653,7 +775,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de tabela `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_answer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `ban`
@@ -665,7 +787,7 @@ ALTER TABLE `ban`
 -- AUTO_INCREMENT de tabela `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `error`
@@ -677,7 +799,7 @@ ALTER TABLE `error`
 -- AUTO_INCREMENT de tabela `error_user`
 --
 ALTER TABLE `error_user`
-  MODIFY `id_error` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_error` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `evento`
@@ -695,13 +817,13 @@ ALTER TABLE `gadget`
 -- AUTO_INCREMENT de tabela `history`
 --
 ALTER TABLE `history`
-  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `mods`
@@ -713,61 +835,61 @@ ALTER TABLE `mods`
 -- AUTO_INCREMENT de tabela `page`
 --
 ALTER TABLE `page`
-  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=670;
 
 --
 -- AUTO_INCREMENT de tabela `question`
 --
 ALTER TABLE `question`
-  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `reference`
 --
 ALTER TABLE `reference`
-  MODIFY `id_reference` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_reference` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `report_comment`
 --
 ALTER TABLE `report_comment`
-  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `report_profile`
 --
 ALTER TABLE `report_profile`
-  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `report_story`
 --
 ALTER TABLE `report_story`
-  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `score`
 --
 ALTER TABLE `score`
-  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `story`
 --
 ALTER TABLE `story`
-  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_story` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `user_common`
 --
 ALTER TABLE `user_common`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para tabelas despejadas

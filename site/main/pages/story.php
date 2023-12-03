@@ -527,7 +527,7 @@
 
                                                     </div>
                                                     <div class="name">
-                                                        <a href="profile.php?profile='<?php echo $value['cod']; ?>'"><?php echo $value['nome']; ?></a>
+                                                        <a href="profile.php?profile=<?php echo $value['cod']; ?>"><?php echo $value['nome']; ?></a>
                                                     </div>
                                                 </div>
                                                 <div class="cntr">
@@ -576,12 +576,10 @@
                 imgs[i].style.transform = 
                 "rotate("+numb+"deg)";
 
-                var ac_h = img_story[i].offsetHeight;
-                img_story[i].style.height = ac_h + "px";
             }  
         }
 
-        setTimeout(generate, 200)
+        generate()
 
         /* QUESTION */
         <?php

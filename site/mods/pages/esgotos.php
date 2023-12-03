@@ -21,8 +21,8 @@
             background: #121212;
             z-index: 1000;
         }
-        .to-center a{
-            color: white;
+        a{
+            color: #909090;
         }
     </style>
 </head>

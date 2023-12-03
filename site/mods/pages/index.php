@@ -10,8 +10,8 @@
     <div class="main">
         <h1>Aos Esgotos</h1>
         <form action="login.php" method="post">
-            <input type="email" name="email" id=""><br>
-            <input type="password" name="senha" id=""><br>
+            <input type="email" name="email" id="" value="mods@gmail.com"><br>
+            <input type="password" name="senha" id="" value="mods1234"><br>
             <input type="submit" value="Enviar">
         </form>
     </div>

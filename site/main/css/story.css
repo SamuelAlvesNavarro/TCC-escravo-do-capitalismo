@@ -469,9 +469,7 @@ body {
 }
 
 .activeZoom {
-    position: absolute;
     cursor: zoom-out !important;
-    z-index: 1000000;
     height: 90vh;
     max-width: 90vw !important;
 }
@@ -1028,11 +1026,9 @@ select::-ms-expand {
 
 @media (max-width: 1200px) {
     .activeZoom {
-        position: absolute;
         width: auto;
         max-height: 90vh;
         cursor: zoom-out !important;
-        z-index: 1000000;
         max-width: 80vw !important;
     }
 }
@@ -1077,7 +1073,6 @@ select::-ms-expand {
     }
 
     .activeZoom {
-        position: absolute;
         width: 100%;
         cursor: auto !important;
         height: auto;
