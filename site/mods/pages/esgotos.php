@@ -12,17 +12,8 @@
     <link rel="stylesheet" href="../css/esgotos.css">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <style>
-        .to-center{
-            padding: 20px;
-            position: fixed;
-            top: 0;
-            right: 50px;
-            font-size: 30px;
-            background: #121212;
-            z-index: 1000;
-        }
         a{
-            color: #909090;
+            color:white;
         }
     </style>
 </head>
