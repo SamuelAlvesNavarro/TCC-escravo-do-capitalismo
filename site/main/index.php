@@ -3,8 +3,6 @@
     include "pages/includes/criasession.php";
     session_unset();
     session_destroy();
-
-    include "pages/includes/loading.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,15 +10,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="svg/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/index.css?v=1.348949323">
     <link rel="stylesheet" href="css/bt.css?v=1.083038">
-    <link rel="shortcut icon" href="svg/logo.svg" type="image/x-icon">
+   
     <title>Home Page</title>
     
 </head>
 <body>
+    <?php
+     include "pages/includes/loading.php";
+     ?>
     <div id="all" class="all">
         <div class="nav">
             <div class="logo">

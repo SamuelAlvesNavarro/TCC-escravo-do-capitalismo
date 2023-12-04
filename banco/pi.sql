@@ -1,12 +1,9 @@
-drop database if exists pi;
-create database pi;
-use pi;
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03/12/2023 às 17:10
+-- Tempo de geração: 05/12/2023 às 00:56
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -117,7 +114,12 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id_comment`, `fk_id_story`, `fk_id_profile`, `text`) VALUES
-(1, 4, 668, 'Que história louca, amei. Dei nota 3 de 5 de tanto que gostei!');
+(1, 4, 668, 'Que história louca, amei. Dei nota 3 de 5 de tanto que gostei!'),
+(2, 1, 670, 'Sinceramente, fiquei com medo. Sério, não era para ter, sei lá, um final feliz????? Eles simplesmente m0rrem todos. É terror demais para um dia.'),
+(3, 1, 671, 'Concordo, Sazin. Eu amei a história, mas é macabra demais =('),
+(4, 1, 672, 'Sou o milior di todos.'),
+(5, 1, 673, 'Que historie terríble. Je odiei le final. Terrible. No peux pas.'),
+(7, 1, 669, 'BANE TODO MUNDO MODS!!!!!!!!!!!!!');
 
 -- --------------------------------------------------------
 
@@ -142,8 +144,21 @@ INSERT INTO `compra` (`fk_id_profile`, `fk_id_gadget`, `data`) VALUES
 (667, 2, '2023-11-30'),
 (668, 1, '2023-11-30'),
 (668, 2, '2023-11-30'),
+(668, 5, '2023-12-05'),
 (669, 1, '2023-11-30'),
-(669, 2, '2023-11-30');
+(669, 2, '2023-11-30'),
+(669, 11, '2023-12-05'),
+(670, 1, '2023-12-04'),
+(670, 2, '2023-12-04'),
+(670, 4, '2023-12-05'),
+(671, 1, '2023-12-04'),
+(671, 2, '2023-12-04'),
+(671, 3, '2023-12-05'),
+(672, 1, '2023-12-04'),
+(672, 2, '2023-12-04'),
+(673, 1, '2023-12-04'),
+(673, 2, '2023-12-04'),
+(673, 10, '2023-12-05');
 
 -- --------------------------------------------------------
 
@@ -257,7 +272,9 @@ INSERT INTO `gadget` (`id_gadget`, `type`, `preco`, `g_status`, `nome`, `in_it`)
 (6, 3, 15, 1, 'Monstro', 'background-image: url(../profile-gadgets/bc-profile/monster.webp);'),
 (7, 3, 100, 1, 'Fantasma', 'background-image: url(../profile-gadgets/bc-profile/fantasma.jpg);'),
 (8, 3, 15, 1, 'Casa Sombria', 'background-image: url(../profile-gadgets/bc-profile/dark_house.jpg);'),
-(9, 3, 60, 1, 'Policiais', 'background-image: url(../profile-gadgets/bc-profile/police.webp);');
+(9, 3, 60, 1, 'Policiais', 'background-image: url(../profile-gadgets/bc-profile/police.webp);'),
+(10, 0, 200, 0, 'French', 'background-image: url(../profile-gadgets/pc-profile/french.jpg);'),
+(11, 0, 12, 0, 'Bravo', 'background-image: url(../profile-gadgets/pc-profile/anger.jpg);');
 
 -- --------------------------------------------------------
 
@@ -382,8 +399,12 @@ CREATE TABLE `profile` (
 INSERT INTO `profile` (`id_profile`, `foto`, `fundoPerfil`) VALUES
 (666, 1, 2),
 (667, 1, 2),
-(668, 1, 2),
-(669, 1, 2);
+(668, 1, 5),
+(669, 11, 2),
+(670, 4, 2),
+(671, 3, 2),
+(672, 1, 2),
+(673, 10, 2);
 
 -- --------------------------------------------------------
 
@@ -425,6 +446,11 @@ CREATE TABLE `question_user` (
 --
 
 INSERT INTO `question_user` (`fk_id_question`, `fk_id_profile`) VALUES
+(1, 669),
+(1, 670),
+(1, 671),
+(1, 672),
+(1, 673),
 (3, 667),
 (4, 667),
 (4, 668),
@@ -539,7 +565,12 @@ CREATE TABLE `score` (
 INSERT INTO `score` (`id_score`, `fk_id_profile`, `fk_id_story`, `nota`) VALUES
 (1, 667, 4, 4),
 (2, 668, 4, 3),
-(3, 669, 4, 4);
+(3, 669, 4, 4),
+(4, 670, 1, 5),
+(5, 671, 1, 5),
+(6, 672, 1, 5),
+(7, 673, 1, 5),
+(8, 669, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -561,11 +592,11 @@ CREATE TABLE `story` (
 --
 
 INSERT INTO `story` (`id_story`, `font`, `nome`, `rating`, `status`, `fk_id_profile`) VALUES
-(1, 0, 'O Sacrifício na Casa dos Horrores', 0, 3, 666),
-(2, 0, 'O experimento', 0, 3, 666),
-(3, 0, 'Não vá ao topo da montanha', 0, 3, 666),
-(4, 0, 'Balas soltas', 3.66667, 3, 666),
-(5, 0, 'Estou na Quarentena', 0, 4, 666),
+(1, 0, 'O Sacrifício na Casa dos Horrores', 4.8, 3, 666),
+(2, 0, 'O experimento', 0, 3, 673),
+(3, 0, 'Não vá ao topo da montanha', 0, 3, 673),
+(4, 0, 'Balas soltas', 3.66667, 3, 672),
+(5, 0, 'Estou na Quarentena', 0, 4, 672),
 (6, 0, 'Fins diversos', 0, 1, 667);
 
 -- --------------------------------------------------------
@@ -590,10 +621,14 @@ CREATE TABLE `user_common` (
 --
 
 INSERT INTO `user_common` (`id_user`, `fk_id_profile`, `nome`, `email`, `senha`, `apelido`, `pontos_leitor`, `moedas`) VALUES
-(1, 666, '?????', 'historito@mail.com', 'oMEWbFUQJdW72Q==', '?????', 0, 100075),
-(2, 667, 'Apresentação do PI', 'apre@gmail.com', 'oNUJYApDddA=', 'Apresentação', 200, 60),
-(3, 668, 'Para as denúncias', 'pd@gmail.com', 'scFKNwhFc9I=', 'Para denúncias', 100, 60),
-(4, 669, 'Para as denúncias (2)', 'pd2@gmail.com', 'scFKNwhFc9I=', 'Para Denúncias', 100, 60);
+(1, 666, '?????', 'historito@mail.com', 'oMEWbFUQJdW72Q==', '?????', 0, 100200),
+(2, 667, 'Apresentação do PI', 'apre@gmail.com', 'oNUJYApDddA=', 'Apresentação', 0, 100000),
+(3, 668, 'Já me denunciaram', 'pd@gmail.com', 'scFKNwhFc9I=', 'Para denúncias', 100, 480),
+(4, 669, 'Te denunciei', 'pd2@gmail.com', 'scFKNwhFc9I=', 'Te denunciarei', 200, 98),
+(5, 670, 'Sazola', 'sazola@gmail.com', '8JdIMQ5Hcdw=', 'Sazin', 1000, 545),
+(6, 671, 'Jg diff', 'jgdiff@gmail.com', '8JdIMQ5Hcdw=', 'Jg diffizin', 600, 45),
+(7, 672, 'Sou o milior', 'souomillior@gmail.com', '8JdIMQ5Hcdw=', 'Milior', 10000, 60),
+(8, 673, 'Pas co', 'as@gmail.com', '8JdIMQ5Hcdw=', 'Pas comme ça', 500, 400);
 
 --
 -- Índices para tabelas despejadas
@@ -787,7 +822,7 @@ ALTER TABLE `ban`
 -- AUTO_INCREMENT de tabela `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `error`
@@ -811,7 +846,7 @@ ALTER TABLE `evento`
 -- AUTO_INCREMENT de tabela `gadget`
 --
 ALTER TABLE `gadget`
-  MODIFY `id_gadget` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_gadget` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `history`
@@ -841,7 +876,7 @@ ALTER TABLE `page`
 -- AUTO_INCREMENT de tabela `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=670;
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=674;
 
 --
 -- AUTO_INCREMENT de tabela `question`
@@ -877,7 +912,7 @@ ALTER TABLE `report_story`
 -- AUTO_INCREMENT de tabela `score`
 --
 ALTER TABLE `score`
-  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_score` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `story`
@@ -889,7 +924,7 @@ ALTER TABLE `story`
 -- AUTO_INCREMENT de tabela `user_common`
 --
 ALTER TABLE `user_common`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restrições para tabelas despejadas

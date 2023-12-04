@@ -353,7 +353,7 @@
 
                             if($prepare -> rowCount() > 0){
                                 foreach ($pdo->query($ref) as $key => $value) {
-                                    echo "→ <a href ='". $value['path'] ."'>". $value['path'] ."</a><br>";
+                                    echo "→ <a href='". $value['path'] ."' target='_blank'>". $value['path'] ."</a><br>";
                                 }          
                             }
                         ?> 

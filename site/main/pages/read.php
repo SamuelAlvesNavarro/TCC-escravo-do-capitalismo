@@ -103,7 +103,7 @@
     <link rel="stylesheet" href="../css/scroll.css?v=1.01">
     <link rel="stylesheet" href="../css/notification.css?v=1135232">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
-    <title>História</title>
+    <title>História trial</title>
 </head>
 <body>
     <?php
@@ -269,7 +269,7 @@
 
                             if($prepare -> rowCount() > 0){
                                 foreach ($pdo->query($ref) as $key => $value) {
-                                    echo "→ <a href ='". $value['path'] ."'>". $value['path'] ."</a><br>";
+                                    echo "→ <a href ='". $value['path'] ."' target='_blank'>". $value['path'] ."</a><br>";
                                 }          
                             }
                         ?> 
