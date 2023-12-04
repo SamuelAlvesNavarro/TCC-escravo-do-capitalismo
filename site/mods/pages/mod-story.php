@@ -17,11 +17,12 @@
         $story = "SELECT * from story where id_story = $id_story and status = 3";
         $prepare = $pdo->prepare($story);
         $prepare->execute();
-
+        
         if($prepare -> rowCount() == 0){
             header("Location:esgotos.php");
             exit;
         }
+
 
         foreach ($pdo->query($story) as $key => $value) {
 
@@ -87,10 +88,6 @@
         }
     }
 
-    /* GUARDANDO NA SESSÃO */
-
-    $_SESSION['current_story'] = $id_story;
-
 
 
     $sql = "select count(*) as num from comment where fk_id_story = $id_story";
@@ -126,10 +123,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f2389f6c39.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/menu.css?v=1.012">
     <link rel="stylesheet" href="../css/story.css?v=1.01<?php echo rand(0,10000)?>">
-    <link rel="stylesheet" href="../css/scroll.css?v=1.01">
-    <link rel="stylesheet" href="../css/notification.css?v=1135232">
     <link rel="shortcut icon" href="../svg/logo.svg" type="image/x-icon">
     <title>História</title>
 </head>
@@ -346,6 +340,8 @@
                         ?>
 
                             <?php foreach ($pdo->query($sql) as $key => $value):
+
+$perfil = 0;
 
                                 if($value['cod'] == $perfil){
                                     $class = "mine";

@@ -36,7 +36,7 @@
         <input type="hidden" id='num' name="number" placeholder="Quantidade de Moedas" class="form-control" required>
 
         <div id="gadgets" style="display: none;">
-            <select name="num" id="gadget">
+            <select name="number" id="gadget">
                 <option value="">Selecione...</option>
                 <?php 
                     $sql = "SELECT * FROM gadget WHERE g_status = 1 AND id_gadget != 1 AND id_gadget != 2";

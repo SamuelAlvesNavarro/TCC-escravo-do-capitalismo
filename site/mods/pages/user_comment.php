@@ -43,7 +43,7 @@
                 }
 
                 echo "<br><br>";
-                echo "História pertencente: <a href='mod-story.php?input_1=$id_story'>$name</a><br>";
+                echo "História pertencente: <a href='mod-story.php?story=$id_story'>$name</a><br>";
                 echo "<p>Comentário: $text</p>";
                 echo "<a href='delete_comment.php?id_comment=". $id_comment ."'><button class='btn btn-danger'>Deletar</button></a>";
             } 

@@ -146,7 +146,7 @@
 
                             echo "<tr scope='row'>";
                             echo "<td>".$value['id_report']."</td>";
-                            echo "<td><a href='mod-story.php?input_1=".$value['fk_id_reported_story']."'>História</a></td>";
+                            echo "<td><a href='mod-story.php?story=".$value['fk_id_reported_story']."'>História</a></td>";
                             echo "<td>".$value['fk_id_reporter']."</td>";
                             echo "<td>".$value['reason']."</td>";
                             echo "<td>".$cd."</td>";
