@@ -120,6 +120,7 @@ function reveal(){
 
 
 function aceitar(n) {
+
     var theForm, newInput1;
     theForm = document.createElement('form');
     theForm.action = 'aprovar.php';
@@ -133,6 +134,12 @@ function aceitar(n) {
     theForm.submit();
 }
 function rejeitar(n){
+
+    let text = "Tem certeza que deseja rejeitar essa história? ela será deletada.";
+    if (confirm(text) != true) {
+        return;
+    }
+
     var theForm, newInput1;
     theForm = document.createElement('form');
     theForm.action = 'deletar_historia.php';
