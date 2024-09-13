@@ -4,8 +4,6 @@
 
 https://historiasassombradas.000webhostapp.com/ - link do site
 
-https://www.devmedia.com.br/upload-de-imagens-em-php-e-mysql/10041 - meu link
-
 ZERAR O BANCO 
 
 delete from page;
@@ -25,18 +23,3 @@ alter table images AUTO_INCREMENT = 0;
 alter table user_common AUTO_INCREMENT = 0;
 alter table profile AUTO_INCREMENT = 0;
 alter table question AUTO_INCREMENT = 0;
-
-
-
-
-Google Perspective API: Oferece uma API que pode ser usada para avaliar a toxicidade de texto, identificando palavras ofensivas.
-
-WebPurify: Oferece um serviço de moderação de conteúdo com uma lista de palavras-chave não permitidas e suporte a palavras personalizadas.
-
-ModerateContent: Uma plataforma de moderação de conteúdo que usa IA para detectar conteúdo impróprio, incluindo palavras ofensivas.
-
-Amazon Web Services (AWS) Comprehend: Pode ser usado para analisar o sentimento e a emoção em texto, identificando conteúdo ofensivo.
-
-PerspectiveAPI Wrapper: Um wrapper de código aberto para o Perspective API do Google que facilita a integração em seu projeto.
-
-
